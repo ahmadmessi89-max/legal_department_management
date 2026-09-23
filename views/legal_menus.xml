@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Top Level Menu with custom PNG icon -->
+    <menuitem id="menu_legal_root"
+              name="الشؤون القانونية"
+              web_icon="legal_department_management,static/description/icon.png"
+              sequence="20"/>
+
+    <!-- Interactive Smart Dashboard -->
+    <menuitem id="menu_legal_dashboard_main"
+              name="📊 لوحة المتابعة والرقابة الذكية"
+              parent="menu_legal_root"
+              action="action_legal_dashboard"
+              sequence="1"/>
+
+    <!-- Main Navigation Menus -->
+    <menuitem id="menu_legal_create_task_action"
+              name="➕ بدء معاملة / قضية جديدة"
+              parent="menu_legal_root"
+              action="action_legal_task_create_wizard"
+              sequence="2"/>
+
+    <menuitem id="menu_legal_company"
+              name="الشركات والموكلين"
+              parent="menu_legal_root"
+              action="action_legal_company"
+              sequence="5"/>
+
+    <!-- Official Entities Menus: Manager & Administrator ONLY -->
+    <menuitem id="menu_legal_department"
+              name="الدوائر والجهات الرسمية"
+              parent="menu_legal_root"
+              action="action_legal_department"
+              sequence="15"
+              groups="legal_department_management.group_legal_manager"/>
+
+    <menuitem id="menu_legal_approvals_root"
+              name="⚖️ الصلاحيات والموافقات"
+              parent="menu_legal_root"
+              sequence="25"
+              groups="legal_department_management.group_legal_manager"/>
+
+    <menuitem id="menu_legal_tasks_to_approve"
+              name="معاملات بانتظار الاعتماد ⏳"
+              parent="menu_legal_approvals_root"
+              action="action_legal_task_to_approve"
+              sequence="1"/>
+
+    <menuitem id="menu_legal_all_tasks_management"
+              name="الرقابة العامة على كافة القضايا 📑"
+              parent="menu_legal_approvals_root"
+              action="action_legal_task"
+              sequence="5"/>
+
+    <menuitem id="menu_legal_general_report"
+              name="🖨️ طباعة تقرير الرقابة العامة الشامل"
+              parent="menu_legal_approvals_root"
+              action="action_legal_general_report_wizard"
+              sequence="10"/>
+</odoo>

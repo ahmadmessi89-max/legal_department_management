@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Client Action for OWL 3 Dashboard -->
+    <record id="action_legal_dashboard" model="ir.actions.client">
+        <field name="name">لوحة التحكم القانونية</field>
+        <field name="tag">legal_dashboard_tag</field>
+        <field name="target">main</field>
+    </record>
+</odoo>

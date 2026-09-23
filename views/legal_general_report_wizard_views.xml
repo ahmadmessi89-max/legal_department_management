@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_legal_general_report_wizard_form" model="ir.ui.view">
+        <field name="name">legal.general.report.wizard.form</field>
+        <field name="model">legal.general.report.wizard</field>
+        <field name="arch" type="xml">
+            <form string="خيارات وفلترة تقرير الرقابة العامة الشامل">
+                <sheet>
+                    <div class="alert alert-primary py-2 mb-3" role="alert">
+                        <i class="fa fa-info-circle me-1"/> يتيح لك هذا التقرير استخراج تقرير رقابة عام وشامل لكافة القضايا والمعاملات، مع إمكانية اختيار كل الشركات أو تحديد شركات معينة وفلترة الدوائر والمحامين.
+                    </div>
+                    <group>
+                        <group string="نطاق الشركات والموكلين">
+                            <field name="company_ids" widget="many2many_tags" options="{'no_create': True}"/>
+                            <field name="group_by_company" widget="boolean_toggle"/>
+                        </group>
+                        <group string="خيارات التصفية والفلترة">
+                            <field name="filter_ministry_id" options="{'no_create': True}" placeholder="كافة الوزارات..."/>
+                            <field name="filter_department_id" domain="[('ministry_id', '=', filter_ministry_id)] if filter_ministry_id else []" options="{'no_create': True}" placeholder="كافة الدوائر والجهات..."/>
+                            <field name="filter_lawyer_id" options="{'no_create': True}"/>
+                            <field name="filter_state"/>
+                        </group>
+                    </group>
+                    <group string="نطاق التواريخ (اختياري)">
+                        <group>
+                            <field name="date_from"/>
+                        </group>
+                        <group>
+                            <field name="date_to"/>
+                        </group>
+                    </group>
+                    <group string="تحديد قضايا ومعاملات معينة بالاسم (اختياري)">
+                        <field name="filter_task_ids" widget="many2many_tags" placeholder="اترك الحقل فارغاً لتشمل جميع المعاملات..."/>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="action_print_general_report" string="🖨️ طباعة تقرير الرقابة العامة (PDF)" type="object" class="btn-primary oe_highlight"/>
+                    <button string="إلغاء" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action Window for General Report Wizard -->
+    <record id="action_legal_general_report_wizard" model="ir.actions.act_window">
+        <field name="name">🖨️ طباعة تقرير الرقابة الشامل للقضايا</field>
+        <field name="res_model">legal.general.report.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

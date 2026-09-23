@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Legal User / Lawyer -->
+    <record id="group_legal_user" model="res.groups">
+        <field name="name">محامي / موظف قانوني</field>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+
+    <!-- Legal Manager / Admin -->
+    <record id="group_legal_manager" model="res.groups">
+        <field name="name">المدير القانوني / مدير النظام</field>
+        <field name="implied_ids" eval="[(4, ref('group_legal_user'))]"/>
+    </record>
+
+    <!-- Administrator inherits full legal manager permissions -->
+    <record id="base.group_system" model="res.groups">
+        <field name="implied_ids" eval="[(4, ref('group_legal_manager'))]"/>
+    </record>
+
+    <!-- Record Rules for Legal Company: STRICTLY Assigned Companies Only -->
+    <record id="legal_company_rule_lawyer" model="ir.rule">
+        <field name="name">شركات المحامي المكلف بها فقط</field>
+        <field name="model_id" ref="model_legal_company"/>
+        <field name="domain_force">['|', ('lawyer_ids', 'in', [user.id]), ('lawyer_id', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_legal_user'))]"/>
+    </record>
+
+    <record id="legal_company_rule_manager" model="ir.rule">
+        <field name="name">كافة الشركات للمدير القانوني ومدير النظام</field>
+        <field name="model_id" ref="model_legal_company"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_legal_manager'))]"/>
+    </record>
+
+    <!-- Record Rules for Legal Task: STRICTLY Assigned Tasks Only -->
+    <record id="legal_task_rule_lawyer" model="ir.rule">
+        <field name="name">قضايا ومعاملات المحامي المكلف بها فقط</field>
+        <field name="model_id" ref="model_legal_task"/>
+        <field name="domain_force">['|', '|', ('lawyer_ids', 'in', [user.id]), ('lawyer_id', '=', user.id), ('legal_company_id.lawyer_ids', 'in', [user.id])]</field>
+        <field name="groups" eval="[(4, ref('group_legal_user'))]"/>
+    </record>
+
+    <record id="legal_task_rule_manager" model="ir.rule">
+        <field name="name">كافة القضايا والمعاملات للمدير القانوني ومدير النظام</field>
+        <field name="model_id" ref="model_legal_task"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_legal_manager'))]"/>
+    </record>
+</odoo>

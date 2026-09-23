@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Company Kanban View (Modern Luxury Aesthetic for Odoo 19) -->
+    <record id="view_legal_company_kanban" model="ir.ui.view">
+        <field name="name">legal.company.kanban</field>
+        <field name="model">legal.company</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_dashboard o_legal_kanban_view">
+                <field name="id"/>
+                <field name="name"/>
+                <field name="company_type"/>
+                <field name="lawyer_ids"/>
+                <field name="task_count"/>
+                <field name="department_count"/>
+                <field name="pending_tasks_count"/>
+                <field name="total_expenses"/>
+                <field name="registration_number"/>
+                <templates>
+                    <t t-name="card">
+                        <div class="oe_kanban_global_click o_legal_company_box p-3 rounded-3 shadow-sm" style="background-color: #ffffff !important; background: #ffffff !important; color: #0f172a !important; border: 1px solid #e2e8f0 !important; border-right: 5px solid #714b67 !important;">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="badge px-2 py-1" style="background-color: #f3f0f3 !important; color: #714b67 !important; border: 1px solid #d4c5d2 !important; font-weight: 800; font-size: 0.8rem;">
+                                    <field name="company_type"/>
+                                </span>
+                                <t t-if="record.pending_tasks_count.raw_value &gt; 0">
+                                    <span class="badge px-2 py-1" style="background-color: #fffbeb !important; color: #b45309 !important; border: 1px solid #fde68a !important; font-weight: 800; font-size: 0.8rem;">
+                                        <i class="fa fa-clock-o me-1" title="قضايا جارية"/><field name="pending_tasks_count"/> جارية
+                                    </span>
+                                </t>
+                            </div>
+
+                            <div class="mb-2" style="color: #0f172a !important; font-weight: 800; font-size: 1.15rem;">
+                                <i class="fa fa-building text-primary me-2" title="الشركة"/>
+                                <span style="color: #0f172a !important;"><field name="name"/></span>
+                            </div>
+
+                            <t t-if="record.registration_number.raw_value">
+                                <div class="small mb-2" style="color: #64748b !important; font-weight: 500;">
+                                    <i class="fa fa-id-card-o me-1 text-secondary" title="رقم التسجيل"/>رقم التسجيل: <strong style="color: #334155 !important;"><field name="registration_number"/></strong>
+                                </div>
+                            </t>
+
+                            <div class="d-flex justify-content-between align-items-center pt-2 mt-2" style="border-top: 1px solid #e2e8f0 !important;">
+                                <div class="d-flex gap-2">
+                                    <span class="badge px-2 py-1" style="background-color: #f8fafc !important; color: #0f172a !important; border: 1px solid #cbd5e1 !important; font-weight: 700; font-size: 0.8rem;">
+                                        <i class="fa fa-gavel text-primary me-1" title="القضايا"/><field name="task_count"/> قضايا ومعاملات
+                                    </span>
+                                    <t t-if="record.department_count.raw_value &gt; 0">
+                                        <span class="badge px-2 py-1" style="background-color: #f1f5f9 !important; color: #334155 !important; border: 1px solid #cbd5e1 !important; font-weight: 700; font-size: 0.8rem;">
+                                            <i class="fa fa-university text-secondary me-1" title="الدوائر"/><field name="department_count"/> دوائر
+                                        </span>
+                                    </t>
+                                </div>
+                                <div>
+                                    <field name="lawyer_ids" widget="many2many_tags_avatar"/>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- Company List View -->
+    <record id="view_legal_company_tree" model="ir.ui.view">
+        <field name="name">legal.company.list</field>
+        <field name="model">legal.company</field>
+        <field name="arch" type="xml">
+            <list string="دليل الشركات والموكلين">
+                <field name="name" string="اسم الشركة / الموكل" decoration-bf="1"/>
+                <field name="company_type" string="نوع الكيان"/>
+                <field name="registration_number" string="رقم التسجيل"/>
+                <field name="owner_name" string="المدير المفوض / المالك"/>
+                <field name="phone" string="الهاتف"/>
+                <field name="lawyer_ids" widget="many2many_tags_avatar" string="المحامون المسؤولون"/>
+                <field name="task_count" string="إجمالي القضايا"/>
+                <field name="department_count" string="الدوائر الرسمية"/>
+                <field name="pending_tasks_count" string="القضايا الجارية" decoration-warning="pending_tasks_count &gt; 0"/>
+                <field name="total_expenses" string="إجمالي المصروفات" sum="المجموع"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Company Form View -->
+    <record id="view_legal_company_form" model="ir.ui.view">
+        <field name="name">legal.company.form</field>
+        <field name="model">legal.company</field>
+        <field name="arch" type="xml">
+            <form string="ملف الشركة والموكل">
+                <header>
+                    <button name="action_create_new_task" string="➕ بدء معاملة / قضية جديدة لهذه الشركة" type="object" class="btn-primary shadow-sm fw-bold"/>
+                    <button name="action_print_company_report" string="🖨️ طباعة تقرير ملف الشركة" type="object" class="btn-outline-primary shadow-sm fw-bold"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_tasks" type="object" class="oe_stat_button" icon="fa-gavel">
+                            <field name="task_count" widget="statinfo" string="القضايا والمعاملات"/>
+                        </button>
+                        <button name="action_view_tasks" type="object" class="oe_stat_button" icon="fa-university">
+                            <field name="department_count" widget="statinfo" string="الدوائر الرسمية"/>
+                        </button>
+                    </div>
+
+                    <div class="oe_title mb-3">
+                        <label for="name" string="اسم الشركة / الموكل"/>
+                        <h1 class="text-primary fw-bold"><field name="name" placeholder="مثال: شركة ريانة العود للتجارة والمقاولات العامة المحدودة"/></h1>
+                    </div>
+
+                    <group>
+                        <group string="🏛️ البيانات التأسيسية والقانونية">
+                            <field name="company_type" string="نوع الكيان التجاري"/>
+                            <field name="registration_number" string="رقم شهادة التأسيس"/>
+                            <field name="tax_number" string="الرقم الضريبي الرسمي"/>
+                            <field name="entity_type" string="طبيعة النشاط التجاري"/>
+                            <field name="address" string="المقر والعنوان القانوني"/>
+                        </group>
+                        <group string="⚖️ الإشراف القانوني والاتصال">
+                            <field name="lawyer_ids" widget="many2many_tags_avatar" string="المحامون المسؤولون" placeholder="اختر محامي أو أكثر..."/>
+                            <field name="employee_ids" widget="many2many_tags" string="فريق العمل" placeholder="اختر موظفين..."/>
+                            <field name="owner_name" string="المدير المفوض / المالك"/>
+                            <field name="phone" string="رقم الهاتف"/>
+                            <field name="email" string="البريد الإلكتروني"/>
+                        </group>
+                    </group>
+
+                    <notebook>
+                        <page string="🏛️ نوافذ الوزارات والدوائر الرسمية المعينة" name="department_windows">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div>
+                                    <h5 class="text-dark fw-bold mb-1"><i class="fa fa-th-large text-primary me-2"></i>نوافذ معاملات الشركة حسب الوزارات والدوائر الرسمية</h5>
+                                    <span class="text-muted small">تظهر أدناه نوافذ مخصصة للوزارات، وبداخل كل وزارة قائمة منسدلة بدوائرها ومعاملاتها التابعة للنقر والدخول المباشر:</span>
+                                </div>
+                                <div>
+                                    <button name="action_create_new_task" string="➕ إضافة معاملة جديدة لدى جهة رسمية" type="object" class="btn btn-sm btn-primary"/>
+                                </div>
+                            </div>
+                            <field name="department_cards_html" widget="html" readonly="1" nolabel="1"/>
+                        </page>
+
+                        <page string="📋 سجل كافة القضايا والمعاملات (جدول تفصيلي)" name="tasks">
+                            <field name="task_ids" readonly="1">
+                                <list decoration-danger="is_urgent and state != 'done'" decoration-warning="state == 'pending_docs'" decoration-success="state == 'done'">
+                                    <field name="task_number" string="الرقم"/>
+                                    <field name="name" string="عنوان الإجراء"/>
+                                    <field name="ministry_id" string="الوزارة / الهيئة" optional="show"/>
+                                    <field name="department_id" string="الدائرة الرسمية"/>
+                                    <field name="lawyer_ids" widget="many2many_tags_avatar" string="المحامون المكلفون"/>
+                                    <field name="session_date" string="تاريخ الجلسة"/>
+                                    <field name="due_date" string="تاريخ الاستحقاق"/>
+                                    <field name="expenses_amount" string="المصروفات" sum="المجموع"/>
+                                    <field name="state" widget="badge" string="الحالة"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="📁 مرفقات ومستندات الشركة الأساسية" name="attachments">
+                            <field name="attachment_ids" widget="many2many_binary" string="شهادة التأسيس، العقد، الهويات والوكالات"/>
+                        </page>
+                        <page string="📝 الملاحظات والاستشارات القانونية" name="notes">
+                            <field name="notes" placeholder="اكتب الملاحظات القانونية، بنود العقود المبرمة، والتوجيهات..."/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <!-- Company Search View -->
+    <record id="view_legal_company_search" model="ir.ui.view">
+        <field name="name">legal.company.search</field>
+        <field name="model">legal.company</field>
+        <field name="arch" type="xml">
+            <search string="البحث في الشركات والموكلين">
+                <field name="name"/>
+                <field name="registration_number"/>
+                <field name="owner_name"/>
+                <field name="lawyer_ids"/>
+                <filter string="شركاتي المكلف بها" name="filter_my_companies" domain="['|', ('lawyer_ids', 'in', [uid]), ('lawyer_id', '=', uid)]"/>
+                <separator/>
+                <filter string="شركات محدودة" name="filter_llc" domain="[('company_type', '=', 'llc')]"/>
+                <filter string="شركات مساهمة" name="filter_joint_stock" domain="[('company_type', '=', 'joint_stock')]"/>
+                <filter string="فروع شركات أجنبية" name="filter_branch" domain="[('company_type', '=', 'foreign_branch')]"/>
+                <group name="group_by">
+                    <filter string="نوع الكيان" name="group_type" context="{'group_by': 'company_type'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action Window for Legal Companies -->
+    <record id="action_legal_company" model="ir.actions.act_window">
+        <field name="name">دليل الشركات والموكلين</field>
+        <field name="res_model">legal.company</field>
+        <field name="view_mode">kanban,list,form</field>
+        <field name="search_view_id" ref="view_legal_company_search"/>
+    </record>
+</odoo>

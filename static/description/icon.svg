@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <!-- الخلفية الافتراضية الشفافة -->
+  <rect width="100%" height="100%" fill="none"/>
+
+  <g transform="translate(0, 10)">
+    <!-- الدرع الخارجي (كحلي داكن) -->
+    <path d="M 200 40 
+             C 260 40, 310 50, 330 80 
+             C 330 170, 310 250, 200 320 
+             C 90 250, 70 170, 70 80 
+             C 90 50, 140 40, 200 40 Z" 
+          fill="none" stroke="#1A365D" stroke-width="12" stroke-linejoin="round"/>
+
+    <!-- عامود الميزان الوسطي -->
+    <path d="M 200 95 L 200 235" fill="none" stroke="#1A365D" stroke-width="8" stroke-linecap="round"/>
+    <circle cx="200" cy="85" r="10" fill="#1A365D"/>
+    
+    <!-- عارضة الميزان الأفقية (منحنية وأنيقة) -->
+    <path d="M 130 135 C 165 110, 235 110, 270 135" fill="none" stroke="#1A365D" stroke-width="7" stroke-linecap="round"/>
+
+    <!-- كفة الميزان اليسرى (الذهبية) -->
+    <line x1="130" y1="135" x2="110" y2="185" stroke="#D4AF37" stroke-width="3"/>
+    <line x1="130" y1="135" x2="150" y2="185" stroke="#D4AF37" stroke-width="3"/>
+    <path d="M 105 185 Q 130 205, 155 185 Z" fill="#1A365D" stroke="#D4AF37" stroke-width="3" stroke-linejoin="round"/>
+
+    <!-- كفة الميزان اليمنى (الذهبية) -->
+    <line x1="270" y1="135" x2="250" y2="185" stroke="#D4AF37" stroke-width="3"/>
+    <line x1="270" y1="135" x2="290" y2="185" stroke="#D4AF37" stroke-width="3"/>
+    <path d="M 245 185 Q 270 205, 295 185 Z" fill="#1A365D" stroke="#D4AF37" stroke-width="3" stroke-linejoin="round"/>
+
+    <!-- قاعدة الميزان المدمجة مع كتاب مفتوح (ذهبي وكحلي) -->
+    <!-- صفحات وعمق الكتاب -->
+    <path d="M 200 240 Q 250 215, 310 235 L 310 255 Q 250 235, 200 260 Q 150 235, 90 255 L 90 235 Q 150 215, 200 240 Z" fill="#D4AF37"/>
+    <!-- غلاف الكتاب السفلي المتناسق مع الدرع -->
+    <path d="M 200 265 Q 255 240, 315 258 L 305 268 Q 250 250, 200 282 Q 150 250, 95 268 L 85 258 Q 145 240, 200 265 Z" fill="#1A365D"/>
+  </g>
+</svg>

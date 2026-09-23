@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- ==================== MINISTRIES (الوزارات والهيئات العامة) ==================== -->
+    <!-- Ministry List View -->
+    <record id="view_legal_ministry_list" model="ir.ui.view">
+        <field name="name">legal.ministry.list</field>
+        <field name="model">legal.ministry</field>
+        <field name="arch" type="xml">
+            <list string="الوزارات والهيئات العامة" editable="bottom">
+                <field name="sequence" widget="handle"/>
+                <field name="name" string="اسم الوزارة / الهيئة" decoration-bf="1"/>
+                <field name="code" string="الرمز / الاختصار"/>
+                <field name="department_count" string="الدوائر التابعة"/>
+                <field name="task_count" string="إجمالي المعاملات"/>
+                <field name="phone" string="الهاتف"/>
+                <field name="active" widget="boolean_toggle"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Ministry Form View -->
+    <record id="view_legal_ministry_form" model="ir.ui.view">
+        <field name="name">legal.ministry.form</field>
+        <field name="model">legal.ministry</field>
+        <field name="arch" type="xml">
+            <form string="الوزارة / الهيئة العامة">
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_departments" type="object" class="oe_stat_button" icon="fa-university">
+                            <field name="department_count" string="الدوائر التابعة" widget="statinfo"/>
+                        </button>
+                        <button name="action_view_tasks" type="object" class="oe_stat_button" icon="fa-gavel">
+                            <field name="task_count" string="المعاملات والقضايا" widget="statinfo"/>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <label for="name" string="اسم الوزارة / الهيئة العامة"/>
+                        <h1 class="text-primary"><field name="name" placeholder="مثال: وزارة التجارة / مجلس القضاء الأعلى"/></h1>
+                    </div>
+                    <group>
+                        <group string="البيانات الأساسية">
+                            <field name="code"/>
+                            <field name="sequence"/>
+                            <field name="active" widget="boolean_toggle"/>
+                        </group>
+                        <group string="معلومات الاتصال والموقع">
+                            <field name="phone"/>
+                            <field name="website" widget="url"/>
+                            <field name="address"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="🏛️ الدوائر والجهات التابعة للوزارة (إضافة / تعديل / حذف)" name="departments">
+                            <field name="department_ids" context="{'default_ministry_id': id}">
+                                <list editable="bottom">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="name" string="اسم الدائرة / القسم التابع"/>
+                                    <field name="code" string="الرمز"/>
+                                    <field name="contact_person" string="الموظف المسؤول"/>
+                                    <field name="phone" string="الهاتف"/>
+                                    <field name="task_count" string="المعاملات"/>
+                                    <field name="active" widget="boolean_toggle"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="📝 ملاحظات وتفاصيل إضافية" name="notes">
+                            <field name="notes" placeholder="ملاحظات حول الإجراءات والكتب الرسمية الخاصة بالوزارة..."/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Ministry Search View -->
+    <record id="view_legal_ministry_search" model="ir.ui.view">
+        <field name="name">legal.ministry.search</field>
+        <field name="model">legal.ministry</field>
+        <field name="arch" type="xml">
+            <search string="بحث الوزارات والهيئات">
+                <field name="name"/>
+                <field name="code"/>
+                <filter string="نشط" name="filter_active" domain="[('active', '=', True)]"/>
+                <filter string="غير نشط" name="filter_inactive" domain="[('active', '=', False)]"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action Window for Ministries -->
+    <record id="action_legal_ministry" model="ir.actions.act_window">
+        <field name="name">الوزارات والهيئات العامة</field>
+        <field name="res_model">legal.ministry</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_legal_ministry_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                أضف وزارة أو هيئة عامة جديدة!
+            </p>
+            <p>
+                يتيح لك هذا الدليل تنظيم وتصنيف الدوائر والجهات الحكومية والمحاكم تحت مظلة الوزارات التابعة لها، مع إمكانية إضافة وحذف وتعديل الدوائر التابعة لكل وزارة مباشرة.
+            </p>
+        </field>
+    </record>
+
+    <!-- ==================== DEPARTMENTS (الدوائر والجهات التابعة) ==================== -->
+    <!-- Department List View -->
+    <record id="view_legal_department_list" model="ir.ui.view">
+        <field name="name">legal.department.list</field>
+        <field name="model">legal.department</field>
+        <field name="arch" type="xml">
+            <list string="الجهات والدوائر الرسمية" editable="bottom">
+                <field name="sequence" widget="handle"/>
+                <field name="ministry_id" string="الوزارة / الهيئة التابعة" options="{'no_create_edit': False, 'no_open': False}"/>
+                <field name="name" string="اسم الدائرة / القسم" decoration-bf="1"/>
+                <field name="code" string="رمز الدائرة"/>
+                <field name="contact_person" string="الموظف المسؤول"/>
+                <field name="phone" string="الهاتف"/>
+                <field name="task_count" string="المعاملات"/>
+                <field name="active" widget="boolean_toggle"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Department Form View -->
+    <record id="view_legal_department_form" model="ir.ui.view">
+        <field name="name">legal.department.form</field>
+        <field name="model">legal.department</field>
+        <field name="arch" type="xml">
+            <form string="الجهة / الدائرة الرسمية">
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_tasks" type="object" class="oe_stat_button" icon="fa-gavel">
+                            <field name="task_count" string="المعاملات" widget="statinfo"/>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <label for="name" string="اسم الدائرة / الجهة الرسمية"/>
+                        <h1 class="text-primary"><field name="name" placeholder="مثال: الهيئة العامة للضرائب - فرع كبار المكلفين"/></h1>
+                    </div>
+                    <group>
+                        <group string="التبعية والبيانات الأساسية">
+                            <field name="ministry_id" options="{'no_open': False, 'no_create_edit': False}"/>
+                            <field name="code"/>
+                            <field name="sequence"/>
+                            <field name="active" widget="boolean_toggle"/>
+                        </group>
+                        <group string="معلومات التواصل والموقع">
+                            <field name="contact_person"/>
+                            <field name="phone"/>
+                            <field name="address"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="ملاحظات" name="notes">
+                            <field name="notes" placeholder="ملاحظات حول الإجراءات والكتب المطلوبة في هذه الدائرة..."/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Department Search View -->
+    <record id="view_legal_department_search" model="ir.ui.view">
+        <field name="name">legal.department.search</field>
+        <field name="model">legal.department</field>
+        <field name="arch" type="xml">
+            <search string="بحث الدوائر الرسمية">
+                <field name="name"/>
+                <field name="ministry_id"/>
+                <field name="code"/>
+                <field name="contact_person"/>
+                <filter string="نشط" name="filter_active" domain="[('active', '=', True)]"/>
+                <filter string="غير نشط" name="filter_inactive" domain="[('active', '=', False)]"/>
+                <group name="group_by">
+                    <filter string="تجميع حسب الوزارة / الهيئة" name="group_by_ministry" context="{'group_by': 'ministry_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action Window for Legal Departments -->
+    <record id="action_legal_department" model="ir.actions.act_window">
+        <field name="name">الجهات والدوائر الرسمية</field>
+        <field name="res_model">legal.department</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_legal_department_search"/>
+        <field name="context">{'search_default_group_by_ministry': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                أضف جهة أو دائرة رسمية جديدة!
+            </p>
+            <p>
+                يمكنك تخصيص وإضافة الدوائر الحكومية والوزارات والمحاكم التي يتم التعامل معها في القضايا والمعاملات.
+            </p>
+        </field>
+    </record>
+</odoo>

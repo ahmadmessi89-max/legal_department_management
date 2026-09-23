@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_legal_company_report_wizard_form" model="ir.ui.view">
+        <field name="name">legal.company.report.wizard.form</field>
+        <field name="model">legal.company.report.wizard</field>
+        <field name="arch" type="xml">
+            <form string="خيارات وتخصيص طباعة التقرير">
+                <sheet>
+                    <div class="alert alert-info py-2 mb-3" role="alert">
+                        <i class="fa fa-sliders me-1"/> يمكنك تخصيص محتوى التقرير بإظهار أو إخفاء بيانات الشركة، أو فلترة المعاملات حسب جهة أو محامي أو تحديد قضايا معينة.
+                    </div>
+                    <group>
+                        <group string="إعدادات ظهور بيانات الشركة">
+                            <field name="company_id" readonly="1" options="{'no_open': True}"/>
+                            <field name="show_company_info" widget="boolean_toggle"/>
+                        </group>
+                        <group string="خيارات الفلترة والتصفية (اختياري)">
+                            <field name="filter_department_id" placeholder="كافة الدوائر والجهات..." options="{'no_create': True}"/>
+                            <field name="filter_lawyer_id" placeholder="كافة المحامين..." options="{'no_create': True}"/>
+                            <field name="filter_state"/>
+                        </group>
+                    </group>
+                    <group string="تحديد معاملات وقضايا محددة بالاسم (اختياري)">
+                        <field name="filter_task_ids" widget="many2many_tags" placeholder="اترك الحقل فارغاً لتضمين كافة المعاملات، أو حدد معاملات معينة..."/>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="action_print_report" string="🖨️ طباعة التقرير المخصص (PDF)" type="object" class="btn-primary oe_highlight"/>
+                    <button string="إلغاء" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_legal_task_create_wizard_form" model="ir.ui.view">
+        <field name="name">legal.task.create.wizard.form</field>
+        <field name="model">legal.task.create.wizard</field>
+        <field name="arch" type="xml">
+            <form string="بدء إجراء / قضية قانونية جديدة">
+                <div class="alert alert-info d-flex align-items-center mb-3" role="alert">
+                    <i class="fa fa-info-circle fa-2x me-3 text-primary" title="معلومات"/>
+                    <div>
+                        <strong>اختر الشركة والجهة الرسمية</strong> لبدء المعاملة أو القضية الخاصة بها. 
+                        <br/>
+                        <span class="text-muted small">يمكنك اختيار الوزارة لتصفية قائمة الدوائر والمحاكم التابعة لها مباشرة.</span>
+                    </div>
+                </div>
+                <group>
+                    <field name="legal_company_id" 
+                           placeholder="ابحث عن الشركة أو أضف شركة جديدة..." 
+                           options="{'no_open': False, 'no_create': False, 'no_create_edit': False}"/>
+                    <field name="ministry_id" 
+                           placeholder="اختر الوزارة / الهيئة لتصفية الدوائر (اختياري)..." 
+                           options="{'no_open': False, 'no_create_edit': False}"/>
+                    <field name="department_id" 
+                           domain="[('ministry_id', '=', ministry_id)] if ministry_id else []"
+                           placeholder="اختر الدائرة أو الجهة المختصة..." 
+                           options="{'no_open': False, 'no_create_edit': False}"/>
+                </group>
+                <footer>
+                    <button name="action_proceed" 
+                            string="متابعة وإضافة بيانات القضية ➡️" 
+                            type="object" 
+                            class="btn btn-primary oe_highlight"/>
+                    <button string="إلغاء" class="btn btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_legal_task_create_wizard" model="ir.actions.act_window">
+        <field name="name">بدء معاملة / قضية جديدة</field>
+        <field name="res_model">legal.task.create.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

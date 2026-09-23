@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Task Kanban View (Modern Luxury Aesthetic for Odoo 19) -->
+    <record id="view_legal_task_kanban" model="ir.ui.view">
+        <field name="name">legal.task.kanban</field>
+        <field name="model">legal.task</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="department_id" quick_create="false" class="o_kanban_dashboard o_legal_kanban_view">
+                <field name="id"/>
+                <field name="name"/>
+                <field name="task_number"/>
+                <field name="legal_company_id"/>
+                <field name="ministry_id"/>
+                <field name="department_id"/>
+                <field name="lawyer_ids"/>
+                <field name="is_urgent"/>
+                <field name="state"/>
+                <field name="approval_state"/>
+                <field name="session_date"/>
+                <field name="due_date"/>
+                <field name="expenses_amount"/>
+                <templates>
+                    <t t-name="card">
+                        <div class="oe_kanban_global_click o_legal_task_box p-3 rounded-3 shadow-sm"
+                             style="background-color: #ffffff !important; background: #ffffff !important; color: #0f172a !important; border: 1px solid #e2e8f0 !important; border-right: 5px solid #714b67 !important;">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="badge px-2 py-1" style="background-color: #f3f0f3 !important; color: #714b67 !important; border: 1px solid #d4c5d2 !important; font-weight: 800; font-size: 0.8rem;">
+                                    <t t-if="record.ministry_id.raw_value">
+                                        🏛️ <field name="ministry_id"/>
+                                    </t>
+                                    <t t-else="">
+                                        🏛️ جهة رسمية
+                                    </t>
+                                </span>
+                                <t t-if="record.is_urgent.raw_value">
+                                    <span class="badge px-2 py-1" style="background-color: #fff1f2 !important; color: #e11d48 !important; border: 1px solid #fecdd3 !important; font-weight: 800;"><i class="fa fa-fire me-1" title="عاجل"/>عاجل</span>
+                                </t>
+                                <t t-elif="record.approval_state.raw_value == 'to_approve'">
+                                    <span class="badge px-2 py-1" style="background-color: #fffbeb !important; color: #b45309 !important; border: 1px solid #fde68a !important; font-weight: 800;"><i class="fa fa-clock-o me-1" title="بانتظار الاعتماد"/>بانتظار الاعتماد</span>
+                                </t>
+                                <t t-elif="record.state.raw_value == 'done'">
+                                    <span class="badge px-2 py-1" style="background-color: #f0fdf4 !important; color: #15803d !important; border: 1px solid #bbf7d0 !important; font-weight: 800;"><i class="fa fa-check me-1" title="منجز"/>منجز</span>
+                                </t>
+                                <t t-else="">
+                                    <span class="badge px-2 py-1" style="background-color: #eff6ff !important; color: #1d4ed8 !important; border: 1px solid #bfdbfe !important; font-weight: 800;"><field name="state"/></span>
+                                </t>
+                            </div>
+
+                            <div class="mb-1 text-truncate" style="color: #0f172a !important; font-weight: 800; font-size: 1.1rem;" t-att-title="record.name.value">
+                                <i class="fa fa-file-text-o text-primary me-2"></i>
+                                <field name="name"/>
+                            </div>
+
+                            <t t-if="record.department_id.raw_value">
+                                <div class="small mb-2 d-flex align-items-center gap-1" style="color: #475569 !important; font-weight: 600;">
+                                    <i class="fa fa-university text-secondary" title="الدائرة"/>
+                                    <span><field name="department_id"/></span>
+                                </div>
+                            </t>
+
+                            <div class="small mb-2 d-flex align-items-center gap-1" style="color: #64748b !important;">
+                                <i class="fa fa-building text-secondary" title="الشركة"/>
+                                <span style="color: #334155 !important; font-weight: 600;"><field name="legal_company_id"/></span>
+                            </div>
+
+                            <t t-if="record.session_date.raw_value">
+                                <div class="small fw-bold mb-2" style="color: #e11d48 !important;">
+                                    <i class="fa fa-calendar me-1" title="تاريخ الجلسة"/>موعد الجلسة: <field name="session_date"/>
+                                </div>
+                            </t>
+
+                            <div class="d-flex justify-content-between align-items-center pt-2 mt-2" style="border-top: 1px solid #e2e8f0 !important;">
+                                <div>
+                                    <span class="badge px-2 py-1" style="background-color: #f1f5f9 !important; color: #1e293b !important; border: 1px solid #cbd5e1 !important; font-weight: 700; font-family: monospace; font-size: 0.8rem;">
+                                        <i class="fa fa-tag text-secondary me-1" title="رقم القضية"/>
+                                        <field name="task_number"/>
+                                    </span>
+                                </div>
+                                <div>
+                                    <field name="lawyer_ids" widget="many2many_tags_avatar"/>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- Task List (Tree) View -->
+    <record id="view_legal_task_tree" model="ir.ui.view">
+        <field name="name">legal.task.list</field>
+        <field name="model">legal.task</field>
+        <field name="arch" type="xml">
+            <list string="قائمة القضايا والمعاملات" 
+                  decoration-danger="is_urgent and state != 'done'" 
+                  decoration-warning="state == 'pending_docs' or approval_state == 'to_approve'" 
+                  decoration-success="state == 'done'" 
+                  decoration-muted="state == 'cancelled'">
+                <field name="task_number" string="الرقم" decoration-bf="1"/>
+                <field name="name" string="عنوان الإجراء / المعاملة"/>
+                <field name="legal_company_id" string="الشركة التابعة"/>
+                <field name="ministry_id" string="الوزارة / الهيئة" optional="show"/>
+                <field name="department_id" string="الدائرة الرسمية"/>
+                <field name="lawyer_ids" widget="many2many_tags_avatar" string="المحامون المكلفون"/>
+                <field name="session_date" string="تاريخ الجلسة" optional="show"/>
+                <field name="due_date" string="تاريخ الاستحقاق" optional="show"/>
+                <field name="expenses_amount" string="المصروفات" sum="إجمالي المصروفات" optional="show"/>
+                <field name="approval_state" widget="badge" 
+                       decoration-warning="approval_state == 'to_approve'" 
+                       decoration-success="approval_state == 'approved'" 
+                       decoration-danger="approval_state == 'rejected'" 
+                       string="الموافقة"/>
+                <field name="state" widget="badge" 
+                       decoration-info="state == 'draft'" 
+                       decoration-primary="state == 'in_progress'" 
+                       decoration-warning="state == 'pending_docs'" 
+                       decoration-success="state == 'done'" 
+                       decoration-danger="state == 'cancelled'" 
+                       string="الحالة"/>
+                <field name="is_urgent" string="عاجل" widget="boolean_toggle" optional="hide"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Task Calendar View -->
+    <record id="view_legal_task_calendar" model="ir.ui.view">
+        <field name="name">legal.task.calendar</field>
+        <field name="model">legal.task</field>
+        <field name="arch" type="xml">
+            <calendar string="مواعيد الجلسات والقضايا القانونية"
+                      date_start="session_date"
+                      date_stop="session_date"
+                      color="legal_company_id"
+                      mode="month"
+                      quick_create="false">
+                <field name="name"/>
+                <field name="legal_company_id"/>
+                <field name="ministry_id"/>
+                <field name="department_id"/>
+                <field name="lawyer_ids" widget="many2many_tags_avatar"/>
+                <field name="state"/>
+            </calendar>
+        </field>
+    </record>
+
+    <!-- Task Form View -->
+    <record id="view_legal_task_form" model="ir.ui.view">
+        <field name="name">legal.task.form</field>
+        <field name="model">legal.task</field>
+        <field name="arch" type="xml">
+            <form string="تفاصيل المعاملة / القضية">
+                <header>
+                    <button name="action_print_task_report" string="طباعة استمارة القضية" type="object" icon="fa-print" class="btn-outline-primary"/>
+                    <button name="action_request_approval" string="طلب موافقة المدير ⏳" type="object" invisible="approval_state != 'draft'" class="btn-primary"/>
+                    <button name="action_approve" string="اعتماد وموافقة ✓" type="object" invisible="approval_state != 'to_approve'" groups="legal_department_management.group_legal_manager" class="btn-success"/>
+                    <button name="action_reject" string="رفض الطلب ✕" type="object" invisible="approval_state != 'to_approve'" groups="legal_department_management.group_legal_manager" class="btn-danger"/>
+                    
+                    <button name="action_set_in_progress" string="بدء التنفيذ والمتابعة" type="object" invisible="state != 'draft'" class="btn-info"/>
+                    <button name="action_set_pending_docs" string="طلب وثائق / صحة صدور" type="object" invisible="state not in ['draft', 'in_progress']" class="btn-warning"/>
+                    <button name="action_set_done" string="إنجاز المعاملة بنجاح ✓" type="object" invisible="state in ['done', 'cancelled']" class="btn-success"/>
+                    <button name="action_set_draft" string="إعادة للمسودة" type="object" invisible="state == 'draft'" class="btn-secondary"/>
+                    <button name="action_set_cancelled" string="إلغاء المعاملة" type="object" invisible="state in ['done', 'cancelled']" class="btn-outline-danger"/>
+                    
+                    <field name="state" widget="statusbar" statusbar_visible="draft,in_progress,pending_docs,done"/>
+                </header>
+                <sheet>
+                    <div class="oe_title mb-3">
+                        <h1 class="text-primary fw-bold"><field name="name" placeholder="مثال: تجديد إجازة الاستيراد وتصديق براءة الذمة السنوية"/></h1>
+                    </div>
+                    <group>
+                        <group string="🏛️ بيانات التوكيل والجهات الرسمية">
+                            <field name="legal_company_id" string="الشركة التابعة" options="{'no_create': True, 'no_create_edit': True, 'no_open': False}"/>
+                            <field name="ministry_id" string="الوزارة / الهيئة العامة" placeholder="اختر الوزارة أولاً لتقليص خيارات الدوائر..." options="{'no_open': False, 'no_create_edit': False, 'no_quick_create': False}"/>
+                            <field name="department_id" string="الدائرة / القسم التابع" domain="[('ministry_id', '=', ministry_id)] if ministry_id else []" context="{'default_ministry_id': ministry_id}" placeholder="اختر الدائرة أو الجهة التابعة..." options="{'no_open': False, 'no_create_edit': False, 'no_quick_create': False}"/>
+                            <field name="lawyer_ids" string="المحامون المكلفون" widget="many2many_tags_avatar" placeholder="اختر محامي أو أكثر..." options="{'no_create': True}"/>
+                            <field name="employee_ids" widget="many2many_tags" placeholder="اختر من الموظفين..." options="{'no_create': True}"/>
+                            <field name="is_urgent" widget="boolean_toggle"/>
+                        </group>
+                        <group string="📅 المواعيد والمالية والاعتمادات">
+                            <field name="session_date" string="تاريخ الجلسة"/>
+                            <field name="due_date" string="تاريخ الاستحقاق"/>
+                            <field name="expenses_amount" string="المصروفات والمدفوعات (د.ع)"/>
+                            <field name="approval_state" widget="badge" 
+                                   decoration-warning="approval_state == 'to_approve'" 
+                                   decoration-success="approval_state == 'approved'" 
+                                   decoration-danger="approval_state == 'rejected'"/>
+                            <field name="approver_id" invisible="approval_state != 'approved'"/>
+                            <field name="approval_date" invisible="approval_state != 'approved'"/>
+                            <field name="is_overdue" invisible="state in ['done', 'cancelled']"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="📝 تفاصيل ومذكرات الإجراء" name="details">
+                            <field name="action_details" placeholder="اكتب وقائع القضية، أرقام الكتب الرسمية، مذكرات المرافعة وملاحظات المحامي..."/>
+                        </page>
+                        <page string="📁 مرفقات ووثائق المعاملة" name="attachments">
+                            <field name="attachment_ids" widget="many2many_binary" string="تحميل المستندات والكتب الرسمية"/>
+                        </page>
+                        <page string="💳 الربط المحاسبي والمصروفات" name="accounting">
+                            <group>
+                                <group string="بيانات القيد وسند الصرف">
+                                    <field name="expense_account_id" placeholder="اختر حساب المصروف من شجرة الحسابات..."/>
+                                    <field name="account_move_id"/>
+                                    <field name="account_payment_id"/>
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <!-- Task Search View -->
+    <record id="view_legal_task_search" model="ir.ui.view">
+        <field name="name">legal.task.search</field>
+        <field name="model">legal.task</field>
+        <field name="arch" type="xml">
+            <search string="البحث في المعاملات والقضايا">
+                <field name="name"/>
+                <field name="task_number"/>
+                <field name="legal_company_id"/>
+                <field name="ministry_id"/>
+                <field name="department_id"/>
+                <field name="lawyer_ids"/>
+                <filter string="قضاياي المكلف بها" name="filter_my_tasks" domain="['|', ('lawyer_ids', 'in', [uid]), ('lawyer_id', '=', uid)]"/>
+                <separator/>
+                <filter string="بانتظار موافقة المدير ⏳" name="filter_to_approve" domain="[('approval_state', '=', 'to_approve')]"/>
+                <filter string="تمت الموافقة ✓" name="filter_approved" domain="[('approval_state', '=', 'approved')]"/>
+                <separator/>
+                <filter string="عاجل ⚠️" name="filter_urgent" domain="[('is_urgent', '=', True)]"/>
+                <filter string="قيد الإجراء" name="filter_in_progress" domain="[('state', '=', 'in_progress')]"/>
+                <filter string="بانتظار الوثائق" name="filter_pending_docs" domain="[('state', '=', 'pending_docs')]"/>
+                <filter string="منجز" name="filter_done" domain="[('state', '=', 'done')]"/>
+                <separator/>
+                <filter string="متأخرة عن الاستحقاق" name="filter_overdue" domain="[('due_date', '&lt;', context_today().strftime('%Y-%m-%d')), ('state', 'not in', ['done', 'cancelled'])]"/>
+                <group name="group_by">
+                    <filter string="الشركة التابعة" name="group_company" context="{'group_by': 'legal_company_id'}"/>
+                    <filter string="الوزارة / الهيئة" name="group_ministry" context="{'group_by': 'ministry_id'}"/>
+                    <filter string="الدائرة / القسم" name="group_dept" context="{'group_by': 'department_id'}"/>
+                    <filter string="حالة الموافقة" name="group_approval" context="{'group_by': 'approval_state'}"/>
+                    <filter string="حالة الإجراء" name="group_state" context="{'group_by': 'state'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action Window for Legal Tasks (All Tasks - list, kanban, form, calendar) -->
+    <record id="action_legal_task" model="ir.actions.act_window">
+        <field name="name">الإجراءات والقضايا القانونية</field>
+        <field name="res_model">legal.task</field>
+        <field name="view_mode">list,kanban,form,calendar</field>
+        <field name="search_view_id" ref="view_legal_task_search"/>
+    </record>
+
+    <!-- Action Window for Tasks Awaiting Approval -->
+    <record id="action_legal_task_to_approve" model="ir.actions.act_window">
+        <field name="name">المعاملات بانتظار الموافقة والاعتماد</field>
+        <field name="res_model">legal.task</field>
+        <field name="view_mode">list,kanban,form</field>
+        <field name="domain">[('approval_state', '=', 'to_approve')]</field>
+        <field name="search_view_id" ref="view_legal_task_search"/>
+    </record>
+</odoo>

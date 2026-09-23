@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- PDF Report Action for Individual Legal Task -->
+    <record id="action_report_legal_task" model="ir.actions.report">
+        <field name="name">استمارة متابعة القضية / المعاملة</field>
+        <field name="model">legal.task</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">legal_department_management.report_legal_task_template</field>
+        <field name="report_file">legal_department_management.report_legal_task_template</field>
+        <field name="print_report_name">'استمارة_إجراء_' + (object.task_number or object.name or '')</field>
+        <field name="binding_model_id" ref="model_legal_task"/>
+        <field name="binding_type">report</field>
+        <field name="paperformat_id" ref="paperformat_legal_compact_report"/>
+    </record>
+
+    <template id="report_legal_task_document">
+        <t t-call="web.basic_layout">
+            <div class="page" dir="rtl" style="font-family: 'Cairo', 'Segoe UI', Tahoma, sans-serif; font-size: 12px; color: #212529; padding: 0; margin: 0;">
+                
+                <!-- Ultra Compact Header -->
+                <div style="border-bottom: 2px solid #0d6efd; padding-bottom: 5px; margin-bottom: 12px;" class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h3 style="margin: 0; color: #0d6efd; font-weight: bold; font-size: 18px;">
+                            استمارة متابعة قضية / معاملة قانونية
+                        </h3>
+                        <div style="font-size: 11px; color: #6c757d;">
+                            الشركة التابعة: <strong class="text-dark"><span t-field="doc.legal_company_id.name"/></strong>
+                        </div>
+                    </div>
+                    <div class="text-start" style="font-size: 11px; color: #495057;">
+                        <div>رقم المعاملة: <strong class="text-primary font-monospace"><span t-field="doc.task_number"/></strong></div>
+                        <div>تاريخ الطباعة: <strong><span t-esc="datetime.date.today().strftime('%Y-%m-%d')"/></strong></div>
+                    </div>
+                </div>
+
+                <!-- Basic Information Table -->
+                <div style="border: 1px solid #dee2e6; border-radius: 4px; padding: 10px; margin-bottom: 12px; background-color: #fcfcfc;">
+                    <div class="row g-2" style="font-size: 11.5px;">
+                        <div class="col-7">
+                            <div class="mb-1"><strong>عنوان المعاملة:</strong> <span class="fw-bold text-primary" t-field="doc.name"/></div>
+                            <div class="mb-1"><strong>الدائرة / القسم الرسمي:</strong> <span t-field="doc.department_id.name"/></div>
+                            <div><strong>المحامون المكلفون:</strong> 
+                                <span class="fw-bold" t-esc="', '.join(doc.lawyer_ids.mapped('name')) if doc.lawyer_ids else (doc.lawyer_id.name or '-')"/>
+                            </div>
+                        </div>
+                        <div class="col-5">
+                            <div class="mb-1"><strong>حالة الإجراء:</strong> 
+                                <span t-if="doc.state == 'draft'" class="badge bg-secondary">مسودة</span>
+                                <span t-if="doc.state == 'in_progress'" class="badge bg-primary">قيد الإجراء</span>
+                                <span t-if="doc.state == 'pending_docs'" class="badge bg-warning text-dark">بانتظار الوثائق</span>
+                                <span t-if="doc.state == 'done'" class="badge bg-success">منجز ✓</span>
+                                <span t-if="doc.state == 'cancelled'" class="badge bg-danger">ملغى</span>
+                            </div>
+                            <div class="mb-1"><strong>حالة الاعتماد:</strong> 
+                                <span t-if="doc.approval_state == 'to_approve'" class="text-warning fw-bold">بانتظار موافقة الإدارة</span>
+                                <span t-elif="doc.approval_state == 'approved'" class="text-success fw-bold">معتمد ومصادق ✓</span>
+                                <span t-else="" class="text-muted">مسودة</span>
+                            </div>
+                            <div t-if="doc.is_urgent" class="text-danger fw-bold">⚠️ مصنفة كمعاملة عاجلة جداً</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dates & Financials Card -->
+                <div class="row g-2 mb-3" style="font-size: 11px;">
+                    <div class="col-4">
+                        <div style="border: 1px solid #cfe2ff; background-color: #f0f7ff; padding: 6px 10px; border-radius: 4px;">
+                            <div><strong>تاريخ الجلسة:</strong></div>
+                            <div class="fs-6 fw-bold text-primary"><span t-esc="doc.session_date or '-'"/></div>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div style="border: 1px solid #fff3cd; background-color: #fffdf5; padding: 6px 10px; border-radius: 4px;">
+                            <div><strong>تاريخ الاستحقاق:</strong></div>
+                            <div class="fs-6 fw-bold text-warning"><span t-esc="doc.due_date or '-'"/></div>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div style="border: 1px solid #d1e7dd; background-color: #f3fbf6; padding: 6px 10px; border-radius: 4px;">
+                            <div><strong>المصروفات والرسوم المدفوعة:</strong></div>
+                            <div class="fs-6 fw-bold text-success"><span t-field="doc.expenses_amount"/> د.ع</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Notes and Action Details -->
+                <div style="border: 1px solid #dee2e6; border-radius: 4px; padding: 10px; margin-bottom: 20px; min-height: 120px;">
+                    <h6 class="fw-bold text-dark border-bottom pb-1 mb-2" style="font-size: 12px;">📝 وقائع ومذكرات الإجراء القانوني والمطلوب:</h6>
+                    <div style="white-space: pre-wrap; font-size: 11.5px; line-height: 1.6;" t-esc="doc.action_details or 'لا توجد مذكرات أو ملاحظات إضافية مسجلة.'"/>
+                </div>
+
+                <!-- Signatures -->
+                <div class="row mt-4 pt-3" style="font-size: 11.5px;">
+                    <div class="col-6 text-center">
+                        <p class="fw-bold mb-1">المحامي المسؤول</p>
+                        <p class="text-primary fw-bold mb-4">
+                            <span t-esc="', '.join(doc.lawyer_ids.mapped('name')) if doc.lawyer_ids else (doc.lawyer_id.name or '-')"/>
+                        </p>
+                        <p class="text-muted">التوقيع: _______________________</p>
+                    </div>
+                    <div class="col-6 text-center">
+                        <p class="fw-bold mb-1">مصادقة المدير القانوني</p>
+                        <p class="text-primary fw-bold mb-4">
+                            <span t-esc="doc.approver_id.name or 'القسم القانوني'"/>
+                        </p>
+                        <p class="text-muted">الختم والتوقيع: _______________________</p>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="report_legal_task_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="legal_department_management.report_legal_task_document" t-lang="doc.lawyer_id.lang or 'ar_001'"/>
+            </t>
+        </t>
+    </template>
+</odoo>

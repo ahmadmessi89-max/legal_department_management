@@ -1,0 +1,12 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_legal_ministry_user,legal.ministry.user,model_legal_ministry,group_legal_user,1,1,1,0
+access_legal_ministry_manager,legal.ministry.manager,model_legal_ministry,group_legal_manager,1,1,1,1
+access_legal_department_user,legal.department.user,model_legal_department,group_legal_user,1,1,1,0
+access_legal_department_manager,legal.department.manager,model_legal_department,group_legal_manager,1,1,1,1
+access_legal_company_user,legal.company.user,model_legal_company,group_legal_user,1,1,1,0
+access_legal_company_manager,legal.company.manager,model_legal_company,group_legal_manager,1,1,1,1
+access_legal_task_user,legal.task.user,model_legal_task,group_legal_user,1,1,1,0
+access_legal_task_manager,legal.task.manager,model_legal_task,group_legal_manager,1,1,1,1
+access_legal_task_wizard_user,legal.task.create.wizard.user,model_legal_task_create_wizard,group_legal_user,1,1,1,1
+access_legal_company_report_wizard_user,legal.company.report.wizard.user,model_legal_company_report_wizard,group_legal_user,1,1,1,1
+access_legal_general_report_wizard_user,legal.general.report.wizard.user,model_legal_general_report_wizard,group_legal_user,1,1,1,1
