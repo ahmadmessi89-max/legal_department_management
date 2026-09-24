@@ -5,6 +5,8 @@ from unittest.mock import patch
 from odoo import fields
 from odoo.addons.base.models.ir_cron import IrCron as BaseIrCron
 from odoo.tests import tagged
+from odoo.tools import file_open
+from odoo.tools.translate import code_translations, translation_file_reader
 
 from .common import M, LdmCase
 
@@ -87,3 +89,15 @@ class TestCronLanguage(LdmCase):
         english = dict(field._description_selection(self.env(context=dict(self.env.context, lang="en_US"))))
         self.assertEqual(english["in_progress"], "In progress")
         self.assertEqual(arabic["in_progress"], "قيد الإجراء")
+
+    def test_every_code_string_in_the_arabic_catalogue_is_read(self):
+        """Odoo reads a code string's translation only when the entry is marked
+        odoo-python or odoo-javascript; an unmarked entry shows in English."""
+        with file_open(f"{M}/i18n/ar.po", mode="rb") as po:
+            rows = [row for row in translation_file_reader(po, fileformat="po") if row.get("type") == "code"]
+        self.assertTrue(rows)
+        unmarked = [row["src"][:60] for row in rows
+                    if "odoo-python" not in row["comments"] and "odoo-javascript" not in row["comments"]]
+        self.assertFalse(unmarked, "code strings Odoo would not translate")
+        arabic = code_translations.get_python_translations(M, "ar_001")
+        self.assertIn("%(count)s instalments due since %(date)s: %(name)s — %(number)s", arabic)

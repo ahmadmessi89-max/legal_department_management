@@ -14089,12 +14089,14 @@ msgid "Monogram"
 msgstr "الحرف الأول"
 
 #. module: legal_department_management
+#. odoo-python
 #: code:addons/legal_department_management/models/money_task.py:0
 #, python-format
 msgid "%(count)s instalments due since %(date)s: %(name)s — %(number)s"
-msgstr "%(count)s أقساط مستحقة منذ %(date)s: %(name)s — %(number)s"
+msgstr "أقساط مستحقة (%(count)s) منذ %(date)s: %(name)s — %(number)s"
 
 #. module: legal_department_management
+#. odoo-python
 #: code:addons/legal_department_management/models/money_task.py:0
 msgid "No longer due: invoiced, paid or waived."
 msgstr "لم يعد مستحقاً: فُوتر أو دُفع أو تُنوزل عنه."
