@@ -1,4 +1,838 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Owned by the lit stream (docs/ldm/SPEC.md section 11). -->
 <odoo>
+    <!--
+        Court degrees, so that one statutory period can apply to judgments of
+        several kinds of court.
+    -->
+    <data noupdate="1">
+        <record id="ldm_degree_first_instance" model="legal.court.degree">
+            <field name="name">First instance (appealable)</field>
+            <field name="code">first_instance</field>
+            <field name="sequence">1</field>
+        </record>
+        <record id="ldm_degree_first_instance_final" model="legal.court.degree">
+            <field name="name">First instance (final degree)</field>
+            <field name="code">first_instance_final</field>
+            <field name="sequence">2</field>
+        </record>
+        <record id="ldm_degree_appeal" model="legal.court.degree">
+            <field name="name">Court of appeal</field>
+            <field name="code">appeal</field>
+            <field name="sequence">3</field>
+        </record>
+        <record id="ldm_degree_cassation" model="legal.court.degree">
+            <field name="name">Court of cassation</field>
+            <field name="code">cassation</field>
+            <field name="sequence">4</field>
+        </record>
+        <record id="ldm_degree_personal_status" model="legal.court.degree">
+            <field name="name">Personal status</field>
+            <field name="code">personal_status</field>
+            <field name="sequence">5</field>
+        </record>
+        <record id="ldm_degree_labour" model="legal.court.degree">
+            <field name="name">Labour</field>
+            <field name="code">labour</field>
+            <field name="sequence">6</field>
+        </record>
+        <record id="ldm_degree_investigation" model="legal.court.degree">
+            <field name="name">Investigation</field>
+            <field name="code">investigation</field>
+            <field name="sequence">7</field>
+        </record>
+        <record id="ldm_degree_misdemeanour" model="legal.court.degree">
+            <field name="name">Misdemeanour</field>
+            <field name="code">misdemeanour</field>
+            <field name="sequence">8</field>
+        </record>
+        <record id="ldm_degree_felony" model="legal.court.degree">
+            <field name="name">Felony</field>
+            <field name="code">felony</field>
+            <field name="sequence">9</field>
+        </record>
+        <record id="ldm_degree_administrative" model="legal.court.degree">
+            <field name="name">Administrative</field>
+            <field name="code">administrative</field>
+            <field name="sequence">10</field>
+        </record>
+        <record id="ldm_degree_employee" model="legal.court.degree">
+            <field name="name">Civil service</field>
+            <field name="code">employee</field>
+            <field name="sequence">11</field>
+        </record>
+        <record id="ldm_degree_execution" model="legal.court.degree">
+            <field name="name">Execution directorate</field>
+            <field name="code">execution</field>
+            <field name="sequence">12</field>
+        </record>
+        <record id="ldm_degree_other" model="legal.court.degree">
+            <field name="name">Other</field>
+            <field name="code">other</field>
+            <field name="sequence">13</field>
+        </record>
+    </data>
+
+    <!--
+        Statutory periods: research/03 §6.2, row by row, with the confidence the
+        research gives each one (V verified in the law's text, S from a secondary
+        source, U not verified). noupdate: an upgrade never overwrites a period
+        the office's counsel has corrected. Periods are calendar days counted from
+        the day after the event (Civil Procedure Law Art. 25(1)); a last day on a
+        holiday moves to the next working day (Art. 25(2)). Records that start a
+        chain are defined after the period they lead to.
+    -->
+    <data noupdate="1">
+        <!-- Civil procedure: Law 83 of 1969 -->
+        <record id="ldm_rule_civ_1" model="legal.appeal.rule">
+            <field name="code">CIV-1</field>
+            <field name="name">Objection to a judgment given in absence</field>
+            <field name="sequence">1</field>
+            <field name="law">civil</field>
+            <field name="remedy">objection</field>
+            <field name="degree_ids" eval="[(6, 0, [ref('ldm_degree_first_instance'), ref('ldm_degree_first_instance_final'), ref('ldm_degree_personal_status')])]"/>
+            <field name="judgment_presence">absentia</field>
+            <field name="from_judgment" eval="True"/>
+            <field name="days">10</field>
+            <field name="unit">days</field>
+            <field name="start_event">notification</field>
+            <field name="peremptory" eval="True"/>
+            <field name="basis">Civil Procedure Law 83 of 1969, Arts. 171, 172 and 177</field>
+            <field name="source_url">https://wiki.dorar-aliraq.net/iraqilaws/law/19608.html</field>
+            <field name="verification">verified</field>
+            <field name="note">Judgments of first-instance and personal-status courts; not in urgent matters.</field>
+        </record>
+        <record id="ldm_rule_civ_2" model="legal.appeal.rule">
+            <field name="code">CIV-2</field>
+            <field name="name">Appeal of a first-instance judgment</field>
+            <field name="sequence">2</field>
+            <field name="law">civil</field>
+            <field name="remedy">appeal</field>
+            <field name="degree_ids" eval="[(6, 0, [ref('ldm_degree_first_instance')])]"/>
+            <field name="from_judgment" eval="True"/>
+            <field name="days">15</field>
+            <field name="unit">days</field>
+            <field name="start_event">notification</field>
+            <field name="peremptory" eval="True"/>
+            <field name="basis">Civil Procedure Law 83 of 1969, Arts. 185 and 187</field>
+            <field name="source_url">https://wiki.dorar-aliraq.net/iraqilaws/law/19608.html</field>
+            <field name="verification">verified</field>
+            <field name="note">When the judgment rests on fraud or forgery, the period counts from the day it is discovered.</field>
+        </record>
+        <record id="ldm_rule_civ_3" model="legal.appeal.rule">
+            <field name="code">CIV-3</field>
+            <field name="name">Cassation of a judgment of a court of appeal</field>
+            <field name="sequence">3</field>
+            <field name="law">civil</field>
+            <field name="remedy">cassation</field>
+            <field name="degree_ids" eval="[(6, 0, [ref('ldm_degree_appeal')])]"/>
+            <field name="from_judgment" eval="True"/>
+            <field name="days">30</field>
+            <field name="unit">days</field>
+            <field name="start_event">notification</field>
+            <field name="peremptory" eval="True"/>
+            <field name="basis">Civil Procedure Law 83 of 1969, Art. 204</field>
+            <field name="source_url">https://wiki.dorar-aliraq.net/iraqilaws/law/19608.html</field>
+            <field name="verification">verified</field>
+            <field name="note">Art. 204 also names judgments of first-instance courts. The period is proposed for judgments of the courts of appeal; add it by hand where cassation of a first-instance judgment applies.</field>
+        </record>
+        <record id="ldm_rule_civ_4" model="legal.appeal.rule">
+            <field name="code">CIV-4</field>
+            <field name="name">Cassation of a final-degree or personal-status judgment</field>
+            <field name="sequence">4</field>
+            <field name="law">civil</field>
+            <field name="remedy">cassation</field>
+            <field name="degree_ids" eval="[(6, 0, [ref('ldm_degree_first_instance_final'), ref('ldm_degree_personal_status')])]"/>
+            <field name="from_judgment" eval="True"/>
+            <field name="days">10</field>
+            <field name="unit">days</field>
+            <field name="start_event">notification</field>
+            <field name="peremptory" eval="True"/>
+            <field name="basis">Civil Procedure Law 83 of 1969, Art. 204; Law 10 of 2016</field>
+            <field name="source_url">https://sjc.iq/view.5696/</field>
+            <field name="verification">secondary</field>
+            <field name="note">The article's text is verified; applying it to personal-status judgments follows the Supreme Judicial Council's commentary.</field>
+        </record>
+        <record id="ldm_rule_civ_5" model="legal.appeal.rule">
+            <field name="code">CIV-5</field>
+            <field name="name">Cassation of a decision listed in Art. 216</field>
+            <field name="sequence">5</field>
+            <field name="law">civil</field>
+            <field name="remedy">cassation_decision</field>
+            <field name="days">7</field>
+            <field name="unit">days</field>
+            <field name="start_event">notification</field>
+            <field name="peremptory" eval="True"/>
+            <field name="basis">Civil Procedure Law 83 of 1969, Art. 216</field>
+            <field name="source_url">https://wiki.dorar-aliraq.net/iraqilaws/law/19608.html</field>
+            <field name="verification">verified</field>
+            <field name="note">Urgent and ancillary decisions such as a precautionary attachment. Add it to the matter from the decision's notification.</field>
+        </record>
+        <record id="ldm_rule_civ_6" model="legal.appeal.rule">
+            <field name="code">CIV-6</field>
+            <field name="name">Correction of a cassation decision</field>
+            <field name="sequence">6</field>
+            <field name="law">civil</field>
+            <field name="remedy">correction</field>
+            <field name="degree_ids" eval="[(6, 0, [ref('ldm_degree_cassation')])]"/>
+            <field name="from_judgment" eval="True"/>
+            <field name="days">7</field>
+            <field name="unit">days</field>
+            <field name="start_event">notification</field>
+            <field name="max_months">6</field>
+            <field name="peremptory" eval="True"/>
+            <field name="basis">Civil Procedure Law 83 of 1969, Arts. 219 to 221</field>
+            <field name="source_url">https://wiki.dorar-aliraq.net/iraqilaws/law/19608.html</field>
+            <field name="verification">verified</field>
+            <field name="note">Once per party, and never later than six months after the decision.</field>
+        </record>
+        <record id="ldm_rule_civ_7" model="legal.appeal.rule">
+            <field name="code">CIV-7</field>
+            <field name="name">Retrial</field>
+            <field name="sequence">7</field>
+            <field name="law">civil</field>
+            <field name="remedy">retrial</field>
+            <field name="days">15</field>
+            <field name="unit">days</field>
+            <field name="start_event">discovery</field>
+            <field name="peremptory" eval="True"/>
+            <field name="basis">Civil Procedure Law 83 of 1969, Art. 198</field>
+            <field name="source_url">https://wiki.dorar-aliraq.net/iraqilaws/law/19608.html</field>
+            <field name="verification">verified</field>
+            <field name="note">Counted from the day after the fraud or forgery is discovered or proven.</field>
+        </record>
+        <record id="ldm_rule_civ_8" model="legal.appeal.rule">
+            <field name="code">CIV-8</field>
+            <field name="name">Grievance against an order on petition</field>
+            <field name="sequence">8</field>
+            <field name="law">civil</field>
+            <field name="remedy">grievance</field>
+            <field name="days">3</field>
+            <field name="unit">days</field>
+            <field name="start_event">decision</field>
+            <field name="peremptory" eval="False"/>
+            <field name="basis">Civil Procedure Law 83 of 1969, Art. 153</field>
+            <field name="source_url">https://wiki.dorar-aliraq.net/iraqilaws/law/19608.html</field>
+            <field name="verification">verified</field>
+            <field name="note">Counted from the order, or from its notification.</field>
+        </record>
+        <record id="ldm_rule_civ_9" model="legal.appeal.rule">
+            <field name="code">CIV-9</field>
+            <field name="name">Renewing a case left for review</field>
+            <field name="sequence">9</field>
+            <field name="law">civil</field>
+            <field name="remedy">renewal</field>
+            <field name="days">10</field>
+            <field name="unit">days</field>
+            <field name="start_event">hearing_outcome</field>
+            <field name="trigger_outcome">left_for_review</field>
+            <field name="peremptory" eval="False"/>
+            <field name="basis">Civil Procedure Law 83 of 1969, Art. 54</field>
+            <field name="source_url">https://wiki.dorar-aliraq.net/iraqilaws/law/19608.html</field>
+            <field name="verification">verified</field>
+            <field name="note">When both parties are absent the court leaves the case for review; unless a party asks to renew it within the period, the petition is void. Older sources give 30 or 15 days: check the current text.</field>
+        </record>
+        <record id="ldm_rule_civ_10" model="legal.appeal.rule">
+            <field name="code">CIV-10</field>
+            <field name="name">Resuming a case suspended by agreement</field>
+            <field name="sequence">10</field>
+            <field name="law">civil</field>
+            <field name="remedy">renewal</field>
+            <field name="days">15</field>
+            <field name="unit">days</field>
+            <field name="start_event">event</field>
+            <field name="trigger_outcome">suspended</field>
+            <field name="peremptory" eval="False"/>
+            <field name="basis">Civil Procedure Law 83 of 1969, Art. 82</field>
+            <field name="source_url">https://wiki.dorar-aliraq.net/iraqilaws/law/19608.html</field>
+            <field name="verification">verified</field>
+            <field name="note">An agreed suspension lasts at most three months. The case must be resumed within 15 days after the suspension ends, or the petition is void. Counted from the end of the suspension.</field>
+        </record>
+        <record id="ldm_rule_civ_11" model="legal.appeal.rule">
+            <field name="code">CIV-11</field>
+            <field name="name">Continuing a case stayed pending another question</field>
+            <field name="sequence">11</field>
+            <field name="law">civil</field>
+            <field name="remedy">renewal</field>
+            <field name="days">6</field>
+            <field name="unit">months</field>
+            <field name="start_event">hearing_outcome</field>
+            <field name="trigger_outcome">stayed</field>
+            <field name="peremptory" eval="False"/>
+            <field name="basis">Civil Procedure Law 83 of 1969, Art. 83(2)</field>
+            <field name="source_url">https://wiki.dorar-aliraq.net/iraqilaws/law/19608.html</field>
+            <field name="verification">verified</field>
+            <field name="note">If the plaintiff does not continue the case within six months, the petition is void. Proposed from the session; move the start to the day the other question is decided if that is later.</field>
+        </record>
+        <record id="ldm_rule_civ_12" model="legal.appeal.rule">
+            <field name="code">CIV-12</field>
+            <field name="name">Continuing an interrupted case</field>
+            <field name="sequence">12</field>
+            <field name="law">civil</field>
+            <field name="remedy">renewal</field>
+            <field name="days">6</field>
+            <field name="unit">months</field>
+            <field name="start_event">event</field>
+            <field name="trigger_outcome">interrupted</field>
+            <field name="peremptory" eval="False"/>
+            <field name="basis">Civil Procedure Law 83 of 1969, Arts. 84 and 87</field>
+            <field name="source_url">https://wiki.dorar-aliraq.net/iraqilaws/law/19608.html</field>
+            <field name="verification">verified</field>
+            <field name="note">A case interrupted (death or loss of capacity of a party) and not continued within six months without an acceptable excuse is void. The interruption also halts the periods running in the case.</field>
+        </record>
+
+        <!-- Criminal procedure: Law 23 of 1971 -->
+        <record id="ldm_rule_crm_1" model="legal.appeal.rule">
+            <field name="code">CRM-1</field>
+            <field name="name">Complaint in an offence that needs one</field>
+            <field name="sequence">1</field>
+            <field name="law">criminal</field>
+            <field name="remedy">filing</field>
+            <field name="days">3</field>
+            <field name="unit">months</field>
+            <field name="start_event">discovery</field>
+            <field name="peremptory" eval="False"/>
+            <field name="basis">Criminal Procedure Law 23 of 1971, Arts. 3 and 6</field>
+            <field name="source_url">https://wiki.dorar-aliraq.net/iraqilaws/law/4895.html</field>
+            <field name="verification">verified</field>
+            <field name="note">Defamation, threats, some thefts and breaches of trust: the complaint must be made within three months of the day the victim learns of the offence.</field>
+        </record>
+        <record id="ldm_rule_crm_2_violation" model="legal.appeal.rule">
+            <field name="code">CRM-2.1</field>
+            <field name="name">Judgment in absence becomes final: violation</field>
+            <field name="sequence">2</field>
+            <field name="law">criminal</field>
+            <field name="remedy">objection</field>
+            <field name="judgment_presence">absentia</field>
+            <field name="days">30</field>
+            <field name="unit">days</field>
+            <field name="start_event">notification</field>
+            <field name="peremptory" eval="False"/>
+            <field name="basis">Criminal Procedure Law 23 of 1971, Art. 243</field>
+            <field name="source_url">https://wiki.dorar-aliraq.net/iraqilaws/law/4895.html</field>
+            <field name="verification">verified</field>
+            <field name="note">Unless the person convicted in absence surrenders or objects within the period, the judgment counts as given in presence. Added by hand: the court alone does not tell a violation from a misdemeanour.</field>
+        </record>
+        <record id="ldm_rule_crm_2_misdemeanour" model="legal.appeal.rule">
+            <field name="code">CRM-2.2</field>
+            <field name="name">Judgment in absence becomes final: misdemeanour</field>
+            <field name="sequence">3</field>
+            <field name="law">criminal</field>
+            <field name="remedy">objection</field>
+            <field name="degree_ids" eval="[(6, 0, [ref('ldm_degree_misdemeanour')])]"/>
+            <field name="judgment_presence">absentia</field>
+            <field name="from_judgment" eval="True"/>
+            <field name="days">3</field>
+            <field name="unit">months</field>
+            <field name="start_event">notification</field>
+            <field name="peremptory" eval="False"/>
+            <field name="basis">Criminal Procedure Law 23 of 1971, Art. 243</field>
+            <field name="source_url">https://wiki.dorar-aliraq.net/iraqilaws/law/4895.html</field>
+            <field name="verification">verified</field>
+            <field name="note">Unless the person convicted in absence surrenders or objects within the period, the judgment counts as given in presence.</field>
+        </record>
+        <record id="ldm_rule_crm_2_felony" model="legal.appeal.rule">
+            <field name="code">CRM-2.3</field>
+            <field name="name">Judgment in absence becomes final: felony</field>
+            <field name="sequence">4</field>
+            <field name="law">criminal</field>
+            <field name="remedy">objection</field>
+            <field name="degree_ids" eval="[(6, 0, [ref('ldm_degree_felony')])]"/>
+            <field name="judgment_presence">absentia</field>
+            <field name="from_judgment" eval="True"/>
+            <field name="days">6</field>
+            <field name="unit">months</field>
+            <field name="start_event">notification</field>
+            <field name="peremptory" eval="False"/>
+            <field name="basis">Criminal Procedure Law 23 of 1971, Art. 243</field>
+            <field name="source_url">https://wiki.dorar-aliraq.net/iraqilaws/law/4895.html</field>
+            <field name="verification">verified</field>
+            <field name="note">Unless the person convicted in absence surrenders or objects within the period, the judgment counts as given in presence.</field>
+        </record>
+        <record id="ldm_rule_crm_3" model="legal.appeal.rule">
+            <field name="code">CRM-3</field>
+            <field name="name">Cassation of a criminal judgment</field>
+            <field name="sequence">5</field>
+            <field name="law">criminal</field>
+            <field name="remedy">cassation</field>
+            <field name="degree_ids" eval="[(6, 0, [ref('ldm_degree_misdemeanour'), ref('ldm_degree_felony')])]"/>
+            <field name="from_judgment" eval="True"/>
+            <field name="days">30</field>
+            <field name="unit">days</field>
+            <field name="start_event">pronouncement</field>
+            <field name="peremptory" eval="False"/>
+            <field name="basis">Criminal Procedure Law 23 of 1971, Art. 252</field>
+            <field name="source_url">https://wiki.dorar-aliraq.net/iraqilaws/law/4895.html</field>
+            <field name="verification">verified</field>
+            <field name="note">Counted from the day after the pronouncement when the judgment is given in presence, not from its notification; a judgment given in absence counts from the notification.</field>
+        </record>
+        <record id="ldm_rule_crm_4" model="legal.appeal.rule">
+            <field name="code">CRM-4</field>
+            <field name="name">Correction of a criminal cassation decision</field>
+            <field name="sequence">6</field>
+            <field name="law">criminal</field>
+            <field name="remedy">correction</field>
+            <field name="degree_ids" eval="[(6, 0, [ref('ldm_degree_cassation')])]"/>
+            <field name="from_judgment" eval="True"/>
+            <field name="days">30</field>
+            <field name="unit">days</field>
+            <field name="start_event">notification</field>
+            <field name="peremptory" eval="False"/>
+            <field name="basis">Criminal Procedure Law 23 of 1971, Art. 266</field>
+            <field name="source_url">https://wiki.dorar-aliraq.net/iraqilaws/law/4895.html</field>
+            <field name="verification">verified</field>
+            <field name="note">Counted from the notification to the convicted person, or from the arrival of the papers at the trial court.</field>
+        </record>
+
+        <!-- Administrative and civil service. Chains: ADM-1 then ADM-2 then
+             ADM-3; ADM-4.1 then ADM-4.2 then ADM-4.3. -->
+        <record id="ldm_rule_adm_3" model="legal.appeal.rule">
+            <field name="code">ADM-3</field>
+            <field name="name">Challenge before the Employees' Court</field>
+            <field name="sequence">3</field>
+            <field name="law">administrative</field>
+            <field name="remedy">appeal</field>
+            <field name="days">30</field>
+            <field name="unit">days</field>
+            <field name="start_event">previous_deadline_end</field>
+            <field name="peremptory" eval="False"/>
+            <field name="basis">State and Public Sector Employees Discipline Law 14 of 1991, Art. 15</field>
+            <field name="source_url">https://wiki.dorar-aliraq.net/iraqilaws/law/13754.html</field>
+            <field name="verification">verified</field>
+            <field name="note">Counted from the notification of the rejection, or from the end of the authority's 30 days when it did not answer.</field>
+        </record>
+        <record id="ldm_rule_adm_2" model="legal.appeal.rule">
+            <field name="code">ADM-2</field>
+            <field name="name">The authority decides the grievance</field>
+            <field name="sequence">2</field>
+            <field name="law">administrative</field>
+            <field name="remedy">other</field>
+            <field name="days">30</field>
+            <field name="unit">days</field>
+            <field name="start_event">event</field>
+            <field name="next_rule_id" ref="ldm_rule_adm_3"/>
+            <field name="peremptory" eval="False"/>
+            <field name="basis">State and Public Sector Employees Discipline Law 14 of 1991, Art. 15</field>
+            <field name="source_url">https://wiki.dorar-aliraq.net/iraqilaws/law/13754.html</field>
+            <field name="verification">verified</field>
+            <field name="note">The authority's time to answer, counted from the grievance. Silence counts as a rejection.</field>
+        </record>
+        <record id="ldm_rule_adm_1" model="legal.appeal.rule">
+            <field name="code">ADM-1</field>
+            <field name="name">Grievance against a disciplinary penalty</field>
+            <field name="sequence">1</field>
+            <field name="law">administrative</field>
+            <field name="remedy">grievance</field>
+            <field name="days">30</field>
+            <field name="unit">days</field>
+            <field name="start_event">notification</field>
+            <field name="next_rule_id" ref="ldm_rule_adm_2"/>
+            <field name="peremptory" eval="False"/>
+            <field name="basis">State and Public Sector Employees Discipline Law 14 of 1991, Art. 15</field>
+            <field name="source_url">https://wiki.dorar-aliraq.net/iraqilaws/law/13754.html</field>
+            <field name="verification">verified</field>
+            <field name="note">Counted from the notification of the penalty. Marking it met starts the authority's 30 days.</field>
+        </record>
+        <record id="ldm_rule_adm_4_suit" model="legal.appeal.rule">
+            <field name="code">ADM-4.3</field>
+            <field name="name">Suit before the Administrative Court</field>
+            <field name="sequence">6</field>
+            <field name="law">administrative</field>
+            <field name="remedy">filing</field>
+            <field name="days">60</field>
+            <field name="unit">days</field>
+            <field name="start_event">previous_deadline_end</field>
+            <field name="peremptory" eval="False"/>
+            <field name="basis">State Council Law 65 of 1979, as amended</field>
+            <field name="source_url">https://www.iraqilaws.com/2023/10/65-1979.html</field>
+            <field name="verification">secondary</field>
+            <field name="note">Counted from the rejection of the grievance, actual or deemed.</field>
+        </record>
+        <record id="ldm_rule_adm_4_decision" model="legal.appeal.rule">
+            <field name="code">ADM-4.2</field>
+            <field name="name">The authority decides the grievance against its decision</field>
+            <field name="sequence">5</field>
+            <field name="law">administrative</field>
+            <field name="remedy">other</field>
+            <field name="days">30</field>
+            <field name="unit">days</field>
+            <field name="start_event">event</field>
+            <field name="next_rule_id" ref="ldm_rule_adm_4_suit"/>
+            <field name="peremptory" eval="False"/>
+            <field name="basis">State Council Law 65 of 1979, as amended</field>
+            <field name="source_url">https://www.iraqilaws.com/2023/10/65-1979.html</field>
+            <field name="verification">secondary</field>
+            <field name="note">The authority's time to answer, counted from the grievance. Silence counts as a rejection.</field>
+        </record>
+        <record id="ldm_rule_adm_4_grievance" model="legal.appeal.rule">
+            <field name="code">ADM-4.1</field>
+            <field name="name">Grievance against an administrative decision</field>
+            <field name="sequence">4</field>
+            <field name="law">administrative</field>
+            <field name="remedy">grievance</field>
+            <field name="days">30</field>
+            <field name="unit">days</field>
+            <field name="start_event">notification</field>
+            <field name="next_rule_id" ref="ldm_rule_adm_4_decision"/>
+            <field name="peremptory" eval="False"/>
+            <field name="basis">State Council Law 65 of 1979, as amended</field>
+            <field name="source_url">https://www.iraqilaws.com/2023/10/65-1979.html</field>
+            <field name="verification">secondary</field>
+            <field name="note">A grievance to the authority that made the decision comes before a suit at the Administrative Court.</field>
+        </record>
+        <record id="ldm_rule_adm_5" model="legal.appeal.rule">
+            <field name="code">ADM-5</field>
+            <field name="name">Challenge before the Higher Administrative Court</field>
+            <field name="sequence">7</field>
+            <field name="law">administrative</field>
+            <field name="remedy">cassation</field>
+            <field name="degree_ids" eval="[(6, 0, [ref('ldm_degree_administrative'), ref('ldm_degree_employee')])]"/>
+            <field name="from_judgment" eval="True"/>
+            <field name="days">30</field>
+            <field name="unit">days</field>
+            <field name="start_event">notification</field>
+            <field name="peremptory" eval="False"/>
+            <field name="basis">State Council Law 65 of 1979, as amended</field>
+            <field name="source_url">https://www.iraqilaws.com/2023/10/65-1979.html</field>
+            <field name="verification">secondary</field>
+            <field name="note">Judgments of the Administrative Court and of the Employees' Court. Verify the period.</field>
+        </record>
+
+        <!-- Labour: Law 37 of 2015 -->
+        <record id="ldm_rule_lab_1" model="legal.appeal.rule">
+            <field name="code">LAB-1</field>
+            <field name="name">Taking a termination committee's decision to the labour court</field>
+            <field name="sequence">1</field>
+            <field name="law">labour</field>
+            <field name="remedy">filing</field>
+            <field name="days">30</field>
+            <field name="unit">days</field>
+            <field name="start_event">notification</field>
+            <field name="peremptory" eval="False"/>
+            <field name="basis">Labour Law 37 of 2015</field>
+            <field name="source_url">https://www.iraqilaws.com/2023/10/37-2015.html</field>
+            <field name="verification">secondary</field>
+        </record>
+        <record id="ldm_rule_lab_2" model="legal.appeal.rule">
+            <field name="code">LAB-2</field>
+            <field name="name">Cassation of a labour-court judgment</field>
+            <field name="sequence">2</field>
+            <field name="law">labour</field>
+            <field name="remedy">cassation</field>
+            <field name="degree_ids" eval="[(6, 0, [ref('ldm_degree_labour')])]"/>
+            <field name="from_judgment" eval="True"/>
+            <field name="days">30</field>
+            <field name="unit">days</field>
+            <field name="start_event">notification</field>
+            <field name="peremptory" eval="False"/>
+            <field name="basis">Labour Law 37 of 2015</field>
+            <field name="source_url">https://www.iraqilaws.com/2023/10/37-2015.html</field>
+            <field name="verification">unverified</field>
+            <field name="note">No primary citation yet: check the period against Labour Law 37 of 2015 before relying on it.</field>
+        </record>
+
+        <!-- Execution: Law 45 of 1980. Chain: EXE-3 then EXE-4. -->
+        <record id="ldm_rule_exe_1" model="legal.appeal.rule">
+            <field name="code">EXE-1</field>
+            <field name="name">Debtor's time to pay after the execution notice</field>
+            <field name="sequence">1</field>
+            <field name="law">execution</field>
+            <field name="remedy">compliance</field>
+            <field name="days">7</field>
+            <field name="unit">days</field>
+            <field name="start_event">notification</field>
+            <field name="peremptory" eval="False"/>
+            <field name="basis">Execution Law 45 of 1980, Art. 18</field>
+            <field name="source_url">http://wiki.dorar-aliraq.net/iraqilaws/law/3121.html</field>
+            <field name="verification">secondary</field>
+            <field name="note">A debtor who pays within the period is exempt from the collection fee. Older texts give other periods, and a government debtor may have 30 days (Art. 20): verify. Proposed when an execution stage records the date the notice was served.</field>
+        </record>
+        <record id="ldm_rule_exe_2" model="legal.appeal.rule">
+            <field name="code">EXE-2</field>
+            <field name="name">Payment after seizure, before the sale</field>
+            <field name="sequence">2</field>
+            <field name="law">execution</field>
+            <field name="remedy">compliance</field>
+            <field name="days">3</field>
+            <field name="unit">days</field>
+            <field name="start_event">event</field>
+            <field name="peremptory" eval="False"/>
+            <field name="basis">Execution Law 45 of 1980, Art. 69(1)</field>
+            <field name="source_url">http://wiki.dorar-aliraq.net/iraqilaws/law/3121.html</field>
+            <field name="verification">secondary</field>
+        </record>
+        <record id="ldm_rule_exe_4" model="legal.appeal.rule">
+            <field name="code">EXE-4</field>
+            <field name="name">Cassation of an execution decision</field>
+            <field name="sequence">4</field>
+            <field name="law">execution</field>
+            <field name="remedy">cassation_decision</field>
+            <field name="days">7</field>
+            <field name="unit">days</field>
+            <field name="start_event">decision</field>
+            <field name="peremptory" eval="False"/>
+            <field name="basis">Execution Law 45 of 1980, Art. 122</field>
+            <field name="source_url">http://wiki.dorar-aliraq.net/iraqilaws/law/3121.html</field>
+            <field name="verification">secondary</field>
+            <field name="note">Before the court of appeal of the region, sitting in cassation. Counted from the decision.</field>
+        </record>
+        <record id="ldm_rule_exe_3" model="legal.appeal.rule">
+            <field name="code">EXE-3</field>
+            <field name="name">Grievance to the execution officer</field>
+            <field name="sequence">3</field>
+            <field name="law">execution</field>
+            <field name="remedy">grievance</field>
+            <field name="days">3</field>
+            <field name="unit">days</field>
+            <field name="start_event">decision</field>
+            <field name="next_rule_id" ref="ldm_rule_exe_4"/>
+            <field name="peremptory" eval="False"/>
+            <field name="basis">Execution Law 45 of 1980, Art. 120</field>
+            <field name="source_url">http://wiki.dorar-aliraq.net/iraqilaws/law/3121.html</field>
+            <field name="verification">secondary</field>
+            <field name="note">Marking it met opens the cassation period, which waits for the date of the officer's decision.</field>
+        </record>
+        <record id="ldm_rule_exe_5" model="legal.appeal.rule">
+            <field name="code">EXE-5</field>
+            <field name="name">An executable instrument lapses when left inactive</field>
+            <field name="sequence">5</field>
+            <field name="law">execution</field>
+            <field name="remedy">other</field>
+            <field name="days">84</field>
+            <field name="unit">months</field>
+            <field name="start_event">event</field>
+            <field name="peremptory" eval="False"/>
+            <field name="basis">Execution Law 45 of 1980, Art. 112</field>
+            <field name="source_url">http://wiki.dorar-aliraq.net/iraqilaws/law/3121.html</field>
+            <field name="verification">secondary</field>
+            <field name="note">Seven years from the last action on the file.</field>
+        </record>
+
+        <!-- Tax: Income Tax Law 113 of 1982 (content-pack data, not verified). Chain: TAX-4 then TAX-5. -->
+        <record id="ldm_rule_tax_5" model="legal.appeal.rule">
+            <field name="code">TAX-5</field>
+            <field name="name">Appeal to the tax appeal committee</field>
+            <field name="sequence">5</field>
+            <field name="law">tax</field>
+            <field name="remedy">appeal</field>
+            <field name="days">21</field>
+            <field name="unit">days</field>
+            <field name="start_event">notification</field>
+            <field name="peremptory" eval="False"/>
+            <field name="basis">Income Tax Law 113 of 1982</field>
+            <field name="verification">unverified</field>
+            <field name="note">Counted from the notification that the objection was rejected.</field>
+        </record>
+        <record id="ldm_rule_tax_4" model="legal.appeal.rule">
+            <field name="code">TAX-4</field>
+            <field name="name">Objection to a tax assessment</field>
+            <field name="sequence">4</field>
+            <field name="law">tax</field>
+            <field name="remedy">objection</field>
+            <field name="days">21</field>
+            <field name="unit">days</field>
+            <field name="start_event">notification</field>
+            <field name="next_rule_id" ref="ldm_rule_tax_5"/>
+            <field name="peremptory" eval="True"/>
+            <field name="basis">Income Tax Law 113 of 1982</field>
+            <field name="verification">unverified</field>
+            <field name="note">The assessed tax must be paid within the period, or the objection is not heard.</field>
+        </record>
+    </data>
+
+    <!--
+        Public holidays of 2026 and 2027 (Law 12 of 2024), linked to the leaves
+        the foundation ships on the Iraqi legal calendar. Hijri dates are
+        estimates until the endowment offices announce them.
+    -->
+    <data noupdate="1">
+        <record id="ldm_legal_holiday_2026_01" model="legal.holiday">
+            <field name="name">New Year's Day</field>
+            <field name="date_from">2026-01-01</field>
+            <field name="date_to">2026-01-01</field>
+            <field name="calendar_id" ref="ldm_calendar_iraq"/>
+            <field name="leave_id" ref="ldm_holiday_2026_01"/>
+        </record>
+        <record id="ldm_legal_holiday_2026_02" model="legal.holiday">
+            <field name="name">Army Day</field>
+            <field name="date_from">2026-01-06</field>
+            <field name="date_to">2026-01-06</field>
+            <field name="calendar_id" ref="ldm_calendar_iraq"/>
+            <field name="leave_id" ref="ldm_holiday_2026_02"/>
+        </record>
+        <record id="ldm_legal_holiday_2026_03" model="legal.holiday">
+            <field name="name">Memorial of the regime's crimes (Halabja)</field>
+            <field name="date_from">2026-03-16</field>
+            <field name="date_to">2026-03-16</field>
+            <field name="calendar_id" ref="ldm_calendar_iraq"/>
+            <field name="leave_id" ref="ldm_holiday_2026_03"/>
+        </record>
+        <record id="ldm_legal_holiday_2026_04" model="legal.holiday">
+            <field name="name">Eid al-Fitr</field>
+            <field name="date_from">2026-03-20</field>
+            <field name="date_to">2026-03-22</field>
+            <field name="estimated" eval="True"/>
+            <field name="calendar_id" ref="ldm_calendar_iraq"/>
+            <field name="leave_id" ref="ldm_holiday_2026_04"/>
+        </record>
+        <record id="ldm_legal_holiday_2026_05" model="legal.holiday">
+            <field name="name">Nowruz</field>
+            <field name="date_from">2026-03-21</field>
+            <field name="date_to">2026-03-21</field>
+            <field name="calendar_id" ref="ldm_calendar_iraq"/>
+            <field name="leave_id" ref="ldm_holiday_2026_05"/>
+        </record>
+        <record id="ldm_legal_holiday_2026_06" model="legal.holiday">
+            <field name="name">Labour Day</field>
+            <field name="date_from">2026-05-01</field>
+            <field name="date_to">2026-05-01</field>
+            <field name="calendar_id" ref="ldm_calendar_iraq"/>
+            <field name="leave_id" ref="ldm_holiday_2026_06"/>
+        </record>
+        <record id="ldm_legal_holiday_2026_07" model="legal.holiday">
+            <field name="name">Eid al-Adha</field>
+            <field name="date_from">2026-05-27</field>
+            <field name="date_to">2026-05-30</field>
+            <field name="estimated" eval="True"/>
+            <field name="calendar_id" ref="ldm_calendar_iraq"/>
+            <field name="leave_id" ref="ldm_holiday_2026_07"/>
+        </record>
+        <record id="ldm_legal_holiday_2026_08" model="legal.holiday">
+            <field name="name">Eid al-Ghadir</field>
+            <field name="date_from">2026-06-04</field>
+            <field name="date_to">2026-06-04</field>
+            <field name="estimated" eval="True"/>
+            <field name="calendar_id" ref="ldm_calendar_iraq"/>
+            <field name="leave_id" ref="ldm_holiday_2026_08"/>
+        </record>
+        <record id="ldm_legal_holiday_2026_09" model="legal.holiday">
+            <field name="name">Islamic New Year</field>
+            <field name="date_from">2026-06-16</field>
+            <field name="date_to">2026-06-16</field>
+            <field name="estimated" eval="True"/>
+            <field name="calendar_id" ref="ldm_calendar_iraq"/>
+            <field name="leave_id" ref="ldm_holiday_2026_09"/>
+        </record>
+        <record id="ldm_legal_holiday_2026_10" model="legal.holiday">
+            <field name="name">Ashura</field>
+            <field name="date_from">2026-06-25</field>
+            <field name="date_to">2026-06-25</field>
+            <field name="estimated" eval="True"/>
+            <field name="calendar_id" ref="ldm_calendar_iraq"/>
+            <field name="leave_id" ref="ldm_holiday_2026_10"/>
+        </record>
+        <record id="ldm_legal_holiday_2026_11" model="legal.holiday">
+            <field name="name">Prophet's Birthday</field>
+            <field name="date_from">2026-08-25</field>
+            <field name="date_to">2026-08-25</field>
+            <field name="estimated" eval="True"/>
+            <field name="calendar_id" ref="ldm_calendar_iraq"/>
+            <field name="leave_id" ref="ldm_holiday_2026_11"/>
+        </record>
+        <record id="ldm_legal_holiday_2027_01" model="legal.holiday">
+            <field name="name">New Year's Day</field>
+            <field name="date_from">2027-01-01</field>
+            <field name="date_to">2027-01-01</field>
+            <field name="calendar_id" ref="ldm_calendar_iraq"/>
+            <field name="leave_id" ref="ldm_holiday_2027_01"/>
+        </record>
+        <record id="ldm_legal_holiday_2027_02" model="legal.holiday">
+            <field name="name">Army Day</field>
+            <field name="date_from">2027-01-06</field>
+            <field name="date_to">2027-01-06</field>
+            <field name="calendar_id" ref="ldm_calendar_iraq"/>
+            <field name="leave_id" ref="ldm_holiday_2027_02"/>
+        </record>
+        <record id="ldm_legal_holiday_2027_03" model="legal.holiday">
+            <field name="name">Eid al-Fitr</field>
+            <field name="date_from">2027-03-09</field>
+            <field name="date_to">2027-03-11</field>
+            <field name="estimated" eval="True"/>
+            <field name="calendar_id" ref="ldm_calendar_iraq"/>
+            <field name="leave_id" ref="ldm_holiday_2027_03"/>
+        </record>
+        <record id="ldm_legal_holiday_2027_04" model="legal.holiday">
+            <field name="name">Memorial of the regime's crimes (Halabja)</field>
+            <field name="date_from">2027-03-16</field>
+            <field name="date_to">2027-03-16</field>
+            <field name="calendar_id" ref="ldm_calendar_iraq"/>
+            <field name="leave_id" ref="ldm_holiday_2027_04"/>
+        </record>
+        <record id="ldm_legal_holiday_2027_05" model="legal.holiday">
+            <field name="name">Nowruz</field>
+            <field name="date_from">2027-03-21</field>
+            <field name="date_to">2027-03-21</field>
+            <field name="calendar_id" ref="ldm_calendar_iraq"/>
+            <field name="leave_id" ref="ldm_holiday_2027_05"/>
+        </record>
+        <record id="ldm_legal_holiday_2027_06" model="legal.holiday">
+            <field name="name">Labour Day</field>
+            <field name="date_from">2027-05-01</field>
+            <field name="date_to">2027-05-01</field>
+            <field name="calendar_id" ref="ldm_calendar_iraq"/>
+            <field name="leave_id" ref="ldm_holiday_2027_06"/>
+        </record>
+        <record id="ldm_legal_holiday_2027_07" model="legal.holiday">
+            <field name="name">Eid al-Adha</field>
+            <field name="date_from">2027-05-16</field>
+            <field name="date_to">2027-05-19</field>
+            <field name="estimated" eval="True"/>
+            <field name="calendar_id" ref="ldm_calendar_iraq"/>
+            <field name="leave_id" ref="ldm_holiday_2027_07"/>
+        </record>
+        <record id="ldm_legal_holiday_2027_08" model="legal.holiday">
+            <field name="name">Eid al-Ghadir</field>
+            <field name="date_from">2027-05-24</field>
+            <field name="date_to">2027-05-24</field>
+            <field name="estimated" eval="True"/>
+            <field name="calendar_id" ref="ldm_calendar_iraq"/>
+            <field name="leave_id" ref="ldm_holiday_2027_08"/>
+        </record>
+        <record id="ldm_legal_holiday_2027_09" model="legal.holiday">
+            <field name="name">Islamic New Year</field>
+            <field name="date_from">2027-06-06</field>
+            <field name="date_to">2027-06-06</field>
+            <field name="estimated" eval="True"/>
+            <field name="calendar_id" ref="ldm_calendar_iraq"/>
+            <field name="leave_id" ref="ldm_holiday_2027_09"/>
+        </record>
+        <record id="ldm_legal_holiday_2027_10" model="legal.holiday">
+            <field name="name">Ashura</field>
+            <field name="date_from">2027-06-15</field>
+            <field name="date_to">2027-06-15</field>
+            <field name="estimated" eval="True"/>
+            <field name="calendar_id" ref="ldm_calendar_iraq"/>
+            <field name="leave_id" ref="ldm_holiday_2027_10"/>
+        </record>
+        <record id="ldm_legal_holiday_2027_11" model="legal.holiday">
+            <field name="name">Prophet's Birthday</field>
+            <field name="date_from">2027-08-14</field>
+            <field name="date_to">2027-08-14</field>
+            <field name="estimated" eval="True"/>
+            <field name="calendar_id" ref="ldm_calendar_iraq"/>
+            <field name="leave_id" ref="ldm_holiday_2027_11"/>
+        </record>
+    </data>
+
+    <!-- Daily runs: lapse and escalation of deadlines; the December holiday review. -->
+    <data noupdate="1">
+        <record id="ir_cron_ldm_deadlines" model="ir.cron">
+            <field name="name">Legal: close lapsed deadlines, start the next periods, report missed ones</field>
+            <field name="model_id" ref="model_legal_deadline"/>
+            <field name="state">code</field>
+            <field name="code">model._cron_ldm_deadlines()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="active" eval="True"/>
+        </record>
+        <record id="ir_cron_ldm_holiday_review" model="ir.cron">
+            <field name="name">Legal: in December, ask the managers to enter next year's public holidays</field>
+            <field name="model_id" ref="model_legal_holiday"/>
+            <field name="state">code</field>
+            <field name="code">model._cron_ldm_holiday_review()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="active" eval="True"/>
+        </record>
+    </data>
 </odoo>
