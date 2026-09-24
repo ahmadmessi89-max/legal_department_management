@@ -1,4 +1,328 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Owned by the gov stream (docs/ldm/SPEC.md section 11). -->
 <odoo>
+    <!--
+        Document types (research/03 section 6.6), in a new model only, so they
+        cannot collide with SAG's data. Codes match the Iraqi reference library,
+        which merges into these instead of adding its own. The Arabic name of
+        each type is in the comment beside it, for the translation catalogue.
+        Validity: expiry_date = the paper carries an expiry date; fixed_days =
+        valid for N days from issue; freshness_days = must be recent (a paid
+        utility bill goes stale rather than expiring).
+    -->
+    <data noupdate="1">
+        <!-- البطاقة الوطنية الموحدة -->
+        <record id="ldm_doctype_national_id" model="legal.document.type">
+            <field name="name">Unified national ID card</field>
+            <field name="code">national_id</field>
+            <field name="category">identity</field>
+            <field name="validity">expiry_date</field>
+            <field name="sequence">10</field>
+        </record>
+        <!-- جواز السفر -->
+        <record id="ldm_doctype_passport" model="legal.document.type">
+            <field name="name">Passport</field>
+            <field name="code">passport</field>
+            <field name="category">identity</field>
+            <field name="validity">expiry_date</field>
+            <field name="sequence">11</field>
+        </record>
+        <!-- بطاقة السكن -->
+        <record id="ldm_doctype_residence_card" model="legal.document.type">
+            <field name="name">Residence card</field>
+            <field name="code">residence_card</field>
+            <field name="category">identity</field>
+            <field name="validity">none</field>
+            <field name="sequence">12</field>
+        </record>
+        <!-- صور شخصية -->
+        <record id="ldm_doctype_photos" model="legal.document.type">
+            <field name="name">Personal photographs</field>
+            <field name="code">photos</field>
+            <field name="category">identity</field>
+            <field name="validity">freshness_days</field>
+            <field name="validity_days">180</field>
+            <field name="sequence">13</field>
+        </record>
+        <!-- الإقامة -->
+        <record id="ldm_doctype_residency_permit" model="legal.document.type">
+            <field name="name">Residency permit</field>
+            <field name="code">residency_permit</field>
+            <field name="category">identity</field>
+            <field name="validity">expiry_date</field>
+            <field name="sequence">14</field>
+        </record>
+        <!-- إجازة العمل -->
+        <record id="ldm_doctype_work_permit" model="legal.document.type">
+            <field name="name">Work permit</field>
+            <field name="code">work_permit</field>
+            <field name="category">identity</field>
+            <field name="validity">expiry_date</field>
+            <field name="sequence">15</field>
+        </record>
+        <!-- شهادة تأسيس الشركة -->
+        <record id="ldm_doctype_incorporation_certificate" model="legal.document.type">
+            <field name="name">Certificate of incorporation</field>
+            <field name="code">incorporation_certificate</field>
+            <field name="category">registry</field>
+            <field name="validity">none</field>
+            <field name="sequence">20</field>
+        </record>
+        <!-- عقد التأسيس -->
+        <record id="ldm_doctype_articles" model="legal.document.type">
+            <field name="name">Articles of association</field>
+            <field name="code">articles</field>
+            <field name="category">registry</field>
+            <field name="validity">none</field>
+            <field name="sequence">21</field>
+        </record>
+        <!-- محضر تعيين المدير المفوض -->
+        <record id="ldm_doctype_md_appointment" model="legal.document.type">
+            <field name="name">Minutes appointing the managing director</field>
+            <field name="code">md_appointment</field>
+            <field name="category">registry</field>
+            <field name="validity">none</field>
+            <field name="sequence">22</field>
+        </record>
+        <!-- محضر اجتماع الهيئة العامة -->
+        <record id="ldm_doctype_ga_minutes" model="legal.document.type">
+            <field name="name">General assembly minutes</field>
+            <field name="code">ga_minutes</field>
+            <field name="category">registry</field>
+            <field name="validity">none</field>
+            <field name="sequence">23</field>
+        </record>
+        <!-- الحسابات الختامية المدققة -->
+        <record id="ldm_doctype_final_accounts" model="legal.document.type">
+            <field name="name">Audited final accounts</field>
+            <field name="code">final_accounts</field>
+            <field name="category">registry</field>
+            <field name="validity">fixed_days</field>
+            <field name="validity_days">365</field>
+            <field name="sequence">24</field>
+        </record>
+        <!-- تأييد مصرفي بإيداع رأس المال -->
+        <record id="ldm_doctype_capital_deposit" model="legal.document.type">
+            <field name="name">Bank confirmation of the capital deposit</field>
+            <field name="code">capital_deposit</field>
+            <field name="category">registry</field>
+            <field name="validity">freshness_days</field>
+            <field name="validity_days">90</field>
+            <field name="sequence">25</field>
+        </record>
+        <!-- تأييد صادر من مسجل الشركات -->
+        <record id="ldm_doctype_registrar_confirmation" model="legal.document.type">
+            <field name="name">Registrar's confirmation letter</field>
+            <field name="code">registrar_confirmation</field>
+            <field name="category">registry</field>
+            <field name="validity">freshness_days</field>
+            <field name="validity_days">90</field>
+            <field name="sequence">26</field>
+        </record>
+        <!-- إجازة الاستيراد -->
+        <record id="ldm_doctype_import_licence" model="legal.document.type">
+            <field name="name">Import licence</field>
+            <field name="code">import_licence</field>
+            <field name="category">registry</field>
+            <field name="validity">expiry_date</field>
+            <field name="sequence">27</field>
+        </record>
+        <!-- عقد إيجار مصدق -->
+        <record id="ldm_doctype_lease" model="legal.document.type">
+            <field name="name">Certified lease contract</field>
+            <field name="code">lease</field>
+            <field name="category">contract</field>
+            <field name="validity">expiry_date</field>
+            <field name="sequence">30</field>
+        </record>
+        <!-- قائمة كهرباء مسددة -->
+        <record id="ldm_doctype_electricity_bill" model="legal.document.type">
+            <field name="name">Paid electricity bill</field>
+            <field name="code">electricity_bill</field>
+            <field name="category">receipt</field>
+            <field name="validity">freshness_days</field>
+            <field name="validity_days">90</field>
+            <field name="sequence">31</field>
+        </record>
+        <!-- البطاقة الضريبية -->
+        <record id="ldm_doctype_tax_card" model="legal.document.type">
+            <field name="name">Tax card</field>
+            <field name="code">tax_card</field>
+            <field name="category">tax</field>
+            <field name="validity">expiry_date</field>
+            <field name="sequence">40</field>
+        </record>
+        <!-- براءة الذمة الضريبية -->
+        <record id="ldm_doctype_tax_clearance" model="legal.document.type">
+            <field name="name">Tax clearance</field>
+            <field name="code">tax_clearance</field>
+            <field name="category">tax</field>
+            <field name="validity">expiry_date</field>
+            <field name="sequence">41</field>
+        </record>
+        <!-- الإقرار الضريبي السنوي -->
+        <record id="ldm_doctype_tax_return" model="legal.document.type">
+            <field name="name">Annual tax return</field>
+            <field name="code">tax_return</field>
+            <field name="category">tax</field>
+            <field name="validity">none</field>
+            <field name="sequence">42</field>
+        </record>
+        <!-- شهادة تسجيل المشروع في الضمان الاجتماعي -->
+        <record id="ldm_doctype_ss_registration" model="legal.document.type">
+            <field name="name">Social security registration certificate</field>
+            <field name="code">ss_registration</field>
+            <field name="category">social_security</field>
+            <field name="validity">none</field>
+            <field name="sequence">50</field>
+        </record>
+        <!-- براءة ذمة الضمان الاجتماعي -->
+        <record id="ldm_doctype_ss_clearance" model="legal.document.type">
+            <field name="name">Social security clearance</field>
+            <field name="code">ss_clearance</field>
+            <field name="category">social_security</field>
+            <field name="validity">expiry_date</field>
+            <field name="sequence">51</field>
+        </record>
+        <!-- هوية غرفة التجارة -->
+        <record id="ldm_doctype_chamber_id" model="legal.document.type">
+            <field name="name">Chamber of commerce ID</field>
+            <field name="code">chamber_id</field>
+            <field name="category">chamber</field>
+            <field name="validity">expiry_date</field>
+            <field name="sequence">60</field>
+        </record>
+        <!-- موافقة حجز الاسم التجاري -->
+        <record id="ldm_doctype_trade_name" model="legal.document.type">
+            <field name="name">Trade name reservation</field>
+            <field name="code">trade_name</field>
+            <field name="category">chamber</field>
+            <field name="validity">fixed_days</field>
+            <field name="validity_days">90</field>
+            <field name="sequence">61</field>
+        </record>
+        <!-- وكالة عامة -->
+        <record id="ldm_doctype_poa_general" model="legal.document.type">
+            <field name="name">General power of attorney</field>
+            <field name="code">poa_general</field>
+            <field name="category">poa</field>
+            <field name="validity">expiry_date</field>
+            <field name="sequence">70</field>
+        </record>
+        <!-- وكالة خاصة -->
+        <record id="ldm_doctype_poa_special" model="legal.document.type">
+            <field name="name">Special power of attorney</field>
+            <field name="code">poa_special</field>
+            <field name="category">poa</field>
+            <field name="validity">expiry_date</field>
+            <field name="sequence">71</field>
+        </record>
+        <!-- وثيقة تخويل المراجع -->
+        <record id="ldm_doctype_runner_authorisation" model="legal.document.type">
+            <field name="name">Runner's authorisation letter</field>
+            <field name="code">runner_authorisation</field>
+            <field name="category">poa</field>
+            <field name="validity">expiry_date</field>
+            <field name="sequence">72</field>
+        </record>
+        <!-- سنوية المركبة -->
+        <record id="ldm_doctype_vehicle_registration" model="legal.document.type">
+            <field name="name">Vehicle registration (annual)</field>
+            <field name="code">vehicle_registration</field>
+            <field name="category">other</field>
+            <field name="validity">expiry_date</field>
+            <field name="sequence">80</field>
+        </record>
+        <!-- وصل تسديد -->
+        <record id="ldm_doctype_payment_receipt" model="legal.document.type">
+            <field name="name">Payment receipt</field>
+            <field name="code">payment_receipt</field>
+            <field name="category">receipt</field>
+            <field name="validity">none</field>
+            <field name="sequence">81</field>
+        </record>
+        <!-- كتاب رسمي -->
+        <record id="ldm_doctype_official_letter" model="legal.document.type">
+            <field name="name">Official letter</field>
+            <field name="code">official_letter</field>
+            <field name="category">letter</field>
+            <field name="validity">none</field>
+            <field name="sequence">82</field>
+        </record>
+        <!-- قرار / حكم -->
+        <record id="ldm_doctype_judgment" model="legal.document.type">
+            <field name="name">Court judgment</field>
+            <field name="code">judgment</field>
+            <field name="category">court</field>
+            <field name="validity">none</field>
+            <field name="sequence">90</field>
+        </record>
+
+        <!-- Reminders on a client (no matter to hang them on): documents of
+             the vault that expire, obligations that open no matter. -->
+        <record id="ldm_activity_company_expiry" model="mail.activity.type">
+            <field name="name">Company document or obligation</field>
+            <field name="res_model">legal.company</field>
+            <field name="icon">fa-calendar-times-o</field>
+            <field name="delay_count">0</field>
+            <field name="sequence">46</field>
+        </record>
+
+        <!-- Daily jobs -->
+        <record id="ir_cron_ldm_document_expiry" model="ir.cron">
+            <field name="name">Legal: mark expired documents on matters</field>
+            <field name="model_id" ref="model_legal_task_document"/>
+            <field name="state">code</field>
+            <field name="code">model._cron_ldm_mark_expired()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="active">True</field>
+        </record>
+        <record id="ir_cron_ldm_vault_deadlines" model="ir.cron">
+            <field name="name">Legal: expiry deadlines for company documents</field>
+            <field name="model_id" ref="model_legal_company_document"/>
+            <field name="state">code</field>
+            <field name="code">model._cron_ldm_vault_deadlines()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="active">True</field>
+        </record>
+        <record id="ir_cron_ldm_obligations" model="ir.cron">
+            <field name="name">Legal: open matters for recurring obligations</field>
+            <field name="model_id" ref="model_legal_obligation"/>
+            <field name="state">code</field>
+            <field name="code">model._cron_ldm_open_obligations()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="active">True</field>
+        </record>
+    </data>
+
+    <!-- Coverage follows the client: a lawyer or clerk sees the rows of the
+         clients they can open; managers, the auditor and billing see all. -->
+    <record id="legal_company_coverage_rule_team" model="ir.rule">
+        <field name="name">Coverage: clients I work for</field>
+        <field name="model_id" ref="model_legal_company_coverage"/>
+        <field name="domain_force">['|', '|', '|', ('legal_company_id.lawyer_id', '=', user.id), ('legal_company_id.lawyer_ids', 'in', [user.id]), ('legal_company_id.task_ids.lawyer_ids', 'in', [user.id]), ('legal_company_id.task_ids.step_ids.user_id', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_ldm_clerk'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+    <record id="legal_company_coverage_rule_all" model="ir.rule">
+        <field name="name">Coverage: all clients</field>
+        <field name="model_id" ref="model_legal_company_coverage"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_legal_manager')), (4, ref('group_ldm_see_all')), (4, ref('group_ldm_auditor')), (4, ref('group_ldm_billing_user'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+    <record id="legal_company_coverage_rule_company" model="ir.rule">
+        <field name="name">Coverage: allowed companies</field>
+        <field name="model_id" ref="model_legal_company_coverage"/>
+        <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+    </record>
 </odoo>
