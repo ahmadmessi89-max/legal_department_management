@@ -78,3 +78,12 @@ class TestCronLanguage(LdmCase):
         task = self.env["legal.task"].browse(self.env["legal.task"].with_user(self.lawyer).with_context(
             lang="ar_001").create_from_template({"template_id": template.id, "legal_company_id": self.client_a.id}))
         self.assertIn("فتح الإضبارة التنفيذية في مديرية التنفيذ", task.step_ids.mapped("name"))
+
+    def test_a_request_shows_its_matter_status_in_the_readers_language(self):
+        if not self.arabic:
+            self.skipTest("Arabic is not installed in this database")
+        field = self.env["legal.request"]._fields["matter_state"]
+        arabic = dict(field._description_selection(self.env(context=dict(self.env.context, lang="ar_001"))))
+        english = dict(field._description_selection(self.env(context=dict(self.env.context, lang="en_US"))))
+        self.assertEqual(english["in_progress"], "In progress")
+        self.assertEqual(arabic["in_progress"], "قيد الإجراء")
