@@ -1,0 +1,44 @@
+// New matter dialog.
+.o_ldm_template_picker {
+    display: grid;
+    gap: var(--ldm-space-2);
+    inline-size: 100%;
+}
+
+.o_ldm_recents {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--ldm-space-1);
+}
+
+.o_ldm_recents_label {
+    font-size: var(--ldm-font-micro);
+    color: var(--ldm-ink-faint);
+    margin-inline-end: var(--ldm-space-1);
+}
+
+.o_ldm_recent {
+    min-block-size: 1.75rem;
+    padding-inline: var(--ldm-space-2);
+    border: 1px solid var(--ldm-line);
+    border-radius: var(--ldm-radius-pill);
+    background-color: var(--ldm-panel);
+    color: var(--ldm-ink-muted);
+    font-size: var(--ldm-font-meta);
+
+    &:hover { border-color: var(--ldm-brand); color: var(--ldm-brand); cursor: pointer; }
+    &:focus-visible { outline: none; box-shadow: var(--ldm-focus); }
+
+    &.o_ldm_recent_on {
+        border-color: var(--ldm-brand);
+        background-color: var(--ldm-brand-soft);
+        color: var(--ldm-brand);
+        font-weight: 600;
+    }
+}
+
+.o_ldm_quick_create {
+    .o_ldm_qc_more { margin-block: var(--ldm-space-2) 0; }
+    .o_ldm_conflict_banner .o_field_text { white-space: pre-line; }
+}

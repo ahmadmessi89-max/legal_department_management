@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="legal_department_management.TemplatePicker">
+        <div class="o_ldm o_ldm_template_picker">
+            <div class="o_ldm_recents" t-if="recents.length &amp;&amp; !props.readonly" role="group" t-att-aria-label="recentLabel">
+                <span class="o_ldm_recents_label" t-esc="recentLabel"/>
+                <button type="button" t-foreach="recents" t-as="recent" t-key="recent.id"
+                        t-attf-class="o_ldm_recent {{ recent.active ? 'o_ldm_recent_on' : '' }}"
+                        t-att-aria-pressed="recent.active ? 'true' : 'false'"
+                        t-on-click="() => this.choose(recent)" t-esc="recent.name"/>
+            </div>
+            <Many2One t-props="m2oProps"/>
+        </div>
+    </t>
+
+    <t t-name="legal_department_management.MoreToggle">
+        <div class="o_ldm o_ldm_more_toggle_row o_ldm_qc_more">
+            <button type="button" class="o_ldm_more_toggle_btn" t-on-click="toggle"
+                    t-att-aria-expanded="isOpen ? 'true' : 'false'">
+                <i t-attf-class="fa {{ isOpen ? 'fa-chevron-up' : 'fa-chevron-down' }}" role="img" aria-hidden="true"/>
+                <span t-esc="label"/>
+            </button>
+        </div>
+    </t>
+
+</templates>

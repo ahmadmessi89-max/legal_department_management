@@ -1,193 +1,181 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <!--
-        Client file: SAG's company report rewritten in place (same xmlids and
-        report name). Identifiers, the matters grouped by body, what is open
-        and next, and the expenses for those who may see money. Its options
-        come as report data from the "Client file" dialog; printed straight
-        from the client it shows every matter the reader may open.
-    -->
+    <!-- Paperformat with minimal zero-waste top margin -->
     <record id="paperformat_legal_compact_report" model="report.paperformat">
-        <field name="name">Legal A4 (compact)</field>
-        <field name="default" eval="False"/>
+        <field name="name">تقرير قانوني مضغوط (أقل ضياع للهوامش)</field>
+        <field name="default" eval="True"/>
         <field name="format">A4</field>
         <field name="page_height">0</field>
         <field name="page_width">0</field>
         <field name="orientation">Portrait</field>
-        <field name="margin_top">52</field>
-        <field name="margin_bottom">32</field>
-        <field name="margin_left">0</field>
-        <field name="margin_right">0</field>
+        <field name="margin_top">12</field>
+        <field name="margin_bottom">12</field>
+        <field name="margin_left">10</field>
+        <field name="margin_right">10</field>
         <field name="header_line" eval="False"/>
-        <field name="header_spacing">52</field>
+        <field name="header_spacing">0</field>
         <field name="dpi">90</field>
-        <field name="css_margins" eval="True"/>
     </record>
 
+    <!-- Report Action linked with compact paperformat -->
     <record id="action_report_legal_company" model="ir.actions.report">
-        <field name="name">Client file</field>
+        <field name="name">تقرير ملف الشركة الشامل</field>
         <field name="model">legal.company</field>
         <field name="report_type">qweb-pdf</field>
         <field name="report_name">legal_department_management.report_legal_company_template</field>
         <field name="report_file">legal_department_management.report_legal_company_template</field>
-        <field name="print_report_name">'Client file - %s' % (object.name or '')</field>
+        <field name="print_report_name">'تقرير_شركة_' + (object.name or '')</field>
         <field name="binding_model_id" ref="model_legal_company"/>
         <field name="binding_type">report</field>
         <field name="paperformat_id" ref="paperformat_legal_compact_report"/>
     </record>
 
-    <template id="report_ldm_matter_rows">
-        <!-- One table of matters; ``rows`` and ``show_client`` are set by the caller. -->
-        <table class="o_ldm_r_table">
-            <thead>
-                <tr>
-                    <th>Matter</th>
-                    <th t-if="show_client">Client</th>
-                    <th t-if="show_body">Body or court</th>
-                    <th>Responsible</th>
-                    <th>Next</th>
-                    <th>Status</th>
-                    <th t-if="can_money" class="o_ldm_r_num">Expenses</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr t-foreach="rows" t-as="task">
-                    <td>
-                        <div><b t-out="task.name"/> <span t-if="task.is_urgent" class="o_ldm_r_badge">Urgent</span></div>
-                        <div class="o_ldm_r_sub" t-out="task.task_number"/>
-                    </td>
-                    <td t-if="show_client" t-out="task.legal_company_id.name"/>
-                    <td t-if="show_body" t-out="task.department_id.name or '–'"/>
-                    <td t-out="task.lawyer_id.name or ''"/>
-                    <td>
-                        <t t-if="task.next_date">
-                            <div t-att-class="'o_ldm_r_nowrap o_ldm_r_late' if task.next_date &lt; today else 'o_ldm_r_nowrap'" t-out="fdate(task.next_date)"/>
-                            <div class="o_ldm_r_sub" t-out="task.next_action or ''"/>
-                        </t>
-                        <span t-else="" class="o_ldm_r_muted">–</span>
-                    </td>
-                    <td><span t-field="task.state"/></td>
-                    <td t-if="can_money" class="o_ldm_r_num" t-out="money(task.expenses_amount, task.company_currency_id)"/>
-                </tr>
-            </tbody>
-        </table>
-    </template>
-
     <template id="report_legal_company_document">
-        <t t-set="file" t-value="files.get(doc.id, {})"/>
-        <t t-call="web.external_layout">
-            <div class="page o_ldm_r" t-att-dir="ldm_dir">
-                <t t-call="legal_department_management.report_ldm_style"/>
-                <div class="o_ldm_r_kicker">Client file</div>
-                <h2 t-out="doc.name"/>
-                <div class="o_ldm_r_sub">
-                    Printed on <span t-out="fdate(today)"/>
-                    <t t-foreach="filter_lines" t-as="line"> · <span t-out="line[0]"/>: <span t-out="line[1]"/></t>
-                </div>
-
-                <t t-if="show_identifiers">
-                    <table class="o_ldm_r_facts">
-                        <tr>
-                            <td class="o_ldm_r_label">Client is</td>
-                            <td>
-                                <span t-field="doc.client_kind"/>
-                                <t t-if="doc.client_kind == 'company' and doc.company_type"> · <span t-field="doc.company_type"/></t>
-                            </td>
-                            <td class="o_ldm_r_label">Responsible</td>
-                            <td t-out="doc.lawyer_id.name or '–'"/>
-                        </tr>
-                        <tr t-if="doc.registration_number or doc.tax_number">
-                            <td class="o_ldm_r_label">Registration number</td>
-                            <td t-out="doc.registration_number or '–'"/>
-                            <td class="o_ldm_r_label">Tax number</td>
-                            <td t-out="doc.tax_number or '–'"/>
-                        </tr>
-                        <tr t-if="doc.social_security_number or doc.chamber_number">
-                            <td class="o_ldm_r_label">Social security number</td>
-                            <td t-out="doc.social_security_number or '–'"/>
-                            <td class="o_ldm_r_label">Chamber of commerce ID</td>
-                            <td>
-                                <span t-out="doc.chamber_number or '–'"/>
-                                <span t-if="doc.chamber_grade" class="o_ldm_r_sub"> · <span t-out="doc.chamber_grade"/></span>
-                            </td>
-                        </tr>
-                        <tr t-if="doc.owner_name or doc.entity_type or doc.national_id">
-                            <td class="o_ldm_r_label" t-if="doc.client_kind == 'individual'">National ID</td>
-                            <td t-if="doc.client_kind == 'individual'" t-out="doc.national_id or '–'"/>
-                            <td class="o_ldm_r_label" t-if="doc.client_kind != 'individual'">Managing director</td>
-                            <td t-if="doc.client_kind != 'individual'" t-out="doc.owner_name or '–'"/>
-                            <td class="o_ldm_r_label">Business activity</td>
-                            <td t-out="doc.entity_type or '–'"/>
-                        </tr>
-                        <tr t-if="doc.phone or doc.email or doc.address">
-                            <td class="o_ldm_r_label">Contact</td>
-                            <td>
-                                <span t-out="doc.phone or ''"/>
-                                <span t-if="doc.email"> · <span t-out="doc.email"/></span>
-                            </td>
-                            <td class="o_ldm_r_label">Address</td>
-                            <td t-out="doc.address or '–'"/>
-                        </tr>
-                    </table>
-                </t>
-
-                <table class="o_ldm_r_summary">
-                    <tr>
-                        <td>Open matters: <b t-out="file.get('open_count', 0)"/></td>
-                        <td>Done or cancelled: <b t-out="file.get('closed_count', 0)"/></td>
-                        <td t-if="can_money">
-                            Expenses:
-                            <t t-if="not file.get('expenses')"><b>–</b></t>
-                            <t t-foreach="file.get('expenses', [])" t-as="pair"><b t-out="money(pair[1], pair[0])"/> </t>
-                        </td>
-                    </tr>
-                </table>
-
-                <t t-if="not file.get('tasks')">
-                    <div class="o_ldm_r_empty">No matter matches these options.</div>
+        <t t-call="web.basic_layout">
+            <div class="page" dir="rtl" style="font-family: 'Cairo', 'Segoe UI', Tahoma, sans-serif; font-size: 12px; color: #212529; padding: 0; margin: 0;">
+                
+                <!-- Filter Context Parameters -->
+                <t t-set="report_data" t-value="env.context.get('report_data', {})"/>
+                <t t-set="show_company_info" t-value="report_data.get('show_company_info', True)"/>
+                <t t-set="filtered_task_ids" t-value="report_data.get('task_ids', False)"/>
+                <t t-if="filtered_task_ids">
+                    <t t-set="tasks_to_render" t-value="doc.task_ids.filtered(lambda t: t.id in filtered_task_ids)"/>
                 </t>
                 <t t-else="">
-                    <t t-if="file.get('open_items')">
-                        <div class="o_ldm_r_section">What is open and next</div>
-                        <table class="o_ldm_r_table">
-                            <thead><tr><th>Date</th><th>Matter</th><th>What</th></tr></thead>
-                            <tbody>
-                                <tr t-foreach="file['open_items']" t-as="item">
-                                    <td t-att-class="'o_ldm_r_nowrap o_ldm_r_late' if item['date'] &lt; today else 'o_ldm_r_nowrap'" t-out="fdate(item['date'])"/>
-                                    <td>
-                                        <span t-out="item['task'].name"/>
-                                        <span class="o_ldm_r_sub"> · <span t-out="item['task'].task_number"/></span>
-                                    </td>
-                                    <td t-out="item['text']"/>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </t>
-                    <t t-foreach="file['by_body']" t-as="group">
-                        <div class="o_ldm_r_section">
-                            <t t-if="group[0]"><span t-out="group[0].name"/></t><t t-else="">No body or court</t> · <span t-out="len(group[1])"/>
-                        </div>
-                        <t t-set="rows" t-value="group[1]"/>
-                        <t t-set="show_client" t-value="False"/>
-                        <t t-set="show_body" t-value="False"/>
-                        <t t-call="legal_department_management.report_ldm_matter_rows"/>
-                    </t>
+                    <t t-set="tasks_to_render" t-value="doc.task_ids"/>
                 </t>
 
-                <table class="o_ldm_r_sign">
-                    <tr>
-                        <td>
-                            <div>Responsible</div>
-                            <div class="o_ldm_r_sign_name" t-out="doc.lawyer_id.name or ''"/>
-                            <div class="o_ldm_r_sign_line">Signature</div>
-                        </td>
-                        <td>
-                            <div>Legal manager</div>
-                            <div class="o_ldm_r_sign_name"/>
-                            <div class="o_ldm_r_sign_line">Signature and stamp</div>
-                        </td>
-                    </tr>
+                <!-- Ultra Compact Header (Minimum Whitespace) -->
+                <div style="border-bottom: 2px solid #0d6efd; padding-bottom: 5px; margin-bottom: 10px;" class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h3 style="margin: 0; color: #0d6efd; font-weight: bold; font-size: 18px;">
+                            تقرير الإجراءات والقضايا القانونية
+                        </h3>
+                        <div style="font-size: 11px; color: #6c757d;">
+                            الشركة / الموكل: <strong class="text-dark"><span t-field="doc.name"/></strong>
+                            <t t-if="report_data.get('filter_department_name')"> | الدائرة: <strong class="text-primary"><span t-esc="report_data.get('filter_department_name')"/></strong></t>
+                            <t t-if="report_data.get('filter_lawyer_name')"> | المحامي: <strong class="text-primary"><span t-esc="report_data.get('filter_lawyer_name')"/></strong></t>
+                            <t t-if="report_data.get('filter_state_label')"> | الحالة: <strong class="text-primary"><span t-esc="report_data.get('filter_state_label')"/></strong></t>
+                        </div>
+                    </div>
+                    <div class="text-start" style="font-size: 11px; color: #495057;">
+                        <div>تاريخ الإصدار: <strong><span t-esc="datetime.date.today().strftime('%Y-%m-%d')"/></strong></div>
+                        <div>الرمز: <strong class="text-primary"><span t-esc="doc.code or '-'"/></strong></div>
+                    </div>
+                </div>
+
+                <!-- Optional Company Details Card (Controlled by toggle) -->
+                <t t-if="show_company_info">
+                    <div style="border: 1px solid #dee2e6; border-radius: 4px; padding: 6px 10px; margin-bottom: 10px; background-color: #fcfcfc;">
+                        <div class="row g-1" style="font-size: 11px;">
+                            <div class="col-6">
+                                <div><strong>اسم الشركة:</strong> <span class="fw-bold text-primary" t-field="doc.name"/></div>
+                                <div><strong>نوع الكيان:</strong> <span t-field="doc.company_type"/></div>
+                                <div><strong>المدير المفوض / المالك:</strong> <span t-esc="doc.owner_name or '-'"/></div>
+                                <div><strong>النشاط التجاري:</strong> <span t-esc="doc.entity_type or '-'"/></div>
+                            </div>
+                            <div class="col-6">
+                                <div><strong>رقم التسجيل:</strong> <span t-esc="doc.registration_number or '-'"/></div>
+                                <div><strong>الرقم الضريبي:</strong> <span t-esc="doc.tax_number or '-'"/></div>
+                                <div><strong>الهاتف:</strong> <span t-esc="doc.phone or '-'"/> | <strong>الإيميل:</strong> <span t-esc="doc.email or '-'"/></div>
+                                <div><strong>المحامون المكلفون:</strong> 
+                                    <span class="fw-bold" t-esc="', '.join(doc.lawyer_ids.mapped('name')) if doc.lawyer_ids else (doc.lawyer_id.name or '-')"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+
+                <!-- Compact Summary Stats Bar -->
+                <div class="row g-2 text-center mb-2" style="font-size: 11px;">
+                    <div class="col-4">
+                        <div style="border: 1px solid #cfe2ff; background-color: #f0f7ff; padding: 4px; border-radius: 3px;">
+                            <span>إجمالي المعاملات المشمولة: </span>
+                            <strong class="text-primary"><span t-esc="len(tasks_to_render)"/></strong>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div style="border: 1px solid #fff3cd; background-color: #fffdf5; padding: 4px; border-radius: 3px;">
+                            <span>المعاملات الجارية: </span>
+                            <strong class="text-warning"><span t-esc="len(tasks_to_render.filtered(lambda t: t.state in ['draft', 'in_progress', 'pending_docs']))"/></strong>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div style="border: 1px solid #d1e7dd; background-color: #f3fbf6; padding: 4px; border-radius: 3px;">
+                            <span>إجمالي المصروفات: </span>
+                            <strong class="text-success"><span t-esc="sum(tasks_to_render.mapped('expenses_amount'))"/> د.ع</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Tasks Table Matching User Layout -->
+                <table class="table table-sm table-bordered text-center align-middle mb-2" style="border-collapse: collapse; width: 100%; font-size: 11px;">
+                    <thead style="background-color: #f1f4f9; border-bottom: 2px solid #b6c5d6;">
+                        <tr>
+                            <th style="width: 4%; padding: 4px;">ت</th>
+                            <th style="width: 25%; padding: 4px;">عنوان الإجراء / المعاملة</th>
+                            <th style="width: 18%; padding: 4px;">الدائرة / القسم</th>
+                            <th style="width: 15%; padding: 4px;">المحامون المكلفون</th>
+                            <th style="width: 11%; padding: 4px;">تاريخ الجلسة</th>
+                            <th style="width: 11%; padding: 4px;">تاريخ الاستحقاق</th>
+                            <th style="width: 8%; padding: 4px;">المصروفات</th>
+                            <th style="width: 8%; padding: 4px;">الحالة</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-if="not tasks_to_render">
+                            <tr>
+                                <td colspan="8" class="text-muted py-3" style="padding: 10px;">لا توجد معاملات مطابقة للفلترة المحددة.</td>
+                            </tr>
+                        </t>
+                        <t t-foreach="tasks_to_render" t-as="task">
+                            <tr>
+                                <td style="padding: 3px;"><span t-esc="task_index + 1"/></td>
+                                <td class="text-end fw-bold text-primary" style="padding: 3px 6px;">
+                                    <span t-if="task.is_urgent" style="color: #dc3545; margin-left: 2px;">⚠️</span>
+                                    <span t-field="task.name"/>
+                                </td>
+                                <td style="padding: 3px;"><span t-field="task.department_id.name"/></td>
+                                <td style="padding: 3px;"><span t-esc="', '.join(task.lawyer_ids.mapped('name')) if task.lawyer_ids else (task.lawyer_id.name or '-')"/></td>
+                                <td style="padding: 3px;"><span t-esc="task.session_date or '-'"/></td>
+                                <td style="padding: 3px;"><span t-esc="task.due_date or '-'"/></td>
+                                <td class="fw-bold text-success" style="padding: 3px;"><span t-field="task.expenses_amount"/> د.ع</td>
+                                <td style="padding: 3px;">
+                                    <span t-if="task.state == 'draft'">مسودة</span>
+                                    <span t-if="task.state == 'in_progress'" class="text-info fw-bold">قيد الإجراء</span>
+                                    <span t-if="task.state == 'pending_docs'" class="text-warning fw-bold">بانتظار وثائق</span>
+                                    <span t-if="task.state == 'done'" class="text-success fw-bold">منجز ✓</span>
+                                    <span t-if="task.state == 'cancelled'" class="text-danger">ملغى</span>
+                                </td>
+                            </tr>
+                        </t>
+                    </tbody>
+                    <t t-if="tasks_to_render">
+                        <tfoot style="background-color: #f8f9fa; font-weight: bold;">
+                            <tr>
+                                <td colspan="6" class="text-end pe-3" style="padding: 4px;">إجمالي المصروفات والرسوم المدفوعة:</td>
+                                <td class="text-success fw-bold" style="padding: 4px;"><span t-esc="sum(tasks_to_render.mapped('expenses_amount'))"/> د.ع</td>
+                                <td></td>
+                            </tr>
+                        </tfoot>
+                    </t>
                 </table>
+
+                <!-- Signatures (Compact) -->
+                <div class="row mt-3 pt-2" style="font-size: 11px;">
+                    <div class="col-6 text-center">
+                        <p class="fw-bold mb-1">المحامي المكلف / فريق العمل</p>
+                        <p class="text-primary fw-bold mb-3">
+                            <span t-esc="', '.join(doc.lawyer_ids.mapped('name')) if doc.lawyer_ids else (doc.lawyer_id.name or '-')"/>
+                        </p>
+                        <p class="text-muted">التوقيع: _______________________</p>
+                    </div>
+                    <div class="col-6 text-center">
+                        <p class="fw-bold mb-1">مصادقة المدير القانوني العام</p>
+                        <br/>
+                        <p class="text-muted">الختم والتوقيع: _______________________</p>
+                    </div>
+                </div>
             </div>
         </t>
     </template>
@@ -195,8 +183,7 @@
     <template id="report_legal_company_template">
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="doc">
-                <t t-set="o" t-value="doc"/>
-                <t t-call="legal_department_management.report_legal_company_document"/>
+                <t t-call="legal_department_management.report_legal_company_document" t-lang="doc.lawyer_id.lang or 'ar_001'"/>
             </t>
         </t>
     </template>

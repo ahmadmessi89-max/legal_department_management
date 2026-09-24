@@ -4,35 +4,31 @@
         <field name="name">legal.company.report.wizard.form</field>
         <field name="model">legal.company.report.wizard</field>
         <field name="arch" type="xml">
-            <form string="Client file">
-                <group>
-                    <field name="company_id" readonly="context.get('active_model') == 'legal.company'"
-                           options="{'no_create': True, 'no_open': True}"/>
-                    <field name="filter_state" widget="radio" options="{'horizontal': true}"/>
-                    <field name="show_company_info"/>
-                </group>
-                <group string="Narrow down (optional)">
-                        <field name="filter_lawyer_id" options="{'no_create': True}" placeholder="Everyone"/>
-                        <field name="filter_department_id" options="{'no_create': True}" placeholder="Every body or court"/>
-                        <field name="filter_task_ids" widget="many2many_tags" options="{'no_create': True}"
-                               placeholder="Every matter of the client"/>
-                </group>
+            <form string="خيارات وتخصيص طباعة التقرير">
+                <sheet>
+                    <div class="alert alert-info py-2 mb-3" role="alert">
+                        <i class="fa fa-sliders me-1"/> يمكنك تخصيص محتوى التقرير بإظهار أو إخفاء بيانات الشركة، أو فلترة المعاملات حسب جهة أو محامي أو تحديد قضايا معينة.
+                    </div>
+                    <group>
+                        <group string="إعدادات ظهور بيانات الشركة">
+                            <field name="company_id" readonly="1" options="{'no_open': True}"/>
+                            <field name="show_company_info" widget="boolean_toggle"/>
+                        </group>
+                        <group string="خيارات الفلترة والتصفية (اختياري)">
+                            <field name="filter_department_id" placeholder="كافة الدوائر والجهات..." options="{'no_create': True}"/>
+                            <field name="filter_lawyer_id" placeholder="كافة المحامين..." options="{'no_create': True}"/>
+                            <field name="filter_state"/>
+                        </group>
+                    </group>
+                    <group string="تحديد معاملات وقضايا محددة بالاسم (اختياري)">
+                        <field name="filter_task_ids" widget="many2many_tags" placeholder="اترك الحقل فارغاً لتضمين كافة المعاملات، أو حدد معاملات معينة..."/>
+                    </group>
+                </sheet>
                 <footer>
-                    <button name="action_print_report" string="Print" type="object" class="btn-primary"/>
-                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    <button name="action_print_report" string="🖨️ طباعة التقرير المخصص (PDF)" type="object" class="btn-primary oe_highlight"/>
+                    <button string="إلغاء" class="btn-secondary" special="cancel"/>
                 </footer>
             </form>
         </field>
-    </record>
-
-    <!-- In the client's Action menu: the file with a choice of matters. -->
-    <record id="action_ldm_client_file_wizard" model="ir.actions.act_window">
-        <field name="name">Client file (choose matters)</field>
-        <field name="res_model">legal.company.report.wizard</field>
-        <field name="view_mode">form</field>
-        <field name="target">new</field>
-        <field name="binding_model_id" ref="model_legal_company"/>
-        <field name="binding_view_types">form</field>
-        <field name="group_ids" eval="[(4, ref('group_ldm_clerk')), (4, ref('group_ldm_auditor')), (4, ref('group_ldm_billing_user'))]"/>
     </record>
 </odoo>

@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <!-- Client Action for OWL 3 Dashboard -->
+    <!-- My Day (مكتبي): the first screen, redesigned in place. SAG's action
+         xmlid and client tag are kept, so its menu and bookmarks still open it. -->
     <record id="action_legal_dashboard" model="ir.actions.client">
-        <field name="name">لوحة التحكم القانونية</field>
+        <field name="name">My Day</field>
         <field name="tag">legal_dashboard_tag</field>
         <field name="target">main</field>
+        <field name="path">my-day</field>
     </record>
 </odoo>

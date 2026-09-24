@@ -1,0 +1,454 @@
+// =====================================================================
+//  Legal workspace design tokens (docs/ldm/briefs/design-direction.md).
+//
+//  An identity of its own: ink for structure and the one primary action,
+//  a cool grey desk under white paper, stamp violet only for what is
+//  officially confirmed, and four colours that always mean something
+//  (red overdue or rejected, amber due within 48 hours or missing, green
+//  done or received, blue waiting on someone else). Kufi for headings and
+//  matter numbers, Plex for text. Radii follow hierarchy: bands 0, panels
+//  10px, inputs 6px, pills round.
+//
+//  Published as CSS custom properties on `.o_ldm`, so every file of the
+//  module reads the same values whatever order the bundle concatenates them
+//  in, and Odoo's own screens are untouched. Logical properties only.
+// =====================================================================
+
+.o_ldm {
+    // Structure
+    --ldm-ink: #14213D;
+    --ldm-ink-soft: #3B4A68;
+    --ldm-ink-muted: #3B4A68;
+    --ldm-ink-faint: #6B778C;
+    --ldm-paper: #FFFFFF;
+    --ldm-panel: #FFFFFF;
+    --ldm-desk: #EEF1F5;
+    --ldm-ground: #EEF1F5;
+    --ldm-sunken: #F6F8FA;
+    --ldm-hover: #F2F4F8;
+    --ldm-rule: #D5DBE4;
+    --ldm-line: #D5DBE4;
+    --ldm-brand: #14213D;
+    --ldm-brand-soft: rgba(20, 33, 61, 0.07);
+    --ldm-on-ink: #FFFFFF;
+    --ldm-on-ink-soft: rgba(255, 255, 255, 0.72);
+
+    // The stamp: only for what is officially confirmed.
+    --ldm-stamp: #5B3A9E;
+    --ldm-stamp-soft: rgba(91, 58, 158, 0.08);
+
+    // The four meanings: text colour and fill.
+    --ldm-danger: #B3122E;
+    --ldm-danger-soft: #FBE9EC;
+    --ldm-warning: #B96E00;
+    --ldm-warning-soft: #FFF4DB;
+    --ldm-success: #1D6B45;
+    --ldm-success-soft: #E6F4EC;
+    --ldm-info: #1D5FA0;
+    --ldm-info-soft: #E7F0FA;
+
+    // Quiet tints, one per kind of matter, for the start-edge spine.
+    --ldm-kind-government: #2F7E79;
+    --ldm-kind-litigation: #4A5A7A;
+    --ldm-kind-execution: #8A5A3C;
+    --ldm-kind-contract: #6C8A3A;
+    --ldm-kind-opinion: #5E8C9E;
+    --ldm-kind-corporate: #8C8A5A;
+    --ldm-kind-investigation: #7D5A5A;
+    --ldm-kind-other: #9AA4B2;
+    --ldm-kind: var(--ldm-kind-other);
+
+    // Spacing (4px base)
+    --ldm-space-1: 0.25rem;
+    --ldm-space-2: 0.5rem;
+    --ldm-space-3: 0.75rem;
+    --ldm-space-4: 1rem;
+    --ldm-space-5: 1.5rem;
+    --ldm-space-6: 2rem;
+
+    // Shape: radii follow hierarchy.
+    --ldm-radius-band: 0;
+    --ldm-radius-panel: 10px;
+    --ldm-radius-control: 6px;
+    --ldm-radius-pill: 999px;
+    --ldm-shadow-float: 0 8px 24px rgba(20, 33, 61, 0.14);
+    --ldm-focus: 0 0 0 3px rgba(20, 33, 61, 0.28);
+
+    // Type: 13 · 15 · 18 · 22 · 28. Arabic never below 13px.
+    --ldm-font-text: "Ldm Plex", "Ldm Plex Arabic", system-ui, -apple-system, "Segoe UI", Tahoma, sans-serif;
+    --ldm-font-head: "Ldm Kufi", "Ldm Plex", "Ldm Plex Arabic", system-ui, sans-serif;
+    --ldm-font-micro: 0.8125rem;
+    --ldm-font-meta: 0.8125rem;
+    --ldm-font-body: 0.9375rem;
+    --ldm-font-lead: 0.9375rem;
+    --ldm-font-section: 1.125rem;
+    --ldm-font-subject: 1.375rem;
+    --ldm-font-title: 1.75rem;
+
+    font-family: var(--ldm-font-text);
+    font-feature-settings: "kern";
+
+    &[dir="rtl"], [dir="rtl"] & { line-height: 1.6; }
+}
+
+// Odoo has no user dark mode in Community, but its dark bundle recompiles
+// this file: the same meanings on a dark desk.
+@if $o-webclient-color-scheme == dark {
+    .o_ldm {
+        --ldm-ink: #E6EAF2;
+        --ldm-ink-soft: #B8C1D1;
+        --ldm-ink-muted: #B8C1D1;
+        --ldm-ink-faint: #8C97AA;
+        --ldm-paper: #1F2533;
+        --ldm-panel: #1F2533;
+        --ldm-desk: #151A24;
+        --ldm-ground: #151A24;
+        --ldm-sunken: #232A39;
+        --ldm-hover: #283042;
+        --ldm-rule: #343D51;
+        --ldm-line: #343D51;
+        --ldm-brand: #C9D3E6;
+        --ldm-brand-soft: rgba(201, 211, 230, 0.1);
+        --ldm-on-ink: #FFFFFF;
+        --ldm-stamp: #B79CF0;
+        --ldm-stamp-soft: rgba(183, 156, 240, 0.12);
+        --ldm-danger: #F17A8C;
+        --ldm-danger-soft: rgba(241, 122, 140, 0.14);
+        --ldm-warning: #F1B45A;
+        --ldm-warning-soft: rgba(241, 180, 90, 0.14);
+        --ldm-success: #7FCBA2;
+        --ldm-success-soft: rgba(127, 203, 162, 0.14);
+        --ldm-info: #8CB9EA;
+        --ldm-info-soft: rgba(140, 185, 234, 0.14);
+    }
+}
+
+.o_ldm_kind_government { --ldm-kind: var(--ldm-kind-government); }
+.o_ldm_kind_litigation { --ldm-kind: var(--ldm-kind-litigation); }
+.o_ldm_kind_execution { --ldm-kind: var(--ldm-kind-execution); }
+.o_ldm_kind_contract { --ldm-kind: var(--ldm-kind-contract); }
+.o_ldm_kind_opinion { --ldm-kind: var(--ldm-kind-opinion); }
+.o_ldm_kind_corporate { --ldm-kind: var(--ldm-kind-corporate); }
+.o_ldm_kind_investigation { --ldm-kind: var(--ldm-kind-investigation); }
+.o_ldm_kind_other { --ldm-kind: var(--ldm-kind-other); }
+
+// Odoo's own buttons inside a workspace screen: the primary action is ink.
+.o_ldm {
+    .btn-primary {
+        --btn-bg: var(--ldm-ink);
+        --btn-border-color: var(--ldm-ink);
+        --btn-hover-bg: #0C1528;
+        --btn-hover-border-color: #0C1528;
+        --btn-active-bg: #0C1528;
+        --btn-active-border-color: #0C1528;
+        --btn-color: #fff;
+        --btn-hover-color: #fff;
+        --btn-active-color: #fff;
+        --btn-disabled-bg: var(--ldm-ink);
+        --btn-disabled-border-color: var(--ldm-ink);
+    }
+}
+
+// ------------------------------------------------------------ headings
+.o_ldm_kufi {
+    font-family: var(--ldm-font-head);
+    font-weight: 700;
+}
+
+.o_ldm_section_title {
+    margin: 0;
+    font-family: var(--ldm-font-head);
+    font-size: var(--ldm-font-section);
+    font-weight: 600;
+    line-height: 1.5;
+    color: var(--ldm-ink);
+}
+
+// -------------------------------------------------------------- the band
+// The one bold element: a solid ink band that opens My Day, the agenda and
+// the matter cockpit. Everything below it is quiet paper on the desk.
+.o_ldm_band {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--ldm-space-3) var(--ldm-space-5);
+    padding: var(--ldm-space-5) var(--ldm-space-6);
+    border-radius: var(--ldm-radius-band);
+    background-color: #14213D;
+    color: #fff;
+
+    .o_ldm_band_title {
+        margin: 0;
+        font-family: var(--ldm-font-head);
+        font-size: var(--ldm-font-title);
+        font-weight: 700;
+        line-height: 1.35;
+        color: #fff;
+    }
+
+    .o_ldm_band_meta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: var(--ldm-space-1) var(--ldm-space-3);
+        margin: var(--ldm-space-1) 0 0;
+        font-size: var(--ldm-font-body);
+        color: rgba(255, 255, 255, 0.78);
+    }
+
+    .o_ldm_band_sep { color: rgba(255, 255, 255, 0.4); }
+
+    @include media-breakpoint-down(md) {
+        padding: var(--ldm-space-3) var(--ldm-space-4);
+
+        .o_ldm_band_title { font-size: var(--ldm-font-section); }
+    }
+}
+
+// A button on the band: paper on ink, the screen's one primary action.
+.o_ldm_band_action {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--ldm-space-2);
+    min-block-size: 2.5rem;
+    padding-inline: var(--ldm-space-4);
+    border: 0;
+    border-radius: var(--ldm-radius-control);
+    background-color: #fff;
+    color: #14213D;
+    font-weight: 600;
+    white-space: nowrap;
+
+    &:hover { background-color: #E8ECF3; cursor: pointer; }
+    &:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+}
+
+// A quieter control on the band (search, scope).
+.o_ldm_band_ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--ldm-space-2);
+    min-block-size: 2.5rem;
+    padding-inline: var(--ldm-space-3);
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    border-radius: var(--ldm-radius-control);
+    background-color: rgba(255, 255, 255, 0.06);
+    color: rgba(255, 255, 255, 0.88);
+
+    &:hover { background-color: rgba(255, 255, 255, 0.12); cursor: pointer; }
+    &:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+}
+
+// ------------------------------------------------------------- the stamp
+// A rounded outline in stamp violet with a short Kufi word. Only officially
+// confirmed things carry it (approved, confirmed genuine, registered,
+// issued, signed); it lands with a short scale-and-settle when it is
+// recorded, and does not move under reduced motion.
+.o_ldm_stamp {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.05rem 0.55rem;
+    border: 2px solid var(--ldm-stamp);
+    border-radius: 0.45rem;
+    color: var(--ldm-stamp);
+    font-family: var(--ldm-font-head);
+    font-size: var(--ldm-font-micro);
+    font-weight: 700;
+    line-height: 1.6;
+    white-space: nowrap;
+    transform: rotate(-2deg);
+
+    [dir="rtl"] & { transform: rotate(2deg); }
+
+    &.o_ldm_stamp_on_ink {
+        border-color: #C8B6F0;
+        color: #E4DAFA;
+    }
+
+    &.o_ldm_stamp_land { animation: o_ldm_stamp_land 180ms ease-out both; }
+}
+
+@keyframes o_ldm_stamp_land {
+    0% { opacity: 0; transform: scale(1.35) rotate(-6deg); }
+    70% { opacity: 1; transform: scale(0.96) rotate(-2deg); }
+    100% { opacity: 1; transform: scale(1) rotate(-2deg); }
+}
+
+// --------------------------------------------------------------- icons
+// A Lucide icon drawn as a mask in the current text colour (LdmIcon).
+.o_ldm_icon {
+    display: inline-block;
+    flex: 0 0 auto;
+    inline-size: 1.05em;
+    block-size: 1.05em;
+    vertical-align: -0.15em;
+    background-color: currentColor;
+    mask: var(--ldm-icon) center / contain no-repeat;
+    -webkit-mask: var(--ldm-icon) center / contain no-repeat;
+
+    &.o_ldm_icon_sm { inline-size: 0.875em; block-size: 0.875em; }
+    &.o_ldm_icon_lg { inline-size: 1.25rem; block-size: 1.25rem; }
+    &.o_ldm_icon_xl { inline-size: 1.5rem; block-size: 1.5rem; }
+}
+
+// Arrows and chevrons point the reading way.
+[dir="rtl"] .o_ldm_icon_arrow-right,
+[dir="rtl"] .o_ldm_icon_arrow-left,
+[dir="rtl"] .o_ldm_icon_chevron-right,
+[dir="rtl"] .o_ldm_icon_chevron-left,
+[dir="rtl"] .o_ldm_icon_undo-2 { transform: scaleX(-1); }
+
+// --------------------------------------------------------------- pills
+// Status pills: an icon and a word, the tone in the text and the fill.
+// The word carries the meaning; the tint only repeats it.
+.o_ldm_pill,
+.o_ldm_chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding-block: 0.0625rem;
+    padding-inline: 0.6rem;
+    border-radius: var(--ldm-radius-pill);
+    background-color: var(--ldm-hover);
+    color: var(--ldm-ink-soft);
+    font-size: var(--ldm-font-micro);
+    font-weight: 500;
+    line-height: 1.6;
+    white-space: nowrap;
+
+    &.o_ldm_tone_danger { background-color: var(--ldm-danger-soft); color: var(--ldm-danger); }
+    &.o_ldm_tone_warning { background-color: var(--ldm-warning-soft); color: var(--ldm-warning); }
+    &.o_ldm_tone_success { background-color: var(--ldm-success-soft); color: var(--ldm-success); }
+    &.o_ldm_tone_info { background-color: var(--ldm-info-soft); color: var(--ldm-info); }
+    &.o_ldm_tone_ink { background-color: var(--ldm-ink); color: #fff; }
+
+    // Pills on the ink band.
+    &.o_ldm_pill_on_ink { background-color: rgba(255, 255, 255, 0.12); color: #fff; }
+}
+
+.o_ldm_flags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--ldm-space-1);
+}
+
+.o_ldm_text_danger { color: var(--ldm-danger); }
+.o_ldm_text_warning { color: var(--ldm-warning); }
+.o_ldm_text_success { color: var(--ldm-success); }
+.o_ldm_text_info { color: var(--ldm-info); }
+.o_ldm_text_muted { color: var(--ldm-ink-soft); }
+
+// Numbers that must not be reordered by the bidi algorithm and should line
+// up: references, counts, money.
+.o_ldm_num {
+    font-variant-numeric: tabular-nums;
+    unicode-bidi: isolate;
+}
+
+// A matter number: Kufi, tabular.
+.o_ldm_ref {
+    font-family: var(--ldm-font-head);
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    unicode-bidi: isolate;
+}
+
+// -------------------------------------------------------------- panels
+// Panels are white paper on the desk. Lists inside them are lists,
+// separated by hairlines, not stacks of cards.
+.o_ldm_panel,
+.o_ldm_card {
+    background-color: var(--ldm-paper);
+    border: 1px solid var(--ldm-rule);
+    border-radius: var(--ldm-radius-panel);
+    min-inline-size: 0;
+}
+
+.o_ldm_panel_head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--ldm-space-2) var(--ldm-space-3);
+    padding: var(--ldm-space-3) var(--ldm-space-4);
+    border-block-end: 1px solid var(--ldm-rule);
+}
+
+// A quiet text button (Undo, secondary actions).
+.o_ldm_linkbtn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--ldm-space-1);
+    padding: 0;
+    background: none;
+    border: 0;
+    color: var(--ldm-ink);
+    font-size: var(--ldm-font-meta);
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: var(--ldm-rule);
+    text-underline-offset: 0.2em;
+
+    &:hover { text-decoration-color: currentColor; cursor: pointer; }
+    &:focus-visible { outline: none; box-shadow: var(--ldm-focus); border-radius: var(--ldm-radius-control); }
+}
+
+// The one small action on a row or card.
+.o_ldm_action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--ldm-space-2);
+    min-block-size: 2.25rem;
+    padding-inline: var(--ldm-space-3);
+    border: 1px solid var(--ldm-rule);
+    border-radius: var(--ldm-radius-control);
+    background-color: var(--ldm-paper);
+    color: var(--ldm-ink);
+    font-size: var(--ldm-font-meta);
+    font-weight: 600;
+    white-space: nowrap;
+
+    &:hover:not(:disabled) { border-color: var(--ldm-ink); cursor: pointer; }
+    &:focus-visible { outline: none; box-shadow: var(--ldm-focus); }
+    &:disabled { opacity: 0.55; }
+
+    &.o_ldm_action_primary {
+        border-color: var(--ldm-ink);
+        background-color: var(--ldm-ink);
+        color: #fff;
+
+        &:hover:not(:disabled) { background-color: #0C1528; border-color: #0C1528; }
+    }
+}
+
+.o_ldm_empty {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--ldm-space-3);
+    padding: var(--ldm-space-4);
+    color: var(--ldm-ink-soft);
+
+    > .o_ldm_icon { font-size: 1.25rem; color: var(--ldm-success); margin-block-start: 0.2rem; }
+
+    p { margin: 0; }
+    .o_ldm_empty_title { color: var(--ldm-ink); font-weight: 600; }
+}
+
+.o_ldm_spinner {
+    display: inline-block;
+    inline-size: 1rem;
+    block-size: 1rem;
+    border: 2px solid var(--ldm-rule);
+    border-block-start-color: var(--ldm-ink);
+    border-radius: 50%;
+    animation: o_ldm_spin 0.7s linear infinite;
+}
+
+@keyframes o_ldm_spin { to { transform: rotate(360deg); } }
+
+@media (prefers-reduced-motion: reduce) {
+    .o_ldm_spinner { animation-duration: 2s; }
+    .o_ldm_stamp.o_ldm_stamp_land { animation: none; }
+}

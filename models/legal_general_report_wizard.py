@@ -1,80 +1,91 @@
 # -*- coding: utf-8 -*-
-import ast
-
-from odoo import _, api, fields, models
-from odoo.exceptions import UserError
-
-from .legal_company_report_wizard import STATE_FILTER
-
+from odoo import models, fields, api
+from datetime import date
 
 class LegalGeneralReportWizard(models.TransientModel):
-    """Options for the oversight report. Opened from the Matters list it takes
-    the selected matters (or the whole filtered list); opened from Reporting it
-    starts with every open matter."""
+    _name = 'legal.general.report.wizard'
+    _description = 'خيارات وفلترة تقرير الرقابة العامة الشامل للقضايا'
 
-    _name = "legal.general.report.wizard"
-    _description = "Oversight report options"
+    company_ids = fields.Many2many(
+        'legal.company',
+        'legal_general_report_company_rel',
+        'wizard_id',
+        'company_id',
+        string="الشركات والموكلين المشمولين"
+    )
+    
+    filter_lawyer_id = fields.Many2one('res.users', string="فلترة حسب المحامي المكلف")
+    filter_ministry_id = fields.Many2one('legal.ministry', string="فلترة حسب الوزارة / الهيئة")
+    filter_department_id = fields.Many2one('legal.department', string="فلترة حسب الدائرة / الجهة الرسمية")
+    filter_state = fields.Selection([
+        ('draft', 'مسودة'),
+        ('in_progress', 'قيد الإجراء'),
+        ('pending_docs', 'بانتظار الوثائق وصحة الصدور'),
+        ('done', 'منجز'),
+        ('cancelled', 'ملغى')
+    ], string="فلترة حسب حالة الإجراء")
 
-    company_ids = fields.Many2many("legal.company", "legal_general_report_company_rel", "wizard_id", "company_id",
-                                   string="Clients", help="Leave empty for every client.")
-    filter_lawyer_id = fields.Many2one("res.users", string="Responsible", domain="[('share', '=', False)]")
-    filter_department_id = fields.Many2one("legal.department", string="Body or court")
-    filter_state = fields.Selection(STATE_FILTER, string="Matters", required=True, default="open")
-    date_from = fields.Date(string="Dates from", help="Matters whose target date or next date falls in the period.")
-    date_to = fields.Date(string="Dates to")
-    group_by_company = fields.Boolean(string="Group by client", default=True)
-    filter_task_ids = fields.Many2many("legal.task", "legal_gen_report_wizard_task_rel", "wizard_id", "task_id",
-                                       string="Selected matters")
-    task_domain = fields.Char(string="Filter of the list", readonly=True)
-    selection_note = fields.Char(compute="_compute_selection_note")
+    date_from = fields.Date(string="من تاريخ استحقاق / جلسة")
+    date_to = fields.Date(string="إلى تاريخ استحقاق / جلسة")
+    
+    group_by_company = fields.Boolean(string="تقسيم وتجميع التقرير حسب الشركة", default=True)
 
-    @api.model
-    def default_get(self, fields_list):
-        values = super().default_get(fields_list)
-        context = self.env.context
-        model = context.get("active_model")
-        if model == "legal.task":
-            if context.get("active_domain") is not None and not context.get("active_ids"):
-                values["task_domain"] = repr(context["active_domain"])
-                values["filter_state"] = "all"
-            elif context.get("active_ids"):
-                values["filter_task_ids"] = [(6, 0, context["active_ids"])]
-                values["filter_state"] = "all"
-        elif model == "legal.company" and context.get("active_ids"):
-            values["company_ids"] = [(6, 0, context["active_ids"])]
-        return values
+    filter_task_ids = fields.Many2many(
+        'legal.task',
+        'legal_gen_report_wizard_task_rel',
+        'wizard_id',
+        'task_id',
+        string="تحديد قضايا ومعاملات معينة بالاسم (اختياري)"
+    )
 
-    @api.depends("filter_task_ids", "task_domain")
-    def _compute_selection_note(self):
-        for wizard in self:
-            if wizard.filter_task_ids:
-                wizard.selection_note = _("%s matters selected in the list.", len(wizard.filter_task_ids))
-            elif wizard.task_domain:
-                wizard.selection_note = _("The matters of the filtered list.")
-            else:
-                wizard.selection_note = False
-
-    def _ldm_report_data(self):
-        self.ensure_one()
-        if self.date_from and self.date_to and self.date_to < self.date_from:
-            raise UserError(_("The end date is before the start date."))
-        data = {
-            "filtered": True,
-            "client_ids": self.company_ids.ids,
-            "lawyer_id": self.filter_lawyer_id.id or False,
-            "department_id": self.filter_department_id.id or False,
-            "state": self.filter_state,
-            "date_from": fields.Date.to_string(self.date_from) if self.date_from else False,
-            "date_to": fields.Date.to_string(self.date_to) if self.date_to else False,
-            "group_by_client": self.group_by_company,
-        }
-        if self.filter_task_ids:
-            data["task_ids"] = self.filter_task_ids.ids
-        if self.task_domain:
-            data["domain"] = ast.literal_eval(self.task_domain)
-        return data
+    @api.onchange('filter_ministry_id')
+    def _onchange_filter_ministry_id(self):
+        if self.filter_ministry_id and self.filter_department_id and self.filter_department_id.ministry_id != self.filter_ministry_id:
+            self.filter_department_id = False
 
     def action_print_general_report(self):
         self.ensure_one()
-        return self.env.ref("legal_department_management.action_report_legal_general_overview").report_action(
-            self.env["legal.task"], data=self._ldm_report_data(), config=False)
+        
+        domain = []
+        if self.company_ids:
+            domain.append(('legal_company_id', 'in', self.company_ids.ids))
+        if self.filter_lawyer_id:
+            domain.append('|')
+            domain.append(('lawyer_ids', 'in', [self.filter_lawyer_id.id]))
+            domain.append(('lawyer_id', '=', self.filter_lawyer_id.id))
+        if self.filter_ministry_id:
+            domain.append(('ministry_id', '=', self.filter_ministry_id.id))
+        if self.filter_department_id:
+            domain.append(('department_id', '=', self.filter_department_id.id))
+        if self.filter_state:
+            domain.append(('state', '=', self.filter_state))
+        if self.date_from:
+            domain.append('|')
+            domain.append(('due_date', '>=', self.date_from))
+            domain.append(('session_date', '>=', self.date_from))
+        if self.date_to:
+            domain.append('|')
+            domain.append(('due_date', '<=', self.date_to))
+            domain.append(('session_date', '<=', self.date_to))
+        if self.filter_task_ids:
+            domain.append(('id', 'in', self.filter_task_ids.ids))
+
+        tasks = self.env['legal.task'].search(domain, order='legal_company_id, due_date asc')
+
+        data = {
+            'task_ids': tasks.ids,
+            'company_names': ', '.join(self.company_ids.mapped('name')) if self.company_ids else 'كافة الشركات والكيانات',
+            'filter_lawyer_name': self.filter_lawyer_id.name if self.filter_lawyer_id else 'كافة المحامين',
+            'filter_department_name': self.filter_department_id.name if self.filter_department_id else 'كافة الدوائر الرسمية',
+            'filter_state_label': dict(self._fields['filter_state'].selection).get(self.filter_state) if self.filter_state else 'كافة الحالات',
+            'date_from': str(self.date_from) if self.date_from else False,
+            'date_to': str(self.date_to) if self.date_to else False,
+            'group_by_company': self.group_by_company,
+        }
+        
+        # Use active company or first company or current user company as dummy doc
+        dummy_record = self.company_ids[0] if self.company_ids else self.env['legal.company'].search([], limit=1)
+        if not dummy_record:
+            dummy_record = self.env.user.company_id
+
+        return self.env.ref('legal_department_management.action_report_legal_general_overview').with_context(report_data=data).report_action(dummy_record)
