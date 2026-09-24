@@ -1,0 +1,61 @@
+[
+ {
+  "user": "lawyer",
+  "role": "lawyer",
+  "lang": "ar_001",
+  "width": 1440,
+  "screen": "01_my_day",
+  "error_dialog": false,
+  "form_buttons": null,
+  "list_columns": null,
+  "overflow_x": false,
+  "menu_top": 6,
+  "emoji": [],
+  "latin_leak": [],
+  "shot": "docs/ldm/evidence/08-verify-final-reminders\\lawyer_ar_1440_01_my_day.png",
+  "console_errors": [],
+  "page_errors": [],
+  "problems": []
+ },
+ {
+  "user": "lawyer",
+  "role": "lawyer",
+  "lang": "en_US",
+  "width": 1440,
+  "screen": "01_my_day",
+  "error_dialog": false,
+  "form_buttons": null,
+  "list_columns": null,
+  "overflow_x": false,
+  "menu_top": 6,
+  "emoji": [],
+  "arabic_leak": [
+   "استشارة في عقد توريد معدات",
+   "فرع شركة الخليج للاستشارات الهندسية",
+   "أقساط مستحقة (4) منذ 1 يونيو: FA/2026/0003 — CASE/2026/09/030",
+   "شركة الرافدين للمقاولات العامة",
+   "تنتهي صلاحية رقم هوية غرفة التجارة في 14 سبتمبر",
+   "مطالبة بمستحقات عقد مقاولة مشروع مجمع الكرخ السكني",
+   "شركة الرافدين للمقاولات العامة · محكمة بداءة الكرخ",
+   "دعوى مطالبة بقيمة عقد توريد",
+   "مجموعة دجلة التجارية · محكمة بداءة الكرخ",
+   "Court session at محكمة بداءة الكرخ",
+   "دعوى مطالبة بقيمة عقد توريد",
+   "مجموعة دجلة التجارية · محكمة بداءة الكرخ",
+   "الاتصال بالموكل لتأكيد حضور الشاهد",
+   "دعوى استرداد مستحقات مقاولة مدرسة الكرخ",
+   "شركة الرافدين للمقاولات العامة · محكمة بداءة الكرخ",
+   "مطالبة بمستحقات عقد مقاولة مجمع سكني",
+   "شركة الرافدين للمقاولات العامة · محكمة بداءة الكرخ",
+   "مراجعة عقد إيجار مخزن في الزعفرانية",
+   "شركة الرافدين للمقاولات العامة",
+   "مراجعة العقد وإرسال الملاحظات"
+  ],
+  "shot": "docs/ldm/evidence/08-verify-final-reminders\\lawyer_en_1440_01_my_day.png",
+  "console_errors": [],
+  "page_errors": [],
+  "problems": [
+   "arabic in english"
+  ]
+ }
+]

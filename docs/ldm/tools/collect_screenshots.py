@@ -25,7 +25,9 @@ STAGES = {
     "06-verify-main": "5 - Verification round 1 (every role, Arabic and English, desktop and phone)",
     "06-verify-recheck": "5 - Verification round 1, recheck after the fixes",
     "07-anu-wip": "6 - ANU identity, work in progress",
-    "08-verify-final": "7 - Final verification round",
+    "08-verify-final": "7 - Final verification round (every role, Arabic and English, desktop and phone)",
+    "08-verify-final-reminders": "7 - Final round, grouped instalment reminders",
+    "08-verify-final-recheck": "7 - Final round, recheck after the last fixes (initials, one execution directorate)",
 }
 
 

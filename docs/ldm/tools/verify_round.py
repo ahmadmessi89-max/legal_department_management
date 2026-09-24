@@ -92,6 +92,12 @@ def main():
         for user in plan["users"]:
             if a.only and user["role"] not in a.only.split(","):
                 continue
+            common = xmlrpc.client.ServerProxy(f"{a.base}/xmlrpc/2/common")
+            models = xmlrpc.client.ServerProxy(f"{a.base}/xmlrpc/2/object")
+            uid = common.authenticate(a.db, user["login"], user["password"], {})
+            # the round switches the user's language; it is put back afterwards
+            own_lang = models.execute_kw(a.db, uid, user["password"], "res.users", "read",
+                                         [[uid], ["lang"]])[0]["lang"]
             for lang in a.langs.split(","):
                 for vp in a.viewports.split(","):
                     width, height = (int(x) for x in vp.split("x"))
@@ -103,15 +109,22 @@ def main():
                     page.on("pageerror", lambda e: perr.append(str(e)))
                     # the user's language is part of the plan: the user sets it on
                     # their own record before logging in (lang is self-writeable)
-                    uid = xmlrpc.client.ServerProxy(f"{a.base}/xmlrpc/2/common").authenticate(
-                        a.db, user["login"], user["password"], {})
-                    xmlrpc.client.ServerProxy(f"{a.base}/xmlrpc/2/object").execute_kw(
-                        a.db, uid, user["password"], "res.users", "write", [[uid], {"lang": lang}])
+                    models.execute_kw(a.db, uid, user["password"], "res.users", "write", [[uid], {"lang": lang}])
                     page.goto(f"{a.base}/web/login?db={a.db}")
                     page.fill("input[name=login]", user["login"])
                     page.fill("input[name=password]", user["password"])
                     page.click("button[type=submit]")
-                    page.wait_for_selector(".o_main_navbar", timeout=60000)
+                    # any loaded web client counts (an administrator lands in
+                    # Discuss, which has no main navbar); a login that never
+                    # loads is recorded and the round goes on
+                    try:
+                        page.wait_for_selector(".o_main_navbar, .o_action_manager, .o-mail-Discuss", timeout=60000)
+                    except Exception as exc:
+                        results.append({"user": user["login"], "role": user["role"], "lang": lang, "width": width,
+                                        "screen": "login", "failed": str(exc)[:400], "problems": ["FAILED login"]})
+                        print(f"FAIL {user['role']}_{lang[:2]}_{width}_login", flush=True)
+                        ctx.close()
+                        continue
                     for screen in plan["screens"]:
                         if screen.get("roles") and user["role"] not in screen["roles"]:
                             continue
@@ -134,6 +147,9 @@ def main():
                                     if attempt == 2:
                                         raise
                                     row["retried"] = True
+                            # the mouse leaves the page, so a tooltip from the last click
+                            # or a hovered row is not part of the picture
+                            page.mouse.move(-5, -5)
                             time.sleep(screen.get("settle", 1.5))
                             row["error_dialog"] = page.locator(".o_error_dialog").count() > 0
                             row.update(analyse(page.evaluate(CHECK_JS), lang))
@@ -160,6 +176,10 @@ def main():
                         results.append(row)
                         print(("ok   " if not problems else "FAIL ") + tag + ("" if not problems else "  " + "; ".join(problems)), flush=True)
                     ctx.close()
+                    # saved after every context, so a crash keeps what was seen
+                    json.dump(results, open(os.path.join(a.out, "results.json"), "w", encoding="utf-8"),
+                              ensure_ascii=False, indent=1)
+            models.execute_kw(a.db, uid, user["password"], "res.users", "write", [[uid], {"lang": own_lang}])
         browser.close()
     json.dump(results, open(os.path.join(a.out, "results.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     bad = [r for r in results if r["problems"]]

@@ -80,9 +80,9 @@ labour = Department.create({"name": "محكمة العمل في بغداد", "mi
                             "court_degree": "labour"})
 execution = Department.create({"name": "مديرية تنفيذ الكرخ", "ministry_id": justice.id, "body_kind": "execution"})
 registry = Department.create({"name": "دائرة تسجيل الشركات", "ministry_id": trade.id, "body_kind": "registry",
-                              "address": "بغداد، المنصور، قرب ساحة الرواد", "working_hours": "٨:٠٠ – ١٤:٣٠"})
+                              "address": "بغداد، المنصور، قرب ساحة الرواد", "working_hours": "من 8:00 إلى 14:30"})
 tax = Department.create({"name": "الهيئة العامة للضرائب — فرع الكرادة", "ministry_id": finance.id,
-                         "address": "بغداد، الكرادة داخل", "working_hours": "٨:٣٠ – ١٤:٠٠"})
+                         "address": "بغداد، الكرادة داخل", "working_hours": "من 8:30 إلى 14:00"})
 notary = Department.create({"name": "كاتب عدل المنصور", "ministry_id": justice.id, "body_kind": "notary"})
 
 # Document types and documents to collect for government matters.

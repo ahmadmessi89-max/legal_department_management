@@ -1,0 +1,84 @@
+264 captures, 87 with problems
+    87  arabic
+
+Arabic on English screens:
+   28  شركة الرافدين للمقاولات العامة                               approver/390/02_matters_list, auditor/1440/06_clients, auditor/390/02_matters_list
+   19  محكمة بداءة الكرخ                                            auditor/1440/07_client_open, auditor/390/02_matters_list, auditor/390/07_client_open
+   18  دائرة تسجيل الشركات                                          approver/1440/03_matter_open, approver/390/02_matters_list, approver/390/03_matter_open
+   17  مجموعة دجلة التجارية                                         approver/390/02_matters_list, auditor/390/02_matters_list, auditor/390/10_poa
+   16  شركة النور للتجهيزات الطبية                                  auditor/1440/06_clients, auditor/390/02_matters_list, auditor/390/06_clients
+   16  شركة بابل للصناعات الغذائية                                  auditor/1440/06_clients, auditor/390/02_matters_list, auditor/390/06_clients
+   15  أحمد جاسم محمد                                               auditor/1440/06_clients, auditor/1440/07_client_open, auditor/390/06_clients
+   14  السيد أحمد عبد الكريم                                        auditor/1440/06_clients, auditor/390/02_matters_list, auditor/390/06_clients
+   13  المحامية زينب الجبوري                                        approver/1440/03_matter_open, approver/390/03_matter_open, auditor/1440/03_matter_open
+   13  براءة ذمة ضريبية سنوية لعام 2026                             auditor/390/02_matters_list, billing/390/02_matters_list, clerk/1440/01_my_day
+   13  دعوى مطالبة بقيمة عقد توريد                                  auditor/1440/03_matter_open, auditor/390/02_matters_list, billing/390/02_matters_list
+   13  تعديل عقد تأسيس مجموعة دجلة — زيادة رأس المال                approver/1440/01_my_day, approver/390/01_my_day, approver/390/02_matters_list
+   13  500,000  ع.د                                                 approver/1440/03_matter_open, auditor/1440/03_matter_open, billing/1440/17_client_money
+   13  تعديل نشاط شركة الرافدين وإضافة فرع البصرة                   approver/1440/01_my_day, approver/390/01_my_day, approver/390/02_matters_list
+   12  محكمة بداءة الرصافة                                          auditor/390/02_matters_list, auditor/390/08_agenda, billing/390/02_matters_list
+   12  شركة نينوى للنقل البري                                       auditor/1440/06_clients, auditor/390/06_clients, auditor/390/10_poa
+   12  مجلس القضاء الأعلى                                           auditor/1440/07_client_open, auditor/1440/20_matters_analysis, auditor/390/07_client_open
+   11  0  ع.د                                                       approver/1440/03_matter_open, approver/390/03_matter_open, auditor/1440/20_matters_analysis
+   10  تنفيذ حكم نفقة                                               auditor/390/02_matters_list, billing/390/02_matters_list, clerk/1440/01_my_day
+   10  دعوى فسخ عقد توزيع حصري                                      auditor/390/02_matters_list, billing/390/02_matters_list, lawyer/1440/04_matters_kanban
+   10  أ                                                            auditor/1440/06_clients, auditor/390/06_clients, billing/1440/06_clients
+   10  ا                                                            auditor/1440/06_clients, auditor/390/06_clients, billing/1440/06_clients
+   10  شركة الفرات للتجارة العامة                                   auditor/1440/06_clients, auditor/390/06_clients, billing/1440/06_clients
+   10  د                                                            auditor/1440/06_clients, auditor/390/06_clients, billing/1440/06_clients
+   10  شركة دجلة للنقل والتخليص الكمركي                             auditor/1440/06_clients, auditor/390/06_clients, billing/1440/06_clients
+   10  شركة الرافدين للمقاولات العامة · IQD                         billing/1440/16_to_invoice, billing/1440/17_client_money, billing/390/16_to_invoice
+   10  شركة دجلة للتجارة العامة · USD                               billing/1440/16_to_invoice, billing/1440/17_client_money, billing/390/16_to_invoice
+    9  تحرير عريضة الدعوى                                           auditor/1440/03_matter_open, auditor/1440/07_client_open, auditor/390/07_client_open
+    9  مديرية تنفيذ الكرخ                                           auditor/390/02_matters_list, billing/390/02_matters_list, clerk/1440/01_my_day
+    8  مطالبة بمستحقات عقد مقاولة مشروع مجمع الكرخ السكني           clerk/390/02_matters_list, lawyer/1440/01_my_day, lawyer/1440/04_matters_kanban
+    8  CASE/2026/09/017 · دعوى مطالبة بقيمة عقد توريد               auditor/1440/03_matter_open, auditor/390/08_agenda, auditor/390/19_deadlines
+    8  مطالبة بقيمة أجهزة موردة                                     auditor/390/02_matters_list, billing/390/02_matters_list, lawyer/1440/04_matters_kanban
+    8  ب                                                            auditor/1440/06_clients, auditor/390/06_clients, billing/1440/06_clients
+    8  شركة دجلة للتجارة العامة                                     auditor/1440/06_clients, auditor/390/06_clients, billing/1440/06_clients
+    8  ن                                                            auditor/1440/06_clients, auditor/390/06_clients, billing/1440/06_clients
+    8  مجلس الدولة                                                  auditor/1440/20_matters_analysis, auditor/390/20_matters_analysis, clerk/1440/14_bodies
+    8  وزارة التجارة                                                auditor/1440/20_matters_analysis, auditor/390/20_matters_analysis, clerk/1440/14_bodies
+    8  وزارة الداخلية                                               auditor/1440/20_matters_analysis, auditor/390/20_matters_analysis, clerk/1440/14_bodies
+    8  شركة الرافدين للمقاولات العامة · دائرة تسجيل الشركات         approver/1440/01_my_day, approver/1440/03_matter_open, approver/390/01_my_day
+    8  الهيئة العامة للضرائب — فرع الكرادة                          clerk/1440/01_my_day, clerk/390/01_my_day, clerk/390/02_matters_list
+    7  مجموعة دجلة التجارية · محكمة بداءة الكرخ                     auditor/1440/03_matter_open, lawyer/1440/01_my_day, lawyer/1440/03_matter_open
+    7  Court session at محكمة بداءة الكرخ                           auditor/1440/03_matter_open, lawyer/1440/01_my_day, lawyer/1440/03_matter_open
+    7  فرع شركة الخليج للاستشارات الهندسية                          billing/390/15_fee_agreements, lawyer/1440/01_my_day, lawyer/1440/06_clients
+    6  شركة نينوى للصناعات الغذائية                                 auditor/1440/06_clients, auditor/390/06_clients, billing/1440/06_clients
+    6  دعوى تعويض عن حادث مروري                                     auditor/1440/07_client_open, auditor/390/07_client_open, lawyer/1440/07_client_open
+    6  1,810,000  ع.د                                               billing/1440/17_client_money, billing/390/17_client_money, clerk/1440/17_client_money
+    6  اتحاد الغرف التجارية العراقية                                auditor/1440/20_matters_analysis, auditor/390/20_matters_analysis, clerk/1440/14_bodies
+    6  Sent by المحامية زينب الجبوري · Today                        approver/1440/03_matter_open, approver/390/03_matter_open, auditor/390/03_matter_open
+    6  صياغة قرار التعديل                                           approver/1440/03_matter_open, approver/390/03_matter_open, auditor/390/03_matter_open
+    6  تسجيل التعديل في دائرة تسجيل الشركات                         approver/1440/03_matter_open, approver/390/03_matter_open, auditor/390/03_matter_open
+    6  “اعتمد CASE/2026/09/016”                                     approver/1440/03_matter_open, approver/390/03_matter_open, auditor/390/03_matter_open
+    6  د. حسين كاظم                                                 approver/1440/03_matter_open, approver/390/03_matter_open, auditor/390/03_matter_open
+    6  مدير النظام                                                  approver/1440/03_matter_open, approver/390/03_matter_open, auditor/390/03_matter_open
+    6  المستشار سعد الربيعي                                         approver/1440/03_matter_open, approver/390/03_matter_open, auditor/390/03_matter_open
+    6  “خطوة: صياغة قرار التعديل — CASE/2026/09/016”                approver/1440/03_matter_open, approver/390/03_matter_open, auditor/390/03_matter_open
+    6  CASE/2026/09/035 · دعوى استرداد مستحقات مقاولة مدرسة الكرخ   auditor/390/08_agenda, auditor/390/19_deadlines, clerk/390/08_agenda
+    5  CASE/2026/09/008 · مطالبة بقيمة شحنة مواد غذائية تالفة       auditor/390/08_agenda, auditor/390/19_deadlines, lawyer/390/08_agenda
+    5  CASE/2026/09/007 · دعوى تخلية مأجور مخزن الشورجة             auditor/390/08_agenda, auditor/390/19_deadlines, lawyer/390/08_agenda
+    4  شركة الرافدين للمقاولات العامة · محكمة بداءة الكرخ           lawyer/1440/01_my_day, lawyer/390/01_my_day, manager/1440/01_my_day
+    4  مجموعة دجلة التجارية · دائرة تسجيل الشركات                   approver/1440/01_my_day, approver/390/01_my_day, manager/1440/01_my_day
+    4  5,880,000  ع.د                                               billing/1440/16_to_invoice, billing/390/16_to_invoice, manager/1440/16_to_invoice
+    4  فرع شركة الخليج للاستشارات الهندسية · IQD                    billing/1440/16_to_invoice, billing/390/16_to_invoice, manager/1440/16_to_invoice
+    4  2,000,000  ع.د                                               billing/1440/16_to_invoice, billing/390/16_to_invoice, manager/1440/16_to_invoice
+    4  مجموعة دجلة التجارية · IQD                                   billing/1440/16_to_invoice, billing/390/16_to_invoice, manager/1440/16_to_invoice
+    4  3,500,000  ع.د                                               billing/1440/16_to_invoice, billing/390/16_to_invoice, manager/1440/16_to_invoice
+    4  12,087,400  ع.د                                              billing/1440/16_to_invoice, billing/390/16_to_invoice, manager/1440/16_to_invoice
+    4  750,000  ع.د                                                 clerk/1440/18_advances, clerk/390/18_advances, manager/1440/18_advances
+    4  475,000  ع.د                                                 clerk/1440/18_advances, clerk/390/18_advances, manager/1440/18_advances
+    4  3,510,000  ع.د                                               auditor/1440/20_matters_analysis, auditor/390/20_matters_analysis, manager/1440/20_matters_analysis
+    4  3,405,000  ع.د                                               auditor/1440/20_matters_analysis, auditor/390/20_matters_analysis, manager/1440/20_matters_analysis
+    4  80,000  ع.د                                                  auditor/1440/20_matters_analysis, auditor/390/20_matters_analysis, manager/1440/20_matters_analysis
+    4  مجموعة سومر القابضة — القسم القانوني                         auditor/1440/24_analytics, auditor/390/24_analytics, manager/1440/24_analytics
+    4  Most: محكمة بداءة الكرخ (8)                                  auditor/1440/24_analytics, auditor/390/24_analytics, manager/1440/24_analytics
+    4  Most: الشركة العامة للمعارض والخدمات التجارية (1)            auditor/1440/24_analytics, auditor/390/24_analytics, manager/1440/24_analytics
+    4  Brought by us: 1,775,350,000  ع.د · Brought against us: 258,000,000  ع.د auditor/1440/24_analytics, auditor/390/24_analytics, manager/1440/24_analytics
+    4  Total: 3,510,000  ع.د                                        auditor/1440/24_analytics, auditor/390/24_analytics, manager/1440/24_analytics
+    4  CASE/2026/09/006 · مطالبة بمستحقات عقد مقاولة مشروع مجمع الكرخ السكني auditor/390/08_agenda, clerk/390/08_agenda, lawyer/390/08_agenda
+    4  CASE/2026/09/009 · استئناف حكم فسخ عقد توريد حديد التسليح    auditor/390/08_agenda, clerk/390/08_agenda, lawyer/390/08_agenda
+    4  محكمة استئناف بغداد/الكرخ الاتحادية                          auditor/390/08_agenda, clerk/390/08_agenda, lawyer/390/08_agenda
+    4  اتحاد الناقلين                                               clerk/1440/14_bodies, clerk/390/14_bodies, lawyer/1440/14_bodies

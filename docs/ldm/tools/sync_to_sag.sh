@@ -43,13 +43,13 @@ git reset -q --hard "$parent"
 git rev-parse workspace/ldm-split > "$MARK"
 unset GIT_AUTHOR_NAME GIT_AUTHOR_EMAIL GIT_AUTHOR_DATE GIT_COMMITTER_NAME GIT_COMMITTER_EMAIL GIT_COMMITTER_DATE
 
-# docs/ldm -> docs/ldm, as its own commit when it changed
-mkdir -p docs/ldm
-cp -r "$WORKSPACE"/docs/ldm/{SPEC.md,STATE.md,research,briefs,tools,i18n} docs/ldm/ 2>/dev/null || true
-mkdir -p docs/ldm/evidence
-for d in "$WORKSPACE"/docs/ldm/evidence/*/; do cp -r "$d" docs/ldm/evidence/; done
+# docs/ldm -> docs/ldm: exactly what is committed in the workspace, so
+# uncommitted screenshots and scratch files stay behind and a document removed
+# there is removed here; its own commit when it changed
+rm -rf docs/ldm
+git -C "$WORKSPACE" archive HEAD docs/ldm | tar -x -f -
 if [ -n "$(git status --porcelain docs)" ]; then
-  git add docs
+  git add -A docs
   git commit -q -m "docs: state, evidence and tools brought up to date"
   count=$((count + 1))
 fi

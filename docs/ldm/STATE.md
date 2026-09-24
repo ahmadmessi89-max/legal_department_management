@@ -72,101 +72,102 @@ module names crash the console logger (harmless, but noisy).
 | `175f610` | State document, capture harness, baseline screens |
 | `2f1a381` | Six research documents and SPEC.md |
 | `485432c` | Foundation 19.0.7.0.0: every model and field, roles and rules, settings and presets, Iraqi calendar and deadline arithmetic, migrations, 35 tests; SAG-shaped upgrade 43/43 |
+| `fb1cb1d`…`30bd574` | The five build streams (government, litigation, workspace, money, registers) merged and integrated |
+| `07832f5` | The Arabic catalogue |
+| `5f44a2c` | One demo data set for every role (`seed_all.py`) and the database helper |
+| `0da1cf6`…`0af417c` | The first verification round and its fixes |
+| `ecc4b88` | The design pass's structure (analytics board, service overview) |
+| `d8350cb`, `3402976` | The ANU identity, reports in it, the analytics board in Arabic |
+| `e36ff22` | Instalment reminders, one per agreement |
+| `2fc459b`, `4ce5124` | Catalogue marks and check, harness robustness; initials that name the person |
+| (this commit) | Final round, recheck, renewal title wording, hand-over |
 
 Baseline screens: `docs/ldm/evidence/00-baseline/` (eight screens, zero errors).
 
 ## Running now
 
-- **Build streams** (five agents, each in its own git worktree and database;
-  briefs in `docs/ldm/briefs/`, hand-backs in `docs/ldm/handback/`):
-  G government (ldm_g, 8102) · L litigation and clocks (ldm_l, 8103) ·
-  W workspace OWL (ldm_w, 8104) · M money (ldm_m, 8105) ·
-  R registers and reports (ldm_r, 8106).
+No agent. Briefs of the finished streams are in `docs/ldm/briefs/`, their
+hand-backs in `docs/ldm/handback/`.
 
-### Status (updated 24 Sep, 22:10, after the machine shut down at 21:43)
+### Status (updated 25 Sep 2026, 01:35)
 
-- **All five streams merged into main** (`fb1cb1d`…`3c58758`) and integrated
-  (`30bd574`): **337 tests green**, zero new warnings on a fresh install, and the
-  SAG-shaped upgrade passes every check (`docs/ldm/evidence/04-integration/`).
-  Published to SAG's repository, branch `professional-19.0.7` (25 commits).
-- **Arabic catalogue landed**: `i18n/ar.po`, 2,552 entries, 0 empty,
-  0 placeholder mismatches (`po_check.py`); Odoo loads it for `ar_001` with no
-  warning. Translated in the session from compact sheets
-  (`docs/ldm/tools/i18n_tsv.py`, sheets `c<n>.tsv` / `c<n>.ar.tsv` in
-  `docs/ldm/i18n/work/`). The earlier translation workflow wrote nothing: its
-  agents spent their time reading source for context and were interrupted.
-- **Running now:** design pass, third run (one Opus agent in its own worktree,
-  port 8107, db `ldm_d`). The first run stalled, the second was lost to the
-  shutdown having written nothing; this one commits after every area and keeps
-  a Progress section at the top of `docs/ldm/handback/design.md`. It must not
-  touch `i18n/` or write `seed_all.py` (the session owns both).
-- **Session, in parallel:** `docs/ldm/tools/seed_all.py` (one realistic Iraqi
-  data set from the five stream seeds plus one user per role) and the demo
-  instance `ldm_pro` on 8095.
-- **Next:** merge the design pass; delta-translate its new strings (re-export,
-  `po_split.py split` on the new entries, `i18n_tsv.py sheet/check`, merge);
-  run `verify_round.py` with `docs/ldm/tools/verify_plan.json` (7 roles × 23
-  screens × Arabic/English × 1440/390); fix; hand over.
-- **Design direction changed (owner, 24 Sep evening):** the mockup-based
-  identity was judged "flat, no character"; the product now follows
-  **anu.ltd** with shadcn-grade components, using the design skills and MCP
-  tools. Binding brief: `docs/ldm/briefs/design-anu.md` (supersedes
-  `design-direction.md`). The design agent was stopped; its structure was
-  merged (`ecc4b88`: view scaffolding, analytics board, service overview,
-  reminders by key, time widget) and the ANU identity is being built in the
-  session: tokens, fonts (Inter Tight, Tajawal, Roboto Mono, self-hosted),
-  native views, the ink band with anu.ltd's network texture, the floating
-  bar (`o_ldm_floatbar`), stat tiles, charts in a Signal ramp. Work in
-  progress captures: `docs/ldm/evidence/07-anu-wip/` (not committed).
-  **Next:** delta translation of the strings the merge added (analytics
-  board), reports and letters in the identity, remaining screens by role,
-  the final round.
-- **Tests on main:** 0 failed, 0 errors of 342 (fresh install on a copy of
-  `ldm_tpl`), no warnings. Commits `0da1cf6`, `916a158`, `05cbfab`.
-- **First verification round on main** (`docs/ldm/evidence/06-verify-main/`,
-  results only; its screenshots are in the screenshots folder): 252 captures.
-  Recheck after the fixes (`06-verify-recheck/`): 96 Arabic captures of five
-  roles, 0 with problems. Fixed and committed: court-stage rail labels were English
-  (`ws_task.py` used the raw selection list); "Principal" and "Verified" each
-  covered two legal meanings (guarantee field renamed "Applicant", statutory
-  confidence "Verified in the law") and a few shared entries got Arabic that
-  reads as both label and status; the module's daily jobs wrote English because
-  crons run without a language (`models/ldm_cron.py` runs them in the legal
-  team's language); the shipped matter types' steps had no Arabic because
-  they are inline in the data file (`SHIPPED_STEPS_AR` +
-  `data/ldm_template_translations.xml`); a manager's My Day opened on "me" with
-  zeros (now on the whole department); the harness counted the "More" menu as
-  a header button and had no retry for slow first loads.
-  **Open, after the design merge:** several monthly retainer reminders for one
-  matter fill a lawyer's overdue band (one row per instalment); consider one
-  reminder per agreement, or billing as the recipient.
+The work is complete for 19.0.7: every stream, the design pass's structure
+and the ANU identity are on main, the final round is clean, and the hand-over
+is written and published as a page. What remains is SAG's answers and the
+next version.
+
+- **Build streams** G, L, W, M and R merged (`fb1cb1d`…`3c58758`) and integrated
+  (`30bd574`). The design agent was stopped after its structure was merged
+  (`ecc4b88`: view scaffolding, analytics board, service overview, reminders by
+  key, time widget). No agent is running.
+- **Design: the ANU identity** (the owner, 24 Sep: the mockup-based look was
+  "flat, no character"; it must follow anu.ltd with component-library finish).
+  Binding brief `docs/ldm/briefs/design-anu.md` (supersedes
+  `design-direction.md`). Landed in `d8350cb` and `3402976`: ANU tokens,
+  self-hosted Inter Tight, Tajawal and Roboto Mono, native views dressed, the ink
+  band with anu.ltd's line network, the floating control bar
+  (`o_ldm_floatbar`), stat tiles, charts in one blue ramp, client monograms, and
+  printed reports and letters in the same type. Work-in-progress captures:
+  `docs/ldm/evidence/07-anu-wip/` (screenshots folder only, not committed).
+- **Arabic**: `i18n/ar.po`, 2,616 entries, 0 empty, 0 placeholder mismatches,
+  every code string marked `odoo-python`/`odoo-javascript`
+  (`py -3.11 docs/ldm/tools/po_check.py`; a test checks the marks, because Odoo
+  silently ignores an unmarked code entry and shows the English; two hand-added
+  entries had that fault until 25 Sep).
+- **Reminders** (`e36ff22`): due instalments of one fee agreement are one
+  reminder per matter («أقساط مستحقة (4) منذ 1 يونيو»), and a reminder closes as
+  soon as its instalments are invoiced, paid or waived. On `ldm_pro` six rows
+  became two.
+- **Tests**: 370, 0 failed, 0 errors, no warnings (on `ldm_t`, 25 Sep). The suite runs in the
+  Asia/Baghdad timezone and in English explicitly, so it holds between midnight
+  in Baghdad and midnight UTC.
+- **First verification round** (`06-verify-main/`, results only) and its recheck
+  (`06-verify-recheck/`, 96 Arabic captures of five roles, 0 problems): the
+  fixes are listed in commits `0da1cf6`, `916a158`, `05cbfab`.
+- **Final verification round** (`docs/ldm/evidence/08-verify-final/`): 25
+  screens × seven roles and the administrator × Arabic/English × 1440/390 =
+  264 screens. 0 failed, 0 error dialogs, 0 page or console errors, 0 English
+  words on Arabic screens, 0 sideways scrolling on a phone, 0 budget breaches.
+  87 flags, every one Arabic *data* on an English screen (names, bodies,
+  amounts in ع.د, reminders stored in their recipient's language). The harness
+  now accepts any loaded client (the administrator lands in Discuss), records a
+  failed login and goes on, saves `results.json` after every user, puts each
+  user's language back afterwards, and moves the mouse off the page before a
+  screenshot (a tooltip from the last click had been caught in the picture).
+- **Found by looking at the round and fixed** (`2fc459b`, `4ce5124`): two
+  hand-added catalogue entries lacked the `odoo-python` mark, so the grouped
+  reminder showed in English (a test now reads the catalogue as Odoo does);
+  nearly every avatar and many client cards showed «ا», the first letter of a
+  title or of the article (one rule, `ldm_text.initial`, for monograms and
+  avatars; stored letter avatars are redrawn on upgrade and after a rename);
+  «مديرية تنفيذ الكرخ» existed twice (the money seed filed it under the judicial
+  council); two bodies' hours were in Arabic-Indic digits; the renewal title
+  «جدّد … الخاص بـ…» could not agree with every document's gender (now
+  «تجديد … — …»). Recheck: `08-verify-final-recheck/`, 36 screens, 0 flagged.
+- **Hand-over**: `docs/ldm/HANDOVER.md`, and as a private page with
+  before-and-after pictures whose link the owner holds (published 25 Sep; the
+  page's source and images were built from the files named in this document). Screenshots of every stage, the final round included:
+  `C:\Users\Lenovo\Documents\LDM Screenshots\`.
+- **Demo**: `ldm_pro` on 8110, team in Arabic, upgraded to main.
 - **Server management:** `python docs/ldm/tools/demo.py start|stop|status`.
   `taskkill` from Git Bash can fail silently and leave two servers on one
   port answering at random; the script stops them by command line and checks.
-- **If the machine goes down again:** the design agent's branch is
-  `worktree-agent-<id>` under `.claude/worktrees/`; read the Progress section of
-  its `docs/ldm/handback/design.md`, then dispatch a successor on the same
-  branch rather than starting over.
-
-Design direction (binding for every OWL screen): `docs/ldm/briefs/design-direction.md`
-— an original identity around the mockup's intent (the owner: "don't copy it,
-it is the idea"). A design pass after the merge applies it to every screen and
-adds the analytics board and the dossier's service overview.
 
 ## Next, in order
 
-1. Merge the five stream branches into main (the foundation pre-registered
-   every stream file, so conflicts should be limited to hand-back requests).
-2. Integration in the session: `i18n/ar.po` complete, demo data, demo users per
-   role, final menu review, `ldm_pro` on port 8095.
-3. Verification round: full suite, the SAG upgrade test, journeys J1-J8 as every
-   role in Arabic and English at 1440 and 390 px, adversarial review; fix and
-   verify again.
-4. Hand over: URL, logins per role, what changed, open questions for SAG.
+1. SAG's answers to the five questions in `HANDOVER.md` (department, office or
+   both; hourly billing and client money; the Bar's amounts; 2027 holidays;
+   month names), then the settings they decide.
+2. Next version: client money to the general ledger, Kurdistan Region bodies,
+   PDF check on a server with wkhtmltopdf, Iraqi month names (أيلول).
+3. When the owner decides: merge `professional-19.0.7` into SAG's `main` and
+   upgrade their production database (backup and a copy first).
 
 ## How to re-run the checks
 
-- Tests: `MSYS_NO_PATHCONV=1 odoo-bin -c odoo19_ldm.conf -d <db> -u legal_department_management --test-enable --test-tags /legal_department_management --stop-after-init --no-http`
+- Tests: `MSYS_NO_PATHCONV=1 PYTHONIOENCODING=utf-8 .venv_odoo19/Scripts/python.exe odoo-19.0/odoo-bin -c odoo19_ldm.conf -d ldm_t -u legal_department_management --test-enable --test-tags /legal_department_management --stop-after-init --http-port=8198 --log-level=test` (give a spare port: with `--no-http` the run still answered on 8110 next to the demo server)
+- Catalogue: `py -3.11 docs/ldm/tools/po_check.py` (`--fix` adds a missing code mark)
+- Verification round: `py -3.11 docs/ldm/tools/verify_round.py --db ldm_pro --plan docs/ldm/tools/verify_plan.json --out docs/ldm/evidence/<round> [--only lawyer] [--viewports 1440x900]`, then `verify_triage.py <round>/results.json`
 - Upgrade test: `docs/ldm/tools/upgrade/` (seed with the old code via
   `odoo19_ldm_old.conf`, snapshot, `-u`, assert). `ldm_sag` is the seeded
   SAG-shaped database (keep it pristine; duplicate it for each run).

@@ -89,7 +89,9 @@ karkh = Department.create({"name": "محكمة بداءة الكرخ", "ministry
                            "court_degree": "first_instance"})
 rusafa = Department.create({"name": "محكمة بداءة الرصافة", "ministry_id": council.id, "body_kind": "court",
                             "court_degree": "first_instance"})
-execution = Department.create({"name": "مديرية تنفيذ الكرخ", "ministry_id": council.id, "body_kind": "execution",
+# execution directorates belong to the Ministry of Justice, not the judicial council
+justice = Ministry.create({"name": "وزارة العدل", "body_kind": "ministry"})
+execution = Department.create({"name": "مديرية تنفيذ الكرخ", "ministry_id": justice.id, "body_kind": "execution",
                                "court_degree": "execution"})
 
 Company = env["legal.company"]
