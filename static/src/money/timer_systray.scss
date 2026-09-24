@@ -1,0 +1,41 @@
+// Top-bar timer (money stream). Logical properties only, so it mirrors in RTL.
+$o-ldm-timer-running: $success !default;
+
+.o_ldm_timer_toggle {
+    .o_ldm_timer_clock {
+        font-variant-numeric: tabular-nums;
+        font-size: $font-size-sm;
+    }
+
+    &.o_ldm_timer_running {
+        color: $o-ldm-timer-running;
+    }
+}
+
+.o_ldm_timer_menu {
+    min-inline-size: 16rem;
+    max-inline-size: 20rem;
+
+    .o_ldm_timer_big {
+        font-size: $h3-font-size;
+        font-variant-numeric: tabular-nums;
+        text-align: center;
+    }
+
+    .o_ldm_timer_matter {
+        padding-block: map-get($spacers, 1);
+        padding-inline: map-get($spacers, 2);
+    }
+}
+
+// Phone numbers and similar codes read left to right, also in Arabic.
+.o_ldm_ltr input {
+    direction: ltr;
+}
+
+.o_ldm_timer_dialog {
+    .o_ldm_timer_duration {
+        max-inline-size: 7rem;
+        font-variant-numeric: tabular-nums;
+    }
+}
