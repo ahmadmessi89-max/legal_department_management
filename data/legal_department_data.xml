@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo noupdate="1">
-    <!-- Sequence for Legal Tasks / Cases -->
+    <!-- Matter numbers: CASE/2026/09/001. The code legal.task is kept. -->
     <record id="seq_legal_task" model="ir.sequence">
-        <field name="name">تسلسل القضايا والمعاملات القانونية</field>
+        <field name="name">Legal matters</field>
         <field name="code">legal.task</field>
         <field name="prefix">CASE/%(year)s/%(month)s/</field>
         <field name="padding">3</field>
-        <field name="number_next">5</field>
+        <field name="number_next">1</field>
         <field name="number_increment">1</field>
         <field name="use_date_range">False</field>
         <field name="company_id" eval="False"/>

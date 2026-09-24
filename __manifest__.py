@@ -1,48 +1,91 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'قسم الشؤون القانونية والمحاماة المتطور',
-    'version': '19.0.6.3.0',
-    'category': 'Legal',
-    'summary': 'نظام متكامل وتفاعلي لإدارة الشركات الموكلة، القضايا، المعاملات، والمستندات القانونية',
-    'description': """
-نظام الشؤون القانونية والمحاماة التفاعلي:
-- لوحة تحكم ومتابعة ذكية متطورة (Interactive Legal Dashboard).
-- إدارة متكاملة للشركات والموكلين وتفاصيل تسجيلهم.
-- نافذة مخصصة لبدء القضايا والمعاملات.
-- إدارة ديناميكية للدوائر والجهات الرسمية الحكومية.
-- تعدد المحامين على مستوى الشركات والقضايا.
-- تقارير PDF احترافية لملف كل شركة أو تقرير الرقابة الشامل لكافة القضايا والشركات واستمارة القضية.
-- مهام مجدولة وتنبيهات ذكية لمواعيد الجلسات والاستحقاقات (Smart Session Cron & Activities).
-- صلاحيات أمان مشددة وحظر حذف المعاملات لغير المدراء.
-- الرقابة العامة والصلاحيات والموافقات للمدير القانوني ومدير النظام.
+    "name": "Legal Department and Law Office",
+    "version": "19.0.7.0.0",
+    "category": "Services/Legal",
+    "summary": "Matters, government transactions, lawsuits and deadlines, powers of attorney, fees and client money "
+               "for in-house legal departments and law offices",
+    "description": """
+Legal department and law office management
+==========================================
+
+One application for an in-house legal department (قسم الشؤون القانونية) and for
+a law office (مكتب المحاماة), chosen in Settings:
+
+* My Day: what is overdue, today and this week, with the reason and one action.
+* One-step matter creation from matter types that create the steps, the
+  documents to collect and the target date.
+* Government transactions at ministries and departments, with counter visits.
+* Lawsuits: court stages, sessions, judgments and Iraqi statutory periods
+  counted in calendar days with holidays rolled forward.
+* Powers of attorney, correspondence register, requests from other departments,
+  company records, contracts and legal opinions.
+* Law office: fee agreements, instalments and retainers, client money held,
+  invoicing, client statements and conflict checks.
+
+Upgrades SAG Group's 19.0.6.3.0 in place.
     """,
-    'author': 'SAG Group',
-    'depends': ['base', 'mail', 'hr', 'account'],
-    'data': [
-        'security/legal_security.xml',
-        'security/ir.model.access.csv',
-        'data/legal_department_data.xml',
-        'data/legal_cron.xml',
-        'report/legal_company_report_templates.xml',
-        'report/legal_task_report_templates.xml',
-        'report/legal_general_report_templates.xml',
-        'views/legal_department_views.xml',
-        'views/legal_task_wizard_views.xml',
-        'views/legal_company_report_wizard_views.xml',
-        'views/legal_general_report_wizard_views.xml',
-        'views/legal_task_views.xml',
-        'views/legal_company_views.xml',
-        'views/legal_dashboard_views.xml',
-        'views/legal_menus.xml',
+    "author": "SAG Group",
+    "license": "LGPL-3",
+    "depends": ["base", "mail", "hr", "account", "resource"],
+    "excludes": ["legal_core"],
+    "data": [
+        # Security
+        "security/legal_security.xml",
+        "security/ir.model.access.csv",
+        "security/ir.model.access-gov.csv",
+        "security/ir.model.access-lit.csv",
+        "security/ir.model.access-ws.csv",
+        "security/ir.model.access-money.csv",
+        "security/ir.model.access-reg.csv",
+        "security/ldm_rules.xml",
+        # Data
+        "data/legal_department_data.xml",
+        "data/legal_cron.xml",
+        "data/ldm_calendar_data.xml",
+        "data/ldm_activity_data.xml",
+        "data/ldm_template_data.xml",
+        "data/gov_data.xml",
+        "data/lit_data.xml",
+        "data/ws_data.xml",
+        "data/money_data.xml",
+        "data/reg_data.xml",
+        # Reports
+        "report/legal_company_report_templates.xml",
+        "report/legal_task_report_templates.xml",
+        "report/legal_general_report_templates.xml",
+        "report/lit_reports.xml",
+        "report/money_reports.xml",
+        "report/reg_reports.xml",
+        # Foundation views and actions
+        "views/ldm_actions.xml",
+        "views/legal_department_views.xml",
+        "views/legal_task_wizard_views.xml",
+        "views/legal_company_report_wizard_views.xml",
+        "views/legal_general_report_wizard_views.xml",
+        "views/ldm_decision_wizard_views.xml",
+        "views/legal_task_views.xml",
+        "views/legal_company_views.xml",
+        "views/legal_dashboard_views.xml",
+        "views/res_config_settings_views.xml",
+        "views/legal_menus.xml",
+        # Streams (after the menus, so they can add under existing folders)
+        "views/gov_views.xml",
+        "views/lit_views.xml",
+        "views/ws_views.xml",
+        "views/money_views.xml",
+        "views/reg_views.xml",
     ],
-    'assets': {
-        'web.assets_backend': [
-            'legal_department_management/static/src/dashboard/legal_dashboard.scss',
-            'legal_department_management/static/src/dashboard/legal_dashboard.js',
-            'legal_department_management/static/src/dashboard/legal_dashboard.xml',
+    "demo": [],
+    "assets": {
+        "web.assets_backend": [
+            "legal_department_management/static/src/**/*",
+        ],
+        "web.assets_unit_tests": [
+            "legal_department_management/static/tests/**/*",
         ],
     },
-    'application': True,
-    'installable': True,
-    'license': 'LGPL-3',
+    "post_init_hook": "post_init_hook",
+    "application": True,
+    "installable": True,
 }

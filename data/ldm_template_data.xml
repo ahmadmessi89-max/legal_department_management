@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <!--
+        Generic matter types, so the product is usable on day one. They live in
+        new models only, so they cannot collide with SAG's data. The streams
+        enrich them (documents to collect, services at bodies); the Iraqi
+        reference library adds one type per government service.
+        Offsets are working days.
+    -->
+    <record id="ldm_template_government" model="legal.task.template">
+        <field name="name">Government transaction</field>
+        <field name="kind">government</field>
+        <field name="sequence">1</field>
+        <field name="duration_days">10</field>
+        <field name="description">Any transaction at a ministry or department. Choose the body when you open the matter.</field>
+        <field name="step_ids" eval="[(5, 0, 0),
+            (0, 0, {'sequence': 10, 'name': 'Collect the documents', 'offset_days': 2, 'offset_from': 'start'}),
+            (0, 0, {'sequence': 20, 'name': 'Submit the file at the counter', 'offset_days': 1, 'is_visit': True}),
+            (0, 0, {'sequence': 30, 'name': 'Follow up and collect the result', 'offset_days': 5, 'is_visit': True})]"/>
+    </record>
+    <record id="ldm_template_civil_lawsuit" model="legal.task.template">
+        <field name="name">Civil lawsuit</field>
+        <field name="kind">litigation</field>
+        <field name="law_branch">civil</field>
+        <field name="sequence">10</field>
+        <field name="step_ids" eval="[(5, 0, 0),
+            (0, 0, {'sequence': 10, 'name': 'Draft the petition', 'offset_days': 3, 'offset_from': 'start'}),
+            (0, 0, {'sequence': 20, 'name': 'Pay the court fee and register the case', 'offset_days': 2}),
+            (0, 0, {'sequence': 30, 'name': 'Follow the service of the summons', 'offset_days': 5})]"/>
+    </record>
+    <record id="ldm_template_commercial_lawsuit" model="legal.task.template">
+        <field name="name">Commercial lawsuit</field>
+        <field name="kind">litigation</field>
+        <field name="law_branch">commercial</field>
+        <field name="sequence">11</field>
+        <field name="step_ids" eval="[(5, 0, 0),
+            (0, 0, {'sequence': 10, 'name': 'Draft the petition', 'offset_days': 3, 'offset_from': 'start'}),
+            (0, 0, {'sequence': 20, 'name': 'Pay the court fee and register the case', 'offset_days': 2})]"/>
+    </record>
+    <record id="ldm_template_labour_case" model="legal.task.template">
+        <field name="name">Labour case</field>
+        <field name="kind">litigation</field>
+        <field name="law_branch">labour</field>
+        <field name="sequence">12</field>
+    </record>
+    <record id="ldm_template_personal_status" model="legal.task.template">
+        <field name="name">Personal status case</field>
+        <field name="kind">litigation</field>
+        <field name="law_branch">personal_status</field>
+        <field name="sequence">13</field>
+    </record>
+    <record id="ldm_template_criminal_complaint" model="legal.task.template">
+        <field name="name">Criminal complaint</field>
+        <field name="kind">litigation</field>
+        <field name="law_branch">criminal</field>
+        <field name="sequence">14</field>
+        <field name="step_ids" eval="[(5, 0, 0),
+            (0, 0, {'sequence': 10, 'name': 'File the complaint with the investigating judge', 'offset_days': 2, 'offset_from': 'start'})]"/>
+    </record>
+    <record id="ldm_template_administrative" model="legal.task.template">
+        <field name="name">Administrative grievance</field>
+        <field name="kind">litigation</field>
+        <field name="law_branch">administrative</field>
+        <field name="sequence">15</field>
+        <field name="step_ids" eval="[(5, 0, 0),
+            (0, 0, {'sequence': 10, 'name': 'Submit the grievance to the authority', 'offset_days': 3, 'offset_from': 'start'})]"/>
+    </record>
+    <record id="ldm_template_execution" model="legal.task.template">
+        <field name="name">Execution file</field>
+        <field name="kind">execution</field>
+        <field name="law_branch">civil</field>
+        <field name="sequence">16</field>
+        <field name="step_ids" eval="[(5, 0, 0),
+            (0, 0, {'sequence': 10, 'name': 'Open the file at the execution directorate', 'offset_days': 2, 'offset_from': 'start', 'is_visit': True}),
+            (0, 0, {'sequence': 20, 'name': 'Follow the service of the execution notice', 'offset_days': 5})]"/>
+    </record>
+    <record id="ldm_template_contract_review" model="legal.task.template">
+        <field name="name">Contract review</field>
+        <field name="kind">contract</field>
+        <field name="sequence">20</field>
+        <field name="duration_days">3</field>
+        <field name="step_ids" eval="[(5, 0, 0),
+            (0, 0, {'sequence': 10, 'name': 'Review and send comments', 'offset_days': 2, 'offset_from': 'start'}),
+            (0, 0, {'sequence': 20, 'name': 'Agree the final text', 'offset_days': 2})]"/>
+    </record>
+    <record id="ldm_template_opinion" model="legal.task.template">
+        <field name="name">Legal opinion</field>
+        <field name="kind">opinion</field>
+        <field name="sequence">21</field>
+        <field name="duration_days">5</field>
+        <field name="step_ids" eval="[(5, 0, 0),
+            (0, 0, {'sequence': 10, 'name': 'Research and draft the opinion', 'offset_days': 3, 'offset_from': 'start'}),
+            (0, 0, {'sequence': 20, 'name': 'Issue the opinion', 'offset_days': 2})]"/>
+    </record>
+    <record id="ldm_template_consultation" model="legal.task.template">
+        <field name="name">Consultation</field>
+        <field name="kind">opinion</field>
+        <field name="sequence">22</field>
+        <field name="duration_days">1</field>
+    </record>
+    <record id="ldm_template_poa" model="legal.task.template">
+        <field name="name">Power of attorney at the notary</field>
+        <field name="kind">government</field>
+        <field name="sequence">30</field>
+        <field name="duration_days">3</field>
+        <field name="step_ids" eval="[(5, 0, 0),
+            (0, 0, {'sequence': 10, 'name': 'Prepare the power of attorney text', 'offset_days': 1, 'offset_from': 'start'}),
+            (0, 0, {'sequence': 20, 'name': 'Sign it at the notary', 'offset_days': 1, 'is_visit': True})]"/>
+    </record>
+    <record id="ldm_template_company_amendment" model="legal.task.template">
+        <field name="name">Company amendment</field>
+        <field name="kind">corporate</field>
+        <field name="sequence">31</field>
+        <field name="duration_days">15</field>
+    </record>
+    <record id="ldm_template_investigation" model="legal.task.template">
+        <field name="name">Administrative investigation</field>
+        <field name="kind">investigation</field>
+        <field name="sequence">40</field>
+        <field name="confidential_default" eval="True"/>
+        <field name="duration_days">20</field>
+    </record>
+</odoo>

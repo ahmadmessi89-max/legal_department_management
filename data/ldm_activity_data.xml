@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <!-- One activity type per reason, so the reminder engine can find and
+         close exactly the reminder it created, whatever language it was
+         written in. -->
+    <record id="ldm_activity_session" model="mail.activity.type">
+        <field name="name">Court session</field>
+        <field name="res_model">legal.task</field>
+        <field name="icon">fa-gavel</field>
+        <field name="delay_count">0</field>
+        <field name="sequence">40</field>
+    </record>
+    <record id="ldm_activity_deadline" model="mail.activity.type">
+        <field name="name">Legal deadline</field>
+        <field name="res_model">legal.task</field>
+        <field name="icon">fa-hourglass-half</field>
+        <field name="delay_count">0</field>
+        <field name="sequence">41</field>
+    </record>
+    <record id="ldm_activity_step" model="mail.activity.type">
+        <field name="name">Matter step</field>
+        <field name="res_model">legal.task</field>
+        <field name="icon">fa-check-square-o</field>
+        <field name="delay_count">0</field>
+        <field name="sequence">42</field>
+    </record>
+    <record id="ldm_activity_target" model="mail.activity.type">
+        <field name="name">Target date</field>
+        <field name="res_model">legal.task</field>
+        <field name="icon">fa-flag</field>
+        <field name="delay_count">0</field>
+        <field name="sequence">43</field>
+    </record>
+    <record id="ldm_activity_approval" model="mail.activity.type">
+        <field name="name">Approval</field>
+        <field name="res_model">legal.task</field>
+        <field name="icon">fa-thumbs-o-up</field>
+        <field name="delay_count">0</field>
+        <field name="sequence">44</field>
+    </record>
+    <record id="ldm_activity_expiry" model="mail.activity.type">
+        <field name="name">Expiry</field>
+        <field name="res_model">legal.task</field>
+        <field name="icon">fa-calendar-times-o</field>
+        <field name="delay_count">0</field>
+        <field name="sequence">45</field>
+    </record>
+</odoo>

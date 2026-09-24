@@ -1,49 +1,143 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <!-- Legal User / Lawyer -->
-    <record id="group_legal_user" model="res.groups">
-        <field name="name">محامي / موظف قانوني</field>
+    <!--
+        Roles. The ladder is short on purpose: a clerk works the files assigned
+        to them, a lawyer owns files, an approver signs, a manager sees and
+        configures everything, an auditor reads and changes nothing. Billing is
+        a side role for the office's accountant.
+
+        group_legal_user and group_legal_manager are SAG's original xmlids and
+        keep their members; the other roles are new. Odoo 19 attaches roles to
+        a res.groups.privilege, without which the user form shows them only in
+        debug mode.
+    -->
+    <record id="module_category_ldm" model="ir.module.category">
+        <field name="name">Legal</field>
+        <field name="description">Legal department and law office: matters, hearings, government transactions, fees.</field>
+        <field name="sequence">35</field>
+    </record>
+
+    <record id="res_groups_privilege_ldm" model="res.groups.privilege">
+        <field name="name">Legal</field>
+        <field name="description">What the user may do in the legal application.</field>
+        <field name="category_id" ref="module_category_ldm"/>
+        <field name="sequence">10</field>
+    </record>
+
+    <record id="res_groups_privilege_ldm_billing" model="res.groups.privilege">
+        <field name="name">Legal billing</field>
+        <field name="description">Fee agreements, invoicing to clients and client statements.</field>
+        <field name="category_id" ref="module_category_ldm"/>
+        <field name="sequence">20</field>
+    </record>
+
+    <record id="group_ldm_clerk" model="res.groups">
+        <field name="name">Clerk / Runner</field>
+        <field name="sequence">10</field>
+        <field name="privilege_id" ref="res_groups_privilege_ldm"/>
         <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        <field name="comment">Works the matters assigned to them: counter visits, steps, documents and expenses.</field>
     </record>
 
-    <!-- Legal Manager / Admin -->
-    <record id="group_legal_manager" model="res.groups">
-        <field name="name">المدير القانوني / مدير النظام</field>
+    <record id="group_legal_user" model="res.groups">
+        <field name="name">Lawyer</field>
+        <field name="sequence">20</field>
+        <field name="privilege_id" ref="res_groups_privilege_ldm"/>
+        <field name="implied_ids" eval="[(4, ref('group_ldm_clerk')), (4, ref('base.group_partner_manager'))]"/>
+        <field name="comment">Owns matters: hearings, judgments, powers of attorney, letters. Sees the matters and clients assigned to them.</field>
+    </record>
+
+    <record id="group_ldm_approver" model="res.groups">
+        <field name="name">Approver</field>
+        <field name="sequence">30</field>
+        <field name="privilege_id" ref="res_groups_privilege_ldm"/>
         <field name="implied_ids" eval="[(4, ref('group_legal_user'))]"/>
+        <field name="comment">Approves matters before work starts, and signs them off.</field>
     </record>
 
-    <!-- Administrator inherits full legal manager permissions -->
+    <record id="group_legal_manager" model="res.groups">
+        <field name="name">Legal Manager</field>
+        <field name="sequence">40</field>
+        <field name="privilege_id" ref="res_groups_privilege_ldm"/>
+        <field name="implied_ids" eval="[(4, ref('group_ldm_approver'))]"/>
+        <field name="comment">Sees every matter, assigns work, approves, and configures matter types, bodies and settings.</field>
+    </record>
+
+    <record id="group_ldm_auditor" model="res.groups">
+        <field name="name">Auditor / executive (read only)</field>
+        <field name="sequence">50</field>
+        <field name="privilege_id" ref="res_groups_privilege_ldm"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        <field name="comment">Reads everything and changes nothing: for an internal auditor, an external reviewer, or an executive who follows the legal work.</field>
+    </record>
+
+    <record id="group_ldm_billing_user" model="res.groups">
+        <field name="name">Billing</field>
+        <field name="sequence">10</field>
+        <field name="privilege_id" ref="res_groups_privilege_ldm_billing"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user')), (4, ref('account.group_account_invoice'))]"/>
+        <field name="comment">Prepares fee agreements, invoices and client statements; reads the money side of every matter.</field>
+    </record>
+
+    <!--
+        SAG's 19.0.6.3.0 made every Settings administrator a legal manager.
+        That gave IT staff every legal file. The implication is removed here;
+        the pre-migration first grants the role explicitly to each user who held
+        it only through Settings, so nobody loses access on upgrade day.
+        (4, ...) never removes an implied group, hence (3, ...).
+    -->
     <record id="base.group_system" model="res.groups">
-        <field name="implied_ids" eval="[(4, ref('group_legal_manager'))]"/>
+        <field name="implied_ids" eval="[(3, ref('group_legal_manager'))]"/>
     </record>
 
-    <!-- Record Rules for Legal Company: STRICTLY Assigned Companies Only -->
-    <record id="legal_company_rule_lawyer" model="ir.rule">
-        <field name="name">شركات المحامي المكلف بها فقط</field>
-        <field name="model_id" ref="model_legal_company"/>
-        <field name="domain_force">['|', ('lawyer_ids', 'in', [user.id]), ('lawyer_id', '=', user.id)]</field>
-        <field name="groups" eval="[(4, ref('group_legal_user'))]"/>
+    <!-- Technical groups: implied onto base.group_user by Settings. They
+         decide which screens exist and which words are used, never who may
+         read a record, with one exception spelled out: group_ldm_see_all is
+         the "lawyers see every matter" visibility setting. -->
+    <record id="group_ldm_terms_department" model="res.groups">
+        <field name="name">Legal: department vocabulary</field>
     </record>
-
-    <record id="legal_company_rule_manager" model="ir.rule">
-        <field name="name">كافة الشركات للمدير القانوني ومدير النظام</field>
-        <field name="model_id" ref="model_legal_company"/>
-        <field name="domain_force">[(1, '=', 1)]</field>
-        <field name="groups" eval="[(4, ref('group_legal_manager'))]"/>
+    <record id="group_ldm_terms_office" model="res.groups">
+        <field name="name">Legal: law office vocabulary</field>
     </record>
-
-    <!-- Record Rules for Legal Task: STRICTLY Assigned Tasks Only -->
-    <record id="legal_task_rule_lawyer" model="ir.rule">
-        <field name="name">قضايا ومعاملات المحامي المكلف بها فقط</field>
-        <field name="model_id" ref="model_legal_task"/>
-        <field name="domain_force">['|', '|', ('lawyer_ids', 'in', [user.id]), ('lawyer_id', '=', user.id), ('legal_company_id.lawyer_ids', 'in', [user.id])]</field>
-        <field name="groups" eval="[(4, ref('group_legal_user'))]"/>
+    <record id="group_ldm_government" model="res.groups">
+        <field name="name">Legal: government transactions</field>
     </record>
-
-    <record id="legal_task_rule_manager" model="ir.rule">
-        <field name="name">كافة القضايا والمعاملات للمدير القانوني ومدير النظام</field>
-        <field name="model_id" ref="model_legal_task"/>
-        <field name="domain_force">[(1, '=', 1)]</field>
-        <field name="groups" eval="[(4, ref('group_legal_manager'))]"/>
+    <record id="group_ldm_approvals" model="res.groups">
+        <field name="name">Legal: approvals</field>
+    </record>
+    <record id="group_ldm_correspondence" model="res.groups">
+        <field name="name">Legal: correspondence register</field>
+    </record>
+    <record id="group_ldm_investigations" model="res.groups">
+        <field name="name">Legal: investigations</field>
+    </record>
+    <record id="group_ldm_client_messages" model="res.groups">
+        <field name="name">Legal: client messages</field>
+    </record>
+    <record id="group_ldm_requests" model="res.groups">
+        <field name="name">Legal: requests from other departments</field>
+        <field name="comment">When on, every employee may submit a request to the legal team and follow its status.</field>
+    </record>
+    <record id="group_ldm_corporate" model="res.groups">
+        <field name="name">Legal: company records</field>
+    </record>
+    <record id="group_ldm_billing" model="res.groups">
+        <field name="name">Legal: fees and invoicing</field>
+    </record>
+    <record id="group_ldm_time" model="res.groups">
+        <field name="name">Legal: time tracking</field>
+    </record>
+    <record id="group_ldm_conflicts" model="res.groups">
+        <field name="name">Legal: conflict check</field>
+    </record>
+    <record id="group_ldm_hr_team" model="res.groups">
+        <field name="name">Legal: staff team from HR</field>
+    </record>
+    <record id="group_ldm_accounting_links" model="res.groups">
+        <field name="name">Legal: expenses posted to accounting</field>
+    </record>
+    <record id="group_ldm_see_all" model="res.groups">
+        <field name="name">Legal: lawyers see every matter</field>
     </record>
 </odoo>

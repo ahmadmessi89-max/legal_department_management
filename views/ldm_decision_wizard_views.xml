@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_ldm_task_decision_wizard_form" model="ir.ui.view">
+        <field name="name">legal.task.decision.wizard.form</field>
+        <field name="model">legal.task.decision.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Decision">
+                <field name="mode" invisible="1"/>
+                <field name="task_ids" invisible="1"/>
+                <group>
+                    <field name="outcome" invisible="mode != 'close'" required="mode == 'close'" widget="radio"/>
+                    <field name="note" string="Why?" invisible="mode == 'close'" required="mode != 'close'"
+                           placeholder="The reason is kept in the matter's history."/>
+                    <field name="note" string="Note" invisible="mode != 'close'"
+                           placeholder="Anything the next person to open this file should know."/>
+                </group>
+                <div class="alert alert-warning" role="status" invisible="mode == 'reject' or not open_item_count">
+                    This matter still has <field name="open_item_count" class="d-inline"/> open steps, sessions or deadlines.
+                    <field name="close_open_items" class="d-inline ms-2" nolabel="1"/>
+                    <label for="close_open_items" class="d-inline"/>
+                </div>
+                <footer>
+                    <button name="action_confirm" type="object" string="Close matter" class="btn-primary" invisible="mode != 'close'"/>
+                    <button name="action_confirm" type="object" string="Cancel matter" class="btn-primary" invisible="mode != 'cancel'"/>
+                    <button name="action_confirm" type="object" string="Reject" class="btn-primary" invisible="mode != 'reject'"/>
+                    <button string="Discard" special="cancel" class="btn-secondary"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

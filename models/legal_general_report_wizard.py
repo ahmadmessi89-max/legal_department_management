@@ -11,13 +11,12 @@ class LegalGeneralReportWizard(models.TransientModel):
         'legal_general_report_company_rel',
         'wizard_id',
         'company_id',
-        string="الشركات والموكلين المشمولين",
-        placeholder="اترك الحقل فارغاً لتضمين كافة الشركات، أو حدد شركات معينة..."
+        string="الشركات والموكلين المشمولين"
     )
     
-    filter_lawyer_id = fields.Many2one('res.users', string="فلترة حسب المحامي المكلف", placeholder="كافة المحامين...")
-    filter_ministry_id = fields.Many2one('legal.ministry', string="فلترة حسب الوزارة / الهيئة", placeholder="كافة الوزارات...")
-    filter_department_id = fields.Many2one('legal.department', string="فلترة حسب الدائرة / الجهة الرسمية", placeholder="كافة الدوائر والجهات...")
+    filter_lawyer_id = fields.Many2one('res.users', string="فلترة حسب المحامي المكلف")
+    filter_ministry_id = fields.Many2one('legal.ministry', string="فلترة حسب الوزارة / الهيئة")
+    filter_department_id = fields.Many2one('legal.department', string="فلترة حسب الدائرة / الجهة الرسمية")
     filter_state = fields.Selection([
         ('draft', 'مسودة'),
         ('in_progress', 'قيد الإجراء'),
@@ -36,8 +35,7 @@ class LegalGeneralReportWizard(models.TransientModel):
         'legal_gen_report_wizard_task_rel',
         'wizard_id',
         'task_id',
-        string="تحديد قضايا ومعاملات معينة بالاسم (اختياري)",
-        placeholder="اترك الحقل فارغاً لتضمين المعاملات تلقائياً حسب الفلاتر أعلاه..."
+        string="تحديد قضايا ومعاملات معينة بالاسم (اختياري)"
     )
 
     @api.onchange('filter_ministry_id')

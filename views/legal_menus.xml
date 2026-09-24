@@ -1,60 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <!-- Top Level Menu with custom PNG icon -->
-    <menuitem id="menu_legal_root"
-              name="الشؤون القانونية"
+    <!--
+        Menus. SAG's menu xmlids are kept and re-parented. A menu that needs
+        both a role and a feature switch is a child (role) of a parent (feature):
+        Odoo shows a menu only when its parent is visible, and a folder whose
+        children are all hidden disappears. Top level for a lawyer: My Day,
+        Matters, Agenda, Clients, Registers, Approvals.
+    -->
+    <menuitem id="menu_legal_root" name="Legal" sequence="20"
               web_icon="legal_department_management,static/description/icon.png"
-              sequence="20"/>
+              groups="legal_department_management.group_ldm_clerk,legal_department_management.group_ldm_auditor,legal_department_management.group_ldm_billing_user"/>
 
-    <!-- Interactive Smart Dashboard -->
-    <menuitem id="menu_legal_dashboard_main"
-              name="📊 لوحة المتابعة والرقابة الذكية"
-              parent="menu_legal_root"
-              action="action_legal_dashboard"
-              sequence="1"/>
+    <menuitem id="menu_legal_dashboard_main" name="My Day" parent="menu_legal_root" sequence="1"
+              action="action_legal_dashboard" groups="legal_department_management.group_ldm_clerk"/>
 
-    <!-- Main Navigation Menus -->
-    <menuitem id="menu_legal_create_task_action"
-              name="➕ بدء معاملة / قضية جديدة"
-              parent="menu_legal_root"
-              action="action_legal_task_create_wizard"
-              sequence="2"/>
+    <menuitem id="menu_legal_all_tasks_management" name="Matters" parent="menu_legal_root" sequence="2"
+              action="action_legal_task"/>
 
-    <menuitem id="menu_legal_company"
-              name="الشركات والموكلين"
-              parent="menu_legal_root"
-              action="action_legal_company"
-              sequence="5"/>
+    <menuitem id="menu_ldm_agenda" name="Agenda" parent="menu_legal_root" sequence="3"
+              action="action_ldm_agenda"
+              groups="legal_department_management.group_ldm_clerk,legal_department_management.group_ldm_auditor"/>
 
-    <!-- Official Entities Menus: Manager & Administrator ONLY -->
-    <menuitem id="menu_legal_department"
-              name="الدوائر والجهات الرسمية"
-              parent="menu_legal_root"
-              action="action_legal_department"
-              sequence="15"
+    <menuitem id="menu_legal_company" name="Clients" parent="menu_legal_root" sequence="4"
+              action="action_legal_company"/>
+
+    <menuitem id="menu_ldm_registers" name="Registers" parent="menu_legal_root" sequence="5"
+              groups="legal_department_management.group_ldm_clerk,legal_department_management.group_ldm_auditor"/>
+        <menuitem id="menu_ldm_poa" name="Powers of attorney" parent="menu_ldm_registers" sequence="1"
+                  action="action_ldm_poa"/>
+        <menuitem id="menu_ldm_correspondence" name="Correspondence" parent="menu_ldm_registers" sequence="2"
+                  action="action_ldm_correspondence" groups="legal_department_management.group_ldm_correspondence"/>
+        <menuitem id="menu_ldm_requests" name="Requests" parent="menu_ldm_registers" sequence="3"
+                  action="action_ldm_request" groups="legal_department_management.group_ldm_requests"/>
+        <menuitem id="menu_ldm_company_documents" name="Company documents" parent="menu_ldm_registers" sequence="4"
+                  action="action_ldm_company_document" groups="legal_department_management.group_ldm_corporate"/>
+        <menuitem id="menu_ldm_guarantees" name="Letters of guarantee" parent="menu_ldm_registers" sequence="5"
+                  action="action_ldm_guarantee" groups="legal_department_management.group_ldm_corporate"/>
+        <menuitem id="menu_ldm_obligations" name="Recurring obligations" parent="menu_ldm_registers" sequence="6"
+                  action="action_ldm_obligation" groups="legal_department_management.group_ldm_corporate"/>
+        <menuitem id="menu_ldm_advances" name="Cash advances" parent="menu_ldm_registers" sequence="7"
+                  action="action_ldm_advance" groups="legal_department_management.group_ldm_government"/>
+        <menuitem id="menu_ldm_bodies_directory" name="Bodies and courts" parent="menu_ldm_registers" sequence="9"
+                  action="action_ldm_body_directory"/>
+
+    <menuitem id="menu_ldm_money" name="Money" parent="menu_legal_root" sequence="6"
+              groups="legal_department_management.group_ldm_billing"/>
+        <menuitem id="menu_ldm_to_invoice" name="To invoice" parent="menu_ldm_money" sequence="1"
+                  action="action_ldm_to_invoice"
+                  groups="legal_department_management.group_ldm_billing_user,legal_department_management.group_legal_manager"/>
+        <menuitem id="menu_ldm_engagements" name="Fee agreements" parent="menu_ldm_money" sequence="2"
+                  action="action_ldm_engagement"
+                  groups="legal_department_management.group_legal_user,legal_department_management.group_ldm_billing_user,legal_department_management.group_ldm_auditor"/>
+        <menuitem id="menu_ldm_client_funds" name="Client money" parent="menu_ldm_money" sequence="3"
+                  action="action_ldm_client_fund"
+                  groups="legal_department_management.group_ldm_clerk,legal_department_management.group_ldm_billing_user,legal_department_management.group_ldm_auditor"/>
+        <menuitem id="menu_ldm_time" name="Time" parent="menu_ldm_money" sequence="4"
+                  action="action_ldm_time_entry" groups="legal_department_management.group_ldm_time"/>
+
+    <menuitem id="menu_legal_approvals_root" name="Approvals" parent="menu_legal_root" sequence="7"
+              groups="legal_department_management.group_ldm_approvals"/>
+        <menuitem id="menu_legal_tasks_to_approve" name="Awaiting approval" parent="menu_legal_approvals_root" sequence="1"
+                  action="action_legal_task_to_approve"
+                  groups="legal_department_management.group_ldm_approver,legal_department_management.group_ldm_auditor"/>
+        <menuitem id="menu_ldm_tasks_decided" name="Decided" parent="menu_legal_approvals_root" sequence="2"
+                  action="action_ldm_task_decided"
+                  groups="legal_department_management.group_ldm_approver,legal_department_management.group_ldm_auditor"/>
+
+    <menuitem id="menu_ldm_reporting" name="Reporting" parent="menu_legal_root" sequence="8"
+              groups="legal_department_management.group_legal_manager,legal_department_management.group_ldm_auditor"/>
+        <menuitem id="menu_ldm_task_analysis" name="Matters analysis" parent="menu_ldm_reporting" sequence="1"
+                  action="action_ldm_task_analysis"/>
+        <menuitem id="menu_ldm_deadlines" name="Deadlines" parent="menu_ldm_reporting" sequence="2"
+                  action="action_ldm_deadline"/>
+        <menuitem id="menu_ldm_expense_analysis" name="Expenses" parent="menu_ldm_reporting" sequence="3"
+                  action="action_ldm_expense_analysis"/>
+        <menuitem id="menu_legal_general_report" name="Oversight report" parent="menu_ldm_reporting" sequence="4"
+                  action="action_legal_general_report_wizard"/>
+        <menuitem id="menu_ldm_conflict_checks" name="Conflict checks" parent="menu_ldm_reporting" sequence="5"
+                  action="action_ldm_conflict_check" groups="legal_department_management.group_ldm_conflicts"/>
+
+    <menuitem id="menu_ldm_config" name="Configuration" parent="menu_legal_root" sequence="9"
               groups="legal_department_management.group_legal_manager"/>
+        <menuitem id="menu_ldm_settings" name="Settings" parent="menu_ldm_config" sequence="1"
+                  action="action_ldm_settings" groups="base.group_system"/>
+        <menuitem id="menu_ldm_templates" name="Matter types" parent="menu_ldm_config" sequence="2"
+                  action="action_ldm_task_template"/>
+        <menuitem id="menu_legal_department" name="Bodies and courts" parent="menu_ldm_config" sequence="3"
+                  action="action_legal_department"/>
+        <menuitem id="menu_ldm_ministries" name="Ministries and authorities" parent="menu_ldm_config" sequence="4"
+                  action="action_legal_ministry"/>
+        <menuitem id="menu_ldm_holidays" name="Public holidays" parent="menu_ldm_config" sequence="5"
+                  action="action_ldm_holiday"/>
+        <menuitem id="menu_ldm_document_types" name="Document types" parent="menu_ldm_config" sequence="6"
+                  action="action_ldm_document_type"/>
+        <menuitem id="menu_ldm_appeal_rules" name="Statutory periods" parent="menu_ldm_config" sequence="7"
+                  action="action_ldm_appeal_rule"/>
+        <menuitem id="menu_ldm_expense_categories" name="Expense categories" parent="menu_ldm_config" sequence="8"
+                  action="action_ldm_expense_category"/>
+        <menuitem id="menu_ldm_letter_templates" name="Letter templates" parent="menu_ldm_config" sequence="9"
+                  action="action_ldm_letter_template"/>
 
-    <menuitem id="menu_legal_approvals_root"
-              name="⚖️ الصلاحيات والموافقات"
-              parent="menu_legal_root"
-              sequence="25"
-              groups="legal_department_management.group_legal_manager"/>
+    <!-- Kept for bookmarks and compatibility; the quick-create is reached from
+         My Day, every register's New button, the client and Alt+Shift+N. -->
+    <menuitem id="menu_legal_create_task_action" name="New matter" parent="menu_legal_root" sequence="90"
+              action="action_legal_task_create_wizard" groups="base.group_no_one"/>
 
-    <menuitem id="menu_legal_tasks_to_approve"
-              name="معاملات بانتظار الاعتماد ⏳"
-              parent="menu_legal_approvals_root"
-              action="action_legal_task_to_approve"
-              sequence="1"/>
-
-    <menuitem id="menu_legal_all_tasks_management"
-              name="الرقابة العامة على كافة القضايا 📑"
-              parent="menu_legal_approvals_root"
-              action="action_legal_task"
-              sequence="5"/>
-
-    <menuitem id="menu_legal_general_report"
-              name="🖨️ طباعة تقرير الرقابة العامة الشامل"
-              parent="menu_legal_approvals_root"
-              action="action_legal_general_report_wizard"
-              sequence="10"/>
+    <!-- Requests: every employee's front door when the switch is on. -->
+    <menuitem id="menu_ldm_requests_root" name="Legal requests" sequence="21"
+              web_icon="legal_department_management,static/description/icon.png"
+              groups="legal_department_management.group_ldm_requests"/>
+        <menuitem id="menu_ldm_requests_mine" name="My requests" parent="menu_ldm_requests_root" sequence="1"
+                  action="action_ldm_request_mine"/>
 </odoo>

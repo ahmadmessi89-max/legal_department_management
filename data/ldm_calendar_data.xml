@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <!--
+        The Iraqi working week (Law 12 of 2024: Friday and Saturday are the
+        weekly holidays) and the general public holidays of the same law.
+        Hijri holidays move every year and are fixed by the Shia and Sunni
+        endowment offices, so their dates here are estimates marked as such.
+        Review them every December; the legal manager gets a reminder.
+    -->
+    <record id="ldm_calendar_iraq" model="resource.calendar">
+        <field name="name">Iraq — Sunday to Thursday (legal deadlines)</field>
+        <field name="tz">Asia/Baghdad</field>
+        <field name="company_id" eval="False"/>
+        <field name="hours_per_day">6.5</field>
+        <field name="attendance_ids" eval="[(5, 0, 0),
+            (0, 0, {'name': 'Sunday', 'dayofweek': '6', 'hour_from': 8.0, 'hour_to': 14.5, 'day_period': 'morning'}),
+            (0, 0, {'name': 'Monday', 'dayofweek': '0', 'hour_from': 8.0, 'hour_to': 14.5, 'day_period': 'morning'}),
+            (0, 0, {'name': 'Tuesday', 'dayofweek': '1', 'hour_from': 8.0, 'hour_to': 14.5, 'day_period': 'morning'}),
+            (0, 0, {'name': 'Wednesday', 'dayofweek': '2', 'hour_from': 8.0, 'hour_to': 14.5, 'day_period': 'morning'}),
+            (0, 0, {'name': 'Thursday', 'dayofweek': '3', 'hour_from': 8.0, 'hour_to': 14.5, 'day_period': 'morning'})]"/>
+    </record>
+    <record id="ldm_holiday_2026_01" model="resource.calendar.leaves">
+        <field name="name">New Year's Day 2026</field>
+        <field name="calendar_id" ref="ldm_calendar_iraq"/>
+        <field name="date_from">2025-12-31 21:00:00</field>
+        <field name="date_to">2026-01-01 20:59:59</field>
+        <field name="time_type">leave</field>
+    </record>
+    <record id="ldm_holiday_2026_02" model="resource.calendar.leaves">
+        <field name="name">Army Day 2026</field>
+        <field name="calendar_id" ref="ldm_calendar_iraq"/>
+        <field name="date_from">2026-01-05 21:00:00</field>
+        <field name="date_to">2026-01-06 20:59:59</field>
+        <field name="time_type">leave</field>
+    </record>
+    <record id="ldm_holiday_2026_03" model="resource.calendar.leaves">
+        <field name="name">Memorial of the regime's crimes (Halabja) 2026</field>
+        <field name="calendar_id" ref="ldm_calendar_iraq"/>
+        <field name="date_from">2026-03-15 21:00:00</field>
+        <field name="date_to">2026-03-16 20:59:59</field>
+        <field name="time_type">leave</field>
+    </record>
+    <record id="ldm_holiday_2026_04" model="resource.calendar.leaves">
+        <field name="name">Eid al-Fitr (estimated) 2026</field>
+        <field name="calendar_id" ref="ldm_calendar_iraq"/>
+        <field name="date_from">2026-03-19 21:00:00</field>
+        <field name="date_to">2026-03-22 20:59:59</field>
+        <field name="time_type">leave</field>
+    </record>
+    <record id="ldm_holiday_2026_05" model="resource.calendar.leaves">
+        <field name="name">Nowruz 2026</field>
+        <field name="calendar_id" ref="ldm_calendar_iraq"/>
+        <field name="date_from">2026-03-20 21:00:00</field>
+        <field name="date_to">2026-03-21 20:59:59</field>
+        <field name="time_type">leave</field>
+    </record>
+    <record id="ldm_holiday_2026_06" model="resource.calendar.leaves">
+        <field name="name">Labour Day 2026</field>
+        <field name="calendar_id" ref="ldm_calendar_iraq"/>
+        <field name="date_from">2026-04-30 21:00:00</field>
+        <field name="date_to">2026-05-01 20:59:59</field>
+        <field name="time_type">leave</field>
+    </record>
+    <record id="ldm_holiday_2026_07" model="resource.calendar.leaves">
+        <field name="name">Eid al-Adha (estimated) 2026</field>
+        <field name="calendar_id" ref="ldm_calendar_iraq"/>
+        <field name="date_from">2026-05-26 21:00:00</field>
+        <field name="date_to">2026-05-30 20:59:59</field>
+        <field name="time_type">leave</field>
+    </record>
+    <record id="ldm_holiday_2026_08" model="resource.calendar.leaves">
+        <field name="name">Eid al-Ghadir (estimated) 2026</field>
+        <field name="calendar_id" ref="ldm_calendar_iraq"/>
+        <field name="date_from">2026-06-03 21:00:00</field>
+        <field name="date_to">2026-06-04 20:59:59</field>
+        <field name="time_type">leave</field>
+    </record>
+    <record id="ldm_holiday_2026_09" model="resource.calendar.leaves">
+        <field name="name">Islamic New Year (estimated) 2026</field>
+        <field name="calendar_id" ref="ldm_calendar_iraq"/>
+        <field name="date_from">2026-06-15 21:00:00</field>
+        <field name="date_to">2026-06-16 20:59:59</field>
+        <field name="time_type">leave</field>
+    </record>
+    <record id="ldm_holiday_2026_10" model="resource.calendar.leaves">
+        <field name="name">Ashura (estimated) 2026</field>
+        <field name="calendar_id" ref="ldm_calendar_iraq"/>
+        <field name="date_from">2026-06-24 21:00:00</field>
+        <field name="date_to">2026-06-25 20:59:59</field>
+        <field name="time_type">leave</field>
+    </record>
+    <record id="ldm_holiday_2026_11" model="resource.calendar.leaves">
+        <field name="name">Prophet's Birthday (estimated) 2026</field>
+        <field name="calendar_id" ref="ldm_calendar_iraq"/>
+        <field name="date_from">2026-08-24 21:00:00</field>
+        <field name="date_to">2026-08-25 20:59:59</field>
+        <field name="time_type">leave</field>
+    </record>
+    <record id="ldm_holiday_2027_01" model="resource.calendar.leaves">
+        <field name="name">New Year's Day 2027</field>
+        <field name="calendar_id" ref="ldm_calendar_iraq"/>
+        <field name="date_from">2026-12-31 21:00:00</field>
+        <field name="date_to">2027-01-01 20:59:59</field>
+        <field name="time_type">leave</field>
+    </record>
+    <record id="ldm_holiday_2027_02" model="resource.calendar.leaves">
+        <field name="name">Army Day 2027</field>
+        <field name="calendar_id" ref="ldm_calendar_iraq"/>
+        <field name="date_from">2027-01-05 21:00:00</field>
+        <field name="date_to">2027-01-06 20:59:59</field>
+        <field name="time_type">leave</field>
+    </record>
+    <record id="ldm_holiday_2027_03" model="resource.calendar.leaves">
+        <field name="name">Eid al-Fitr (estimated) 2027</field>
+        <field name="calendar_id" ref="ldm_calendar_iraq"/>
+        <field name="date_from">2027-03-08 21:00:00</field>
+        <field name="date_to">2027-03-11 20:59:59</field>
+        <field name="time_type">leave</field>
+    </record>
+    <record id="ldm_holiday_2027_04" model="resource.calendar.leaves">
+        <field name="name">Memorial of the regime's crimes (Halabja) 2027</field>
+        <field name="calendar_id" ref="ldm_calendar_iraq"/>
+        <field name="date_from">2027-03-15 21:00:00</field>
+        <field name="date_to">2027-03-16 20:59:59</field>
+        <field name="time_type">leave</field>
+    </record>
+    <record id="ldm_holiday_2027_05" model="resource.calendar.leaves">
+        <field name="name">Nowruz 2027</field>
+        <field name="calendar_id" ref="ldm_calendar_iraq"/>
+        <field name="date_from">2027-03-20 21:00:00</field>
+        <field name="date_to">2027-03-21 20:59:59</field>
+        <field name="time_type">leave</field>
+    </record>
+    <record id="ldm_holiday_2027_06" model="resource.calendar.leaves">
+        <field name="name">Labour Day 2027</field>
+        <field name="calendar_id" ref="ldm_calendar_iraq"/>
+        <field name="date_from">2027-04-30 21:00:00</field>
+        <field name="date_to">2027-05-01 20:59:59</field>
+        <field name="time_type">leave</field>
+    </record>
+    <record id="ldm_holiday_2027_07" model="resource.calendar.leaves">
+        <field name="name">Eid al-Adha (estimated) 2027</field>
+        <field name="calendar_id" ref="ldm_calendar_iraq"/>
+        <field name="date_from">2027-05-15 21:00:00</field>
+        <field name="date_to">2027-05-19 20:59:59</field>
+        <field name="time_type">leave</field>
+    </record>
+    <record id="ldm_holiday_2027_08" model="resource.calendar.leaves">
+        <field name="name">Eid al-Ghadir (estimated) 2027</field>
+        <field name="calendar_id" ref="ldm_calendar_iraq"/>
+        <field name="date_from">2027-05-23 21:00:00</field>
+        <field name="date_to">2027-05-24 20:59:59</field>
+        <field name="time_type">leave</field>
+    </record>
+    <record id="ldm_holiday_2027_09" model="resource.calendar.leaves">
+        <field name="name">Islamic New Year (estimated) 2027</field>
+        <field name="calendar_id" ref="ldm_calendar_iraq"/>
+        <field name="date_from">2027-06-05 21:00:00</field>
+        <field name="date_to">2027-06-06 20:59:59</field>
+        <field name="time_type">leave</field>
+    </record>
+    <record id="ldm_holiday_2027_10" model="resource.calendar.leaves">
+        <field name="name">Ashura (estimated) 2027</field>
+        <field name="calendar_id" ref="ldm_calendar_iraq"/>
+        <field name="date_from">2027-06-14 21:00:00</field>
+        <field name="date_to">2027-06-15 20:59:59</field>
+        <field name="time_type">leave</field>
+    </record>
+    <record id="ldm_holiday_2027_11" model="resource.calendar.leaves">
+        <field name="name">Prophet's Birthday (estimated) 2027</field>
+        <field name="calendar_id" ref="ldm_calendar_iraq"/>
+        <field name="date_from">2027-08-13 21:00:00</field>
+        <field name="date_to">2027-08-14 20:59:59</field>
+        <field name="time_type">leave</field>
+    </record>
+</odoo>

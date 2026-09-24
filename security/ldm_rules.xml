@@ -1,0 +1,1058 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--
+        Who sees which matter. Clerks and lawyers see the matters they are
+        responsible for, on the team of, attend a session of, or hold a step
+        of, plus every non-confidential matter of the clients they look after.
+        Managers, auditors, billing and (when Settings says lawyers see every
+        matter) everyone with legal access see all. The rule ids of 19.0.6.3.0
+        are kept; their domains are rewritten.
+    -->
+    <record id="legal_task_rule_lawyer" model="ir.rule">
+        <field name="name">Matters: assigned (lawyer)</field>
+        <field name="model_id" ref="model_legal_task"/>
+        <field name="domain_force">['|', '|', '|', '|', ('lawyer_id', '=', user.id), ('lawyer_ids', 'in', [user.id]), '&amp;', ('confidential', '=', False), ('legal_company_id.lawyer_ids', 'in', [user.id]), '&amp;', ('confidential', '=', False), ('step_ids.user_id', '=', user.id), ('hearing_ids.attending_user_id', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_legal_user'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_task_rule_clerk" model="ir.rule">
+        <field name="name">Matters: assigned (clerk)</field>
+        <field name="model_id" ref="model_legal_task"/>
+        <field name="domain_force">['|', '|', '|', '|', ('lawyer_id', '=', user.id), ('lawyer_ids', 'in', [user.id]), '&amp;', ('confidential', '=', False), ('legal_company_id.lawyer_ids', 'in', [user.id]), '&amp;', ('confidential', '=', False), ('step_ids.user_id', '=', user.id), ('hearing_ids.attending_user_id', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_ldm_clerk'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_task_rule_manager" model="ir.rule">
+        <field name="name">Matters: all (manager)</field>
+        <field name="model_id" ref="model_legal_task"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_legal_manager'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_task_rule_approver" model="ir.rule">
+        <field name="name">Matters: in the approval flow (approver)</field>
+        <field name="model_id" ref="model_legal_task"/>
+        <field name="domain_force">['|', ('approval_state', '!=', 'draft'), '|', '|', '|', '|', ('lawyer_id', '=', user.id), ('lawyer_ids', 'in', [user.id]), '&amp;', ('confidential', '=', False), ('legal_company_id.lawyer_ids', 'in', [user.id]), '&amp;', ('confidential', '=', False), ('step_ids.user_id', '=', user.id), ('hearing_ids.attending_user_id', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_ldm_approver'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_task_rule_see_all" model="ir.rule">
+        <field name="name">Matters: every non-confidential matter (office-wide visibility)</field>
+        <field name="model_id" ref="model_legal_task"/>
+        <field name="domain_force">['|', ('confidential', '=', False), '|', '|', '|', '|', ('lawyer_id', '=', user.id), ('lawyer_ids', 'in', [user.id]), '&amp;', ('confidential', '=', False), ('legal_company_id.lawyer_ids', 'in', [user.id]), '&amp;', ('confidential', '=', False), ('step_ids.user_id', '=', user.id), ('hearing_ids.attending_user_id', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_ldm_see_all'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_task_rule_auditor" model="ir.rule">
+        <field name="name">Matters: all (auditor, read)</field>
+        <field name="model_id" ref="model_legal_task"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_ldm_auditor'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+    <record id="legal_task_rule_billing" model="ir.rule">
+        <field name="name">Matters: non-confidential (billing, read)</field>
+        <field name="model_id" ref="model_legal_task"/>
+        <field name="domain_force">[('confidential', '=', False)]</field>
+        <field name="groups" eval="[(4, ref('group_ldm_billing_user'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+    <record id="legal_company_rule_lawyer" model="ir.rule">
+        <field name="name">Clients: assigned (lawyer)</field>
+        <field name="model_id" ref="model_legal_company"/>
+        <field name="domain_force">['|', '|', '|', ('lawyer_id', '=', user.id), ('lawyer_ids', 'in', [user.id]), ('task_ids.lawyer_ids', 'in', [user.id]), ('task_ids.step_ids.user_id', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_legal_user'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_company_rule_clerk" model="ir.rule">
+        <field name="name">Clients: assigned (clerk)</field>
+        <field name="model_id" ref="model_legal_company"/>
+        <field name="domain_force">['|', '|', '|', ('lawyer_id', '=', user.id), ('lawyer_ids', 'in', [user.id]), ('task_ids.lawyer_ids', 'in', [user.id]), ('task_ids.step_ids.user_id', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_ldm_clerk'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_company_rule_manager" model="ir.rule">
+        <field name="name">Clients: all (manager)</field>
+        <field name="model_id" ref="model_legal_company"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_legal_manager'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_company_rule_see_all" model="ir.rule">
+        <field name="name">Clients: all (office-wide visibility)</field>
+        <field name="model_id" ref="model_legal_company"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_ldm_see_all'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_company_rule_auditor" model="ir.rule">
+        <field name="name">Clients: all (auditor, read)</field>
+        <field name="model_id" ref="model_legal_company"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_ldm_auditor'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+    <record id="legal_company_rule_billing" model="ir.rule">
+        <field name="name">Clients: all (billing, read)</field>
+        <field name="model_id" ref="model_legal_company"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_ldm_billing_user'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+    <record id="legal_task_step_rule_assigned" model="ir.rule">
+        <field name="name">Steps: of visible matters</field>
+        <field name="model_id" ref="model_legal_task_step"/>
+        <field name="domain_force">['|', '|', '|', '|', ('task_id.lawyer_id', '=', user.id), ('task_id.lawyer_ids', 'in', [user.id]), '&amp;', ('task_id.confidential', '=', False), ('task_id.legal_company_id.lawyer_ids', 'in', [user.id]), '&amp;', ('task_id.confidential', '=', False), ('task_id.step_ids.user_id', '=', user.id), ('task_id.hearing_ids.attending_user_id', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_ldm_clerk'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_task_step_rule_all" model="ir.rule">
+        <field name="name">Steps: all</field>
+        <field name="model_id" ref="model_legal_task_step"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_legal_manager'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_task_step_rule_approver" model="ir.rule">
+        <field name="name">Steps: of matters in the approval flow</field>
+        <field name="model_id" ref="model_legal_task_step"/>
+        <field name="domain_force">['|', ('task_id.approval_state', '!=', 'draft'), '|', '|', '|', '|', ('task_id.lawyer_id', '=', user.id), ('task_id.lawyer_ids', 'in', [user.id]), '&amp;', ('task_id.confidential', '=', False), ('task_id.legal_company_id.lawyer_ids', 'in', [user.id]), '&amp;', ('task_id.confidential', '=', False), ('task_id.step_ids.user_id', '=', user.id), ('task_id.hearing_ids.attending_user_id', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_ldm_approver'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_task_step_rule_see_all" model="ir.rule">
+        <field name="name">Steps: of non-confidential matters (office-wide visibility)</field>
+        <field name="model_id" ref="model_legal_task_step"/>
+        <field name="domain_force">['|', ('task_id.confidential', '=', False), '|', '|', '|', '|', ('task_id.lawyer_id', '=', user.id), ('task_id.lawyer_ids', 'in', [user.id]), '&amp;', ('task_id.confidential', '=', False), ('task_id.legal_company_id.lawyer_ids', 'in', [user.id]), '&amp;', ('task_id.confidential', '=', False), ('task_id.step_ids.user_id', '=', user.id), ('task_id.hearing_ids.attending_user_id', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_ldm_see_all'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_task_step_rule_auditor" model="ir.rule">
+        <field name="name">Steps: all (auditor, read)</field>
+        <field name="model_id" ref="model_legal_task_step"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_ldm_auditor'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+    <record id="legal_task_step_rule_billing" model="ir.rule">
+        <field name="name">Steps: of non-confidential matters (billing)</field>
+        <field name="model_id" ref="model_legal_task_step"/>
+        <field name="domain_force">[('task_id.confidential', '=', False)]</field>
+        <field name="groups" eval="[(4, ref('group_ldm_billing_user'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_task_document_rule_assigned" model="ir.rule">
+        <field name="name">Matter documents: of visible matters</field>
+        <field name="model_id" ref="model_legal_task_document"/>
+        <field name="domain_force">['|', '|', '|', '|', ('task_id.lawyer_id', '=', user.id), ('task_id.lawyer_ids', 'in', [user.id]), '&amp;', ('task_id.confidential', '=', False), ('task_id.legal_company_id.lawyer_ids', 'in', [user.id]), '&amp;', ('task_id.confidential', '=', False), ('task_id.step_ids.user_id', '=', user.id), ('task_id.hearing_ids.attending_user_id', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_ldm_clerk'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_task_document_rule_all" model="ir.rule">
+        <field name="name">Matter documents: all</field>
+        <field name="model_id" ref="model_legal_task_document"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_legal_manager'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_task_document_rule_approver" model="ir.rule">
+        <field name="name">Matter documents: of matters in the approval flow</field>
+        <field name="model_id" ref="model_legal_task_document"/>
+        <field name="domain_force">['|', ('task_id.approval_state', '!=', 'draft'), '|', '|', '|', '|', ('task_id.lawyer_id', '=', user.id), ('task_id.lawyer_ids', 'in', [user.id]), '&amp;', ('task_id.confidential', '=', False), ('task_id.legal_company_id.lawyer_ids', 'in', [user.id]), '&amp;', ('task_id.confidential', '=', False), ('task_id.step_ids.user_id', '=', user.id), ('task_id.hearing_ids.attending_user_id', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_ldm_approver'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_task_document_rule_see_all" model="ir.rule">
+        <field name="name">Matter documents: of non-confidential matters (office-wide visibility)</field>
+        <field name="model_id" ref="model_legal_task_document"/>
+        <field name="domain_force">['|', ('task_id.confidential', '=', False), '|', '|', '|', '|', ('task_id.lawyer_id', '=', user.id), ('task_id.lawyer_ids', 'in', [user.id]), '&amp;', ('task_id.confidential', '=', False), ('task_id.legal_company_id.lawyer_ids', 'in', [user.id]), '&amp;', ('task_id.confidential', '=', False), ('task_id.step_ids.user_id', '=', user.id), ('task_id.hearing_ids.attending_user_id', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_ldm_see_all'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_task_document_rule_auditor" model="ir.rule">
+        <field name="name">Matter documents: all (auditor, read)</field>
+        <field name="model_id" ref="model_legal_task_document"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_ldm_auditor'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+    <record id="legal_task_document_rule_billing" model="ir.rule">
+        <field name="name">Matter documents: of non-confidential matters (billing)</field>
+        <field name="model_id" ref="model_legal_task_document"/>
+        <field name="domain_force">[('task_id.confidential', '=', False)]</field>
+        <field name="groups" eval="[(4, ref('group_ldm_billing_user'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_hearing_rule_assigned" model="ir.rule">
+        <field name="name">Sessions: of visible matters</field>
+        <field name="model_id" ref="model_legal_hearing"/>
+        <field name="domain_force">['|', '|', '|', '|', ('task_id.lawyer_id', '=', user.id), ('task_id.lawyer_ids', 'in', [user.id]), '&amp;', ('task_id.confidential', '=', False), ('task_id.legal_company_id.lawyer_ids', 'in', [user.id]), '&amp;', ('task_id.confidential', '=', False), ('task_id.step_ids.user_id', '=', user.id), ('task_id.hearing_ids.attending_user_id', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_ldm_clerk'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_hearing_rule_all" model="ir.rule">
+        <field name="name">Sessions: all</field>
+        <field name="model_id" ref="model_legal_hearing"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_legal_manager'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_hearing_rule_approver" model="ir.rule">
+        <field name="name">Sessions: of matters in the approval flow</field>
+        <field name="model_id" ref="model_legal_hearing"/>
+        <field name="domain_force">['|', ('task_id.approval_state', '!=', 'draft'), '|', '|', '|', '|', ('task_id.lawyer_id', '=', user.id), ('task_id.lawyer_ids', 'in', [user.id]), '&amp;', ('task_id.confidential', '=', False), ('task_id.legal_company_id.lawyer_ids', 'in', [user.id]), '&amp;', ('task_id.confidential', '=', False), ('task_id.step_ids.user_id', '=', user.id), ('task_id.hearing_ids.attending_user_id', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_ldm_approver'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_hearing_rule_see_all" model="ir.rule">
+        <field name="name">Sessions: of non-confidential matters (office-wide visibility)</field>
+        <field name="model_id" ref="model_legal_hearing"/>
+        <field name="domain_force">['|', ('task_id.confidential', '=', False), '|', '|', '|', '|', ('task_id.lawyer_id', '=', user.id), ('task_id.lawyer_ids', 'in', [user.id]), '&amp;', ('task_id.confidential', '=', False), ('task_id.legal_company_id.lawyer_ids', 'in', [user.id]), '&amp;', ('task_id.confidential', '=', False), ('task_id.step_ids.user_id', '=', user.id), ('task_id.hearing_ids.attending_user_id', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_ldm_see_all'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_hearing_rule_auditor" model="ir.rule">
+        <field name="name">Sessions: all (auditor, read)</field>
+        <field name="model_id" ref="model_legal_hearing"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_ldm_auditor'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+    <record id="legal_hearing_rule_billing" model="ir.rule">
+        <field name="name">Sessions: of non-confidential matters (billing)</field>
+        <field name="model_id" ref="model_legal_hearing"/>
+        <field name="domain_force">[('task_id.confidential', '=', False)]</field>
+        <field name="groups" eval="[(4, ref('group_ldm_billing_user'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_task_party_rule_assigned" model="ir.rule">
+        <field name="name">Parties: of visible matters</field>
+        <field name="model_id" ref="model_legal_task_party"/>
+        <field name="domain_force">['|', '|', '|', '|', ('task_id.lawyer_id', '=', user.id), ('task_id.lawyer_ids', 'in', [user.id]), '&amp;', ('task_id.confidential', '=', False), ('task_id.legal_company_id.lawyer_ids', 'in', [user.id]), '&amp;', ('task_id.confidential', '=', False), ('task_id.step_ids.user_id', '=', user.id), ('task_id.hearing_ids.attending_user_id', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_ldm_clerk'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_task_party_rule_all" model="ir.rule">
+        <field name="name">Parties: all</field>
+        <field name="model_id" ref="model_legal_task_party"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_legal_manager'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_task_party_rule_approver" model="ir.rule">
+        <field name="name">Parties: of matters in the approval flow</field>
+        <field name="model_id" ref="model_legal_task_party"/>
+        <field name="domain_force">['|', ('task_id.approval_state', '!=', 'draft'), '|', '|', '|', '|', ('task_id.lawyer_id', '=', user.id), ('task_id.lawyer_ids', 'in', [user.id]), '&amp;', ('task_id.confidential', '=', False), ('task_id.legal_company_id.lawyer_ids', 'in', [user.id]), '&amp;', ('task_id.confidential', '=', False), ('task_id.step_ids.user_id', '=', user.id), ('task_id.hearing_ids.attending_user_id', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_ldm_approver'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_task_party_rule_see_all" model="ir.rule">
+        <field name="name">Parties: of non-confidential matters (office-wide visibility)</field>
+        <field name="model_id" ref="model_legal_task_party"/>
+        <field name="domain_force">['|', ('task_id.confidential', '=', False), '|', '|', '|', '|', ('task_id.lawyer_id', '=', user.id), ('task_id.lawyer_ids', 'in', [user.id]), '&amp;', ('task_id.confidential', '=', False), ('task_id.legal_company_id.lawyer_ids', 'in', [user.id]), '&amp;', ('task_id.confidential', '=', False), ('task_id.step_ids.user_id', '=', user.id), ('task_id.hearing_ids.attending_user_id', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_ldm_see_all'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_task_party_rule_auditor" model="ir.rule">
+        <field name="name">Parties: all (auditor, read)</field>
+        <field name="model_id" ref="model_legal_task_party"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_ldm_auditor'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+    <record id="legal_task_party_rule_billing" model="ir.rule">
+        <field name="name">Parties: of non-confidential matters (billing)</field>
+        <field name="model_id" ref="model_legal_task_party"/>
+        <field name="domain_force">[('task_id.confidential', '=', False)]</field>
+        <field name="groups" eval="[(4, ref('group_ldm_billing_user'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_judgment_rule_assigned" model="ir.rule">
+        <field name="name">Judgments: of visible matters</field>
+        <field name="model_id" ref="model_legal_judgment"/>
+        <field name="domain_force">['|', '|', '|', '|', ('task_id.lawyer_id', '=', user.id), ('task_id.lawyer_ids', 'in', [user.id]), '&amp;', ('task_id.confidential', '=', False), ('task_id.legal_company_id.lawyer_ids', 'in', [user.id]), '&amp;', ('task_id.confidential', '=', False), ('task_id.step_ids.user_id', '=', user.id), ('task_id.hearing_ids.attending_user_id', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_ldm_clerk'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_judgment_rule_all" model="ir.rule">
+        <field name="name">Judgments: all</field>
+        <field name="model_id" ref="model_legal_judgment"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_legal_manager'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_judgment_rule_approver" model="ir.rule">
+        <field name="name">Judgments: of matters in the approval flow</field>
+        <field name="model_id" ref="model_legal_judgment"/>
+        <field name="domain_force">['|', ('task_id.approval_state', '!=', 'draft'), '|', '|', '|', '|', ('task_id.lawyer_id', '=', user.id), ('task_id.lawyer_ids', 'in', [user.id]), '&amp;', ('task_id.confidential', '=', False), ('task_id.legal_company_id.lawyer_ids', 'in', [user.id]), '&amp;', ('task_id.confidential', '=', False), ('task_id.step_ids.user_id', '=', user.id), ('task_id.hearing_ids.attending_user_id', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_ldm_approver'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_judgment_rule_see_all" model="ir.rule">
+        <field name="name">Judgments: of non-confidential matters (office-wide visibility)</field>
+        <field name="model_id" ref="model_legal_judgment"/>
+        <field name="domain_force">['|', ('task_id.confidential', '=', False), '|', '|', '|', '|', ('task_id.lawyer_id', '=', user.id), ('task_id.lawyer_ids', 'in', [user.id]), '&amp;', ('task_id.confidential', '=', False), ('task_id.legal_company_id.lawyer_ids', 'in', [user.id]), '&amp;', ('task_id.confidential', '=', False), ('task_id.step_ids.user_id', '=', user.id), ('task_id.hearing_ids.attending_user_id', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_ldm_see_all'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_judgment_rule_auditor" model="ir.rule">
+        <field name="name">Judgments: all (auditor, read)</field>
+        <field name="model_id" ref="model_legal_judgment"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_ldm_auditor'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+    <record id="legal_judgment_rule_billing" model="ir.rule">
+        <field name="name">Judgments: of non-confidential matters (billing)</field>
+        <field name="model_id" ref="model_legal_judgment"/>
+        <field name="domain_force">[('task_id.confidential', '=', False)]</field>
+        <field name="groups" eval="[(4, ref('group_ldm_billing_user'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_task_expense_rule_assigned" model="ir.rule">
+        <field name="name">Expenses: of visible matters</field>
+        <field name="model_id" ref="model_legal_task_expense"/>
+        <field name="domain_force">['|', '|', '|', '|', ('task_id.lawyer_id', '=', user.id), ('task_id.lawyer_ids', 'in', [user.id]), '&amp;', ('task_id.confidential', '=', False), ('task_id.legal_company_id.lawyer_ids', 'in', [user.id]), '&amp;', ('task_id.confidential', '=', False), ('task_id.step_ids.user_id', '=', user.id), ('task_id.hearing_ids.attending_user_id', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_ldm_clerk'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_task_expense_rule_all" model="ir.rule">
+        <field name="name">Expenses: all</field>
+        <field name="model_id" ref="model_legal_task_expense"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_legal_manager'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_task_expense_rule_approver" model="ir.rule">
+        <field name="name">Expenses: of matters in the approval flow</field>
+        <field name="model_id" ref="model_legal_task_expense"/>
+        <field name="domain_force">['|', ('task_id.approval_state', '!=', 'draft'), '|', '|', '|', '|', ('task_id.lawyer_id', '=', user.id), ('task_id.lawyer_ids', 'in', [user.id]), '&amp;', ('task_id.confidential', '=', False), ('task_id.legal_company_id.lawyer_ids', 'in', [user.id]), '&amp;', ('task_id.confidential', '=', False), ('task_id.step_ids.user_id', '=', user.id), ('task_id.hearing_ids.attending_user_id', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_ldm_approver'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_task_expense_rule_see_all" model="ir.rule">
+        <field name="name">Expenses: of non-confidential matters (office-wide visibility)</field>
+        <field name="model_id" ref="model_legal_task_expense"/>
+        <field name="domain_force">['|', ('task_id.confidential', '=', False), '|', '|', '|', '|', ('task_id.lawyer_id', '=', user.id), ('task_id.lawyer_ids', 'in', [user.id]), '&amp;', ('task_id.confidential', '=', False), ('task_id.legal_company_id.lawyer_ids', 'in', [user.id]), '&amp;', ('task_id.confidential', '=', False), ('task_id.step_ids.user_id', '=', user.id), ('task_id.hearing_ids.attending_user_id', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_ldm_see_all'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_task_expense_rule_auditor" model="ir.rule">
+        <field name="name">Expenses: all (auditor, read)</field>
+        <field name="model_id" ref="model_legal_task_expense"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_ldm_auditor'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+    <record id="legal_task_expense_rule_billing" model="ir.rule">
+        <field name="name">Expenses: of non-confidential matters (billing)</field>
+        <field name="model_id" ref="model_legal_task_expense"/>
+        <field name="domain_force">[('task_id.confidential', '=', False)]</field>
+        <field name="groups" eval="[(4, ref('group_ldm_billing_user'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_time_entry_rule_assigned" model="ir.rule">
+        <field name="name">Time: of visible matters</field>
+        <field name="model_id" ref="model_legal_time_entry"/>
+        <field name="domain_force">['|', '|', '|', '|', ('task_id.lawyer_id', '=', user.id), ('task_id.lawyer_ids', 'in', [user.id]), '&amp;', ('task_id.confidential', '=', False), ('task_id.legal_company_id.lawyer_ids', 'in', [user.id]), '&amp;', ('task_id.confidential', '=', False), ('task_id.step_ids.user_id', '=', user.id), ('task_id.hearing_ids.attending_user_id', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_ldm_clerk'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_time_entry_rule_all" model="ir.rule">
+        <field name="name">Time: all</field>
+        <field name="model_id" ref="model_legal_time_entry"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_legal_manager'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_time_entry_rule_approver" model="ir.rule">
+        <field name="name">Time: of matters in the approval flow</field>
+        <field name="model_id" ref="model_legal_time_entry"/>
+        <field name="domain_force">['|', ('task_id.approval_state', '!=', 'draft'), '|', '|', '|', '|', ('task_id.lawyer_id', '=', user.id), ('task_id.lawyer_ids', 'in', [user.id]), '&amp;', ('task_id.confidential', '=', False), ('task_id.legal_company_id.lawyer_ids', 'in', [user.id]), '&amp;', ('task_id.confidential', '=', False), ('task_id.step_ids.user_id', '=', user.id), ('task_id.hearing_ids.attending_user_id', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_ldm_approver'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_time_entry_rule_see_all" model="ir.rule">
+        <field name="name">Time: of non-confidential matters (office-wide visibility)</field>
+        <field name="model_id" ref="model_legal_time_entry"/>
+        <field name="domain_force">['|', ('task_id.confidential', '=', False), '|', '|', '|', '|', ('task_id.lawyer_id', '=', user.id), ('task_id.lawyer_ids', 'in', [user.id]), '&amp;', ('task_id.confidential', '=', False), ('task_id.legal_company_id.lawyer_ids', 'in', [user.id]), '&amp;', ('task_id.confidential', '=', False), ('task_id.step_ids.user_id', '=', user.id), ('task_id.hearing_ids.attending_user_id', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_ldm_see_all'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_time_entry_rule_auditor" model="ir.rule">
+        <field name="name">Time: all (auditor, read)</field>
+        <field name="model_id" ref="model_legal_time_entry"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_ldm_auditor'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+    <record id="legal_time_entry_rule_billing" model="ir.rule">
+        <field name="name">Time: of non-confidential matters (billing)</field>
+        <field name="model_id" ref="model_legal_time_entry"/>
+        <field name="domain_force">[('task_id.confidential', '=', False)]</field>
+        <field name="groups" eval="[(4, ref('group_ldm_billing_user'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_court_stage_rule_assigned" model="ir.rule">
+        <field name="name">Court stages: of visible matters</field>
+        <field name="model_id" ref="model_legal_court_stage"/>
+        <field name="domain_force">['|', '|', '|', '|', ('task_id.lawyer_id', '=', user.id), ('task_id.lawyer_ids', 'in', [user.id]), '&amp;', ('task_id.confidential', '=', False), ('task_id.legal_company_id.lawyer_ids', 'in', [user.id]), '&amp;', ('task_id.confidential', '=', False), ('task_id.step_ids.user_id', '=', user.id), ('task_id.hearing_ids.attending_user_id', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_ldm_clerk'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_court_stage_rule_all" model="ir.rule">
+        <field name="name">Court stages: all</field>
+        <field name="model_id" ref="model_legal_court_stage"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_legal_manager'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_court_stage_rule_approver" model="ir.rule">
+        <field name="name">Court stages: of matters in the approval flow</field>
+        <field name="model_id" ref="model_legal_court_stage"/>
+        <field name="domain_force">['|', ('task_id.approval_state', '!=', 'draft'), '|', '|', '|', '|', ('task_id.lawyer_id', '=', user.id), ('task_id.lawyer_ids', 'in', [user.id]), '&amp;', ('task_id.confidential', '=', False), ('task_id.legal_company_id.lawyer_ids', 'in', [user.id]), '&amp;', ('task_id.confidential', '=', False), ('task_id.step_ids.user_id', '=', user.id), ('task_id.hearing_ids.attending_user_id', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_ldm_approver'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_court_stage_rule_see_all" model="ir.rule">
+        <field name="name">Court stages: of non-confidential matters (office-wide visibility)</field>
+        <field name="model_id" ref="model_legal_court_stage"/>
+        <field name="domain_force">['|', ('task_id.confidential', '=', False), '|', '|', '|', '|', ('task_id.lawyer_id', '=', user.id), ('task_id.lawyer_ids', 'in', [user.id]), '&amp;', ('task_id.confidential', '=', False), ('task_id.legal_company_id.lawyer_ids', 'in', [user.id]), '&amp;', ('task_id.confidential', '=', False), ('task_id.step_ids.user_id', '=', user.id), ('task_id.hearing_ids.attending_user_id', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_ldm_see_all'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_court_stage_rule_auditor" model="ir.rule">
+        <field name="name">Court stages: all (auditor, read)</field>
+        <field name="model_id" ref="model_legal_court_stage"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_ldm_auditor'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+    <record id="legal_court_stage_rule_billing" model="ir.rule">
+        <field name="name">Court stages: of non-confidential matters (billing)</field>
+        <field name="model_id" ref="model_legal_court_stage"/>
+        <field name="domain_force">[('task_id.confidential', '=', False)]</field>
+        <field name="groups" eval="[(4, ref('group_ldm_billing_user'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_deadline_rule_assigned" model="ir.rule">
+        <field name="name">Deadlines: of visible matters, and client deadlines</field>
+        <field name="model_id" ref="model_legal_deadline"/>
+        <field name="domain_force">['|', ('task_id', '=', False), '|', '|', '|', '|', ('task_id.lawyer_id', '=', user.id), ('task_id.lawyer_ids', 'in', [user.id]), '&amp;', ('task_id.confidential', '=', False), ('task_id.legal_company_id.lawyer_ids', 'in', [user.id]), '&amp;', ('task_id.confidential', '=', False), ('task_id.step_ids.user_id', '=', user.id), ('task_id.hearing_ids.attending_user_id', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_ldm_clerk'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_deadline_rule_all" model="ir.rule">
+        <field name="name">Deadlines: all</field>
+        <field name="model_id" ref="model_legal_deadline"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_legal_manager'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_deadline_rule_see_all" model="ir.rule">
+        <field name="name">Deadlines: of non-confidential matters (office-wide visibility)</field>
+        <field name="model_id" ref="model_legal_deadline"/>
+        <field name="domain_force">['|', '|', ('task_id', '=', False), ('task_id.confidential', '=', False), '|', '|', '|', '|', ('task_id.lawyer_id', '=', user.id), ('task_id.lawyer_ids', 'in', [user.id]), '&amp;', ('task_id.confidential', '=', False), ('task_id.legal_company_id.lawyer_ids', 'in', [user.id]), '&amp;', ('task_id.confidential', '=', False), ('task_id.step_ids.user_id', '=', user.id), ('task_id.hearing_ids.attending_user_id', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_ldm_see_all'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_deadline_rule_auditor" model="ir.rule">
+        <field name="name">Deadlines: all (auditor, read)</field>
+        <field name="model_id" ref="model_legal_deadline"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_ldm_auditor'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+    <record id="legal_deadline_rule_billing" model="ir.rule">
+        <field name="name">Deadlines: of non-confidential matters (billing, read)</field>
+        <field name="model_id" ref="model_legal_deadline"/>
+        <field name="domain_force">['|', ('task_id', '=', False), ('task_id.confidential', '=', False)]</field>
+        <field name="groups" eval="[(4, ref('group_ldm_billing_user'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+    <record id="legal_request_rule_own" model="ir.rule">
+        <field name="name">Requests: own</field>
+        <field name="model_id" ref="model_legal_request"/>
+        <field name="domain_force">[('requester_id', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_ldm_requests'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_request_rule_legal" model="ir.rule">
+        <field name="name">Requests: all (legal team)</field>
+        <field name="model_id" ref="model_legal_request"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_ldm_clerk'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_request_rule_auditor" model="ir.rule">
+        <field name="name">Requests: all (auditor, read)</field>
+        <field name="model_id" ref="model_legal_request"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_ldm_auditor'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+    <record id="legal_company_document_rule_team" model="ir.rule">
+        <field name="name">Company documents: not confidential, or my client</field>
+        <field name="model_id" ref="model_legal_company_document"/>
+        <field name="domain_force">['|', ('confidential', '=', False), ('legal_company_id.lawyer_id', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_ldm_clerk'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_company_document_rule_manager" model="ir.rule">
+        <field name="name">Company documents: all (manager)</field>
+        <field name="model_id" ref="model_legal_company_document"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_legal_manager'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_company_document_rule_auditor" model="ir.rule">
+        <field name="name">Company documents: all (auditor, read)</field>
+        <field name="model_id" ref="model_legal_company_document"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_ldm_auditor'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+    <record id="legal_company_document_rule_billing" model="ir.rule">
+        <field name="name">Company documents: not confidential (billing)</field>
+        <field name="model_id" ref="model_legal_company_document"/>
+        <field name="domain_force">[('confidential', '=', False)]</field>
+        <field name="groups" eval="[(4, ref('group_ldm_billing_user'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+    <record id="legal_correspondence_rule_team" model="ir.rule">
+        <field name="name">Correspondence: letters of visible matters, and general letters</field>
+        <field name="model_id" ref="model_legal_correspondence"/>
+        <field name="domain_force">['|', '|', ('task_id', '=', False), ('task_id.confidential', '=', False), '|', '|', '|', '|', ('task_id.lawyer_id', '=', user.id), ('task_id.lawyer_ids', 'in', [user.id]), '&amp;', ('task_id.confidential', '=', False), ('task_id.legal_company_id.lawyer_ids', 'in', [user.id]), '&amp;', ('task_id.confidential', '=', False), ('task_id.step_ids.user_id', '=', user.id), ('task_id.hearing_ids.attending_user_id', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_ldm_clerk'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_correspondence_rule_manager" model="ir.rule">
+        <field name="name">Correspondence: all (manager)</field>
+        <field name="model_id" ref="model_legal_correspondence"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_legal_manager'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_correspondence_rule_auditor" model="ir.rule">
+        <field name="name">Correspondence: all (auditor, read)</field>
+        <field name="model_id" ref="model_legal_correspondence"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_ldm_auditor'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+    <record id="legal_advance_rule_own" model="ir.rule">
+        <field name="name">Advances: own</field>
+        <field name="model_id" ref="model_legal_advance"/>
+        <field name="domain_force">[('user_id', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_ldm_clerk'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_advance_rule_all" model="ir.rule">
+        <field name="name">Advances: all (manager)</field>
+        <field name="model_id" ref="model_legal_advance"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_legal_manager'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_advance_rule_billing" model="ir.rule">
+        <field name="name">Advances: all (billing)</field>
+        <field name="model_id" ref="model_legal_advance"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_ldm_billing_user'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_advance_rule_auditor" model="ir.rule">
+        <field name="name">Advances: all (auditor, read)</field>
+        <field name="model_id" ref="model_legal_advance"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_ldm_auditor'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+    <record id="legal_client_fund_line_rule_team" model="ir.rule">
+        <field name="name">Client money: of non-confidential matters and general</field>
+        <field name="model_id" ref="model_legal_client_fund_line"/>
+        <field name="domain_force">['|', ('task_id', '=', False), ('task_id.confidential', '=', False)]</field>
+        <field name="groups" eval="[(4, ref('group_ldm_clerk'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_client_fund_line_rule_all" model="ir.rule">
+        <field name="name">Client money: all (manager)</field>
+        <field name="model_id" ref="model_legal_client_fund_line"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_legal_manager'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_client_fund_line_rule_billing" model="ir.rule">
+        <field name="name">Client money: all (billing)</field>
+        <field name="model_id" ref="model_legal_client_fund_line"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_ldm_billing_user'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_client_fund_line_rule_auditor" model="ir.rule">
+        <field name="name">Client money: all (auditor, read)</field>
+        <field name="model_id" ref="model_legal_client_fund_line"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_ldm_auditor'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+    <record id="legal_task_rule_company" model="ir.rule">
+        <field name="name">legal.task: multi-company</field>
+        <field name="model_id" ref="model_legal_task"/>
+        <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_company_rule_company" model="ir.rule">
+        <field name="name">legal.company: multi-company</field>
+        <field name="model_id" ref="model_legal_company"/>
+        <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_task_step_rule_company" model="ir.rule">
+        <field name="name">legal.task.step: multi-company</field>
+        <field name="model_id" ref="model_legal_task_step"/>
+        <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_task_document_rule_company" model="ir.rule">
+        <field name="name">legal.task.document: multi-company</field>
+        <field name="model_id" ref="model_legal_task_document"/>
+        <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_hearing_rule_company" model="ir.rule">
+        <field name="name">legal.hearing: multi-company</field>
+        <field name="model_id" ref="model_legal_hearing"/>
+        <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_task_party_rule_company" model="ir.rule">
+        <field name="name">legal.task.party: multi-company</field>
+        <field name="model_id" ref="model_legal_task_party"/>
+        <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_judgment_rule_company" model="ir.rule">
+        <field name="name">legal.judgment: multi-company</field>
+        <field name="model_id" ref="model_legal_judgment"/>
+        <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_deadline_rule_company" model="ir.rule">
+        <field name="name">legal.deadline: multi-company</field>
+        <field name="model_id" ref="model_legal_deadline"/>
+        <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_task_expense_rule_company" model="ir.rule">
+        <field name="name">legal.task.expense: multi-company</field>
+        <field name="model_id" ref="model_legal_task_expense"/>
+        <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_time_entry_rule_company" model="ir.rule">
+        <field name="name">legal.time.entry: multi-company</field>
+        <field name="model_id" ref="model_legal_time_entry"/>
+        <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_engagement_rule_company" model="ir.rule">
+        <field name="name">legal.engagement: multi-company</field>
+        <field name="model_id" ref="model_legal_engagement"/>
+        <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_engagement_line_rule_company" model="ir.rule">
+        <field name="name">legal.engagement.line: multi-company</field>
+        <field name="model_id" ref="model_legal_engagement_line"/>
+        <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_poa_rule_company" model="ir.rule">
+        <field name="name">legal.poa: multi-company</field>
+        <field name="model_id" ref="model_legal_poa"/>
+        <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_correspondence_rule_company" model="ir.rule">
+        <field name="name">legal.correspondence: multi-company</field>
+        <field name="model_id" ref="model_legal_correspondence"/>
+        <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_request_rule_company" model="ir.rule">
+        <field name="name">legal.request: multi-company</field>
+        <field name="model_id" ref="model_legal_request"/>
+        <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_company_document_rule_company" model="ir.rule">
+        <field name="name">legal.company.document: multi-company</field>
+        <field name="model_id" ref="model_legal_company_document"/>
+        <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_obligation_rule_company" model="ir.rule">
+        <field name="name">legal.obligation: multi-company</field>
+        <field name="model_id" ref="model_legal_obligation"/>
+        <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_conflict_check_rule_company" model="ir.rule">
+        <field name="name">legal.conflict.check: multi-company</field>
+        <field name="model_id" ref="model_legal_conflict_check"/>
+        <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_task_template_rule_company" model="ir.rule">
+        <field name="name">legal.task.template: multi-company</field>
+        <field name="model_id" ref="model_legal_task_template"/>
+        <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_court_stage_rule_company" model="ir.rule">
+        <field name="name">legal.court.stage: multi-company</field>
+        <field name="model_id" ref="model_legal_court_stage"/>
+        <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_guarantee_rule_company" model="ir.rule">
+        <field name="name">legal.guarantee: multi-company</field>
+        <field name="model_id" ref="model_legal_guarantee"/>
+        <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_client_fund_line_rule_company" model="ir.rule">
+        <field name="name">legal.client.fund.line: multi-company</field>
+        <field name="model_id" ref="model_legal_client_fund_line"/>
+        <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="legal_advance_rule_company" model="ir.rule">
+        <field name="name">legal.advance: multi-company</field>
+        <field name="model_id" ref="model_legal_advance"/>
+        <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+</odoo>

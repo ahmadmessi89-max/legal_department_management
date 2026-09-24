@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- One question first ("what kind of organisation is this?"), which sets
+         every switch; the switches stay editable underneath. -->
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.legal_department_management</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="60"/>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app data-string="Legal" string="Legal" name="legal_department_management">
+                    <block title="Kind of organisation" name="ldm_kind">
+                        <setting id="ldm_preset_setting" string="This legal team is"
+                                 help="Choosing sets the switches below. You can still change each switch afterwards.">
+                            <field name="ldm_preset" widget="radio"/>
+                        </setting>
+                        <setting id="ldm_visibility_setting" string="Visibility"
+                                 help="Confidential matters are only ever seen by their team and legal managers.">
+                            <field name="ldm_visibility" widget="radio"/>
+                        </setting>
+                        <setting id="ldm_mode_setting" string="Words used"
+                                 help="Whether the application speaks of group companies, clients, or both.">
+                            <field name="ldm_mode" widget="radio"/>
+                        </setting>
+                    </block>
+                    <block title="Work" name="ldm_work">
+                        <setting id="ldm_government_setting" help="Transactions at ministries and departments: services, counter visits, the documents to carry.">
+                            <field name="group_ldm_government"/>
+                        </setting>
+                        <setting id="ldm_approvals_setting" help="Matters of the types that require it wait for an approver before work starts.">
+                            <field name="group_ldm_approvals"/>
+                            <div class="content-group mt-2" invisible="not group_ldm_approvals">
+                                <div class="d-flex">
+                                    <field name="ldm_approval_sod" class="ms-3"/>
+                                    <label for="ldm_approval_sod" class="o_light_label"/>
+                                </div>
+                            </div>
+                        </setting>
+                        <setting id="ldm_requests_setting" help="Every employee gets a small app to ask the legal team for help and follow the answer.">
+                            <field name="group_ldm_requests"/>
+                        </setting>
+                        <setting id="ldm_investigations_setting" help="Investigation committees, recommendations, decisions and compensation.">
+                            <field name="group_ldm_investigations"/>
+                        </setting>
+                    </block>
+                    <block title="Registers" name="ldm_registers">
+                        <setting id="ldm_correspondence_setting" help="Numbered incoming and outgoing letters, the register book and reply deadlines.">
+                            <field name="group_ldm_correspondence"/>
+                        </setting>
+                        <setting id="ldm_corporate_setting" help="Registration numbers, a document vault with expiry dates, letters of guarantee and recurring obligations for each company.">
+                            <field name="group_ldm_corporate"/>
+                            <div class="content-group mt-2" invisible="not group_ldm_corporate">
+                                <div class="d-flex">
+                                    <span class="flex-shrink-0 me-2">Warn before expiry (days)</span>
+                                    <field name="ldm_poa_warning_days" class="oe_inline"/>
+                                </div>
+                            </div>
+                        </setting>
+                    </block>
+                    <block title="Fees and billing" name="ldm_money">
+                        <setting id="ldm_billing_setting" help="Fee agreements, instalments and retainers, client money held, invoices and client statements.">
+                            <field name="group_ldm_billing"/>
+                            <div class="content-group mt-2" invisible="not group_ldm_billing">
+                                <div class="d-flex">
+                                    <field name="group_ldm_conflicts" class="ms-3"/>
+                                    <label for="group_ldm_conflicts" class="o_light_label"/>
+                                </div>
+                                <div class="d-flex" invisible="not group_ldm_conflicts">
+                                    <span class="flex-shrink-0 ms-5 me-2">When a match is found</span>
+                                    <field name="ldm_conflict_policy" class="oe_inline"/>
+                                </div>
+                                <div class="d-flex">
+                                    <field name="group_ldm_time" class="ms-3"/>
+                                    <label for="group_ldm_time" class="o_light_label"/>
+                                </div>
+                                <div class="d-flex">
+                                    <field name="group_ldm_client_messages" class="ms-3"/>
+                                    <label for="group_ldm_client_messages" class="o_light_label"/>
+                                </div>
+                                <div class="d-flex">
+                                    <field name="ldm_fee_cap_check" class="ms-3"/>
+                                    <label for="ldm_fee_cap_check" class="o_light_label"/>
+                                </div>
+                                <div class="d-flex">
+                                    <field name="ldm_engagement_required" class="ms-3"/>
+                                    <label for="ldm_engagement_required" class="o_light_label"/>
+                                </div>
+                            </div>
+                        </setting>
+                        <setting id="ldm_retainer_setting" string="Legal-adviser retainers" invisible="not group_ldm_billing"
+                                 help="Minimum monthly retainers under the Iraqi Bar's order 3021 of 2021. Check the current amounts.">
+                            <div class="d-flex">
+                                <span class="flex-shrink-0 me-2">Local company</span>
+                                <field name="ldm_retainer_min_local" class="oe_inline"/>
+                            </div>
+                            <div class="d-flex">
+                                <span class="flex-shrink-0 me-2">Foreign company</span>
+                                <field name="ldm_retainer_min_foreign" class="oe_inline"/>
+                            </div>
+                        </setting>
+                    </block>
+                    <block title="Dates and reminders" name="ldm_dates">
+                        <setting id="ldm_calendar_setting" string="Working days and holidays"
+                                 help="Deadlines that end on a holiday move to the next working day; steps count working days.">
+                            <field name="ldm_calendar_id"/>
+                            <div class="mt-2">
+                                <button name="action_ldm_open_holidays" type="object" string="Public holidays" class="btn-link" icon="oi-arrow-right"/>
+                            </div>
+                        </setting>
+                        <setting id="ldm_reminder_setting" string="Reminders">
+                            <div class="d-flex">
+                                <span class="flex-shrink-0 me-2">Remind this many working days before</span>
+                                <field name="ldm_reminder_days" class="oe_inline"/>
+                            </div>
+                        </setting>
+                    </block>
+                    <block title="Content" name="ldm_content">
+                        <setting id="ldm_templates_setting" string="Matter types"
+                                 help="Each type fills in the steps, the documents to collect and the target date.">
+                            <button name="action_ldm_open_templates" type="object" string="Matter types" class="btn-link" icon="oi-arrow-right"/>
+                        </setting>
+                        <setting id="ldm_bodies_setting" string="Bodies and courts"
+                                 help="Ministries, their departments, and the courts.">
+                            <button name="action_ldm_open_bodies" type="object" string="Bodies and courts" class="btn-link" icon="oi-arrow-right"/>
+                            <div class="mt-2">
+                                <button name="action_ldm_load_reference_data" type="object" string="Load the Iraqi reference library"
+                                        class="btn-secondary" icon="fa-download"/>
+                            </div>
+                        </setting>
+                    </block>
+                    <block title="Advanced" name="ldm_advanced">
+                        <setting id="ldm_hr_setting" help="Add employees who are not users to the team of a matter.">
+                            <field name="group_ldm_hr_team"/>
+                        </setting>
+                        <setting id="ldm_accounting_setting" help="Each confirmed expense can be posted as a journal entry or a payment.">
+                            <field name="group_ldm_accounting_links"/>
+                        </setting>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+</odoo>

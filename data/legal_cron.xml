@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo noupdate="1">
-    <!-- Clean Odoo 19 Cron Job: Daily Due Date & Session Checker -->
+    <!-- Daily reminders for sessions, deadlines, steps and target dates.
+         The method name is kept: SAG's existing cron record calls it. -->
     <record id="ir_cron_legal_task_checker" model="ir.cron">
-        <field name="name">الشؤون القانونية: تدقيق مواعيد الجلسات والاستحقاقات</field>
+        <field name="name">Legal: reminders for sessions, deadlines and steps</field>
         <field name="model_id" ref="model_legal_task"/>
         <field name="state">code</field>
         <field name="code">model._cron_check_upcoming_sessions()</field>
