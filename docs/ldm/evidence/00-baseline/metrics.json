@@ -1,0 +1,74 @@
+[
+ {
+  "name": "01_dashboard",
+  "path": "/odoo/action-legal_department_management.action_legal_dashboard",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/00-baseline\\01_dashboard.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "02_companies",
+  "path": "/odoo/action-legal_department_management.action_legal_company",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/00-baseline\\02_companies.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "03_company_form",
+  "path": "/odoo/action-legal_department_management.action_legal_company/2",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/00-baseline\\03_company_form.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "04_tasks_list",
+  "path": "/odoo/action-legal_department_management.action_legal_task",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/00-baseline\\04_tasks_list.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "05_task_form",
+  "path": "/odoo/action-legal_department_management.action_legal_task/3",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/00-baseline\\05_task_form.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "06_task_wizard",
+  "path": "/odoo/action-legal_department_management.action_legal_task_create_wizard",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/00-baseline\\06_task_wizard.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "07_departments",
+  "path": "/odoo/action-legal_department_management.action_legal_department",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/00-baseline\\07_departments.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "08_general_report_wizard",
+  "path": "/odoo/action-legal_department_management.action_legal_general_report_wizard",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/00-baseline\\08_general_report_wizard.png",
+  "console_errors": [],
+  "page_errors": []
+ }
+]

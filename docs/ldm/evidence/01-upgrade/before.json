@@ -1,0 +1,93 @@
+{
+ "users": {
+  "sag_manager": {
+   "login": "sag_manager",
+   "groups": [
+    "المدير القانوني / مدير النظام",
+    "محامي / موظف قانوني"
+   ],
+   "legal.task": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   "legal.company": [
+    1,
+    2,
+    3
+   ]
+  },
+  "demo": {
+   "login": "demo",
+   "groups": [],
+   "legal.task": "no access: AccessError",
+   "legal.company": "no access: AccessError"
+  },
+  "admin": {
+   "login": "admin",
+   "groups": [
+    "المدير القانوني / مدير النظام",
+    "محامي / موظف قانوني"
+   ],
+   "legal.task": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   "legal.company": [
+    1,
+    2,
+    3
+   ]
+  },
+  "sag_lawyer2": {
+   "login": "sag_lawyer2",
+   "groups": [
+    "محامي / موظف قانوني"
+   ],
+   "legal.task": [
+    3,
+    4,
+    5,
+    6,
+    7
+   ],
+   "legal.company": [
+    2,
+    3
+   ]
+  },
+  "sag_lawyer1": {
+   "login": "sag_lawyer1",
+   "groups": [
+    "محامي / موظف قانوني"
+   ],
+   "legal.task": [
+    1,
+    2,
+    7,
+    8
+   ],
+   "legal.company": [
+    1,
+    3
+   ]
+  }
+ },
+ "counts": {
+  "legal.task": 8,
+  "legal.company": 3,
+  "legal.ministry": 4,
+  "legal.department": 6
+ }
+}

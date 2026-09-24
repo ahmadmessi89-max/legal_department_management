@@ -1,0 +1,83 @@
+[
+ {
+  "name": "01_my_day_old",
+  "path": "/odoo/action-legal_department_management.action_legal_dashboard",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/02-foundation\\01_my_day_old.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "02_matters_list",
+  "path": "/odoo/matters",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/02-foundation\\02_matters_list.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "03_matter_government",
+  "path": "/odoo/matters/45",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/02-foundation\\03_matter_government.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "04_matter_lawsuit",
+  "path": "/odoo/matters/46",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/02-foundation\\04_matter_lawsuit.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "05_matters_kanban",
+  "path": "/odoo/matters?view_type=kanban",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/02-foundation\\05_matters_kanban.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "06_clients",
+  "path": "/odoo/legal-clients",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/02-foundation\\06_clients.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "07_client_form",
+  "path": "/odoo/legal-clients/25",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/02-foundation\\07_client_form.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "08_settings",
+  "path": "/odoo/settings#legal_department_management",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/02-foundation\\08_settings.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "09_new_matter_wizard",
+  "path": "/odoo/action-legal_department_management.action_legal_task_create_wizard",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/02-foundation\\09_new_matter_wizard.png",
+  "console_errors": [],
+  "page_errors": []
+ }
+]
