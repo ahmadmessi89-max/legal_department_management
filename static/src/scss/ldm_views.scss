@@ -1,0 +1,497 @@
+// =====================================================================
+//  The module's native views in the workspace identity
+//  (docs/ldm/briefs/design-direction.md).
+//
+//  Lists, kanbans, forms, pivots, graphs and calendars stay Odoo's own
+//  views; their arch root carries `o_ldm_view` (calendars: js_class
+//  `ldm_calendar`), which publishes W's tokens (ldm_tokens.scss). This file
+//  only re-dresses Odoo's elements inside that scope: ink instead of Odoo's
+//  purple, Kufi headings, paper on the desk, hairlines, round pills, the
+//  record's subject on an ink band, flat underline tabs, and a kind spine on
+//  matter cards. Odoo's other apps are untouched. Logical properties only.
+// =====================================================================
+
+$ldm-ink: #14213D;
+$ldm-ink-deep: #0C1528;
+
+.o_ldm_view,
+.o_ldm_calendar_view {
+    // Bootstrap's own colour variables (Odoo compiles them without a
+    // prefix): primary and links become ink, so badges, links, focus rings
+    // and "text-primary" follow the identity without touching each rule.
+    --primary: #{$ldm-ink};
+    --primary-rgb: 20, 33, 61;
+    --link-color: #{$ldm-ink};
+    --link-color-rgb: 20, 33, 61;
+    --link-hover-color: #{$ldm-ink-deep};
+    --link-hover-color-rgb: 12, 21, 40;
+    --focus-ring-color: rgba(20, 33, 61, 0.25);
+
+    color: var(--ldm-ink);
+
+    // ------------------------------------------------------ control panel
+    .o_control_panel {
+        border-block-end: 1px solid var(--ldm-rule);
+        background-color: var(--ldm-paper);
+    }
+
+    .o_control_panel .o_breadcrumb {
+        .active,
+        .o_last_breadcrumb_item {
+            font-family: var(--ldm-font-head);
+            font-weight: 600;
+            color: var(--ldm-ink);
+        }
+
+        .breadcrumb-item:not(.active) a { color: var(--ldm-ink-soft); }
+    }
+
+    // The search facets and the toggles of the search bar.
+    .o_searchview_facet {
+        --o-searchview-facet-bg: var(--ldm-brand-soft);
+        border-color: var(--ldm-rule);
+
+        .o_searchview_facet_label {
+            background-color: var(--ldm-ink);
+            color: #fff;
+        }
+    }
+
+    .o_cp_switch_buttons .btn.active,
+    .o_switch_view.active {
+        background-color: var(--ldm-brand-soft);
+        color: var(--ldm-ink);
+    }
+
+    // Stat buttons: the value in Kufi, the word quiet, the icon quieter.
+    .oe_stat_button {
+        color: var(--ldm-ink-soft);
+
+        .o_button_icon { color: var(--ldm-ink-faint); }
+
+        .o_stat_value {
+            font-family: var(--ldm-font-head);
+            font-weight: 600;
+            font-variant-numeric: tabular-nums;
+            color: var(--ldm-ink);
+        }
+
+        .o_stat_text { color: var(--ldm-ink-soft); }
+
+        &:hover { background-color: var(--ldm-hover); }
+    }
+
+    // Numbers in lists, pivots and money read in tabular figures.
+    .o_list_number,
+    .o_field_monetary,
+    .o_field_float,
+    .o_field_integer,
+    .o_pivot td,
+    .o_stat_value { font-variant-numeric: tabular-nums; }
+
+    // -------------------------------------------------------------- pills
+    .o_ldm_pill {
+        &.o_ldm_tone_primary {
+            background-color: var(--ldm-brand-soft);
+            color: var(--ldm-ink);
+        }
+
+        &.o_ldm_tone_muted {
+            background-color: var(--ldm-hover);
+            color: var(--ldm-ink-faint);
+        }
+    }
+
+    // A stamp inside a list cell stays on the line.
+    .o_ldm_pill_stamp { vertical-align: middle; }
+
+    // In a narrow cell a pill ends in an ellipsis instead of being clipped.
+    .o_list_table .o_ldm_pill {
+        max-inline-size: 100%;
+
+        > span:last-child {
+            min-inline-size: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+
+    // Odoo's selection badges (radio as buttons): ink when chosen.
+    .o_selection_badge,
+    .o_field_selection_badge .btn {
+        border-color: var(--ldm-rule);
+        color: var(--ldm-ink-soft);
+
+        &.active {
+            border-color: var(--ldm-ink);
+            background-color: var(--ldm-ink);
+            color: #fff;
+        }
+    }
+
+    // Tags (many2many) are quiet: ink on the soft fill, never a random colour
+    // unless the record gives one.
+    .o_tag.o_tag_color_0 {
+        background-color: var(--ldm-hover);
+        color: var(--ldm-ink-soft);
+    }
+
+    // --------------------------------------------------- empty states
+    .o_view_nocontent {
+        .o_nocontent_help {
+            color: var(--ldm-ink-soft);
+
+            > p:first-child,
+            .o_view_nocontent_smiling_face,
+            .o_view_nocontent_empty_folder {
+                font-family: var(--ldm-font-head);
+                font-weight: 600;
+                color: var(--ldm-ink);
+            }
+        }
+    }
+}
+
+// ================================================================== forms
+.o_ldm_view.o_form_view {
+    .o_form_sheet_bg { background-color: var(--ldm-desk); }
+
+    .o_form_sheet {
+        --formView-sheet-border-radius-md: var(--ldm-radius-panel);
+        border-color: var(--ldm-rule);
+        box-shadow: none;
+    }
+
+    // Titles in Kufi, the page's largest text.
+    .oe_title {
+        h1 {
+            font-family: var(--ldm-font-head);
+            font-size: var(--ldm-font-title);
+            font-weight: 700;
+            line-height: 1.35;
+            color: var(--ldm-ink);
+        }
+
+        h2 {
+            font-family: var(--ldm-font-head);
+            font-size: var(--ldm-font-subject);
+            font-weight: 600;
+            color: var(--ldm-ink);
+        }
+
+        > label,
+        > .o_form_label {
+            font-size: var(--ldm-font-meta);
+            font-weight: 500;
+            color: var(--ldm-ink-faint);
+        }
+    }
+
+    // Labels are quiet, values read in ink.
+    .o_form_label {
+        color: var(--ldm-ink-soft);
+        font-weight: 500;
+    }
+
+    .o_horizontal_separator,
+    .o_group .o_horizontal_separator,
+    .o_inner_group > .o_horizontal_separator {
+        font-family: var(--ldm-font-head);
+        font-size: var(--ldm-font-body);
+        font-weight: 600;
+        color: var(--ldm-ink);
+        text-transform: none;
+        border-block-end: 1px solid var(--ldm-rule);
+        padding-block-end: var(--ldm-space-1);
+    }
+
+    // Tabs: flat, an ink underline under the open one.
+    .o_notebook {
+        --Notebook__link-border-color--active: transparent;
+        --Notebook__link-border-top-color--active: transparent;
+        --Notebook__link-border-color--hover: transparent;
+
+        .nav-tabs { border-block-end: 1px solid var(--ldm-rule); }
+
+        .nav-link {
+            color: var(--ldm-ink-soft);
+            font-weight: 500;
+
+            &:hover { color: var(--ldm-ink); background-color: var(--ldm-hover); }
+
+            &.active {
+                color: var(--ldm-ink);
+                font-weight: 600;
+                box-shadow: inset 0 -2px 0 var(--ldm-ink);
+            }
+        }
+    }
+
+    // Banners inside a record read in the four meanings.
+    .alert-warning {
+        border: 0;
+        border-inline-start: 4px solid var(--ldm-warning);
+        border-radius: var(--ldm-radius-control);
+        background-color: var(--ldm-warning-soft);
+        color: var(--ldm-ink);
+    }
+
+    .alert-danger {
+        border: 0;
+        border-inline-start: 4px solid var(--ldm-danger);
+        border-radius: var(--ldm-radius-control);
+        background-color: var(--ldm-danger-soft);
+        color: var(--ldm-ink);
+    }
+
+    .alert-info {
+        border: 0;
+        border-inline-start: 4px solid var(--ldm-info);
+        border-radius: var(--ldm-radius-control);
+        background-color: var(--ldm-info-soft);
+        color: var(--ldm-ink);
+    }
+
+    .alert-success {
+        border: 0;
+        border-inline-start: 4px solid var(--ldm-success);
+        border-radius: var(--ldm-radius-control);
+        background-color: var(--ldm-success-soft);
+        color: var(--ldm-ink);
+    }
+
+    // The status bar: the current stage is ink; past and future stay quiet.
+    .o_field_statusbar > .o_statusbar_status {
+        --o-statusbar-background-active: #{$ldm-ink};
+        --o-statusbar-border-active: #{$ldm-ink};
+        --o-statusbar-background-hover: var(--ldm-hover);
+
+        > .o_arrow_button {
+            color: var(--ldm-ink-faint);
+            font-weight: 500;
+
+            &.o_arrow_button_current {
+                color: #fff;
+                font-weight: 600;
+            }
+        }
+    }
+
+    // Lists inside a record: the same hairline register as a list view.
+    .o_field_x2many .o_list_renderer .o_list_table thead th {
+        font-size: var(--ldm-font-meta);
+        color: var(--ldm-ink-soft);
+    }
+}
+
+// The record's subject opens on the ink band, as the cockpit and My Day do
+// (design-direction.md: "the one bold thing"). Only for records opened as a
+// page (not dialogs), and not the cockpit, which draws its own band. The
+// sheet becomes a column so the band stays on top even when a warning banner
+// comes first in the arch; the banner then reads under the subject.
+.o_action_manager .o_ldm_view.o_form_view:not(.o_ldm_matter_form) .o_form_sheet:has(> .oe_title) {
+    display: flex;
+    flex-direction: column;
+
+    > * { min-inline-size: 0; }
+
+    > .oe_title {
+        order: -1;
+        max-inline-size: none;
+        inline-size: auto;
+        margin-block: calc(var(--formView-sheet-padding-y) * -1) var(--ldm-space-4);
+        margin-inline: calc(var(--formView-sheet-padding-x) * -1);
+        padding: var(--ldm-space-4) var(--formView-sheet-padding-x);
+        border-start-start-radius: calc(var(--formView-sheet-border-radius, 0px) - 1px);
+        border-start-end-radius: calc(var(--formView-sheet-border-radius, 0px) - 1px);
+        background-color: $ldm-ink;
+        color: #fff;
+
+        h1,
+        h2,
+        h1 .o_field_widget,
+        h2 .o_field_widget { color: #fff; }
+
+        h1 { margin-block: var(--ldm-space-1) 0; }
+
+        > label,
+        > .o_form_label,
+        .o_form_label,
+        .text-muted,
+        sup { color: rgba(255, 255, 255, 0.72); }
+
+        .o_field_widget,
+        .o_field_widget span,
+        a { color: #fff; }
+
+        // Still editable on the band: white text on ink.
+        .o_input,
+        input,
+        textarea {
+            color: #fff;
+            background-color: transparent;
+            border-color: rgba(255, 255, 255, 0.28);
+
+            &::placeholder { color: rgba(255, 255, 255, 0.5); }
+            &:focus { border-color: #fff; }
+        }
+
+        .o_ldm_pill { background-color: rgba(255, 255, 255, 0.12); color: #fff; }
+        .o_ldm_stamp { border-color: #C8B6F0; color: #E4DAFA; }
+
+        @include media-breakpoint-down(md) {
+            padding: var(--ldm-space-3);
+
+            h1 { font-size: var(--ldm-font-section); }
+        }
+    }
+}
+
+// =================================================================== lists
+.o_ldm_view .o_list_renderer {
+    --ListRenderer-thead-bg-color: var(--ldm-paper);
+    --ListRenderer-thead-border-end-color: var(--ldm-rule);
+
+    .o_list_table {
+        thead th {
+            font-size: var(--ldm-font-meta);
+            font-weight: 600;
+            color: var(--ldm-ink-soft);
+            border-block-end: 1px solid var(--ldm-rule);
+        }
+
+        tbody > tr.o_data_row > td { border-block-start: 1px solid var(--ldm-rule); }
+
+        tbody > tr.o_data_row:hover > td { background-color: var(--ldm-hover); }
+
+        // Group rows read as sections of the register.
+        .o_group_header {
+            > th,
+            > td { background-color: var(--ldm-sunken); }
+
+            .o_group_name {
+                font-family: var(--ldm-font-head);
+                font-weight: 600;
+                color: var(--ldm-ink);
+            }
+        }
+
+        tfoot { color: var(--ldm-ink); font-weight: 600; }
+    }
+}
+
+// ================================================================= kanbans
+.o_ldm_view .o_kanban_renderer {
+    --Kanban-background: var(--ldm-desk);
+
+    .o_kanban_record {
+        border: 1px solid var(--ldm-rule);
+        border-radius: var(--ldm-radius-panel);
+        background-color: var(--ldm-paper);
+        color: var(--ldm-ink);
+
+        &:hover { border-color: var(--ldm-ink-faint); }
+
+        // A kanban card of a matter carries a hidden kind marker; the card
+        // then shows the kind as a 4px spine on its start edge, like every
+        // matter row of the workspace.
+        &:has(.o_ldm_kind_marker) {
+            border-inline-start: 4px solid var(--ldm-kind);
+        }
+    }
+
+    .o_kanban_header_title .o_column_title {
+        font-family: var(--ldm-font-head);
+        font-weight: 600;
+        color: var(--ldm-ink);
+    }
+
+    .o_kanban_counter_side { color: var(--ldm-ink-soft); }
+}
+
+.o_ldm_kind_marker { display: none; }
+
+@each $kind in (government, litigation, execution, contract, opinion, corporate, investigation, other) {
+    .o_ldm_view .o_kanban_record:has(.o_ldm_kind_marker.o_ldm_kind_#{$kind}) {
+        --ldm-kind: var(--ldm-kind-#{$kind});
+    }
+}
+
+// ============================================================ search panel
+.o_ldm_view .o_search_panel {
+    background-color: var(--ldm-paper);
+    border-inline-start: 1px solid var(--ldm-rule);
+
+    .o_search_panel_section_header {
+        font-family: var(--ldm-font-head);
+        font-weight: 600;
+        color: var(--ldm-ink);
+        text-transform: none;
+
+        // Odoo paints filter icons with the `text-warning` utility, which is
+        // !important; amber means "due soon" here, so it is overridden the
+        // only way a utility can be.
+        .o_search_panel_section_icon { color: var(--ldm-ink-faint) !important; }
+    }
+
+    .o_search_panel_category_value header.active {
+        background-color: var(--ldm-brand-soft);
+        color: var(--ldm-ink);
+        font-weight: 600;
+    }
+}
+
+// ============================================================ pivot, graph
+.o_ldm_view.o_pivot_view .o_pivot {
+    th,
+    td { border-color: var(--ldm-rule); }
+
+    .o_pivot_header_cell_opened,
+    .o_pivot_header_cell_closed { color: var(--ldm-ink); }
+
+    thead th { background-color: var(--ldm-sunken); }
+}
+
+// ================================================================ calendars
+.o_ldm_calendar_view {
+    .fc .fc-col-header-cell-cushion,
+    .o_calendar_header { color: var(--ldm-ink-soft); }
+}
+
+// ================================================================ dialogs
+// A dialog that holds one of the module's forms: the title in Kufi over a
+// hairline, the primary action in ink (ldm_tokens.scss).
+.modal-content:has(.modal-body .o_ldm_view) {
+    .modal-header {
+        border-block-end: 1px solid var(--ldm-rule, #D5DBE4);
+
+        .modal-title {
+            font-family: "Ldm Kufi", "Ldm Plex", "Ldm Plex Arabic", system-ui, sans-serif;
+            font-weight: 700;
+            color: #14213D;
+        }
+    }
+
+    .modal-footer { border-block-start: 1px solid var(--ldm-rule, #D5DBE4); }
+}
+
+// ================================================================ top bar
+// In the Legal app the top bar takes the ink of the bands, so the product
+// reads as one piece from the first pixel (ldm_app.js sets the class).
+.o_ldm_app .o_main_navbar {
+    --NavBar-entry-backgroundColor: #{$ldm-ink};
+    --NavBar-entry-backgroundColor--hover: rgba(255, 255, 255, 0.08);
+    --NavBar-entry-backgroundColor--focus: rgba(255, 255, 255, 0.08);
+    --NavBar-entry-backgroundColor--active: rgba(255, 255, 255, 0.12);
+    --NavBar-entry-color: rgba(255, 255, 255, 0.86);
+    --NavBar-entry-color--active: #fff;
+    --NavBar-brand-color: #fff;
+
+    background: $ldm-ink;
+    border-block-end-color: $ldm-ink-deep;
+
+    .o_menu_brand {
+        font-family: "Ldm Kufi", "Ldm Plex", "Ldm Plex Arabic", system-ui, sans-serif;
+        font-weight: 700;
+    }
+}

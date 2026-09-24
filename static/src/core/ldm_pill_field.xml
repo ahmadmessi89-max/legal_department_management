@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="legal_department_management.LdmPillField">
+        <t t-if="props.record.data[props.name]">
+            <span t-if="isStamp" class="o_ldm_stamp o_ldm_pill_stamp">
+                <LdmIcon name="'badge-check'"/>
+                <span t-esc="formattedValue"/>
+            </span>
+            <span t-else="" t-attf-class="o_ldm_pill o_ldm_tone_{{ pill.tone }}">
+                <LdmIcon t-if="pill.icon" name="pill.icon"/>
+                <span t-esc="formattedValue"/>
+            </span>
+        </t>
+    </t>
+</templates>

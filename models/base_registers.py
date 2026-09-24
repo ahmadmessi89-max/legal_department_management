@@ -224,7 +224,7 @@ class LegalGuarantee(models.Model):
     currency_id = fields.Many2one("res.currency", string="Currency", required=True,
                                   default=lambda self: self.env.company.currency_id)
     percent = fields.Float(string="Percent of the contract")
-    legal_company_id = fields.Many2one("legal.company", string="Applicant", ondelete="restrict", index=True)
+    legal_company_id = fields.Many2one("legal.company", string="Principal", ondelete="restrict", index=True)
     beneficiary_id = fields.Many2one("res.partner", string="Beneficiary", ondelete="restrict")
     date_issued = fields.Date(string="Issued on")
     date_expiry = fields.Date(string="Expires on", tracking=True)

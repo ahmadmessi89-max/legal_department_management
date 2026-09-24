@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<odoo>
-    <!-- Not noupdate: runs on every install and upgrade, so SAG's upgrade gets
-         the Arabic of the shipped matter types' steps too. Idempotent. -->
-    <function model="legal.task.template.step" name="_ldm_translate_shipped_steps"/>
-</odoo>

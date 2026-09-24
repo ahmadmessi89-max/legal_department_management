@@ -11,7 +11,7 @@
         <field name="model">legal.department</field>
         <field name="priority">32</field>
         <field name="arch" type="xml">
-            <kanban create="0" edit="0" delete="0" class="o_ldm_kanban" sample="1">
+            <kanban create="0" edit="0" delete="0" class="o_ldm_view o_ldm_kanban" sample="1">
                 <field name="name"/>
                 <field name="ministry_id"/>
                 <field name="body_kind"/>
@@ -44,7 +44,7 @@
         <field name="model">legal.department</field>
         <field name="priority">32</field>
         <field name="arch" type="xml">
-            <list string="Bodies and courts" create="0" edit="0" delete="0">
+            <list string="Bodies and courts" create="0" edit="0" delete="0" class="o_ldm_view">
                 <field name="name"/>
                 <field name="ministry_id"/>
                 <field name="body_kind" optional="show"/>
@@ -61,7 +61,7 @@
         <field name="model">legal.department</field>
         <field name="priority">32</field>
         <field name="arch" type="xml">
-            <form string="Body or court" create="0" edit="0" delete="0">
+            <form string="Body or court" create="0" edit="0" delete="0" class="o_ldm_view">
                 <sheet>
                     <div class="oe_title">
                         <h1><field name="name" readonly="1"/></h1>
@@ -150,7 +150,7 @@
         <field name="name">legal.task.template.list</field>
         <field name="model">legal.task.template</field>
         <field name="arch" type="xml">
-            <list string="Matter types" sample="1">
+            <list string="Matter types" sample="1" class="o_ldm_view">
                 <field name="sequence" widget="handle"/>
                 <field name="name"/>
                 <field name="kind"/>
@@ -167,7 +167,7 @@
         <field name="name">legal.task.template.form</field>
         <field name="model">legal.task.template</field>
         <field name="arch" type="xml">
-            <form string="Matter type">
+            <form string="Matter type" class="o_ldm_view">
                 <sheet>
                     <div class="oe_button_box" name="button_box">
                         <button name="action_view_tasks" type="object" class="oe_stat_button" icon="fa-folder-open">
@@ -265,7 +265,7 @@
         <field name="name">legal.document.type.list</field>
         <field name="model">legal.document.type</field>
         <field name="arch" type="xml">
-            <list string="Document types" editable="bottom">
+            <list string="Document types" editable="bottom" class="o_ldm_view">
                 <field name="sequence" widget="handle"/>
                 <field name="name"/>
                 <field name="category"/>
@@ -280,7 +280,7 @@
         <field name="name">legal.document.type.form</field>
         <field name="model">legal.document.type</field>
         <field name="arch" type="xml">
-            <form string="Document type">
+            <form string="Document type" class="o_ldm_view">
                 <sheet>
                     <widget name="web_ribbon" title="Archived" bg_color="text-bg-danger" invisible="active"/>
                     <field name="active" invisible="1"/>
@@ -327,7 +327,7 @@
         <field name="name">legal.visit.wizard.form</field>
         <field name="model">legal.visit.wizard</field>
         <field name="arch" type="xml">
-            <form string="Log a visit" class="o_ldm_visit_dialog">
+            <form string="Log a visit" class="o_ldm_view o_ldm_visit_dialog">
                 <field name="task_id" invisible="1"/>
                 <field name="step_id" invisible="1"/>
                 <field name="currency_id" invisible="1"/>
@@ -414,7 +414,7 @@
                                     <field name="expiry_date" widget="remaining_days"/>
                                 </div>
                             </div>
-                            <field name="state" widget="badge"
+                            <field name="state" widget="ldm_pill"
                                    decoration-danger="state in ('missing', 'expired')"
                                    decoration-warning="state == 'awaiting_verification'"
                                    decoration-success="state in ('received', 'verified')"/>
@@ -428,7 +428,7 @@
                     <field name="name"/>
                     <field name="document_type_id" optional="hide" options="{'no_create': True}"/>
                     <field name="mandatory" optional="show" width="100px"/>
-                    <field name="state" widget="badge" width="150px"
+                    <field name="state" widget="ldm_pill" width="150px"
                            decoration-danger="state in ('missing', 'expired')"
                            decoration-warning="state == 'awaiting_verification'"
                            decoration-success="state in ('received', 'verified')"/>
@@ -466,7 +466,7 @@
         <field name="name">legal.task.document.form</field>
         <field name="model">legal.task.document</field>
         <field name="arch" type="xml">
-            <form string="Document to collect">
+            <form string="Document to collect" class="o_ldm_view">
                 <field name="ldm_vault_on" invisible="1"/>
                 <field name="ldm_in_vault" invisible="1"/>
                 <field name="company_document_id" invisible="1"/>
@@ -556,7 +556,7 @@
                                             <span t-if="record.date_expiry.raw_value"> · <field name="date_expiry"/></span>
                                         </div>
                                     </div>
-                                    <field name="state" widget="badge"
+                                    <field name="state" widget="ldm_pill"
                                            decoration-success="state == 'valid'"
                                            decoration-warning="state == 'expiring'"
                                            decoration-danger="state == 'expired'"/>
@@ -569,7 +569,7 @@
                             <field name="number"/>
                             <field name="date_issued" optional="show"/>
                             <field name="date_expiry" optional="show"/>
-                            <field name="state" widget="badge" width="120px"
+                            <field name="state" widget="ldm_pill" width="120px"
                                    decoration-success="state == 'valid'"
                                    decoration-warning="state == 'expiring'"
                                    decoration-danger="state == 'expired'"/>
@@ -599,7 +599,7 @@
                         <list create="0" delete="0" decoration-muted="coverage_state == 'done'">
                             <field name="template_id"/>
                             <field name="department_id" optional="hide"/>
-                            <field name="coverage_state" widget="badge" width="150px"
+                            <field name="coverage_state" widget="ldm_pill" width="150px"
                                    decoration-success="coverage_state == 'done'"
                                    decoration-info="coverage_state == 'open'"
                                    decoration-danger="coverage_state == 'due'"/>
@@ -630,7 +630,7 @@
         <field name="model">legal.company.document</field>
         <field name="arch" type="xml">
             <list string="Company documents" sample="1" default_order="date_expiry"
-                  decoration-danger="state == 'expired'" decoration-warning="state == 'expiring'">
+                  decoration-danger="state == 'expired'" decoration-warning="state == 'expiring'" class="o_ldm_view">
                 <header>
                     <button name="%(action_ldm_readiness_wizard)d" type="action" string="Valid on a date"
                             display="always"/>
@@ -639,7 +639,7 @@
                 <field name="document_type_id"/>
                 <field name="number" optional="show"/>
                 <field name="date_expiry" widget="remaining_days" optional="show"/>
-                <field name="state" widget="badge"
+                <field name="state" widget="ldm_pill"
                        decoration-success="state == 'valid'"
                        decoration-warning="state == 'expiring'"
                        decoration-danger="state == 'expired'"/>
@@ -655,7 +655,7 @@
         <field name="name">legal.company.document.form</field>
         <field name="model">legal.company.document</field>
         <field name="arch" type="xml">
-            <form string="Company document">
+            <form string="Company document" class="o_ldm_view">
                 <sheet>
                     <div class="oe_button_box" name="button_box">
                         <button name="action_open_deadline" type="object" class="oe_stat_button" icon="fa-hourglass-half"
@@ -679,7 +679,7 @@
                         <group name="when">
                             <field name="date_issued"/>
                             <field name="date_expiry"/>
-                            <field name="state" widget="badge"
+                            <field name="state" widget="ldm_pill"
                                    decoration-success="state == 'valid'"
                                    decoration-warning="state == 'expiring'"
                                    decoration-danger="state == 'expired'"/>
@@ -735,7 +735,7 @@
         <field name="name">legal.obligation.list</field>
         <field name="model">legal.obligation</field>
         <field name="arch" type="xml">
-            <list string="Recurring obligations" sample="1">
+            <list string="Recurring obligations" sample="1" class="o_ldm_view">
                 <field name="name"/>
                 <field name="legal_company_id"/>
                 <field name="template_id" optional="show"/>
@@ -752,7 +752,7 @@
         <field name="name">legal.obligation.form</field>
         <field name="model">legal.obligation</field>
         <field name="arch" type="xml">
-            <form string="Recurring obligation">
+            <form string="Recurring obligation" class="o_ldm_view">
                 <header>
                     <button name="action_ldm_open_now" type="object" string="Open the matter now"
                             invisible="not template_id or not next_date or not id"
@@ -833,11 +833,11 @@
         <field name="model">legal.company.coverage</field>
         <field name="arch" type="xml">
             <list string="Services this year" create="0" edit="0" delete="0" expand="1"
-                  decoration-muted="coverage_state == 'done'">
+                  decoration-muted="coverage_state == 'done'" class="o_ldm_view">
                 <field name="legal_company_id"/>
                 <field name="template_id"/>
                 <field name="department_id" optional="show"/>
-                <field name="coverage_state" widget="badge" width="150px"
+                <field name="coverage_state" widget="ldm_pill" width="150px"
                        decoration-success="coverage_state == 'done'"
                        decoration-info="coverage_state == 'open'"
                        decoration-danger="coverage_state == 'due'"/>
@@ -891,7 +891,7 @@
         <field name="name">legal.readiness.wizard.form</field>
         <field name="model">legal.readiness.wizard</field>
         <field name="arch" type="xml">
-            <form string="Documents valid on a date">
+            <form string="Documents valid on a date" class="o_ldm_view">
                 <field name="ready_count" invisible="1"/>
                 <field name="total_count" invisible="1"/>
                 <group>
@@ -922,7 +922,7 @@
                         <field name="number"/>
                         <field name="company_document_id" optional="hide"/>
                         <field name="date_expiry"/>
-                        <field name="readiness" widget="badge"
+                        <field name="readiness" widget="ldm_pill"
                                decoration-success="readiness == 'valid'"
                                decoration-warning="readiness == 'expires'"
                                decoration-danger="readiness == 'missing'"/>

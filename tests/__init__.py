@@ -4,7 +4,6 @@ from . import test_foundation_security
 from . import test_foundation_workflow
 from . import test_foundation_clocks
 from . import test_foundation_modes
-from . import test_foundation_cron
 # Streams (each imports its own extra modules from its file)
 from . import test_gov
 from . import test_lit

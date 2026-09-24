@@ -8,7 +8,7 @@
         <field name="name">legal.company.kanban</field>
         <field name="model">legal.company</field>
         <field name="arch" type="xml">
-            <kanban class="o_ldm_kanban" sample="1">
+            <kanban class="o_ldm_view o_ldm_kanban" sample="1">
                 <field name="name"/>
                 <field name="company_type"/>
                 <field name="client_kind"/>
@@ -39,7 +39,7 @@
         <field name="name">legal.company.list</field>
         <field name="model">legal.company</field>
         <field name="arch" type="xml">
-            <list string="Clients" sample="1">
+            <list string="Clients" sample="1" class="o_ldm_view">
                 <field name="name"/>
                 <field name="company_type" optional="show"/>
                 <field name="lawyer_id" widget="many2one_avatar_user" optional="show"/>
@@ -60,7 +60,7 @@
         <field name="name">legal.company.form</field>
         <field name="model">legal.company</field>
         <field name="arch" type="xml">
-            <form string="Client">
+            <form string="Client" class="o_ldm_view">
                 <field name="currency_id" invisible="1"/>
                 <header>
                     <button name="action_create_new_task" string="New matter" type="object" class="btn-primary"
@@ -104,7 +104,7 @@
                                     <field name="department_id"/>
                                     <field name="next_date" widget="remaining_days"/>
                                     <field name="lawyer_id" widget="many2one_avatar_user"/>
-                                    <field name="state" widget="badge"/>
+                                    <field name="state" widget="ldm_pill"/>
                                 </list>
                             </field>
                         </page>

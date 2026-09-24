@@ -69,8 +69,8 @@ class LegalAppealRule(models.Model):
         "motion (Civil Procedure Law 83 of 1969, Art. 171).")
     # Short labels: they are read as badges and columns in lists.
     verification = fields.Selection(
-        [("verified", "Verified in the law"), ("secondary", "Secondary"), ("unverified", "Unverified")],
-        help="Verified in the law: read in the law's own text. Secondary: taken from commentary or a practice guide. "
+        [("verified", "Verified"), ("secondary", "Secondary"), ("unverified", "Unverified")],
+        help="Verified: read in the law's own text. Secondary: taken from commentary or a practice guide. "
         "Unverified: check it before relying on it at a court.")
     start_event = fields.Selection(
         [

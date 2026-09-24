@@ -28,13 +28,6 @@ $o-ldm-timer-running: $success !default;
     }
 }
 
-// Phone numbers and similar codes read left to right, also in Arabic. The RTL
-// build would flip the direction, so tell it to leave this one alone.
-.o_ldm_ltr input {
-    /*rtl:ignore*/
-    direction: ltr;
-}
-
 .o_ldm_timer_dialog {
     .o_ldm_timer_duration {
         max-inline-size: 7rem;

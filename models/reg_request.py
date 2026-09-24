@@ -33,9 +33,7 @@ FALLBACK_TEMPLATES = {
 
 
 def _task_states(model):
-    # A selection given as a function is not translated by Odoo: return the
-    # matter's labels already translated into the reader's language.
-    return model.env["legal.task"]._fields["state"]._description_selection(model.env)
+    return model.env["legal.task"]._fields["state"].selection
 
 
 class LegalTaskTemplate(models.Model):

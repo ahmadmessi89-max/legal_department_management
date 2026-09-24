@@ -87,45 +87,10 @@ class LegalTaskTemplate(models.Model):
         return action
 
 
-# Arabic for the steps of the matter types shipped in data/ldm_template_data.xml.
-# Those steps are written inline in the data file, so they have no xmlid and the
-# catalogue export never offers them for translation.
-SHIPPED_STEPS_AR = {
-    "Collect the documents": "جمع المستمسكات",
-    "Submit the file at the counter": "تقديم المعاملة إلى الجهة",
-    "Follow up and collect the result": "متابعة المعاملة واستلام النتيجة",
-    "Draft the petition": "تحرير عريضة الدعوى",
-    "Pay the court fee and register the case": "دفع رسم الدعوى وتسجيلها",
-    "Follow the service of the summons": "متابعة تبليغ الخصم بعريضة الدعوى",
-    "File the complaint with the investigating judge": "تقديم الشكوى إلى قاضي التحقيق",
-    "Submit the grievance to the authority": "تقديم التظلّم إلى الجهة الإدارية",
-    "Open the file at the execution directorate": "فتح الإضبارة التنفيذية في مديرية التنفيذ",
-    "Follow the service of the execution notice": "متابعة تبليغ المدين بالإخطار التنفيذي",
-    "Review and send comments": "تدقيق العقد وإرسال الملاحظات",
-    "Agree the final text": "الاتفاق على الصيغة النهائية",
-    "Research and draft the opinion": "البحث وكتابة الرأي",
-    "Issue the opinion": "إصدار الرأي",
-    "Prepare the power of attorney text": "إعداد نص الوكالة",
-    "Sign it at the notary": "توقيع الوكالة لدى كاتب العدل",
-}
-
-
 class LegalTaskTemplateStep(models.Model):
     _name = "legal.task.template.step"
     _description = "Matter type step"
     _order = "sequence, id"
-
-    @api.model
-    def _ldm_translate_shipped_steps(self):
-        """Give the shipped matter types' steps their Arabic. Runs on every install
-        and upgrade; a step someone has already translated or renamed is left alone."""
-        if not self.env["res.lang"]._lang_get("ar_001"):
-            return
-        steps = self.sudo().with_context(lang="en_US").search([("name", "in", list(SHIPPED_STEPS_AR))])
-        for step in steps:
-            arabic = step.with_context(lang="ar_001").name
-            if not arabic or arabic == step.name:
-                step.update_field_translations("name", {"ar_001": SHIPPED_STEPS_AR[step.name]})
 
     template_id = fields.Many2one("legal.task.template", required=True, ondelete="cascade", index=True)
     sequence = fields.Integer(default=10)

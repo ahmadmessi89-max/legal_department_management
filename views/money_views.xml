@@ -8,7 +8,7 @@
         <field name="name">legal.expense.category.list</field>
         <field name="model">legal.expense.category</field>
         <field name="arch" type="xml">
-            <list string="Expense categories" editable="bottom">
+            <list string="Expense categories" editable="bottom" class="o_ldm_view">
                 <field name="sequence" widget="handle"/>
                 <field name="name"/>
                 <field name="code" optional="show"/>
@@ -37,7 +37,7 @@
         <field name="name">legal.task.expense.list</field>
         <field name="model">legal.task.expense</field>
         <field name="arch" type="xml">
-            <list string="Expenses" sample="1">
+            <list string="Expenses" sample="1" class="o_ldm_view">
                 <field name="date"/>
                 <field name="task_id"/>
                 <field name="category_id" optional="show"/>
@@ -51,7 +51,7 @@
                 <field name="billed" optional="hide" groups="legal_department_management.group_ldm_billing"/>
                 <field name="employee_user_id" optional="hide" widget="many2one_avatar_user"/>
                 <field name="advance_id" optional="hide"/>
-                <field name="state" optional="hide" widget="badge" decoration-muted="state == 'draft'"/>
+                <field name="state" optional="hide" widget="ldm_pill" decoration-muted="state == 'draft'"/>
             </list>
         </field>
     </record>
@@ -60,7 +60,7 @@
         <field name="name">legal.task.expense.form</field>
         <field name="model">legal.task.expense</field>
         <field name="arch" type="xml">
-            <form string="Expense">
+            <form string="Expense" class="o_ldm_view">
                 <field name="company_id" invisible="1"/>
                 <field name="ldm_can_post" invisible="1"/>
                 <field name="ldm_posted" invisible="1"/>
@@ -148,7 +148,7 @@
         <field name="name">legal.task.expense.pivot</field>
         <field name="model">legal.task.expense</field>
         <field name="arch" type="xml">
-            <pivot string="Expenses analysis" sample="1">
+            <pivot string="Expenses analysis" sample="1" class="o_ldm_view">
                 <field name="category_id" type="row"/>
                 <field name="date" interval="month" type="col"/>
                 <field name="amount_company" type="measure"/>
@@ -160,7 +160,7 @@
         <field name="name">legal.task.expense.graph</field>
         <field name="model">legal.task.expense</field>
         <field name="arch" type="xml">
-            <graph string="Expenses analysis" type="bar" sample="1">
+            <graph string="Expenses analysis" type="bar" sample="1" class="o_ldm_view">
                 <field name="date" interval="month"/>
                 <field name="amount_company" type="measure"/>
             </graph>
@@ -172,7 +172,7 @@
         <field name="name">legal.task.expense.kanban</field>
         <field name="model">legal.task.expense</field>
         <field name="arch" type="xml">
-            <kanban class="o_ldm_kanban" sample="1">
+            <kanban class="o_ldm_view o_ldm_kanban" sample="1">
                 <field name="name"/>
                 <field name="date"/>
                 <field name="task_id"/>
@@ -227,13 +227,13 @@
         <field name="name">legal.advance.list</field>
         <field name="model">legal.advance</field>
         <field name="arch" type="xml">
-            <list string="Cash advances" sample="1" decoration-muted="state == 'settled'">
+            <list string="Cash advances" sample="1" decoration-muted="state == 'settled'" class="o_ldm_view">
                 <field name="date"/>
                 <field name="user_id" widget="many2one_avatar_user"/>
                 <field name="name"/>
                 <field name="amount" sum="Total"/>
                 <field name="balance" sum="Total" decoration-warning="state == 'paid' and balance &gt; 0"/>
-                <field name="state" widget="badge" decoration-info="state == 'draft'"
+                <field name="state" widget="ldm_pill" decoration-info="state == 'draft'"
                        decoration-warning="state == 'paid'" decoration-success="state == 'settled'"/>
                 <field name="currency_id" column_invisible="1"/>
                 <field name="task_id" optional="hide"/>
@@ -246,7 +246,7 @@
         <field name="name">legal.advance.form</field>
         <field name="model">legal.advance</field>
         <field name="arch" type="xml">
-            <form string="Cash advance">
+            <form string="Cash advance" class="o_ldm_view">
                 <field name="ldm_can_handle" invisible="1"/>
                 <field name="company_id" invisible="1"/>
                 <header>
@@ -360,7 +360,7 @@
         <field name="name">legal.client.fund.line.list</field>
         <field name="model">legal.client.fund.line</field>
         <field name="arch" type="xml">
-            <list string="Client money" sample="1" create="0" expand="1">
+            <list string="Client money" sample="1" create="0" expand="1" class="o_ldm_view">
                 <header>
                     <button name="action_ldm_receive" type="object" string="Receive money" class="btn-primary"
                             display="always"
@@ -385,7 +385,7 @@
         <field name="name">legal.client.fund.line.form</field>
         <field name="model">legal.client.fund.line</field>
         <field name="arch" type="xml">
-            <form string="Client money movement" create="0">
+            <form string="Client money movement" create="0" class="o_ldm_view">
                 <sheet>
                     <group>
                         <group>
@@ -459,13 +459,13 @@
         <field name="name">legal.engagement.list</field>
         <field name="model">legal.engagement</field>
         <field name="arch" type="xml">
-            <list string="Fee agreements" sample="1" decoration-muted="state == 'closed'">
+            <list string="Fee agreements" sample="1" decoration-muted="state == 'closed'" class="o_ldm_view">
                 <field name="name"/>
                 <field name="legal_company_id"/>
                 <field name="fee_type"/>
                 <field name="amount" invisible="not amount"/>
                 <field name="signed" widget="boolean_toggle" readonly="1" optional="show"/>
-                <field name="state" widget="badge" decoration-info="state == 'draft'" decoration-success="state == 'active'"/>
+                <field name="state" widget="ldm_pill" decoration-info="state == 'draft'" decoration-success="state == 'active'"/>
                 <field name="currency_id" column_invisible="1"/>
                 <field name="lawyer_id" widget="many2one_avatar_user" optional="hide"/>
                 <field name="date_start" optional="hide"/>
@@ -479,7 +479,7 @@
         <field name="name">legal.engagement.kanban</field>
         <field name="model">legal.engagement</field>
         <field name="arch" type="xml">
-            <kanban default_group_by="state" quick_create="false" class="o_ldm_kanban" sample="1">
+            <kanban default_group_by="state" quick_create="false" class="o_ldm_view o_ldm_kanban" sample="1">
                 <field name="name"/>
                 <field name="legal_company_id"/>
                 <field name="fee_type"/>
@@ -509,7 +509,7 @@
         <field name="name">legal.engagement.form</field>
         <field name="model">legal.engagement</field>
         <field name="arch" type="xml">
-            <form string="Fee agreement">
+            <form string="Fee agreement" class="o_ldm_view">
                 <field name="ldm_is_manager" invisible="1"/>
                 <field name="ldm_can_message" invisible="1"/>
                 <field name="company_id" invisible="1"/>
@@ -591,7 +591,7 @@
                                     <field name="amount" sum="Total"/>
                                     <field name="currency_id" column_invisible="1"/>
                                     <field name="is_overdue" column_invisible="1"/>
-                                    <field name="state" widget="badge" readonly="1"
+                                    <field name="state" widget="ldm_pill" readonly="1"
                                            decoration-info="state == 'planned'" decoration-warning="state == 'due'"
                                            decoration-success="state in ('invoiced', 'paid')"/>
                                     <button name="action_ldm_mark_due" type="object" string="Due now" class="btn-link"
@@ -619,7 +619,7 @@
                                     <field name="law_branch"/>
                                     <field name="matter_value"/>
                                     <field name="currency_id" column_invisible="1"/>
-                                    <field name="state" widget="badge"/>
+                                    <field name="state" widget="ldm_pill"/>
                                 </list>
                             </field>
                             <p class="text-muted" invisible="task_ids">
@@ -681,13 +681,13 @@
         <field name="name">legal.billable.list</field>
         <field name="model">legal.billable</field>
         <field name="arch" type="xml">
-            <list string="To invoice" create="0" edit="0" delete="0" decoration-danger="is_overdue" expand="1">
+            <list string="To invoice" create="0" edit="0" delete="0" decoration-danger="is_overdue" expand="1" class="o_ldm_view">
                 <header>
                     <button name="action_ldm_invoice" type="object" string="Create invoice" class="btn-primary"
                             groups="account.group_account_invoice"/>
                 </header>
                 <field name="date"/>
-                <field name="kind" widget="badge" decoration-info="kind == 'fee'" decoration-primary="kind == 'time'"/>
+                <field name="kind" widget="ldm_pill" decoration-info="kind == 'fee'" decoration-primary="kind == 'time'"/>
                 <field name="name"/>
                 <field name="task_id" optional="show"/>
                 <field name="amount" sum="Total"/>
@@ -746,7 +746,7 @@
         <field name="name">legal.time.entry.list</field>
         <field name="model">legal.time.entry</field>
         <field name="arch" type="xml">
-            <list string="Time" editable="top" sample="1" decoration-muted="state == 'invoiced'">
+            <list string="Time" editable="top" sample="1" decoration-muted="state == 'invoiced'" class="o_ldm_view">
                 <header>
                     <button name="action_ldm_approve" type="object" string="Approve"
                             groups="legal_department_management.group_legal_user,legal_department_management.group_ldm_billing_user"/>
@@ -756,7 +756,7 @@
                 <field name="description" readonly="state == 'invoiced'"/>
                 <field name="duration" widget="float_time" sum="Total" readonly="state != 'draft'"/>
                 <field name="billable" optional="show" readonly="state != 'draft'"/>
-                <field name="state" widget="badge" readonly="1" decoration-info="state == 'draft'"
+                <field name="state" widget="ldm_pill" readonly="1" decoration-info="state == 'draft'"
                        decoration-success="state == 'approved'"/>
                 <field name="user_id" optional="hide" widget="many2one_avatar_user"/>
                 <field name="rate" optional="hide" readonly="state != 'draft'"
@@ -771,7 +771,7 @@
         <field name="name">legal.time.entry.form</field>
         <field name="model">legal.time.entry</field>
         <field name="arch" type="xml">
-            <form string="Time entry">
+            <form string="Time entry" class="o_ldm_view">
                 <field name="ldm_can_approve" invisible="1"/>
                 <header>
                     <button name="action_ldm_approve" type="object" string="Approve" class="btn-primary"
@@ -827,7 +827,7 @@
         <field name="name">legal.time.entry.pivot</field>
         <field name="model">legal.time.entry</field>
         <field name="arch" type="xml">
-            <pivot string="Time analysis" sample="1">
+            <pivot string="Time analysis" sample="1" class="o_ldm_view">
                 <field name="user_id" type="row"/>
                 <field name="date" interval="week" type="col"/>
                 <field name="duration" type="measure" widget="float_time"/>
@@ -856,12 +856,12 @@
         <field name="model">legal.conflict.check</field>
         <field name="arch" type="xml">
             <list string="Conflict checks" create="0" edit="0" delete="0" sample="1"
-                  decoration-danger="decision == 'pending'" decoration-muted="decision == 'superseded'">
+                  decoration-danger="decision == 'pending'" decoration-muted="decision == 'superseded'" class="o_ldm_view">
                 <field name="date"/>
                 <field name="query"/>
                 <field name="task_id"/>
                 <field name="hit_count" string="Conflicts"/>
-                <field name="decision" widget="badge" decoration-warning="decision == 'pending'"
+                <field name="decision" widget="ldm_pill" decoration-warning="decision == 'pending'"
                        decoration-success="decision == 'clear'" decoration-info="decision == 'override'"
                        decoration-danger="decision == 'declined'"/>
                 <field name="user_id" widget="many2one_avatar_user" optional="show"/>
@@ -875,7 +875,7 @@
         <field name="name">legal.conflict.check.form</field>
         <field name="model">legal.conflict.check</field>
         <field name="arch" type="xml">
-            <form string="Conflict check" create="0" edit="0" delete="0">
+            <form string="Conflict check" create="0" edit="0" delete="0" class="o_ldm_view">
                 <field name="ldm_is_manager" invisible="1"/>
                 <header>
                     <button name="action_ldm_decide" type="object" string="Decide" class="btn-primary"
@@ -967,7 +967,7 @@
         <field name="name">legal.invoice.wizard.form</field>
         <field name="model">legal.invoice.wizard</field>
         <field name="arch" type="xml">
-            <form string="Create invoices">
+            <form string="Create invoices" class="o_ldm_view">
                 <field name="invoice_count" invisible="1"/>
                 <div class="mb-2">
                     <field name="summary" nolabel="1"/>
@@ -979,7 +979,7 @@
                 <field name="billable_ids" nolabel="1" options="{'link': False, 'create': False}">
                     <list create="0" edit="0">
                         <field name="legal_company_id"/>
-                        <field name="kind" widget="badge"/>
+                        <field name="kind" widget="ldm_pill"/>
                         <field name="name"/>
                         <field name="task_id" optional="show"/>
                         <field name="amount" sum="Total"/>
@@ -998,7 +998,7 @@
         <field name="name">legal.statement.wizard.form</field>
         <field name="model">legal.statement.wizard</field>
         <field name="arch" type="xml">
-            <form string="Statement of account">
+            <form string="Statement of account" class="o_ldm_view">
                 <group>
                     <field name="legal_company_id" options="{'no_create': True}"/>
                     <label for="date_from" string="Period"/>
@@ -1022,7 +1022,7 @@
         <field name="name">legal.fund.move.wizard.form</field>
         <field name="model">legal.fund.move.wizard</field>
         <field name="arch" type="xml">
-            <form string="Client money">
+            <form string="Client money" class="o_ldm_view">
                 <field name="goes_negative" invisible="1"/>
                 <field name="is_manager" invisible="1"/>
                 <group>
@@ -1066,7 +1066,7 @@
         <field name="name">legal.advance.settle.wizard.form</field>
         <field name="model">legal.advance.settle.wizard</field>
         <field name="arch" type="xml">
-            <form string="Settle a cash advance">
+            <form string="Settle a cash advance" class="o_ldm_view">
                 <field name="currency_id" invisible="1"/>
                 <field name="candidate_ids" invisible="1"/>
                 <group>
@@ -1104,7 +1104,7 @@
         <field name="name">legal.conflict.decision.wizard.form</field>
         <field name="model">legal.conflict.decision.wizard</field>
         <field name="arch" type="xml">
-            <form string="Decide on the conflict check">
+            <form string="Decide on the conflict check" class="o_ldm_view">
                 <field name="check_id" invisible="1"/>
                 <group>
                     <field name="task_id" readonly="1" invisible="not task_id"/>
@@ -1128,7 +1128,7 @@
         <field name="name">legal.client.message.wizard.form</field>
         <field name="model">legal.client.message.wizard</field>
         <field name="arch" type="xml">
-            <form string="Message the client">
+            <form string="Message the client" class="o_ldm_view">
                 <field name="phone_ok" invisible="1"/>
                 <field name="task_id" invisible="1"/>
                 <field name="legal_company_id" invisible="1"/>
@@ -1160,7 +1160,7 @@
         <field name="name">legal.expense.post.wizard.form</field>
         <field name="model">legal.expense.post.wizard</field>
         <field name="arch" type="xml">
-            <form string="Post to accounting">
+            <form string="Post to accounting" class="o_ldm_view">
                 <group>
                     <group>
                         <field name="mode" widget="radio"/>
@@ -1192,7 +1192,7 @@
         <field name="name">legal.fee.waive.wizard.form</field>
         <field name="model">legal.fee.waive.wizard</field>
         <field name="arch" type="xml">
-            <form string="Waive instalments">
+            <form string="Waive instalments" class="o_ldm_view">
                 <field name="line_ids" nolabel="1" readonly="1">
                     <list>
                         <field name="name"/>
@@ -1317,7 +1317,7 @@
                     <group>
                         <field name="engagement_id" options="{'no_create': True}"
                                domain="[('legal_company_id', '=', legal_company_id), ('state', '!=', 'closed')]"/>
-                        <field name="billing_state" widget="badge" decoration-warning="billing_state == 'to_invoice'"
+                        <field name="billing_state" widget="ldm_pill" decoration-warning="billing_state == 'to_invoice'"
                                decoration-success="billing_state == 'invoiced'"/>
                     </group>
                     <group>
@@ -1395,7 +1395,7 @@
                             <field name="description"/>
                             <field name="duration" widget="float_time" sum="Total"/>
                             <field name="billable" optional="show"/>
-                            <field name="state" widget="badge" readonly="1"/>
+                            <field name="state" widget="ldm_pill" readonly="1"/>
                         </list>
                     </field>
                 </div>
@@ -1479,7 +1479,7 @@
                             <field name="amount"/>
                             <field name="currency_id" column_invisible="1"/>
                             <field name="signed"/>
-                            <field name="state" widget="badge"/>
+                            <field name="state" widget="ldm_pill"/>
                         </list>
                     </field>
                 </page>

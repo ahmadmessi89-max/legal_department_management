@@ -266,7 +266,7 @@ class LegalTask(models.Model):
         """Court stages as a rail: done, current, still to come. No percentage:
         a lawsuit is not a progress bar."""
         self.ensure_one()
-        labels = dict(self._fields["court_stage"]._description_selection(self.env))
+        labels = dict(COURT_STAGES)
         current = self.court_stage or "first_instance"
         current_index = PHASE_ORDER.index(current) if current in PHASE_ORDER else 0
         closed = self.state == "done"

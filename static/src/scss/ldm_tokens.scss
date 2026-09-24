@@ -9,12 +9,18 @@
 //  matter numbers, Plex for text. Radii follow hierarchy: bands 0, panels
 //  10px, inputs 6px, pills round.
 //
-//  Published as CSS custom properties on `.o_ldm`, so every file of the
-//  module reads the same values whatever order the bundle concatenates them
-//  in, and Odoo's own screens are untouched. Logical properties only.
+//  Published as CSS custom properties on `.o_ldm` (the workspace's own
+//  components) and on `.o_ldm_view` (the module's native list, kanban, form,
+//  pivot and graph views, which carry it on their arch root) and
+//  `.o_ldm_calendar_view` (calendars, whose arch cannot take a class), so
+//  every file of the module reads the same values whatever order the bundle
+//  concatenates them in, and Odoo's own screens are untouched. Logical
+//  properties only.
 // =====================================================================
 
-.o_ldm {
+.o_ldm,
+.o_ldm_view,
+.o_ldm_calendar_view {
     // Structure
     --ldm-ink: #14213D;
     --ldm-ink-soft: #3B4A68;
@@ -94,7 +100,9 @@
 // Odoo has no user dark mode in Community, but its dark bundle recompiles
 // this file: the same meanings on a dark desk.
 @if $o-webclient-color-scheme == dark {
-    .o_ldm {
+    .o_ldm,
+    .o_ldm_view,
+    .o_ldm_calendar_view {
         --ldm-ink: #E6EAF2;
         --ldm-ink-soft: #B8C1D1;
         --ldm-ink-muted: #B8C1D1;
@@ -135,12 +143,14 @@
 // Odoo's own buttons inside a workspace screen: the primary action is ink.
 // A workspace dialog's footer is rendered outside the form, so it is
 // reached through the dialog that holds a workspace form.
-.modal-content:has(.modal-body .o_ldm) .modal-footer {
+.modal-content:has(.modal-body :is(.o_ldm, .o_ldm_view)) .modal-footer {
     --ldm-ink: #14213D;
 }
 
 .o_ldm,
-.modal-content:has(.modal-body .o_ldm) .modal-footer {
+.o_ldm_view,
+.o_ldm_calendar_view,
+.modal-content:has(.modal-body :is(.o_ldm, .o_ldm_view)) .modal-footer {
     .btn-primary {
         --btn-bg: var(--ldm-ink);
         --btn-border-color: var(--ldm-ink);
@@ -158,7 +168,8 @@
 
 // Odoo's own inputs inside a workspace form: ink when chosen or focused,
 // so the only colour on a form is the colour that means something.
-.o_ldm {
+.o_ldm,
+.o_ldm_view {
     .form-check-input:checked {
         background-color: var(--ldm-ink);
         border-color: var(--ldm-ink);
@@ -360,6 +371,24 @@
 .o_ldm_text_success { color: var(--ldm-success); }
 .o_ldm_text_info { color: var(--ldm-info); }
 .o_ldm_text_muted { color: var(--ldm-ink-soft); }
+
+// Phones, e-mails, codes and numbers people type read left to right, also
+// in an Arabic form ("0770 123 4567" must not become "4567 123 0770"). They
+// keep the start edge of the column. The RTL build (rtlcss) would flip both
+// declarations, so they are marked to be left alone; `.o_rtl` exists only
+// in a right-to-left session.
+.o_rtl .o_ldm_ltr {
+    &,
+    input,
+    a,
+    span {
+        /*rtl:ignore*/
+        direction: ltr;
+        /*rtl:ignore*/
+        text-align: right;
+        unicode-bidi: isolate;
+    }
+}
 
 // Numbers that must not be reordered by the bidi algorithm and should line
 // up: references, counts, money.

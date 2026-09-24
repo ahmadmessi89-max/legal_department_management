@@ -12,7 +12,7 @@
         <field name="name">legal.ministry.list</field>
         <field name="model">legal.ministry</field>
         <field name="arch" type="xml">
-            <list string="Ministries and authorities" sample="1">
+            <list string="Ministries and authorities" sample="1" class="o_ldm_view">
                 <field name="sequence" widget="handle"/>
                 <field name="name"/>
                 <field name="body_kind" optional="show"/>
@@ -29,7 +29,7 @@
         <field name="name">legal.ministry.form</field>
         <field name="model">legal.ministry</field>
         <field name="arch" type="xml">
-            <form string="Ministry or authority">
+            <form string="Ministry or authority" class="o_ldm_view">
                 <sheet>
                     <div class="oe_button_box" name="button_box">
                         <button name="action_view_departments" type="object" class="oe_stat_button" icon="fa-university">
@@ -119,7 +119,7 @@
         <field name="name">legal.department.list</field>
         <field name="model">legal.department</field>
         <field name="arch" type="xml">
-            <list string="Bodies and courts" sample="1">
+            <list string="Bodies and courts" sample="1" class="o_ldm_view">
                 <field name="name"/>
                 <field name="ministry_id"/>
                 <field name="body_kind" optional="show"/>
@@ -139,7 +139,7 @@
         <field name="name">legal.department.form</field>
         <field name="model">legal.department</field>
         <field name="arch" type="xml">
-            <form string="Body or court">
+            <form string="Body or court" class="o_ldm_view">
                 <sheet>
                     <div class="oe_button_box" name="button_box">
                         <button name="action_view_open_tasks" type="object" class="oe_stat_button" icon="fa-folder-open">

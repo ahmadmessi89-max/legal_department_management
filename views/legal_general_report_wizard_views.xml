@@ -4,7 +4,7 @@
         <field name="name">legal.general.report.wizard.form</field>
         <field name="model">legal.general.report.wizard</field>
         <field name="arch" type="xml">
-            <form string="Oversight report">
+            <form string="Oversight report" class="o_ldm_view">
                 <field name="task_domain" invisible="1"/>
                 <div class="alert alert-info mb-3" role="status" invisible="not selection_note">
                     <field name="selection_note" class="d-inline"/>

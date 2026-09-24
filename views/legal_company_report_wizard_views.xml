@@ -4,7 +4,7 @@
         <field name="name">legal.company.report.wizard.form</field>
         <field name="model">legal.company.report.wizard</field>
         <field name="arch" type="xml">
-            <form string="Client file">
+            <form string="Client file" class="o_ldm_view">
                 <group>
                     <field name="company_id" readonly="context.get('active_model') == 'legal.company'"
                            options="{'no_create': True, 'no_open': True}"/>

@@ -83,7 +83,7 @@ export class LdmMyDay extends Component {
             data: null,
             error: null,
             busy: false,
-            scope: null, // the server chooses: the whole department for a manager
+            scope: "me",
             unfolded: {},
             dates: {},
             pending: {},

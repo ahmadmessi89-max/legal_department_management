@@ -7,7 +7,7 @@
         <field name="name">legal.task.create.wizard.form</field>
         <field name="model">legal.task.create.wizard</field>
         <field name="arch" type="xml">
-            <form string="New matter" class="o_ldm o_ldm_quick_create">
+            <form string="New matter" class="o_ldm_view o_ldm o_ldm_quick_create">
                 <field name="company_id" invisible="1"/>
                 <field name="kind" invisible="1"/>
                 <field name="show_body" invisible="1"/>

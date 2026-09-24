@@ -4,7 +4,7 @@
         <field name="name">legal.task.decision.wizard.form</field>
         <field name="model">legal.task.decision.wizard</field>
         <field name="arch" type="xml">
-            <form string="Decision">
+            <form string="Decision" class="o_ldm_view">
                 <field name="mode" invisible="1"/>
                 <field name="task_ids" invisible="1"/>
                 <group>
