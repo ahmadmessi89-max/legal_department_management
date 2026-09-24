@@ -1,0 +1,622 @@
+1927	models/gov_bodies.py	Services at %s
+1322	models/gov_coverage.py	New matter: %s
+4	models/gov_documents.py	%(client)s has no valid “%(type)s” in its records. Collect it and add it to the matter.
+25	models/gov_documents.py	%(name)s expired on %(date)s.
+506	models/gov_documents.py	Company records are switched off in Settings.
+1484	models/gov_documents.py	Only a lawyer can add documents to a client's records.
+1509	models/gov_documents.py	Only a received document with a document type can be filed in the client's records.
+1728	models/gov_documents.py	Receive “%s” before asking the issuing body to confirm it.
+2189	models/gov_documents.py	This document is not part of %s.
+63	models/gov_matters.py	%s is closed; reopen it before logging a visit.
+694	models/gov_matters.py	Document expires: %(name)s — %(number)s
+2547	models/gov_matters.py	“%s” is already done.
+2549	models/gov_matters.py	“%s” is not a visit to a body.
+34	models/gov_obligations.py	%(obligation)s — due %(date)s
+430	models/gov_obligations.py	Choose the type of matter this obligation opens first.
+1228	models/gov_obligations.py	Matters for %s
+1488	models/gov_obligations.py	Only a lawyer can open a matter for an obligation.
+1568	models/gov_obligations.py	Opened for the recurring obligation “%(obligation)s”, due %(date)s.
+1944	models/gov_obligations.py	Set the next due date first.
+2094	models/gov_obligations.py	The day of an obligation must be between 1 and 31.
+2123	models/gov_obligations.py	The matter cannot be opened after the due date.
+2132	models/gov_obligations.py	The month of a yearly obligation must be between 1 and 12.
+213	models/gov_reference.py	Added %(ministries)s ministries and authorities, %(bodies)s government bodies, %(courts)s courts, %(types)s document types and %(services)s government services. Already there and kept: %(old)s records.
+1013	models/gov_reference.py	Iraqi reference library loaded
+1503	models/gov_reference.py	Only a legal manager can load the reference library.
+2169	models/gov_reference.py	The reference library was already loaded
+10	models/gov_vault.py	%(document)s expires on %(date)s
+33	models/gov_vault.py	%(obligation)s is due on %(date)s
+692	models/gov_vault.py	Document
+706	models/gov_vault.py	Documents of %s
+1800	models/gov_vault.py	Renew %(document)s of %(client)s
+1229	models/legal_company.py	Matters of %s
+1497	models/legal_company.py	Only a legal manager can delete a client. Archive it instead.
+1526	models/legal_company.py	Only the lawyer responsible for %s or a legal manager can change who looks after it.
+424	models/legal_company_report_wizard.py	Choose the client.
+147	models/legal_department.py	A body named “%s” already exists.
+153	models/legal_department.py	A court cannot be its own higher court.
+1225	models/legal_department.py	Matters at %s
+2545	models/legal_department.py	“%(name)s” already exists under %(ministry)s.
+73	models/legal_general_report_wizard.py	%s matters selected in the list.
+2098	models/legal_general_report_wizard.py	The end date is before the start date.
+2129	models/legal_general_report_wizard.py	The matters of the filtered list.
+167	models/legal_ministry.py	A ministry or authority named “%s” already exists.
+681	models/legal_ministry.py	Departments of %s
+20	models/legal_task.py	%(matter)s cannot go from “%(old)s” to “%(new)s”.
+54	models/legal_task.py	%s has no planned court session.
+55	models/legal_task.py	%s is already approved or waiting for approval.
+59	models/legal_task.py	%s is approved: only a legal manager can change its client, type or body.
+60	models/legal_task.py	%s is approved; reset its approval before sending it back to New.
+69	models/legal_task.py	%s is not waiting for approval.
+75	models/legal_task.py	%s needs approval before work starts. Send it for approval first.
+285	models/legal_task.py	Approval reset by %s.
+288	models/legal_task.py	Approve %s
+291	models/legal_task.py	Approved by %s.
+380	models/legal_task.py	Cancel matter
+427	models/legal_task.py	Choose the government body for %s before starting it.
+479	models/legal_task.py	Close matter
+583	models/legal_task.py	Court session
+587	models/legal_task.py	Court session on %(date)s — %(number)s
+640	models/legal_task.py	Deadline: %(name)s — %(number)s
+641	models/legal_task.py	Deadline: %s
+711	models/legal_task.py	Done
+1210	models/legal_task.py	Matter cancelled: %s
+1211	models/legal_task.py	Matter closed: %(outcome)s. %(note)s
+1239	models/legal_task.py	Meeting
+1486	models/legal_task.py	Only a lawyer can cancel a matter.
+1499	models/legal_task.py	Only a legal manager can delete a matter. Cancel or archive it instead.
+1504	models/legal_task.py	Only a legal manager can move %(matter)s back to “%(new)s”.
+1506	models/legal_task.py	Only a legal manager can reset an approval.
+1515	models/legal_task.py	Only an approver can decide on a matter.
+1525	models/legal_task.py	Only the lawyer responsible for %s or a legal manager can change its team or make it confidential.
+1532	models/legal_task.py	Only the people working on %s can send it for approval.
+1781	models/legal_task.py	Reject
+1785	models/legal_task.py	Rejected by %(user)s: %(note)s
+1886	models/legal_task.py	Say why the matter is cancelled.
+1887	models/legal_task.py	Say why the matter is rejected.
+1921	models/legal_task.py	Sent for approval.
+2007	models/legal_task.py	Step: %(name)s — %(number)s
+2037	models/legal_task.py	Target date
+2039	models/legal_task.py	Target date — %s
+2059	models/legal_task.py	The approval of a matter can only change through Approve, Reject or Send for approval.
+2084	models/legal_task.py	The contract cannot end before it starts.
+2194	models/legal_task.py	This is set when the matter is closed or the opinion issued.
+2277	models/legal_task.py	Use “Cancel matter” to cancel %s: it asks for the reason.
+2278	models/legal_task.py	Use “Close matter” to close %s: it asks for the outcome.
+2308	models/legal_task.py	Visit: %s
+2459	models/legal_task.py	You sent %s for approval, so someone else must decide on it.
+32	models/legal_task_wizard.py	%(number)s created with %(steps)s steps and %(docs)s documents to collect.
+84	models/legal_task_wizard.py	%s working days at the body
+85	models/legal_task_wizard.py	%s working days for this type
+172	models/legal_task_wizard.py	A possible conflict of interest blocks this matter. Ask a partner.
+422	models/legal_task_wizard.py	Choose the client first.
+833	models/legal_task_wizard.py	Fee agreement — %s
+1024	models/legal_task_wizard.py	It stays New until its body is chosen or a partner clears it.
+1025	models/legal_task_wizard.py	It waits for approval before work starts.
+1213	models/legal_task_wizard.py	Matter for %s
+1320	models/legal_task_wizard.py	New matter
+1492	models/legal_task_wizard.py	Only a lawyer can start a fee agreement.
+1566	models/legal_task_wizard.py	Opened despite a possible conflict of interest; waiting for a partner's decision.
+43	models/lit_court_stage.py	%s (other side)
+28	models/lit_deadline.py	%(name)s: act by %(safe)s
+29	models/lit_deadline.py	%(name)s: act by %(safe)s (legal last day %(legal)s)
+31	models/lit_deadline.py	%(now)s (was %(old)s)
+35	models/lit_deadline.py	%(prev)s ended without an answer, which counts as a rejection. Next period:
+36	models/lit_deadline.py	%(prev)s was met on %(date)s. Next period:
+87	models/lit_deadline.py	%s: waiting for the notification date
+485	models/lit_deadline.py	Closed with the deadline.
+638	models/lit_deadline.py	Deadline cancelled: %s
+639	models/lit_deadline.py	Deadline met: %s
+1268	models/lit_deadline.py	Missed deadline: %(name)s. The legal last day was %(date)s.
+1485	models/lit_deadline.py	Only a lawyer can cancel a deadline.
+1505	models/lit_deadline.py	Only a legal manager can reopen a closed deadline.
+1519	models/lit_deadline.py	Only an open deadline can be marked as met.
+1527	models/lit_deadline.py	Only the legal team can change a deadline.
+41	models/lit_hearing.py	%(user)s is a trainee lawyer: a trainee may not appear before a %(court)s.
+68	models/lit_hearing.py	%s is not a working day at this court.
+1171	models/lit_hearing.py	Licence class
+1753	models/lit_hearing.py	Record the session
+1932	models/lit_hearing.py	Session recorded.
+2162	models/lit_hearing.py	The power of attorney %s does not let the agent delegate, so a substitution letter under it is not valid.
+30	models/lit_holiday.py	%(now)s (the legal last day was %(old)s)
+158	models/lit_holiday.py	A holiday cannot end before it starts.
+413	models/lit_holiday.py	Check the Eid dates announced by the endowment offices and any days the Council of Ministers added, then mark them as confirmed.
+760	models/lit_holiday.py	Enter the public holidays for %s
+1703	models/lit_holiday.py	Public holiday added: %s
+1704	models/lit_holiday.py	Public holiday changed: %s
+1705	models/lit_holiday.py	Public holiday removed: %s
+2005	models/lit_holiday.py	Step %(step)s: now due %(new)s (was %(old)s)
+86	models/lit_judgment.py	%s: no longer applies
+159	models/lit_judgment.py	A judgment cannot be served before it is given.
+190	models/lit_judgment.py	Act by %s
+643	models/lit_judgment.py	Deadlines of the judgment of %s recounted:
+1031	models/lit_judgment.py	Judgment
+1184	models/lit_judgment.py	Lodge a challenge
+1373	models/lit_judgment.py	No longer applies to this judgment.
+1487	models/lit_judgment.py	Only a lawyer can lodge a challenge.
+1490	models/lit_judgment.py	Only a lawyer can record when a judgment was served.
+1498	models/lit_judgment.py	Only a legal manager can delete a judgment.
+2111	models/lit_judgment.py	The judgment of %(date)s became final on %(final)s: no challenge was lodged in time.
+2321	models/lit_judgment.py	Waiting for the notification date
+17	models/lit_report.py	%(lawyer)s, by substitution %(substitute)s
+39	models/lit_report.py	%(start)s to %(end)s
+42	models/lit_report.py	%s (by substitution)
+579	models/lit_report.py	Court not set
+957	models/lit_report.py	I, the undersigned lawyer %(principal)s, acting for %(client)s,
+958	models/lit_report.py	I, the undersigned lawyer %(principal)s, agent for %(client)s under power of attorney no. %(number)s issued by %(notary)s on %(issued)s,
+1399	models/lit_report.py	Nobody assigned
+1869	models/lit_report.py	Room %s
+2468	models/lit_report.py	against %s
+2469	models/lit_report.py	authorise %(substitute)s to attend on my behalf the court session of %(date)s in case no. %(case)s against %(opponent)s, and to take the steps that session requires.
+2470	models/lit_report.py	authorise %(substitute)s to attend on my behalf the court session of %(date)s in case no. %(case)s, and to take the steps that session requires.
+48	models/lit_rules.py	%s days
+74	models/lit_rules.py	%s months
+646	models/lit_rules.py	Deadlines under %s
+590	models/lit_task.py	Court sessions of %s
+637	models/lit_task.py	Deadline about to end, still open: %(name)s — %(number)s
+1401	models/lit_task.py	Nobody is attending the court session on %(date)s — %(number)s
+0	models/money_advance.py	%(amount)s handed over to %(user)s.
+1	models/money_advance.py	%(amount)s is still not accounted for. Add the missing receipts or the cash returned.
+53	models/money_advance.py	%s has already been handed over.
+247	models/money_advance.py	An advance that has been handed over can no longer change.
+756	models/money_advance.py	Enter the amount handed over.
+1294	models/money_advance.py	My cash advances
+1508	models/money_advance.py	Only a legal manager or the billing team can hand over or settle a cash advance.
+1513	models/money_advance.py	Only an advance that has been handed over can be settled.
+1514	models/money_advance.py	Only an advance that was never handed over can be deleted.
+1521	models/money_advance.py	Only expenses %(user)s paid in %(currency)s can settle this advance.
+1948	models/money_advance.py	Settle %s
+1951	models/money_advance.py	Settled: %(spent)s spent on %(count)s receipts, %(returned)s returned.
+2071	models/money_advance.py	The cash returned cannot be negative.
+2146	models/money_advance.py	The office owes %(amount)s to %(user)s.
+2230	models/money_billable.py	To invoice
+608	models/money_company.py	Credit note
+763	models/money_company.py	Entry
+1000	models/money_company.py	Invoice
+1630	models/money_company.py	Payment received
+1725	models/money_company.py	Receive a payment
+1995	models/money_company.py	Statement of account
+2173	models/money_company.py	The statement of account is prepared by billing.
+7	models/money_conflict.py	%(client)s, responsible %(lawyer)s
+21	models/money_conflict.py	%(matter)s for %(client)s, responsible %(lawyer)s
+150	models/money_conflict.py	A client of another team, responsible %s
+151	models/money_conflict.py	A conflict check cannot be edited; a legal manager records the decision.
+152	models/money_conflict.py	A conflict check that has been decided can never change.
+162	models/money_conflict.py	A matter handled by another team, responsible %s
+411	models/money_conflict.py	Check of %(date)s: %(names)s
+416	models/money_conflict.py	Choose a decision.
+530	models/money_conflict.py	Conflict check decided by %(user)s: %(decision)s. %(reason)s
+533	models/money_conflict.py	Conflict checks are kept as evidence and cannot be deleted.
+534	models/money_conflict.py	Conflict checks are recorded by running the check, not typed in.
+657	models/money_conflict.py	Decide on a possible conflict — %s
+658	models/money_conflict.py	Decide on the conflict check
+906	models/money_conflict.py	Give the reason for the decision; it is kept with the check.
+1017	models/money_conflict.py	Is a company we advise on a retainer
+1018	models/money_conflict.py	Is our client
+1428	models/money_conflict.py	Nothing found.
+1496	models/money_conflict.py	Only a legal manager can decide on a possible conflict of interest.
+1659	models/money_conflict.py	Possible conflict of interest found (%s). A legal manager must decide before work starts.
+1810	models/money_conflict.py	Replaced by a newer check.
+2115	models/money_conflict.py	The legal managers have been asked to decide.
+2147	models/money_conflict.py	The office's policy blocks matters with a conflict. Decline it, or record that it is not a conflict if the match is someone else.
+2187	models/money_conflict.py	This conflict check already belongs to a matter.
+2188	models/money_conflict.py	This conflict check has already been decided.
+2335	models/money_conflict.py	Was on our client's side
+2336	models/money_conflict.py	Was our client
+2337	models/money_conflict.py	Was the other party to a contract
+2338	models/money_conflict.py	Was the other side
+2510	models/money_conflict.py	no one
+195	models/money_engagement.py	Activated above the 20%% cap by %(user)s: %(reason)s
+253	models/money_engagement.py	An invoiced instalment cannot be deleted. Cancel its invoice first.
+254	models/money_engagement.py	An invoiced instalment cannot change. Cancel its invoice first.
+754	models/money_engagement.py	Enter the agreed fee of %s before activating it.
+758	models/money_engagement.py	Enter the hourly rate of %s before activating it.
+761	models/money_engagement.py	Enter the success fee percentage of %s before activating it.
+831	models/money_engagement.py	Fee agreement activated.
+1316	models/money_engagement.py	New
+1444	models/money_engagement.py	Now due: %(name)s, %(amount)s.
+1482	models/money_engagement.py	Only a draft fee agreement can be deleted. Close it instead.
+1507	models/money_engagement.py	Only a legal manager can send a fee agreement back to draft.
+1841	models/money_engagement.py	Retainer for %s
+1842	models/money_engagement.py	Retainer from %(start)s to %(end)s
+1883	models/money_engagement.py	Say why the fee of %s may exceed 20%% of the value before activating it.
+1884	models/money_engagement.py	Say why the instalments are waived.
+2025	models/money_engagement.py	Success fee: %(percent)s%% of %(amount)s collected
+2102	models/money_engagement.py	The fee of %(name)s is above 20%% of the value of its matters (Advocacy Law Art. 56). Only a legal manager can activate it.
+2193	models/money_engagement.py	This fee agreement covers matters. Remove it from them or close it.
+2328	models/money_engagement.py	Waive instalments
+2331	models/money_engagement.py	Waived by %(user)s: %(lines)s. Reason: %(reason)s
+252	models/money_expense.py	An invoiced expense cannot be deleted. Cancel the invoice first.
+1500	models/money_expense.py	Only a legal manager can delete an expense. Correct the amount instead.
+1517	models/money_expense.py	Only an expense paid by an employee can come out of a cash advance.
+1664	models/money_expense.py	Post to accounting
+1667	models/money_expense.py	Posting expenses needs the accounting links switch and invoicing rights.
+2054	models/money_expense.py	The advance %(advance)s was given to %(user)s, not to the employee who paid.
+2055	models/money_expense.py	The advance %s has not been handed over yet.
+2056	models/money_expense.py	The advance %s is in another currency.
+2190	models/money_expense.py	This expense is already on an invoice. Cancel the invoice first to change it.
+2192	models/money_expense.py	This expense was settled against a cash advance and can no longer change.
+6	models/money_funds.py	%(client)s would hold %(balance)s of client money, which is less than nothing. Record the money received first, or ask a legal manager to allow it with a reason.
+280	models/money_funds.py	Apply client money to our fees
+468	models/money_funds.py	Client money
+491	models/money_funds.py	Collected through execution: %s.
+755	models/money_funds.py	Enter the amount as a positive number; the movement says which way it goes.
+1502	models/money_funds.py	Only a legal manager can let a client's money go below zero.
+1625	models/money_funds.py	Pay out for the client
+1726	models/money_funds.py	Receive client money
+1742	models/money_funds.py	Record a collection through execution
+1847	models/money_funds.py	Return money to the client
+2201	models/money_funds.py	This movement comes from an expense paid from the client's money. Change the expense.
+1512	models/money_settings.py	Only an administrator can change how a currency is rounded.
+1665	models/money_settings.py	Posted accounting entries already use the Iraqi dinar, so its rounding can no longer change.
+2051	models/money_settings.py	The Iraqi dinar is not available in this database.
+70	models/money_task.py	%s is waiting for a legal manager to decide on a possible conflict of interest.
+83	models/money_task.py	%s was declined after the conflict check and cannot start.
+529	models/money_task.py	Conflict check
+586	models/money_task.py	Court session of %s
+902	models/money_task.py	Get the fee agreement signed — %s
+988	models/money_task.py	Instalment due: %(name)s — %(number)s
+2100	models/money_task.py	The fee agreement of %s belongs to another client.
+2249	models/money_task.py	Transaction: %s
+2433	models/money_task.py	Work started without a signed fee agreement. Without a written agreement a fee claim lapses after three years (Advocacy Law Art. 65).
+166	models/money_time.py	A matter you can no longer open
+176	models/money_time.py	A time entry must be more than zero and at most 24 hours.
+1006	models/money_time.py	Invoiced time can no longer change.
+1520	models/money_time.py	Only draft time can be deleted.
+1542	models/money_time.py	Open a matter to start the timer on it.
+1881	models/money_time.py	Say what was done.
+2128	models/money_time.py	The matter's responsible lawyer, a legal manager or billing approves time.
+2175	models/money_time.py	The timer is already running on %s. Stop it first.
+2176	models/money_time.py	The timer is not running.
+2208	models/money_time.py	This time is approved; ask whoever approved it to change it.
+2218	models/money_time.py	Time tracking is switched off.
+2275	models/money_time.py	Use Approve to approve time.
+2457	models/money_time.py	You can only delete your own time.
+482	models/reg_common.py	Closed
+18	models/reg_correspondence.py	%(letter)s already belongs to %(matter)s.
+19	models/reg_correspondence.py	%(letter)s is in the register, so its %(fields)s cannot change: the other side has it in their book. Void it with a reason and register a new letter.
+52	models/reg_correspondence.py	%s has a register number and cannot be deleted. Void it with a reason: the number stays in the book, struck through.
+56	models/reg_correspondence.py	%s is already in the register.
+58	models/reg_correspondence.py	%s is already void.
+161	models/reg_correspondence.py	A letter enters the register through “Register” and leaves it through “Void”: its status cannot be edited.
+192	models/reg_correspondence.py	Act on the instruction on letter %s
+262	models/reg_correspondence.py	Answer letter %s
+267	models/reg_correspondence.py	Answered by %s.
+696	models/reg_correspondence.py	Document prepared: %s
+856	models/reg_correspondence.py	Filed copy attached: %s
+871	models/reg_correspondence.py	Follow up the answer to letter %s
+905	models/reg_correspondence.py	Give the letter a subject before registering it.
+1155	models/reg_correspondence.py	Letter %s
+1168	models/reg_correspondence.py	Letters of %s
+1203	models/reg_correspondence.py	Marked as answered.
+1318	models/reg_correspondence.py	New document from a template
+1449	models/reg_correspondence.py	Number %(number)s is already in the %(direction)s register for %(year)s.
+1511	models/reg_correspondence.py	Only a written outgoing letter can be filed as a PDF.
+1524	models/reg_correspondence.py	Only outgoing letters are printed from here; an incoming letter is filed as received.
+1540	models/reg_correspondence.py	Open a matter from this letter
+1690	models/reg_correspondence.py	Print the register book
+1774	models/reg_correspondence.py	Registered as %(number)s on %(date)s.
+1815	models/reg_correspondence.py	Reply
+1885	models/reg_correspondence.py	Say why the letter is voided.
+2085	models/reg_correspondence.py	The correspondence register is switched off in Settings, so letters are not numbered.
+2183	models/reg_correspondence.py	There is no numbering sequence for %s letters.
+2312	models/reg_correspondence.py	Void letter
+2314	models/reg_correspondence.py	Voided by %(user)s: %(reason)s
+2446	models/reg_correspondence.py	Write the letter, or choose a template, before printing it.
+65	models/reg_guarantee.py	%s is no longer live.
+303	models/reg_guarantee.py	Ask the bank to extend
+1159	models/reg_guarantee.py	Letter of guarantee expires: %s
+1166	models/reg_guarantee.py	Letters about %s
+1483	models/reg_guarantee.py	Only a lawyer can act on a letter of guarantee.
+1752	models/reg_guarantee.py	Record the extension
+1789	models/reg_guarantee.py	Release the letter of guarantee
+2198	models/reg_guarantee.py	This letter of guarantee expired on %s.
+22	models/reg_opinion.py	%(matter)s is already revised by %(revision)s.
+23	models/reg_opinion.py	%(matter)s was already issued as opinion %(number)s.
+44	models/reg_opinion.py	%s (revision)
+61	models/reg_opinion.py	%s is closed.
+66	models/reg_opinion.py	%s is not a legal opinion.
+1124	models/reg_opinion.py	Legal opinion %s
+1516	models/reg_opinion.py	Only an approver or a legal manager can issue an opinion.
+1518	models/reg_opinion.py	Only an issued opinion can be revised. Until it is issued, edit it.
+1579	models/reg_opinion.py	Opinion %(number)s issued by %(user)s.
+1580	models/reg_opinion.py	Opinion %(number)s was issued on %(date)s and cannot change. Use “Revise opinion” to write a new version that replaces it.
+1811	models/reg_opinion.py	Replaced by opinion %s.
+1858	models/reg_opinion.py	Revision started: %s.
+2202	models/reg_opinion.py	This opinion has no memo yet: it is attached when the opinion is issued.
+2451	models/reg_opinion.py	Write the question and the opinion before issuing it.
+57	models/reg_poa.py	%s is already revoked.
+173	models/reg_poa.py	A power of attorney ends by its expiry date or through “Revoke”. Its status cannot be edited by hand.
+1232	models/reg_poa.py	Matters relying on %s
+1491	models/reg_poa.py	Only a lawyer can revoke a power of attorney.
+1671	models/reg_poa.py	Power of attorney expires: %s
+1673	models/reg_poa.py	Power of attorney no longer valid — %s
+1677	models/reg_poa.py	Powers of attorney of %s
+1862	models/reg_poa.py	Revoke power of attorney
+1865	models/reg_poa.py	Revoked on %(date)s by %(user)s: %(reason)s
+1888	models/reg_poa.py	Say why the power of attorney is revoked.
+1892	models/reg_poa.py	Scan of %s
+2163	models/reg_poa.py	The power of attorney this matter relies on (%(poa)s) %(what)s. Record a valid one before the next step.
+2205	models/reg_poa.py	This power of attorney expired on %s.
+2506	models/reg_poa.py	expired on %s
+2522	models/reg_poa.py	was revoked on %(date)s: %(reason)s
+410	models/reg_reminders.py	Chase the answer to letter %s
+1158	models/reg_reminders.py	Letter of guarantee expires — %s
+1670	models/reg_reminders.py	Power of attorney expires — %s
+2551	models/reg_render.py	“{%s}” is not a placeholder a letter template may use. Placeholders are plain names such as {client} or {matter_number}; the list is on the template's Placeholders tab.
+236	models/reg_reports.py	All clients
+363	models/reg_reports.py	Body or court
+370	models/reg_reports.py	Brought against us
+371	models/reg_reports.py	Brought by us
+436	models/reg_reports.py	Chosen matters
+628	models/reg_reports.py	Dates
+1351	models/reg_reports.py	No body set
+1412	models/reg_reports.py	Not recorded
+1596	models/reg_reports.py	Other role or not set
+1831	models/reg_reports.py	Responsible
+1998	models/reg_reports.py	Status
+2467	models/reg_reports.py	against
+2479	models/reg_reports.py	defendant
+2514	models/reg_reports.py	other
+2515	models/reg_reports.py	plaintiff
+64	models/reg_request.py	%s is looking at this request.
+174	models/reg_request.py	A request moves through Accept, Return, Decline or Resubmit; its status, matter and handler cannot be edited.
+181	models/reg_request.py	Accept the request and work on its matter before sending a result.
+182	models/reg_request.py	Accept: open a matter
+185	models/reg_request.py	Accepted. The legal team opened matter %s.
+513	models/reg_request.py	Completed and sent again.
+669	models/reg_request.py	Decline the request
+672	models/reg_request.py	Declined: %s
+1493	models/reg_request.py	Only a lawyer of the legal team can accept, return or decline a request.
+1494	models/reg_request.py	Only a lawyer of the legal team can send the result.
+1510	models/reg_request.py	Only a request returned to you can be sent again.
+1533	models/reg_request.py	Only the person who asked can send the request again.
+1570	models/reg_request.py	Opened from the request of %(who)s: %(what)s
+1850	models/reg_request.py	Return to the requester
+1852	models/reg_request.py	Returned for completion: %s
+1880	models/reg_request.py	Say what is missing, so the requester can complete it.
+1890	models/reg_request.py	Say why the request is declined.
+1915	models/reg_request.py	Send the result to %s
+1923	models/reg_request.py	Sent to the legal team.
+2116	models/reg_request.py	The legal team is working on “%s”: it can only be changed if they return it to you.
+2118	models/reg_request.py	The legal team sent you the result.
+2206	models/reg_request.py	This request is not yours.
+2456	models/reg_request.py	You can change what you asked, the details, the date and the files. The legal team sets the rest.
+2546	models/reg_request.py	“%s” has already been answered.
+2052	models/res_config_settings.py	The Iraqi reference library is not available in this version.
+294	models/ws_common.py	Approver
+324	models/ws_common.py	Auditor (read only)
+356	models/ws_common.py	Billing
+458	models/ws_common.py	Clerk
+460	models/ws_common.py	Client
+474	models/ws_common.py	Client or company
+498	models/ws_common.py	Company
+1081	models/ws_common.py	Lawyer
+1121	models/ws_common.py	Legal manager
+373	models/ws_company.py	By body and court
+2357	models/ws_company.py	What is happening now
+223	models/ws_my_day.py	Advance still to account for
+287	models/ws_my_day.py	Approve
+313	models/ws_my_day.py	At the body past the usual answer time
+330	models/ws_my_day.py	Awaiting approval
+332	models/ws_my_day.py	Awaiting my approval
+531	models/ws_my_day.py	Conflict check waiting for your decision
+539	models/ws_my_day.py	Conflicts waiting for a decision
+584	models/ws_my_day.py	Court session at %s
+591	models/ws_my_day.py	Court sessions this week
+714	models/ws_my_day.py	Done from My Day
+730	models/ws_my_day.py	Due this week
+776	models/ws_my_day.py	Everyone
+1034	models/ws_my_day.py	Judgment given: when was it notified?
+1047	models/ws_my_day.py	Judgments waiting for their notification date
+1070	models/ws_my_day.py	Later
+1189	models/ws_my_day.py	Log visit
+1238	models/ws_my_day.py	Me
+1292	models/ws_my_day.py	My Day
+1297	models/ws_my_day.py	My team
+1361	models/ws_my_day.py	No date
+1429	models/ws_my_day.py	Nothing is booked for the next seven days.
+1435	models/ws_my_day.py	Nothing needs you today.
+1436	models/ws_my_day.py	Nothing planned: add the next step
+1544	models/ws_my_day.py	Open a new matter with New, or look through the matters register.
+1549	models/ws_my_day.py	Open matters
+1604	models/ws_my_day.py	Overdue
+1747	models/ws_my_day.py	Record outcome
+1757	models/ws_my_day.py	Record what happened at the session
+1876	models/ws_my_day.py	Save the date
+1919	models/ws_my_day.py	Sent for approval by %s
+1941	models/ws_my_day.py	Sessions in the next days with nobody attending
+2135	models/ws_my_day.py	The next seven days
+2209	models/ws_my_day.py	This week
+2234	models/ws_my_day.py	Today
+2303	models/ws_my_day.py	Visit %(body)s: %(step)s
+2319	models/ws_my_day.py	Waiting for an approver's decision
+2322	models/ws_my_day.py	Waiting for your approval
+2420	models/ws_my_day.py	With the body for %s working days
+62	models/ws_step.py	%s is closed: reopen it before changing its steps.
+2548	models/ws_step.py	“%s” is done.
+2550	models/ws_step.py	“%s” is open again.
+2	models/ws_task.py	%(body)s usually answers in %(days)s working days; submission planned for %(date)s
+3	models/ws_task.py	%(body)s usually answers in %(days)s working days; submitted on %(date)s
+11	models/ws_task.py	%(done)s of %(total)s done
+12	models/ws_task.py	%(have)s of %(total)s
+14	models/ws_task.py	%(held)s held of %(total)s
+40	models/ws_task.py	%(type)s: %(days)s working days from opening on %(date)s
+311	models/ws_task.py	At the body %(days)s working days (usual %(target)s)
+588	models/ws_task.py	Court sessions
+704	models/ws_task.py	Documents
+705	models/ws_task.py	Documents missing: %s
+732	models/ws_task.py	Due within 48 h
+799	models/ws_task.py	Expenses
+851	models/ws_task.py	File attached to “%s”.
+975	models/ws_task.py	In this status
+1333	models/ws_task.py	Next date
+1358	models/ws_task.py	No court session is planned in these dates.
+1417	models/ws_task.py	Not started yet.
+1431	models/ws_task.py	Nothing is planned. Add a step or a court session.
+1936	models/ws_task.py	Sessions
+2008	models/ws_task.py	Steps
+2050	models/ws_task.py	That document is not on %s.
+2065	models/ws_task.py	The body
+2104	models/ws_task.py	The file did not reach the server. Try again.
+2105	models/ws_task.py	The hearing roll is not available in this version.
+2184	models/ws_task.py	There is no other target date to suggest for %s.
+2270	models/ws_task.py	Urgent
+227	static/src/agenda/agenda.js	Agenda
+592	static/src/agenda/agenda.js	Court sessions, counter visits and deadlines appear here as soon as they are dated.
+636	static/src/agenda/agenda.js	Deadline
+1251	static/src/agenda/agenda.js	Mine
+1275	static/src/agenda/agenda.js	Month
+1400	static/src/agenda/agenda.js	Nobody attending
+1430	static/src/agenda/agenda.js	Nothing is booked in the next fourteen days.
+1574	static/src/agenda/agenda.js	Opening the agenda…
+1687	static/src/agenda/agenda.js	Print roll
+2057	static/src/agenda/agenda.js	The agenda could not be loaded. Try again in a moment.
+2133	static/src/agenda/agenda.js	The next fourteen days
+2252	static/src/agenda/agenda.js	Try again
+2302	static/src/agenda/agenda.js	Visit
+13	static/src/approvals/approval_list.js	%(have)s of %(total)s received
+289	static/src/approvals/approval_list.js	Approved
+480	static/src/approvals/approval_list.js	Close the preview
+516	static/src/approvals/approval_list.js	Confidential
+1182	static/src/approvals/approval_list.js	Loading the matter…
+1395	static/src/approvals/approval_list.js	No steps planned.
+1560	static/src/approvals/approval_list.js	Open the matter
+1820	static/src/approvals/approval_list.js	Requested by
+2253	static/src/approvals/approval_list.js	Type
+2293	static/src/approvals/approval_list.js	Value
+2372	static/src/approvals/approval_list.js	What the work will be
+164	static/src/cockpit/checklists.js	A matter type lists the documents its body asks for; they appear here.
+204	static/src/cockpit/checklists.js	Add a step
+207	static/src/cockpit/checklists.js	Add the first step, or choose a matter type that brings its steps.
+214	static/src/cockpit/checklists.js	Added to the matter's files.
+316	static/src/cockpit/checklists.js	Attach to “%s”
+317	static/src/cockpit/checklists.js	Attach “%(file)s” to “%(document)s”, the first document still missing?
+318	static/src/cockpit/checklists.js	Attached to “%s”.
+408	static/src/cockpit/checklists.js	Change this step
+418	static/src/cockpit/checklists.js	Choose a file
+525	static/src/cockpit/checklists.js	Confirmed genuine
+693	static/src/cockpit/checklists.js	Document checklist
+707	static/src/cockpit/checklists.js	Documents to collect
+720	static/src/cockpit/checklists.js	Done; click to open it again
+725	static/src/cockpit/checklists.js	Drop the file here
+807	static/src/cockpit/checklists.js	Expired
+809	static/src/cockpit/checklists.js	Expires %s
+1051	static/src/cockpit/checklists.js	Keep it with the matter's files
+1269	static/src/cockpit/checklists.js	Missing
+1362	static/src/cockpit/checklists.js	No documents to collect.
+1396	static/src/cockpit/checklists.js	No steps yet.
+1409	static/src/cockpit/checklists.js	Not needed
+1557	static/src/cockpit/checklists.js	Open the file
+1729	static/src/cockpit/checklists.js	Received
+1826	static/src/cockpit/checklists.js	Required
+1877	static/src/cockpit/checklists.js	Save the matter before adding files.
+1878	static/src/cockpit/checklists.js	Save the matter before ticking its steps.
+1972	static/src/cockpit/checklists.js	Skipped
+2006	static/src/cockpit/checklists.js	Step checklist
+2032	static/src/cockpit/checklists.js	Take a photo
+2103	static/src/cockpit/checklists.js	The file could not be uploaded.
+2213	static/src/cockpit/checklists.js	Tick to mark done
+2228	static/src/cockpit/checklists.js	To do
+2298	static/src/cockpit/checklists.js	Verified
+2397	static/src/cockpit/checklists.js	Which document is this?
+249	static/src/cockpit/cockpit_widgets.js	An approver decides before work starts.
+283	static/src/cockpit/cockpit_widgets.js	Approval refused
+293	static/src/cockpit/cockpit_widgets.js	Approved. Work can start.
+309	static/src/cockpit/cockpit_widgets.js	Assigned to %s
+594	static/src/cockpit/cockpit_widgets.js	Court stages
+619	static/src/cockpit/cockpit_widgets.js	Current stage
+661	static/src/cockpit/cockpit_widgets.js	Decided by %s
+848	static/src/cockpit/cockpit_widgets.js	Fewer details
+1120	static/src/cockpit/cockpit_widgets.js	Legal last day: %s
+1202	static/src/cockpit/cockpit_widgets.js	Mark done
+1283	static/src/cockpit/cockpit_widgets.js	More details
+1325	static/src/cockpit/cockpit_widgets.js	Next
+1397	static/src/cockpit/cockpit_widgets.js	No target date yet
+1411	static/src/cockpit/cockpit_widgets.js	Not reached
+1426	static/src/cockpit/cockpit_widgets.js	Nothing dated
+1446	static/src/cockpit/cockpit_widgets.js	Now: %s
+1556	static/src/cockpit/cockpit_widgets.js	Open the deadline
+1913	static/src/cockpit/cockpit_widgets.js	Send for approval again
+1918	static/src/cockpit/cockpit_widgets.js	Sent by %s
+1971	static/src/cockpit/cockpit_widgets.js	Since today
+2027	static/src/cockpit/cockpit_widgets.js	Suggested target date
+2038	static/src/cockpit/cockpit_widgets.js	Target date updated.
+2199	static/src/cockpit/cockpit_widgets.js	This matter is closed.
+2276	static/src/cockpit/cockpit_widgets.js	Use this date
+2320	static/src/cockpit/cockpit_widgets.js	Waiting for approval
+241	static/src/cockpit/cockpit_widgets.xml	Alt+Shift+H
+1282	static/src/cockpit/matter_form.js	More actions
+1748	static/src/cockpit/matter_form.js	Record session outcome
+49	static/src/core/ldm_format.js	%s days late
+970	static/src/core/ldm_format.js	In %s days
+2237	static/src/core/ldm_format.js	Tomorrow
+2455	static/src/core/ldm_format.js	Yesterday
+2258	static/src/core/ldm_step_actions.js	Undo
+51	static/src/dossier/dossier.js	%s done
+76	static/src/dossier/dossier.js	%s open
+239	static/src/dossier/dossier.js	All open matters
+1345	static/src/dossier/dossier.js	Next: %s
+1377	static/src/dossier/dossier.js	No matter with a body or court yet.
+1383	static/src/dossier/dossier.js	No open matter for this client.
+1536	static/src/dossier/dossier.js	Open
+1553	static/src/dossier/dossier.js	Open one with “New matter for this client”.
+15	static/src/money/timer_systray.js	%(hours)s recorded on %(matter)s.
+762	static/src/money/timer_systray.js	Enter the time as 1.5 or 1:30.
+2219	static/src/money/timer_systray.js	Timer
+355	static/src/money/timer_systray.xml	Billable
+687	static/src/money/timer_systray.xml	Discard the time
+1543	static/src/money/timer_systray.xml	Open a matter to time it, or pick one:
+1585	static/src/money/timer_systray.xml	Or one of your matters:
+1754	static/src/money/timer_systray.xml	Record the time
+1872	static/src/money/timer_systray.xml	Running on
+1875	static/src/money/timer_systray.xml	Save
+1988	static/src/money/timer_systray.xml	Start
+1990	static/src/money/timer_systray.xml	Start on this matter
+2012	static/src/money/timer_systray.xml	Stop
+2013	static/src/money/timer_systray.xml	Stop and record
+2214	static/src/money/timer_systray.xml	Time
+2375	static/src/money/timer_systray.xml	What was done
+2458	static/src/money/timer_systray.xml	You have no open matters.
+2491	static/src/money/timer_systray.xml	e.g. Drafted the reply to the appeal
+79	static/src/my_day/my_day.js	%s overdue
+81	static/src/my_day/my_day.js	%s this week
+82	static/src/my_day/my_day.js	%s today
+199	static/src/my_day/my_day.js	Activity
+281	static/src/my_day/my_day.js	Approval
+292	static/src/my_day/my_day.js	Approved.
+387	static/src/my_day/my_day.js	Cash advances
+425	static/src/my_day/my_day.js	Choose the date first.
+562	static/src/my_day/my_day.js	Could not refresh; the screen shows what it had.
+948	static/src/my_day/my_day.js	Hide
+1204	static/src/my_day/my_day.js	Marked as done.
+1208	static/src/my_day/my_day.js	Matter
+1293	static/src/my_day/my_day.js	My Day could not be loaded.
+1312	static/src/my_day/my_day.js	Needs a manager
+1433	static/src/my_day/my_day.js	Nothing is waiting for you today
+1442	static/src/my_day/my_day.js	Notification date saved: the challenge periods are counted from it.
+1443	static/src/my_day/my_day.js	Notified on
+1555	static/src/my_day/my_day.js	Open the agenda
+1575	static/src/my_day/my_day.js	Opening your day…
+1714	static/src/my_day/my_day.js	Read only
+1900	static/src/my_day/my_day.js	Search by number, client or body…
+1953	static/src/my_day/my_day.js	Show
+1960	static/src/my_day/my_day.js	Showing the first %s. The register has the rest.
+2004	static/src/my_day/my_day.js	Step
+2172	static/src/my_day/my_day.js	The server could not be reached or reported an error. Try again in a moment.
+2236	static/src/my_day/my_day.js	Today's visits, by body
+2343	static/src/my_day/my_day.js	We have it
+2373	static/src/my_day/my_day.js	What to carry to each counter.
+242	static/src/my_day/my_day.xml	Alt+Shift+N
+617	static/src/my_day/my_day.xml	Ctrl K
+77	static/src/palette/palette.js	%s open matters
+360	static/src/palette/palette.js	Bodies and courts
+476	static/src/palette/palette.js	Clients
+1110	static/src/palette/palette.js	Legal
+1221	static/src/palette/palette.js	Matter, court case, receipt or letter number…
+1222	static/src/palette/palette.js	Matters
+1374	static/src/palette/palette.js	No matter has this number.
+2509	static/src/palette/palette.js	matter numbers
+849	static/src/quick_create/quick_create.js	Fewer options
+1218	static/src/quick_create/quick_create.js	Matter type picker
+1285	static/src/quick_create/quick_create.js	More options: responsible, team, urgency, note

@@ -50,10 +50,11 @@ Refresh with `python docs/ldm/tools/collect_screenshots.py`.
 
 | | |
 |---|---|
-| Config | `odoo19_ldm.conf` (git-ignored), port **8095**, `dbfilter ^ldm_.*$` |
-| Postgres | shared `PostgreSQL_For_Odoo` cluster on **5432** (12.4), user `openpg` |
+| Config | `odoo19_ldm.conf` (git-ignored), port **8110**, `db_name = ldm_pro`, `dbfilter ^ldm_pro$` (moved off 8095 on 24 Sep: the ANU project's `odoo19_intel.conf` also uses 8095, and on Windows two servers can hold one port, so requests landed on the wrong one) |
+| Postgres | shared `PostgreSQL_For_Odoo` cluster on **5432** (12.4), user `openpg`; no `psql` here: `python docs/ldm/tools/pgdb.py list / copy <src> <dst> / drop <db>` (ldm_ databases only, copies the filestore too) |
 | Baseline DB | `ldm_baseline`: the showcase exactly as received, with a few seeded records |
-| Working DB | `ldm_pro` (to be created from the rebuilt module) |
+| Demo DB | `ldm_pro`: module installed on `ldm_tpl`, then `docs/ldm/tools/seed_all.py` (39 matters, 12 clients, 28 sessions, 22 deadlines; logins manager, lawyer, lawyer2, trainee, clerk, approver, auditor, billing, employee, password = login). `ldm_pro_base` is the clean install before seeding: reseed with `pgdb.py copy ldm_pro_base ldm_pro`, then the seed. |
+| Demo URL | `http://localhost:8110/web/login` |
 | Start | `.venv_odoo19\Scripts\python.exe odoo-19.0\odoo-bin -c odoo19_ldm.conf -d <db>` |
 | Upgrade | `... -d <db> -u legal_department_management --stop-after-init --logfile=.odoo_logs_ldm/<name>.log` |
 | Logs | `.odoo_logs_ldm/` (git-ignored) |
@@ -82,15 +83,56 @@ Baseline screens: `docs/ldm/evidence/00-baseline/` (eight screens, zero errors).
   W workspace OWL (ldm_w, 8104) · M money (ldm_m, 8105) ·
   R registers and reports (ldm_r, 8106).
 
-### Stream status (updated 18:40)
+### Status (updated 24 Sep, 22:10, after the machine shut down at 21:43)
 
-| Stream | State |
-|---|---|
-| G government | **done** in the workflow: 104 tests green, no warnings, 33 screens; hand-back `docs/ldm/handback/gov.md` in worktree `-1`; in review |
-| L litigation | building (worktree `-2`) |
-| W workspace | building in the workflow (worktree `-3`), now the only writer, rebuilding its screens to the design direction. A duplicate copy (started by a message sent to the running workflow agent) and a successor were both stopped; the successor left one snapshot commit `6d44074`. Lesson recorded: never message a running workflow agent |
-| M money | building (worktree `-4`) |
-| R registers | building (worktree `-5`) |
+- **All five streams merged into main** (`fb1cb1d`…`3c58758`) and integrated
+  (`30bd574`): **337 tests green**, zero new warnings on a fresh install, and the
+  SAG-shaped upgrade passes every check (`docs/ldm/evidence/04-integration/`).
+  Published to SAG's repository, branch `professional-19.0.7` (25 commits).
+- **Arabic catalogue landed**: `i18n/ar.po`, 2,552 entries, 0 empty,
+  0 placeholder mismatches (`po_check.py`); Odoo loads it for `ar_001` with no
+  warning. Translated in the session from compact sheets
+  (`docs/ldm/tools/i18n_tsv.py`, sheets `c<n>.tsv` / `c<n>.ar.tsv` in
+  `docs/ldm/i18n/work/`). The earlier translation workflow wrote nothing: its
+  agents spent their time reading source for context and were interrupted.
+- **Running now:** design pass, third run (one Opus agent in its own worktree,
+  port 8107, db `ldm_d`). The first run stalled, the second was lost to the
+  shutdown having written nothing; this one commits after every area and keeps
+  a Progress section at the top of `docs/ldm/handback/design.md`. It must not
+  touch `i18n/` or write `seed_all.py` (the session owns both).
+- **Session, in parallel:** `docs/ldm/tools/seed_all.py` (one realistic Iraqi
+  data set from the five stream seeds plus one user per role) and the demo
+  instance `ldm_pro` on 8095.
+- **Next:** merge the design pass; delta-translate its new strings (re-export,
+  `po_split.py split` on the new entries, `i18n_tsv.py sheet/check`, merge);
+  run `verify_round.py` with `docs/ldm/tools/verify_plan.json` (7 roles × 23
+  screens × Arabic/English × 1440/390); fix; hand over.
+- **Tests on main:** 0 failed, 0 errors of 342 (fresh install on a copy of
+  `ldm_tpl`), no warnings. Commits `0da1cf6`, `916a158`, `05cbfab`.
+- **First verification round on main** (`docs/ldm/evidence/06-verify-main/`,
+  results only; its screenshots are in the screenshots folder): 252 captures.
+  Recheck after the fixes (`06-verify-recheck/`): 96 Arabic captures of five
+  roles, 0 with problems. Fixed and committed: court-stage rail labels were English
+  (`ws_task.py` used the raw selection list); "Principal" and "Verified" each
+  covered two legal meanings (guarantee field renamed "Applicant", statutory
+  confidence "Verified in the law") and a few shared entries got Arabic that
+  reads as both label and status; the module's daily jobs wrote English because
+  crons run without a language (`models/ldm_cron.py` runs them in the legal
+  team's language); the shipped matter types' steps had no Arabic because
+  they are inline in the data file (`SHIPPED_STEPS_AR` +
+  `data/ldm_template_translations.xml`); a manager's My Day opened on "me" with
+  zeros (now on the whole department); the harness counted the "More" menu as
+  a header button and had no retry for slow first loads.
+  **Open, after the design merge:** several monthly retainer reminders for one
+  matter fill a lawyer's overdue band (one row per instalment); consider one
+  reminder per agreement, or billing as the recipient.
+- **Server management:** `python docs/ldm/tools/demo.py start|stop|status`.
+  `taskkill` from Git Bash can fail silently and leave two servers on one
+  port answering at random; the script stops them by command line and checks.
+- **If the machine goes down again:** the design agent's branch is
+  `worktree-agent-<id>` under `.claude/worktrees/`; read the Progress section of
+  its `docs/ldm/handback/design.md`, then dispatch a successor on the same
+  branch rather than starting over.
 
 Design direction (binding for every OWL screen): `docs/ldm/briefs/design-direction.md`
 — an original identity around the mockup's intent (the owner: "don't copy it,

@@ -1,0 +1,4561 @@
+[
+ {
+  "id": 1927,
+  "msgid": "Services at %s",
+  "where": [
+   "code:models/gov_bodies.py"
+  ]
+ },
+ {
+  "id": 1322,
+  "msgid": "New matter: %s",
+  "where": [
+   "code:models/gov_coverage.py"
+  ]
+ },
+ {
+  "id": 4,
+  "msgid": "%(client)s has no valid “%(type)s” in its records. Collect it and add it to the matter.",
+  "where": [
+   "code:models/gov_documents.py"
+  ]
+ },
+ {
+  "id": 25,
+  "msgid": "%(name)s expired on %(date)s.",
+  "where": [
+   "code:models/gov_documents.py"
+  ]
+ },
+ {
+  "id": 506,
+  "msgid": "Company records are switched off in Settings.",
+  "where": [
+   "code:models/gov_documents.py"
+  ]
+ },
+ {
+  "id": 1484,
+  "msgid": "Only a lawyer can add documents to a client's records.",
+  "where": [
+   "code:models/gov_documents.py"
+  ]
+ },
+ {
+  "id": 1509,
+  "msgid": "Only a received document with a document type can be filed in the client's records.",
+  "where": [
+   "code:models/gov_documents.py"
+  ]
+ },
+ {
+  "id": 1728,
+  "msgid": "Receive “%s” before asking the issuing body to confirm it.",
+  "where": [
+   "code:models/gov_documents.py"
+  ]
+ },
+ {
+  "id": 2189,
+  "msgid": "This document is not part of %s.",
+  "where": [
+   "code:models/gov_documents.py"
+  ]
+ },
+ {
+  "id": 63,
+  "msgid": "%s is closed; reopen it before logging a visit.",
+  "where": [
+   "code:models/gov_matters.py",
+   "code:wizards/gov_visit.py"
+  ]
+ },
+ {
+  "id": 694,
+  "msgid": "Document expires: %(name)s — %(number)s",
+  "where": [
+   "code:models/gov_matters.py"
+  ]
+ },
+ {
+  "id": 2547,
+  "msgid": "“%s” is already done.",
+  "where": [
+   "code:models/gov_matters.py",
+   "code:wizards/gov_visit.py"
+  ]
+ },
+ {
+  "id": 2549,
+  "msgid": "“%s” is not a visit to a body.",
+  "where": [
+   "code:models/gov_matters.py"
+  ]
+ },
+ {
+  "id": 34,
+  "msgid": "%(obligation)s — due %(date)s",
+  "where": [
+   "code:models/gov_obligations.py"
+  ]
+ },
+ {
+  "id": 430,
+  "msgid": "Choose the type of matter this obligation opens first.",
+  "where": [
+   "code:models/gov_obligations.py"
+  ]
+ },
+ {
+  "id": 1228,
+  "msgid": "Matters for %s",
+  "where": [
+   "code:models/gov_obligations.py"
+  ]
+ },
+ {
+  "id": 1488,
+  "msgid": "Only a lawyer can open a matter for an obligation.",
+  "where": [
+   "code:models/gov_obligations.py"
+  ]
+ },
+ {
+  "id": 1568,
+  "msgid": "Opened for the recurring obligation “%(obligation)s”, due %(date)s.",
+  "where": [
+   "code:models/gov_obligations.py"
+  ]
+ },
+ {
+  "id": 1944,
+  "msgid": "Set the next due date first.",
+  "where": [
+   "code:models/gov_obligations.py"
+  ]
+ },
+ {
+  "id": 2094,
+  "msgid": "The day of an obligation must be between 1 and 31.",
+  "where": [
+   "code:models/gov_obligations.py"
+  ]
+ },
+ {
+  "id": 2123,
+  "msgid": "The matter cannot be opened after the due date.",
+  "where": [
+   "code:models/gov_obligations.py"
+  ]
+ },
+ {
+  "id": 2132,
+  "msgid": "The month of a yearly obligation must be between 1 and 12.",
+  "where": [
+   "code:models/gov_obligations.py"
+  ]
+ },
+ {
+  "id": 213,
+  "msgid": "Added %(ministries)s ministries and authorities, %(bodies)s government bodies, %(courts)s courts, %(types)s document types and %(services)s government services. Already there and kept: %(old)s records.",
+  "where": [
+   "code:models/gov_reference.py"
+  ]
+ },
+ {
+  "id": 1013,
+  "msgid": "Iraqi reference library loaded",
+  "where": [
+   "code:models/gov_reference.py"
+  ]
+ },
+ {
+  "id": 1503,
+  "msgid": "Only a legal manager can load the reference library.",
+  "where": [
+   "code:models/gov_reference.py"
+  ]
+ },
+ {
+  "id": 2169,
+  "msgid": "The reference library was already loaded",
+  "where": [
+   "code:models/gov_reference.py"
+  ]
+ },
+ {
+  "id": 10,
+  "msgid": "%(document)s expires on %(date)s",
+  "where": [
+   "code:models/gov_vault.py"
+  ]
+ },
+ {
+  "id": 33,
+  "msgid": "%(obligation)s is due on %(date)s",
+  "where": [
+   "code:models/gov_vault.py"
+  ]
+ },
+ {
+  "id": 692,
+  "msgid": "Document",
+  "where": [
+   "code:models/gov_vault.py",
+   "model:ir.model.fields,field_description:legal_department_management.field_legal_readiness_wizard_line__document_type_id",
+   "model:ir.model.fields,field_description:legal_department_management.field_legal_task_document__name"
+  ]
+ },
+ {
+  "id": 706,
+  "msgid": "Documents of %s",
+  "where": [
+   "code:models/gov_vault.py"
+  ]
+ },
+ {
+  "id": 1800,
+  "msgid": "Renew %(document)s of %(client)s",
+  "where": [
+   "code:models/gov_vault.py"
+  ]
+ },
+ {
+  "id": 1229,
+  "msgid": "Matters of %s",
+  "where": [
+   "code:models/legal_company.py"
+  ]
+ },
+ {
+  "id": 1497,
+  "msgid": "Only a legal manager can delete a client. Archive it instead.",
+  "where": [
+   "code:models/legal_company.py"
+  ]
+ },
+ {
+  "id": 1526,
+  "msgid": "Only the lawyer responsible for %s or a legal manager can change who looks after it.",
+  "where": [
+   "code:models/legal_company.py"
+  ]
+ },
+ {
+  "id": 424,
+  "msgid": "Choose the client.",
+  "where": [
+   "code:models/legal_company_report_wizard.py"
+  ]
+ },
+ {
+  "id": 147,
+  "msgid": "A body named “%s” already exists.",
+  "where": [
+   "code:models/legal_department.py"
+  ]
+ },
+ {
+  "id": 153,
+  "msgid": "A court cannot be its own higher court.",
+  "where": [
+   "code:models/legal_department.py"
+  ]
+ },
+ {
+  "id": 1225,
+  "msgid": "Matters at %s",
+  "where": [
+   "code:models/legal_department.py",
+   "code:models/legal_ministry.py"
+  ]
+ },
+ {
+  "id": 2545,
+  "msgid": "“%(name)s” already exists under %(ministry)s.",
+  "where": [
+   "code:models/legal_department.py"
+  ]
+ },
+ {
+  "id": 73,
+  "msgid": "%s matters selected in the list.",
+  "where": [
+   "code:models/legal_general_report_wizard.py"
+  ]
+ },
+ {
+  "id": 2098,
+  "msgid": "The end date is before the start date.",
+  "where": [
+   "code:models/legal_general_report_wizard.py",
+   "code:wizards/reg_letter_wizards.py",
+   "code:wizards/reg_report_wizards.py"
+  ]
+ },
+ {
+  "id": 2129,
+  "msgid": "The matters of the filtered list.",
+  "where": [
+   "code:models/legal_general_report_wizard.py"
+  ]
+ },
+ {
+  "id": 167,
+  "msgid": "A ministry or authority named “%s” already exists.",
+  "where": [
+   "code:models/legal_ministry.py"
+  ]
+ },
+ {
+  "id": 681,
+  "msgid": "Departments of %s",
+  "where": [
+   "code:models/legal_ministry.py"
+  ]
+ },
+ {
+  "id": 20,
+  "msgid": "%(matter)s cannot go from “%(old)s” to “%(new)s”.",
+  "where": [
+   "code:models/legal_task.py"
+  ]
+ },
+ {
+  "id": 54,
+  "msgid": "%s has no planned court session.",
+  "where": [
+   "code:models/legal_task.py"
+  ]
+ },
+ {
+  "id": 55,
+  "msgid": "%s is already approved or waiting for approval.",
+  "where": [
+   "code:models/legal_task.py"
+  ]
+ },
+ {
+  "id": 59,
+  "msgid": "%s is approved: only a legal manager can change its client, type or body.",
+  "where": [
+   "code:models/legal_task.py"
+  ]
+ },
+ {
+  "id": 60,
+  "msgid": "%s is approved; reset its approval before sending it back to New.",
+  "where": [
+   "code:models/legal_task.py"
+  ]
+ },
+ {
+  "id": 69,
+  "msgid": "%s is not waiting for approval.",
+  "where": [
+   "code:models/legal_task.py"
+  ]
+ },
+ {
+  "id": 75,
+  "msgid": "%s needs approval before work starts. Send it for approval first.",
+  "where": [
+   "code:models/legal_task.py"
+  ]
+ },
+ {
+  "id": 285,
+  "msgid": "Approval reset by %s.",
+  "where": [
+   "code:models/legal_task.py"
+  ]
+ },
+ {
+  "id": 288,
+  "msgid": "Approve %s",
+  "where": [
+   "code:models/legal_task.py"
+  ]
+ },
+ {
+  "id": 291,
+  "msgid": "Approved by %s.",
+  "where": [
+   "code:models/legal_task.py"
+  ]
+ },
+ {
+  "id": 380,
+  "msgid": "Cancel matter",
+  "where": [
+   "code:models/legal_task.py",
+   "model:ir.actions.server,name:legal_department_management.action_server_ldm_cancel",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_task_decision_wizard_form"
+  ]
+ },
+ {
+  "id": 427,
+  "msgid": "Choose the government body for %s before starting it.",
+  "where": [
+   "code:models/legal_task.py"
+  ]
+ },
+ {
+  "id": 479,
+  "msgid": "Close matter",
+  "where": [
+   "code:models/legal_task.py",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_task_decision_wizard_form",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_form"
+  ]
+ },
+ {
+  "id": 583,
+  "msgid": "Court session",
+  "where": [
+   "code:models/legal_task.py",
+   "code:models/ws_my_day.py",
+   "code:models/ws_task.py"
+  ]
+ },
+ {
+  "id": 587,
+  "msgid": "Court session on %(date)s — %(number)s",
+  "where": [
+   "code:models/legal_task.py"
+  ]
+ },
+ {
+  "id": 640,
+  "msgid": "Deadline: %(name)s — %(number)s",
+  "where": [
+   "code:models/legal_task.py"
+  ]
+ },
+ {
+  "id": 641,
+  "msgid": "Deadline: %s",
+  "where": [
+   "code:models/legal_task.py"
+  ]
+ },
+ {
+  "id": 711,
+  "msgid": "Done",
+  "where": [
+   "code:models/legal_task.py",
+   "code:models/ws_my_day.py",
+   "code:models/ws_step.py"
+  ]
+ },
+ {
+  "id": 1210,
+  "msgid": "Matter cancelled: %s",
+  "where": [
+   "code:models/legal_task.py"
+  ]
+ },
+ {
+  "id": 1211,
+  "msgid": "Matter closed: %(outcome)s. %(note)s",
+  "where": [
+   "code:models/legal_task.py"
+  ]
+ },
+ {
+  "id": 1239,
+  "msgid": "Meeting",
+  "where": [
+   "code:models/legal_task.py",
+   "model:ir.model.fields.selection,name:legal_department_management.selection__legal_hearing__kind__meeting"
+  ]
+ },
+ {
+  "id": 1486,
+  "msgid": "Only a lawyer can cancel a matter.",
+  "where": [
+   "code:models/legal_task.py"
+  ]
+ },
+ {
+  "id": 1499,
+  "msgid": "Only a legal manager can delete a matter. Cancel or archive it instead.",
+  "where": [
+   "code:models/legal_task.py"
+  ]
+ },
+ {
+  "id": 1504,
+  "msgid": "Only a legal manager can move %(matter)s back to “%(new)s”.",
+  "where": [
+   "code:models/legal_task.py"
+  ]
+ },
+ {
+  "id": 1506,
+  "msgid": "Only a legal manager can reset an approval.",
+  "where": [
+   "code:models/legal_task.py"
+  ]
+ },
+ {
+  "id": 1515,
+  "msgid": "Only an approver can decide on a matter.",
+  "where": [
+   "code:models/legal_task.py"
+  ]
+ },
+ {
+  "id": 1525,
+  "msgid": "Only the lawyer responsible for %s or a legal manager can change its team or make it confidential.",
+  "where": [
+   "code:models/legal_task.py"
+  ]
+ },
+ {
+  "id": 1532,
+  "msgid": "Only the people working on %s can send it for approval.",
+  "where": [
+   "code:models/legal_task.py"
+  ]
+ },
+ {
+  "id": 1781,
+  "msgid": "Reject",
+  "where": [
+   "code:models/legal_task.py",
+   "code:static/src/approvals/approval_list.js",
+   "code:static/src/cockpit/cockpit_widgets.js"
+  ]
+ },
+ {
+  "id": 1785,
+  "msgid": "Rejected by %(user)s: %(note)s",
+  "where": [
+   "code:models/legal_task.py"
+  ]
+ },
+ {
+  "id": 1886,
+  "msgid": "Say why the matter is cancelled.",
+  "where": [
+   "code:models/legal_task.py",
+   "code:wizards/ldm_decision_wizard.py"
+  ]
+ },
+ {
+  "id": 1887,
+  "msgid": "Say why the matter is rejected.",
+  "where": [
+   "code:models/legal_task.py",
+   "code:wizards/ldm_decision_wizard.py"
+  ]
+ },
+ {
+  "id": 1921,
+  "msgid": "Sent for approval.",
+  "where": [
+   "code:models/legal_task.py"
+  ]
+ },
+ {
+  "id": 2007,
+  "msgid": "Step: %(name)s — %(number)s",
+  "where": [
+   "code:models/legal_task.py"
+  ]
+ },
+ {
+  "id": 2037,
+  "msgid": "Target date",
+  "where": [
+   "code:models/legal_task.py",
+   "code:models/ws_my_day.py",
+   "code:models/ws_task.py"
+  ]
+ },
+ {
+  "id": 2039,
+  "msgid": "Target date — %s",
+  "where": [
+   "code:models/legal_task.py"
+  ]
+ },
+ {
+  "id": 2059,
+  "msgid": "The approval of a matter can only change through Approve, Reject or Send for approval.",
+  "where": [
+   "code:models/legal_task.py"
+  ]
+ },
+ {
+  "id": 2084,
+  "msgid": "The contract cannot end before it starts.",
+  "where": [
+   "code:models/legal_task.py"
+  ]
+ },
+ {
+  "id": 2194,
+  "msgid": "This is set when the matter is closed or the opinion issued.",
+  "where": [
+   "code:models/legal_task.py"
+  ]
+ },
+ {
+  "id": 2277,
+  "msgid": "Use “Cancel matter” to cancel %s: it asks for the reason.",
+  "where": [
+   "code:models/legal_task.py"
+  ]
+ },
+ {
+  "id": 2278,
+  "msgid": "Use “Close matter” to close %s: it asks for the outcome.",
+  "where": [
+   "code:models/legal_task.py"
+  ]
+ },
+ {
+  "id": 2308,
+  "msgid": "Visit: %s",
+  "where": [
+   "code:models/legal_task.py"
+  ]
+ },
+ {
+  "id": 2459,
+  "msgid": "You sent %s for approval, so someone else must decide on it.",
+  "where": [
+   "code:models/legal_task.py"
+  ]
+ },
+ {
+  "id": 32,
+  "msgid": "%(number)s created with %(steps)s steps and %(docs)s documents to collect.",
+  "where": [
+   "code:models/legal_task_wizard.py"
+  ]
+ },
+ {
+  "id": 84,
+  "msgid": "%s working days at the body",
+  "where": [
+   "code:models/legal_task_wizard.py"
+  ]
+ },
+ {
+  "id": 85,
+  "msgid": "%s working days for this type",
+  "where": [
+   "code:models/legal_task_wizard.py"
+  ]
+ },
+ {
+  "id": 172,
+  "msgid": "A possible conflict of interest blocks this matter. Ask a partner.",
+  "where": [
+   "code:models/legal_task_wizard.py"
+  ]
+ },
+ {
+  "id": 422,
+  "msgid": "Choose the client first.",
+  "where": [
+   "code:models/legal_task_wizard.py"
+  ]
+ },
+ {
+  "id": 833,
+  "msgid": "Fee agreement — %s",
+  "where": [
+   "code:models/legal_task_wizard.py"
+  ]
+ },
+ {
+  "id": 1024,
+  "msgid": "It stays New until its body is chosen or a partner clears it.",
+  "where": [
+   "code:models/legal_task_wizard.py"
+  ]
+ },
+ {
+  "id": 1025,
+  "msgid": "It waits for approval before work starts.",
+  "where": [
+   "code:models/legal_task_wizard.py"
+  ]
+ },
+ {
+  "id": 1213,
+  "msgid": "Matter for %s",
+  "where": [
+   "code:models/legal_task_wizard.py"
+  ]
+ },
+ {
+  "id": 1320,
+  "msgid": "New matter",
+  "where": [
+   "code:models/legal_task_wizard.py",
+   "code:static/src/my_day/my_day.js",
+   "code:static/src/palette/palette.js"
+  ]
+ },
+ {
+  "id": 1492,
+  "msgid": "Only a lawyer can start a fee agreement.",
+  "where": [
+   "code:models/legal_task_wizard.py"
+  ]
+ },
+ {
+  "id": 1566,
+  "msgid": "Opened despite a possible conflict of interest; waiting for a partner's decision.",
+  "where": [
+   "code:models/legal_task_wizard.py"
+  ]
+ },
+ {
+  "id": 43,
+  "msgid": "%s (other side)",
+  "where": [
+   "code:models/lit_court_stage.py",
+   "code:models/lit_judgment.py"
+  ]
+ },
+ {
+  "id": 28,
+  "msgid": "%(name)s: act by %(safe)s",
+  "where": [
+   "code:models/lit_deadline.py"
+  ]
+ },
+ {
+  "id": 29,
+  "msgid": "%(name)s: act by %(safe)s (legal last day %(legal)s)",
+  "where": [
+   "code:models/lit_deadline.py"
+  ]
+ },
+ {
+  "id": 31,
+  "msgid": "%(now)s (was %(old)s)",
+  "where": [
+   "code:models/lit_deadline.py",
+   "code:models/lit_judgment.py"
+  ]
+ },
+ {
+  "id": 35,
+  "msgid": "%(prev)s ended without an answer, which counts as a rejection. Next period:",
+  "where": [
+   "code:models/lit_deadline.py"
+  ]
+ },
+ {
+  "id": 36,
+  "msgid": "%(prev)s was met on %(date)s. Next period:",
+  "where": [
+   "code:models/lit_deadline.py"
+  ]
+ },
+ {
+  "id": 87,
+  "msgid": "%s: waiting for the notification date",
+  "where": [
+   "code:models/lit_deadline.py"
+  ]
+ },
+ {
+  "id": 485,
+  "msgid": "Closed with the deadline.",
+  "where": [
+   "code:models/lit_deadline.py"
+  ]
+ },
+ {
+  "id": 638,
+  "msgid": "Deadline cancelled: %s",
+  "where": [
+   "code:models/lit_deadline.py"
+  ]
+ },
+ {
+  "id": 639,
+  "msgid": "Deadline met: %s",
+  "where": [
+   "code:models/lit_deadline.py"
+  ]
+ },
+ {
+  "id": 1268,
+  "msgid": "Missed deadline: %(name)s. The legal last day was %(date)s.",
+  "where": [
+   "code:models/lit_deadline.py"
+  ]
+ },
+ {
+  "id": 1485,
+  "msgid": "Only a lawyer can cancel a deadline.",
+  "where": [
+   "code:models/lit_deadline.py"
+  ]
+ },
+ {
+  "id": 1505,
+  "msgid": "Only a legal manager can reopen a closed deadline.",
+  "where": [
+   "code:models/lit_deadline.py"
+  ]
+ },
+ {
+  "id": 1519,
+  "msgid": "Only an open deadline can be marked as met.",
+  "where": [
+   "code:models/lit_deadline.py"
+  ]
+ },
+ {
+  "id": 1527,
+  "msgid": "Only the legal team can change a deadline.",
+  "where": [
+   "code:models/lit_deadline.py"
+  ]
+ },
+ {
+  "id": 41,
+  "msgid": "%(user)s is a trainee lawyer: a trainee may not appear before a %(court)s.",
+  "where": [
+   "code:models/lit_hearing.py"
+  ]
+ },
+ {
+  "id": 68,
+  "msgid": "%s is not a working day at this court.",
+  "where": [
+   "code:models/lit_hearing.py"
+  ]
+ },
+ {
+  "id": 1171,
+  "msgid": "Licence class",
+  "where": [
+   "code:models/lit_hearing.py",
+   "model:ir.model.fields,field_description:legal_department_management.field_res_users__ldm_licence_class"
+  ]
+ },
+ {
+  "id": 1753,
+  "msgid": "Record the session",
+  "where": [
+   "code:models/lit_hearing.py",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_hearing_outcome_wizard_form",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_form_lit"
+  ]
+ },
+ {
+  "id": 1932,
+  "msgid": "Session recorded.",
+  "where": [
+   "code:models/lit_hearing.py"
+  ]
+ },
+ {
+  "id": 2162,
+  "msgid": "The power of attorney %s does not let the agent delegate, so a substitution letter under it is not valid.",
+  "where": [
+   "code:models/lit_hearing.py"
+  ]
+ },
+ {
+  "id": 30,
+  "msgid": "%(now)s (the legal last day was %(old)s)",
+  "where": [
+   "code:models/lit_holiday.py"
+  ]
+ },
+ {
+  "id": 158,
+  "msgid": "A holiday cannot end before it starts.",
+  "where": [
+   "code:models/lit_holiday.py"
+  ]
+ },
+ {
+  "id": 413,
+  "msgid": "Check the Eid dates announced by the endowment offices and any days the Council of Ministers added, then mark them as confirmed.",
+  "where": [
+   "code:models/lit_holiday.py"
+  ]
+ },
+ {
+  "id": 760,
+  "msgid": "Enter the public holidays for %s",
+  "where": [
+   "code:models/lit_holiday.py"
+  ]
+ },
+ {
+  "id": 1703,
+  "msgid": "Public holiday added: %s",
+  "where": [
+   "code:models/lit_holiday.py"
+  ]
+ },
+ {
+  "id": 1704,
+  "msgid": "Public holiday changed: %s",
+  "where": [
+   "code:models/lit_holiday.py"
+  ]
+ },
+ {
+  "id": 1705,
+  "msgid": "Public holiday removed: %s",
+  "where": [
+   "code:models/lit_holiday.py"
+  ]
+ },
+ {
+  "id": 2005,
+  "msgid": "Step %(step)s: now due %(new)s (was %(old)s)",
+  "where": [
+   "code:models/lit_holiday.py"
+  ]
+ },
+ {
+  "id": 86,
+  "msgid": "%s: no longer applies",
+  "where": [
+   "code:models/lit_judgment.py"
+  ]
+ },
+ {
+  "id": 159,
+  "msgid": "A judgment cannot be served before it is given.",
+  "where": [
+   "code:models/lit_judgment.py"
+  ]
+ },
+ {
+  "id": 190,
+  "msgid": "Act by %s",
+  "where": [
+   "code:models/lit_judgment.py"
+  ]
+ },
+ {
+  "id": 643,
+  "msgid": "Deadlines of the judgment of %s recounted:",
+  "where": [
+   "code:models/lit_judgment.py"
+  ]
+ },
+ {
+  "id": 1031,
+  "msgid": "Judgment",
+  "where": [
+   "code:models/lit_judgment.py",
+   "code:static/src/my_day/my_day.js",
+   "model:ir.model,name:legal_department_management.model_legal_judgment"
+  ]
+ },
+ {
+  "id": 1184,
+  "msgid": "Lodge a challenge",
+  "where": [
+   "code:models/lit_judgment.py",
+   "model:ir.model,name:legal_department_management.model_legal_judgment_challenge_wizard",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_judgment_challenge_wizard_form"
+  ]
+ },
+ {
+  "id": 1373,
+  "msgid": "No longer applies to this judgment.",
+  "where": [
+   "code:models/lit_judgment.py"
+  ]
+ },
+ {
+  "id": 1487,
+  "msgid": "Only a lawyer can lodge a challenge.",
+  "where": [
+   "code:models/lit_judgment.py",
+   "code:wizards/lit_challenge_wizard.py"
+  ]
+ },
+ {
+  "id": 1490,
+  "msgid": "Only a lawyer can record when a judgment was served.",
+  "where": [
+   "code:models/lit_judgment.py"
+  ]
+ },
+ {
+  "id": 1498,
+  "msgid": "Only a legal manager can delete a judgment.",
+  "where": [
+   "code:models/lit_judgment.py"
+  ]
+ },
+ {
+  "id": 2111,
+  "msgid": "The judgment of %(date)s became final on %(final)s: no challenge was lodged in time.",
+  "where": [
+   "code:models/lit_judgment.py"
+  ]
+ },
+ {
+  "id": 2321,
+  "msgid": "Waiting for the notification date",
+  "where": [
+   "code:models/lit_judgment.py"
+  ]
+ },
+ {
+  "id": 17,
+  "msgid": "%(lawyer)s, by substitution %(substitute)s",
+  "where": [
+   "code:models/lit_report.py"
+  ]
+ },
+ {
+  "id": 39,
+  "msgid": "%(start)s to %(end)s",
+  "where": [
+   "code:models/lit_report.py"
+  ]
+ },
+ {
+  "id": 42,
+  "msgid": "%s (by substitution)",
+  "where": [
+   "code:models/lit_report.py"
+  ]
+ },
+ {
+  "id": 579,
+  "msgid": "Court not set",
+  "where": [
+   "code:models/lit_report.py"
+  ]
+ },
+ {
+  "id": 957,
+  "msgid": "I, the undersigned lawyer %(principal)s, acting for %(client)s,",
+  "where": [
+   "code:models/lit_report.py"
+  ]
+ },
+ {
+  "id": 958,
+  "msgid": "I, the undersigned lawyer %(principal)s, agent for %(client)s under power of attorney no. %(number)s issued by %(notary)s on %(issued)s,",
+  "where": [
+   "code:models/lit_report.py"
+  ]
+ },
+ {
+  "id": 1399,
+  "msgid": "Nobody assigned",
+  "where": [
+   "code:models/lit_report.py"
+  ]
+ },
+ {
+  "id": 1869,
+  "msgid": "Room %s",
+  "where": [
+   "code:models/lit_report.py"
+  ]
+ },
+ {
+  "id": 2468,
+  "msgid": "against %s",
+  "where": [
+   "code:models/lit_report.py"
+  ]
+ },
+ {
+  "id": 2469,
+  "msgid": "authorise %(substitute)s to attend on my behalf the court session of %(date)s in case no. %(case)s against %(opponent)s, and to take the steps that session requires.",
+  "where": [
+   "code:models/lit_report.py"
+  ]
+ },
+ {
+  "id": 2470,
+  "msgid": "authorise %(substitute)s to attend on my behalf the court session of %(date)s in case no. %(case)s, and to take the steps that session requires.",
+  "where": [
+   "code:models/lit_report.py"
+  ]
+ },
+ {
+  "id": 48,
+  "msgid": "%s days",
+  "where": [
+   "code:models/lit_rules.py",
+   "code:static/src/cockpit/cockpit_widgets.js"
+  ]
+ },
+ {
+  "id": 74,
+  "msgid": "%s months",
+  "where": [
+   "code:models/lit_rules.py"
+  ]
+ },
+ {
+  "id": 646,
+  "msgid": "Deadlines under %s",
+  "where": [
+   "code:models/lit_rules.py"
+  ]
+ },
+ {
+  "id": 590,
+  "msgid": "Court sessions of %s",
+  "where": [
+   "code:models/lit_task.py",
+   "code:models/ws_company.py"
+  ]
+ },
+ {
+  "id": 637,
+  "msgid": "Deadline about to end, still open: %(name)s — %(number)s",
+  "where": [
+   "code:models/lit_task.py"
+  ]
+ },
+ {
+  "id": 1401,
+  "msgid": "Nobody is attending the court session on %(date)s — %(number)s",
+  "where": [
+   "code:models/lit_task.py"
+  ]
+ },
+ {
+  "id": 0,
+  "msgid": "%(amount)s handed over to %(user)s.",
+  "where": [
+   "code:models/money_advance.py"
+  ]
+ },
+ {
+  "id": 1,
+  "msgid": "%(amount)s is still not accounted for. Add the missing receipts or the cash returned.",
+  "where": [
+   "code:models/money_advance.py"
+  ]
+ },
+ {
+  "id": 53,
+  "msgid": "%s has already been handed over.",
+  "where": [
+   "code:models/money_advance.py"
+  ]
+ },
+ {
+  "id": 247,
+  "msgid": "An advance that has been handed over can no longer change.",
+  "where": [
+   "code:models/money_advance.py"
+  ]
+ },
+ {
+  "id": 756,
+  "msgid": "Enter the amount handed over.",
+  "where": [
+   "code:models/money_advance.py"
+  ]
+ },
+ {
+  "id": 1294,
+  "msgid": "My cash advances",
+  "where": [
+   "code:models/money_advance.py"
+  ]
+ },
+ {
+  "id": 1508,
+  "msgid": "Only a legal manager or the billing team can hand over or settle a cash advance.",
+  "where": [
+   "code:models/money_advance.py"
+  ]
+ },
+ {
+  "id": 1513,
+  "msgid": "Only an advance that has been handed over can be settled.",
+  "where": [
+   "code:models/money_advance.py"
+  ]
+ },
+ {
+  "id": 1514,
+  "msgid": "Only an advance that was never handed over can be deleted.",
+  "where": [
+   "code:models/money_advance.py"
+  ]
+ },
+ {
+  "id": 1521,
+  "msgid": "Only expenses %(user)s paid in %(currency)s can settle this advance.",
+  "where": [
+   "code:models/money_advance.py"
+  ]
+ },
+ {
+  "id": 1948,
+  "msgid": "Settle %s",
+  "where": [
+   "code:models/money_advance.py"
+  ]
+ },
+ {
+  "id": 1951,
+  "msgid": "Settled: %(spent)s spent on %(count)s receipts, %(returned)s returned.",
+  "where": [
+   "code:models/money_advance.py"
+  ]
+ },
+ {
+  "id": 2071,
+  "msgid": "The cash returned cannot be negative.",
+  "where": [
+   "code:models/money_advance.py"
+  ]
+ },
+ {
+  "id": 2146,
+  "msgid": "The office owes %(amount)s to %(user)s.",
+  "where": [
+   "code:models/money_advance.py"
+  ]
+ },
+ {
+  "id": 2230,
+  "msgid": "To invoice",
+  "where": [
+   "code:models/money_billable.py",
+   "model:ir.actions.act_window,name:legal_department_management.action_ldm_to_invoice",
+   "model:ir.model,name:legal_department_management.model_legal_billable"
+  ]
+ },
+ {
+  "id": 608,
+  "msgid": "Credit note",
+  "where": [
+   "code:models/money_company.py"
+  ]
+ },
+ {
+  "id": 763,
+  "msgid": "Entry",
+  "where": [
+   "code:models/money_company.py"
+  ]
+ },
+ {
+  "id": 1000,
+  "msgid": "Invoice",
+  "where": [
+   "code:models/money_company.py",
+   "model:ir.model.fields,field_description:legal_department_management.field_legal_engagement_line__invoice_id"
+  ]
+ },
+ {
+  "id": 1630,
+  "msgid": "Payment received",
+  "where": [
+   "code:models/money_company.py"
+  ]
+ },
+ {
+  "id": 1725,
+  "msgid": "Receive a payment",
+  "where": [
+   "code:models/money_company.py",
+   "model:ir.actions.server,name:legal_department_management.action_server_ldm_company_payment"
+  ]
+ },
+ {
+  "id": 1995,
+  "msgid": "Statement of account",
+  "where": [
+   "code:models/money_company.py",
+   "model:ir.actions.report,name:legal_department_management.action_report_ldm_statement",
+   "model:ir.actions.server,name:legal_department_management.action_server_ldm_company_statement"
+  ]
+ },
+ {
+  "id": 2173,
+  "msgid": "The statement of account is prepared by billing.",
+  "where": [
+   "code:models/money_company.py",
+   "code:wizards/money_statement_wizard.py"
+  ]
+ },
+ {
+  "id": 7,
+  "msgid": "%(client)s, responsible %(lawyer)s",
+  "where": [
+   "code:models/money_conflict.py"
+  ]
+ },
+ {
+  "id": 21,
+  "msgid": "%(matter)s for %(client)s, responsible %(lawyer)s",
+  "where": [
+   "code:models/money_conflict.py"
+  ]
+ },
+ {
+  "id": 150,
+  "msgid": "A client of another team, responsible %s",
+  "where": [
+   "code:models/money_conflict.py"
+  ]
+ },
+ {
+  "id": 151,
+  "msgid": "A conflict check cannot be edited; a legal manager records the decision.",
+  "where": [
+   "code:models/money_conflict.py"
+  ]
+ },
+ {
+  "id": 152,
+  "msgid": "A conflict check that has been decided can never change.",
+  "where": [
+   "code:models/money_conflict.py"
+  ]
+ },
+ {
+  "id": 162,
+  "msgid": "A matter handled by another team, responsible %s",
+  "where": [
+   "code:models/money_conflict.py"
+  ]
+ },
+ {
+  "id": 411,
+  "msgid": "Check of %(date)s: %(names)s",
+  "where": [
+   "code:models/money_conflict.py"
+  ]
+ },
+ {
+  "id": 416,
+  "msgid": "Choose a decision.",
+  "where": [
+   "code:models/money_conflict.py"
+  ]
+ },
+ {
+  "id": 530,
+  "msgid": "Conflict check decided by %(user)s: %(decision)s. %(reason)s",
+  "where": [
+   "code:models/money_conflict.py"
+  ]
+ },
+ {
+  "id": 533,
+  "msgid": "Conflict checks are kept as evidence and cannot be deleted.",
+  "where": [
+   "code:models/money_conflict.py"
+  ]
+ },
+ {
+  "id": 534,
+  "msgid": "Conflict checks are recorded by running the check, not typed in.",
+  "where": [
+   "code:models/money_conflict.py"
+  ]
+ },
+ {
+  "id": 657,
+  "msgid": "Decide on a possible conflict — %s",
+  "where": [
+   "code:models/money_conflict.py"
+  ]
+ },
+ {
+  "id": 658,
+  "msgid": "Decide on the conflict check",
+  "where": [
+   "code:models/money_conflict.py",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_conflict_decision_wizard_form"
+  ]
+ },
+ {
+  "id": 906,
+  "msgid": "Give the reason for the decision; it is kept with the check.",
+  "where": [
+   "code:models/money_conflict.py"
+  ]
+ },
+ {
+  "id": 1017,
+  "msgid": "Is a company we advise on a retainer",
+  "where": [
+   "code:models/money_conflict.py"
+  ]
+ },
+ {
+  "id": 1018,
+  "msgid": "Is our client",
+  "where": [
+   "code:models/money_conflict.py"
+  ]
+ },
+ {
+  "id": 1428,
+  "msgid": "Nothing found.",
+  "where": [
+   "code:models/money_conflict.py"
+  ]
+ },
+ {
+  "id": 1496,
+  "msgid": "Only a legal manager can decide on a possible conflict of interest.",
+  "where": [
+   "code:models/money_conflict.py"
+  ]
+ },
+ {
+  "id": 1659,
+  "msgid": "Possible conflict of interest found (%s). A legal manager must decide before work starts.",
+  "where": [
+   "code:models/money_conflict.py"
+  ]
+ },
+ {
+  "id": 1810,
+  "msgid": "Replaced by a newer check.",
+  "where": [
+   "code:models/money_conflict.py"
+  ]
+ },
+ {
+  "id": 2115,
+  "msgid": "The legal managers have been asked to decide.",
+  "where": [
+   "code:models/money_conflict.py"
+  ]
+ },
+ {
+  "id": 2147,
+  "msgid": "The office's policy blocks matters with a conflict. Decline it, or record that it is not a conflict if the match is someone else.",
+  "where": [
+   "code:models/money_conflict.py"
+  ]
+ },
+ {
+  "id": 2187,
+  "msgid": "This conflict check already belongs to a matter.",
+  "where": [
+   "code:models/money_conflict.py"
+  ]
+ },
+ {
+  "id": 2188,
+  "msgid": "This conflict check has already been decided.",
+  "where": [
+   "code:models/money_conflict.py"
+  ]
+ },
+ {
+  "id": 2335,
+  "msgid": "Was on our client's side",
+  "where": [
+   "code:models/money_conflict.py"
+  ]
+ },
+ {
+  "id": 2336,
+  "msgid": "Was our client",
+  "where": [
+   "code:models/money_conflict.py"
+  ]
+ },
+ {
+  "id": 2337,
+  "msgid": "Was the other party to a contract",
+  "where": [
+   "code:models/money_conflict.py"
+  ]
+ },
+ {
+  "id": 2338,
+  "msgid": "Was the other side",
+  "where": [
+   "code:models/money_conflict.py"
+  ]
+ },
+ {
+  "id": 2510,
+  "msgid": "no one",
+  "where": [
+   "code:models/money_conflict.py"
+  ]
+ },
+ {
+  "id": 195,
+  "msgid": "Activated above the 20%% cap by %(user)s: %(reason)s",
+  "where": [
+   "code:models/money_engagement.py"
+  ]
+ },
+ {
+  "id": 253,
+  "msgid": "An invoiced instalment cannot be deleted. Cancel its invoice first.",
+  "where": [
+   "code:models/money_engagement.py"
+  ]
+ },
+ {
+  "id": 254,
+  "msgid": "An invoiced instalment cannot change. Cancel its invoice first.",
+  "where": [
+   "code:models/money_engagement.py"
+  ]
+ },
+ {
+  "id": 754,
+  "msgid": "Enter the agreed fee of %s before activating it.",
+  "where": [
+   "code:models/money_engagement.py"
+  ]
+ },
+ {
+  "id": 758,
+  "msgid": "Enter the hourly rate of %s before activating it.",
+  "where": [
+   "code:models/money_engagement.py"
+  ]
+ },
+ {
+  "id": 761,
+  "msgid": "Enter the success fee percentage of %s before activating it.",
+  "where": [
+   "code:models/money_engagement.py"
+  ]
+ },
+ {
+  "id": 831,
+  "msgid": "Fee agreement activated.",
+  "where": [
+   "code:models/money_engagement.py"
+  ]
+ },
+ {
+  "id": 1316,
+  "msgid": "New",
+  "where": [
+   "code:models/money_engagement.py",
+   "model:ir.model.fields.selection,name:legal_department_management.selection__legal_company_coverage__last_state__draft",
+   "model:ir.model.fields.selection,name:legal_department_management.selection__legal_task__state__draft"
+  ]
+ },
+ {
+  "id": 1444,
+  "msgid": "Now due: %(name)s, %(amount)s.",
+  "where": [
+   "code:models/money_engagement.py"
+  ]
+ },
+ {
+  "id": 1482,
+  "msgid": "Only a draft fee agreement can be deleted. Close it instead.",
+  "where": [
+   "code:models/money_engagement.py"
+  ]
+ },
+ {
+  "id": 1507,
+  "msgid": "Only a legal manager can send a fee agreement back to draft.",
+  "where": [
+   "code:models/money_engagement.py"
+  ]
+ },
+ {
+  "id": 1841,
+  "msgid": "Retainer for %s",
+  "where": [
+   "code:models/money_engagement.py"
+  ]
+ },
+ {
+  "id": 1842,
+  "msgid": "Retainer from %(start)s to %(end)s",
+  "where": [
+   "code:models/money_engagement.py"
+  ]
+ },
+ {
+  "id": 1883,
+  "msgid": "Say why the fee of %s may exceed 20%% of the value before activating it.",
+  "where": [
+   "code:models/money_engagement.py"
+  ]
+ },
+ {
+  "id": 1884,
+  "msgid": "Say why the instalments are waived.",
+  "where": [
+   "code:models/money_engagement.py"
+  ]
+ },
+ {
+  "id": 2025,
+  "msgid": "Success fee: %(percent)s%% of %(amount)s collected",
+  "where": [
+   "code:models/money_engagement.py"
+  ]
+ },
+ {
+  "id": 2102,
+  "msgid": "The fee of %(name)s is above 20%% of the value of its matters (Advocacy Law Art. 56). Only a legal manager can activate it.",
+  "where": [
+   "code:models/money_engagement.py"
+  ]
+ },
+ {
+  "id": 2193,
+  "msgid": "This fee agreement covers matters. Remove it from them or close it.",
+  "where": [
+   "code:models/money_engagement.py"
+  ]
+ },
+ {
+  "id": 2328,
+  "msgid": "Waive instalments",
+  "where": [
+   "code:models/money_engagement.py",
+   "model:ir.model,name:legal_department_management.model_legal_fee_waive_wizard",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_fee_waive_wizard_form"
+  ]
+ },
+ {
+  "id": 2331,
+  "msgid": "Waived by %(user)s: %(lines)s. Reason: %(reason)s",
+  "where": [
+   "code:models/money_engagement.py"
+  ]
+ },
+ {
+  "id": 252,
+  "msgid": "An invoiced expense cannot be deleted. Cancel the invoice first.",
+  "where": [
+   "code:models/money_expense.py"
+  ]
+ },
+ {
+  "id": 1500,
+  "msgid": "Only a legal manager can delete an expense. Correct the amount instead.",
+  "where": [
+   "code:models/money_expense.py"
+  ]
+ },
+ {
+  "id": 1517,
+  "msgid": "Only an expense paid by an employee can come out of a cash advance.",
+  "where": [
+   "code:models/money_expense.py"
+  ]
+ },
+ {
+  "id": 1664,
+  "msgid": "Post to accounting",
+  "where": [
+   "code:models/money_expense.py",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_expense_form",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_expense_post_wizard_form"
+  ]
+ },
+ {
+  "id": 1667,
+  "msgid": "Posting expenses needs the accounting links switch and invoicing rights.",
+  "where": [
+   "code:models/money_expense.py",
+   "code:wizards/money_expense_post_wizard.py"
+  ]
+ },
+ {
+  "id": 2054,
+  "msgid": "The advance %(advance)s was given to %(user)s, not to the employee who paid.",
+  "where": [
+   "code:models/money_expense.py"
+  ]
+ },
+ {
+  "id": 2055,
+  "msgid": "The advance %s has not been handed over yet.",
+  "where": [
+   "code:models/money_expense.py"
+  ]
+ },
+ {
+  "id": 2056,
+  "msgid": "The advance %s is in another currency.",
+  "where": [
+   "code:models/money_expense.py"
+  ]
+ },
+ {
+  "id": 2190,
+  "msgid": "This expense is already on an invoice. Cancel the invoice first to change it.",
+  "where": [
+   "code:models/money_expense.py"
+  ]
+ },
+ {
+  "id": 2192,
+  "msgid": "This expense was settled against a cash advance and can no longer change.",
+  "where": [
+   "code:models/money_expense.py"
+  ]
+ },
+ {
+  "id": 6,
+  "msgid": "%(client)s would hold %(balance)s of client money, which is less than nothing. Record the money received first, or ask a legal manager to allow it with a reason.",
+  "where": [
+   "code:models/money_funds.py"
+  ]
+ },
+ {
+  "id": 280,
+  "msgid": "Apply client money to our fees",
+  "where": [
+   "code:models/money_funds.py"
+  ]
+ },
+ {
+  "id": 468,
+  "msgid": "Client money",
+  "where": [
+   "code:models/money_funds.py",
+   "model:ir.actions.act_window,name:legal_department_management.action_ldm_client_fund",
+   "model:ir.ui.menu,name:legal_department_management.menu_ldm_client_funds"
+  ]
+ },
+ {
+  "id": 491,
+  "msgid": "Collected through execution: %s.",
+  "where": [
+   "code:models/money_funds.py"
+  ]
+ },
+ {
+  "id": 755,
+  "msgid": "Enter the amount as a positive number; the movement says which way it goes.",
+  "where": [
+   "code:models/money_funds.py"
+  ]
+ },
+ {
+  "id": 1502,
+  "msgid": "Only a legal manager can let a client's money go below zero.",
+  "where": [
+   "code:models/money_funds.py"
+  ]
+ },
+ {
+  "id": 1625,
+  "msgid": "Pay out for the client",
+  "where": [
+   "code:models/money_funds.py"
+  ]
+ },
+ {
+  "id": 1726,
+  "msgid": "Receive client money",
+  "where": [
+   "code:models/money_funds.py"
+  ]
+ },
+ {
+  "id": 1742,
+  "msgid": "Record a collection through execution",
+  "where": [
+   "code:models/money_funds.py"
+  ]
+ },
+ {
+  "id": 1847,
+  "msgid": "Return money to the client",
+  "where": [
+   "code:models/money_funds.py"
+  ]
+ },
+ {
+  "id": 2201,
+  "msgid": "This movement comes from an expense paid from the client's money. Change the expense.",
+  "where": [
+   "code:models/money_funds.py"
+  ]
+ },
+ {
+  "id": 1512,
+  "msgid": "Only an administrator can change how a currency is rounded.",
+  "where": [
+   "code:models/money_settings.py"
+  ]
+ },
+ {
+  "id": 1665,
+  "msgid": "Posted accounting entries already use the Iraqi dinar, so its rounding can no longer change.",
+  "where": [
+   "code:models/money_settings.py"
+  ]
+ },
+ {
+  "id": 2051,
+  "msgid": "The Iraqi dinar is not available in this database.",
+  "where": [
+   "code:models/money_settings.py"
+  ]
+ },
+ {
+  "id": 70,
+  "msgid": "%s is waiting for a legal manager to decide on a possible conflict of interest.",
+  "where": [
+   "code:models/money_task.py"
+  ]
+ },
+ {
+  "id": 83,
+  "msgid": "%s was declined after the conflict check and cannot start.",
+  "where": [
+   "code:models/money_task.py"
+  ]
+ },
+ {
+  "id": 529,
+  "msgid": "Conflict check",
+  "where": [
+   "code:models/money_task.py",
+   "code:static/src/my_day/my_day.js",
+   "model:ir.model.fields,field_description:legal_department_management.field_legal_conflict_decision_wizard__check_id"
+  ]
+ },
+ {
+  "id": 586,
+  "msgid": "Court session of %s",
+  "where": [
+   "code:models/money_task.py"
+  ]
+ },
+ {
+  "id": 902,
+  "msgid": "Get the fee agreement signed — %s",
+  "where": [
+   "code:models/money_task.py"
+  ]
+ },
+ {
+  "id": 988,
+  "msgid": "Instalment due: %(name)s — %(number)s",
+  "where": [
+   "code:models/money_task.py"
+  ]
+ },
+ {
+  "id": 2100,
+  "msgid": "The fee agreement of %s belongs to another client.",
+  "where": [
+   "code:models/money_task.py"
+  ]
+ },
+ {
+  "id": 2249,
+  "msgid": "Transaction: %s",
+  "where": [
+   "code:models/money_task.py"
+  ]
+ },
+ {
+  "id": 2433,
+  "msgid": "Work started without a signed fee agreement. Without a written agreement a fee claim lapses after three years (Advocacy Law Art. 65).",
+  "where": [
+   "code:models/money_task.py"
+  ]
+ },
+ {
+  "id": 166,
+  "msgid": "A matter you can no longer open",
+  "where": [
+   "code:models/money_time.py"
+  ]
+ },
+ {
+  "id": 176,
+  "msgid": "A time entry must be more than zero and at most 24 hours.",
+  "where": [
+   "code:models/money_time.py"
+  ]
+ },
+ {
+  "id": 1006,
+  "msgid": "Invoiced time can no longer change.",
+  "where": [
+   "code:models/money_time.py"
+  ]
+ },
+ {
+  "id": 1520,
+  "msgid": "Only draft time can be deleted.",
+  "where": [
+   "code:models/money_time.py"
+  ]
+ },
+ {
+  "id": 1542,
+  "msgid": "Open a matter to start the timer on it.",
+  "where": [
+   "code:models/money_time.py"
+  ]
+ },
+ {
+  "id": 1881,
+  "msgid": "Say what was done.",
+  "where": [
+   "code:models/money_time.py",
+   "code:static/src/money/timer_systray.js"
+  ]
+ },
+ {
+  "id": 2128,
+  "msgid": "The matter's responsible lawyer, a legal manager or billing approves time.",
+  "where": [
+   "code:models/money_time.py"
+  ]
+ },
+ {
+  "id": 2175,
+  "msgid": "The timer is already running on %s. Stop it first.",
+  "where": [
+   "code:models/money_time.py"
+  ]
+ },
+ {
+  "id": 2176,
+  "msgid": "The timer is not running.",
+  "where": [
+   "code:models/money_time.py"
+  ]
+ },
+ {
+  "id": 2208,
+  "msgid": "This time is approved; ask whoever approved it to change it.",
+  "where": [
+   "code:models/money_time.py"
+  ]
+ },
+ {
+  "id": 2218,
+  "msgid": "Time tracking is switched off.",
+  "where": [
+   "code:models/money_time.py"
+  ]
+ },
+ {
+  "id": 2275,
+  "msgid": "Use Approve to approve time.",
+  "where": [
+   "code:models/money_time.py"
+  ]
+ },
+ {
+  "id": 2457,
+  "msgid": "You can only delete your own time.",
+  "where": [
+   "code:models/money_time.py"
+  ]
+ },
+ {
+  "id": 482,
+  "msgid": "Closed",
+  "where": [
+   "code:models/reg_common.py",
+   "model:ir.model.fields.selection,name:legal_department_management.selection__legal_engagement__state__closed"
+  ]
+ },
+ {
+  "id": 18,
+  "msgid": "%(letter)s already belongs to %(matter)s.",
+  "where": [
+   "code:models/reg_correspondence.py"
+  ]
+ },
+ {
+  "id": 19,
+  "msgid": "%(letter)s is in the register, so its %(fields)s cannot change: the other side has it in their book. Void it with a reason and register a new letter.",
+  "where": [
+   "code:models/reg_correspondence.py"
+  ]
+ },
+ {
+  "id": 52,
+  "msgid": "%s has a register number and cannot be deleted. Void it with a reason: the number stays in the book, struck through.",
+  "where": [
+   "code:models/reg_correspondence.py"
+  ]
+ },
+ {
+  "id": 56,
+  "msgid": "%s is already in the register.",
+  "where": [
+   "code:models/reg_correspondence.py"
+  ]
+ },
+ {
+  "id": 58,
+  "msgid": "%s is already void.",
+  "where": [
+   "code:models/reg_correspondence.py"
+  ]
+ },
+ {
+  "id": 161,
+  "msgid": "A letter enters the register through “Register” and leaves it through “Void”: its status cannot be edited.",
+  "where": [
+   "code:models/reg_correspondence.py"
+  ]
+ },
+ {
+  "id": 192,
+  "msgid": "Act on the instruction on letter %s",
+  "where": [
+   "code:models/reg_correspondence.py"
+  ]
+ },
+ {
+  "id": 262,
+  "msgid": "Answer letter %s",
+  "where": [
+   "code:models/reg_correspondence.py",
+   "code:models/reg_reminders.py"
+  ]
+ },
+ {
+  "id": 267,
+  "msgid": "Answered by %s.",
+  "where": [
+   "code:models/reg_correspondence.py"
+  ]
+ },
+ {
+  "id": 696,
+  "msgid": "Document prepared: %s",
+  "where": [
+   "code:models/reg_correspondence.py"
+  ]
+ },
+ {
+  "id": 856,
+  "msgid": "Filed copy attached: %s",
+  "where": [
+   "code:models/reg_correspondence.py"
+  ]
+ },
+ {
+  "id": 871,
+  "msgid": "Follow up the answer to letter %s",
+  "where": [
+   "code:models/reg_correspondence.py"
+  ]
+ },
+ {
+  "id": 905,
+  "msgid": "Give the letter a subject before registering it.",
+  "where": [
+   "code:models/reg_correspondence.py"
+  ]
+ },
+ {
+  "id": 1155,
+  "msgid": "Letter %s",
+  "where": [
+   "code:models/reg_correspondence.py"
+  ]
+ },
+ {
+  "id": 1168,
+  "msgid": "Letters of %s",
+  "where": [
+   "code:models/reg_correspondence.py"
+  ]
+ },
+ {
+  "id": 1203,
+  "msgid": "Marked as answered.",
+  "where": [
+   "code:models/reg_correspondence.py"
+  ]
+ },
+ {
+  "id": 1318,
+  "msgid": "New document from a template",
+  "where": [
+   "code:models/reg_correspondence.py",
+   "model:ir.actions.server,name:legal_department_management.action_server_ldm_new_document",
+   "model:ir.model,name:legal_department_management.model_legal_document_wizard"
+  ]
+ },
+ {
+  "id": 1449,
+  "msgid": "Number %(number)s is already in the %(direction)s register for %(year)s.",
+  "where": [
+   "code:models/reg_correspondence.py"
+  ]
+ },
+ {
+  "id": 1511,
+  "msgid": "Only a written outgoing letter can be filed as a PDF.",
+  "where": [
+   "code:models/reg_correspondence.py"
+  ]
+ },
+ {
+  "id": 1524,
+  "msgid": "Only outgoing letters are printed from here; an incoming letter is filed as received.",
+  "where": [
+   "code:models/reg_correspondence.py"
+  ]
+ },
+ {
+  "id": 1540,
+  "msgid": "Open a matter from this letter",
+  "where": [
+   "code:models/reg_correspondence.py",
+   "model:ir.actions.server,name:legal_department_management.action_server_ldm_letter_matter"
+  ]
+ },
+ {
+  "id": 1690,
+  "msgid": "Print the register book",
+  "where": [
+   "code:models/reg_correspondence.py",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_correspondence_list",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_register_book_wizard_form"
+  ]
+ },
+ {
+  "id": 1774,
+  "msgid": "Registered as %(number)s on %(date)s.",
+  "where": [
+   "code:models/reg_correspondence.py"
+  ]
+ },
+ {
+  "id": 1815,
+  "msgid": "Reply",
+  "where": [
+   "code:models/reg_correspondence.py",
+   "model:ir.actions.server,name:legal_department_management.action_server_ldm_letter_reply"
+  ]
+ },
+ {
+  "id": 1885,
+  "msgid": "Say why the letter is voided.",
+  "where": [
+   "code:models/reg_correspondence.py"
+  ]
+ },
+ {
+  "id": 2085,
+  "msgid": "The correspondence register is switched off in Settings, so letters are not numbered.",
+  "where": [
+   "code:models/reg_correspondence.py"
+  ]
+ },
+ {
+  "id": 2183,
+  "msgid": "There is no numbering sequence for %s letters.",
+  "where": [
+   "code:models/reg_correspondence.py"
+  ]
+ },
+ {
+  "id": 2312,
+  "msgid": "Void letter",
+  "where": [
+   "code:models/reg_correspondence.py",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_correspondence_void_wizard_form"
+  ]
+ },
+ {
+  "id": 2314,
+  "msgid": "Voided by %(user)s: %(reason)s",
+  "where": [
+   "code:models/reg_correspondence.py"
+  ]
+ },
+ {
+  "id": 2446,
+  "msgid": "Write the letter, or choose a template, before printing it.",
+  "where": [
+   "code:models/reg_correspondence.py"
+  ]
+ },
+ {
+  "id": 65,
+  "msgid": "%s is no longer live.",
+  "where": [
+   "code:models/reg_guarantee.py"
+  ]
+ },
+ {
+  "id": 303,
+  "msgid": "Ask the bank to extend",
+  "where": [
+   "code:models/reg_guarantee.py",
+   "model:ir.model.fields.selection,name:legal_department_management.selection__legal_guarantee_wizard__mode__request_extension",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_guarantee_form"
+  ]
+ },
+ {
+  "id": 1159,
+  "msgid": "Letter of guarantee expires: %s",
+  "where": [
+   "code:models/reg_guarantee.py"
+  ]
+ },
+ {
+  "id": 1166,
+  "msgid": "Letters about %s",
+  "where": [
+   "code:models/reg_guarantee.py"
+  ]
+ },
+ {
+  "id": 1483,
+  "msgid": "Only a lawyer can act on a letter of guarantee.",
+  "where": [
+   "code:models/reg_guarantee.py"
+  ]
+ },
+ {
+  "id": 1752,
+  "msgid": "Record the extension",
+  "where": [
+   "code:models/reg_guarantee.py",
+   "model:ir.model.fields.selection,name:legal_department_management.selection__legal_guarantee_wizard__mode__extend",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_guarantee_form"
+  ]
+ },
+ {
+  "id": 1789,
+  "msgid": "Release the letter of guarantee",
+  "where": [
+   "code:models/reg_guarantee.py"
+  ]
+ },
+ {
+  "id": 2198,
+  "msgid": "This letter of guarantee expired on %s.",
+  "where": [
+   "code:models/reg_guarantee.py"
+  ]
+ },
+ {
+  "id": 22,
+  "msgid": "%(matter)s is already revised by %(revision)s.",
+  "where": [
+   "code:models/reg_opinion.py"
+  ]
+ },
+ {
+  "id": 23,
+  "msgid": "%(matter)s was already issued as opinion %(number)s.",
+  "where": [
+   "code:models/reg_opinion.py"
+  ]
+ },
+ {
+  "id": 44,
+  "msgid": "%s (revision)",
+  "where": [
+   "code:models/reg_opinion.py"
+  ]
+ },
+ {
+  "id": 61,
+  "msgid": "%s is closed.",
+  "where": [
+   "code:models/reg_opinion.py"
+  ]
+ },
+ {
+  "id": 66,
+  "msgid": "%s is not a legal opinion.",
+  "where": [
+   "code:models/reg_opinion.py"
+  ]
+ },
+ {
+  "id": 1124,
+  "msgid": "Legal opinion %s",
+  "where": [
+   "code:models/reg_opinion.py"
+  ]
+ },
+ {
+  "id": 1516,
+  "msgid": "Only an approver or a legal manager can issue an opinion.",
+  "where": [
+   "code:models/reg_opinion.py"
+  ]
+ },
+ {
+  "id": 1518,
+  "msgid": "Only an issued opinion can be revised. Until it is issued, edit it.",
+  "where": [
+   "code:models/reg_opinion.py"
+  ]
+ },
+ {
+  "id": 1579,
+  "msgid": "Opinion %(number)s issued by %(user)s.",
+  "where": [
+   "code:models/reg_opinion.py"
+  ]
+ },
+ {
+  "id": 1580,
+  "msgid": "Opinion %(number)s was issued on %(date)s and cannot change. Use “Revise opinion” to write a new version that replaces it.",
+  "where": [
+   "code:models/reg_opinion.py"
+  ]
+ },
+ {
+  "id": 1811,
+  "msgid": "Replaced by opinion %s.",
+  "where": [
+   "code:models/reg_opinion.py"
+  ]
+ },
+ {
+  "id": 1858,
+  "msgid": "Revision started: %s.",
+  "where": [
+   "code:models/reg_opinion.py"
+  ]
+ },
+ {
+  "id": 2202,
+  "msgid": "This opinion has no memo yet: it is attached when the opinion is issued.",
+  "where": [
+   "code:models/reg_opinion.py"
+  ]
+ },
+ {
+  "id": 2451,
+  "msgid": "Write the question and the opinion before issuing it.",
+  "where": [
+   "code:models/reg_opinion.py"
+  ]
+ },
+ {
+  "id": 57,
+  "msgid": "%s is already revoked.",
+  "where": [
+   "code:models/reg_poa.py"
+  ]
+ },
+ {
+  "id": 173,
+  "msgid": "A power of attorney ends by its expiry date or through “Revoke”. Its status cannot be edited by hand.",
+  "where": [
+   "code:models/reg_poa.py"
+  ]
+ },
+ {
+  "id": 1232,
+  "msgid": "Matters relying on %s",
+  "where": [
+   "code:models/reg_poa.py"
+  ]
+ },
+ {
+  "id": 1491,
+  "msgid": "Only a lawyer can revoke a power of attorney.",
+  "where": [
+   "code:models/reg_poa.py"
+  ]
+ },
+ {
+  "id": 1671,
+  "msgid": "Power of attorney expires: %s",
+  "where": [
+   "code:models/reg_poa.py"
+  ]
+ },
+ {
+  "id": 1673,
+  "msgid": "Power of attorney no longer valid — %s",
+  "where": [
+   "code:models/reg_poa.py"
+  ]
+ },
+ {
+  "id": 1677,
+  "msgid": "Powers of attorney of %s",
+  "where": [
+   "code:models/reg_poa.py"
+  ]
+ },
+ {
+  "id": 1862,
+  "msgid": "Revoke power of attorney",
+  "where": [
+   "code:models/reg_poa.py",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_poa_revoke_wizard_form"
+  ]
+ },
+ {
+  "id": 1865,
+  "msgid": "Revoked on %(date)s by %(user)s: %(reason)s",
+  "where": [
+   "code:models/reg_poa.py"
+  ]
+ },
+ {
+  "id": 1888,
+  "msgid": "Say why the power of attorney is revoked.",
+  "where": [
+   "code:models/reg_poa.py"
+  ]
+ },
+ {
+  "id": 1892,
+  "msgid": "Scan of %s",
+  "where": [
+   "code:models/reg_poa.py"
+  ]
+ },
+ {
+  "id": 2163,
+  "msgid": "The power of attorney this matter relies on (%(poa)s) %(what)s. Record a valid one before the next step.",
+  "where": [
+   "code:models/reg_poa.py"
+  ]
+ },
+ {
+  "id": 2205,
+  "msgid": "This power of attorney expired on %s.",
+  "where": [
+   "code:models/reg_poa.py"
+  ]
+ },
+ {
+  "id": 2506,
+  "msgid": "expired on %s",
+  "where": [
+   "code:models/reg_poa.py"
+  ]
+ },
+ {
+  "id": 2522,
+  "msgid": "was revoked on %(date)s: %(reason)s",
+  "where": [
+   "code:models/reg_poa.py"
+  ]
+ },
+ {
+  "id": 410,
+  "msgid": "Chase the answer to letter %s",
+  "where": [
+   "code:models/reg_reminders.py"
+  ]
+ },
+ {
+  "id": 1158,
+  "msgid": "Letter of guarantee expires — %s",
+  "where": [
+   "code:models/reg_reminders.py"
+  ]
+ },
+ {
+  "id": 1670,
+  "msgid": "Power of attorney expires — %s",
+  "where": [
+   "code:models/reg_reminders.py"
+  ]
+ },
+ {
+  "id": 2551,
+  "msgid": "“{%s}” is not a placeholder a letter template may use. Placeholders are plain names such as {client} or {matter_number}; the list is on the template's Placeholders tab.",
+  "where": [
+   "code:models/reg_render.py"
+  ]
+ },
+ {
+  "id": 236,
+  "msgid": "All clients",
+  "where": [
+   "code:models/reg_reports.py"
+  ]
+ },
+ {
+  "id": 363,
+  "msgid": "Body or court",
+  "where": [
+   "code:models/reg_reports.py",
+   "code:static/src/approvals/approval_list.js",
+   "model:ir.model.fields,field_description:legal_department_management.field_legal_company_report_wizard__filter_department_id"
+  ]
+ },
+ {
+  "id": 370,
+  "msgid": "Brought against us",
+  "where": [
+   "code:models/reg_reports.py"
+  ]
+ },
+ {
+  "id": 371,
+  "msgid": "Brought by us",
+  "where": [
+   "code:models/reg_reports.py"
+  ]
+ },
+ {
+  "id": 436,
+  "msgid": "Chosen matters",
+  "where": [
+   "code:models/reg_reports.py"
+  ]
+ },
+ {
+  "id": 628,
+  "msgid": "Dates",
+  "where": [
+   "code:models/reg_reports.py"
+  ]
+ },
+ {
+  "id": 1351,
+  "msgid": "No body set",
+  "where": [
+   "code:models/reg_reports.py",
+   "code:models/ws_my_day.py"
+  ]
+ },
+ {
+  "id": 1412,
+  "msgid": "Not recorded",
+  "where": [
+   "code:models/reg_reports.py"
+  ]
+ },
+ {
+  "id": 1596,
+  "msgid": "Other role or not set",
+  "where": [
+   "code:models/reg_reports.py"
+  ]
+ },
+ {
+  "id": 1831,
+  "msgid": "Responsible",
+  "where": [
+   "code:models/reg_reports.py",
+   "code:static/src/approvals/approval_list.js",
+   "code:static/src/cockpit/cockpit_widgets.js"
+  ]
+ },
+ {
+  "id": 1998,
+  "msgid": "Status",
+  "where": [
+   "code:models/reg_reports.py",
+   "model:ir.model.fields,field_description:legal_department_management.field_legal_advance__state",
+   "model:ir.model.fields,field_description:legal_department_management.field_legal_company_document__state"
+  ]
+ },
+ {
+  "id": 2467,
+  "msgid": "against",
+  "where": [
+   "code:models/reg_reports.py"
+  ]
+ },
+ {
+  "id": 2479,
+  "msgid": "defendant",
+  "where": [
+   "code:models/reg_reports.py"
+  ]
+ },
+ {
+  "id": 2514,
+  "msgid": "other",
+  "where": [
+   "code:models/reg_reports.py"
+  ]
+ },
+ {
+  "id": 2515,
+  "msgid": "plaintiff",
+  "where": [
+   "code:models/reg_reports.py"
+  ]
+ },
+ {
+  "id": 64,
+  "msgid": "%s is looking at this request.",
+  "where": [
+   "code:models/reg_request.py"
+  ]
+ },
+ {
+  "id": 174,
+  "msgid": "A request moves through Accept, Return, Decline or Resubmit; its status, matter and handler cannot be edited.",
+  "where": [
+   "code:models/reg_request.py"
+  ]
+ },
+ {
+  "id": 181,
+  "msgid": "Accept the request and work on its matter before sending a result.",
+  "where": [
+   "code:models/reg_request.py"
+  ]
+ },
+ {
+  "id": 182,
+  "msgid": "Accept: open a matter",
+  "where": [
+   "code:models/reg_request.py"
+  ]
+ },
+ {
+  "id": 185,
+  "msgid": "Accepted. The legal team opened matter %s.",
+  "where": [
+   "code:models/reg_request.py"
+  ]
+ },
+ {
+  "id": 513,
+  "msgid": "Completed and sent again.",
+  "where": [
+   "code:models/reg_request.py"
+  ]
+ },
+ {
+  "id": 669,
+  "msgid": "Decline the request",
+  "where": [
+   "code:models/reg_request.py",
+   "model:ir.actions.server,name:legal_department_management.action_server_ldm_request_decline"
+  ]
+ },
+ {
+  "id": 672,
+  "msgid": "Declined: %s",
+  "where": [
+   "code:models/reg_request.py"
+  ]
+ },
+ {
+  "id": 1493,
+  "msgid": "Only a lawyer of the legal team can accept, return or decline a request.",
+  "where": [
+   "code:models/reg_request.py"
+  ]
+ },
+ {
+  "id": 1494,
+  "msgid": "Only a lawyer of the legal team can send the result.",
+  "where": [
+   "code:models/reg_request.py",
+   "code:wizards/reg_request_wizards.py"
+  ]
+ },
+ {
+  "id": 1510,
+  "msgid": "Only a request returned to you can be sent again.",
+  "where": [
+   "code:models/reg_request.py"
+  ]
+ },
+ {
+  "id": 1533,
+  "msgid": "Only the person who asked can send the request again.",
+  "where": [
+   "code:models/reg_request.py"
+  ]
+ },
+ {
+  "id": 1570,
+  "msgid": "Opened from the request of %(who)s: %(what)s",
+  "where": [
+   "code:models/reg_request.py"
+  ]
+ },
+ {
+  "id": 1850,
+  "msgid": "Return to the requester",
+  "where": [
+   "code:models/reg_request.py",
+   "model:ir.actions.server,name:legal_department_management.action_server_ldm_request_return",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_request_reason_wizard_form"
+  ]
+ },
+ {
+  "id": 1852,
+  "msgid": "Returned for completion: %s",
+  "where": [
+   "code:models/reg_request.py"
+  ]
+ },
+ {
+  "id": 1880,
+  "msgid": "Say what is missing, so the requester can complete it.",
+  "where": [
+   "code:models/reg_request.py"
+  ]
+ },
+ {
+  "id": 1890,
+  "msgid": "Say why the request is declined.",
+  "where": [
+   "code:models/reg_request.py"
+  ]
+ },
+ {
+  "id": 1915,
+  "msgid": "Send the result to %s",
+  "where": [
+   "code:models/reg_request.py"
+  ]
+ },
+ {
+  "id": 1923,
+  "msgid": "Sent to the legal team.",
+  "where": [
+   "code:models/reg_request.py"
+  ]
+ },
+ {
+  "id": 2116,
+  "msgid": "The legal team is working on “%s”: it can only be changed if they return it to you.",
+  "where": [
+   "code:models/reg_request.py"
+  ]
+ },
+ {
+  "id": 2118,
+  "msgid": "The legal team sent you the result.",
+  "where": [
+   "code:models/reg_request.py"
+  ]
+ },
+ {
+  "id": 2206,
+  "msgid": "This request is not yours.",
+  "where": [
+   "code:models/reg_request.py"
+  ]
+ },
+ {
+  "id": 2456,
+  "msgid": "You can change what you asked, the details, the date and the files. The legal team sets the rest.",
+  "where": [
+   "code:models/reg_request.py"
+  ]
+ },
+ {
+  "id": 2546,
+  "msgid": "“%s” has already been answered.",
+  "where": [
+   "code:models/reg_request.py"
+  ]
+ },
+ {
+  "id": 2052,
+  "msgid": "The Iraqi reference library is not available in this version.",
+  "where": [
+   "code:models/res_config_settings.py"
+  ]
+ },
+ {
+  "id": 294,
+  "msgid": "Approver",
+  "where": [
+   "code:models/ws_common.py",
+   "model:res.groups,name:legal_department_management.group_ldm_approver"
+  ]
+ },
+ {
+  "id": 324,
+  "msgid": "Auditor (read only)",
+  "where": [
+   "code:models/ws_common.py"
+  ]
+ },
+ {
+  "id": 356,
+  "msgid": "Billing",
+  "where": [
+   "code:models/ws_common.py",
+   "model:ir.model.fields,field_description:legal_department_management.field_legal_task__billing_state",
+   "model:res.groups,name:legal_department_management.group_ldm_billing_user"
+  ]
+ },
+ {
+  "id": 458,
+  "msgid": "Clerk",
+  "where": [
+   "code:models/ws_common.py"
+  ]
+ },
+ {
+  "id": 460,
+  "msgid": "Client",
+  "where": [
+   "code:models/ws_common.py",
+   "code:static/src/approvals/approval_list.js",
+   "model:ir.model,name:legal_department_management.model_legal_company"
+  ]
+ },
+ {
+  "id": 474,
+  "msgid": "Client or company",
+  "where": [
+   "code:models/ws_common.py",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_company_form_ws",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_create_wizard_form"
+  ]
+ },
+ {
+  "id": 498,
+  "msgid": "Company",
+  "where": [
+   "code:models/ws_common.py",
+   "model:ir.model.fields,field_description:legal_department_management.field_legal_advance__company_id",
+   "model:ir.model.fields,field_description:legal_department_management.field_legal_billable__company_id"
+  ]
+ },
+ {
+  "id": 1081,
+  "msgid": "Lawyer",
+  "where": [
+   "code:models/ws_common.py",
+   "model:ir.model.fields,field_description:legal_department_management.field_legal_billable__user_id",
+   "model:res.groups,name:legal_department_management.group_legal_user"
+  ]
+ },
+ {
+  "id": 1121,
+  "msgid": "Legal manager",
+  "where": [
+   "code:models/ws_common.py",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_legal_company_document",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_legal_general_overview_document"
+  ]
+ },
+ {
+  "id": 373,
+  "msgid": "By body and court",
+  "where": [
+   "code:models/ws_company.py"
+  ]
+ },
+ {
+  "id": 2357,
+  "msgid": "What is happening now",
+  "where": [
+   "code:models/ws_company.py"
+  ]
+ },
+ {
+  "id": 223,
+  "msgid": "Advance still to account for",
+  "where": [
+   "code:models/ws_my_day.py"
+  ]
+ },
+ {
+  "id": 287,
+  "msgid": "Approve",
+  "where": [
+   "code:models/ws_my_day.py",
+   "code:static/src/approvals/approval_list.js",
+   "code:static/src/cockpit/cockpit_widgets.js"
+  ]
+ },
+ {
+  "id": 313,
+  "msgid": "At the body past the usual answer time",
+  "where": [
+   "code:models/ws_my_day.py"
+  ]
+ },
+ {
+  "id": 330,
+  "msgid": "Awaiting approval",
+  "where": [
+   "code:models/ws_my_day.py",
+   "model:ir.actions.act_window,name:legal_department_management.action_legal_task_to_approve",
+   "model:ir.model.fields.selection,name:legal_department_management.selection__legal_task__approval_state__to_approve"
+  ]
+ },
+ {
+  "id": 332,
+  "msgid": "Awaiting my approval",
+  "where": [
+   "code:models/ws_my_day.py"
+  ]
+ },
+ {
+  "id": 531,
+  "msgid": "Conflict check waiting for your decision",
+  "where": [
+   "code:models/ws_my_day.py"
+  ]
+ },
+ {
+  "id": 539,
+  "msgid": "Conflicts waiting for a decision",
+  "where": [
+   "code:models/ws_my_day.py"
+  ]
+ },
+ {
+  "id": 584,
+  "msgid": "Court session at %s",
+  "where": [
+   "code:models/ws_my_day.py",
+   "code:models/ws_task.py"
+  ]
+ },
+ {
+  "id": 591,
+  "msgid": "Court sessions this week",
+  "where": [
+   "code:models/ws_my_day.py"
+  ]
+ },
+ {
+  "id": 714,
+  "msgid": "Done from My Day",
+  "where": [
+   "code:models/ws_my_day.py"
+  ]
+ },
+ {
+  "id": 730,
+  "msgid": "Due this week",
+  "where": [
+   "code:models/ws_my_day.py"
+  ]
+ },
+ {
+  "id": 776,
+  "msgid": "Everyone",
+  "where": [
+   "code:models/ws_my_day.py",
+   "code:static/src/agenda/agenda.js",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_company_report_wizard_form"
+  ]
+ },
+ {
+  "id": 1034,
+  "msgid": "Judgment given: when was it notified?",
+  "where": [
+   "code:models/ws_my_day.py"
+  ]
+ },
+ {
+  "id": 1047,
+  "msgid": "Judgments waiting for their notification date",
+  "where": [
+   "code:models/ws_my_day.py"
+  ]
+ },
+ {
+  "id": 1070,
+  "msgid": "Later",
+  "where": [
+   "code:models/ws_my_day.py"
+  ]
+ },
+ {
+  "id": 1189,
+  "msgid": "Log visit",
+  "where": [
+   "code:models/ws_my_day.py",
+   "code:static/src/cockpit/checklists.js",
+   "code:static/src/cockpit/cockpit_widgets.js"
+  ]
+ },
+ {
+  "id": 1238,
+  "msgid": "Me",
+  "where": [
+   "code:models/ws_my_day.py"
+  ]
+ },
+ {
+  "id": 1292,
+  "msgid": "My Day",
+  "where": [
+   "code:models/ws_my_day.py",
+   "code:static/src/my_day/my_day.js",
+   "code:static/src/palette/palette.js"
+  ]
+ },
+ {
+  "id": 1297,
+  "msgid": "My team",
+  "where": [
+   "code:models/ws_my_day.py"
+  ]
+ },
+ {
+  "id": 1361,
+  "msgid": "No date",
+  "where": [
+   "code:models/ws_my_day.py",
+   "code:static/src/core/ldm_format.js"
+  ]
+ },
+ {
+  "id": 1429,
+  "msgid": "Nothing is booked for the next seven days.",
+  "where": [
+   "code:models/ws_my_day.py"
+  ]
+ },
+ {
+  "id": 1435,
+  "msgid": "Nothing needs you today.",
+  "where": [
+   "code:models/ws_my_day.py"
+  ]
+ },
+ {
+  "id": 1436,
+  "msgid": "Nothing planned: add the next step",
+  "where": [
+   "code:models/ws_my_day.py"
+  ]
+ },
+ {
+  "id": 1544,
+  "msgid": "Open a new matter with New, or look through the matters register.",
+  "where": [
+   "code:models/ws_my_day.py"
+  ]
+ },
+ {
+  "id": 1549,
+  "msgid": "Open matters",
+  "where": [
+   "code:models/ws_my_day.py",
+   "model:ir.model.fields,field_description:legal_department_management.field_legal_company__pending_tasks_count",
+   "model:ir.model.fields,field_description:legal_department_management.field_legal_department__open_task_count"
+  ]
+ },
+ {
+  "id": 1604,
+  "msgid": "Overdue",
+  "where": [
+   "code:models/ws_my_day.py",
+   "code:models/ws_task.py",
+   "model:ir.model.fields,field_description:legal_department_management.field_legal_billable__is_overdue"
+  ]
+ },
+ {
+  "id": 1747,
+  "msgid": "Record outcome",
+  "where": [
+   "code:models/ws_my_day.py",
+   "code:static/src/cockpit/cockpit_widgets.js"
+  ]
+ },
+ {
+  "id": 1757,
+  "msgid": "Record what happened at the session",
+  "where": [
+   "code:models/ws_my_day.py"
+  ]
+ },
+ {
+  "id": 1876,
+  "msgid": "Save the date",
+  "where": [
+   "code:models/ws_my_day.py"
+  ]
+ },
+ {
+  "id": 1919,
+  "msgid": "Sent for approval by %s",
+  "where": [
+   "code:models/ws_my_day.py"
+  ]
+ },
+ {
+  "id": 1941,
+  "msgid": "Sessions in the next days with nobody attending",
+  "where": [
+   "code:models/ws_my_day.py"
+  ]
+ },
+ {
+  "id": 2135,
+  "msgid": "The next seven days",
+  "where": [
+   "code:models/ws_my_day.py"
+  ]
+ },
+ {
+  "id": 2209,
+  "msgid": "This week",
+  "where": [
+   "code:models/ws_my_day.py"
+  ]
+ },
+ {
+  "id": 2234,
+  "msgid": "Today",
+  "where": [
+   "code:models/ws_my_day.py",
+   "code:static/src/core/ldm_format.js",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_time_search"
+  ]
+ },
+ {
+  "id": 2303,
+  "msgid": "Visit %(body)s: %(step)s",
+  "where": [
+   "code:models/ws_my_day.py"
+  ]
+ },
+ {
+  "id": 2319,
+  "msgid": "Waiting for an approver's decision",
+  "where": [
+   "code:models/ws_my_day.py"
+  ]
+ },
+ {
+  "id": 2322,
+  "msgid": "Waiting for your approval",
+  "where": [
+   "code:models/ws_my_day.py"
+  ]
+ },
+ {
+  "id": 2420,
+  "msgid": "With the body for %s working days",
+  "where": [
+   "code:models/ws_my_day.py"
+  ]
+ },
+ {
+  "id": 62,
+  "msgid": "%s is closed: reopen it before changing its steps.",
+  "where": [
+   "code:models/ws_step.py"
+  ]
+ },
+ {
+  "id": 2548,
+  "msgid": "“%s” is done.",
+  "where": [
+   "code:models/ws_step.py"
+  ]
+ },
+ {
+  "id": 2550,
+  "msgid": "“%s” is open again.",
+  "where": [
+   "code:models/ws_step.py"
+  ]
+ },
+ {
+  "id": 2,
+  "msgid": "%(body)s usually answers in %(days)s working days; submission planned for %(date)s",
+  "where": [
+   "code:models/ws_task.py"
+  ]
+ },
+ {
+  "id": 3,
+  "msgid": "%(body)s usually answers in %(days)s working days; submitted on %(date)s",
+  "where": [
+   "code:models/ws_task.py"
+  ]
+ },
+ {
+  "id": 11,
+  "msgid": "%(done)s of %(total)s done",
+  "where": [
+   "code:models/ws_task.py"
+  ]
+ },
+ {
+  "id": 12,
+  "msgid": "%(have)s of %(total)s",
+  "where": [
+   "code:models/ws_task.py"
+  ]
+ },
+ {
+  "id": 14,
+  "msgid": "%(held)s held of %(total)s",
+  "where": [
+   "code:models/ws_task.py"
+  ]
+ },
+ {
+  "id": 40,
+  "msgid": "%(type)s: %(days)s working days from opening on %(date)s",
+  "where": [
+   "code:models/ws_task.py"
+  ]
+ },
+ {
+  "id": 311,
+  "msgid": "At the body %(days)s working days (usual %(target)s)",
+  "where": [
+   "code:models/ws_task.py"
+  ]
+ },
+ {
+  "id": 588,
+  "msgid": "Court sessions",
+  "where": [
+   "code:models/ws_task.py",
+   "model:ir.actions.act_window,name:legal_department_management.action_ldm_hearing_calendar",
+   "model:ir.model.fields,field_description:legal_department_management.field_legal_task__hearing_ids"
+  ]
+ },
+ {
+  "id": 704,
+  "msgid": "Documents",
+  "where": [
+   "code:models/ws_task.py",
+   "code:static/src/approvals/approval_list.js",
+   "model:ir.model.fields,field_description:legal_department_management.field_legal_readiness_wizard__line_ids"
+  ]
+ },
+ {
+  "id": 705,
+  "msgid": "Documents missing: %s",
+  "where": [
+   "code:models/ws_task.py"
+  ]
+ },
+ {
+  "id": 732,
+  "msgid": "Due within 48 h",
+  "where": [
+   "code:models/ws_task.py"
+  ]
+ },
+ {
+  "id": 799,
+  "msgid": "Expenses",
+  "where": [
+   "code:models/ws_task.py",
+   "model:ir.actions.act_window,name:legal_department_management.action_ldm_expense",
+   "model:ir.model.fields,field_description:legal_department_management.field_legal_company__total_expenses"
+  ]
+ },
+ {
+  "id": 851,
+  "msgid": "File attached to “%s”.",
+  "where": [
+   "code:models/ws_task.py"
+  ]
+ },
+ {
+  "id": 975,
+  "msgid": "In this status",
+  "where": [
+   "code:models/ws_task.py"
+  ]
+ },
+ {
+  "id": 1333,
+  "msgid": "Next date",
+  "where": [
+   "code:models/ws_task.py",
+   "model:ir.model.fields,field_description:legal_department_management.field_legal_request__matter_next_date",
+   "model:ir.model.fields,field_description:legal_department_management.field_legal_task__next_date"
+  ]
+ },
+ {
+  "id": 1358,
+  "msgid": "No court session is planned in these dates.",
+  "where": [
+   "code:models/ws_task.py"
+  ]
+ },
+ {
+  "id": 1417,
+  "msgid": "Not started yet.",
+  "where": [
+   "code:models/ws_task.py"
+  ]
+ },
+ {
+  "id": 1431,
+  "msgid": "Nothing is planned. Add a step or a court session.",
+  "where": [
+   "code:models/ws_task.py"
+  ]
+ },
+ {
+  "id": 1936,
+  "msgid": "Sessions",
+  "where": [
+   "code:models/ws_task.py",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_form"
+  ]
+ },
+ {
+  "id": 2008,
+  "msgid": "Steps",
+  "where": [
+   "code:models/ws_task.py",
+   "code:static/src/cockpit/checklists.js",
+   "model:ir.model.fields,field_description:legal_department_management.field_legal_task__step_ids"
+  ]
+ },
+ {
+  "id": 2050,
+  "msgid": "That document is not on %s.",
+  "where": [
+   "code:models/ws_task.py"
+  ]
+ },
+ {
+  "id": 2065,
+  "msgid": "The body",
+  "where": [
+   "code:models/ws_task.py",
+   "model:ir.model.fields.selection,name:legal_department_management.selection__legal_task__waiting_on__body",
+   "model:ir.model.fields.selection,name:legal_department_management.selection__legal_visit_wizard__waiting_on__body"
+  ]
+ },
+ {
+  "id": 2104,
+  "msgid": "The file did not reach the server. Try again.",
+  "where": [
+   "code:models/ws_task.py"
+  ]
+ },
+ {
+  "id": 2105,
+  "msgid": "The hearing roll is not available in this version.",
+  "where": [
+   "code:models/ws_task.py"
+  ]
+ },
+ {
+  "id": 2184,
+  "msgid": "There is no other target date to suggest for %s.",
+  "where": [
+   "code:models/ws_task.py"
+  ]
+ },
+ {
+  "id": 2270,
+  "msgid": "Urgent",
+  "where": [
+   "code:models/ws_task.py",
+   "code:static/src/approvals/approval_list.js",
+   "code:static/src/dossier/dossier.js"
+  ]
+ },
+ {
+  "id": 227,
+  "msgid": "Agenda",
+  "where": [
+   "code:static/src/agenda/agenda.js",
+   "model:ir.actions.act_window,name:legal_department_management.action_ldm_agenda",
+   "model:ir.actions.client,name:legal_department_management.action_ldm_agenda_board"
+  ]
+ },
+ {
+  "id": 592,
+  "msgid": "Court sessions, counter visits and deadlines appear here as soon as they are dated.",
+  "where": [
+   "code:static/src/agenda/agenda.js"
+  ]
+ },
+ {
+  "id": 636,
+  "msgid": "Deadline",
+  "where": [
+   "code:static/src/agenda/agenda.js",
+   "code:static/src/my_day/my_day.js",
+   "model:ir.model,name:legal_department_management.model_legal_deadline"
+  ]
+ },
+ {
+  "id": 1251,
+  "msgid": "Mine",
+  "where": [
+   "code:static/src/agenda/agenda.js",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_advance_search",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_deadline_search"
+  ]
+ },
+ {
+  "id": 1275,
+  "msgid": "Month",
+  "where": [
+   "code:static/src/agenda/agenda.js",
+   "model:ir.model.fields,field_description:legal_department_management.field_legal_obligation__month",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_correspondence_search"
+  ]
+ },
+ {
+  "id": 1400,
+  "msgid": "Nobody attending",
+  "where": [
+   "code:static/src/agenda/agenda.js",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_hearing_search"
+  ]
+ },
+ {
+  "id": 1430,
+  "msgid": "Nothing is booked in the next fourteen days.",
+  "where": [
+   "code:static/src/agenda/agenda.js"
+  ]
+ },
+ {
+  "id": 1574,
+  "msgid": "Opening the agenda…",
+  "where": [
+   "code:static/src/agenda/agenda.js"
+  ]
+ },
+ {
+  "id": 1687,
+  "msgid": "Print roll",
+  "where": [
+   "code:static/src/agenda/agenda.js"
+  ]
+ },
+ {
+  "id": 2057,
+  "msgid": "The agenda could not be loaded. Try again in a moment.",
+  "where": [
+   "code:static/src/agenda/agenda.js"
+  ]
+ },
+ {
+  "id": 2133,
+  "msgid": "The next fourteen days",
+  "where": [
+   "code:static/src/agenda/agenda.js"
+  ]
+ },
+ {
+  "id": 2252,
+  "msgid": "Try again",
+  "where": [
+   "code:static/src/agenda/agenda.js",
+   "code:static/src/my_day/my_day.js"
+  ]
+ },
+ {
+  "id": 2302,
+  "msgid": "Visit",
+  "where": [
+   "code:static/src/agenda/agenda.js",
+   "code:static/src/cockpit/checklists.js",
+   "code:static/src/my_day/my_day.js"
+  ]
+ },
+ {
+  "id": 13,
+  "msgid": "%(have)s of %(total)s received",
+  "where": [
+   "code:static/src/approvals/approval_list.js"
+  ]
+ },
+ {
+  "id": 289,
+  "msgid": "Approved",
+  "where": [
+   "code:static/src/approvals/approval_list.js",
+   "code:static/src/cockpit/cockpit_widgets.js",
+   "model:ir.model.fields.selection,name:legal_department_management.selection__legal_task__approval_state__approved"
+  ]
+ },
+ {
+  "id": 480,
+  "msgid": "Close the preview",
+  "where": [
+   "code:static/src/approvals/approval_list.js"
+  ]
+ },
+ {
+  "id": 516,
+  "msgid": "Confidential",
+  "where": [
+   "code:static/src/approvals/approval_list.js",
+   "code:static/src/my_day/my_day.js",
+   "model:ir.model.fields,field_description:legal_department_management.field_legal_company_document__confidential"
+  ]
+ },
+ {
+  "id": 1182,
+  "msgid": "Loading the matter…",
+  "where": [
+   "code:static/src/approvals/approval_list.js"
+  ]
+ },
+ {
+  "id": 1395,
+  "msgid": "No steps planned.",
+  "where": [
+   "code:static/src/approvals/approval_list.js"
+  ]
+ },
+ {
+  "id": 1560,
+  "msgid": "Open the matter",
+  "where": [
+   "code:static/src/approvals/approval_list.js",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_reg_matter_wizard_form"
+  ]
+ },
+ {
+  "id": 1820,
+  "msgid": "Requested by",
+  "where": [
+   "code:static/src/approvals/approval_list.js",
+   "model:ir.model.fields,field_description:legal_department_management.field_legal_request__requester_id",
+   "model:ir.model.fields,field_description:legal_department_management.field_legal_task__requester_id"
+  ]
+ },
+ {
+  "id": 2253,
+  "msgid": "Type",
+  "where": [
+   "code:static/src/approvals/approval_list.js",
+   "model:ir.model.fields,field_description:legal_department_management.field_legal_poa__poa_type",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_poa_search"
+  ]
+ },
+ {
+  "id": 2293,
+  "msgid": "Value",
+  "where": [
+   "code:static/src/approvals/approval_list.js",
+   "model:ir.model.fields,field_description:legal_department_management.field_legal_time_entry__amount",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_task_approval_list"
+  ]
+ },
+ {
+  "id": 2372,
+  "msgid": "What the work will be",
+  "where": [
+   "code:static/src/approvals/approval_list.js"
+  ]
+ },
+ {
+  "id": 164,
+  "msgid": "A matter type lists the documents its body asks for; they appear here.",
+  "where": [
+   "code:static/src/cockpit/checklists.js"
+  ]
+ },
+ {
+  "id": 204,
+  "msgid": "Add a step",
+  "where": [
+   "code:static/src/cockpit/checklists.js"
+  ]
+ },
+ {
+  "id": 207,
+  "msgid": "Add the first step, or choose a matter type that brings its steps.",
+  "where": [
+   "code:static/src/cockpit/checklists.js"
+  ]
+ },
+ {
+  "id": 214,
+  "msgid": "Added to the matter's files.",
+  "where": [
+   "code:static/src/cockpit/checklists.js"
+  ]
+ },
+ {
+  "id": 316,
+  "msgid": "Attach to “%s”",
+  "where": [
+   "code:static/src/cockpit/checklists.js"
+  ]
+ },
+ {
+  "id": 317,
+  "msgid": "Attach “%(file)s” to “%(document)s”, the first document still missing?",
+  "where": [
+   "code:static/src/cockpit/checklists.js"
+  ]
+ },
+ {
+  "id": 318,
+  "msgid": "Attached to “%s”.",
+  "where": [
+   "code:static/src/cockpit/checklists.js"
+  ]
+ },
+ {
+  "id": 408,
+  "msgid": "Change this step",
+  "where": [
+   "code:static/src/cockpit/checklists.js"
+  ]
+ },
+ {
+  "id": 418,
+  "msgid": "Choose a file",
+  "where": [
+   "code:static/src/cockpit/checklists.js"
+  ]
+ },
+ {
+  "id": 525,
+  "msgid": "Confirmed genuine",
+  "where": [
+   "code:static/src/cockpit/checklists.js",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_task_document_form"
+  ]
+ },
+ {
+  "id": 693,
+  "msgid": "Document checklist",
+  "where": [
+   "code:static/src/cockpit/checklists.js"
+  ]
+ },
+ {
+  "id": 707,
+  "msgid": "Documents to collect",
+  "where": [
+   "code:static/src/cockpit/checklists.js",
+   "model:ir.model.fields,field_description:legal_department_management.field_legal_task__document_ids",
+   "model:ir.model.fields,field_description:legal_department_management.field_legal_task_template__document_ids"
+  ]
+ },
+ {
+  "id": 720,
+  "msgid": "Done; click to open it again",
+  "where": [
+   "code:static/src/cockpit/checklists.js"
+  ]
+ },
+ {
+  "id": 725,
+  "msgid": "Drop the file here",
+  "where": [
+   "code:static/src/cockpit/checklists.js"
+  ]
+ },
+ {
+  "id": 807,
+  "msgid": "Expired",
+  "where": [
+   "code:static/src/cockpit/checklists.js",
+   "model:ir.model.fields.selection,name:legal_department_management.selection__legal_company_document__state__expired",
+   "model:ir.model.fields.selection,name:legal_department_management.selection__legal_guarantee__state__expired"
+  ]
+ },
+ {
+  "id": 809,
+  "msgid": "Expires %s",
+  "where": [
+   "code:static/src/cockpit/checklists.js"
+  ]
+ },
+ {
+  "id": 1051,
+  "msgid": "Keep it with the matter's files",
+  "where": [
+   "code:static/src/cockpit/checklists.js"
+  ]
+ },
+ {
+  "id": 1269,
+  "msgid": "Missing",
+  "where": [
+   "code:static/src/cockpit/checklists.js",
+   "code:static/src/my_day/my_day.js",
+   "model:ir.model.fields.selection,name:legal_department_management.selection__legal_task_document__state__missing"
+  ]
+ },
+ {
+  "id": 1362,
+  "msgid": "No documents to collect.",
+  "where": [
+   "code:static/src/cockpit/checklists.js"
+  ]
+ },
+ {
+  "id": 1396,
+  "msgid": "No steps yet.",
+  "where": [
+   "code:static/src/cockpit/checklists.js"
+  ]
+ },
+ {
+  "id": 1409,
+  "msgid": "Not needed",
+  "where": [
+   "code:static/src/cockpit/checklists.js",
+   "model:ir.model.fields.selection,name:legal_department_management.selection__legal_task_document__state__not_needed"
+  ]
+ },
+ {
+  "id": 1557,
+  "msgid": "Open the file",
+  "where": [
+   "code:static/src/cockpit/checklists.js"
+  ]
+ },
+ {
+  "id": 1729,
+  "msgid": "Received",
+  "where": [
+   "code:static/src/cockpit/checklists.js",
+   "model:ir.model.fields.selection,name:legal_department_management.selection__legal_task_document__state__received",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_client_fund_search"
+  ]
+ },
+ {
+  "id": 1826,
+  "msgid": "Required",
+  "where": [
+   "code:static/src/cockpit/checklists.js"
+  ]
+ },
+ {
+  "id": 1877,
+  "msgid": "Save the matter before adding files.",
+  "where": [
+   "code:static/src/cockpit/checklists.js"
+  ]
+ },
+ {
+  "id": 1878,
+  "msgid": "Save the matter before ticking its steps.",
+  "where": [
+   "code:static/src/cockpit/checklists.js"
+  ]
+ },
+ {
+  "id": 1972,
+  "msgid": "Skipped",
+  "where": [
+   "code:static/src/cockpit/checklists.js",
+   "model:ir.model.fields.selection,name:legal_department_management.selection__legal_task_step__state__skipped"
+  ]
+ },
+ {
+  "id": 2006,
+  "msgid": "Step checklist",
+  "where": [
+   "code:static/src/cockpit/checklists.js"
+  ]
+ },
+ {
+  "id": 2032,
+  "msgid": "Take a photo",
+  "where": [
+   "code:static/src/cockpit/checklists.js"
+  ]
+ },
+ {
+  "id": 2103,
+  "msgid": "The file could not be uploaded.",
+  "where": [
+   "code:static/src/cockpit/checklists.js"
+  ]
+ },
+ {
+  "id": 2213,
+  "msgid": "Tick to mark done",
+  "where": [
+   "code:static/src/cockpit/checklists.js"
+  ]
+ },
+ {
+  "id": 2228,
+  "msgid": "To do",
+  "where": [
+   "code:static/src/cockpit/checklists.js",
+   "model:ir.model.fields.selection,name:legal_department_management.selection__legal_task_step__state__todo"
+  ]
+ },
+ {
+  "id": 2298,
+  "msgid": "Verified",
+  "where": [
+   "code:static/src/cockpit/checklists.js",
+   "model:ir.model.fields.selection,name:legal_department_management.selection__legal_appeal_rule__verification__verified",
+   "model:ir.model.fields.selection,name:legal_department_management.selection__legal_task_document__state__verified"
+  ]
+ },
+ {
+  "id": 2397,
+  "msgid": "Which document is this?",
+  "where": [
+   "code:static/src/cockpit/checklists.js"
+  ]
+ },
+ {
+  "id": 249,
+  "msgid": "An approver decides before work starts.",
+  "where": [
+   "code:static/src/cockpit/cockpit_widgets.js"
+  ]
+ },
+ {
+  "id": 283,
+  "msgid": "Approval refused",
+  "where": [
+   "code:static/src/cockpit/cockpit_widgets.js"
+  ]
+ },
+ {
+  "id": 293,
+  "msgid": "Approved. Work can start.",
+  "where": [
+   "code:static/src/cockpit/cockpit_widgets.js"
+  ]
+ },
+ {
+  "id": 309,
+  "msgid": "Assigned to %s",
+  "where": [
+   "code:static/src/cockpit/cockpit_widgets.js"
+  ]
+ },
+ {
+  "id": 594,
+  "msgid": "Court stages",
+  "where": [
+   "code:static/src/cockpit/cockpit_widgets.js",
+   "model:ir.model.fields,field_description:legal_department_management.field_legal_task__court_stage_ids",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_form_lit"
+  ]
+ },
+ {
+  "id": 619,
+  "msgid": "Current stage",
+  "where": [
+   "code:static/src/cockpit/cockpit_widgets.js"
+  ]
+ },
+ {
+  "id": 661,
+  "msgid": "Decided by %s",
+  "where": [
+   "code:static/src/cockpit/cockpit_widgets.js"
+  ]
+ },
+ {
+  "id": 848,
+  "msgid": "Fewer details",
+  "where": [
+   "code:static/src/cockpit/cockpit_widgets.js"
+  ]
+ },
+ {
+  "id": 1120,
+  "msgid": "Legal last day: %s",
+  "where": [
+   "code:static/src/cockpit/cockpit_widgets.js"
+  ]
+ },
+ {
+  "id": 1202,
+  "msgid": "Mark done",
+  "where": [
+   "code:static/src/cockpit/cockpit_widgets.js"
+  ]
+ },
+ {
+  "id": 1283,
+  "msgid": "More details",
+  "where": [
+   "code:static/src/cockpit/cockpit_widgets.js"
+  ]
+ },
+ {
+  "id": 1325,
+  "msgid": "Next",
+  "where": [
+   "code:static/src/cockpit/cockpit_widgets.js",
+   "model:ir.model.fields,field_description:legal_department_management.field_legal_task__next_action",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_matter_rows"
+  ]
+ },
+ {
+  "id": 1397,
+  "msgid": "No target date yet",
+  "where": [
+   "code:static/src/cockpit/cockpit_widgets.js"
+  ]
+ },
+ {
+  "id": 1411,
+  "msgid": "Not reached",
+  "where": [
+   "code:static/src/cockpit/cockpit_widgets.js"
+  ]
+ },
+ {
+  "id": 1426,
+  "msgid": "Nothing dated",
+  "where": [
+   "code:static/src/cockpit/cockpit_widgets.js",
+   "code:static/src/dossier/dossier.js"
+  ]
+ },
+ {
+  "id": 1446,
+  "msgid": "Now: %s",
+  "where": [
+   "code:static/src/cockpit/cockpit_widgets.js"
+  ]
+ },
+ {
+  "id": 1556,
+  "msgid": "Open the deadline",
+  "where": [
+   "code:static/src/cockpit/cockpit_widgets.js"
+  ]
+ },
+ {
+  "id": 1913,
+  "msgid": "Send for approval again",
+  "where": [
+   "code:static/src/cockpit/cockpit_widgets.js"
+  ]
+ },
+ {
+  "id": 1918,
+  "msgid": "Sent by %s",
+  "where": [
+   "code:static/src/cockpit/cockpit_widgets.js"
+  ]
+ },
+ {
+  "id": 1971,
+  "msgid": "Since today",
+  "where": [
+   "code:static/src/cockpit/cockpit_widgets.js"
+  ]
+ },
+ {
+  "id": 2027,
+  "msgid": "Suggested target date",
+  "where": [
+   "code:static/src/cockpit/cockpit_widgets.js",
+   "code:static/src/quick_create/quick_create.js",
+   "model:ir.model.fields,field_description:legal_department_management.field_legal_task_create_wizard__suggested_date"
+  ]
+ },
+ {
+  "id": 2038,
+  "msgid": "Target date updated.",
+  "where": [
+   "code:static/src/cockpit/cockpit_widgets.js"
+  ]
+ },
+ {
+  "id": 2199,
+  "msgid": "This matter is closed.",
+  "where": [
+   "code:static/src/cockpit/cockpit_widgets.js"
+  ]
+ },
+ {
+  "id": 2276,
+  "msgid": "Use this date",
+  "where": [
+   "code:static/src/cockpit/cockpit_widgets.js",
+   "code:static/src/quick_create/quick_create.js"
+  ]
+ },
+ {
+  "id": 2320,
+  "msgid": "Waiting for approval",
+  "where": [
+   "code:static/src/cockpit/cockpit_widgets.js",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_form"
+  ]
+ },
+ {
+  "id": 241,
+  "msgid": "Alt+Shift+H",
+  "where": [
+   "code:static/src/cockpit/cockpit_widgets.xml"
+  ]
+ },
+ {
+  "id": 1282,
+  "msgid": "More actions",
+  "where": [
+   "code:static/src/cockpit/matter_form.js"
+  ]
+ },
+ {
+  "id": 1748,
+  "msgid": "Record session outcome",
+  "where": [
+   "code:static/src/cockpit/matter_form.js"
+  ]
+ },
+ {
+  "id": 49,
+  "msgid": "%s days late",
+  "where": [
+   "code:static/src/core/ldm_format.js"
+  ]
+ },
+ {
+  "id": 970,
+  "msgid": "In %s days",
+  "where": [
+   "code:static/src/core/ldm_format.js"
+  ]
+ },
+ {
+  "id": 2237,
+  "msgid": "Tomorrow",
+  "where": [
+   "code:static/src/core/ldm_format.js"
+  ]
+ },
+ {
+  "id": 2455,
+  "msgid": "Yesterday",
+  "where": [
+   "code:static/src/core/ldm_format.js"
+  ]
+ },
+ {
+  "id": 2258,
+  "msgid": "Undo",
+  "where": [
+   "code:static/src/core/ldm_step_actions.js"
+  ]
+ },
+ {
+  "id": 51,
+  "msgid": "%s done",
+  "where": [
+   "code:static/src/dossier/dossier.js"
+  ]
+ },
+ {
+  "id": 76,
+  "msgid": "%s open",
+  "where": [
+   "code:static/src/dossier/dossier.js"
+  ]
+ },
+ {
+  "id": 239,
+  "msgid": "All open matters",
+  "where": [
+   "code:static/src/dossier/dossier.js"
+  ]
+ },
+ {
+  "id": 1345,
+  "msgid": "Next: %s",
+  "where": [
+   "code:static/src/dossier/dossier.js",
+   "code:wizards/gov_visit.py"
+  ]
+ },
+ {
+  "id": 1377,
+  "msgid": "No matter with a body or court yet.",
+  "where": [
+   "code:static/src/dossier/dossier.js"
+  ]
+ },
+ {
+  "id": 1383,
+  "msgid": "No open matter for this client.",
+  "where": [
+   "code:static/src/dossier/dossier.js"
+  ]
+ },
+ {
+  "id": 1536,
+  "msgid": "Open",
+  "where": [
+   "code:static/src/dossier/dossier.js",
+   "model:ir.model.fields.selection,name:legal_department_management.selection__legal_deadline__state__open",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_monthly_status"
+  ]
+ },
+ {
+  "id": 1553,
+  "msgid": "Open one with “New matter for this client”.",
+  "where": [
+   "code:static/src/dossier/dossier.js"
+  ]
+ },
+ {
+  "id": 15,
+  "msgid": "%(hours)s recorded on %(matter)s.",
+  "where": [
+   "code:static/src/money/timer_systray.js"
+  ]
+ },
+ {
+  "id": 762,
+  "msgid": "Enter the time as 1.5 or 1:30.",
+  "where": [
+   "code:static/src/money/timer_systray.js"
+  ]
+ },
+ {
+  "id": 2219,
+  "msgid": "Timer",
+  "where": [
+   "code:static/src/money/timer_systray.js",
+   "code:static/src/money/timer_systray.xml"
+  ]
+ },
+ {
+  "id": 355,
+  "msgid": "Billable",
+  "where": [
+   "code:static/src/money/timer_systray.xml",
+   "model:ir.model.fields,field_description:legal_department_management.field_legal_time_entry__billable",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_time_search"
+  ]
+ },
+ {
+  "id": 687,
+  "msgid": "Discard the time",
+  "where": [
+   "code:static/src/money/timer_systray.xml"
+  ]
+ },
+ {
+  "id": 1543,
+  "msgid": "Open a matter to time it, or pick one:",
+  "where": [
+   "code:static/src/money/timer_systray.xml"
+  ]
+ },
+ {
+  "id": 1585,
+  "msgid": "Or one of your matters:",
+  "where": [
+   "code:static/src/money/timer_systray.xml"
+  ]
+ },
+ {
+  "id": 1754,
+  "msgid": "Record the time",
+  "where": [
+   "code:static/src/money/timer_systray.xml"
+  ]
+ },
+ {
+  "id": 1872,
+  "msgid": "Running on",
+  "where": [
+   "code:static/src/money/timer_systray.xml"
+  ]
+ },
+ {
+  "id": 1875,
+  "msgid": "Save",
+  "where": [
+   "code:static/src/money/timer_systray.xml",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_fund_move_wizard_form",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_hearing_outcome_wizard_form"
+  ]
+ },
+ {
+  "id": 1988,
+  "msgid": "Start",
+  "where": [
+   "code:static/src/money/timer_systray.xml",
+   "model:ir.model.fields,field_description:legal_department_management.field_legal_engagement__date_start",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_company_coverage_list"
+  ]
+ },
+ {
+  "id": 1990,
+  "msgid": "Start on this matter",
+  "where": [
+   "code:static/src/money/timer_systray.xml"
+  ]
+ },
+ {
+  "id": 2012,
+  "msgid": "Stop",
+  "where": [
+   "code:static/src/money/timer_systray.xml"
+  ]
+ },
+ {
+  "id": 2013,
+  "msgid": "Stop and record",
+  "where": [
+   "code:static/src/money/timer_systray.xml"
+  ]
+ },
+ {
+  "id": 2214,
+  "msgid": "Time",
+  "where": [
+   "code:static/src/money/timer_systray.xml",
+   "model:ir.actions.act_window,name:legal_department_management.action_ldm_time_entry",
+   "model:ir.model.fields,field_description:legal_department_management.field_legal_hearing__time"
+  ]
+ },
+ {
+  "id": 2375,
+  "msgid": "What was done",
+  "where": [
+   "code:static/src/money/timer_systray.xml",
+   "model:ir.model.fields,field_description:legal_department_management.field_legal_time_entry__description"
+  ]
+ },
+ {
+  "id": 2458,
+  "msgid": "You have no open matters.",
+  "where": [
+   "code:static/src/money/timer_systray.xml"
+  ]
+ },
+ {
+  "id": 2491,
+  "msgid": "e.g. Drafted the reply to the appeal",
+  "where": [
+   "code:static/src/money/timer_systray.xml"
+  ]
+ },
+ {
+  "id": 79,
+  "msgid": "%s overdue",
+  "where": [
+   "code:static/src/my_day/my_day.js"
+  ]
+ },
+ {
+  "id": 81,
+  "msgid": "%s this week",
+  "where": [
+   "code:static/src/my_day/my_day.js"
+  ]
+ },
+ {
+  "id": 82,
+  "msgid": "%s today",
+  "where": [
+   "code:static/src/my_day/my_day.js"
+  ]
+ },
+ {
+  "id": 199,
+  "msgid": "Activity",
+  "where": [
+   "code:static/src/my_day/my_day.js"
+  ]
+ },
+ {
+  "id": 281,
+  "msgid": "Approval",
+  "where": [
+   "code:static/src/my_day/my_day.js",
+   "model:ir.model.fields,field_description:legal_department_management.field_legal_task__approval_state",
+   "model:mail.activity.type,name:legal_department_management.ldm_activity_approval"
+  ]
+ },
+ {
+  "id": 292,
+  "msgid": "Approved.",
+  "where": [
+   "code:static/src/my_day/my_day.js"
+  ]
+ },
+ {
+  "id": 387,
+  "msgid": "Cash advances",
+  "where": [
+   "code:static/src/my_day/my_day.js",
+   "model:ir.actions.act_window,name:legal_department_management.action_ldm_advance",
+   "model:ir.ui.menu,name:legal_department_management.menu_ldm_advances"
+  ]
+ },
+ {
+  "id": 425,
+  "msgid": "Choose the date first.",
+  "where": [
+   "code:static/src/my_day/my_day.js"
+  ]
+ },
+ {
+  "id": 562,
+  "msgid": "Could not refresh; the screen shows what it had.",
+  "where": [
+   "code:static/src/my_day/my_day.js"
+  ]
+ },
+ {
+  "id": 948,
+  "msgid": "Hide",
+  "where": [
+   "code:static/src/my_day/my_day.js"
+  ]
+ },
+ {
+  "id": 1204,
+  "msgid": "Marked as done.",
+  "where": [
+   "code:static/src/my_day/my_day.js"
+  ]
+ },
+ {
+  "id": 1208,
+  "msgid": "Matter",
+  "where": [
+   "code:static/src/my_day/my_day.js",
+   "model:ir.model,name:legal_department_management.model_legal_task",
+   "model:ir.model.fields,field_description:legal_department_management.field_legal_advance__task_id"
+  ]
+ },
+ {
+  "id": 1293,
+  "msgid": "My Day could not be loaded.",
+  "where": [
+   "code:static/src/my_day/my_day.js"
+  ]
+ },
+ {
+  "id": 1312,
+  "msgid": "Needs a manager",
+  "where": [
+   "code:static/src/my_day/my_day.js"
+  ]
+ },
+ {
+  "id": 1433,
+  "msgid": "Nothing is waiting for you today",
+  "where": [
+   "code:static/src/my_day/my_day.js"
+  ]
+ },
+ {
+  "id": 1442,
+  "msgid": "Notification date saved: the challenge periods are counted from it.",
+  "where": [
+   "code:static/src/my_day/my_day.js"
+  ]
+ },
+ {
+  "id": 1443,
+  "msgid": "Notified on",
+  "where": [
+   "code:static/src/my_day/my_day.js",
+   "model:ir.model.fields,field_description:legal_department_management.field_legal_hearing_outcome_wizard__notified_date",
+   "model:ir.model.fields,field_description:legal_department_management.field_legal_judgment__notified_date"
+  ]
+ },
+ {
+  "id": 1555,
+  "msgid": "Open the agenda",
+  "where": [
+   "code:static/src/my_day/my_day.js"
+  ]
+ },
+ {
+  "id": 1575,
+  "msgid": "Opening your day…",
+  "where": [
+   "code:static/src/my_day/my_day.js"
+  ]
+ },
+ {
+  "id": 1714,
+  "msgid": "Read only",
+  "where": [
+   "code:static/src/my_day/my_day.js"
+  ]
+ },
+ {
+  "id": 1900,
+  "msgid": "Search by number, client or body…",
+  "where": [
+   "code:static/src/my_day/my_day.js"
+  ]
+ },
+ {
+  "id": 1953,
+  "msgid": "Show",
+  "where": [
+   "code:static/src/my_day/my_day.js"
+  ]
+ },
+ {
+  "id": 1960,
+  "msgid": "Showing the first %s. The register has the rest.",
+  "where": [
+   "code:static/src/my_day/my_day.js"
+  ]
+ },
+ {
+  "id": 2004,
+  "msgid": "Step",
+  "where": [
+   "code:static/src/my_day/my_day.js",
+   "model:ir.model.fields,field_description:legal_department_management.field_legal_task_expense__step_id",
+   "model:ir.model.fields,field_description:legal_department_management.field_legal_task_step__name"
+  ]
+ },
+ {
+  "id": 2172,
+  "msgid": "The server could not be reached or reported an error. Try again in a moment.",
+  "where": [
+   "code:static/src/my_day/my_day.js"
+  ]
+ },
+ {
+  "id": 2236,
+  "msgid": "Today's visits, by body",
+  "where": [
+   "code:static/src/my_day/my_day.js"
+  ]
+ },
+ {
+  "id": 2343,
+  "msgid": "We have it",
+  "where": [
+   "code:static/src/my_day/my_day.js"
+  ]
+ },
+ {
+  "id": 2373,
+  "msgid": "What to carry to each counter.",
+  "where": [
+   "code:static/src/my_day/my_day.js"
+  ]
+ },
+ {
+  "id": 242,
+  "msgid": "Alt+Shift+N",
+  "where": [
+   "code:static/src/my_day/my_day.xml"
+  ]
+ },
+ {
+  "id": 617,
+  "msgid": "Ctrl K",
+  "where": [
+   "code:static/src/my_day/my_day.xml"
+  ]
+ },
+ {
+  "id": 77,
+  "msgid": "%s open matters",
+  "where": [
+   "code:static/src/palette/palette.js"
+  ]
+ },
+ {
+  "id": 360,
+  "msgid": "Bodies and courts",
+  "where": [
+   "code:static/src/palette/palette.js",
+   "model:ir.actions.act_window,name:legal_department_management.action_ldm_body_directory",
+   "model:ir.actions.act_window,name:legal_department_management.action_legal_department"
+  ]
+ },
+ {
+  "id": 476,
+  "msgid": "Clients",
+  "where": [
+   "code:static/src/palette/palette.js",
+   "model:ir.actions.act_window,name:legal_department_management.action_legal_company",
+   "model:ir.model.fields,field_description:legal_department_management.field_legal_general_report_wizard__company_ids"
+  ]
+ },
+ {
+  "id": 1110,
+  "msgid": "Legal",
+  "where": [
+   "code:static/src/palette/palette.js",
+   "model:ir.module.category,name:legal_department_management.module_category_ldm",
+   "model:ir.ui.menu,name:legal_department_management.menu_legal_root"
+  ]
+ },
+ {
+  "id": 1221,
+  "msgid": "Matter, court case, receipt or letter number…",
+  "where": [
+   "code:static/src/palette/palette.js"
+  ]
+ },
+ {
+  "id": 1222,
+  "msgid": "Matters",
+  "where": [
+   "code:static/src/palette/palette.js",
+   "model:ir.actions.act_window,name:legal_department_management.action_legal_task",
+   "model:ir.model.fields,field_description:legal_department_management.field_legal_company__task_ids"
+  ]
+ },
+ {
+  "id": 1374,
+  "msgid": "No matter has this number.",
+  "where": [
+   "code:static/src/palette/palette.js"
+  ]
+ },
+ {
+  "id": 2509,
+  "msgid": "matter numbers",
+  "where": [
+   "code:static/src/palette/palette.js"
+  ]
+ },
+ {
+  "id": 849,
+  "msgid": "Fewer options",
+  "where": [
+   "code:static/src/quick_create/quick_create.js"
+  ]
+ },
+ {
+  "id": 1218,
+  "msgid": "Matter type picker",
+  "where": [
+   "code:static/src/quick_create/quick_create.js"
+  ]
+ },
+ {
+  "id": 1285,
+  "msgid": "More options: responsible, team, urgency, note",
+  "where": [
+   "code:static/src/quick_create/quick_create.js"
+  ]
+ }
+]

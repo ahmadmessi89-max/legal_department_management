@@ -2,7 +2,7 @@
 in Arabic and English, at desktop and phone width, with automatic checks.
 
 Usage:
-    py -3.11 docs/ldm/tools/verify_round.py --base http://127.0.0.1:8095 --db ldm_pro \
+    py -3.11 docs/ldm/tools/verify_round.py --base http://127.0.0.1:8110 --db ldm_pro \
         --plan docs/ldm/tools/verify_plan.json --out docs/ldm/evidence/<round> [--only lawyer]
 
 The plan lists users (login, password, role) and screens (name, path, wait, clicks, kind).
@@ -23,6 +23,7 @@ import os
 import re
 import sys
 import time
+import xmlrpc.client
 
 from playwright.sync_api import sync_playwright
 
@@ -48,7 +49,8 @@ CHECK_JS = r"""
   let formButtons = null;
   if (form) {
     const bar = form.querySelector('.o_form_statusbar .o_statusbar_buttons');
-    formButtons = bar ? [...bar.querySelectorAll('button')].filter(visible).length : 0;
+    // an overflow menu ("More actions") is how the budget is kept, not a third button
+    formButtons = bar ? [...bar.querySelectorAll('button')].filter(b => visible(b) && !b.matches('.dropdown-toggle, [aria-haspopup], .o-dropdown')).length : 0;
   }
   const list = document.querySelector('.o_list_view table');
   const listColumns = list ? [...list.querySelectorAll('thead th')].filter(th => visible(th) && !th.classList.contains('o_list_record_selector') && !th.classList.contains('o_list_actions_header') && th.textContent.trim()).length : null;
@@ -74,7 +76,7 @@ def analyse(raw, lang):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--base", default="http://127.0.0.1:8095")
+    ap.add_argument("--base", default="http://127.0.0.1:8110")
     ap.add_argument("--db", required=True)
     ap.add_argument("--plan", required=True)
     ap.add_argument("--out", required=True)
@@ -99,16 +101,17 @@ def main():
                     console, perr = [], []
                     page.on("console", lambda m: console.append(m.text) if m.type == "error" else None)
                     page.on("pageerror", lambda e: perr.append(str(e)))
+                    # the user's language is part of the plan: the user sets it on
+                    # their own record before logging in (lang is self-writeable)
+                    uid = xmlrpc.client.ServerProxy(f"{a.base}/xmlrpc/2/common").authenticate(
+                        a.db, user["login"], user["password"], {})
+                    xmlrpc.client.ServerProxy(f"{a.base}/xmlrpc/2/object").execute_kw(
+                        a.db, uid, user["password"], "res.users", "write", [[uid], {"lang": lang}])
                     page.goto(f"{a.base}/web/login?db={a.db}")
                     page.fill("input[name=login]", user["login"])
                     page.fill("input[name=password]", user["password"])
                     page.click("button[type=submit]")
                     page.wait_for_selector(".o_main_navbar", timeout=60000)
-                    # the user's language is part of the plan: switch it through the ORM
-                    page.evaluate("""async (lang) => {
-                        const env = odoo.__WOWL_DEBUG__.root.env;
-                        await env.services.orm.write('res.users', [env.services.user.userId], {lang});
-                    }""", lang)
                     for screen in plan["screens"]:
                         if screen.get("roles") and user["role"] not in screen["roles"]:
                             continue
@@ -117,11 +120,20 @@ def main():
                         row = {"user": user["login"], "role": user["role"], "lang": lang, "width": width,
                                "screen": screen["name"]}
                         try:
-                            page.goto(a.base + screen["path"])
-                            page.wait_for_selector(screen.get("wait", ".o_action_manager > *"), timeout=30000)
-                            for click in screen.get("clicks", []):
-                                page.click(click, timeout=15000)
-                                time.sleep(0.8)
+                            # one retry after a reload: a slow first load of an action is not a defect,
+                            # a screen that fails twice is reported
+                            for attempt in (1, 2):
+                                try:
+                                    page.goto(a.base + screen["path"])
+                                    page.wait_for_selector(screen.get("wait", ".o_action_manager > *"), timeout=30000)
+                                    for click in screen.get("clicks", []):
+                                        page.click(click, timeout=15000)
+                                        time.sleep(0.8)
+                                    break
+                                except Exception:
+                                    if attempt == 2:
+                                        raise
+                                    row["retried"] = True
                             time.sleep(screen.get("settle", 1.5))
                             row["error_dialog"] = page.locator(".o_error_dialog").count() > 0
                             row.update(analyse(page.evaluate(CHECK_JS), lang))

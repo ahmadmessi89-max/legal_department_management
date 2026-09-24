@@ -1,0 +1,4397 @@
+[
+ {
+  "id": 1045,
+  "msgid": "Judgments of first-instance and personal-status courts; not in urgent matters.",
+  "where": [
+   "model:legal.appeal.rule,note:legal_department_management.ldm_rule_civ_1"
+  ]
+ },
+ {
+  "id": 248,
+  "msgid": "An agreed suspension lasts at most three months. The case must be resumed within 15 days after the suspension ends, or the petition is void. Counted from the end of the suspension.",
+  "where": [
+   "model:legal.appeal.rule,note:legal_department_management.ldm_rule_civ_10"
+  ]
+ },
+ {
+  "id": 968,
+  "msgid": "If the plaintiff does not continue the case within six months, the petition is void. Proposed from the session; move the start to the day the other question is decided if that is later.",
+  "where": [
+   "model:legal.appeal.rule,note:legal_department_management.ldm_rule_civ_11"
+  ]
+ },
+ {
+  "id": 148,
+  "msgid": "A case interrupted (death or loss of capacity of a party) and not continued within six months without an acceptable excuse is void. The interruption also halts the periods running in the case.",
+  "where": [
+   "model:legal.appeal.rule,note:legal_department_management.ldm_rule_civ_12"
+  ]
+ },
+ {
+  "id": 2386,
+  "msgid": "When the judgment rests on fraud or forgery, the period counts from the day it is discovered.",
+  "where": [
+   "model:legal.appeal.rule,note:legal_department_management.ldm_rule_civ_2"
+  ]
+ },
+ {
+  "id": 298,
+  "msgid": "Art. 204 also names judgments of first-instance courts. The period is proposed for judgments of the courts of appeal; add it by hand where cassation of a first-instance judgment applies.",
+  "where": [
+   "model:legal.appeal.rule,note:legal_department_management.ldm_rule_civ_3"
+  ]
+ },
+ {
+  "id": 2060,
+  "msgid": "The article's text is verified; applying it to personal-status judgments follows the Supreme Judicial Council's commentary.",
+  "where": [
+   "model:legal.appeal.rule,note:legal_department_management.ldm_rule_civ_4"
+  ]
+ },
+ {
+  "id": 2271,
+  "msgid": "Urgent and ancillary decisions such as a precautionary attachment. Add it to the matter from the decision's notification.",
+  "where": [
+   "model:legal.appeal.rule,note:legal_department_management.ldm_rule_civ_5"
+  ]
+ },
+ {
+  "id": 1479,
+  "msgid": "Once per party, and never later than six months after the decision.",
+  "where": [
+   "model:legal.appeal.rule,note:legal_department_management.ldm_rule_civ_6"
+  ]
+ },
+ {
+  "id": 564,
+  "msgid": "Counted from the day after the fraud or forgery is discovered or proven.",
+  "where": [
+   "model:legal.appeal.rule,note:legal_department_management.ldm_rule_civ_7"
+  ]
+ },
+ {
+  "id": 570,
+  "msgid": "Counted from the order, or from its notification.",
+  "where": [
+   "model:legal.appeal.rule,note:legal_department_management.ldm_rule_civ_8"
+  ]
+ },
+ {
+  "id": 2380,
+  "msgid": "When both parties are absent the court leaves the case for review; unless a party asks to renew it within the period, the petition is void. Older sources give 30 or 15 days: check the current text.",
+  "where": [
+   "model:legal.appeal.rule,note:legal_department_management.ldm_rule_civ_9"
+  ]
+ },
+ {
+  "id": 673,
+  "msgid": "Defamation, threats, some thefts and breaches of trust: the complaint must be made within three months of the day the victim learns of the offence.",
+  "where": [
+   "model:legal.appeal.rule,note:legal_department_management.ldm_rule_crm_1"
+  ]
+ },
+ {
+  "id": 2262,
+  "msgid": "Unless the person convicted in absence surrenders or objects within the period, the judgment counts as given in presence.",
+  "where": [
+   "model:legal.appeal.rule,note:legal_department_management.ldm_rule_crm_2_felony",
+   "model:legal.appeal.rule,note:legal_department_management.ldm_rule_crm_2_misdemeanour"
+  ]
+ },
+ {
+  "id": 2263,
+  "msgid": "Unless the person convicted in absence surrenders or objects within the period, the judgment counts as given in presence. Added by hand: the court alone does not tell a violation from a misdemeanour.",
+  "where": [
+   "model:legal.appeal.rule,note:legal_department_management.ldm_rule_crm_2_violation"
+  ]
+ },
+ {
+  "id": 565,
+  "msgid": "Counted from the day after the pronouncement when the judgment is given in presence, not from its notification; a judgment given in absence counts from the notification.",
+  "where": [
+   "model:legal.appeal.rule,note:legal_department_management.ldm_rule_crm_3"
+  ]
+ },
+ {
+  "id": 569,
+  "msgid": "Counted from the notification to the convicted person, or from the arrival of the papers at the trial court.",
+  "where": [
+   "model:legal.appeal.rule,note:legal_department_management.ldm_rule_crm_4"
+  ]
+ },
+ {
+  "id": 155,
+  "msgid": "A debtor who pays within the period is exempt from the collection fee. Older texts give other periods, and a government debtor may have 30 days (Art. 20): verify. Proposed when an execution stage records the date the notice was served.",
+  "where": [
+   "model:legal.appeal.rule,note:legal_department_management.ldm_rule_exe_1"
+  ]
+ },
+ {
+  "id": 1205,
+  "msgid": "Marking it met opens the cassation period, which waits for the date of the officer's decision.",
+  "where": [
+   "model:legal.appeal.rule,note:legal_department_management.ldm_rule_exe_3"
+  ]
+ },
+ {
+  "id": 349,
+  "msgid": "Before the court of appeal of the region, sitting in cassation. Counted from the decision.",
+  "where": [
+   "model:legal.appeal.rule,note:legal_department_management.ldm_rule_exe_4"
+  ]
+ },
+ {
+  "id": 1952,
+  "msgid": "Seven years from the last action on the file.",
+  "where": [
+   "model:legal.appeal.rule,note:legal_department_management.ldm_rule_exe_5"
+  ]
+ },
+ {
+  "id": 1387,
+  "msgid": "No primary citation yet: check the period against Labour Law 37 of 2015 before relying on it.",
+  "where": [
+   "model:legal.appeal.rule,note:legal_department_management.ldm_rule_lab_2"
+  ]
+ },
+ {
+  "id": 2061,
+  "msgid": "The assessed tax must be paid within the period, or the objection is not heard.",
+  "where": [
+   "model:legal.appeal.rule,note:legal_department_management.ldm_rule_tax_4"
+  ]
+ },
+ {
+  "id": 568,
+  "msgid": "Counted from the notification that the objection was rejected.",
+  "where": [
+   "model:legal.appeal.rule,note:legal_department_management.ldm_rule_tax_5"
+  ]
+ },
+ {
+  "id": 299,
+  "msgid": "Articles of association",
+  "where": [
+   "model:legal.document.type,name:legal_department_management.ldm_doctype_articles"
+  ]
+ },
+ {
+  "id": 342,
+  "msgid": "Bank confirmation of the capital deposit",
+  "where": [
+   "model:legal.document.type,name:legal_department_management.ldm_doctype_capital_deposit"
+  ]
+ },
+ {
+  "id": 1611,
+  "msgid": "Paid electricity bill",
+  "where": [
+   "model:legal.document.type,name:legal_department_management.ldm_doctype_electricity_bill"
+  ]
+ },
+ {
+  "id": 323,
+  "msgid": "Audited final accounts",
+  "where": [
+   "model:legal.document.type,name:legal_department_management.ldm_doctype_final_accounts"
+  ]
+ },
+ {
+  "id": 898,
+  "msgid": "General assembly minutes",
+  "where": [
+   "model:legal.document.type,name:legal_department_management.ldm_doctype_ga_minutes"
+  ]
+ },
+ {
+  "id": 969,
+  "msgid": "Import licence",
+  "where": [
+   "model:legal.document.type,name:legal_department_management.ldm_doctype_import_licence"
+  ]
+ },
+ {
+  "id": 398,
+  "msgid": "Certificate of incorporation",
+  "where": [
+   "model:legal.document.type,name:legal_department_management.ldm_doctype_incorporation_certificate"
+  ]
+ },
+ {
+  "id": 578,
+  "msgid": "Court judgment",
+  "where": [
+   "model:legal.document.type,name:legal_department_management.ldm_doctype_judgment"
+  ]
+ },
+ {
+  "id": 399,
+  "msgid": "Certified lease contract",
+  "where": [
+   "model:legal.document.type,name:legal_department_management.ldm_doctype_lease"
+  ]
+ },
+ {
+  "id": 1265,
+  "msgid": "Minutes appointing the managing director",
+  "where": [
+   "model:legal.document.type,name:legal_department_management.ldm_doctype_md_appointment"
+  ]
+ },
+ {
+  "id": 2259,
+  "msgid": "Unified national ID card",
+  "where": [
+   "model:legal.document.type,name:legal_department_management.ldm_doctype_national_id"
+  ]
+ },
+ {
+  "id": 1621,
+  "msgid": "Passport",
+  "where": [
+   "model:legal.document.type,name:legal_department_management.ldm_doctype_passport"
+  ]
+ },
+ {
+  "id": 1629,
+  "msgid": "Payment receipt",
+  "where": [
+   "model:legal.document.type,name:legal_department_management.ldm_doctype_payment_receipt"
+  ]
+ },
+ {
+  "id": 1640,
+  "msgid": "Personal photographs",
+  "where": [
+   "model:legal.document.type,name:legal_department_management.ldm_doctype_photos"
+  ]
+ },
+ {
+  "id": 900,
+  "msgid": "General power of attorney",
+  "where": [
+   "model:legal.document.type,name:legal_department_management.ldm_doctype_poa_general"
+  ]
+ },
+ {
+  "id": 1983,
+  "msgid": "Special power of attorney",
+  "where": [
+   "model:legal.document.type,name:legal_department_management.ldm_doctype_poa_special"
+  ]
+ },
+ {
+  "id": 1776,
+  "msgid": "Registrar's confirmation letter",
+  "where": [
+   "model:legal.document.type,name:legal_department_management.ldm_doctype_registrar_confirmation"
+  ]
+ },
+ {
+  "id": 1829,
+  "msgid": "Residence card",
+  "where": [
+   "model:legal.document.type,name:legal_department_management.ldm_doctype_residence_card"
+  ]
+ },
+ {
+  "id": 1830,
+  "msgid": "Residency permit",
+  "where": [
+   "model:legal.document.type,name:legal_department_management.ldm_doctype_residency_permit"
+  ]
+ },
+ {
+  "id": 1871,
+  "msgid": "Runner's authorisation letter",
+  "where": [
+   "model:legal.document.type,name:legal_department_management.ldm_doctype_runner_authorisation"
+  ]
+ },
+ {
+  "id": 1974,
+  "msgid": "Social security clearance",
+  "where": [
+   "model:legal.document.type,name:legal_department_management.ldm_doctype_ss_clearance"
+  ]
+ },
+ {
+  "id": 1976,
+  "msgid": "Social security registration certificate",
+  "where": [
+   "model:legal.document.type,name:legal_department_management.ldm_doctype_ss_registration"
+  ]
+ },
+ {
+  "id": 2042,
+  "msgid": "Tax card",
+  "where": [
+   "model:legal.document.type,name:legal_department_management.ldm_doctype_tax_card"
+  ]
+ },
+ {
+  "id": 2043,
+  "msgid": "Tax clearance",
+  "where": [
+   "model:legal.document.type,name:legal_department_management.ldm_doctype_tax_clearance"
+  ]
+ },
+ {
+  "id": 257,
+  "msgid": "Annual tax return",
+  "where": [
+   "model:legal.document.type,name:legal_department_management.ldm_doctype_tax_return"
+  ]
+ },
+ {
+  "id": 2244,
+  "msgid": "Trade name reservation",
+  "where": [
+   "model:legal.document.type,name:legal_department_management.ldm_doctype_trade_name"
+  ]
+ },
+ {
+  "id": 2297,
+  "msgid": "Vehicle registration (annual)",
+  "where": [
+   "model:legal.document.type,name:legal_department_management.ldm_doctype_vehicle_registration"
+  ]
+ },
+ {
+  "id": 2432,
+  "msgid": "Work permit",
+  "where": [
+   "model:legal.document.type,name:legal_department_management.ldm_doctype_work_permit"
+  ]
+ },
+ {
+  "id": 577,
+  "msgid": "Court fee",
+  "where": [
+   "model:legal.expense.category,name:legal_department_management.ldm_expense_category_court_fee"
+  ]
+ },
+ {
+  "id": 786,
+  "msgid": "Execution fee",
+  "where": [
+   "model:legal.expense.category,name:legal_department_management.ldm_expense_category_execution_fee"
+  ]
+ },
+ {
+  "id": 805,
+  "msgid": "Expert deposit",
+  "where": [
+   "model:legal.expense.category,name:legal_department_management.ldm_expense_category_expert_deposit"
+  ]
+ },
+ {
+  "id": 916,
+  "msgid": "Government fee",
+  "where": [
+   "model:legal.expense.category,name:legal_department_management.ldm_expense_category_government_fee"
+  ]
+ },
+ {
+  "id": 1421,
+  "msgid": "Notary fee",
+  "where": [
+   "model:legal.expense.category,name:legal_department_management.ldm_expense_category_notary_fee"
+  ]
+ },
+ {
+  "id": 1632,
+  "msgid": "Pension fund stamp",
+  "where": [
+   "model:legal.expense.category,name:legal_department_management.ldm_expense_category_pension_stamp"
+  ]
+ },
+ {
+  "id": 1707,
+  "msgid": "Publication in a newspaper",
+  "where": [
+   "model:legal.expense.category,name:legal_department_management.ldm_expense_category_publication"
+  ]
+ },
+ {
+  "id": 2251,
+  "msgid": "Transport",
+  "where": [
+   "model:legal.expense.category,name:legal_department_management.ldm_expense_category_transport"
+  ]
+ },
+ {
+  "id": 1317,
+  "msgid": "New Year's Day",
+  "where": [
+   "model:legal.holiday,name:legal_department_management.ldm_legal_holiday_2026_01",
+   "model:legal.holiday,name:legal_department_management.ldm_legal_holiday_2027_01"
+  ]
+ },
+ {
+  "id": 297,
+  "msgid": "Army Day",
+  "where": [
+   "model:legal.holiday,name:legal_department_management.ldm_legal_holiday_2026_02",
+   "model:legal.holiday,name:legal_department_management.ldm_legal_holiday_2027_02"
+  ]
+ },
+ {
+  "id": 1240,
+  "msgid": "Memorial of the regime's crimes (Halabja)",
+  "where": [
+   "model:legal.holiday,name:legal_department_management.ldm_legal_holiday_2026_03",
+   "model:legal.holiday,name:legal_department_management.ldm_legal_holiday_2027_04"
+  ]
+ },
+ {
+  "id": 741,
+  "msgid": "Eid al-Fitr",
+  "where": [
+   "model:legal.holiday,name:legal_department_management.ldm_legal_holiday_2026_04",
+   "model:legal.holiday,name:legal_department_management.ldm_legal_holiday_2027_03"
+  ]
+ },
+ {
+  "id": 1447,
+  "msgid": "Nowruz",
+  "where": [
+   "model:legal.holiday,name:legal_department_management.ldm_legal_holiday_2026_05",
+   "model:legal.holiday,name:legal_department_management.ldm_legal_holiday_2027_05"
+  ]
+ },
+ {
+  "id": 1061,
+  "msgid": "Labour Day",
+  "where": [
+   "model:legal.holiday,name:legal_department_management.ldm_legal_holiday_2026_06",
+   "model:legal.holiday,name:legal_department_management.ldm_legal_holiday_2027_06"
+  ]
+ },
+ {
+  "id": 740,
+  "msgid": "Eid al-Adha",
+  "where": [
+   "model:legal.holiday,name:legal_department_management.ldm_legal_holiday_2026_07",
+   "model:legal.holiday,name:legal_department_management.ldm_legal_holiday_2027_07"
+  ]
+ },
+ {
+  "id": 742,
+  "msgid": "Eid al-Ghadir",
+  "where": [
+   "model:legal.holiday,name:legal_department_management.ldm_legal_holiday_2026_08",
+   "model:legal.holiday,name:legal_department_management.ldm_legal_holiday_2027_08"
+  ]
+ },
+ {
+  "id": 1019,
+  "msgid": "Islamic New Year",
+  "where": [
+   "model:legal.holiday,name:legal_department_management.ldm_legal_holiday_2026_09",
+   "model:legal.holiday,name:legal_department_management.ldm_legal_holiday_2027_09"
+  ]
+ },
+ {
+  "id": 300,
+  "msgid": "Ashura",
+  "where": [
+   "model:legal.holiday,name:legal_department_management.ldm_legal_holiday_2026_10",
+   "model:legal.holiday,name:legal_department_management.ldm_legal_holiday_2027_10"
+  ]
+ },
+ {
+  "id": 1699,
+  "msgid": "Prophet's Birthday",
+  "where": [
+   "model:legal.holiday,name:legal_department_management.ldm_legal_holiday_2026_11",
+   "model:legal.holiday,name:legal_department_management.ldm_legal_holiday_2027_11"
+  ]
+ },
+ {
+  "id": 648,
+  "msgid": "Dear {client},\nA reminder that the next session in {matter} ({matter_number}) is on {next_date} at {court}. {needed}\n{office}",
+  "where": [
+   "model:legal.letter.template,body:legal_department_management.ldm_message_hearing_reminder"
+  ]
+ },
+ {
+  "id": 649,
+  "msgid": "Dear {client},\nThe session of {date} in {matter} ({matter_number}) at {court} ended as follows: {outcome}.\nThe next session is on {next_date}. {needed}\n{responsible}, {office}",
+  "where": [
+   "model:legal.letter.template,body:legal_department_management.ldm_message_hearing_result"
+  ]
+ },
+ {
+  "id": 651,
+  "msgid": "Dear {client},\nUnder our fee agreement, the instalment \"{fee}\" of {amount} is due on {due_date}.\nThank you.\n{office}",
+  "where": [
+   "model:legal.letter.template,body:legal_department_management.ldm_message_instalment_due"
+  ]
+ },
+ {
+  "id": 650,
+  "msgid": "Dear {client},\nTo continue {matter} ({matter_number}) we still need: {documents}.\nPlease send them as soon as you can.\n{responsible}, {office}",
+  "where": [
+   "model:legal.letter.template,body:legal_department_management.ldm_message_missing_documents"
+  ]
+ },
+ {
+  "id": 652,
+  "msgid": "Dear {client},\nYour statement of account up to {today} is ready. The balance due is {balance}.\nWe can send you a copy on request.\n{office}",
+  "where": [
+   "model:legal.letter.template,body:legal_department_management.ldm_message_statement_ready"
+  ]
+ },
+ {
+  "id": 1797,
+  "msgid": "Reminder of your session",
+  "where": [
+   "model:legal.letter.template,subject:legal_department_management.ldm_message_hearing_reminder"
+  ]
+ },
+ {
+  "id": 1836,
+  "msgid": "Result of today's session",
+  "where": [
+   "model:legal.letter.template,subject:legal_department_management.ldm_message_hearing_result"
+  ]
+ },
+ {
+  "id": 709,
+  "msgid": "Documents we still need",
+  "where": [
+   "model:legal.letter.template,subject:legal_department_management.ldm_message_missing_documents"
+  ]
+ },
+ {
+  "id": 2461,
+  "msgid": "Your statement of account",
+  "where": [
+   "model:legal.letter.template,subject:legal_department_management.ldm_message_statement_ready"
+  ]
+ },
+ {
+  "id": 270,
+  "msgid": "Any transaction at a ministry or department. Choose the body when you open the matter.",
+  "where": [
+   "model:legal.task.template,description:legal_department_management.ldm_template_government"
+  ]
+ },
+ {
+  "id": 218,
+  "msgid": "Administrative grievance",
+  "where": [
+   "model:legal.task.template,name:legal_department_management.ldm_template_administrative"
+  ]
+ },
+ {
+  "id": 451,
+  "msgid": "Civil lawsuit",
+  "where": [
+   "model:legal.task.template,name:legal_department_management.ldm_template_civil_lawsuit"
+  ]
+ },
+ {
+  "id": 494,
+  "msgid": "Commercial lawsuit",
+  "where": [
+   "model:legal.task.template,name:legal_department_management.ldm_template_commercial_lawsuit"
+  ]
+ },
+ {
+  "id": 500,
+  "msgid": "Company amendment",
+  "where": [
+   "model:legal.task.template,name:legal_department_management.ldm_template_company_amendment"
+  ]
+ },
+ {
+  "id": 614,
+  "msgid": "Criminal complaint",
+  "where": [
+   "model:legal.task.template,name:legal_department_management.ldm_template_criminal_complaint"
+  ]
+ },
+ {
+  "id": 787,
+  "msgid": "Execution file",
+  "where": [
+   "model:legal.task.template,name:legal_department_management.ldm_template_execution"
+  ]
+ },
+ {
+  "id": 219,
+  "msgid": "Administrative investigation",
+  "where": [
+   "model:legal.task.template,name:legal_department_management.ldm_template_investigation"
+  ]
+ },
+ {
+  "id": 1063,
+  "msgid": "Labour case",
+  "where": [
+   "model:legal.task.template,name:legal_department_management.ldm_template_labour_case"
+  ]
+ },
+ {
+  "id": 1642,
+  "msgid": "Personal status case",
+  "where": [
+   "model:legal.task.template,name:legal_department_management.ldm_template_personal_status"
+  ]
+ },
+ {
+  "id": 1669,
+  "msgid": "Power of attorney at the notary",
+  "where": [
+   "model:legal.task.template,name:legal_department_management.ldm_template_poa"
+  ]
+ },
+ {
+  "id": 503,
+  "msgid": "Company document or obligation",
+  "where": [
+   "model:mail.activity.type,name:legal_department_management.ldm_activity_company_expiry"
+  ]
+ },
+ {
+  "id": 1114,
+  "msgid": "Legal deadline",
+  "where": [
+   "model:mail.activity.type,name:legal_department_management.ldm_activity_deadline"
+  ]
+ },
+ {
+  "id": 846,
+  "msgid": "Fees due",
+  "where": [
+   "model:mail.activity.type,name:legal_department_management.ldm_activity_fee_agreement"
+  ]
+ },
+ {
+  "id": 832,
+  "msgid": "Fee agreement to sign",
+  "where": [
+   "model:mail.activity.type,name:legal_department_management.ldm_activity_fee_unsigned"
+  ]
+ },
+ {
+  "id": 1160,
+  "msgid": "Letter of guarantee expiry",
+  "where": [
+   "model:mail.activity.type,name:legal_department_management.ldm_activity_guarantee_expiry"
+  ]
+ },
+ {
+  "id": 1164,
+  "msgid": "Letter to answer",
+  "where": [
+   "model:mail.activity.type,name:legal_department_management.ldm_activity_letter_reply"
+  ]
+ },
+ {
+  "id": 1672,
+  "msgid": "Power of attorney expiry",
+  "where": [
+   "model:mail.activity.type,name:legal_department_management.ldm_activity_poa_expiry"
+  ]
+ },
+ {
+  "id": 295,
+  "msgid": "Approves matters before work starts, and signs them off.",
+  "where": [
+   "model:res.groups,comment:legal_department_management.group_ldm_approver"
+  ]
+ },
+ {
+  "id": 1715,
+  "msgid": "Reads everything and changes nothing: for an internal auditor, an external reviewer, or an executive who follows the legal work.",
+  "where": [
+   "model:res.groups,comment:legal_department_management.group_ldm_auditor"
+  ]
+ },
+ {
+  "id": 1679,
+  "msgid": "Prepares fee agreements, invoices and client statements; reads the money side of every matter.",
+  "where": [
+   "model:res.groups,comment:legal_department_management.group_ldm_billing_user"
+  ]
+ },
+ {
+  "id": 2444,
+  "msgid": "Works the matters assigned to them: counter visits, steps, documents and expenses.",
+  "where": [
+   "model:res.groups,comment:legal_department_management.group_ldm_clerk"
+  ]
+ },
+ {
+  "id": 2383,
+  "msgid": "When on, every employee may submit a request to the legal team and follow its status.",
+  "where": [
+   "model:res.groups,comment:legal_department_management.group_ldm_requests"
+  ]
+ },
+ {
+  "id": 1906,
+  "msgid": "Sees every matter, assigns work, approves, and configures matter types, bodies and settings.",
+  "where": [
+   "model:res.groups,comment:legal_department_management.group_legal_manager"
+  ]
+ },
+ {
+  "id": 1607,
+  "msgid": "Owns matters: hearings, judgments, powers of attorney, letters. Sees the matters and clients assigned to them.",
+  "where": [
+   "model:res.groups,comment:legal_department_management.group_legal_user"
+  ]
+ },
+ {
+  "id": 1137,
+  "msgid": "Legal: expenses posted to accounting",
+  "where": [
+   "model:res.groups,name:legal_department_management.group_ldm_accounting_links"
+  ]
+ },
+ {
+  "id": 1130,
+  "msgid": "Legal: approvals",
+  "where": [
+   "model:res.groups,name:legal_department_management.group_ldm_approvals"
+  ]
+ },
+ {
+  "id": 325,
+  "msgid": "Auditor / executive (read only)",
+  "where": [
+   "model:res.groups,name:legal_department_management.group_ldm_auditor"
+  ]
+ },
+ {
+  "id": 1141,
+  "msgid": "Legal: fees and invoicing",
+  "where": [
+   "model:res.groups,name:legal_department_management.group_ldm_billing"
+  ]
+ },
+ {
+  "id": 459,
+  "msgid": "Clerk / Runner",
+  "where": [
+   "model:res.groups,name:legal_department_management.group_ldm_clerk"
+  ]
+ },
+ {
+  "id": 1131,
+  "msgid": "Legal: client messages",
+  "where": [
+   "model:res.groups,name:legal_department_management.group_ldm_client_messages"
+  ]
+ },
+ {
+  "id": 1134,
+  "msgid": "Legal: conflict check",
+  "where": [
+   "model:res.groups,name:legal_department_management.group_ldm_conflicts"
+  ]
+ },
+ {
+  "id": 1133,
+  "msgid": "Legal: company records",
+  "where": [
+   "model:res.groups,name:legal_department_management.group_ldm_corporate"
+  ]
+ },
+ {
+  "id": 1135,
+  "msgid": "Legal: correspondence register",
+  "where": [
+   "model:res.groups,name:legal_department_management.group_ldm_correspondence"
+  ]
+ },
+ {
+  "id": 1142,
+  "msgid": "Legal: government transactions",
+  "where": [
+   "model:res.groups,name:legal_department_management.group_ldm_government"
+  ]
+ },
+ {
+  "id": 1151,
+  "msgid": "Legal: staff team from HR",
+  "where": [
+   "model:res.groups,name:legal_department_management.group_ldm_hr_team"
+  ]
+ },
+ {
+  "id": 1144,
+  "msgid": "Legal: investigations",
+  "where": [
+   "model:res.groups,name:legal_department_management.group_ldm_investigations"
+  ]
+ },
+ {
+  "id": 1150,
+  "msgid": "Legal: requests from other departments",
+  "where": [
+   "model:res.groups,name:legal_department_management.group_ldm_requests"
+  ]
+ },
+ {
+  "id": 1146,
+  "msgid": "Legal: lawyers see every matter",
+  "where": [
+   "model:res.groups,name:legal_department_management.group_ldm_see_all"
+  ]
+ },
+ {
+  "id": 1136,
+  "msgid": "Legal: department vocabulary",
+  "where": [
+   "model:res.groups,name:legal_department_management.group_ldm_terms_department"
+  ]
+ },
+ {
+  "id": 1145,
+  "msgid": "Legal: law office vocabulary",
+  "where": [
+   "model:res.groups,name:legal_department_management.group_ldm_terms_office"
+  ]
+ },
+ {
+  "id": 1152,
+  "msgid": "Legal: time tracking",
+  "where": [
+   "model:res.groups,name:legal_department_management.group_ldm_time"
+  ]
+ },
+ {
+  "id": 1111,
+  "msgid": "Legal Manager",
+  "where": [
+   "model:res.groups,name:legal_department_management.group_legal_manager"
+  ]
+ },
+ {
+  "id": 1113,
+  "msgid": "Legal billing",
+  "where": [
+   "model:res.groups.privilege,name:legal_department_management.res_groups_privilege_ldm_billing"
+  ]
+ },
+ {
+  "id": 1352,
+  "msgid": "No cash advances",
+  "where": [
+   "model_terms:ir.actions.act_window,help:legal_department_management.action_ldm_advance"
+  ]
+ },
+ {
+  "id": 1750,
+  "msgid": "Record the cash given to a runner for government fees; settle it against the receipts they bring back.",
+  "where": [
+   "model_terms:ir.actions.act_window,help:legal_department_management.action_ldm_advance"
+  ]
+ },
+ {
+  "id": 1391,
+  "msgid": "No sessions in the next 14 days",
+  "where": [
+   "model_terms:ir.actions.act_window,help:legal_department_management.action_ldm_agenda"
+  ]
+ },
+ {
+  "id": 1938,
+  "msgid": "Sessions are added on a lawsuit's Sessions tab, or fixed by recording what happened at the previous one.",
+  "where": [
+   "model_terms:ir.actions.act_window,help:legal_department_management.action_ldm_agenda",
+   "model_terms:ir.actions.act_window,help:legal_department_management.action_ldm_hearing_calendar"
+  ]
+ },
+ {
+  "id": 736,
+  "msgid": "Each period says how long there is to challenge a judgment or act on a decision, what starts it, its legal basis and how sure we are of it.",
+  "where": [
+   "model_terms:ir.actions.act_window,help:legal_department_management.action_ldm_appeal_rule"
+  ]
+ },
+ {
+  "id": 1394,
+  "msgid": "No statutory periods",
+  "where": [
+   "model_terms:ir.actions.act_window,help:legal_department_management.action_ldm_appeal_rule"
+  ]
+ },
+ {
+  "id": 160,
+  "msgid": "A legal manager adds them under Configuration, or loads the Iraqi reference library.",
+  "where": [
+   "model_terms:ir.actions.act_window,help:legal_department_management.action_ldm_body_directory"
+  ]
+ },
+ {
+  "id": 1348,
+  "msgid": "No bodies or courts in the directory",
+  "where": [
+   "model_terms:ir.actions.act_window,help:legal_department_management.action_ldm_body_directory"
+  ]
+ },
+ {
+  "id": 1353,
+  "msgid": "No client money held",
+  "where": [
+   "model_terms:ir.actions.act_window,help:legal_department_management.action_ldm_client_fund"
+  ]
+ },
+ {
+  "id": 2274,
+  "msgid": "Use <b>Receive money</b> when a client hands over money for court fees, experts or deposits; each client's balance stays per currency and never goes below zero.",
+  "where": [
+   "model_terms:ir.actions.act_window,help:legal_department_management.action_ldm_client_fund"
+  ]
+ },
+ {
+  "id": 1390,
+  "msgid": "No service is tracked for every company",
+  "where": [
+   "model_terms:ir.actions.act_window,help:legal_department_management.action_ldm_company_coverage"
+  ]
+ },
+ {
+  "id": 2212,
+  "msgid": "Tick \"Track for every company\" on the matter types a legal manager wants followed yearly, such as the tax clearance or the chamber ID renewal.",
+  "where": [
+   "model_terms:ir.actions.act_window,help:legal_department_management.action_ldm_company_coverage"
+  ]
+ },
+ {
+  "id": 852,
+  "msgid": "File each client's registration certificate, tax clearance, chamber ID and powers of attorney once, with their expiry dates. New matters take them from here, and you are reminded before they expire.",
+  "where": [
+   "model_terms:ir.actions.act_window,help:legal_department_management.action_ldm_company_document"
+  ]
+ },
+ {
+  "id": 1355,
+  "msgid": "No company documents yet",
+  "where": [
+   "model_terms:ir.actions.act_window,help:legal_department_management.action_ldm_company_document"
+  ]
+ },
+ {
+  "id": 149,
+  "msgid": "A check runs whenever a matter is opened against someone. Every check is kept here, with its decision.",
+  "where": [
+   "model_terms:ir.actions.act_window,help:legal_department_management.action_ldm_conflict_check"
+  ]
+ },
+ {
+  "id": 1357,
+  "msgid": "No conflict checks yet",
+  "where": [
+   "model_terms:ir.actions.act_window,help:legal_department_management.action_ldm_conflict_check"
+  ]
+ },
+ {
+  "id": 1746,
+  "msgid": "Record each letter that arrives or leaves. Registering it gives it the next number of its book for the year; a mistake is voided with a reason, never deleted.",
+  "where": [
+   "model_terms:ir.actions.act_window,help:legal_department_management.action_ldm_correspondence"
+  ]
+ },
+ {
+  "id": 2170,
+  "msgid": "The register is empty",
+  "where": [
+   "model_terms:ir.actions.act_window,help:legal_department_management.action_ldm_correspondence"
+  ]
+ },
+ {
+  "id": 1381,
+  "msgid": "No open deadlines",
+  "where": [
+   "model_terms:ir.actions.act_window,help:legal_department_management.action_ldm_deadline"
+  ]
+ },
+ {
+  "id": 1744,
+  "msgid": "Record a judgment on a lawsuit and its challenge periods appear here, counted from the notification date.",
+  "where": [
+   "model_terms:ir.actions.act_window,help:legal_department_management.action_ldm_deadline"
+  ]
+ },
+ {
+  "id": 1366,
+  "msgid": "No fee agreements yet",
+  "where": [
+   "model_terms:ir.actions.act_window,help:legal_department_management.action_ldm_engagement"
+  ]
+ },
+ {
+  "id": 1755,
+  "msgid": "Record what each client pays and when: a lump sum, instalments tied to the case's stages, a success fee or a monthly retainer.",
+  "where": [
+   "model_terms:ir.actions.act_window,help:legal_department_management.action_ldm_engagement"
+  ]
+ },
+ {
+  "id": 1364,
+  "msgid": "No expenses recorded",
+  "where": [
+   "model_terms:ir.actions.act_window,help:legal_department_management.action_ldm_expense"
+  ]
+ },
+ {
+  "id": 1745,
+  "msgid": "Record each fee or cost paid on a matter with its receipt number, from the matter's Money tab or here.",
+  "where": [
+   "model_terms:ir.actions.act_window,help:legal_department_management.action_ldm_expense"
+  ]
+ },
+ {
+  "id": 209,
+  "msgid": "Add the kinds of fees and costs you pay on matters: court fees, stamps, expert deposits, publication.",
+  "where": [
+   "model_terms:ir.actions.act_window,help:legal_department_management.action_ldm_expense_category"
+  ]
+ },
+ {
+  "id": 1363,
+  "msgid": "No expense categories",
+  "where": [
+   "model_terms:ir.actions.act_window,help:legal_department_management.action_ldm_expense_category"
+  ]
+ },
+ {
+  "id": 1382,
+  "msgid": "No open lawsuits",
+  "where": [
+   "model_terms:ir.actions.act_window,help:legal_department_management.action_ldm_exposure"
+  ]
+ },
+ {
+  "id": 1548,
+  "msgid": "Open lawsuits appear here by our role and court stage, with the value of the claims.",
+  "where": [
+   "model_terms:ir.actions.act_window,help:legal_department_management.action_ldm_exposure"
+  ]
+ },
+ {
+  "id": 1372,
+  "msgid": "No letters of guarantee",
+  "where": [
+   "model_terms:ir.actions.act_window,help:legal_department_management.action_ldm_guarantee"
+  ]
+ },
+ {
+  "id": 1749,
+  "msgid": "Record the bid, performance and advance-payment guarantees: you are reminded 30 days before each one expires, and the letter to the bank is drafted for you.",
+  "where": [
+   "model_terms:ir.actions.act_window,help:legal_department_management.action_ldm_guarantee"
+  ]
+ },
+ {
+  "id": 1359,
+  "msgid": "No court sessions",
+  "where": [
+   "model_terms:ir.actions.act_window,help:legal_department_management.action_ldm_hearing_calendar"
+  ]
+ },
+ {
+  "id": 753,
+  "msgid": "Enter the Eid dates when the endowment offices announce them, and any day the Council of Ministers adds. Deadlines that end on a holiday move to the next working day.",
+  "where": [
+   "model_terms:ir.actions.act_window,help:legal_department_management.action_ldm_holiday"
+  ]
+ },
+ {
+  "id": 1368,
+  "msgid": "No holidays entered",
+  "where": [
+   "model_terms:ir.actions.act_window,help:legal_department_management.action_ldm_holiday"
+  ]
+ },
+ {
+  "id": 1370,
+  "msgid": "No letter templates",
+  "where": [
+   "model_terms:ir.actions.act_window,help:legal_department_management.action_ldm_letter_template"
+  ]
+ },
+ {
+  "id": 2448,
+  "msgid": "Write the letters you send often once, with placeholders such as {client}; every matter can then produce them in one step.",
+  "where": [
+   "model_terms:ir.actions.act_window,help:legal_department_management.action_ldm_letter_template"
+  ]
+ },
+ {
+  "id": 212,
+  "msgid": "Add what each client must file every month or year, such as the annual tax return or the chamber ID renewal. The matter opens by itself before the due date.",
+  "where": [
+   "model_terms:ir.actions.act_window,help:legal_department_management.action_ldm_obligation"
+  ]
+ },
+ {
+  "id": 1388,
+  "msgid": "No recurring obligations yet",
+  "where": [
+   "model_terms:ir.actions.act_window,help:legal_department_management.action_ldm_obligation"
+  ]
+ },
+ {
+  "id": 1384,
+  "msgid": "No opinion issued yet",
+  "where": [
+   "model_terms:ir.actions.act_window,help:legal_department_management.action_ldm_opinion_register"
+  ]
+ },
+ {
+  "id": 1541,
+  "msgid": "Open a matter of type Legal opinion, write the question and the opinion, and issue it: it gets its number for the year and appears here, searchable by its words.",
+  "where": [
+   "model_terms:ir.actions.act_window,help:legal_department_management.action_ldm_opinion_register"
+  ]
+ },
+ {
+  "id": 1386,
+  "msgid": "No powers of attorney yet",
+  "where": [
+   "model_terms:ir.actions.act_window,help:legal_department_management.action_ldm_poa"
+  ]
+ },
+ {
+  "id": 1772,
+  "msgid": "Register each power of attorney with its number, notary office and expiry date. You will be reminded before it expires, and the matters relying on it are told when it is revoked.",
+  "where": [
+   "model_terms:ir.actions.act_window,help:legal_department_management.action_ldm_poa"
+  ]
+ },
+ {
+  "id": 1389,
+  "msgid": "No request is waiting",
+  "where": [
+   "model_terms:ir.actions.act_window,help:legal_department_management.action_ldm_request"
+  ]
+ },
+ {
+  "id": 1825,
+  "msgid": "Requests from other departments arrive here. Take one, then accept it (a matter is opened), return it for completion, or decline it.",
+  "where": [
+   "model_terms:ir.actions.act_window,help:legal_department_management.action_ldm_request"
+  ]
+ },
+ {
+  "id": 305,
+  "msgid": "Ask the legal team",
+  "where": [
+   "model_terms:ir.actions.act_window,help:legal_department_management.action_ldm_request_mine"
+  ]
+ },
+ {
+  "id": 1680,
+  "msgid": "Press <b>New</b>, say what you need, by when, and attach the papers. You can follow the answer here.",
+  "where": [
+   "model_terms:ir.actions.act_window,help:legal_department_management.action_ldm_request_mine"
+  ]
+ },
+ {
+  "id": 774,
+  "msgid": "Every open matter has a signed fee agreement",
+  "where": [
+   "model_terms:ir.actions.act_window,help:legal_department_management.action_ldm_task_no_agreement"
+  ]
+ },
+ {
+  "id": 2424,
+  "msgid": "Without a written agreement the fee is the customary rate and a claim lapses after three years (Advocacy Law Arts. 59 and 65).",
+  "where": [
+   "model_terms:ir.actions.act_window,help:legal_department_management.action_ldm_task_no_agreement"
+  ]
+ },
+ {
+  "id": 163,
+  "msgid": "A matter type fills in the steps, the documents to collect and the target date whenever a matter of that type is opened.",
+  "where": [
+   "model_terms:ir.actions.act_window,help:legal_department_management.action_ldm_task_template"
+  ]
+ },
+ {
+  "id": 1376,
+  "msgid": "No matter types yet",
+  "where": [
+   "model_terms:ir.actions.act_window,help:legal_department_management.action_ldm_task_template"
+  ]
+ },
+ {
+  "id": 203,
+  "msgid": "Add a line for each piece of work: the matter, what was done and how long (1.5 or 1:30), or use the timer on the top bar.",
+  "where": [
+   "model_terms:ir.actions.act_window,help:legal_department_management.action_ldm_time_entry"
+  ]
+ },
+ {
+  "id": 1398,
+  "msgid": "No time recorded",
+  "where": [
+   "model_terms:ir.actions.act_window,help:legal_department_management.action_ldm_time_entry"
+  ]
+ },
+ {
+  "id": 990,
+  "msgid": "Instalments appear here when they fall due, time once it is approved, and expenses recharged to the client once confirmed.",
+  "where": [
+   "model_terms:ir.actions.act_window,help:legal_department_management.action_ldm_to_invoice"
+  ]
+ },
+ {
+  "id": 206,
+  "msgid": "Add the companies or people you do legal work for. Each one gets its own file of matters.",
+  "where": [
+   "model_terms:ir.actions.act_window,help:legal_department_management.action_legal_company"
+  ]
+ },
+ {
+  "id": 1354,
+  "msgid": "No clients yet",
+  "where": [
+   "model_terms:ir.actions.act_window,help:legal_department_management.action_legal_company"
+  ]
+ },
+ {
+  "id": 208,
+  "msgid": "Add the government bodies and courts you work with, with their hours, contacts and the services they offer, or load the Iraqi reference library from Settings.",
+  "where": [
+   "model_terms:ir.actions.act_window,help:legal_department_management.action_legal_department"
+  ]
+ },
+ {
+  "id": 1349,
+  "msgid": "No bodies or courts yet",
+  "where": [
+   "model_terms:ir.actions.act_window,help:legal_department_management.action_legal_department"
+  ]
+ },
+ {
+  "id": 210,
+  "msgid": "Add the ministries and authorities your bodies belong to, or load the Iraqi reference library from Settings.",
+  "where": [
+   "model_terms:ir.actions.act_window,help:legal_department_management.action_legal_ministry"
+  ]
+ },
+ {
+  "id": 1380,
+  "msgid": "No ministries yet",
+  "where": [
+   "model_terms:ir.actions.act_window,help:legal_department_management.action_legal_ministry"
+  ]
+ },
+ {
+  "id": 1378,
+  "msgid": "No matters here yet",
+  "where": [
+   "model_terms:ir.actions.act_window,help:legal_department_management.action_legal_task"
+  ]
+ },
+ {
+  "id": 1558,
+  "msgid": "Open the first one with <b>New matter</b>: choose its type and client, and the steps and documents are filled in for you.",
+  "where": [
+   "model_terms:ir.actions.act_window,help:legal_department_management.action_legal_task"
+  ]
+ },
+ {
+  "id": 1234,
+  "msgid": "Matters sent for approval appear here.",
+  "where": [
+   "model_terms:ir.actions.act_window,help:legal_department_management.action_legal_task_to_approve"
+  ]
+ },
+ {
+  "id": 1432,
+  "msgid": "Nothing is waiting for approval",
+  "where": [
+   "model_terms:ir.actions.act_window,help:legal_department_management.action_legal_task_to_approve"
+  ]
+ },
+ {
+  "id": 138,
+  "msgid": "<span> – </span>",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_engagement",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_statement"
+  ]
+ },
+ {
+  "id": 139,
+  "msgid": "<span>%</span>\n                                        <span>of the amount awarded or collected</span>",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_engagement"
+  ]
+ },
+ {
+  "id": 801,
+  "msgid": "Expenses paid in the client's interest are recharged to the client (Advocacy Law 173 of 1965, Art. 55).\n                            Outside criminal matters the fee may not exceed 20% of the value of the work (Art. 56).",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_engagement"
+  ]
+ },
+ {
+  "id": 886,
+  "msgid": "For the office",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_engagement"
+  ]
+ },
+ {
+  "id": 1227,
+  "msgid": "Matters covered",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_engagement"
+  ]
+ },
+ {
+  "id": 1631,
+  "msgid": "Payment schedule",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_engagement"
+  ]
+ },
+ {
+  "id": 2077,
+  "msgid": "The client withholds the Bar's 5% share of the retainer and remits it to the Iraqi Bar Association (Bar order 3021 of 2021).",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_engagement"
+  ]
+ },
+ {
+  "id": 2462,
+  "msgid": "a month",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_engagement"
+  ]
+ },
+ {
+  "id": 144,
+  "msgid": "<span>sessions</span>\n                        <span> · </span><span>printed on</span>",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_hearing_roll"
+  ]
+ },
+ {
+  "id": 384,
+  "msgid": "Case",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_hearing_roll",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_form"
+  ]
+ },
+ {
+  "id": 1304,
+  "msgid": "Needed before",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_hearing_roll"
+  ]
+ },
+ {
+  "id": 1360,
+  "msgid": "No court sessions in this period.",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_hearing_roll"
+  ]
+ },
+ {
+  "id": 2021,
+  "msgid": "Substitution letter needed",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_hearing_roll"
+  ]
+ },
+ {
+  "id": 113,
+  "msgid": "<b>Copies to:</b>",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_letter_document"
+  ]
+ },
+ {
+  "id": 627,
+  "msgid": "Date:",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_letter_document"
+  ]
+ },
+ {
+  "id": 923,
+  "msgid": "Greetings,",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_letter_document"
+  ]
+ },
+ {
+  "id": 1463,
+  "msgid": "Number:",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_letter_document"
+  ]
+ },
+ {
+  "id": 2017,
+  "msgid": "Subject:",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_letter_document"
+  ]
+ },
+ {
+  "id": 2233,
+  "msgid": "To:",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_letter_document"
+  ]
+ },
+ {
+  "id": 2418,
+  "msgid": "With our regards.",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_letter_document"
+  ]
+ },
+ {
+  "id": 2460,
+  "msgid": "Your letter number",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_letter_document"
+  ]
+ },
+ {
+  "id": 2511,
+  "msgid": "of",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_letter_document",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_opinion_memo_document"
+  ]
+ },
+ {
+  "id": 404,
+  "msgid": "Challenges pending ·",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_monthly_status"
+  ]
+ },
+ {
+  "id": 483,
+  "msgid": "Closed in the period",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_monthly_status"
+  ]
+ },
+ {
+  "id": 589,
+  "msgid": "Court sessions and judgments",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_monthly_status"
+  ]
+ },
+ {
+  "id": 814,
+  "msgid": "Expiring before",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_monthly_status"
+  ]
+ },
+ {
+  "id": 920,
+  "msgid": "Government transactions by body",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_monthly_status"
+  ]
+ },
+ {
+  "id": 1041,
+  "msgid": "Judgments by result",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_monthly_status"
+  ]
+ },
+ {
+  "id": 1079,
+  "msgid": "Lawsuits for and against us",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_monthly_status"
+  ]
+ },
+ {
+  "id": 1226,
+  "msgid": "Matters by kind",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_monthly_status"
+  ]
+ },
+ {
+  "id": 1367,
+  "msgid": "No government transactions.",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_monthly_status"
+  ]
+ },
+ {
+  "id": 1369,
+  "msgid": "No judgment in the period.",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_monthly_status"
+  ]
+ },
+ {
+  "id": 1379,
+  "msgid": "No matters.",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_monthly_status"
+  ]
+ },
+ {
+  "id": 1385,
+  "msgid": "No period was missed.",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_monthly_status"
+  ]
+ },
+ {
+  "id": 1427,
+  "msgid": "Nothing expires in the next 60 days.",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_monthly_status"
+  ]
+ },
+ {
+  "id": 1552,
+  "msgid": "Open now",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_monthly_status"
+  ]
+ },
+ {
+  "id": 1565,
+  "msgid": "Opened",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_monthly_status"
+  ]
+ },
+ {
+  "id": 1571,
+  "msgid": "Opened in the period",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_monthly_status"
+  ]
+ },
+ {
+  "id": 1622,
+  "msgid": "Past target",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_monthly_status"
+  ]
+ },
+ {
+  "id": 1638,
+  "msgid": "Periods missed ·",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_monthly_status"
+  ]
+ },
+ {
+  "id": 1939,
+  "msgid": "Sessions held:",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_monthly_status"
+  ]
+ },
+ {
+  "id": 1942,
+  "msgid": "Sessions still planned in the period:",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_monthly_status"
+  ]
+ },
+ {
+  "id": 2000,
+  "msgid": "Status of lawsuits and transactions",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_monthly_status"
+  ]
+ },
+ {
+  "id": 2296,
+  "msgid": "Value of the open claims",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_monthly_status"
+  ]
+ },
+ {
+  "id": 2521,
+  "msgid": "to",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_monthly_status",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_register_book"
+  ]
+ },
+ {
+  "id": 290,
+  "msgid": "Approved by",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_opinion_memo_document"
+  ]
+ },
+ {
+  "id": 306,
+  "msgid": "Asked by",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_opinion_memo_document",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_opinion_search"
+  ]
+ },
+ {
+  "id": 1408,
+  "msgid": "Not issued yet",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_opinion_memo_document",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_opinion_search"
+  ]
+ },
+ {
+  "id": 1678,
+  "msgid": "Prepared by",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_opinion_memo_document",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_legal_general_overview_document"
+  ]
+ },
+ {
+  "id": 1812,
+  "msgid": "Replaces",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_opinion_memo_document"
+  ]
+ },
+ {
+  "id": 1962,
+  "msgid": "Signature",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_opinion_memo_document",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_substitution",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_legal_company_document"
+  ]
+ },
+ {
+  "id": 1963,
+  "msgid": "Signature and stamp",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_opinion_memo_document",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_legal_company_document",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_legal_general_overview_document"
+  ]
+ },
+ {
+  "id": 2148,
+  "msgid": "The opinion",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_opinion_memo_document"
+  ]
+ },
+ {
+  "id": 2165,
+  "msgid": "The question",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_opinion_memo_document"
+  ]
+ },
+ {
+  "id": 1371,
+  "msgid": "No letters in this period.",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_register_book"
+  ]
+ },
+ {
+  "id": 2181,
+  "msgid": "Their number and date",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_register_book"
+  ]
+ },
+ {
+  "id": 2313,
+  "msgid": "Void:",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_register_book",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_correspondence_form"
+  ]
+ },
+ {
+  "id": 117,
+  "msgid": "<em>Opening balance</em>",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_statement"
+  ]
+ },
+ {
+  "id": 141,
+  "msgid": "<span>Client money we hold for you:</span>",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_statement"
+  ]
+ },
+ {
+  "id": 338,
+  "msgid": "Balance",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_statement"
+  ]
+ },
+ {
+  "id": 340,
+  "msgid": "Balance due at the end of the period",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_statement"
+  ]
+ },
+ {
+  "id": 409,
+  "msgid": "Charged",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_statement"
+  ]
+ },
+ {
+  "id": 1439,
+  "msgid": "Nothing was invoiced, paid or held for this client in the period.",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_statement"
+  ]
+ },
+ {
+  "id": 2240,
+  "msgid": "Total not invoiced",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_statement"
+  ]
+ },
+ {
+  "id": 2241,
+  "msgid": "Total still to come",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_statement"
+  ]
+ },
+ {
+  "id": 140,
+  "msgid": "<span>Bar membership no.</span>",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_substitution"
+  ]
+ },
+ {
+  "id": 142,
+  "msgid": "<span>Date:</span>",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_substitution"
+  ]
+ },
+ {
+  "id": 143,
+  "msgid": "<span>To:</span>",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_substitution"
+  ]
+ },
+ {
+  "id": 1082,
+  "msgid": "Lawyer giving the substitution",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_substitution"
+  ]
+ },
+ {
+  "id": 2197,
+  "msgid": "This letter is valid for that session only.",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_substitution"
+  ]
+ },
+ {
+  "id": 718,
+  "msgid": "Done or cancelled:",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_legal_company_document"
+  ]
+ },
+ {
+  "id": 802,
+  "msgid": "Expenses:",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_legal_company_document",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_legal_general_overview_document"
+  ]
+ },
+ {
+  "id": 1350,
+  "msgid": "No body or court",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_legal_company_document"
+  ]
+ },
+ {
+  "id": 1375,
+  "msgid": "No matter matches these options.",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_legal_company_document",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_legal_general_overview_document"
+  ]
+ },
+ {
+  "id": 1551,
+  "msgid": "Open matters:",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_legal_company_document"
+  ]
+ },
+ {
+  "id": 1692,
+  "msgid": "Printed on",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_legal_company_document",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_legal_general_overview_document"
+  ]
+ },
+ {
+  "id": 2359,
+  "msgid": "What is open and next",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_legal_company_document"
+  ]
+ },
+ {
+  "id": 477,
+  "msgid": "Clients:",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_legal_general_overview_document"
+  ]
+ },
+ {
+  "id": 1236,
+  "msgid": "Matters:",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_legal_general_overview_document"
+  ]
+ },
+ {
+  "id": 1564,
+  "msgid": "Open:",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_legal_general_overview_document"
+  ]
+ },
+ {
+  "id": 1623,
+  "msgid": "Past their target date:",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_legal_general_overview_document"
+  ]
+ },
+ {
+  "id": 2472,
+  "msgid": "by",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_legal_general_overview_document"
+  ]
+ },
+ {
+  "id": 100,
+  "msgid": "(optional)",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_legal_task_document"
+  ]
+ },
+ {
+  "id": 314,
+  "msgid": "At the counter",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_legal_task_document"
+  ]
+ },
+ {
+  "id": 572,
+  "msgid": "Counter or office",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_legal_task_document"
+  ]
+ },
+ {
+  "id": 716,
+  "msgid": "Done on · receipt",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_legal_task_document"
+  ]
+ },
+ {
+  "id": 1709,
+  "msgid": "QR code of the matter",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_legal_task_document"
+  ]
+ },
+ {
+  "id": 1937,
+  "msgid": "Sessions and visits",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_legal_task_document"
+  ]
+ },
+ {
+  "id": 2238,
+  "msgid": "Total",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_legal_task_document",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_advance_form",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_advance_list"
+  ]
+ },
+ {
+  "id": 2377,
+  "msgid": "What was said",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_legal_task_document"
+  ]
+ },
+ {
+  "id": 2393,
+  "msgid": "Where",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_legal_task_document"
+  ]
+ },
+ {
+  "id": 2406,
+  "msgid": "Whom we met",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_legal_task_document"
+  ]
+ },
+ {
+  "id": 2543,
+  "msgid": "· <span class=\"o_ldm_r_badge\">Urgent</span>",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_legal_task_document"
+  ]
+ },
+ {
+  "id": 122,
+  "msgid": "<span class=\"flex-shrink-0 me-2\">Foreign company</span>",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.res_config_settings_view_form"
+  ]
+ },
+ {
+  "id": 123,
+  "msgid": "<span class=\"flex-shrink-0 me-2\">Local company</span>",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.res_config_settings_view_form"
+  ]
+ },
+ {
+  "id": 124,
+  "msgid": "<span class=\"flex-shrink-0 me-2\">Remind this many working days before</span>",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.res_config_settings_view_form"
+  ]
+ },
+ {
+  "id": 125,
+  "msgid": "<span class=\"flex-shrink-0 me-2\">Warn before expiry (days)</span>",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.res_config_settings_view_form"
+  ]
+ },
+ {
+  "id": 126,
+  "msgid": "<span class=\"flex-shrink-0 ms-5 me-2\">When a match is found</span>",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.res_config_settings_view_form"
+  ]
+ },
+ {
+  "id": 224,
+  "msgid": "Advanced",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.res_config_settings_view_form"
+  ]
+ },
+ {
+  "id": 434,
+  "msgid": "Choosing sets the switches below. You can still change each switch afterwards.",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.res_config_settings_view_form"
+  ]
+ },
+ {
+  "id": 518,
+  "msgid": "Confidential matters are only ever seen by their team and legal managers.",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.res_config_settings_view_form"
+  ]
+ },
+ {
+  "id": 546,
+  "msgid": "Content",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.res_config_settings_view_form"
+  ]
+ },
+ {
+  "id": 629,
+  "msgid": "Dates and reminders",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.res_config_settings_view_form"
+  ]
+ },
+ {
+  "id": 644,
+  "msgid": "Deadlines that end on a holiday move to the next working day; steps count working days.",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.res_config_settings_view_form"
+  ]
+ },
+ {
+  "id": 737,
+  "msgid": "Each type fills in the steps, the documents to collect and the target date.",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.res_config_settings_view_form"
+  ]
+ },
+ {
+  "id": 844,
+  "msgid": "Fees and billing",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.res_config_settings_view_form"
+  ]
+ },
+ {
+  "id": 999,
+  "msgid": "Investigation committees, recommendations, decisions and compensation.",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.res_config_settings_view_form"
+  ]
+ },
+ {
+  "id": 1129,
+  "msgid": "Legal-adviser retainers",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.res_config_settings_view_form"
+  ]
+ },
+ {
+  "id": 1181,
+  "msgid": "Load the Iraqi reference library",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.res_config_settings_view_form"
+  ]
+ },
+ {
+  "id": 1255,
+  "msgid": "Minimum monthly retainers under the Iraqi Bar's order 3021 of 2021. Check the current amounts.",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.res_config_settings_view_form"
+  ]
+ },
+ {
+  "id": 1258,
+  "msgid": "Ministries, their departments, and the courts.",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.res_config_settings_view_form"
+  ]
+ },
+ {
+  "id": 1465,
+  "msgid": "Numbered incoming and outgoing letters, the register book and reply deadlines.",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.res_config_settings_view_form"
+  ]
+ },
+ {
+  "id": 1799,
+  "msgid": "Reminders",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.res_config_settings_view_form"
+  ]
+ },
+ {
+  "id": 2195,
+  "msgid": "This legal team is",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.res_config_settings_view_form"
+  ]
+ },
+ {
+  "id": 2301,
+  "msgid": "Visibility",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.res_config_settings_view_form"
+  ]
+ },
+ {
+  "id": 2396,
+  "msgid": "Whether the application speaks of group companies, clients, or both.",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.res_config_settings_view_form"
+  ]
+ },
+ {
+  "id": 2430,
+  "msgid": "Words used",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.res_config_settings_view_form"
+  ]
+ },
+ {
+  "id": 2431,
+  "msgid": "Work",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.res_config_settings_view_form"
+  ]
+ },
+ {
+  "id": 960,
+  "msgid": "IQD amounts will be rounded to whole dinars from now on. Continue?",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.res_config_settings_view_form_money"
+  ]
+ },
+ {
+  "id": 1011,
+  "msgid": "Iraqi dinar without fils",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.res_config_settings_view_form_money"
+  ]
+ },
+ {
+  "id": 1955,
+  "msgid": "Show IQD in whole dinars",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.res_config_settings_view_form_money"
+  ]
+ },
+ {
+  "id": 1958,
+  "msgid": "Show and round IQD amounts in whole dinars. Possible only before any accounting entry in dinars is posted.",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.res_config_settings_view_form_money"
+  ]
+ },
+ {
+  "id": 932,
+  "msgid": "Hand over",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_advance_form",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_handover_wizard_form"
+  ]
+ },
+ {
+  "id": 1947,
+  "msgid": "Settle",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_advance_form",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_advance_settle_wizard_form"
+  ]
+ },
+ {
+  "id": 2493,
+  "msgid": "e.g. Fees for the tax clearance renewals",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_advance_form"
+  ]
+ },
+ {
+  "id": 1415,
+  "msgid": "Not settled",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_advance_search"
+  ]
+ },
+ {
+  "id": 686,
+  "msgid": "Discard",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_advance_settle_wizard_form",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_client_message_wizard_form",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_conflict_decision_wizard_form"
+  ]
+ },
+ {
+  "id": 2168,
+  "msgid": "The receipts paid from this advance. Remove any that do not belong to it.",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_advance_settle_wizard_form"
+  ]
+ },
+ {
+  "id": 296,
+  "msgid": "Archived",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_appeal_rule_form",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_appeal_rule_search",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_company_document_form"
+  ]
+ },
+ {
+  "id": 489,
+  "msgid": "Code, e.g. CIV-2",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_appeal_rule_form"
+  ]
+ },
+ {
+  "id": 2153,
+  "msgid": "The period",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_appeal_rule_form"
+  ]
+ },
+ {
+  "id": 2203,
+  "msgid": "This period is not yet checked against the law's own text. Confirm it before relying on it at a court.",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_appeal_rule_form"
+  ]
+ },
+ {
+  "id": 2394,
+  "msgid": "Where it applies",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_appeal_rule_form"
+  ]
+ },
+ {
+  "id": 2486,
+  "msgid": "e.g. Appeal of a first-instance judgment",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_appeal_rule_form"
+  ]
+ },
+ {
+  "id": 1418,
+  "msgid": "Not yet verified",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_appeal_rule_search"
+  ]
+ },
+ {
+  "id": 1796,
+  "msgid": "Remind the client",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_billable_list",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_engagement_form"
+  ]
+ },
+ {
+  "id": 843,
+  "msgid": "Fees",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_billable_search"
+  ]
+ },
+ {
+  "id": 1559,
+  "msgid": "Open the map",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_body_directory_form"
+  ]
+ },
+ {
+  "id": 118,
+  "msgid": "<i class=\"fa fa-clock-o\" title=\"Opening hours\" role=\"img\"/>",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_body_directory_kanban"
+  ]
+ },
+ {
+  "id": 120,
+  "msgid": "<i class=\"fa fa-phone\" title=\"Phone\" role=\"img\"/>",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_body_directory_kanban"
+  ]
+ },
+ {
+  "id": 1196,
+  "msgid": "Map",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_body_directory_list"
+  ]
+ },
+ {
+  "id": 1624,
+  "msgid": "Pay out",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_client_fund_list"
+  ]
+ },
+ {
+  "id": 1727,
+  "msgid": "Receive money",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_client_fund_list"
+  ]
+ },
+ {
+  "id": 1614,
+  "msgid": "Paid out",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_client_fund_search"
+  ]
+ },
+ {
+  "id": 108,
+  "msgid": "07XX XXX XXXX",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_client_message_wizard_form"
+  ]
+ },
+ {
+  "id": 1546,
+  "msgid": "Open in WhatsApp",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_client_message_wizard_form"
+  ]
+ },
+ {
+  "id": 1911,
+  "msgid": "Send by email",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_client_message_wizard_form"
+  ]
+ },
+ {
+  "id": 2130,
+  "msgid": "The message the client will receive.",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_client_message_wizard_form"
+  ]
+ },
+ {
+  "id": 2500,
+  "msgid": "e.g. Tax clearance",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_company_document_form",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_document_type_form"
+  ]
+ },
+ {
+  "id": 2291,
+  "msgid": "Valid on a date",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_company_document_list",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_company_form_gov"
+  ]
+ },
+ {
+  "id": 816,
+  "msgid": "Expiring or expired",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_company_document_search"
+  ]
+ },
+ {
+  "id": 301,
+  "msgid": "Ask a partner to decide",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_conflict_check_form",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_form_money"
+  ]
+ },
+ {
+  "id": 654,
+  "msgid": "Decide",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_conflict_check_form",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_form_money"
+  ]
+ },
+ {
+  "id": 538,
+  "msgid": "Conflicts",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_conflict_check_list"
+  ]
+ },
+ {
+  "id": 2419,
+  "msgid": "With possible conflicts",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_conflict_check_search"
+  ]
+ },
+ {
+  "id": 1053,
+  "msgid": "Kept with the check as evidence of the decision.",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_conflict_decision_wizard_form"
+  ]
+ },
+ {
+  "id": 1751,
+  "msgid": "Record the decision",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_conflict_decision_wizard_form"
+  ]
+ },
+ {
+  "id": 260,
+  "msgid": "Answer due",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_correspondence_form"
+  ]
+ },
+ {
+  "id": 909,
+  "msgid": "Given on registration",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_correspondence_form"
+  ]
+ },
+ {
+  "id": 1177,
+  "msgid": "Links",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_correspondence_form"
+  ]
+ },
+ {
+  "id": 1480,
+  "msgid": "One addressee per line",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_correspondence_form"
+  ]
+ },
+ {
+  "id": 1538,
+  "msgid": "Open a matter",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_correspondence_form",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_reg_matter_wizard_form"
+  ]
+ },
+ {
+  "id": 1684,
+  "msgid": "Print",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_correspondence_form",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_hearing_roll_wizard_form",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_monthly_report_wizard_form"
+  ]
+ },
+ {
+  "id": 1765,
+  "msgid": "Referral",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_correspondence_form"
+  ]
+ },
+ {
+  "id": 1770,
+  "msgid": "Register",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_correspondence_form"
+  ]
+ },
+ {
+  "id": 2016,
+  "msgid": "Subject of the letter",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_correspondence_form"
+  ]
+ },
+ {
+  "id": 2447,
+  "msgid": "Write the letter, or choose a template.",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_correspondence_form"
+  ]
+ },
+ {
+  "id": 328,
+  "msgid": "Awaiting an answer",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_correspondence_search"
+  ]
+ },
+ {
+  "id": 1413,
+  "msgid": "Not registered",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_correspondence_search"
+  ]
+ },
+ {
+  "id": 1768,
+  "msgid": "Referred to me",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_correspondence_search"
+  ]
+ },
+ {
+  "id": 880,
+  "msgid": "For example: sent to the wrong directorate; replaced by letter 2026/58.",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_correspondence_void_wizard_form"
+  ]
+ },
+ {
+  "id": 121,
+  "msgid": "<span class=\"badge text-bg-danger\" invisible=\"not rule_peremptory\">Cannot be extended</span>\n                            <span class=\"badge text-bg-info\" invisible=\"our_action\">Runs for the other side</span>",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_deadline_form"
+  ]
+ },
+ {
+  "id": 1199,
+  "msgid": "Mark as met",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_deadline_form",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_deadline_list",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_form_lit"
+  ]
+ },
+ {
+  "id": 1200,
+  "msgid": "Mark as used",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_deadline_form"
+  ]
+ },
+ {
+  "id": 1805,
+  "msgid": "Reopen",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_deadline_form",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_form"
+  ]
+ },
+ {
+  "id": 2150,
+  "msgid": "The other side or the authority acted within the period.",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_deadline_form"
+  ]
+ },
+ {
+  "id": 2156,
+  "msgid": "The period ends on a weekend or public holiday, so the law gives until the next working day (Civil Procedure Law Art. 25(2)). Act by the earlier date.",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_deadline_form"
+  ]
+ },
+ {
+  "id": 2204,
+  "msgid": "This period starts when the judgment or decision is served. Enter the notification date and the dates are counted.",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_deadline_form"
+  ]
+ },
+ {
+  "id": 2379,
+  "msgid": "When",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_deadline_form"
+  ]
+ },
+ {
+  "id": 2400,
+  "msgid": "Who and what",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_deadline_form"
+  ]
+ },
+ {
+  "id": 2497,
+  "msgid": "e.g. Reply to the court's letter",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_deadline_form"
+  ]
+ },
+ {
+  "id": 135,
+  "msgid": "<span class=\"text-muted\">Act by</span>",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_deadline_kanban",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_form_lit"
+  ]
+ },
+ {
+  "id": 403,
+  "msgid": "Challenge windows",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_deadline_search"
+  ]
+ },
+ {
+  "id": 751,
+  "msgid": "Ends within 7 days",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_deadline_search"
+  ]
+ },
+ {
+  "id": 1599,
+  "msgid": "Ours to act on",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_deadline_search"
+  ]
+ },
+ {
+  "id": 2352,
+  "msgid": "Week",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_deadline_search"
+  ]
+ },
+ {
+  "id": 806,
+  "msgid": "Expire",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_document_type_search"
+  ]
+ },
+ {
+  "id": 420,
+  "msgid": "Choose a template: its text is filled from the matter and can be edited here before the document is created.",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_document_wizard_form"
+  ]
+ },
+ {
+  "id": 604,
+  "msgid": "Create the document",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_document_wizard_form"
+  ]
+ },
+ {
+  "id": 102,
+  "msgid": ") is",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_engagement_form"
+  ]
+ },
+ {
+  "id": 104,
+  "msgid": ",\n                            but 20% of the value of the matters (",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_engagement_form"
+  ]
+ },
+ {
+  "id": 106,
+  "msgid": ".\n                            Outside criminal matters, Advocacy Law Art. 56 does not allow more. Only a legal manager can activate it, with a reason.",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_engagement_form"
+  ]
+ },
+ {
+  "id": 112,
+  "msgid": "<b>Above the 20% cap.</b>\n                            The fee counted against the cap is",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_engagement_form"
+  ]
+ },
+ {
+  "id": 194,
+  "msgid": "Activate",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_engagement_form"
+  ]
+ },
+ {
+  "id": 352,
+  "msgid": "Below the Bar's minimum retainer of",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_engagement_form"
+  ]
+ },
+ {
+  "id": 839,
+  "msgid": "Fee per matter",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_engagement_form"
+  ]
+ },
+ {
+  "id": 840,
+  "msgid": "Fee per session",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_engagement_form"
+  ]
+ },
+ {
+  "id": 1175,
+  "msgid": "Link matters from each matter's Money tab. The 20% cap is checked against their value.",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_engagement_form"
+  ]
+ },
+ {
+  "id": 1277,
+  "msgid": "Monthly fee",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_engagement_form"
+  ]
+ },
+ {
+  "id": 2327,
+  "msgid": "Waive",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_engagement_form",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_fee_waive_wizard_form"
+  ]
+ },
+ {
+  "id": 2370,
+  "msgid": "What the office agreed to do, and what it did not.",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_engagement_form"
+  ]
+ },
+ {
+  "id": 2415,
+  "msgid": "Why the fee may exceed 20% of the value",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_engagement_form"
+  ]
+ },
+ {
+  "id": 2463,
+  "msgid": "a month\n                        for this kind of company (Iraqi Bar order 3021 of 2021; check the current amount).",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_engagement_form"
+  ]
+ },
+ {
+  "id": 133,
+  "msgid": "<span class=\"small\" invisible=\"signed\">Not signed</span>\n                            <span class=\"small text-muted\" invisible=\"not signed\">Signed</span>",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_engagement_kanban"
+  ]
+ },
+ {
+  "id": 1416,
+  "msgid": "Not signed",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_engagement_search"
+  ]
+ },
+ {
+  "id": 1843,
+  "msgid": "Retainers",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_engagement_search"
+  ]
+ },
+ {
+  "id": 186,
+  "msgid": "Accounting",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_expense_form"
+  ]
+ },
+ {
+  "id": 1462,
+  "msgid": "Number on the government receipt",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_expense_form"
+  ]
+ },
+ {
+  "id": 2191,
+  "msgid": "This expense is on an invoice to the client.",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_expense_form"
+  ]
+ },
+ {
+  "id": 2490,
+  "msgid": "e.g. Court fee for the statement of claim",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_expense_form"
+  ]
+ },
+ {
+  "id": 1661,
+  "msgid": "Post",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_expense_post_wizard_form"
+  ]
+ },
+ {
+  "id": 890,
+  "msgid": "From a cash advance",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_expense_search"
+  ]
+ },
+ {
+  "id": 891,
+  "msgid": "From client money",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_expense_search"
+  ]
+ },
+ {
+  "id": 1406,
+  "msgid": "Not invoiced",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_expense_search"
+  ]
+ },
+ {
+  "id": 1610,
+  "msgid": "Paid by me",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_expense_search"
+  ]
+ },
+ {
+  "id": 1737,
+  "msgid": "Recharged to the client",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_expense_search"
+  ]
+ },
+ {
+  "id": 2167,
+  "msgid": "The reason is kept on the agreement.",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_fee_waive_wizard_form"
+  ]
+ },
+ {
+  "id": 111,
+  "msgid": ";\n                    afterwards:",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_fund_move_wizard_form"
+  ]
+ },
+ {
+  "id": 943,
+  "msgid": "Held for this client now:",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_fund_move_wizard_form"
+  ]
+ },
+ {
+  "id": 1495,
+  "msgid": "Only a legal manager can allow it.",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_fund_move_wizard_form"
+  ]
+ },
+ {
+  "id": 2210,
+  "msgid": "This would take the client's money below zero.",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_fund_move_wizard_form"
+  ]
+ },
+ {
+  "id": 129,
+  "msgid": "<span class=\"o_stat_text\">Letters</span>",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_guarantee_form"
+  ]
+ },
+ {
+  "id": 810,
+  "msgid": "Expires in",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_guarantee_form",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_poa_form"
+  ]
+ },
+ {
+  "id": 2476,
+  "msgid": "days. Ask the bank to extend it,\n                        or release it if the obligation is fulfilled.",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_guarantee_form"
+  ]
+ },
+ {
+  "id": 2496,
+  "msgid": "e.g. Performance guarantee — Basra water contract",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_guarantee_form"
+  ]
+ },
+ {
+  "id": 1180,
+  "msgid": "Live",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_guarantee_search"
+  ]
+ },
+ {
+  "id": 521,
+  "msgid": "Confirm",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_guarantee_wizard_form"
+  ]
+ },
+ {
+  "id": 1584,
+  "msgid": "Optional note for the history",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_guarantee_wizard_form"
+  ]
+ },
+ {
+  "id": 1756,
+  "msgid": "Record what happened",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_hearing_form",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_hearing_list",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_form_lit"
+  ]
+ },
+ {
+  "id": 1833,
+  "msgid": "Responsible for the matter",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_hearing_form"
+  ]
+ },
+ {
+  "id": 2369,
+  "msgid": "What the court said and did",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_hearing_form"
+  ]
+ },
+ {
+  "id": 1741,
+  "msgid": "Record",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_hearing_kanban",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_hearing_list",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_form_lit"
+  ]
+ },
+ {
+  "id": 273,
+  "msgid": "Anything worth remembering from the session",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_hearing_outcome_wizard_form"
+  ]
+ },
+ {
+  "id": 645,
+  "msgid": "Deadlines this judgment opens",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_hearing_outcome_wizard_form"
+  ]
+ },
+ {
+  "id": 2487,
+  "msgid": "e.g. Bring the expert's report",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_hearing_outcome_wizard_form"
+  ]
+ },
+ {
+  "id": 322,
+  "msgid": "Attending",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_hearing_search"
+  ]
+ },
+ {
+  "id": 945,
+  "msgid": "Held, not yet recorded",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_hearing_search"
+  ]
+ },
+ {
+  "id": 1326,
+  "msgid": "Next 14 days",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_hearing_search"
+  ]
+ },
+ {
+  "id": 1758,
+  "msgid": "Recorded",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_hearing_search"
+  ]
+ },
+ {
+  "id": 2267,
+  "msgid": "Upcoming",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_hearing_search"
+  ]
+ },
+ {
+  "id": 154,
+  "msgid": "A deadline whose last day falls on this holiday moves to the next working day, and the lawyers whose dates move are told on their matters.",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_holiday_form"
+  ]
+ },
+ {
+  "id": 2492,
+  "msgid": "e.g. Eid al-Adha",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_holiday_form"
+  ]
+ },
+ {
+  "id": 766,
+  "msgid": "Estimated dates",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_holiday_search"
+  ]
+ },
+ {
+  "id": 896,
+  "msgid": "From today",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_holiday_search"
+  ]
+ },
+ {
+  "id": 2107,
+  "msgid": "The invoices are created as drafts: check the date and the lines on each before sending it.",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_invoice_wizard_form"
+  ]
+ },
+ {
+  "id": 1183,
+  "msgid": "Lodge",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_judgment_challenge_wizard_form"
+  ]
+ },
+ {
+  "id": 2072,
+  "msgid": "The challenge's period is marked as met, the other open challenge periods of this judgment close, and the next court stage opens on the matter.",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_judgment_challenge_wizard_form"
+  ]
+ },
+ {
+  "id": 1286,
+  "msgid": "Most challenge periods count from the day after the judgment is served. Enter the notification date to count them.",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_judgment_form"
+  ]
+ },
+ {
+  "id": 2087,
+  "msgid": "The court",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_judgment_form"
+  ]
+ },
+ {
+  "id": 2110,
+  "msgid": "The judgment",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_judgment_form"
+  ]
+ },
+ {
+  "id": 2368,
+  "msgid": "What the court decided, in a few lines.",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_judgment_form"
+  ]
+ },
+ {
+  "id": 862,
+  "msgid": "Filled with",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_letter_template_form"
+  ]
+ },
+ {
+  "id": 954,
+  "msgid": "How letters to that body are addressed",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_letter_template_form"
+  ]
+ },
+ {
+  "id": 1597,
+  "msgid": "Our company or office",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_letter_template_form"
+  ]
+ },
+ {
+  "id": 1598,
+  "msgid": "Our role in the lawsuit",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_letter_template_form"
+  ]
+ },
+ {
+  "id": 1647,
+  "msgid": "Placeholder",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_letter_template_form"
+  ]
+ },
+ {
+  "id": 1648,
+  "msgid": "Placeholders",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_letter_template_form"
+  ]
+ },
+ {
+  "id": 1650,
+  "msgid": "Plain text. Use the placeholders on the next tab, in braces.",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_letter_template_form"
+  ]
+ },
+ {
+  "id": 2068,
+  "msgid": "The body or court the letter goes to",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_letter_template_form"
+  ]
+ },
+ {
+  "id": 2078,
+  "msgid": "The client's address",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_letter_template_form"
+  ]
+ },
+ {
+  "id": 2081,
+  "msgid": "The client's registration number",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_letter_template_form"
+  ]
+ },
+ {
+  "id": 2088,
+  "msgid": "The court case number",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_letter_template_form"
+  ]
+ },
+ {
+  "id": 2114,
+  "msgid": "The lawyer responsible for the matter",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_letter_template_form"
+  ]
+ },
+ {
+  "id": 2120,
+  "msgid": "The letter of guarantee",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_letter_template_form"
+  ]
+ },
+ {
+  "id": 2121,
+  "msgid": "The letter's register number and date",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_letter_template_form"
+  ]
+ },
+ {
+  "id": 2122,
+  "msgid": "The letter's subject",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_letter_template_form"
+  ]
+ },
+ {
+  "id": 2125,
+  "msgid": "The matter number",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_letter_template_form"
+  ]
+ },
+ {
+  "id": 2126,
+  "msgid": "The matter title",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_letter_template_form"
+  ]
+ },
+ {
+  "id": 2138,
+  "msgid": "The number and date of the letter we answer",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_letter_template_form"
+  ]
+ },
+ {
+  "id": 2139,
+  "msgid": "The number of the issued opinion",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_letter_template_form"
+  ]
+ },
+ {
+  "id": 2149,
+  "msgid": "The opposing party",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_letter_template_form"
+  ]
+ },
+ {
+  "id": 2161,
+  "msgid": "The power of attorney",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_letter_template_form"
+  ]
+ },
+ {
+  "id": 2235,
+  "msgid": "Today's date",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_letter_template_form"
+  ]
+ },
+ {
+  "id": 2402,
+  "msgid": "Who signs, and their title",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_letter_template_form"
+  ]
+ },
+ {
+  "id": 2445,
+  "msgid": "Write a placeholder in braces, for example {client}. Only these names are filled; anything else in braces is printed as written, so a typo shows on the draft.",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_letter_template_form"
+  ]
+ },
+ {
+  "id": 2498,
+  "msgid": "e.g. Request for a good-standing certificate",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_letter_template_form"
+  ]
+ },
+ {
+  "id": 2503,
+  "msgid": "e.g. Update on {matter}",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_letter_template_form"
+  ]
+ },
+ {
+  "id": 1080,
+  "msgid": "Lawsuits for and against, matters opened and closed, sessions, judgments, pending challenges, missed periods, government transactions by body, and what expires in the next 60 days.",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_monthly_report_wizard_form"
+  ]
+ },
+ {
+  "id": 1104,
+  "msgid": "Leave empty to be reminded only",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_obligation_form"
+  ]
+ },
+ {
+  "id": 1561,
+  "msgid": "Open the matter now",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_obligation_form"
+  ]
+ },
+ {
+  "id": 2082,
+  "msgid": "The client's responsible",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_obligation_form"
+  ]
+ },
+ {
+  "id": 2395,
+  "msgid": "Where it is filed, who signs, penalties for lateness...",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_obligation_form"
+  ]
+ },
+ {
+  "id": 2485,
+  "msgid": "e.g. Annual tax return",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_obligation_form"
+  ]
+ },
+ {
+  "id": 727,
+  "msgid": "Due in 30 days",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_obligation_search"
+  ]
+ },
+ {
+  "id": 1798,
+  "msgid": "Reminder only",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_obligation_search"
+  ]
+ },
+ {
+  "id": 1808,
+  "msgid": "Replaced by",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_opinion_list"
+  ]
+ },
+ {
+  "id": 971,
+  "msgid": "In force",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_opinion_search"
+  ]
+ },
+ {
+  "id": 1021,
+  "msgid": "Issued",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_opinion_search"
+  ]
+ },
+ {
+  "id": 1807,
+  "msgid": "Replaced",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_opinion_search"
+  ]
+ },
+ {
+  "id": 2429,
+  "msgid": "Words in the question or the opinion",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_opinion_search"
+  ]
+ },
+ {
+  "id": 746,
+  "msgid": "Empty: valid before every body",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_poa_form"
+  ]
+ },
+ {
+  "id": 1281,
+  "msgid": "More",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_poa_form",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_form",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_visit_wizard_form"
+  ]
+ },
+ {
+  "id": 1323,
+  "msgid": "New power of attorney",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_poa_form"
+  ]
+ },
+ {
+  "id": 1860,
+  "msgid": "Revoke",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_poa_form",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_poa_revoke_wizard_form"
+  ]
+ },
+ {
+  "id": 2053,
+  "msgid": "The acts the agent may do, in the words of the deed.",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_poa_form"
+  ]
+ },
+ {
+  "id": 2477,
+  "msgid": "days. Once it is renewed,\n                        enter the new expiry date.",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_poa_form"
+  ]
+ },
+ {
+  "id": 881,
+  "msgid": "For example: the client ended the mandate by notarial notice 1234 of 20 September 2026.",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_poa_revoke_wizard_form"
+  ]
+ },
+ {
+  "id": 2186,
+  "msgid": "These open matters rely on it; their responsible will be told:",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_poa_revoke_wizard_form"
+  ]
+ },
+ {
+  "id": 228,
+  "msgid": "Agent",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_poa_search"
+  ]
+ },
+ {
+  "id": 376,
+  "msgid": "Can act today",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_poa_search"
+  ]
+ },
+ {
+  "id": 956,
+  "msgid": "I am an agent",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_poa_search"
+  ]
+ },
+ {
+  "id": 107,
+  "msgid": ".\n                        Status:",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_request_form"
+  ]
+ },
+ {
+  "id": 114,
+  "msgid": "<b>Declined:</b>",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_request_form"
+  ]
+ },
+ {
+  "id": 115,
+  "msgid": "<b>Returned to you:</b>",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_request_form"
+  ]
+ },
+ {
+  "id": 179,
+  "msgid": "Accept",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_request_form"
+  ]
+ },
+ {
+  "id": 511,
+  "msgid": "Complete the request, then press “Send again”.",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_request_form"
+  ]
+ },
+ {
+  "id": 1845,
+  "msgid": "Return",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_request_form"
+  ]
+ },
+ {
+  "id": 1910,
+  "msgid": "Send again",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_request_form"
+  ]
+ },
+ {
+  "id": 1914,
+  "msgid": "Send the result",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_request_form",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_request_result_wizard_form"
+  ]
+ },
+ {
+  "id": 2034,
+  "msgid": "Take it",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_request_form"
+  ]
+ },
+ {
+  "id": 2117,
+  "msgid": "The legal team opened matter",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_request_form"
+  ]
+ },
+ {
+  "id": 2360,
+  "msgid": "What is the question or the situation? Who is the other party? What has been done so far?",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_request_form"
+  ]
+ },
+ {
+  "id": 2499,
+  "msgid": "e.g. Review the supply contract with Al-Nahrain Company",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_request_form"
+  ]
+ },
+ {
+  "id": 2544,
+  "msgid": "· next date",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_request_form"
+  ]
+ },
+ {
+  "id": 264,
+  "msgid": "Answer the request",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_request_reason_wizard_form"
+  ]
+ },
+ {
+  "id": 883,
+  "msgid": "For example: this is a commercial decision, not a legal question.",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_request_reason_wizard_form"
+  ]
+ },
+ {
+  "id": 2358,
+  "msgid": "What is missing? For example: attach the signed draft and the other party's registration certificate.",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_request_reason_wizard_form"
+  ]
+ },
+ {
+  "id": 2407,
+  "msgid": "Why",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_request_reason_wizard_form"
+  ]
+ },
+ {
+  "id": 1909,
+  "msgid": "Send",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_request_result_wizard_form"
+  ]
+ },
+ {
+  "id": 2124,
+  "msgid": "The matter has no files yet: the requester will receive the message only.",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_request_result_wizard_form"
+  ]
+ },
+ {
+  "id": 1252,
+  "msgid": "Mine to handle",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_request_search"
+  ]
+ },
+ {
+  "id": 1311,
+  "msgid": "Needed within 7 days",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_request_search"
+  ]
+ },
+ {
+  "id": 1851,
+  "msgid": "Returned",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_request_search"
+  ]
+ },
+ {
+  "id": 2229,
+  "msgid": "To handle",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_request_search"
+  ]
+ },
+ {
+  "id": 145,
+  "msgid": "<span>to</span>",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_statement_wizard_form"
+  ]
+ },
+ {
+  "id": 2046,
+  "msgid": "Tell the client",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_statement_wizard_form"
+  ]
+ },
+ {
+  "id": 271,
+  "msgid": "Anything the next person to open this file should know.",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_task_decision_wizard_form"
+  ]
+ },
+ {
+  "id": 2166,
+  "msgid": "The reason is kept in the matter's history.",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_task_decision_wizard_form"
+  ]
+ },
+ {
+  "id": 2200,
+  "msgid": "This matter still has",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_task_decision_wizard_form"
+  ]
+ },
+ {
+  "id": 2417,
+  "msgid": "Why?",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_task_decision_wizard_form"
+  ]
+ },
+ {
+  "id": 2513,
+  "msgid": "open steps, sessions or deadlines.",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_task_decision_wizard_form"
+  ]
+ },
+ {
+  "id": 348,
+  "msgid": "Before closing",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_task_decision_wizard_form_money"
+  ]
+ },
+ {
+  "id": 1849,
+  "msgid": "Return the client's money and original documents when the matter ends (Advocacy Law Art. 53).",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_task_decision_wizard_form_money"
+  ]
+ },
+ {
+  "id": 2416,
+  "msgid": "Why the remaining fee is waived",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_task_decision_wizard_form_money"
+  ]
+ },
+ {
+  "id": 302,
+  "msgid": "Ask for confirmation",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_task_document_form"
+  ]
+ },
+ {
+  "id": 697,
+  "msgid": "Document to collect",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_task_document_form"
+  ]
+ },
+ {
+  "id": 2033,
+  "msgid": "Take from the client's records",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_task_document_form"
+  ]
+ },
+ {
+  "id": 2364,
+  "msgid": "What the body said about this document...",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_task_document_form"
+  ]
+ },
+ {
+  "id": 168,
+  "msgid": "A note for whoever does it",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_task_step_form"
+  ]
+ },
+ {
+  "id": 2489,
+  "msgid": "e.g. Collect the tax clearance letter",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_task_step_form"
+  ]
+ },
+ {
+  "id": 2069,
+  "msgid": "The body's usual answer time",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_task_template_form"
+  ]
+ },
+ {
+  "id": 2391,
+  "msgid": "When to use this type, what the body asks for...",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_task_template_form"
+  ]
+ },
+ {
+  "id": 2501,
+  "msgid": "e.g. Tax clearance for companies",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_task_template_form"
+  ]
+ },
+ {
+  "id": 917,
+  "msgid": "Government services",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_task_template_search"
+  ]
+ },
+ {
+  "id": 1078,
+  "msgid": "Lawsuits",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_task_template_search"
+  ]
+ },
+ {
+  "id": 2243,
+  "msgid": "Tracked for every company",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_task_template_search"
+  ]
+ },
+ {
+  "id": 2215,
+  "msgid": "Time analysis",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_time_pivot"
+  ]
+ },
+ {
+  "id": 1639,
+  "msgid": "Person",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_time_search"
+  ]
+ },
+ {
+  "id": 2227,
+  "msgid": "To approve",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_time_search"
+  ]
+ },
+ {
+  "id": 1685,
+  "msgid": "Print file",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_company_form"
+  ]
+ },
+ {
+  "id": 1777,
+  "msgid": "Registration",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_company_form"
+  ]
+ },
+ {
+  "id": 2483,
+  "msgid": "e.g. Al-Rafidain Contracting Company",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_company_form"
+  ]
+ },
+ {
+  "id": 1471,
+  "msgid": "Obligations",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_company_form_gov"
+  ]
+ },
+ {
+  "id": 127,
+  "msgid": "<span class=\"o_stat_text\">Balance due</span>",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_company_form_money"
+  ]
+ },
+ {
+  "id": 128,
+  "msgid": "<span class=\"o_stat_text\">Client money</span>",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_company_form_money",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_form_money"
+  ]
+ },
+ {
+  "id": 130,
+  "msgid": "<span class=\"o_stat_text\">Message the client</span>",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_company_form_money",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_form_money"
+  ]
+ },
+ {
+  "id": 131,
+  "msgid": "<span class=\"o_stat_text\">To invoice</span>",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_company_form_money"
+  ]
+ },
+ {
+  "id": 137,
+  "msgid": "<span invisible=\"ldm_fund_balance_text\">0</span>",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_company_form_money"
+  ]
+ },
+ {
+  "id": 1321,
+  "msgid": "New matter for this client",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_company_form_ws"
+  ]
+ },
+ {
+  "id": 132,
+  "msgid": "<span class=\"small text-muted\" invisible=\"pending_tasks_count\">No open matters</span>",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_company_kanban"
+  ]
+ },
+ {
+  "id": 2512,
+  "msgid": "open",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_company_kanban"
+  ]
+ },
+ {
+  "id": 767,
+  "msgid": "Every body or court",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_company_report_wizard_form",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_general_report_wizard_form"
+  ]
+ },
+ {
+  "id": 770,
+  "msgid": "Every matter of the client",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_company_report_wizard_form"
+  ]
+ },
+ {
+  "id": 1302,
+  "msgid": "Narrow down (optional)",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_company_report_wizard_form",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_general_report_wizard_form"
+  ]
+ },
+ {
+  "id": 985,
+  "msgid": "Individuals",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_company_search"
+  ]
+ },
+ {
+  "id": 1176,
+  "msgid": "Link to the location on a map",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_department_form"
+  ]
+ },
+ {
+  "id": 2131,
+  "msgid": "The ministry's or the legal calendar",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_department_form"
+  ]
+ },
+ {
+  "id": 2367,
+  "msgid": "What the counter asks for, who to ask, what to avoid...",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_department_form"
+  ]
+ },
+ {
+  "id": 2494,
+  "msgid": "e.g. General Commission for Taxes",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_department_form"
+  ]
+ },
+ {
+  "id": 2502,
+  "msgid": "e.g. The Director General of the General Commission for Taxes",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_department_form"
+  ]
+ },
+ {
+  "id": 2504,
+  "msgid": "e.g. from 8:00 to 14:00, Sunday to Thursday",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_department_form"
+  ]
+ },
+ {
+  "id": 785,
+  "msgid": "Execution directorates",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_department_search"
+  ]
+ },
+ {
+  "id": 912,
+  "msgid": "Government bodies",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_department_search"
+  ]
+ },
+ {
+  "id": 146,
+  "msgid": "<span>–</span>",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_general_report_wizard_form"
+  ]
+ },
+ {
+  "id": 768,
+  "msgid": "Every client",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_general_report_wizard_form"
+  ]
+ },
+ {
+  "id": 2040,
+  "msgid": "Target or next date",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_general_report_wizard_form"
+  ]
+ },
+ {
+  "id": 136,
+  "msgid": "<span dir=\"auto\">These powers of attorney name them: a new one is needed.</span>",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_handover_wizard_form"
+  ]
+ },
+ {
+  "id": 2366,
+  "msgid": "What the colleague should know: where the files are, who to call...",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_handover_wizard_form"
+  ]
+ },
+ {
+  "id": 1170,
+  "msgid": "Letters this authority expects, who signs them, where to send them...",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_ministry_form"
+  ]
+ },
+ {
+  "id": 2119,
+  "msgid": "The legal working calendar",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_ministry_form"
+  ]
+ },
+ {
+  "id": 2495,
+  "msgid": "e.g. Ministry of Finance",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_ministry_form"
+  ]
+ },
+ {
+  "id": 495,
+  "msgid": "Commissions and unions",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_ministry_search"
+  ]
+ },
+ {
+  "id": 1049,
+  "msgid": "Judicial councils",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_ministry_search"
+  ]
+ },
+ {
+  "id": 237,
+  "msgid": "All document types the client holds",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_readiness_wizard_form"
+  ]
+ },
+ {
+  "id": 169,
+  "msgid": "A partner decides before any work starts. You can open the matter now: it stays New until then.",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_create_wizard_form"
+  ]
+ },
+ {
+  "id": 272,
+  "msgid": "Anything the team should know from the start",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_create_wizard_form"
+  ]
+ },
+ {
+  "id": 435,
+  "msgid": "Chosen for you",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_create_wizard_form"
+  ]
+ },
+ {
+  "id": 599,
+  "msgid": "Create and add another",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_create_wizard_form"
+  ]
+ },
+ {
+  "id": 600,
+  "msgid": "Create and open",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_create_wizard_form"
+  ]
+ },
+ {
+  "id": 861,
+  "msgid": "Filled in from the type and the client",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_create_wizard_form"
+  ]
+ },
+ {
+  "id": 868,
+  "msgid": "First session",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_create_wizard_form"
+  ]
+ },
+ {
+  "id": 913,
+  "msgid": "Government body",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_create_wizard_form"
+  ]
+ },
+ {
+  "id": 1547,
+  "msgid": "Open it and ask a partner",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_create_wizard_form"
+  ]
+ },
+ {
+  "id": 1658,
+  "msgid": "Possible conflict of interest",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_create_wizard_form"
+  ]
+ },
+ {
+  "id": 1899,
+  "msgid": "Search by body or ministry",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_create_wizard_form"
+  ]
+ },
+ {
+  "id": 1902,
+  "msgid": "Search the matter types",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_create_wizard_form"
+  ]
+ },
+ {
+  "id": 2145,
+  "msgid": "The office does not take matters with a conflict. Ask a partner.",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_create_wizard_form"
+  ]
+ },
+ {
+  "id": 2152,
+  "msgid": "The other side's name",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_create_wizard_form"
+  ]
+ },
+ {
+  "id": 2254,
+  "msgid": "Type a name; a new one can be created here",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_create_wizard_form"
+  ]
+ },
+ {
+  "id": 105,
+  "msgid": ", sent by",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_form"
+  ]
+ },
+ {
+  "id": 187,
+  "msgid": "Accounting (older records)",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_form"
+  ]
+ },
+ {
+  "id": 554,
+  "msgid": "Contract value",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_form"
+  ]
+ },
+ {
+  "id": 827,
+  "msgid": "Facts, letter numbers, what was said at the counter...",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_form"
+  ]
+ },
+ {
+  "id": 1593,
+  "msgid": "Other files",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_form"
+  ]
+ },
+ {
+  "id": 1784,
+  "msgid": "Rejected by",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_form"
+  ]
+ },
+ {
+  "id": 2450,
+  "msgid": "Write the opinion here.",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_form"
+  ]
+ },
+ {
+  "id": 2484,
+  "msgid": "e.g. Annual tax clearance for 2026",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_form"
+  ]
+ },
+ {
+  "id": 304,
+  "msgid": "Ask the issuing body to confirm it is genuine",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_form_gov"
+  ]
+ },
+ {
+  "id": 853,
+  "msgid": "File it in the client's records for the next matter",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_form_gov"
+  ]
+ },
+ {
+  "id": 2035,
+  "msgid": "Take the copy held in the client's records",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_form_gov"
+  ]
+ },
+ {
+  "id": 2108,
+  "msgid": "The issuing body confirmed it is genuine",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_form_gov"
+  ]
+ },
+ {
+  "id": 1185,
+  "msgid": "Lodge a challenge against this judgment",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_form_lit"
+  ]
+ },
+ {
+  "id": 119,
+  "msgid": "<i class=\"fa fa-exclamation-triangle\" title=\"Possible conflict of interest\" role=\"img\"/>\n                    <span class=\"flex-grow-1\">Possible conflict of interest. A legal manager must decide before work starts.</span>",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_form_money"
+  ]
+ },
+ {
+  "id": 671,
+  "msgid": "Declined after the conflict check. This matter cannot start.",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_form_money"
+  ]
+ },
+ {
+  "id": 1735,
+  "msgid": "Recharge",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_form_money"
+  ]
+ },
+ {
+  "id": 1904,
+  "msgid": "See the matches",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_form_money"
+  ]
+ },
+ {
+  "id": 103,
+  "msgid": ").\n                    Record a valid one before the next step.",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_form_reg"
+  ]
+ },
+ {
+  "id": 134,
+  "msgid": "<span class=\"text-muted\" invisible=\"superseded_by_id\">Issued and frozen. To change it, revise it from the gear menu.</span>\n                    <span class=\"text-warning\" invisible=\"not superseded_by_id\">Replaced by a revision.</span>",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_form_reg"
+  ]
+ },
+ {
+  "id": 722,
+  "msgid": "Download the opinion memo",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_form_reg"
+  ]
+ },
+ {
+  "id": 1020,
+  "msgid": "Issue opinion",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_form_reg"
+  ]
+ },
+ {
+  "id": 2164,
+  "msgid": "The power of attorney this matter relies on is no longer valid\n                    (",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_form_reg"
+  ]
+ },
+ {
+  "id": 1201,
+  "msgid": "Mark as waiting",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_form_ws"
+  ]
+ },
+ {
+  "id": 1686,
+  "msgid": "Print follow-up sheet",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_form_ws"
+  ]
+ },
+ {
+  "id": 1837,
+  "msgid": "Resume work",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_form_ws"
+  ]
+ },
+ {
+  "id": 1295,
+  "msgid": "My matters",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_search"
+  ]
+ },
+ {
+  "id": 2324,
+  "msgid": "Waiting on the body",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_search"
+  ]
+ },
+ {
+  "id": 537,
+  "msgid": "Conflict to decide",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_search_money"
+  ]
+ },
+ {
+  "id": 1674,
+  "msgid": "Power of attorney not valid",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_search_reg"
+  ]
+ },
+ {
+  "id": 1693,
+  "msgid": "Printed on the receipt",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_visit_wizard_form"
+  ]
+ },
+ {
+  "id": 1879,
+  "msgid": "Save visit",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_visit_wizard_form"
+  ]
+ },
+ {
+  "id": 2371,
+  "msgid": "What the visit was for",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_visit_wizard_form"
+  ]
+ },
+ {
+  "id": 2488,
+  "msgid": "e.g. Collect the clearance letter",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_visit_wizard_form"
+  ]
+ },
+ {
+  "id": 2505,
+  "msgid": "e.g. the renewed tax card",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_visit_wizard_form"
+  ]
+ }
+]

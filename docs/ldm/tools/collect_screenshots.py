@@ -16,11 +16,15 @@ TARGET = sys.argv[1] if len(sys.argv) > 1 else r"C:\Users\Lenovo\Documents\LDM S
 STAGES = {
     "00-baseline": "1 - Before (the showcase as received)",
     "02-foundation": "2 - Foundation",
-    "03-gov": "3 - Government transactions (in progress)",
-    "03-lit": "3 - Litigation and deadlines (in progress)",
-    "03-ws": "3 - Workspace, My Day, cockpit (in progress)",
-    "03-money": "3 - Money, fees, client money (in progress)",
-    "03-reg": "3 - Registers and reports (in progress)",
+    "03-gov": "3 - Government transactions (stream build, English)",
+    "03-lit": "3 - Litigation and deadlines (stream build, English)",
+    "03-ws": "3 - Workspace, My Day, cockpit (stream build, English)",
+    "03-money": "3 - Money, fees, client money (stream build, English)",
+    "03-reg": "3 - Registers and reports (stream build, English)",
+    "05-design": "4 - Design pass (one identity on every screen)",
+    "06-verify-main": "5 - Verification round 1 (every role, Arabic and English, desktop and phone)",
+    "06-verify-recheck": "5 - Verification round 1, recheck after the fixes",
+    "07-verify-final": "6 - Final verification round",
 }
 
 
@@ -38,16 +42,18 @@ def main():
     for stage, folder in sources():
         label = STAGES.get(stage, stage)
         dest = os.path.join(TARGET, label)
-        for png in glob.glob(os.path.join(folder, "*.png")):
+        for png in glob.glob(os.path.join(folder, "**", "*.png"), recursive=True):
             os.makedirs(dest, exist_ok=True)
-            out = os.path.join(dest, os.path.basename(png))
+            # a stream's sub-folders (final/, phone/) become a prefix of the file name
+            relative = os.path.relpath(png, folder).replace(os.sep, " - ")
+            out = os.path.join(dest, relative)
             if not os.path.exists(out) or os.path.getmtime(png) > os.path.getmtime(out):
                 shutil.copy2(png, out)
                 copied += 1
     with open(os.path.join(TARGET, "README.txt"), "w", encoding="utf-8") as fh:
         fh.write("Screenshots of the legal_department_management rebuild, by stage.\n"
-                 "Folders marked 'in progress' are refreshed as each build stream works;\n"
-                 "labels stay English until the Arabic catalogue is added at integration.\n"
+                 "Stages 1-3 were taken while the streams were building, in English;\n"
+                 "from stage 5 on, every screen is shown in Arabic and in English, at 1440 and 390 px wide.\n"
                  "Refresh: python docs/ldm/tools/collect_screenshots.py (in the odoo19 repository)\n")
     total = len(glob.glob(os.path.join(TARGET, "*", "*.png")))
     print(f"{copied} new or updated, {total} screenshots in {TARGET}")

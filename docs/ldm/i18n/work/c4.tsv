@@ -1,0 +1,619 @@
+1045	legal_department_management.ldm_rule_civ_1	Judgments of first-instance and personal-status courts; not in urgent matters.
+248	legal_department_management.ldm_rule_civ_10	An agreed suspension lasts at most three months. The case must be resumed within 15 days after the suspension ends, or the petition is void. Counted from the end of the suspension.
+968	legal_department_management.ldm_rule_civ_11	If the plaintiff does not continue the case within six months, the petition is void. Proposed from the session; move the start to the day the other question is decided if that is later.
+148	legal_department_management.ldm_rule_civ_12	A case interrupted (death or loss of capacity of a party) and not continued within six months without an acceptable excuse is void. The interruption also halts the periods running in the case.
+2386	legal_department_management.ldm_rule_civ_2	When the judgment rests on fraud or forgery, the period counts from the day it is discovered.
+298	legal_department_management.ldm_rule_civ_3	Art. 204 also names judgments of first-instance courts. The period is proposed for judgments of the courts of appeal; add it by hand where cassation of a first-instance judgment applies.
+2060	legal_department_management.ldm_rule_civ_4	The article's text is verified; applying it to personal-status judgments follows the Supreme Judicial Council's commentary.
+2271	legal_department_management.ldm_rule_civ_5	Urgent and ancillary decisions such as a precautionary attachment. Add it to the matter from the decision's notification.
+1479	legal_department_management.ldm_rule_civ_6	Once per party, and never later than six months after the decision.
+564	legal_department_management.ldm_rule_civ_7	Counted from the day after the fraud or forgery is discovered or proven.
+570	legal_department_management.ldm_rule_civ_8	Counted from the order, or from its notification.
+2380	legal_department_management.ldm_rule_civ_9	When both parties are absent the court leaves the case for review; unless a party asks to renew it within the period, the petition is void. Older sources give 30 or 15 days: check the current text.
+673	legal_department_management.ldm_rule_crm_1	Defamation, threats, some thefts and breaches of trust: the complaint must be made within three months of the day the victim learns of the offence.
+2262	legal_department_management.ldm_rule_crm_2_felony	Unless the person convicted in absence surrenders or objects within the period, the judgment counts as given in presence.
+2263	legal_department_management.ldm_rule_crm_2_violation	Unless the person convicted in absence surrenders or objects within the period, the judgment counts as given in presence. Added by hand: the court alone does not tell a violation from a misdemeanour.
+565	legal_department_management.ldm_rule_crm_3	Counted from the day after the pronouncement when the judgment is given in presence, not from its notification; a judgment given in absence counts from the notification.
+569	legal_department_management.ldm_rule_crm_4	Counted from the notification to the convicted person, or from the arrival of the papers at the trial court.
+155	legal_department_management.ldm_rule_exe_1	A debtor who pays within the period is exempt from the collection fee. Older texts give other periods, and a government debtor may have 30 days (Art. 20): verify. Proposed when an execution stage records the date the notice was served.
+1205	legal_department_management.ldm_rule_exe_3	Marking it met opens the cassation period, which waits for the date of the officer's decision.
+349	legal_department_management.ldm_rule_exe_4	Before the court of appeal of the region, sitting in cassation. Counted from the decision.
+1952	legal_department_management.ldm_rule_exe_5	Seven years from the last action on the file.
+1387	legal_department_management.ldm_rule_lab_2	No primary citation yet: check the period against Labour Law 37 of 2015 before relying on it.
+2061	legal_department_management.ldm_rule_tax_4	The assessed tax must be paid within the period, or the objection is not heard.
+568	legal_department_management.ldm_rule_tax_5	Counted from the notification that the objection was rejected.
+299	legal_department_management.ldm_doctype_articles	Articles of association
+342	legal_department_management.ldm_doctype_capital_deposit	Bank confirmation of the capital deposit
+1611	legal_department_management.ldm_doctype_electricity_bill	Paid electricity bill
+323	legal_department_management.ldm_doctype_final_accounts	Audited final accounts
+898	legal_department_management.ldm_doctype_ga_minutes	General assembly minutes
+969	legal_department_management.ldm_doctype_import_licence	Import licence
+398	legal_department_management.ldm_doctype_incorporation_certificate	Certificate of incorporation
+578	legal_department_management.ldm_doctype_judgment	Court judgment
+399	legal_department_management.ldm_doctype_lease	Certified lease contract
+1265	legal_department_management.ldm_doctype_md_appointment	Minutes appointing the managing director
+2259	legal_department_management.ldm_doctype_national_id	Unified national ID card
+1621	legal_department_management.ldm_doctype_passport	Passport
+1629	legal_department_management.ldm_doctype_payment_receipt	Payment receipt
+1640	legal_department_management.ldm_doctype_photos	Personal photographs
+900	legal_department_management.ldm_doctype_poa_general	General power of attorney
+1983	legal_department_management.ldm_doctype_poa_special	Special power of attorney
+1776	legal_department_management.ldm_doctype_registrar_confirmation	Registrar's confirmation letter
+1829	legal_department_management.ldm_doctype_residence_card	Residence card
+1830	legal_department_management.ldm_doctype_residency_permit	Residency permit
+1871	legal_department_management.ldm_doctype_runner_authorisation	Runner's authorisation letter
+1974	legal_department_management.ldm_doctype_ss_clearance	Social security clearance
+1976	legal_department_management.ldm_doctype_ss_registration	Social security registration certificate
+2042	legal_department_management.ldm_doctype_tax_card	Tax card
+2043	legal_department_management.ldm_doctype_tax_clearance	Tax clearance
+257	legal_department_management.ldm_doctype_tax_return	Annual tax return
+2244	legal_department_management.ldm_doctype_trade_name	Trade name reservation
+2297	legal_department_management.ldm_doctype_vehicle_registration	Vehicle registration (annual)
+2432	legal_department_management.ldm_doctype_work_permit	Work permit
+577	legal_department_management.ldm_expense_category_court_fee	Court fee
+786	legal_department_management.ldm_expense_category_execution_fee	Execution fee
+805	legal_department_management.ldm_expense_category_expert_deposit	Expert deposit
+916	legal_department_management.ldm_expense_category_government_fee	Government fee
+1421	legal_department_management.ldm_expense_category_notary_fee	Notary fee
+1632	legal_department_management.ldm_expense_category_pension_stamp	Pension fund stamp
+1707	legal_department_management.ldm_expense_category_publication	Publication in a newspaper
+2251	legal_department_management.ldm_expense_category_transport	Transport
+1317	legal_department_management.ldm_legal_holiday_2026_01	New Year's Day
+297	legal_department_management.ldm_legal_holiday_2026_02	Army Day
+1240	legal_department_management.ldm_legal_holiday_2026_03	Memorial of the regime's crimes (Halabja)
+741	legal_department_management.ldm_legal_holiday_2026_04	Eid al-Fitr
+1447	legal_department_management.ldm_legal_holiday_2026_05	Nowruz
+1061	legal_department_management.ldm_legal_holiday_2026_06	Labour Day
+740	legal_department_management.ldm_legal_holiday_2026_07	Eid al-Adha
+742	legal_department_management.ldm_legal_holiday_2026_08	Eid al-Ghadir
+1019	legal_department_management.ldm_legal_holiday_2026_09	Islamic New Year
+300	legal_department_management.ldm_legal_holiday_2026_10	Ashura
+1699	legal_department_management.ldm_legal_holiday_2026_11	Prophet's Birthday
+648	legal_department_management.ldm_message_hearing_reminder	Dear {client},\nA reminder that the next session in {matter} ({matter_number}) is on {next_date} at {court}. {needed}\n{office}
+649	legal_department_management.ldm_message_hearing_result	Dear {client},\nThe session of {date} in {matter} ({matter_number}) at {court} ended as follows: {outcome}.\nThe next session is on {next_date}. {needed}\n{responsible}, {office}
+651	legal_department_management.ldm_message_instalment_due	Dear {client},\nUnder our fee agreement, the instalment "{fee}" of {amount} is due on {due_date}.\nThank you.\n{office}
+650	legal_department_management.ldm_message_missing_documents	Dear {client},\nTo continue {matter} ({matter_number}) we still need: {documents}.\nPlease send them as soon as you can.\n{responsible}, {office}
+652	legal_department_management.ldm_message_statement_ready	Dear {client},\nYour statement of account up to {today} is ready. The balance due is {balance}.\nWe can send you a copy on request.\n{office}
+1797	legal_department_management.ldm_message_hearing_reminder	Reminder of your session
+1836	legal_department_management.ldm_message_hearing_result	Result of today's session
+709	legal_department_management.ldm_message_missing_documents	Documents we still need
+2461	legal_department_management.ldm_message_statement_ready	Your statement of account
+270	legal_department_management.ldm_template_government	Any transaction at a ministry or department. Choose the body when you open the matter.
+218	legal_department_management.ldm_template_administrative	Administrative grievance
+451	legal_department_management.ldm_template_civil_lawsuit	Civil lawsuit
+494	legal_department_management.ldm_template_commercial_lawsuit	Commercial lawsuit
+500	legal_department_management.ldm_template_company_amendment	Company amendment
+614	legal_department_management.ldm_template_criminal_complaint	Criminal complaint
+787	legal_department_management.ldm_template_execution	Execution file
+219	legal_department_management.ldm_template_investigation	Administrative investigation
+1063	legal_department_management.ldm_template_labour_case	Labour case
+1642	legal_department_management.ldm_template_personal_status	Personal status case
+1669	legal_department_management.ldm_template_poa	Power of attorney at the notary
+503	legal_department_management.ldm_activity_company_expiry	Company document or obligation
+1114	legal_department_management.ldm_activity_deadline	Legal deadline
+846	legal_department_management.ldm_activity_fee_agreement	Fees due
+832	legal_department_management.ldm_activity_fee_unsigned	Fee agreement to sign
+1160	legal_department_management.ldm_activity_guarantee_expiry	Letter of guarantee expiry
+1164	legal_department_management.ldm_activity_letter_reply	Letter to answer
+1672	legal_department_management.ldm_activity_poa_expiry	Power of attorney expiry
+295	legal_department_management.group_ldm_approver	Approves matters before work starts, and signs them off.
+1715	legal_department_management.group_ldm_auditor	Reads everything and changes nothing: for an internal auditor, an external reviewer, or an executive who follows the legal work.
+1679	legal_department_management.group_ldm_billing_user	Prepares fee agreements, invoices and client statements; reads the money side of every matter.
+2444	legal_department_management.group_ldm_clerk	Works the matters assigned to them: counter visits, steps, documents and expenses.
+2383	legal_department_management.group_ldm_requests	When on, every employee may submit a request to the legal team and follow its status.
+1906	legal_department_management.group_legal_manager	Sees every matter, assigns work, approves, and configures matter types, bodies and settings.
+1607	legal_department_management.group_legal_user	Owns matters: hearings, judgments, powers of attorney, letters. Sees the matters and clients assigned to them.
+1137	legal_department_management.group_ldm_accounting_links	Legal: expenses posted to accounting
+1130	legal_department_management.group_ldm_approvals	Legal: approvals
+325	legal_department_management.group_ldm_auditor	Auditor / executive (read only)
+1141	legal_department_management.group_ldm_billing	Legal: fees and invoicing
+459	legal_department_management.group_ldm_clerk	Clerk / Runner
+1131	legal_department_management.group_ldm_client_messages	Legal: client messages
+1134	legal_department_management.group_ldm_conflicts	Legal: conflict check
+1133	legal_department_management.group_ldm_corporate	Legal: company records
+1135	legal_department_management.group_ldm_correspondence	Legal: correspondence register
+1142	legal_department_management.group_ldm_government	Legal: government transactions
+1151	legal_department_management.group_ldm_hr_team	Legal: staff team from HR
+1144	legal_department_management.group_ldm_investigations	Legal: investigations
+1150	legal_department_management.group_ldm_requests	Legal: requests from other departments
+1146	legal_department_management.group_ldm_see_all	Legal: lawyers see every matter
+1136	legal_department_management.group_ldm_terms_department	Legal: department vocabulary
+1145	legal_department_management.group_ldm_terms_office	Legal: law office vocabulary
+1152	legal_department_management.group_ldm_time	Legal: time tracking
+1111	legal_department_management.group_legal_manager	Legal Manager
+1113	legal_department_management.res_groups_privilege_ldm_billing	Legal billing
+1352	legal_department_management.action_ldm_advance	No cash advances
+1750	legal_department_management.action_ldm_advance	Record the cash given to a runner for government fees; settle it against the receipts they bring back.
+1391	legal_department_management.action_ldm_agenda	No sessions in the next 14 days
+1938	legal_department_management.action_ldm_agenda	Sessions are added on a lawsuit's Sessions tab, or fixed by recording what happened at the previous one.
+736	legal_department_management.action_ldm_appeal_rule	Each period says how long there is to challenge a judgment or act on a decision, what starts it, its legal basis and how sure we are of it.
+1394	legal_department_management.action_ldm_appeal_rule	No statutory periods
+160	legal_department_management.action_ldm_body_directory	A legal manager adds them under Configuration, or loads the Iraqi reference library.
+1348	legal_department_management.action_ldm_body_directory	No bodies or courts in the directory
+1353	legal_department_management.action_ldm_client_fund	No client money held
+2274	legal_department_management.action_ldm_client_fund	Use <b>Receive money</b> when a client hands over money for court fees, experts or deposits; each client's balance stays per currency and never goes below zero.
+1390	legal_department_management.action_ldm_company_coverage	No service is tracked for every company
+2212	legal_department_management.action_ldm_company_coverage	Tick "Track for every company" on the matter types a legal manager wants followed yearly, such as the tax clearance or the chamber ID renewal.
+852	legal_department_management.action_ldm_company_document	File each client's registration certificate, tax clearance, chamber ID and powers of attorney once, with their expiry dates. New matters take them from here, and you are reminded before they expire.
+1355	legal_department_management.action_ldm_company_document	No company documents yet
+149	legal_department_management.action_ldm_conflict_check	A check runs whenever a matter is opened against someone. Every check is kept here, with its decision.
+1357	legal_department_management.action_ldm_conflict_check	No conflict checks yet
+1746	legal_department_management.action_ldm_correspondence	Record each letter that arrives or leaves. Registering it gives it the next number of its book for the year; a mistake is voided with a reason, never deleted.
+2170	legal_department_management.action_ldm_correspondence	The register is empty
+1381	legal_department_management.action_ldm_deadline	No open deadlines
+1744	legal_department_management.action_ldm_deadline	Record a judgment on a lawsuit and its challenge periods appear here, counted from the notification date.
+1366	legal_department_management.action_ldm_engagement	No fee agreements yet
+1755	legal_department_management.action_ldm_engagement	Record what each client pays and when: a lump sum, instalments tied to the case's stages, a success fee or a monthly retainer.
+1364	legal_department_management.action_ldm_expense	No expenses recorded
+1745	legal_department_management.action_ldm_expense	Record each fee or cost paid on a matter with its receipt number, from the matter's Money tab or here.
+209	legal_department_management.action_ldm_expense_category	Add the kinds of fees and costs you pay on matters: court fees, stamps, expert deposits, publication.
+1363	legal_department_management.action_ldm_expense_category	No expense categories
+1382	legal_department_management.action_ldm_exposure	No open lawsuits
+1548	legal_department_management.action_ldm_exposure	Open lawsuits appear here by our role and court stage, with the value of the claims.
+1372	legal_department_management.action_ldm_guarantee	No letters of guarantee
+1749	legal_department_management.action_ldm_guarantee	Record the bid, performance and advance-payment guarantees: you are reminded 30 days before each one expires, and the letter to the bank is drafted for you.
+1359	legal_department_management.action_ldm_hearing_calendar	No court sessions
+753	legal_department_management.action_ldm_holiday	Enter the Eid dates when the endowment offices announce them, and any day the Council of Ministers adds. Deadlines that end on a holiday move to the next working day.
+1368	legal_department_management.action_ldm_holiday	No holidays entered
+1370	legal_department_management.action_ldm_letter_template	No letter templates
+2448	legal_department_management.action_ldm_letter_template	Write the letters you send often once, with placeholders such as {client}; every matter can then produce them in one step.
+212	legal_department_management.action_ldm_obligation	Add what each client must file every month or year, such as the annual tax return or the chamber ID renewal. The matter opens by itself before the due date.
+1388	legal_department_management.action_ldm_obligation	No recurring obligations yet
+1384	legal_department_management.action_ldm_opinion_register	No opinion issued yet
+1541	legal_department_management.action_ldm_opinion_register	Open a matter of type Legal opinion, write the question and the opinion, and issue it: it gets its number for the year and appears here, searchable by its words.
+1386	legal_department_management.action_ldm_poa	No powers of attorney yet
+1772	legal_department_management.action_ldm_poa	Register each power of attorney with its number, notary office and expiry date. You will be reminded before it expires, and the matters relying on it are told when it is revoked.
+1389	legal_department_management.action_ldm_request	No request is waiting
+1825	legal_department_management.action_ldm_request	Requests from other departments arrive here. Take one, then accept it (a matter is opened), return it for completion, or decline it.
+305	legal_department_management.action_ldm_request_mine	Ask the legal team
+1680	legal_department_management.action_ldm_request_mine	Press <b>New</b>, say what you need, by when, and attach the papers. You can follow the answer here.
+774	legal_department_management.action_ldm_task_no_agreement	Every open matter has a signed fee agreement
+2424	legal_department_management.action_ldm_task_no_agreement	Without a written agreement the fee is the customary rate and a claim lapses after three years (Advocacy Law Arts. 59 and 65).
+163	legal_department_management.action_ldm_task_template	A matter type fills in the steps, the documents to collect and the target date whenever a matter of that type is opened.
+1376	legal_department_management.action_ldm_task_template	No matter types yet
+203	legal_department_management.action_ldm_time_entry	Add a line for each piece of work: the matter, what was done and how long (1.5 or 1:30), or use the timer on the top bar.
+1398	legal_department_management.action_ldm_time_entry	No time recorded
+990	legal_department_management.action_ldm_to_invoice	Instalments appear here when they fall due, time once it is approved, and expenses recharged to the client once confirmed.
+206	legal_department_management.action_legal_company	Add the companies or people you do legal work for. Each one gets its own file of matters.
+1354	legal_department_management.action_legal_company	No clients yet
+208	legal_department_management.action_legal_department	Add the government bodies and courts you work with, with their hours, contacts and the services they offer, or load the Iraqi reference library from Settings.
+1349	legal_department_management.action_legal_department	No bodies or courts yet
+210	legal_department_management.action_legal_ministry	Add the ministries and authorities your bodies belong to, or load the Iraqi reference library from Settings.
+1380	legal_department_management.action_legal_ministry	No ministries yet
+1378	legal_department_management.action_legal_task	No matters here yet
+1558	legal_department_management.action_legal_task	Open the first one with <b>New matter</b>: choose its type and client, and the steps and documents are filled in for you.
+1234	legal_department_management.action_legal_task_to_approve	Matters sent for approval appear here.
+1432	legal_department_management.action_legal_task_to_approve	Nothing is waiting for approval
+138	legal_department_management.report_ldm_engagement	<span> – </span>
+139	legal_department_management.report_ldm_engagement	<span>%</span>\n                                        <span>of the amount awarded or collected</span>
+801	legal_department_management.report_ldm_engagement	Expenses paid in the client's interest are recharged to the client (Advocacy Law 173 of 1965, Art. 55).\n                            Outside criminal matters the fee may not exceed 20% of the value of the work (Art. 56).
+886	legal_department_management.report_ldm_engagement	For the office
+1227	legal_department_management.report_ldm_engagement	Matters covered
+1631	legal_department_management.report_ldm_engagement	Payment schedule
+2077	legal_department_management.report_ldm_engagement	The client withholds the Bar's 5% share of the retainer and remits it to the Iraqi Bar Association (Bar order 3021 of 2021).
+2462	legal_department_management.report_ldm_engagement	a month
+144	legal_department_management.report_ldm_hearing_roll	<span>sessions</span>\n                        <span> · </span><span>printed on</span>
+384	legal_department_management.report_ldm_hearing_roll	Case
+1304	legal_department_management.report_ldm_hearing_roll	Needed before
+1360	legal_department_management.report_ldm_hearing_roll	No court sessions in this period.
+2021	legal_department_management.report_ldm_hearing_roll	Substitution letter needed
+113	legal_department_management.report_ldm_letter_document	<b>Copies to:</b>
+627	legal_department_management.report_ldm_letter_document	Date:
+923	legal_department_management.report_ldm_letter_document	Greetings,
+1463	legal_department_management.report_ldm_letter_document	Number:
+2017	legal_department_management.report_ldm_letter_document	Subject:
+2233	legal_department_management.report_ldm_letter_document	To:
+2418	legal_department_management.report_ldm_letter_document	With our regards.
+2460	legal_department_management.report_ldm_letter_document	Your letter number
+2511	legal_department_management.report_ldm_letter_document	of
+404	legal_department_management.report_ldm_monthly_status	Challenges pending ·
+483	legal_department_management.report_ldm_monthly_status	Closed in the period
+589	legal_department_management.report_ldm_monthly_status	Court sessions and judgments
+814	legal_department_management.report_ldm_monthly_status	Expiring before
+920	legal_department_management.report_ldm_monthly_status	Government transactions by body
+1041	legal_department_management.report_ldm_monthly_status	Judgments by result
+1079	legal_department_management.report_ldm_monthly_status	Lawsuits for and against us
+1226	legal_department_management.report_ldm_monthly_status	Matters by kind
+1367	legal_department_management.report_ldm_monthly_status	No government transactions.
+1369	legal_department_management.report_ldm_monthly_status	No judgment in the period.
+1379	legal_department_management.report_ldm_monthly_status	No matters.
+1385	legal_department_management.report_ldm_monthly_status	No period was missed.
+1427	legal_department_management.report_ldm_monthly_status	Nothing expires in the next 60 days.
+1552	legal_department_management.report_ldm_monthly_status	Open now
+1565	legal_department_management.report_ldm_monthly_status	Opened
+1571	legal_department_management.report_ldm_monthly_status	Opened in the period
+1622	legal_department_management.report_ldm_monthly_status	Past target
+1638	legal_department_management.report_ldm_monthly_status	Periods missed ·
+1939	legal_department_management.report_ldm_monthly_status	Sessions held:
+1942	legal_department_management.report_ldm_monthly_status	Sessions still planned in the period:
+2000	legal_department_management.report_ldm_monthly_status	Status of lawsuits and transactions
+2296	legal_department_management.report_ldm_monthly_status	Value of the open claims
+2521	legal_department_management.report_ldm_monthly_status	to
+290	legal_department_management.report_ldm_opinion_memo_document	Approved by
+306	legal_department_management.report_ldm_opinion_memo_document	Asked by
+1408	legal_department_management.report_ldm_opinion_memo_document	Not issued yet
+1678	legal_department_management.report_ldm_opinion_memo_document	Prepared by
+1812	legal_department_management.report_ldm_opinion_memo_document	Replaces
+1962	legal_department_management.report_ldm_opinion_memo_document	Signature
+1963	legal_department_management.report_ldm_opinion_memo_document	Signature and stamp
+2148	legal_department_management.report_ldm_opinion_memo_document	The opinion
+2165	legal_department_management.report_ldm_opinion_memo_document	The question
+1371	legal_department_management.report_ldm_register_book	No letters in this period.
+2181	legal_department_management.report_ldm_register_book	Their number and date
+2313	legal_department_management.report_ldm_register_book	Void:
+117	legal_department_management.report_ldm_statement	<em>Opening balance</em>
+141	legal_department_management.report_ldm_statement	<span>Client money we hold for you:</span>
+338	legal_department_management.report_ldm_statement	Balance
+340	legal_department_management.report_ldm_statement	Balance due at the end of the period
+409	legal_department_management.report_ldm_statement	Charged
+1439	legal_department_management.report_ldm_statement	Nothing was invoiced, paid or held for this client in the period.
+2240	legal_department_management.report_ldm_statement	Total not invoiced
+2241	legal_department_management.report_ldm_statement	Total still to come
+140	legal_department_management.report_ldm_substitution	<span>Bar membership no.</span>
+142	legal_department_management.report_ldm_substitution	<span>Date:</span>
+143	legal_department_management.report_ldm_substitution	<span>To:</span>
+1082	legal_department_management.report_ldm_substitution	Lawyer giving the substitution
+2197	legal_department_management.report_ldm_substitution	This letter is valid for that session only.
+718	legal_department_management.report_legal_company_document	Done or cancelled:
+802	legal_department_management.report_legal_company_document	Expenses:
+1350	legal_department_management.report_legal_company_document	No body or court
+1375	legal_department_management.report_legal_company_document	No matter matches these options.
+1551	legal_department_management.report_legal_company_document	Open matters:
+1692	legal_department_management.report_legal_company_document	Printed on
+2359	legal_department_management.report_legal_company_document	What is open and next
+477	legal_department_management.report_legal_general_overview_document	Clients:
+1236	legal_department_management.report_legal_general_overview_document	Matters:
+1564	legal_department_management.report_legal_general_overview_document	Open:
+1623	legal_department_management.report_legal_general_overview_document	Past their target date:
+2472	legal_department_management.report_legal_general_overview_document	by
+100	legal_department_management.report_legal_task_document	(optional)
+314	legal_department_management.report_legal_task_document	At the counter
+572	legal_department_management.report_legal_task_document	Counter or office
+716	legal_department_management.report_legal_task_document	Done on · receipt
+1709	legal_department_management.report_legal_task_document	QR code of the matter
+1937	legal_department_management.report_legal_task_document	Sessions and visits
+2238	legal_department_management.report_legal_task_document	Total
+2377	legal_department_management.report_legal_task_document	What was said
+2393	legal_department_management.report_legal_task_document	Where
+2406	legal_department_management.report_legal_task_document	Whom we met
+2543	legal_department_management.report_legal_task_document	· <span class="o_ldm_r_badge">Urgent</span>
+122	legal_department_management.res_config_settings_view_form	<span class="flex-shrink-0 me-2">Foreign company</span>
+123	legal_department_management.res_config_settings_view_form	<span class="flex-shrink-0 me-2">Local company</span>
+124	legal_department_management.res_config_settings_view_form	<span class="flex-shrink-0 me-2">Remind this many working days before</span>
+125	legal_department_management.res_config_settings_view_form	<span class="flex-shrink-0 me-2">Warn before expiry (days)</span>
+126	legal_department_management.res_config_settings_view_form	<span class="flex-shrink-0 ms-5 me-2">When a match is found</span>
+224	legal_department_management.res_config_settings_view_form	Advanced
+434	legal_department_management.res_config_settings_view_form	Choosing sets the switches below. You can still change each switch afterwards.
+518	legal_department_management.res_config_settings_view_form	Confidential matters are only ever seen by their team and legal managers.
+546	legal_department_management.res_config_settings_view_form	Content
+629	legal_department_management.res_config_settings_view_form	Dates and reminders
+644	legal_department_management.res_config_settings_view_form	Deadlines that end on a holiday move to the next working day; steps count working days.
+737	legal_department_management.res_config_settings_view_form	Each type fills in the steps, the documents to collect and the target date.
+844	legal_department_management.res_config_settings_view_form	Fees and billing
+999	legal_department_management.res_config_settings_view_form	Investigation committees, recommendations, decisions and compensation.
+1129	legal_department_management.res_config_settings_view_form	Legal-adviser retainers
+1181	legal_department_management.res_config_settings_view_form	Load the Iraqi reference library
+1255	legal_department_management.res_config_settings_view_form	Minimum monthly retainers under the Iraqi Bar's order 3021 of 2021. Check the current amounts.
+1258	legal_department_management.res_config_settings_view_form	Ministries, their departments, and the courts.
+1465	legal_department_management.res_config_settings_view_form	Numbered incoming and outgoing letters, the register book and reply deadlines.
+1799	legal_department_management.res_config_settings_view_form	Reminders
+2195	legal_department_management.res_config_settings_view_form	This legal team is
+2301	legal_department_management.res_config_settings_view_form	Visibility
+2396	legal_department_management.res_config_settings_view_form	Whether the application speaks of group companies, clients, or both.
+2430	legal_department_management.res_config_settings_view_form	Words used
+2431	legal_department_management.res_config_settings_view_form	Work
+960	legal_department_management.res_config_settings_view_form_money	IQD amounts will be rounded to whole dinars from now on. Continue?
+1011	legal_department_management.res_config_settings_view_form_money	Iraqi dinar without fils
+1955	legal_department_management.res_config_settings_view_form_money	Show IQD in whole dinars
+1958	legal_department_management.res_config_settings_view_form_money	Show and round IQD amounts in whole dinars. Possible only before any accounting entry in dinars is posted.
+932	legal_department_management.view_ldm_advance_form	Hand over
+1947	legal_department_management.view_ldm_advance_form	Settle
+2493	legal_department_management.view_ldm_advance_form	e.g. Fees for the tax clearance renewals
+1415	legal_department_management.view_ldm_advance_search	Not settled
+686	legal_department_management.view_ldm_advance_settle_wizard_form	Discard
+2168	legal_department_management.view_ldm_advance_settle_wizard_form	The receipts paid from this advance. Remove any that do not belong to it.
+296	legal_department_management.view_ldm_appeal_rule_form	Archived
+489	legal_department_management.view_ldm_appeal_rule_form	Code, e.g. CIV-2
+2153	legal_department_management.view_ldm_appeal_rule_form	The period
+2203	legal_department_management.view_ldm_appeal_rule_form	This period is not yet checked against the law's own text. Confirm it before relying on it at a court.
+2394	legal_department_management.view_ldm_appeal_rule_form	Where it applies
+2486	legal_department_management.view_ldm_appeal_rule_form	e.g. Appeal of a first-instance judgment
+1418	legal_department_management.view_ldm_appeal_rule_search	Not yet verified
+1796	legal_department_management.view_ldm_billable_list	Remind the client
+843	legal_department_management.view_ldm_billable_search	Fees
+1559	legal_department_management.view_ldm_body_directory_form	Open the map
+118	legal_department_management.view_ldm_body_directory_kanban	<i class="fa fa-clock-o" title="Opening hours" role="img"/>
+120	legal_department_management.view_ldm_body_directory_kanban	<i class="fa fa-phone" title="Phone" role="img"/>
+1196	legal_department_management.view_ldm_body_directory_list	Map
+1624	legal_department_management.view_ldm_client_fund_list	Pay out
+1727	legal_department_management.view_ldm_client_fund_list	Receive money
+1614	legal_department_management.view_ldm_client_fund_search	Paid out
+108	legal_department_management.view_ldm_client_message_wizard_form	07XX XXX XXXX
+1546	legal_department_management.view_ldm_client_message_wizard_form	Open in WhatsApp
+1911	legal_department_management.view_ldm_client_message_wizard_form	Send by email
+2130	legal_department_management.view_ldm_client_message_wizard_form	The message the client will receive.
+2500	legal_department_management.view_ldm_company_document_form	e.g. Tax clearance
+2291	legal_department_management.view_ldm_company_document_list	Valid on a date
+816	legal_department_management.view_ldm_company_document_search	Expiring or expired
+301	legal_department_management.view_ldm_conflict_check_form	Ask a partner to decide
+654	legal_department_management.view_ldm_conflict_check_form	Decide
+538	legal_department_management.view_ldm_conflict_check_list	Conflicts
+2419	legal_department_management.view_ldm_conflict_check_search	With possible conflicts
+1053	legal_department_management.view_ldm_conflict_decision_wizard_form	Kept with the check as evidence of the decision.
+1751	legal_department_management.view_ldm_conflict_decision_wizard_form	Record the decision
+260	legal_department_management.view_ldm_correspondence_form	Answer due
+909	legal_department_management.view_ldm_correspondence_form	Given on registration
+1177	legal_department_management.view_ldm_correspondence_form	Links
+1480	legal_department_management.view_ldm_correspondence_form	One addressee per line
+1538	legal_department_management.view_ldm_correspondence_form	Open a matter
+1684	legal_department_management.view_ldm_correspondence_form	Print
+1765	legal_department_management.view_ldm_correspondence_form	Referral
+1770	legal_department_management.view_ldm_correspondence_form	Register
+2016	legal_department_management.view_ldm_correspondence_form	Subject of the letter
+2447	legal_department_management.view_ldm_correspondence_form	Write the letter, or choose a template.
+328	legal_department_management.view_ldm_correspondence_search	Awaiting an answer
+1413	legal_department_management.view_ldm_correspondence_search	Not registered
+1768	legal_department_management.view_ldm_correspondence_search	Referred to me
+880	legal_department_management.view_ldm_correspondence_void_wizard_form	For example: sent to the wrong directorate; replaced by letter 2026/58.
+121	legal_department_management.view_ldm_deadline_form	<span class="badge text-bg-danger" invisible="not rule_peremptory">Cannot be extended</span>\n                            <span class="badge text-bg-info" invisible="our_action">Runs for the other side</span>
+1199	legal_department_management.view_ldm_deadline_form	Mark as met
+1200	legal_department_management.view_ldm_deadline_form	Mark as used
+1805	legal_department_management.view_ldm_deadline_form	Reopen
+2150	legal_department_management.view_ldm_deadline_form	The other side or the authority acted within the period.
+2156	legal_department_management.view_ldm_deadline_form	The period ends on a weekend or public holiday, so the law gives until the next working day (Civil Procedure Law Art. 25(2)). Act by the earlier date.
+2204	legal_department_management.view_ldm_deadline_form	This period starts when the judgment or decision is served. Enter the notification date and the dates are counted.
+2379	legal_department_management.view_ldm_deadline_form	When
+2400	legal_department_management.view_ldm_deadline_form	Who and what
+2497	legal_department_management.view_ldm_deadline_form	e.g. Reply to the court's letter
+135	legal_department_management.view_ldm_deadline_kanban	<span class="text-muted">Act by</span>
+403	legal_department_management.view_ldm_deadline_search	Challenge windows
+751	legal_department_management.view_ldm_deadline_search	Ends within 7 days
+1599	legal_department_management.view_ldm_deadline_search	Ours to act on
+2352	legal_department_management.view_ldm_deadline_search	Week
+806	legal_department_management.view_ldm_document_type_search	Expire
+420	legal_department_management.view_ldm_document_wizard_form	Choose a template: its text is filled from the matter and can be edited here before the document is created.
+604	legal_department_management.view_ldm_document_wizard_form	Create the document
+102	legal_department_management.view_ldm_engagement_form	) is
+104	legal_department_management.view_ldm_engagement_form	,\n                            but 20% of the value of the matters (
+106	legal_department_management.view_ldm_engagement_form	.\n                            Outside criminal matters, Advocacy Law Art. 56 does not allow more. Only a legal manager can activate it, with a reason.
+112	legal_department_management.view_ldm_engagement_form	<b>Above the 20% cap.</b>\n                            The fee counted against the cap is
+194	legal_department_management.view_ldm_engagement_form	Activate
+352	legal_department_management.view_ldm_engagement_form	Below the Bar's minimum retainer of
+839	legal_department_management.view_ldm_engagement_form	Fee per matter
+840	legal_department_management.view_ldm_engagement_form	Fee per session
+1175	legal_department_management.view_ldm_engagement_form	Link matters from each matter's Money tab. The 20% cap is checked against their value.
+1277	legal_department_management.view_ldm_engagement_form	Monthly fee
+2327	legal_department_management.view_ldm_engagement_form	Waive
+2370	legal_department_management.view_ldm_engagement_form	What the office agreed to do, and what it did not.
+2415	legal_department_management.view_ldm_engagement_form	Why the fee may exceed 20% of the value
+2463	legal_department_management.view_ldm_engagement_form	a month\n                        for this kind of company (Iraqi Bar order 3021 of 2021; check the current amount).
+133	legal_department_management.view_ldm_engagement_kanban	<span class="small" invisible="signed">Not signed</span>\n                            <span class="small text-muted" invisible="not signed">Signed</span>
+1416	legal_department_management.view_ldm_engagement_search	Not signed
+1843	legal_department_management.view_ldm_engagement_search	Retainers
+186	legal_department_management.view_ldm_expense_form	Accounting
+1462	legal_department_management.view_ldm_expense_form	Number on the government receipt
+2191	legal_department_management.view_ldm_expense_form	This expense is on an invoice to the client.
+2490	legal_department_management.view_ldm_expense_form	e.g. Court fee for the statement of claim
+1661	legal_department_management.view_ldm_expense_post_wizard_form	Post
+890	legal_department_management.view_ldm_expense_search	From a cash advance
+891	legal_department_management.view_ldm_expense_search	From client money
+1406	legal_department_management.view_ldm_expense_search	Not invoiced
+1610	legal_department_management.view_ldm_expense_search	Paid by me
+1737	legal_department_management.view_ldm_expense_search	Recharged to the client
+2167	legal_department_management.view_ldm_fee_waive_wizard_form	The reason is kept on the agreement.
+111	legal_department_management.view_ldm_fund_move_wizard_form	;\n                    afterwards:
+943	legal_department_management.view_ldm_fund_move_wizard_form	Held for this client now:
+1495	legal_department_management.view_ldm_fund_move_wizard_form	Only a legal manager can allow it.
+2210	legal_department_management.view_ldm_fund_move_wizard_form	This would take the client's money below zero.
+129	legal_department_management.view_ldm_guarantee_form	<span class="o_stat_text">Letters</span>
+810	legal_department_management.view_ldm_guarantee_form	Expires in
+2476	legal_department_management.view_ldm_guarantee_form	days. Ask the bank to extend it,\n                        or release it if the obligation is fulfilled.
+2496	legal_department_management.view_ldm_guarantee_form	e.g. Performance guarantee — Basra water contract
+1180	legal_department_management.view_ldm_guarantee_search	Live
+521	legal_department_management.view_ldm_guarantee_wizard_form	Confirm
+1584	legal_department_management.view_ldm_guarantee_wizard_form	Optional note for the history
+1756	legal_department_management.view_ldm_hearing_form	Record what happened
+1833	legal_department_management.view_ldm_hearing_form	Responsible for the matter
+2369	legal_department_management.view_ldm_hearing_form	What the court said and did
+1741	legal_department_management.view_ldm_hearing_kanban	Record
+273	legal_department_management.view_ldm_hearing_outcome_wizard_form	Anything worth remembering from the session
+645	legal_department_management.view_ldm_hearing_outcome_wizard_form	Deadlines this judgment opens
+2487	legal_department_management.view_ldm_hearing_outcome_wizard_form	e.g. Bring the expert's report
+322	legal_department_management.view_ldm_hearing_search	Attending
+945	legal_department_management.view_ldm_hearing_search	Held, not yet recorded
+1326	legal_department_management.view_ldm_hearing_search	Next 14 days
+1758	legal_department_management.view_ldm_hearing_search	Recorded
+2267	legal_department_management.view_ldm_hearing_search	Upcoming
+154	legal_department_management.view_ldm_holiday_form	A deadline whose last day falls on this holiday moves to the next working day, and the lawyers whose dates move are told on their matters.
+2492	legal_department_management.view_ldm_holiday_form	e.g. Eid al-Adha
+766	legal_department_management.view_ldm_holiday_search	Estimated dates
+896	legal_department_management.view_ldm_holiday_search	From today
+2107	legal_department_management.view_ldm_invoice_wizard_form	The invoices are created as drafts: check the date and the lines on each before sending it.
+1183	legal_department_management.view_ldm_judgment_challenge_wizard_form	Lodge
+2072	legal_department_management.view_ldm_judgment_challenge_wizard_form	The challenge's period is marked as met, the other open challenge periods of this judgment close, and the next court stage opens on the matter.
+1286	legal_department_management.view_ldm_judgment_form	Most challenge periods count from the day after the judgment is served. Enter the notification date to count them.
+2087	legal_department_management.view_ldm_judgment_form	The court
+2110	legal_department_management.view_ldm_judgment_form	The judgment
+2368	legal_department_management.view_ldm_judgment_form	What the court decided, in a few lines.
+862	legal_department_management.view_ldm_letter_template_form	Filled with
+954	legal_department_management.view_ldm_letter_template_form	How letters to that body are addressed
+1597	legal_department_management.view_ldm_letter_template_form	Our company or office
+1598	legal_department_management.view_ldm_letter_template_form	Our role in the lawsuit
+1647	legal_department_management.view_ldm_letter_template_form	Placeholder
+1648	legal_department_management.view_ldm_letter_template_form	Placeholders
+1650	legal_department_management.view_ldm_letter_template_form	Plain text. Use the placeholders on the next tab, in braces.
+2068	legal_department_management.view_ldm_letter_template_form	The body or court the letter goes to
+2078	legal_department_management.view_ldm_letter_template_form	The client's address
+2081	legal_department_management.view_ldm_letter_template_form	The client's registration number
+2088	legal_department_management.view_ldm_letter_template_form	The court case number
+2114	legal_department_management.view_ldm_letter_template_form	The lawyer responsible for the matter
+2120	legal_department_management.view_ldm_letter_template_form	The letter of guarantee
+2121	legal_department_management.view_ldm_letter_template_form	The letter's register number and date
+2122	legal_department_management.view_ldm_letter_template_form	The letter's subject
+2125	legal_department_management.view_ldm_letter_template_form	The matter number
+2126	legal_department_management.view_ldm_letter_template_form	The matter title
+2138	legal_department_management.view_ldm_letter_template_form	The number and date of the letter we answer
+2139	legal_department_management.view_ldm_letter_template_form	The number of the issued opinion
+2149	legal_department_management.view_ldm_letter_template_form	The opposing party
+2161	legal_department_management.view_ldm_letter_template_form	The power of attorney
+2235	legal_department_management.view_ldm_letter_template_form	Today's date
+2402	legal_department_management.view_ldm_letter_template_form	Who signs, and their title
+2445	legal_department_management.view_ldm_letter_template_form	Write a placeholder in braces, for example {client}. Only these names are filled; anything else in braces is printed as written, so a typo shows on the draft.
+2498	legal_department_management.view_ldm_letter_template_form	e.g. Request for a good-standing certificate
+2503	legal_department_management.view_ldm_letter_template_form	e.g. Update on {matter}
+1080	legal_department_management.view_ldm_monthly_report_wizard_form	Lawsuits for and against, matters opened and closed, sessions, judgments, pending challenges, missed periods, government transactions by body, and what expires in the next 60 days.
+1104	legal_department_management.view_ldm_obligation_form	Leave empty to be reminded only
+1561	legal_department_management.view_ldm_obligation_form	Open the matter now
+2082	legal_department_management.view_ldm_obligation_form	The client's responsible
+2395	legal_department_management.view_ldm_obligation_form	Where it is filed, who signs, penalties for lateness...
+2485	legal_department_management.view_ldm_obligation_form	e.g. Annual tax return
+727	legal_department_management.view_ldm_obligation_search	Due in 30 days
+1798	legal_department_management.view_ldm_obligation_search	Reminder only
+1808	legal_department_management.view_ldm_opinion_list	Replaced by
+971	legal_department_management.view_ldm_opinion_search	In force
+1021	legal_department_management.view_ldm_opinion_search	Issued
+1807	legal_department_management.view_ldm_opinion_search	Replaced
+2429	legal_department_management.view_ldm_opinion_search	Words in the question or the opinion
+746	legal_department_management.view_ldm_poa_form	Empty: valid before every body
+1281	legal_department_management.view_ldm_poa_form	More
+1323	legal_department_management.view_ldm_poa_form	New power of attorney
+1860	legal_department_management.view_ldm_poa_form	Revoke
+2053	legal_department_management.view_ldm_poa_form	The acts the agent may do, in the words of the deed.
+2477	legal_department_management.view_ldm_poa_form	days. Once it is renewed,\n                        enter the new expiry date.
+881	legal_department_management.view_ldm_poa_revoke_wizard_form	For example: the client ended the mandate by notarial notice 1234 of 20 September 2026.
+2186	legal_department_management.view_ldm_poa_revoke_wizard_form	These open matters rely on it; their responsible will be told:
+228	legal_department_management.view_ldm_poa_search	Agent
+376	legal_department_management.view_ldm_poa_search	Can act today
+956	legal_department_management.view_ldm_poa_search	I am an agent
+107	legal_department_management.view_ldm_request_form	.\n                        Status:
+114	legal_department_management.view_ldm_request_form	<b>Declined:</b>
+115	legal_department_management.view_ldm_request_form	<b>Returned to you:</b>
+179	legal_department_management.view_ldm_request_form	Accept
+511	legal_department_management.view_ldm_request_form	Complete the request, then press “Send again”.
+1845	legal_department_management.view_ldm_request_form	Return
+1910	legal_department_management.view_ldm_request_form	Send again
+1914	legal_department_management.view_ldm_request_form	Send the result
+2034	legal_department_management.view_ldm_request_form	Take it
+2117	legal_department_management.view_ldm_request_form	The legal team opened matter
+2360	legal_department_management.view_ldm_request_form	What is the question or the situation? Who is the other party? What has been done so far?
+2499	legal_department_management.view_ldm_request_form	e.g. Review the supply contract with Al-Nahrain Company
+2544	legal_department_management.view_ldm_request_form	· next date
+264	legal_department_management.view_ldm_request_reason_wizard_form	Answer the request
+883	legal_department_management.view_ldm_request_reason_wizard_form	For example: this is a commercial decision, not a legal question.
+2358	legal_department_management.view_ldm_request_reason_wizard_form	What is missing? For example: attach the signed draft and the other party's registration certificate.
+2407	legal_department_management.view_ldm_request_reason_wizard_form	Why
+1909	legal_department_management.view_ldm_request_result_wizard_form	Send
+2124	legal_department_management.view_ldm_request_result_wizard_form	The matter has no files yet: the requester will receive the message only.
+1252	legal_department_management.view_ldm_request_search	Mine to handle
+1311	legal_department_management.view_ldm_request_search	Needed within 7 days
+1851	legal_department_management.view_ldm_request_search	Returned
+2229	legal_department_management.view_ldm_request_search	To handle
+145	legal_department_management.view_ldm_statement_wizard_form	<span>to</span>
+2046	legal_department_management.view_ldm_statement_wizard_form	Tell the client
+271	legal_department_management.view_ldm_task_decision_wizard_form	Anything the next person to open this file should know.
+2166	legal_department_management.view_ldm_task_decision_wizard_form	The reason is kept in the matter's history.
+2200	legal_department_management.view_ldm_task_decision_wizard_form	This matter still has
+2417	legal_department_management.view_ldm_task_decision_wizard_form	Why?
+2513	legal_department_management.view_ldm_task_decision_wizard_form	open steps, sessions or deadlines.
+348	legal_department_management.view_ldm_task_decision_wizard_form_money	Before closing
+1849	legal_department_management.view_ldm_task_decision_wizard_form_money	Return the client's money and original documents when the matter ends (Advocacy Law Art. 53).
+2416	legal_department_management.view_ldm_task_decision_wizard_form_money	Why the remaining fee is waived
+302	legal_department_management.view_ldm_task_document_form	Ask for confirmation
+697	legal_department_management.view_ldm_task_document_form	Document to collect
+2033	legal_department_management.view_ldm_task_document_form	Take from the client's records
+2364	legal_department_management.view_ldm_task_document_form	What the body said about this document...
+168	legal_department_management.view_ldm_task_step_form	A note for whoever does it
+2489	legal_department_management.view_ldm_task_step_form	e.g. Collect the tax clearance letter
+2069	legal_department_management.view_ldm_task_template_form	The body's usual answer time
+2391	legal_department_management.view_ldm_task_template_form	When to use this type, what the body asks for...
+2501	legal_department_management.view_ldm_task_template_form	e.g. Tax clearance for companies
+917	legal_department_management.view_ldm_task_template_search	Government services
+1078	legal_department_management.view_ldm_task_template_search	Lawsuits
+2243	legal_department_management.view_ldm_task_template_search	Tracked for every company
+2215	legal_department_management.view_ldm_time_pivot	Time analysis
+1639	legal_department_management.view_ldm_time_search	Person
+2227	legal_department_management.view_ldm_time_search	To approve
+1685	legal_department_management.view_legal_company_form	Print file
+1777	legal_department_management.view_legal_company_form	Registration
+2483	legal_department_management.view_legal_company_form	e.g. Al-Rafidain Contracting Company
+1471	legal_department_management.view_legal_company_form_gov	Obligations
+127	legal_department_management.view_legal_company_form_money	<span class="o_stat_text">Balance due</span>
+128	legal_department_management.view_legal_company_form_money	<span class="o_stat_text">Client money</span>
+130	legal_department_management.view_legal_company_form_money	<span class="o_stat_text">Message the client</span>
+131	legal_department_management.view_legal_company_form_money	<span class="o_stat_text">To invoice</span>
+137	legal_department_management.view_legal_company_form_money	<span invisible="ldm_fund_balance_text">0</span>
+1321	legal_department_management.view_legal_company_form_ws	New matter for this client
+132	legal_department_management.view_legal_company_kanban	<span class="small text-muted" invisible="pending_tasks_count">No open matters</span>
+2512	legal_department_management.view_legal_company_kanban	open
+767	legal_department_management.view_legal_company_report_wizard_form	Every body or court
+770	legal_department_management.view_legal_company_report_wizard_form	Every matter of the client
+1302	legal_department_management.view_legal_company_report_wizard_form	Narrow down (optional)
+985	legal_department_management.view_legal_company_search	Individuals
+1176	legal_department_management.view_legal_department_form	Link to the location on a map
+2131	legal_department_management.view_legal_department_form	The ministry's or the legal calendar
+2367	legal_department_management.view_legal_department_form	What the counter asks for, who to ask, what to avoid...
+2494	legal_department_management.view_legal_department_form	e.g. General Commission for Taxes
+2502	legal_department_management.view_legal_department_form	e.g. The Director General of the General Commission for Taxes
+2504	legal_department_management.view_legal_department_form	e.g. from 8:00 to 14:00, Sunday to Thursday
+785	legal_department_management.view_legal_department_search	Execution directorates
+912	legal_department_management.view_legal_department_search	Government bodies
+146	legal_department_management.view_legal_general_report_wizard_form	<span>–</span>
+768	legal_department_management.view_legal_general_report_wizard_form	Every client
+2040	legal_department_management.view_legal_general_report_wizard_form	Target or next date
+136	legal_department_management.view_legal_handover_wizard_form	<span dir="auto">These powers of attorney name them: a new one is needed.</span>
+2366	legal_department_management.view_legal_handover_wizard_form	What the colleague should know: where the files are, who to call...
+1170	legal_department_management.view_legal_ministry_form	Letters this authority expects, who signs them, where to send them...
+2119	legal_department_management.view_legal_ministry_form	The legal working calendar
+2495	legal_department_management.view_legal_ministry_form	e.g. Ministry of Finance
+495	legal_department_management.view_legal_ministry_search	Commissions and unions
+1049	legal_department_management.view_legal_ministry_search	Judicial councils
+237	legal_department_management.view_legal_readiness_wizard_form	All document types the client holds
+169	legal_department_management.view_legal_task_create_wizard_form	A partner decides before any work starts. You can open the matter now: it stays New until then.
+272	legal_department_management.view_legal_task_create_wizard_form	Anything the team should know from the start
+435	legal_department_management.view_legal_task_create_wizard_form	Chosen for you
+599	legal_department_management.view_legal_task_create_wizard_form	Create and add another
+600	legal_department_management.view_legal_task_create_wizard_form	Create and open
+861	legal_department_management.view_legal_task_create_wizard_form	Filled in from the type and the client
+868	legal_department_management.view_legal_task_create_wizard_form	First session
+913	legal_department_management.view_legal_task_create_wizard_form	Government body
+1547	legal_department_management.view_legal_task_create_wizard_form	Open it and ask a partner
+1658	legal_department_management.view_legal_task_create_wizard_form	Possible conflict of interest
+1899	legal_department_management.view_legal_task_create_wizard_form	Search by body or ministry
+1902	legal_department_management.view_legal_task_create_wizard_form	Search the matter types
+2145	legal_department_management.view_legal_task_create_wizard_form	The office does not take matters with a conflict. Ask a partner.
+2152	legal_department_management.view_legal_task_create_wizard_form	The other side's name
+2254	legal_department_management.view_legal_task_create_wizard_form	Type a name; a new one can be created here
+105	legal_department_management.view_legal_task_form	, sent by
+187	legal_department_management.view_legal_task_form	Accounting (older records)
+554	legal_department_management.view_legal_task_form	Contract value
+827	legal_department_management.view_legal_task_form	Facts, letter numbers, what was said at the counter...
+1593	legal_department_management.view_legal_task_form	Other files
+1784	legal_department_management.view_legal_task_form	Rejected by
+2450	legal_department_management.view_legal_task_form	Write the opinion here.
+2484	legal_department_management.view_legal_task_form	e.g. Annual tax clearance for 2026
+304	legal_department_management.view_legal_task_form_gov	Ask the issuing body to confirm it is genuine
+853	legal_department_management.view_legal_task_form_gov	File it in the client's records for the next matter
+2035	legal_department_management.view_legal_task_form_gov	Take the copy held in the client's records
+2108	legal_department_management.view_legal_task_form_gov	The issuing body confirmed it is genuine
+1185	legal_department_management.view_legal_task_form_lit	Lodge a challenge against this judgment
+119	legal_department_management.view_legal_task_form_money	<i class="fa fa-exclamation-triangle" title="Possible conflict of interest" role="img"/>\n                    <span class="flex-grow-1">Possible conflict of interest. A legal manager must decide before work starts.</span>
+671	legal_department_management.view_legal_task_form_money	Declined after the conflict check. This matter cannot start.
+1735	legal_department_management.view_legal_task_form_money	Recharge
+1904	legal_department_management.view_legal_task_form_money	See the matches
+103	legal_department_management.view_legal_task_form_reg	).\n                    Record a valid one before the next step.
+134	legal_department_management.view_legal_task_form_reg	<span class="text-muted" invisible="superseded_by_id">Issued and frozen. To change it, revise it from the gear menu.</span>\n                    <span class="text-warning" invisible="not superseded_by_id">Replaced by a revision.</span>
+722	legal_department_management.view_legal_task_form_reg	Download the opinion memo
+1020	legal_department_management.view_legal_task_form_reg	Issue opinion
+2164	legal_department_management.view_legal_task_form_reg	The power of attorney this matter relies on is no longer valid\n                    (
+1201	legal_department_management.view_legal_task_form_ws	Mark as waiting
+1686	legal_department_management.view_legal_task_form_ws	Print follow-up sheet
+1837	legal_department_management.view_legal_task_form_ws	Resume work
+1295	legal_department_management.view_legal_task_search	My matters
+2324	legal_department_management.view_legal_task_search	Waiting on the body
+537	legal_department_management.view_legal_task_search_money	Conflict to decide
+1674	legal_department_management.view_legal_task_search_reg	Power of attorney not valid
+1693	legal_department_management.view_legal_visit_wizard_form	Printed on the receipt
+1879	legal_department_management.view_legal_visit_wizard_form	Save visit
+2371	legal_department_management.view_legal_visit_wizard_form	What the visit was for
+2488	legal_department_management.view_legal_visit_wizard_form	e.g. Collect the clearance letter
+2505	legal_department_management.view_legal_visit_wizard_form	e.g. the renewed tax card

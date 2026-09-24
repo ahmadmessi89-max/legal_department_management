@@ -1,0 +1,622 @@
+1732	static/src/quick_create/quick_create.js	Recent
+37	wizards/gov_readiness.py	%(ready)s of %(total)s documents are valid on %(date)s.
+417	wizards/gov_readiness.py	Choose a document pack, or file documents in the client's records.
+708	wizards/gov_readiness.py	Documents valid on a date
+335	wizards/gov_visit.py	Back at the counter on %s
+421	wizards/gov_visit.py	Choose a visit of %s.
+838	wizards/gov_visit.py	Fee paid: %s
+842	wizards/gov_visit.py	Fee: %s
+870	wizards/gov_visit.py	Follow up at %s
+1188	wizards/gov_visit.py	Log a visit
+1344	wizards/gov_visit.py	Next: %(step)s on %(date)s
+1528	wizards/gov_visit.py	Only the legal team can log a visit.
+1720	wizards/gov_visit.py	Receipt %s
+1723	wizards/gov_visit.py	Receipt number: %s
+2067	wizards/gov_visit.py	The body is waiting for: %s
+2101	wizards/gov_visit.py	The fee cannot be negative.
+2304	wizards/gov_visit.py	Visit %(visit)s at %(body)s: %(result)s.
+2306	wizards/gov_visit.py	Visit to %s
+2307	wizards/gov_visit.py	Visit to the body
+2520	wizards/gov_visit.py	the body
+24	wizards/lit_challenge_wizard.py	%(name)s ended on %(date)s: a challenge lodged after that is rejected (Civil Procedure Law Art. 171).
+26	wizards/lit_challenge_wizard.py	%(name)s lodged on %(date)s against the judgment of %(judgment)s. New court stage: %(stage)s.
+258	wizards/lit_challenge_wizard.py	Another challenge was lodged: %s
+433	wizards/lit_challenge_wizard.py	Choose which challenge was lodged.
+38	wizards/lit_outcome_wizard.py	%(safe)s · legal last day %(legal)s
+432	wizards/lit_outcome_wizard.py	Choose what happened at the session.
+585	wizards/lit_outcome_wizard.py	Court session of %(date)s: %(outcome)s.
+903	wizards/lit_outcome_wizard.py	Give the date of the judgment.
+904	wizards/lit_outcome_wizard.py	Give the date of the next session.
+1039	wizards/lit_outcome_wizard.py	Judgment: %s.
+1306	wizards/lit_outcome_wizard.py	Needed before it: %s.
+1307	wizards/lit_outcome_wizard.py	Needed before the court session of %s.
+1341	wizards/lit_outcome_wizard.py	Next session: %s.
+1393	wizards/lit_outcome_wizard.py	No statutory period applies to this judgment.
+1424	wizards/lit_outcome_wizard.py	Note: %s
+1489	wizards/lit_outcome_wizard.py	Only a lawyer can record a judgment.
+1530	wizards/lit_outcome_wizard.py	Only the legal team can record a court session.
+1759	wizards/lit_outcome_wizard.py	Recorded. Next session on %s.
+2134	wizards/lit_outcome_wizard.py	The next session must come after this one.
+2207	wizards/lit_outcome_wizard.py	This session is already recorded. Open it to change what was written.
+2464	wizards/lit_outcome_wizard.py	act by %(safe)s · legal last day %(legal)s
+2465	wizards/lit_outcome_wizard.py	act by %s
+2474	wizards/lit_outcome_wizard.py	counted once the notification date is entered
+2516	wizards/lit_outcome_wizard.py	recorded
+2171	wizards/lit_roll_wizard.py	The roll must end on or after the day it starts.
+1889	wizards/money_decision_wizard.py	Say why the remaining instalments are waived.
+99	wizards/money_expense_post_wizard.py	(none)
+426	wizards/money_expense_post_wizard.py	Choose the expense account, or give the category %s an account.
+792	wizards/money_expense_post_wizard.py	Expense %(name)s posted to accounting (%(ref)s).
+2109	wizards/money_expense_post_wizard.py	The journal %s has no default account.
+2185	wizards/money_expense_post_wizard.py	These expenses are already posted, or were not paid by the office.
+5	wizards/money_fund_wizard.py	%(client)s holds only %(held)s. A legal manager must approve paying out more.
+16	wizards/money_fund_wizard.py	%(kind)s: %(amount)s. Client money held now: %(held)s.
+757	wizards/money_fund_wizard.py	Enter the amount.
+1719	wizards/money_fund_wizard.py	Receipt
+1882	wizards/money_fund_wizard.py	Say why the client's money may go below zero.
+71	wizards/money_invoice_wizard.py	%s lines
+101	wizards/money_invoice_wizard.py	(receipt %s)
+346	wizards/money_invoice_wizard.py	Bar share withheld by the client (5%%, Iraqi Bar order 3021)
+602	wizards/money_invoice_wizard.py	Create invoices
+607	wizards/money_invoice_wizard.py	Creating invoices needs invoicing rights (the Billing role).
+777	wizards/money_invoice_wizard.py	Everything selected has already been invoiced.
+1001	wizards/money_invoice_wizard.py	Invoice %(invoice)s prepared: %(amount)s.
+1434	wizards/money_invoice_wizard.py	Nothing is waiting to be invoiced here. Instalments fall due with their events, time needs approving, and expenses must be recharged to the client.
+2480	wizards/money_invoice_wizard.py	draft
+67	wizards/money_message_wizard.py	%s is not a phone number WhatsApp can reach. Enter it as 07XX XXX XXXX or with +964.
+1243	wizards/money_message_wizard.py	Message sent to the client by %(channel)s (%(to)s):
+1244	wizards/money_message_wizard.py	Message the client
+1248	wizards/money_message_wizard.py	Messages to clients are switched off in Settings.
+1529	wizards/money_message_wizard.py	Only the legal team can message clients.
+2075	wizards/money_message_wizard.py	The client has no email address. Add it on the client, or send by WhatsApp.
+2137	wizards/money_message_wizard.py	The number
+2449	wizards/money_message_wizard.py	Write the message first.
+2154	wizards/money_statement_wizard.py	The period ends before it starts.
+428	wizards/reg_guarantee_wizard.py	Choose the letter template, or untick “Draft the letter”.
+759	wizards/reg_guarantee_wizard.py	Enter the new expiry date the bank gave: it must be after %s.
+821	wizards/reg_guarantee_wizard.py	Extended from %(old)s to %(new)s. %(note)s
+825	wizards/reg_guarantee_wizard.py	Extension requested from the bank. %s
+1792	wizards/reg_guarantee_wizard.py	Released on %(date)s. %(note)s
+419	wizards/reg_letter_wizards.py	Choose a template.
+423	wizards/reg_request_wizards.py	Choose the client the matter is for.
+429	wizards/reg_request_wizards.py	Choose the matter type: it fills in the steps and the documents to collect.
+947	wizards/reg_request_wizards.py	Here is the result of your request.
+1209	wizards/reg_request_wizards.py	Matter %s opened from this letter.
+1522	wizards/reg_request_wizards.py	Only files of the request's matter can be sent.
+1569	wizards/reg_request_wizards.py	Opened from letter %s.
+2196	wizards/reg_request_wizards.py	This letter already belongs to %s.
+8	wizards/ws_handover.py	%(count)s matters changed hands.
+9	wizards/ws_handover.py	%(count)s powers of attorney name %(name)s: issue new ones.
+45	wizards/ws_handover.py	%s activities
+46	wizards/ws_handover.py	%s clients
+47	wizards/ws_handover.py	%s court sessions
+50	wizards/ws_handover.py	%s deadlines
+72	wizards/ws_handover.py	%s matters
+78	wizards/ws_handover.py	%s open steps
+80	wizards/ws_handover.py	%s requests
+431	wizards/ws_handover.py	Choose two different people.
+598	wizards/ws_handover.py	Covered by %(taker)s for %(giver)s until %(date)s:
+936	wizards/ws_handover.py	Handed over from %(giver)s to %(taker)s:
+1437	wizards/ws_handover.py	Nothing to hand over with these choices.
+1501	wizards/ws_handover.py	Only a legal manager can hand work over.
+2466	wizards/ws_handover.py	activities
+2471	wizards/ws_handover.py	becomes responsible
+2473	wizards/ws_handover.py	clients
+2475	wizards/ws_handover.py	court sessions
+2478	wizards/ws_handover.py	deadlines
+2507	wizards/ws_handover.py	hearings
+2508	wizards/ws_handover.py	joins the team
+2517	wizards/ws_handover.py	replaces them on the team
+2518	wizards/ws_handover.py	requests
+2519	wizards/ws_handover.py	steps
+2002	legal_department_management.action_ldm_appeal_rule	Statutory periods
+465	legal_department_management.action_ldm_client_file_wizard	Client file (choose matters)
+1929	legal_department_management.action_ldm_company_coverage	Services this year
+504	legal_department_management.action_ldm_company_document	Company documents
+532	legal_department_management.action_ldm_conflict_check	Conflict checks
+559	legal_department_management.action_ldm_correspondence	Correspondence
+642	legal_department_management.action_ldm_deadline	Deadlines
+701	legal_department_management.action_ldm_document_type	Document types
+834	legal_department_management.action_ldm_engagement	Fee agreements
+800	legal_department_management.action_ldm_expense_analysis	Expenses analysis
+795	legal_department_management.action_ldm_expense_category	Expense categories
+1179	legal_department_management.action_ldm_exposure	Litigation exposure
+1169	legal_department_management.action_ldm_guarantee	Letters of guarantee
+940	legal_department_management.action_ldm_hearing_roll_wizard	Hearing roll
+1706	legal_department_management.action_ldm_holiday	Public holidays
+1162	legal_department_management.action_ldm_letter_template	Letter templates
+1279	legal_department_management.action_ldm_monthly_report_wizard	Monthly status report
+1762	legal_department_management.action_ldm_obligation	Recurring obligations
+1126	legal_department_management.action_ldm_opinion_register	Legal opinions
+1605	legal_department_management.action_ldm_oversight_from_matters	Oversight report
+1676	legal_department_management.action_ldm_poa	Powers of attorney
+1822	legal_department_management.action_ldm_request	Requests
+1296	legal_department_management.action_ldm_request_mine	My requests
+1946	legal_department_management.action_ldm_settings	Settings
+1223	legal_department_management.action_ldm_task_analysis	Matters analysis
+659	legal_department_management.action_ldm_task_decided	Decided
+2423	legal_department_management.action_ldm_task_no_agreement	Without a signed fee agreement
+1220	legal_department_management.action_ldm_task_template	Matter types
+2437	legal_department_management.action_ldm_working_calendar	Working days and holidays
+933	legal_department_management.action_legal_handover_wizard	Hand over work
+1257	legal_department_management.action_legal_ministry	Ministries and authorities
+830	legal_department_management.action_report_ldm_engagement	Fee agreement
+1473	legal_department_management.action_report_ldm_letter	Official letter
+1278	legal_department_management.action_report_ldm_monthly_status	Monthly status of lawsuits and transactions
+1125	legal_department_management.action_report_ldm_opinion_memo	Legal opinion memo
+1771	legal_department_management.action_report_ldm_register_book	Register book
+2020	legal_department_management.action_report_ldm_substitution	Substitution letter
+464	legal_department_management.action_report_legal_company	Client file
+872	legal_department_management.action_report_legal_task	Follow-up sheet
+89	legal_department_management.action_report_ldm_engagement	'Fee agreement - %s' % object.name
+91	legal_department_management.action_report_ldm_hearing_roll	'Hearing roll'
+93	legal_department_management.action_report_ldm_letter	'Letter - %s' % (object.number or object.name or '')
+94	legal_department_management.action_report_ldm_monthly_status	'Monthly status report'
+92	legal_department_management.action_report_ldm_opinion_memo	'Legal opinion %s' % (object.opinion_number or object.task_number or '')
+96	legal_department_management.action_report_ldm_register_book	'Register book'
+97	legal_department_management.action_report_ldm_statement	'Statement - %s' % object.name
+98	legal_department_management.action_report_ldm_substitution	'Substitution letter - %s' % (object.date or '')
+88	legal_department_management.action_report_legal_company	'Client file - %s' % (object.name or '')
+95	legal_department_management.action_report_legal_general_overview	'Oversight report'
+90	legal_department_management.action_report_legal_task	'Follow-up sheet - %s' % (object.task_number or object.name or '')
+601	legal_department_management.action_server_ldm_company_invoice	Create invoice
+1198	legal_department_management.action_server_ldm_letter_answered	Mark as answered
+855	legal_department_management.action_server_ldm_letter_file_pdf	File the PDF on the matter
+2310	legal_department_management.action_server_ldm_letter_void	Void
+1912	legal_department_management.action_server_ldm_request_approval	Send for approval
+336	legal_department_management.action_server_ldm_reset	Back to New
+1828	legal_department_management.action_server_ldm_reset_approval	Reset approval
+1855	legal_department_management.action_server_ldm_revise_opinion	Revise opinion
+1132	legal_department_management.ir_cron_ldm_deadlines_ir_actions_server	Legal: close lapsed deadlines, start the next periods, report missed ones
+1147	legal_department_management.ir_cron_ldm_document_expiry_ir_actions_server	Legal: mark expired documents on matters
+1140	legal_department_management.ir_cron_ldm_fee_schedule_ir_actions_server	Legal: fee instalments and retainers
+1143	legal_department_management.ir_cron_ldm_holiday_review_ir_actions_server	Legal: in December, ask the managers to enter next year's public holidays
+1148	legal_department_management.ir_cron_ldm_obligations_ir_actions_server	Legal: open matters for recurring obligations
+1139	legal_department_management.ir_cron_ldm_register_expiry_ir_actions_server	Legal: expiry of powers of attorney and letters of guarantee
+1138	legal_department_management.ir_cron_ldm_vault_deadlines_ir_actions_server	Legal: expiry deadlines for company documents
+1149	legal_department_management.ir_cron_legal_task_checker_ir_actions_server	Legal: reminders for sessions, deadlines and steps
+1894	legal_department_management.model_ldm_reg_scan_mixin	Scanned copy of a register record
+946	legal_department_management.model_ldm_report_mixin	Helpers for the legal reports
+386	legal_department_management.model_legal_advance	Cash advance
+1949	legal_department_management.model_legal_advance_settle_wizard	Settle a cash advance
+2001	legal_department_management.model_legal_appeal_rule	Statutory period
+471	legal_department_management.model_legal_client_fund_line	Client money movement
+1245	legal_department_management.model_legal_client_message_wizard	Message to a client
+1928	legal_department_management.model_legal_company_coverage	Services done this year, per client
+502	legal_department_management.model_legal_company_document	Company document
+466	legal_department_management.model_legal_company_report_wizard	Client file options
+536	legal_department_management.model_legal_conflict_check	Conflict of interest check
+656	legal_department_management.model_legal_conflict_decision_wizard	Decide on a conflict check
+2311	legal_department_management.model_legal_correspondence_void_wizard	Void a letter
+576	legal_department_management.model_legal_court_degree	Court degree
+593	legal_department_management.model_legal_court_stage	Court stage
+914	legal_department_management.model_legal_department	Government body, directorate or court
+543	legal_department_management.model_legal_department_contact	Contact at a government body
+700	legal_department_management.model_legal_document_type	Document type
+841	legal_department_management.model_legal_engagement_line	Fee schedule line
+796	legal_department_management.model_legal_expense_category	Expense category
+1663	legal_department_management.model_legal_expense_post_wizard	Post expenses to accounting
+1606	legal_department_management.model_legal_general_report_wizard	Oversight report options
+1157	legal_department_management.model_legal_guarantee	Letter of guarantee
+191	legal_department_management.model_legal_guarantee_wizard	Act on a letter of guarantee
+1743	legal_department_management.model_legal_hearing_outcome_wizard	Record a court session
+1689	legal_department_management.model_legal_hearing_roll_wizard	Print the hearing roll
+1702	legal_department_management.model_legal_holiday	Public holiday
+603	legal_department_management.model_legal_invoice_wizard	Create invoices from what is due
+1161	legal_department_management.model_legal_letter_template	Letter template
+1261	legal_department_management.model_legal_ministry	Ministry / public authority
+1761	legal_department_management.model_legal_obligation	Recurring obligation
+1668	legal_department_management.model_legal_poa	Power of attorney
+1861	legal_department_management.model_legal_poa_revoke_wizard	Revoke a power of attorney
+702	legal_department_management.model_legal_readiness_wizard_line	Document valid on a date
+1012	legal_department_management.model_legal_reference_library	Iraqi reference library
+1539	legal_department_management.model_legal_reg_matter_wizard	Open a matter from a request or a letter
+1688	legal_department_management.model_legal_register_book_wizard	Print the correspondence register book
+1819	legal_department_management.model_legal_request	Request to the legal team
+1848	legal_department_management.model_legal_request_reason_wizard	Return or decline a request
+1916	legal_department_management.model_legal_request_result_wizard	Send the result to the requester
+481	legal_department_management.model_legal_task_decision_wizard	Close, cancel or reject a matter
+698	legal_department_management.model_legal_task_document	Document to collect for a matter
+798	legal_department_management.model_legal_task_expense	Expense on a matter
+1620	legal_department_management.model_legal_task_party	Party to a matter
+1216	legal_department_management.model_legal_task_step	Matter step
+1217	legal_department_management.model_legal_task_template	Matter type
+699	legal_department_management.model_legal_task_template_document	Document to collect for a matter type
+1219	legal_department_management.model_legal_task_template_step	Matter type step
+2216	legal_department_management.model_legal_time_entry	Time entry
+1187	legal_department_management.model_legal_visit_wizard	Log a counter visit
+561	legal_department_management.model_report_legal_department_management_report_ldm_register_book	Correspondence register book
+1996	legal_department_management.model_report_legal_department_management_report_ldm_statement	Statement of account report
+1212	legal_department_management.model_report_legal_department_management_report_legal_task_template	Matter follow-up sheet
+735	legal_department_management.constraint_legal_court_degree_code_uniq	Each court degree exists once.
+1122	legal_department_management.field_account_bank_statement_line__ldm_task_ids	Legal matters
+1891	legal_department_management.field_ldm_reg_scan_mixin__attachment_id	Scan
+1893	legal_department_management.field_ldm_reg_scan_mixin__scan	Scanned copy
+854	legal_department_management.field_ldm_reg_scan_mixin__scan_name	File name
+243	legal_department_management.field_legal_advance__amount	Amount
+2010	legal_department_management.field_legal_advance__balance	Still to account for
+606	legal_department_management.field_legal_advance__create_date	Created on
+605	legal_department_management.field_legal_advance__create_uid	Created by
+618	legal_department_management.field_legal_advance__currency_id	Currency
+620	legal_department_management.field_legal_advance__date	Date
+1724	legal_department_management.field_legal_advance__expense_count	Receipts
+1613	legal_department_management.field_legal_advance__expense_ids	Paid from it
+938	legal_department_management.field_legal_advance__has_message	Has Message
+1090	legal_department_management.field_legal_advance__ldm_can_handle	Ldm Can Handle
+319	legal_department_management.field_legal_advance__message_attachment_count	Attachment Count
+873	legal_department_management.field_legal_advance__message_follower_ids	Followers
+1242	legal_department_management.field_legal_advance__message_has_error	Message Delivery error
+1452	legal_department_management.field_legal_advance__message_has_error_counter	Number of errors
+1873	legal_department_management.field_legal_advance__message_has_sms_error	SMS Delivery error
+1246	legal_department_management.field_legal_advance__message_ids	Messages
+1014	legal_department_management.field_legal_advance__message_is_follower	Is Follower
+193	legal_department_management.field_legal_advance__message_needaction	Action Needed
+1450	legal_department_management.field_legal_advance__message_needaction_counter	Number of Actions
+874	legal_department_management.field_legal_advance__message_partner_ids	Followers (Partners)
+1708	legal_department_management.field_legal_advance__name	Purpose
+388	legal_department_management.field_legal_advance__returned_amount	Cash returned
+1984	legal_department_management.field_legal_advance__spent_amount	Spent
+910	legal_department_management.field_legal_advance__user_id	Given to
+2350	legal_department_management.field_legal_advance__website_message_ids	Website Messages
+1066	legal_department_management.field_legal_advance__write_date	Last Updated on
+1065	legal_department_management.field_legal_advance__write_uid	Last Updated by
+221	legal_department_management.field_legal_advance_settle_wizard__advance_id	Advance
+935	legal_department_management.field_legal_advance_settle_wizard__amount	Handed over
+1109	legal_department_management.field_legal_advance_settle_wizard__balance	Left to account for
+382	legal_department_management.field_legal_advance_settle_wizard__candidate_ids	Candidate
+196	legal_department_management.field_legal_appeal_rule__active	Active
+1112	legal_department_management.field_legal_appeal_rule__basis	Legal basis
+488	legal_department_management.field_legal_appeal_rule__code	Code
+1038	legal_department_management.field_legal_appeal_rule__court_degree	Judgment of
+1637	legal_department_management.field_legal_appeal_rule__days	Period
+1044	legal_department_management.field_legal_appeal_rule__degree_ids	Judgments of
+1289	legal_department_management.field_legal_appeal_rule__extends_on_holiday	Moves off a holiday
+1700	legal_department_management.field_legal_appeal_rule__from_judgment	Proposed from a judgment
+279	legal_department_management.field_legal_appeal_rule__judgment_presence	Applies to
+1074	legal_department_management.field_legal_appeal_rule__law	Law
+1315	legal_department_management.field_legal_appeal_rule__max_months	Never later than (months)
+1299	legal_department_management.field_legal_appeal_rule__name	Name
+2182	legal_department_management.field_legal_appeal_rule__next_rule_id	Then
+1423	legal_department_management.field_legal_appeal_rule__note	Note
+383	legal_department_management.field_legal_appeal_rule__peremptory	Cannot be extended
+1153	legal_department_management.field_legal_appeal_rule__period_label	Length
+1794	legal_department_management.field_legal_appeal_rule__remedy	Remedy
+1924	legal_department_management.field_legal_appeal_rule__sequence	Sequence
+1979	legal_department_management.field_legal_appeal_rule__source_url	Source
+563	legal_department_management.field_legal_appeal_rule__start_event	Counted from
+1991	legal_department_management.field_legal_appeal_rule__trigger_outcome	Started by the outcome
+2261	legal_department_management.field_legal_appeal_rule__unit	Unit
+515	legal_department_management.field_legal_appeal_rule__verification	Confidence
+791	legal_department_management.field_legal_billable__expense_id	Expense
+986	legal_department_management.field_legal_billable__fee_line_id	Instalment
+461	legal_department_management.field_legal_billable__group_key	Client and currency
+2353	legal_department_management.field_legal_billable__kind	What
+1092	legal_department_management.field_legal_billable__ldm_can_message	Ldm Can Message
+682	legal_department_management.field_legal_billable__name	Description
+1004	legal_department_management.field_legal_billable__partner_id	Invoice to
+1711	legal_department_management.field_legal_billable__quantity	Quantity
+1288	legal_department_management.field_legal_client_fund_line__kind	Movement
+475	legal_department_management.field_legal_client_fund_line__ldm_client_balance	Client's balance
+2414	legal_department_management.field_legal_client_fund_line__override_reason	Why the balance may go below zero
+1722	legal_department_management.field_legal_client_fund_line__receipt_number	Receipt number
+739	legal_department_management.field_legal_client_fund_line__signed_amount	Effect on balance
+2049	legal_department_management.field_legal_client_message_wizard__body	Text
+743	legal_department_management.field_legal_client_message_wizard__email	Email
+1064	legal_department_management.field_legal_client_message_wizard__lang	Language
+2224	legal_department_management.field_legal_client_message_wizard__partner_id	To
+2378	legal_department_management.field_legal_client_message_wizard__phone	WhatsApp number
+1644	legal_department_management.field_legal_client_message_wizard__phone_ok	Phone Ok
+1241	legal_department_management.field_legal_client_message_wizard__template_id	Message
+2315	legal_department_management.field_legal_client_message_wizard__wa_url	Wa Url
+1327	legal_department_management.field_legal_company__activity_calendar_event_id	Next Activity Calendar Event
+1328	legal_department_management.field_legal_company__activity_date_deadline	Next Activity Deadline
+200	legal_department_management.field_legal_company__activity_exception_decoration	Activity Exception Decoration
+963	legal_department_management.field_legal_company__activity_exception_icon	Icon
+198	legal_department_management.field_legal_company__activity_ids	Activities
+201	legal_department_management.field_legal_company__activity_state	Activity State
+1329	legal_department_management.field_legal_company__activity_summary	Next Activity Summary
+202	legal_department_management.field_legal_company__activity_type_icon	Activity Type Icon
+1330	legal_department_management.field_legal_company__activity_type_id	Next Activity Type
+1832	legal_department_management.field_legal_company__activity_user_id	Responsible User
+215	legal_department_management.field_legal_company__address	Address
+858	legal_department_management.field_legal_company__attachment_ids	Files
+339	legal_department_management.field_legal_company__balance_due	Balance due
+405	legal_department_management.field_legal_company__chamber_grade	Chamber grade
+407	legal_department_management.field_legal_company__chamber_number	Chamber of commerce ID
+467	legal_department_management.field_legal_company__client_kind	Client is
+1763	legal_department_management.field_legal_company__code	Reference
+1118	legal_department_management.field_legal_company__company_type	Legal form
+359	legal_department_management.field_legal_company__department_count	Bodies
+1454	legal_department_management.field_legal_company__document_count	Number of files
+703	legal_department_management.field_legal_company__document_ids	Document vault
+1985	legal_department_management.field_legal_company__employee_ids	Staff team
+1453	legal_department_management.field_legal_company__engagement_count	Number of fee agreements
+372	legal_department_management.field_legal_company__entity_type	Business activity
+815	legal_department_management.field_legal_company__expiring_document_count	Expiring documents
+1084	legal_department_management.field_legal_company__lawyer_ids	Lawyers
+721	legal_department_management.field_legal_company__ldm_dossier	Dossier
+469	legal_department_management.field_legal_company__ldm_fund_balance_text	Client money held
+1256	legal_department_management.field_legal_company__ministry_count	Ministries
+1291	legal_department_management.field_legal_company__my_activity_date_deadline	My Activity Deadline
+1303	legal_department_management.field_legal_company__national_id	National ID
+1425	legal_department_management.field_legal_company__notes	Notes
+1940	legal_department_management.field_legal_company__open_hearing_count	Sessions in 30 days
+1194	legal_department_management.field_legal_company__owner_name	Managing director
+542	legal_department_management.field_legal_company__partner_id	Contact
+1643	legal_department_management.field_legal_company__phone	Phone
+197	legal_department_management.field_legal_company__poa_count	Active powers of attorney
+1778	legal_department_management.field_legal_company__registration_number	Registration number
+1975	legal_department_management.field_legal_company__social_security_number	Social security number
+1457	legal_department_management.field_legal_company__task_count	Number of matters
+2044	legal_department_management.field_legal_company__tax_number	Tax number
+2211	legal_department_management.field_legal_company_coverage__coverage_state	This year
+361	legal_department_management.field_legal_company_coverage__department_id	Body
+731	legal_department_management.field_legal_company_coverage__is_due	Due this year
+1067	legal_department_management.field_legal_company_coverage__last_done_date	Last done on
+1073	legal_department_management.field_legal_company_coverage__last_state	Latest matter status
+1072	legal_department_management.field_legal_company_coverage__last_task_id	Latest matter
+1925	legal_department_management.field_legal_company_coverage__template_id	Service
+850	legal_department_management.field_legal_company_document__attachment_id	File
+397	legal_department_management.field_legal_company_document__category	Category
+811	legal_department_management.field_legal_company_document__date_expiry	Expires on
+1023	legal_department_management.field_legal_company_document__date_issued	Issued on
+819	legal_department_management.field_legal_company_document__deadline_id	Expiry deadline
+1448	legal_department_management.field_legal_company_document__number	Number
+2344	legal_department_management.field_legal_company_document__original_held	We hold the original
+2292	legal_department_management.field_legal_company_document__validity	Validity
+1535	legal_department_management.field_legal_company_report_wizard__filter_task_ids	Only these matters
+1691	legal_department_management.field_legal_company_report_wizard__show_company_info	Print the registration details
+415	legal_department_management.field_legal_conflict_check__date	Checked on
+660	legal_department_management.field_legal_conflict_check__decided_by_id	Decided by
+662	legal_department_management.field_legal_conflict_check__decided_on	Decided on
+664	legal_department_management.field_legal_conflict_check__decision	Decision
+1207	legal_department_management.field_legal_conflict_check__hit_count	Matches found
+2376	legal_department_management.field_legal_conflict_check__hit_html	What was found
+1206	legal_department_management.field_legal_conflict_check__hits	Matches
+1096	legal_department_management.field_legal_conflict_check__ldm_is_manager	Ldm Is Manager
+879	legal_department_management.field_legal_conflict_check__legal_company_id	For client
+1656	legal_department_management.field_legal_conflict_check__policy	Policy
+1301	legal_department_management.field_legal_conflict_check__query	Names checked
+1718	legal_department_management.field_legal_conflict_check__reason	Reason
+1905	legal_department_management.field_legal_conflict_check__seen_count	Seen before
+1215	legal_department_management.field_legal_conflict_check__task_state	Matter status
+414	legal_department_management.field_legal_conflict_check__user_id	Checked by
+1767	legal_department_management.field_legal_correspondence__assigned_user_id	Referred to
+1154	legal_department_management.field_legal_correspondence__body_html	Letter
+555	legal_department_management.field_legal_correspondence__cc_lines	Copies to
+685	legal_department_management.field_legal_correspondence__direction	Direction
+994	legal_department_management.field_legal_correspondence__instruction_days	Instruction due in (working days)
+993	legal_department_management.field_legal_correspondence__instruction_due	Instruction due
+1156	legal_department_management.field_legal_correspondence__lang	Letter language
+1098	legal_department_management.field_legal_correspondence__ldm_numbering	Ldm Numbering
+2015	legal_department_management.field_legal_correspondence__name	Subject
+1595	legal_department_management.field_legal_correspondence__partner_id	Other party
+889	legal_department_management.field_legal_correspondence__party_display	From / to
+1731	legal_department_management.field_legal_correspondence__received_date	Received on
+992	legal_department_management.field_legal_correspondence__referral_note	Instruction
+1766	legal_department_management.field_legal_correspondence__referred_by	Referred by
+265	legal_department_management.field_legal_correspondence__reply_days	Answer within (working days)
+266	legal_department_management.field_legal_correspondence__reply_done	Answered
+1816	legal_department_management.field_legal_correspondence__reply_due_date	Reply due
+1813	legal_department_management.field_legal_correspondence__reply_ids	Replies
+259	legal_department_management.field_legal_correspondence__reply_state	Answer
+1814	legal_department_management.field_legal_correspondence__reply_to_id	Replies to
+2178	legal_department_management.field_legal_correspondence__sender_date	Their date
+2180	legal_department_management.field_legal_correspondence__sender_ref	Their number
+1966	legal_department_management.field_legal_correspondence__signatory_id	Signed by
+1961	legal_department_management.field_legal_correspondence__signatory_title	Signatory title
+2048	legal_department_management.field_legal_correspondence__template_id	Template
+2411	legal_department_management.field_legal_correspondence__void_reason	Why it was voided
+2409	legal_department_management.field_legal_correspondence_void_wizard__reason	Why is it void?
+677	legal_department_management.field_legal_court_degree__code	Degree
+385	legal_department_management.field_legal_court_stage__case_number	Case number
+2453	legal_department_management.field_legal_court_stage__case_year	Year
+857	legal_department_management.field_legal_court_stage__date_filed	Filed on
+582	legal_department_management.field_legal_court_stage__department_id	Court or execution office
+788	legal_department_management.field_legal_court_stage__execution_file_number	Execution file number
+789	legal_department_management.field_legal_court_stage__notification_date	Execution notice served on
+1987	legal_department_management.field_legal_court_stage__stage	Stage
+1119	legal_department_management.field_legal_deadline__date_deadline	Legal last day
+1250	legal_department_management.field_legal_deadline__date_done	Met on
+189	legal_department_management.field_legal_deadline__date_safe	Act by
+1193	legal_department_management.field_legal_deadline__escalated	Managers told
+1055	legal_department_management.field_legal_deadline__kind	Kind
+1337	legal_department_management.field_legal_deadline__next_deadline_ids	Next periods
+2345	legal_department_management.field_legal_deadline__our_action	We must act
+875	legal_department_management.field_legal_deadline__previous_deadline_id	Follows
+635	legal_department_management.field_legal_deadline__remaining_days	Days left
+1287	legal_department_management.field_legal_deadline__rolled	Moved off a holiday
+1870	legal_department_management.field_legal_deadline__rule_id	Rule
+1981	legal_department_management.field_legal_deadline__source_id	Source record
+1980	legal_department_management.field_legal_deadline__source_model	Source model
+1167	legal_department_management.field_legal_department__addressee_title	Letters are addressed to
+545	legal_department_management.field_legal_department__contact_ids	Contacts
+544	legal_department_management.field_legal_department__contact_person	Contact person
+921	legal_department_management.field_legal_department__governorate	Governorate
+1901	legal_department_management.field_legal_department__ldm_search_key	Search key
+1197	legal_department_management.field_legal_department__location_url	Map link
+596	legal_department_management.field_legal_department__lower_court_ids	Courts below
+1260	legal_department_management.field_legal_department__ministry_id	Ministry / authority
+949	legal_department_management.field_legal_department__parent_id	Higher court
+2434	legal_department_management.field_legal_department__resource_calendar_id	Working calendar
+2286	legal_department_management.field_legal_department__target_days	Usual answer time (working days)
+1460	legal_department_management.field_legal_department__template_count	Number of services
+1926	legal_department_management.field_legal_department__template_ids	Services
+1573	legal_department_management.field_legal_department__working_hours	Opening hours
+678	legal_department_management.field_legal_department_contact__department_id	Department
+1867	legal_department_management.field_legal_department_contact__role	Role or counter
+633	legal_department_management.field_legal_document_type__validity_days	Days
+2225	legal_department_management.field_legal_document_wizard__department_id	To (body)
+2226	legal_department_management.field_legal_document_wizard__partner_id	To (person or company)
+231	legal_department_management.field_legal_engagement__amount	Agreed fee
+729	legal_department_management.field_legal_engagement__amount_due	Due now
+1005	legal_department_management.field_legal_engagement__amount_invoiced	Invoiced
+2011	legal_department_management.field_legal_engagement__amount_planned	Still to come
+1896	legal_department_management.field_legal_engagement__amount_scheduled	Scheduled
+1967	legal_department_management.field_legal_engagement__attachment_id	Signed copy
+343	legal_department_management.field_legal_engagement__bar_withholding	Bar 5% withholding
+109	legal_department_management.field_legal_engagement__cap_applies	20% cap applies
+2295	legal_department_management.field_legal_engagement__cap_base	Value of the matters
+178	legal_department_management.field_legal_engagement__cap_exceeded	Above the 20% cap
+615	legal_department_management.field_legal_engagement__cap_exempt	Criminal matters only
+829	legal_department_management.field_legal_engagement__cap_fee	Fee against the cap
+110	legal_department_management.field_legal_engagement__cap_limit	20% of the value
+2413	legal_department_management.field_legal_engagement__cap_override_reason	Why the 20% cap is exceeded
+501	legal_department_management.field_legal_engagement__company_currency_id	Company currency
+747	legal_department_management.field_legal_engagement__date_end	End
+836	legal_department_management.field_legal_engagement__fee_type	Fee arrangement
+952	legal_department_management.field_legal_engagement__hourly_rate	Hourly rate
+1834	legal_department_management.field_legal_engagement__lawyer_id	Responsible lawyer
+1895	legal_department_management.field_legal_engagement__line_ids	Schedule
+232	legal_department_management.field_legal_engagement__name	Agreement
+1336	legal_department_management.field_legal_engagement__next_line_text	Next instalment
+1898	legal_department_management.field_legal_engagement__note	Scope and terms
+351	legal_department_management.field_legal_engagement__retainer_below_minimum	Below the Bar minimum
+345	legal_department_management.field_legal_engagement__retainer_minimum	Bar minimum per month
+1338	legal_department_management.field_legal_engagement__retainer_next_date	Next retainer invoice
+1840	legal_department_management.field_legal_engagement__retainer_period	Retainer billed
+1964	legal_department_management.field_legal_engagement__signed	Signed
+1965	legal_department_management.field_legal_engagement__signed_copy	Signed agreement (scan)
+1968	legal_department_management.field_legal_engagement__signed_copy_name	Signed copy file name
+1969	legal_department_management.field_legal_engagement__signed_date	Signed on
+2024	legal_department_management.field_legal_engagement__success_percent	Success fee (%)
+752	legal_department_management.field_legal_engagement_line__engagement_id	Engagement
+233	legal_department_management.field_legal_engagement_line__engagement_state	Agreement status
+1003	legal_department_management.field_legal_engagement_line__invoice_line_id	Invoice line
+1626	legal_department_management.field_legal_engagement_line__payment_state	Payment
+726	legal_department_management.field_legal_engagement_line__trigger_event	Due
+2412	legal_department_management.field_legal_engagement_line__waive_reason	Why it was waived
+793	legal_department_management.field_legal_expense_category__account_id	Expense account
+1738	legal_department_management.field_legal_expense_category__recoverable_default	Recharged to the client by default
+1612	legal_department_management.field_legal_expense_post_wizard__journal_id	Paid from
+1662	legal_department_management.field_legal_expense_post_wizard__mode	Post as
+989	legal_department_management.field_legal_fee_waive_wizard__line_ids	Instalments
+2408	legal_department_management.field_legal_fee_waive_wizard__reason	Why are they waived?
+944	legal_department_management.field_legal_fund_move_wizard__balance	Held now
+942	legal_department_management.field_legal_fund_move_wizard__balance_after	Held afterwards
+911	legal_department_management.field_legal_fund_move_wizard__goes_negative	Goes Negative
+1015	legal_department_management.field_legal_fund_move_wizard__is_manager	Is Manager
+2410	legal_department_management.field_legal_fund_move_wizard__override_reason	Why it may go below zero
+1721	legal_department_management.field_legal_fund_move_wizard__receipt_filename	Receipt file name
+630	legal_department_management.field_legal_general_report_wizard__date_from	Dates from
+631	legal_department_management.field_legal_general_report_wizard__date_to	Dates to
+1907	legal_department_management.field_legal_general_report_wizard__filter_task_ids	Selected matters
+929	legal_department_management.field_legal_general_report_wizard__group_by_company	Group by client
+1908	legal_department_management.field_legal_general_report_wizard__selection_note	Selection Note
+863	legal_department_management.field_legal_general_report_wizard__task_domain	Filter of the list
+341	legal_department_management.field_legal_guarantee__bank_id	Bank
+353	legal_department_management.field_legal_guarantee__beneficiary_id	Beneficiary
+1165	legal_department_management.field_legal_guarantee__correspondence_ids	Letters
+813	legal_department_management.field_legal_guarantee__is_expiring	Expires within 30 days
+1682	legal_department_management.field_legal_guarantee__legal_company_id	Principal
+1635	legal_department_management.field_legal_guarantee__percent	Percent of the contract
+1791	legal_department_management.field_legal_guarantee__release_date	Released on
+551	legal_department_management.field_legal_guarantee__task_id	Contract matter
+724	legal_department_management.field_legal_guarantee_wizard__draft_letter	Draft the letter
+1273	legal_department_management.field_legal_guarantee_wizard__mode	Mode
+1319	legal_department_management.field_legal_guarantee_wizard__new_expiry	New expiry date
+2265	legal_department_management.field_legal_handover_wizard__date_end	Until
+888	legal_department_management.field_legal_handover_wizard__from_user_id	From
+934	legal_department_management.field_legal_handover_wizard__note	Hand-over note
+1324	legal_department_management.field_legal_handover_wizard__poa_ids	New power of attorney needed
+1545	legal_department_management.field_legal_handover_wizard__scope_deadlines	Open deadlines
+1653	legal_department_management.field_legal_handover_wizard__scope_hearings	Planned court sessions
+1224	legal_department_management.field_legal_handover_wizard__scope_matters	Matters and clients they are responsible for, and their teams
+1823	legal_department_management.field_legal_handover_wizard__scope_requests	Requests assigned to them
+1554	legal_department_management.field_legal_handover_wizard__scope_steps	Open steps
+2361	legal_department_management.field_legal_handover_wizard__summary	What moves
+320	legal_department_management.field_legal_hearing__attendance	Attendance
+321	legal_department_management.field_legal_hearing__attending_user_id	Attended by
+1868	legal_department_management.field_legal_hearing__court_room	Room
+626	legal_department_management.field_legal_hearing__date_warning	Date warning
+574	legal_department_management.field_legal_hearing__department_id	Court
+1173	legal_department_management.field_legal_hearing__licence_warning	Licence warning
+1264	legal_department_management.field_legal_hearing__minutes_attachment_id	Minutes
+1308	legal_department_management.field_legal_hearing__needed_before	Needed before the next session
+1313	legal_department_management.field_legal_hearing__needs_substitution_letter	Needs a substitution letter
+1339	legal_department_management.field_legal_hearing__next_hearing_id	Next session
+1600	legal_department_management.field_legal_hearing__outcome	Outcome
+2355	legal_department_management.field_legal_hearing__outcome_note	What happened
+1681	legal_department_management.field_legal_hearing__previous_hearing_id	Previous session
+2019	legal_department_management.field_legal_hearing__substitute_partner_id	Substitute lawyer
+2022	legal_department_management.field_legal_hearing__substitution_warning	Substitution warning
+1057	legal_department_management.field_legal_hearing__task_kind	Kind of matter
+211	legal_department_management.field_legal_hearing_outcome_wizard__add_period	Add this period
+244	legal_department_management.field_legal_hearing_outcome_wizard__amount_awarded	Amount awarded
+1930	legal_department_management.field_legal_hearing_outcome_wizard__hearing_id	Session
+908	legal_department_management.field_legal_hearing_outcome_wizard__in_absentia	Given in absence
+1032	legal_department_management.field_legal_hearing_outcome_wizard__judgment_date	Judgment date
+1594	legal_department_management.field_legal_hearing_outcome_wizard__more_outcome	Other outcome
+1305	legal_department_management.field_legal_hearing_outcome_wizard__needed_before	Needed before it
+2440	legal_department_management.field_legal_hearing_outcome_wizard__needed_days	Working days before
+1331	legal_department_management.field_legal_hearing_outcome_wizard__next_date_warning	Next Date Warning
+1332	legal_department_management.field_legal_hearing_outcome_wizard__next_required	Next Required
+310	legal_department_management.field_legal_hearing_outcome_wizard__next_time	At
+1697	legal_department_management.field_legal_hearing_outcome_wizard__pronounced_in_presence	Pronounced in our presence
+1835	legal_department_management.field_legal_hearing_outcome_wizard__result	Result
+1935	legal_department_management.field_legal_hearing_outcome_wizard__session_label	Session summary
+1956	legal_department_management.field_legal_hearing_outcome_wizard__show_next	Show Next
+595	legal_department_management.field_legal_hearing_roll_wizard__department_ids	Courts
+978	legal_department_management.field_legal_hearing_roll_wizard__include_held	Include sessions already held
+374	legal_department_management.field_legal_holiday__calendar_id	Calendar
+765	legal_department_management.field_legal_holiday__estimated	Estimated date
+1523	legal_department_management.field_legal_holiday__governorate	Only in
+375	legal_department_management.field_legal_holiday__leave_id	Calendar entry
+950	legal_department_management.field_legal_holiday__name	Holiday
+1992	legal_department_management.field_legal_holiday__weekday_from	Starts on
+1007	legal_department_management.field_legal_invoice_wizard__invoice_count	Invoices
+1002	legal_department_management.field_legal_invoice_wizard__invoice_date	Invoice date
+1026	legal_department_management.field_legal_invoice_wizard__journal_id	Journal
+1008	legal_department_management.field_legal_invoice_wizard__summary	Invoices to create
+621	legal_department_management.field_legal_judgment__date	Date of judgment
+864	legal_department_management.field_legal_judgment__final_date	Final on
+907	legal_department_management.field_legal_judgment__hearing_id	Given at session
+1088	legal_department_management.field_legal_judgment__ldm_can_challenge	Ldm Can Challenge
+1334	legal_department_management.field_legal_judgment__next_deadline_label	Next deadline
+2030	legal_department_management.field_legal_judgment__summary	Summary
+1186	legal_department_management.field_legal_judgment_challenge_wizard__date_lodged	Lodged on
+400	legal_department_management.field_legal_judgment_challenge_wizard__deadline_id	Challenge
+2273	legal_department_management.field_legal_letter_template__direction	Use
+2279	legal_department_management.field_legal_letter_template__ldm_code	Used for
+2390	legal_department_management.field_legal_letter_template__usage_note	When to use it
+1451	legal_department_management.field_legal_ministry__department_count	Number of departments
+680	legal_department_management.field_legal_ministry__department_ids	Departments
+2349	legal_department_management.field_legal_ministry__website	Website
+632	legal_department_management.field_legal_obligation__day	Day
+1069	legal_department_management.field_legal_obligation__last_period_date	Last period opened
+1068	legal_department_management.field_legal_obligation__last_task_id	Last matter
+1562	legal_department_management.field_legal_obligation__lead_days	Open the matter this many days before
+1469	legal_department_management.field_legal_obligation__name	Obligation
+1335	legal_department_management.field_legal_obligation__next_date	Next due date
+1577	legal_department_management.field_legal_obligation__open_on	Opens on
+1806	legal_department_management.field_legal_obligation__recurrence	Repeats
+1576	legal_department_management.field_legal_obligation__template_id	Opens a matter of type
+1592	legal_department_management.field_legal_poa__agent_partner_ids	Other agents
+230	legal_department_management.field_legal_poa__agent_user_ids	Agents
+2289	legal_department_management.field_legal_poa__body_ids	Valid before
+1422	legal_department_management.field_legal_poa__notary_office	Notary office
+1550	legal_department_management.field_legal_poa__open_task_count	Open matters relying on it
+1589	legal_department_management.field_legal_poa__original_location	Original kept at
+1683	legal_department_management.field_legal_poa__principal_partner_id	Principal (person)
+1710	legal_department_management.field_legal_poa__qr_reference	QR reference
+1859	legal_department_management.field_legal_poa__revoke_reason	Revocation reason
+1864	legal_department_management.field_legal_poa__revoked_date	Revoked on
+1897	legal_department_management.field_legal_poa__scope	Scope
+229	legal_department_management.field_legal_poa__substitution_allowed	Agent may delegate
+1233	legal_department_management.field_legal_poa__task_ids	Matters relying on it
+1310	legal_department_management.field_legal_readiness_wizard__date	Needed on
+1716	legal_department_management.field_legal_readiness_wizard__ready_count	Ready Count
+695	legal_department_management.field_legal_readiness_wizard__template_id	Document pack
+2239	legal_department_management.field_legal_readiness_wizard__total_count	Total Count
+556	legal_department_management.field_legal_readiness_wizard_line__company_document_id	Copy on file
+1195	legal_department_management.field_legal_readiness_wizard_line__mandatory	Mandatory
+1478	legal_department_management.field_legal_readiness_wizard_line__readiness	On that date
+2427	legal_department_management.field_legal_readiness_wizard_line__wizard_id	Wizard
+2222	legal_department_management.field_legal_reg_matter_wizard__name	Title
+2374	legal_department_management.field_legal_reg_matter_wizard__source_summary	What was asked
+365	legal_department_management.field_legal_register_book_wizard__direction	Books
+937	legal_department_management.field_legal_request__assigned_user_id	Handled by
+1922	legal_department_management.field_legal_request__date_submitted	Sent on
+683	legal_department_management.field_legal_request__description	Details
+1094	legal_department_management.field_legal_request__ldm_can_triage	Ldm Can Triage
+1095	legal_department_management.field_legal_request__ldm_is_legal	Ldm Is Legal
