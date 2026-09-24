@@ -9935,7 +9935,7 @@ msgstr "التذكيرات"
 #. odoo-python
 #: code:addons/legal_department_management/models/gov_vault.py:0
 msgid "Renew %(document)s of %(client)s"
-msgstr "جدّد %(document)s الخاص بـ%(client)s"
+msgstr "تجديد %(document)s — %(client)s"
 
 #. module: legal_department_management
 #: model:ir.model.fields.selection,name:legal_department_management.selection__legal_deadline__kind__renewal
