@@ -1,5 +1,5 @@
 // =====================================================================
-//  My Day (design-direction.md). The ink band opens the screen; below it,
+//  My Day (design-anu.md). The ink band opens the screen; below it,
 //  white paper on the grey desk: the queue takes the width, the next seven
 //  days sit beside it on a wide screen and under it on a narrow one. Rows
 //  are a list separated by hairlines, each with its kind spine; the largest
@@ -40,58 +40,53 @@
 }
 
 // ------------------------------------------------------------------- band
-.o_ldm_md_tools {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: var(--ldm-space-2);
+// The band holds only who and when, the date at display size; the controls
+// float on its lower edge (o_ldm_floatbar, ldm_tokens.scss).
+.o_ldm_band.o_ldm_md_band {
+    padding-block-start: var(--ldm-space-6);
+
+    .o_ldm_band_title { font-size: var(--ldm-font-display); }
+
+    @include media-breakpoint-down(md) {
+        .o_ldm_band_title { font-size: 1.625rem; }
+    }
 }
 
+// What is particular to My Day's bar: the search that opens the palette,
+// with its key hint, and the approvals waiting.
 .o_ldm_md_search {
-    min-inline-size: 18rem;
-    font-size: var(--ldm-font-meta);
+    flex: 1 1 16rem;
+    min-inline-size: 0;
     text-align: start;
     cursor: text;
 
-    .o_ldm_md_search_text { flex: 1 1 auto; color: rgba(255, 255, 255, 0.72); }
+    .o_ldm_md_search_text {
+        flex: 1 1 auto;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        color: var(--ldm-ink-faint);
+    }
 }
 
 .o_ldm_md_kbd {
-    padding: 0 var(--ldm-space-1);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 4px;
-    background: none;
-    color: rgba(255, 255, 255, 0.72);
-    font-size: 0.75rem;
-    font-family: inherit;
+    padding: 0.05rem 0.4rem;
+    border: 1px solid var(--ldm-rule);
+    border-radius: 6px;
+    background-color: var(--ldm-desk);
+    color: var(--ldm-ink-faint);
+    font-family: var(--ldm-font-mono);
+    font-size: 0.7rem;
+    box-shadow: 0 1px 0 var(--ldm-rule);
+
+    @include media-breakpoint-down(md) { display: none; }
 }
 
-.o_ldm_md_approvals { font-weight: 600; }
+.o_ldm_md_approvals { color: var(--ldm-ink); font-weight: 500; }
 
-.o_ldm_md_scopes {
-    display: inline-flex;
-    padding: 0.2rem;
-    border: 1px solid rgba(255, 255, 255, 0.28);
-    border-radius: var(--ldm-radius-control);
-}
-
-.o_ldm_md_scope {
-    min-block-size: 2rem;
-    padding-inline: var(--ldm-space-3);
-    border: 0;
-    border-radius: 4px;
-    background: none;
-    color: rgba(255, 255, 255, 0.78);
-    font-size: var(--ldm-font-meta);
-
-    &:hover { color: #fff; cursor: pointer; }
-    &:focus-visible { outline: 2px solid #fff; outline-offset: 1px; }
-
-    &.o_ldm_md_scope_on {
-        background-color: #fff;
-        color: #14213D;
-        font-weight: 600;
-    }
+// On a phone, approvals and New share the bar's last row.
+.o_ldm_floatbar_bar > .o_ldm_md_approvals,
+.o_ldm_floatbar_bar > .o_ldm_md_new {
+    @include media-breakpoint-down(md) { flex-basis: 50%; }
 }
 
 // --------------------------------------------------------------- the desk
@@ -99,45 +94,93 @@
     display: grid;
     gap: var(--ldm-space-4);
     padding: var(--ldm-space-5) var(--ldm-space-6) var(--ldm-space-6);
+
+    @include media-breakpoint-down(md) { padding: var(--ldm-space-4) var(--ldm-space-3) var(--ldm-space-5); }
 }
 
-// Equal cells separated by hairlines. Each cell draws its start and top
-// rule one pixel outside itself; the panel clips the ones on its own edge, so
-// the lines stay right however the cells wrap and a short last row is white.
+// The oversight strip: one paper panel of stat tiles divided by hairlines.
+// Each tile: the icon in a soft square of its meaning, the figure large in
+// mono, the word under it. Each cell draws its start and top rule one pixel
+// outside itself; the panel clips the ones on its own edge, so the lines
+// stay right however the cells wrap and a short last row is white.
 .o_ldm_md_counts {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(10.5rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(11.5rem, 1fr));
+
+    @include media-breakpoint-down(md) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
     background-color: var(--ldm-paper);
     border: 1px solid var(--ldm-rule);
     border-radius: var(--ldm-radius-panel);
+    box-shadow: var(--ldm-shadow-paper);
     overflow: hidden;
 }
 
 .o_ldm_md_count {
-    display: flex;
-    align-items: baseline;
-    gap: var(--ldm-space-2);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto;
+    column-gap: var(--ldm-space-3);
+    align-items: center;
     margin-block-start: -1px;
     margin-inline-start: -1px;
-    padding: var(--ldm-space-3) var(--ldm-space-4);
+    padding: var(--ldm-space-4) var(--ldm-space-5);
     border: 0;
     border-block-start: 1px solid var(--ldm-rule);
+
+    @include media-breakpoint-down(md) { padding: var(--ldm-space-3); column-gap: var(--ldm-space-2); }
+
     border-inline-start: 1px solid var(--ldm-rule);
     background-color: var(--ldm-paper);
     color: var(--ldm-ink);
     text-align: start;
+    transition: background-color 120ms ease;
 
-    &:hover { background-color: var(--ldm-hover); cursor: pointer; }
+    &:hover { background-color: #F8FAFC; cursor: pointer; }
     &:focus-visible { outline: none; box-shadow: inset var(--ldm-focus); }
 
-    .o_ldm_md_count_icon { align-self: center; color: var(--ldm-ink-faint); }
-    .o_ldm_md_count_n { font-family: var(--ldm-font-head); font-size: var(--ldm-font-section); font-weight: 600; }
-    .o_ldm_md_count_label { font-size: var(--ldm-font-meta); color: var(--ldm-ink-soft); }
+    .o_ldm_md_count_icon {
+        grid-row: 1 / span 2;
+        display: inline-grid;
+        place-items: center;
+        inline-size: 2.5rem;
+        block-size: 2.5rem;
+        border-radius: 10px;
+        background-color: var(--ldm-sunken);
+        color: var(--ldm-ink-soft);
+        font-size: 1.1rem;
+    }
 
-    &.o_ldm_md_count_danger .o_ldm_md_count_n { color: var(--ldm-danger); }
-    &.o_ldm_md_count_warning .o_ldm_md_count_n { color: var(--ldm-warning); }
-    &.o_ldm_md_count_info .o_ldm_md_count_n { color: var(--ldm-info); }
-    &.o_ldm_md_count_zero .o_ldm_md_count_n { color: var(--ldm-ink-faint); }
+    .o_ldm_md_count_n {
+        font-family: var(--ldm-font-mono);
+        font-size: 1.75rem;
+        font-weight: 500;
+        line-height: 1.1;
+        letter-spacing: -0.03em;
+        justify-self: start;
+    }
+
+    .o_ldm_md_count_label { font-size: var(--ldm-font-meta); color: var(--ldm-ink-faint); }
+
+    &.o_ldm_md_count_danger {
+        .o_ldm_md_count_n { color: var(--ldm-danger); }
+        .o_ldm_md_count_icon { background-color: var(--ldm-danger-soft); color: var(--ldm-danger); }
+    }
+
+    &.o_ldm_md_count_warning {
+        .o_ldm_md_count_n { color: var(--ldm-warning); }
+        .o_ldm_md_count_icon { background-color: var(--ldm-warning-soft); color: var(--ldm-warning); }
+    }
+
+    &.o_ldm_md_count_info {
+        .o_ldm_md_count_n { color: var(--ldm-signal-strong); }
+        .o_ldm_md_count_icon { background-color: var(--ldm-signal-soft); color: var(--ldm-signal); }
+    }
+
+    &.o_ldm_md_count_zero {
+        .o_ldm_md_count_n { color: var(--ldm-rule-strong); }
+        .o_ldm_md_count_icon { background-color: var(--ldm-sunken); color: var(--ldm-ink-faint); }
+    }
 }
 
 .o_ldm_md_main {

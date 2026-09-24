@@ -11,17 +11,10 @@
     .o_ldm_analytics_band_text { min-inline-size: 0; }
 }
 
-.o_ldm_analytics_periods {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--ldm-space-2);
-
-    .o_ldm_band_ghost.o_ldm_active {
-        border-color: #fff;
-        background-color: #fff;
-        color: #14213D;
-        font-weight: 600;
-    }
+// The periods float on the band's edge (o_ldm_floatbar, ldm_tokens.scss);
+// on a wide screen the bar takes only the width it needs.
+.o_ldm_analytics_bar .o_ldm_floatbar_bar {
+    @include media-breakpoint-up(md) { inline-size: fit-content; }
 }
 
 .o_ldm_analytics_body {
@@ -48,6 +41,7 @@
     border: 1px solid var(--ldm-rule);
     border-radius: var(--ldm-radius-panel);
     background-color: var(--ldm-paper);
+    box-shadow: var(--ldm-shadow-paper);
     overflow: hidden;
 
     > li + li { border-inline-start: 1px solid var(--ldm-rule); }
@@ -79,10 +73,11 @@
 // The label is the largest text is the rule for rows; here the number is
 // the answer, so it takes the Kufi weight but stays at section size.
 .o_ldm_analytics_figure_value {
-    font-family: var(--ldm-font-head);
-    font-size: var(--ldm-font-subject);
-    font-weight: 700;
-    line-height: 1.3;
+    font-family: var(--ldm-font-mono);
+    font-size: 1.75rem;
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: -0.03em;
     color: var(--ldm-ink);
 }
 
@@ -124,8 +119,8 @@
     inline-size: 2.25rem;
     block-size: 2.25rem;
     border-radius: var(--ldm-radius-panel);
-    background-color: var(--ldm-brand-soft);
-    color: var(--ldm-ink);
+    background-color: var(--ldm-signal-soft);
+    color: var(--ldm-signal);
 }
 
 .o_ldm_analytics_panel_text { display: grid; gap: 0.1rem; min-inline-size: 0; }

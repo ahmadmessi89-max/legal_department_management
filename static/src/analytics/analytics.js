@@ -207,25 +207,26 @@ function readPalette() {
     const css = getComputedStyle(probe);
     const get = (name, fallback) => (css.getPropertyValue(name) || "").trim() || fallback;
     const colors = {
-        ink: get("--ldm-ink", "#14213D"),
-        inkSoft: get("--ldm-ink-soft", "#3B4A68"),
-        inkFaint: get("--ldm-ink-faint", "#6B778C"),
-        rule: get("--ldm-rule", "#D5DBE4"),
-        success: get("--ldm-success", "#1D6B45"),
-        danger: get("--ldm-danger", "#B3122E"),
-        warning: get("--ldm-warning", "#B96E00"),
-        info: get("--ldm-info", "#1D5FA0"),
-        muted: get("--ldm-kind-other", "#9AA4B2"),
+        ink: get("--ldm-ink", "#090B11"),
+        inkSoft: get("--ldm-ink-soft", "#475569"),
+        inkFaint: get("--ldm-ink-faint", "#64748B"),
+        rule: get("--ldm-rule", "#E2E8F0"),
+        grid: get("--ldm-chart-grid", "#EEF2F7"),
+        signal: get("--ldm-signal", "#2563EB"),
+        success: get("--ldm-success", "#15803D"),
+        danger: get("--ldm-danger", "#DC2626"),
+        warning: get("--ldm-warning", "#B45309"),
+        info: get("--ldm-signal", "#2563EB"),
+        muted: get("--ldm-chart-6", "#CBD5E1"),
+        mono: get("--ldm-font-mono", "monospace"),
     };
-    colors.ink0 = colors.ink;
-    colors.ink1 = colors.inkSoft;
-    colors.ink2 = get("--ldm-kind-opinion", "#5E8C9E");
-    colors.ink3 = colors.inkFaint;
-    colors.ink4 = get("--ldm-kind-other", "#9AA4B2");
-    colors.ink5 = colors.rule;
-    for (const kind of ["government", "litigation", "execution", "contract", "opinion", "corporate", "investigation", "other"]) {
-        colors[`kind_${kind}`] = get(`--ldm-kind-${kind}`, colors.inkSoft);
-    }
+    // Series and kinds take a ramp of the one accent, darkest first (the
+    // ANU identity has one hue; the ramp keeps series apart without a rainbow).
+    const ramp = [1, 2, 3, 4, 5, 6].map((n) => get(`--ldm-chart-${n}`, colors.signal));
+    ramp.forEach((color, index) => (colors[`ink${index}`] = color));
+    ["litigation", "government", "execution", "contract", "opinion", "corporate", "investigation", "other"].forEach(
+        (kind, index) => (colors[`kind_${kind}`] = ramp[Math.min(index, ramp.length - 1)])
+    );
     probe.remove();
     return colors;
 }

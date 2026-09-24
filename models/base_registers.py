@@ -196,9 +196,9 @@ class LegalObligation(models.Model):
     template_id = fields.Many2one("legal.task.template", string="Opens a matter of type", ondelete="set null")
     recurrence = fields.Selection([("monthly", "Every month"), ("yearly", "Every year")],
                                   string="Repeats", default="yearly", required=True)
-    month = fields.Integer(string="Month", default=1)
-    day = fields.Integer(string="Day", default=1)
-    lead_days = fields.Integer(string="Open the matter this many days before", default=30)
+    month = fields.Integer(aggregator=None, string="Month", default=1)
+    day = fields.Integer(aggregator=None, string="Day", default=1)
+    lead_days = fields.Integer(aggregator=None, string="Open the matter this many days before", default=30)
     next_date = fields.Date(string="Next due date")
     last_task_id = fields.Many2one("legal.task", string="Last matter", ondelete="set null")
     active = fields.Boolean(default=True)
@@ -223,7 +223,7 @@ class LegalGuarantee(models.Model):
     amount = fields.Monetary(string="Amount", currency_field="currency_id", tracking=True)
     currency_id = fields.Many2one("res.currency", string="Currency", required=True,
                                   default=lambda self: self.env.company.currency_id)
-    percent = fields.Float(string="Percent of the contract")
+    percent = fields.Float(aggregator=None, string="Percent of the contract")
     legal_company_id = fields.Many2one("legal.company", string="Applicant", ondelete="restrict", index=True)
     beneficiary_id = fields.Many2one("res.partner", string="Beneficiary", ondelete="restrict")
     date_issued = fields.Date(string="Issued on")

@@ -39,7 +39,7 @@ class LegalDocumentType(models.Model):
         ],
         string="Validity", default="none", required=True,
         help="How long a copy of this document can be relied on.")
-    validity_days = fields.Integer(string="Days")
+    validity_days = fields.Integer(aggregator=None, string="Days")
 
 
 class LegalTaskStep(models.Model):

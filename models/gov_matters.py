@@ -15,7 +15,7 @@ OUTSIDE = ("body", "verification")
 class LegalTask(models.Model):
     _inherit = "legal.task"
 
-    ldm_target_days = fields.Integer(
+    ldm_target_days = fields.Integer(aggregator=None, 
         string="Usual answer time", compute="_compute_ldm_target_days",
         help="Working days the body usually takes: from the matter type, else from the body.")
     ldm_body_due_date = fields.Date(

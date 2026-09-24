@@ -16,9 +16,15 @@
         padding: var(--ldm-space-5) var(--formView-sheet-padding-x) var(--ldm-space-4);
         border-start-start-radius: var(--formView-sheet-border-radius, 0);
         border-start-end-radius: var(--formView-sheet-border-radius, 0);
-        background-color: #14213D;
+        background-color: #090B11;
+        background-image:
+            radial-gradient(120% 140% at 100% 0%, rgba(37, 99, 235, 0.22) 0%, rgba(37, 99, 235, 0) 55%),
+            url("/legal_department_management/static/src/img/ldm_network.svg");
+        background-repeat: no-repeat;
+        background-position: 100% 0, 100% 40%;
+        background-size: 100% 100%, auto 170%;
         color: #fff;
-        --bs-secondary-color: rgba(255, 255, 255, 0.7);
+        --bs-secondary-color: rgba(255, 255, 255, 0.62);
 
         @include media-breakpoint-down(md) {
             padding: var(--ldm-space-3) var(--ldm-space-3);
@@ -28,10 +34,10 @@
         // The matter number and the court or body reference.
         .text-muted { color: rgba(255, 255, 255, 0.72); }
         .o_field_widget[name="task_number"] span {
-            font-family: var(--ldm-font-head);
-            font-weight: 600;
-            letter-spacing: 0.02em;
-            color: #fff;
+            font-family: var(--ldm-font-mono);
+            font-weight: 500;
+            letter-spacing: -0.01em;
+            color: rgba(255, 255, 255, 0.82);
         }
         .o_form_label,
         label { color: rgba(255, 255, 255, 0.72); }
@@ -40,10 +46,13 @@
         h1 {
             margin-block: var(--ldm-space-1) var(--ldm-space-2);
             font-family: var(--ldm-font-head);
-            font-size: var(--ldm-font-title);
-            font-weight: 700;
-            line-height: 1.35;
+            font-size: 2.25rem;
+            font-weight: 400;
+            line-height: 1.2;
+            letter-spacing: var(--ldm-track-display);
             color: #fff;
+
+            [dir="rtl"] & { letter-spacing: 0; line-height: 1.4; font-weight: 500; }
 
             @include media-breakpoint-down(md) { font-size: var(--ldm-font-section); }
         }
@@ -53,15 +62,18 @@
         .o_field_widget span { color: #fff; }
 
         // Fields stay editable inside the band: white text on ink.
+        // The line under an editable value appears on hover and focus only,
+        // so the title reads as a title, not as a form field.
         .o_input,
         input,
         textarea {
             color: #fff;
             background-color: transparent;
-            border-color: rgba(255, 255, 255, 0.25);
+            border-color: transparent;
 
-            &::placeholder { color: rgba(255, 255, 255, 0.5); }
-            &:focus { border-color: #fff; }
+            &::placeholder { color: rgba(255, 255, 255, 0.45); }
+            &:hover { border-color: rgba(148, 163, 184, 0.35); }
+            &:focus { border-color: #93C5FD; }
         }
     }
 
@@ -206,10 +218,10 @@
 }
 
 .o_ldm_rail_current .o_ldm_rail_btn {
-    border-block-end-color: var(--ldm-ink);
+    border-block-end-color: var(--ldm-signal);
     color: var(--ldm-ink);
 
-    .o_ldm_rail_marker { border-color: var(--ldm-ink); background-color: var(--ldm-ink); color: #fff; }
+    .o_ldm_rail_marker { border-color: var(--ldm-signal); background-color: var(--ldm-signal); color: #fff; box-shadow: 0 0 0 4px var(--ldm-signal-soft); }
 }
 
 // ------------------------------------------------ next step and approval
@@ -241,7 +253,7 @@
     }
 }
 
-.o_ldm_next { border-inline-start: 4px solid var(--ldm-ink); }
+.o_ldm_next { border-inline-start: 3px solid var(--ldm-signal); }
 
 .o_ldm_next_icon,
 .o_ldm_suggestion_icon {
@@ -553,7 +565,7 @@
     padding-inline-start: var(--ldm-space-3);
     transition: background-color 0.12s ease;
 
-    &.o_ldm_doc_over { background-color: var(--ldm-brand-soft); outline: 2px dashed var(--ldm-ink); outline-offset: -2px; }
+    &.o_ldm_doc_over { background-color: var(--ldm-signal-soft); outline: 2px dashed var(--ldm-signal); outline-offset: -2px; }
 }
 
 .o_ldm_doc_icon {
@@ -565,7 +577,7 @@
 }
 
 .o_ldm_doc_required { color: var(--ldm-danger); margin-inline-start: 0.15rem; }
-.o_ldm_doc_drophint { color: var(--ldm-ink); font-weight: 600; }
+.o_ldm_doc_drophint { color: var(--ldm-signal-strong); font-weight: 600; }
 
 .o_ldm_doc_file {
     max-inline-size: 10rem;

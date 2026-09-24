@@ -186,7 +186,7 @@ class LegalTask(models.Model):
     counterparty_id = fields.Many2one("res.partner", string="Counterparty", ondelete="restrict")
     contract_start = fields.Date(string="Contract start")
     contract_end = fields.Date(string="Contract end")
-    renewal_notice_days = fields.Integer(string="Renewal notice (days)", default=30)
+    renewal_notice_days = fields.Integer(aggregator=None, string="Renewal notice (days)", default=30)
     question = fields.Text(string="Question", groups=PRIVILEGED)
     requesting_unit = fields.Char(string="Asked by (unit)")
     opinion_html = fields.Html(string="Opinion", groups=PRIVILEGED)

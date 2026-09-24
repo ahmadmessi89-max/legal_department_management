@@ -41,7 +41,7 @@ class LegalTaskTemplate(models.Model):
     kind = fields.Selection(MATTER_KINDS, string="Kind", required=True, default="other")
     law_branch = fields.Selection(LAW_BRANCHES, string="Branch of law",
                                   help="Decides which appeal periods apply and whether the fee cap applies.")
-    target_days = fields.Integer(string="Days allowed at the body",
+    target_days = fields.Integer(aggregator=None, string="Days allowed at the body",
                                  help="Working days the body is expected to take once the file is submitted.")
     confidential_default = fields.Boolean(string="Confidential by default")
     track_coverage = fields.Boolean(string="Track for every company",
@@ -49,9 +49,9 @@ class LegalTaskTemplate(models.Model):
     description = fields.Text(string="Description", translate=True)
     department_id = fields.Many2one("legal.department", string="Default body", ondelete="set null")
     lawyer_id = fields.Many2one("res.users", string="Default responsible", ondelete="set null")
-    duration_days = fields.Integer(string="Expected duration (working days)", default=0)
+    duration_days = fields.Integer(aggregator=None, string="Expected duration (working days)", default=0)
     requires_approval = fields.Boolean(string="Needs approval before work starts")
-    color = fields.Integer(string="Colour")
+    color = fields.Integer(aggregator=None, string="Colour")
     properties_definition = fields.PropertiesDefinition(string="Extra fields")
     step_ids = fields.One2many("legal.task.template.step", "template_id", string="Steps", copy=True)
     document_ids = fields.One2many("legal.task.template.document", "template_id", string="Documents to collect", copy=True)
@@ -130,7 +130,7 @@ class LegalTaskTemplateStep(models.Model):
     template_id = fields.Many2one("legal.task.template", required=True, ondelete="cascade", index=True)
     sequence = fields.Integer(default=10)
     name = fields.Char(string="Step", required=True, translate=True)
-    offset_days = fields.Integer(string="Working days", default=0,
+    offset_days = fields.Integer(aggregator=None, string="Working days", default=0,
                                  help="Working days after the reference date at which the step is due.")
     offset_from = fields.Selection(
         [("start", "From the opening date"), ("previous", "From the previous step")],

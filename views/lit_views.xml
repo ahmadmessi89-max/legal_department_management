@@ -411,7 +411,7 @@
                 <field name="task_id"/>
                 <field name="department_id"/>
                 <field name="attending_user_id" widget="many2one_avatar_user"/>
-                <field name="state" widget="ldm_pill" decoration-primary="state == 'planned'" decoration-success="state == 'held'"/>
+                <field name="state" widget="ldm_pill" decoration-primary="state == 'planned'" decoration-success="state == 'held'" optional="hide"/>
                 <field name="outcome" optional="show"/>
                 <field name="court_case_number" optional="hide"/>
                 <field name="legal_company_id" optional="hide"/>

@@ -49,6 +49,8 @@ export class LdmChart extends Component {
         const style = getComputedStyle(this.canvasRef.el);
         const font = style.getPropertyValue("--ldm-font-text") || style.fontFamily;
         const ink = colors.ink;
+        const bar = colors.signal || ink;
+        const mono = colors.mono || font;
         const horizontal = spec.kind === "bars" || spec.horizontal;
         let labels;
         let datasets;
@@ -58,10 +60,11 @@ export class LdmChart extends Component {
                 {
                     data: spec.items.map((item) => item.value),
                     backgroundColor: spec.items.map((item) =>
-                        spec.tone === "kind" ? colors[`kind_${item.kind}`] || colors.ink : colors[spec.tone] || ink
+                        spec.tone === "kind" ? colors[`kind_${item.kind}`] || bar : colors[spec.tone] || bar
                     ),
-                    borderRadius: 4,
-                    maxBarThickness: 22,
+                    borderRadius: 6,
+                    borderSkipped: false,
+                    maxBarThickness: 20,
                 },
             ];
         } else {
@@ -69,20 +72,23 @@ export class LdmChart extends Component {
             datasets = spec.series.map((serie) => ({
                 label: serie.label,
                 data: serie.values,
-                backgroundColor: colors[serie.tone] || ink,
-                borderRadius: 3,
-                maxBarThickness: 26,
+                // "ink" (work in hand) takes the ramp's darkest blue: one hue on the charts.
+                backgroundColor: serie.tone === "ink" ? colors.ink0 || bar : colors[serie.tone] || bar,
+                borderRadius: 5,
+                borderSkipped: spec.kind === "stacked" ? "start" : false,
+                maxBarThickness: 24,
             }));
         }
         const valueAxis = {
             beginAtZero: true,
             grace: horizontal ? "18%" : "8%",
             stacked: spec.kind === "stacked",
-            grid: { color: colors.rule, drawTicks: false },
-            border: { display: false },
+            grid: { color: colors.grid || colors.rule, drawTicks: false },
+            border: { display: false, dash: [3, 4] },
             ticks: {
                 color: colors.inkFaint,
-                font: { family: font, size: 12 },
+                font: { family: mono, size: 11 },
+                padding: 6,
                 callback: (value) => format(value, true),
                 maxTicksLimit: 5,
                 precision: spec.unit === "count" ? 0 : undefined,
@@ -133,8 +139,15 @@ export class LdmChart extends Component {
                     tooltip: {
                         rtl: this.isRtl,
                         backgroundColor: ink,
-                        titleFont: { family: font },
-                        bodyFont: { family: font },
+                        titleColor: "#fff",
+                        bodyColor: "rgba(255, 255, 255, 0.82)",
+                        titleFont: { family: font, weight: "600", size: 13 },
+                        bodyFont: { family: mono, size: 12 },
+                        padding: 10,
+                        cornerRadius: 8,
+                        caretSize: 5,
+                        displayColors: !singleSeries,
+                        boxPadding: 4,
                         callbacks: {
                             label: (ctx) => {
                                 const text = format(ctx.parsed[horizontal ? "x" : "y"]);
@@ -153,7 +166,7 @@ export class LdmChart extends Component {
                     }
                 },
             },
-            plugins: singleSeries ? [directLabels(format, colors.ink, font, this.isRtl)] : [],
+            plugins: singleSeries ? [directLabels(format, colors.ink, mono, this.isRtl)] : [],
         };
     }
 
@@ -181,7 +194,7 @@ function directLabels(format, color, font, rtl) {
             const data = chart.data.datasets[0].data;
             ctx.save();
             ctx.fillStyle = color;
-            ctx.font = `600 12px ${font}`;
+            ctx.font = `500 12px ${font}`;
             ctx.textBaseline = "middle";
             meta.data.forEach((bar, index) => {
                 // Counts in full; days and money short (the answer line gives the full amount).

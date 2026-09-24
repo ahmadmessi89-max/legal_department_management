@@ -71,7 +71,7 @@
 
             <div class="o_ldm_my_day" t-if="data" t-att-data-role="data.header.role" t-att-data-scope="data.scope">
                 <!-- ====================================================== the band -->
-                <header class="o_ldm_band o_ldm_md_band">
+                <header class="o_ldm_band o_ldm_band_floats o_ldm_md_band">
                     <div class="o_ldm_md_id">
                         <h1 class="o_ldm_band_title" t-esc="dateLine"/>
                         <p class="o_ldm_band_meta">
@@ -83,32 +83,37 @@
                             <span class="o_ldm_pill o_ldm_pill_on_ink" t-if="data.read_only" t-esc="label.readOnly"/>
                         </p>
                     </div>
-                    <div class="o_ldm_md_tools">
-                        <button type="button" class="o_ldm_band_ghost o_ldm_md_search" t-on-click="openSearch"
+                </header>
+
+                <!-- The screen's controls float on the band's lower edge, as anu.ltd's
+                     navigation bar does: scope, search, approvals, and the one primary action. -->
+                <div class="o_ldm_floatbar o_ldm_md_toolbar">
+                    <div class="o_ldm_floatbar_bar o_ldm_md_tools" role="toolbar">
+                        <div class="o_ldm_floatbar_segs o_ldm_md_scopes" t-if="data.scopes.length" role="tablist">
+                            <button type="button" role="tab" t-foreach="data.scopes" t-as="scope" t-key="scope.key"
+                                    t-att-class="{'o_ldm_floatbar_seg': true, 'o_ldm_md_scope': true, 'o_ldm_floatbar_seg_on': scope.key === state.scope, 'o_ldm_md_scope_on': scope.key === state.scope}"
+                                    t-att-aria-selected="scope.key === state.scope ? 'true' : 'false'"
+                                    t-on-click="() => this.setScope(scope.key)" t-esc="scope.label"/>
+                        </div>
+                        <button type="button" class="o_ldm_floatbar_item o_ldm_md_search" t-on-click="openSearch"
                                 t-att-aria-label="label.search">
                             <LdmIcon name="'search'"/>
                             <span dir="auto" class="o_ldm_md_search_text" t-esc="label.search"/>
                             <kbd class="o_ldm_md_kbd">Ctrl K</kbd>
                         </button>
                         <button type="button" t-if="data.approvals &amp;&amp; data.approvals.count"
-                                class="o_ldm_band_ghost o_ldm_md_approvals" t-on-click="openApprovals">
+                                class="o_ldm_floatbar_item o_ldm_md_approvals" t-on-click="openApprovals">
                             <LdmIcon name="'stamp'"/>
                             <span t-esc="data.approvals.label"/>
                             <span class="o_ldm_pill o_ldm_tone_warning o_ldm_num" dir="ltr" t-esc="data.approvals.count"/>
                         </button>
-                        <div class="o_ldm_md_scopes" t-if="data.scopes.length" role="tablist">
-                            <button type="button" role="tab" t-foreach="data.scopes" t-as="scope" t-key="scope.key"
-                                    t-att-class="{'o_ldm_md_scope': true, 'o_ldm_md_scope_on': scope.key === state.scope}"
-                                    t-att-aria-selected="scope.key === state.scope ? 'true' : 'false'"
-                                    t-on-click="() => this.setScope(scope.key)" t-esc="scope.label"/>
-                        </div>
                         <button type="button" t-if="data.can_create" class="o_ldm_band_action o_ldm_md_new"
                                 t-on-click="newMatter" title="Alt+Shift+N">
                             <LdmIcon name="'plus'"/>
                             <span t-esc="label.newMatter"/>
                         </button>
                     </div>
-                </header>
+                </div>
 
                 <div class="o_ldm_md_desk">
                     <!-- The oversight line (managers, auditors): every count opens
@@ -117,7 +122,7 @@
                         <button type="button" t-foreach="data.counts" t-as="count" t-key="count.key"
                                 t-attf-class="o_ldm_md_count o_ldm_md_count_{{ count.tone }} {{ count.count ? '' : 'o_ldm_md_count_zero' }}"
                                 t-on-click="() => this.openCount(count)">
-                            <LdmIcon t-if="count.icon" name="count.icon" class="'o_ldm_md_count_icon'"/>
+                            <span class="o_ldm_md_count_icon" t-if="count.icon"><LdmIcon name="count.icon"/></span>
                             <span class="o_ldm_md_count_n o_ldm_num" dir="ltr" t-esc="count.count"/>
                             <span class="o_ldm_md_count_label" t-esc="count.label"/>
                         </button>

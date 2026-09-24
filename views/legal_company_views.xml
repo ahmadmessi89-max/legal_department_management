@@ -17,10 +17,15 @@
                 <field name="task_count"/>
                 <templates>
                     <t t-name="card">
-                        <field name="name" class="fw-bold text-truncate"/>
-                        <div class="text-muted small">
-                            <field name="company_type" invisible="client_kind == 'individual'"/>
-                            <field name="client_kind" invisible="client_kind == 'company'"/>
+                        <div class="d-flex align-items-start gap-3">
+                            <span class="o_ldm_monogram" aria-hidden="true" t-esc="(record.name.value or '?').trim().replace(/^(شركة|مجموعة|فرع|السيد|السيدة)\s+/, '').charAt(0)"/>
+                            <div class="d-grid min-w-0">
+                                <field name="name" class="fw-bold text-truncate"/>
+                                <div class="text-muted small">
+                                    <field name="company_type" invisible="client_kind == 'individual'"/>
+                                    <field name="client_kind" invisible="client_kind == 'company'"/>
+                                </div>
+                            </div>
                         </div>
                         <footer class="pt-1">
                             <span class="small" invisible="not pending_tasks_count">

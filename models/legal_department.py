@@ -57,7 +57,7 @@ class LegalDepartment(models.Model):
     governorate = fields.Selection(GOVERNORATES, string="Governorate")
     resource_calendar_id = fields.Many2one("resource.calendar", string="Working calendar")
     working_hours = fields.Char(string="Opening hours")
-    target_days = fields.Integer(string="Usual answer time (working days)")
+    target_days = fields.Integer(aggregator=None, string="Usual answer time (working days)")
     addressee_title = fields.Char(string="Letters are addressed to",
                                   help="Title used at the head of official letters, e.g. the director general.")
     location_url = fields.Char(string="Map link")

@@ -72,7 +72,7 @@ class LegalCorrespondence(models.Model):
 
     assigned_user_id = fields.Many2one("res.users", string="Referred to", tracking=True, index=True,
                                        help="The person who must act on the letter.")
-    reply_days = fields.Integer(string="Answer within (working days)",
+    reply_days = fields.Integer(aggregator=None, string="Answer within (working days)",
                                 help="Working days from the date the letter was received (incoming) or sent "
                                 "(outgoing) to the date an answer is due.")
     reply_due_date = fields.Date(tracking=True)
@@ -84,7 +84,7 @@ class LegalCorrespondence(models.Model):
          ("answered", "Answered")],
         string="Answer", compute="_compute_reply_state", search="_search_reply_state")
     reply_ids = fields.One2many("legal.correspondence", "reply_to_id", string="Replies")
-    instruction_days = fields.Integer(string="Instruction due in (working days)")
+    instruction_days = fields.Integer(aggregator=None, string="Instruction due in (working days)")
     instruction_due = fields.Date(tracking=True)
     party_display = fields.Char(string="From / to", compute="_compute_party_display")
     guarantee_id = fields.Many2one("legal.guarantee", string="Letter of guarantee", ondelete="set null", index=True)

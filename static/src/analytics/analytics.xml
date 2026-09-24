@@ -9,7 +9,7 @@
 
     <t t-name="legal_department_management.Analytics">
         <div class="o_action o_ldm o_ldm_analytics" t-ref="root">
-            <header class="o_ldm_band o_ldm_analytics_band">
+            <header class="o_ldm_band o_ldm_band_floats o_ldm_analytics_band">
                 <div class="o_ldm_analytics_band_text">
                     <h1 class="o_ldm_band_title" dir="auto" t-esc="label.title"/>
                     <p class="o_ldm_band_meta">
@@ -18,15 +18,20 @@
                         <span t-esc="periodLabel"/>
                     </p>
                 </div>
-                <div class="o_ldm_analytics_periods" role="radiogroup" t-att-aria-label="label.period">
-                    <t t-if="state.data">
-                        <button t-foreach="state.data.periods" t-as="period" t-key="period.key" type="button"
-                                role="radio" t-att-aria-checked="period.key === state.period ? 'true' : 'false'"
-                                t-attf-class="o_ldm_band_ghost {{ period.key === state.period ? 'o_ldm_active' : '' }}"
-                                t-on-click="() => this.setPeriod(period.key)" t-esc="period.label"/>
-                    </t>
-                </div>
             </header>
+
+            <div class="o_ldm_floatbar o_ldm_analytics_bar">
+                <div class="o_ldm_floatbar_bar">
+                    <div class="o_ldm_floatbar_segs o_ldm_analytics_periods" role="radiogroup" t-att-aria-label="label.period">
+                        <t t-if="state.data">
+                            <button t-foreach="state.data.periods" t-as="period" t-key="period.key" type="button"
+                                    role="radio" t-att-aria-checked="period.key === state.period ? 'true' : 'false'"
+                                    t-attf-class="o_ldm_floatbar_seg {{ period.key === state.period ? 'o_ldm_floatbar_seg_on' : '' }}"
+                                    t-on-click="() => this.setPeriod(period.key)" t-esc="period.label"/>
+                        </t>
+                    </div>
+                </div>
+            </div>
 
             <div class="o_ldm_analytics_body">
                 <div class="o_ldm_analytics_state" t-if="state.loading and !state.data">

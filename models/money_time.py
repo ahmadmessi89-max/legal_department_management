@@ -19,7 +19,7 @@ TIME_GROUP = "legal_department_management.group_ldm_time"
 class ResUsersSettings(models.Model):
     _inherit = "res.users.settings"
 
-    ldm_timer_task_ref = fields.Integer(string="Timer running on matter")
+    ldm_timer_task_ref = fields.Integer(aggregator=None, string="Timer running on matter")
     ldm_timer_start = fields.Datetime(string="Timer started at")
 
     @api.model

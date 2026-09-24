@@ -46,7 +46,7 @@ class LegalHearing(models.Model):
     kind = fields.Selection([("hearing", "Court session"), ("meeting", "Meeting")],
                             string="Kind", default="hearing", required=True)
     date = fields.Date(string="Date", required=True, index=True, tracking=True)
-    time = fields.Float(string="Time")
+    time = fields.Float(string="Time", aggregator=None)  # a clock time: never summed in a grouped list
     department_id = fields.Many2one("legal.department", string="Court", ondelete="restrict", tracking=True)
     court_room = fields.Char(string="Room")
     purpose = fields.Char(string="Purpose")
@@ -98,7 +98,7 @@ class LegalCourtStage(models.Model):
     stage = fields.Selection(COURT_STAGES, string="Stage", required=True, default="first_instance")
     department_id = fields.Many2one("legal.department", string="Court or execution office", ondelete="restrict")
     case_number = fields.Char(string="Case number")
-    case_year = fields.Integer(string="Year")
+    case_year = fields.Integer(aggregator=None, string="Year")
     date_filed = fields.Date(string="Filed on")
     judgment_id = fields.Many2one("legal.judgment", string="Judgment", ondelete="set null")
     execution_file_number = fields.Char(string="Execution file number")
@@ -173,7 +173,7 @@ class LegalAppealRule(models.Model):
         string="Law", required=True, default="civil")
     court_degree = fields.Selection(COURT_DEGREES, string="Judgment of",
                                     help="The degree of the court whose judgment starts this period. Empty: any.")
-    days = fields.Integer(string="Period", required=True)
+    days = fields.Integer(aggregator=None, string="Period", required=True)
     unit = fields.Selection([("days", "Days"), ("months", "Months")], string="Unit", default="days", required=True)
     start_event = fields.Selection(
         [
@@ -191,7 +191,7 @@ class LegalAppealRule(models.Model):
     next_rule_id = fields.Many2one("legal.appeal.rule", string="Then", ondelete="set null",
                                    help="The period that starts when this one ends without an answer "
                                    "(silence counts as rejection).")
-    max_months = fields.Integer(string="Never later than (months)",
+    max_months = fields.Integer(aggregator=None, string="Never later than (months)",
                                 help="An absolute cap counted from the decision, e.g. correction of a cassation decision.")
     extends_on_holiday = fields.Boolean(
         string="Moves off a holiday", default=True,

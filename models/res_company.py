@@ -34,8 +34,8 @@ class ResCompany(models.Model):
         help="Advocacy Law 173 of 1965, Art. 56: fees may not exceed 20% of the matter's value, "
         "except in criminal matters.",
     )
-    ldm_reminder_days = fields.Integer(string="Remind before (working days)", default=3)
-    ldm_poa_warning_days = fields.Integer(string="Warn before a power of attorney expires (days)", default=30)
+    ldm_reminder_days = fields.Integer(aggregator=None, string="Remind before (working days)", default=3)
+    ldm_poa_warning_days = fields.Integer(aggregator=None, string="Warn before a power of attorney expires (days)", default=30)
     ldm_engagement_required = fields.Boolean(
         string="Warn when a matter has no signed fee agreement",
         help="Law office: a matter that starts work without a signed fee agreement is flagged. "

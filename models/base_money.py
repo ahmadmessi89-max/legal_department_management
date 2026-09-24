@@ -107,7 +107,7 @@ class LegalEngagement(models.Model):
     amount = fields.Monetary(string="Agreed fee", currency_field="currency_id", tracking=True)
     currency_id = fields.Many2one("res.currency", string="Currency", required=True,
                                   default=lambda self: self.env.company.currency_id)
-    success_percent = fields.Float(string="Success fee (%)",
+    success_percent = fields.Float(aggregator=None, string="Success fee (%)",
                                    help="Can be combined with any arrangement, e.g. a lump sum plus a success fee.")
     cap_override_reason = fields.Text(string="Why the 20% cap is exceeded", tracking=True)
     retainer_period = fields.Selection([("monthly", "Monthly"), ("yearly", "Yearly")], string="Retainer billed")
