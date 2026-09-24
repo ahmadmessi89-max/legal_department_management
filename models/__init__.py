@@ -2,6 +2,7 @@
 # Foundation: every model and field of docs/ldm/SPEC.md section 4.
 from . import ldm_text
 from . import ldm_engine
+from . import ldm_cron
 from . import ldm_reminders
 from . import res_company
 from . import res_config_settings

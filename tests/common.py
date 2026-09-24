@@ -13,8 +13,10 @@ class LdmCase(TransactionCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
+        # English on purpose: the assertions read English text, and the template
+        # database's default language is Arabic now that the module ships ar.po.
         cls.env = cls.env(context=dict(cls.env.context, tracking_disable=True, mail_create_nolog=True,
-                                       mail_notrack=True, no_reset_password=True))
+                                       mail_notrack=True, no_reset_password=True, lang="en_US"))
         cls.company = cls.env.company
         cls.calendar = cls.env.ref(f"{M}.ldm_calendar_iraq")
         cls.company.ldm_calendar_id = cls.calendar
@@ -23,7 +25,7 @@ class LdmCase(TransactionCase):
 
         def user(login, *groups):
             return new_test_user(cls.env, login=login, groups=",".join(("base.group_user",) + groups),
-                                 name=login.replace("_", " ").title(), tz="Asia/Baghdad")
+                                 name=login.replace("_", " ").title(), tz="Asia/Baghdad", lang="en_US")
 
         cls.clerk = user("ldm_clerk", f"{M}.group_ldm_clerk")
         cls.lawyer = user("ldm_lawyer", f"{M}.group_legal_user")
