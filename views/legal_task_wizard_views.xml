@@ -1,101 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <!-- New matter: one dialog. The matter type, the client, the key date and
-         the title open a matter whose steps and documents the type fills in.
-         SAG's xmlids are kept so its buttons and bookmarks keep working. -->
     <record id="view_legal_task_create_wizard_form" model="ir.ui.view">
         <field name="name">legal.task.create.wizard.form</field>
         <field name="model">legal.task.create.wizard</field>
         <field name="arch" type="xml">
-            <form string="New matter" class="o_ldm o_ldm_quick_create">
-                <field name="company_id" invisible="1"/>
-                <field name="kind" invisible="1"/>
-                <field name="show_body" invisible="1"/>
-                <field name="show_more" invisible="1"/>
-                <field name="name_suggested" invisible="1"/>
-                <field name="conflict_state" invisible="1"/>
-                <field name="conflict_check_id" invisible="1"/>
-                <field name="request_id" invisible="1"/>
-                <field name="recent_template_ids" invisible="1" widget="many2many_tags"/>
-                <field name="suggested_date" invisible="1"/>
-                <field name="suggested_note" invisible="1"/>
-
-                <div class="alert alert-danger o_ldm_conflict_banner" role="alert"
-                     invisible="conflict_state not in ('hits', 'blocked')">
-                    <p class="fw-bold mb-1">Possible conflict of interest</p>
-                    <field name="conflict_summary" nolabel="1" class="d-block mb-2"/>
-                    <p class="mb-0" invisible="conflict_state != 'hits'">A partner decides before any work starts. You can open the matter now: it stays New until then.</p>
-                    <p class="mb-0" invisible="conflict_state != 'blocked'">The office does not take matters with a conflict. Ask a partner.</p>
+            <form string="بدء إجراء / قضية قانونية جديدة">
+                <div class="alert alert-info d-flex align-items-center mb-3" role="alert">
+                    <i class="fa fa-info-circle fa-2x me-3 text-primary" title="معلومات"/>
+                    <div>
+                        <strong>اختر الشركة والجهة الرسمية</strong> لبدء المعاملة أو القضية الخاصة بها. 
+                        <br/>
+                        <span class="text-muted small">يمكنك اختيار الوزارة لتصفية قائمة الدوائر والمحاكم التابعة لها مباشرة.</span>
+                    </div>
                 </div>
-
-                <group class="o_ldm_quick_create_main">
-                    <field name="template_id" widget="ldm_template_picker"
-                           options="{'no_create': True, 'no_open': True}"
-                           placeholder="Search the matter types"/>
-                    <label for="legal_company_id" string="Company"
-                           groups="legal_department_management.group_ldm_terms_department"/>
-                    <label for="legal_company_id" string="Client"
-                           groups="legal_department_management.group_ldm_terms_office"/>
-                    <label for="legal_company_id" string="Client or company"
-                           groups="!legal_department_management.group_ldm_terms_department,!legal_department_management.group_ldm_terms_office"/>
-                    <field name="legal_company_id" nolabel="1" options="{'no_create_edit': True}"
-                           placeholder="Type a name; a new one can be created here"/>
-                    <label for="key_date" string="First session" invisible="kind not in ('litigation', 'execution')"/>
-                    <label for="key_date" string="Target date" invisible="kind in ('litigation', 'execution')"/>
-                    <field name="key_date" nolabel="1"/>
-                    <widget name="ldm_suggested_date" colspan="2" invisible="not suggested_date"/>
-                    <field name="name" placeholder="Filled in from the type and the client"/>
-                    <label for="department_id" string="Court"
-                           invisible="not show_body or kind != 'litigation'"/>
-                    <label for="department_id" string="Government body"
-                           invisible="not show_body or kind == 'litigation'"/>
-                    <field name="department_id" nolabel="1" invisible="not show_body"
-                           options="{'no_create': True}" placeholder="Search by body or ministry"/>
-                    <field name="our_role" invisible="kind not in ('litigation', 'execution')"/>
-                    <field name="opponent_name" invisible="kind not in ('litigation', 'execution')"
-                           placeholder="The other side's name"/>
+                <group>
+                    <field name="legal_company_id" 
+                           placeholder="ابحث عن الشركة أو أضف شركة جديدة..." 
+                           options="{'no_open': False, 'no_create': False, 'no_create_edit': False}"/>
+                    <field name="ministry_id" 
+                           placeholder="اختر الوزارة / الهيئة لتصفية الدوائر (اختياري)..." 
+                           options="{'no_open': False, 'no_create_edit': False}"/>
+                    <field name="department_id" 
+                           domain="[('ministry_id', '=', ministry_id)] if ministry_id else []"
+                           placeholder="اختر الدائرة أو الجهة المختصة..." 
+                           options="{'no_open': False, 'no_create_edit': False}"/>
                 </group>
-
-                <div groups="legal_department_management.group_ldm_billing">
-                    <group invisible="not legal_company_id" groups="legal_department_management.group_legal_user">
-                        <field name="fee_agreement" widget="radio"/>
-                        <field name="engagement_id" invisible="fee_agreement != 'existing'"
-                               options="{'no_create': True}"/>
-                    </group>
-                </div>
-
-                <widget name="ldm_more_toggle"/>
-                <group invisible="not show_more" class="o_ldm_quick_create_more">
-                    <group>
-                        <field name="department_id" invisible="show_body" options="{'no_create': True}"/>
-                        <field name="ministry_id" invisible="kind != 'government'" options="{'no_create': True}"/>
-                        <field name="lawyer_id" widget="many2one_avatar_user" placeholder="Chosen for you"/>
-                        <field name="lawyer_ids" widget="many2many_avatar_user"/>
-                    </group>
-                    <group>
-                        <field name="is_urgent" widget="boolean_toggle"/>
-                        <field name="note" placeholder="Anything the team should know from the start"/>
-                    </group>
-                </group>
-
                 <footer>
-                    <button name="action_create_open" string="Create and open" type="object" class="btn-primary"
-                            data-hotkey="q" invisible="conflict_state in ('hits', 'blocked')"/>
-                    <button name="action_create_another" string="Create and add another" type="object"
-                            class="btn-secondary" invisible="conflict_state in ('hits', 'blocked')"/>
-                    <button name="action_create_despite_conflict" string="Open it and ask a partner" type="object"
-                            class="btn-primary" invisible="conflict_state != 'hits'"/>
-                    <button string="Cancel" class="btn-secondary" special="cancel" data-hotkey="x"/>
+                    <button name="action_proceed" 
+                            string="متابعة وإضافة بيانات القضية ➡️" 
+                            type="object" 
+                            class="btn btn-primary oe_highlight"/>
+                    <button string="إلغاء" class="btn btn-secondary" special="cancel"/>
                 </footer>
             </form>
         </field>
     </record>
 
     <record id="action_legal_task_create_wizard" model="ir.actions.act_window">
-        <field name="name">New matter</field>
+        <field name="name">بدء معاملة / قضية جديدة</field>
         <field name="res_model">legal.task.create.wizard</field>
         <field name="view_mode">form</field>
         <field name="target">new</field>
-        <field name="context">{'dialog_size': 'medium'}</field>
     </record>
 </odoo>
