@@ -46,6 +46,7 @@ Upgrades SAG Group's 19.0.6.3.0 in place.
         "data/ldm_activity_data.xml",
         "data/ldm_template_data.xml",
         "data/ldm_template_translations.xml",
+        "data/ldm_avatars.xml",
         "data/gov_data.xml",
         "data/lit_data.xml",
         "data/ws_data.xml",

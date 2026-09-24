@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Not noupdate: runs on every install and upgrade, so the letter avatars
+         Odoo stored when SAG's users were created get the letter that names
+         them (not the "ا" of a title or of the article). Idempotent. -->
+    <function model="res.users" name="_ldm_refresh_letter_avatars"/>
+</odoo>

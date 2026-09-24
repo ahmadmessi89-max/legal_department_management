@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError
+from .ldm_text import initial
 
 OPEN_STATES = ("draft", "in_progress", "pending_docs")
 
@@ -82,18 +83,11 @@ class LegalCompany(models.Model):
     poa_count = fields.Integer(string="Active powers of attorney", compute="_compute_counts")
     total_expenses = fields.Monetary(string="Expenses", compute="_compute_counts", currency_field="currency_id")
 
-    # Words that open most names and say nothing about who it is.
-    MONOGRAM_SKIP = ("شركة", "مجموعة", "فرع", "السيد", "السيدة", "المحامي", "المحامية", "company", "the", "mr", "mrs")
-
     @api.depends("name")
     def _compute_ldm_monogram(self):
-        """The initial on the client's card: the first letter of the first word
-        that names the client ("شركة الرافدين" gives "ا", not "ش")."""
+        """The initial on the client's card (see ``ldm_text.initial``)."""
         for record in self:
-            words = [w for w in (record.name or "").split() if w]
-            while len(words) > 1 and words[0].strip(".").lower() in self.MONOGRAM_SKIP:
-                words = words[1:]
-            record.ldm_monogram = words[0][:1].upper() if words else "?"
+            record.ldm_monogram = initial(record.name)
 
     def _compute_counts(self):
         Task = self.env["legal.task"]

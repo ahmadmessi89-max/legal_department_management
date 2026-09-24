@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """The design pass: the shared view identity, reminders that read as people
 write, the company file's service overview and the managers' analytics board."""
+import base64
 from datetime import timedelta
 
 from lxml import etree
@@ -42,6 +43,37 @@ class TestDesignViews(LdmCase):
                    if f.getparent() is root and f.get("optional") != "hide"
                    and f.get("column_invisible") not in ("1", "True", "true")]
         self.assertLessEqual(len(visible), 6, [f.get("name") for f in visible])
+
+    def test_a_client_monogram_is_the_letter_that_names_it(self):
+        Company = self.env["legal.company"]
+        cases = {"شركة الرافدين للمقاولات العامة": "ر", "مجموعة دجلة التجارية": "د",
+                 "السيد أحمد عبد الكريم": "أ", "شركة نينوى للنقل البري": "ن",
+                 "The Babylon Trading Company": "B", "شركة الأمل": "أ"}
+        for name, letter in cases.items():
+            self.assertEqual(Company.new({"name": name}).ldm_monogram, letter, name)
+
+    def test_a_new_colleague_gets_the_letter_of_their_name(self):
+        user = self.env["res.users"].with_context(no_reset_password=True).create(
+            {"name": "المحامية هدى الكعبي", "login": "ldm_t_huda"})
+        self.assertIn(">ه</text>".encode(), base64.b64decode(user.image_1920))
+        user.name = "د. كريم الموسوي"
+        self.assertIn(">ك</text>".encode(), base64.b64decode(user.image_1920), "a rename redraws the letter")
+
+    def test_stored_letter_avatars_are_redrawn_and_photos_kept(self):
+        Users = self.env["res.users"].with_context(no_reset_password=True)
+        drawn = Users.create({"name": "المستشار سعد الربيعي", "login": "ldm_t_saad"})
+        photo = Users.create({"name": "المحامي علي", "login": "ldm_t_ali"})
+        # what Odoo stored for a user created before this version: the title's "ا"
+        drawn.image_1920 = base64.b64encode(
+            b"<?xml version='1.0' encoding='UTF-8' ?><svg height='180' width='180' "
+            b"xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'>"
+            b"<rect fill='hsl(200, 50%, 45%)' height='180' width='180'/><text fill='#ffffff' font-size='96' "
+            b"text-anchor='middle' x='90' y='125' font-family='sans-serif'>" + "ا".encode() + b"</text></svg>")
+        png = "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg=="
+        photo.image_1920 = png
+        self.env["res.users"]._ldm_refresh_letter_avatars()
+        self.assertIn(">س</text>".encode(), base64.b64decode(drawn.image_1920))
+        self.assertEqual(photo.image_1920.decode() if isinstance(photo.image_1920, bytes) else photo.image_1920, png)
 
     def test_hearing_time_uses_the_widget_without_midnight(self):
         views = self.env["ir.ui.view"].search([("model", "=", "legal.hearing"), ("type", "in", ("list", "form"))])
