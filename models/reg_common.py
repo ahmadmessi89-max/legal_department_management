@@ -6,6 +6,8 @@ import logging
 from odoo import fields, models
 from odoo.exceptions import UserError
 
+from .ldm_reminders import ldm_reminder_match
+
 _logger = logging.getLogger(__name__)
 
 
@@ -47,19 +49,28 @@ def sync_deadline(record, kind, values, close_state=None):
     return Deadline.browse()
 
 
-def ensure_activity(record, user, date, summary, type_xmlid):
-    """One open reminder per (record, person, kind, subject); a second run
-    moves its date instead of adding another."""
+def ensure_activity(record, user, date, summary, type_xmlid, key=False):
+    """One open reminder per (record, person, kind, source); a second run
+    moves its date and rewrites its text instead of adding another. Without a
+    key the reminder is matched by its text, as before."""
     activity_type = record.env.ref(f"legal_department_management.{type_xmlid}", raise_if_not_found=False)
     existing = record.activity_ids.filtered(
-        lambda a: a.user_id == user and a.summary == summary and a.activity_type_id == activity_type)
+        lambda a: a.user_id == user and a.activity_type_id == activity_type
+        and ldm_reminder_match(a, key, summary, date))
     if existing:
+        values = {}
         if existing[0].date_deadline != date:
-            existing[0].sudo().date_deadline = date
+            values["date_deadline"] = date
+        if existing[0].summary != summary:
+            values["summary"] = summary
+        if key and existing[0].ldm_reminder_key != key:
+            values["ldm_reminder_key"] = key
+        if values:
+            existing[0].sudo().write(values)
         return existing[0]
     return record.sudo().activity_schedule(
         activity_type_id=activity_type.id if activity_type else False,
-        summary=summary, user_id=user.id, date_deadline=date)
+        summary=summary, user_id=user.id, date_deadline=date, ldm_reminder_key=key or False)
 
 
 def close_activities(records, type_xmlid, feedback=None):

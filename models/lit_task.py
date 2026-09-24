@@ -3,6 +3,8 @@
 go to the legal managers."""
 from odoo import _, api, fields, models
 
+from .ldm_reminders import ldm_day, ldm_key
+
 
 class LegalTask(models.Model):
     _inherit = "legal.task"
@@ -58,10 +60,12 @@ class LegalTask(models.Model):
             ("date", "<=", next_day), ("attending_user_id", "=", False), ("substitute_partner_id", "=", False)])
         for hearing in sessions:
             for manager in managers:
-                summary = self.with_context(lang=manager.lang or "en_US").env._(
+                env = self._ldm_reminder_env(manager)
+                summary = env._(
                     "Nobody is attending the court session on %(date)s — %(number)s",
-                    date=hearing.date, number=hearing.task_id.task_number)
-                items.append((hearing.task_id, manager, hearing.date, summary, "ldm_activity_session"))
+                    date=ldm_day(env, hearing.date, today), number=hearing.task_id.task_number)
+                items.append((hearing.task_id, manager, hearing.date, summary, "ldm_activity_session",
+                              ldm_key(hearing, "unattended")))
         deadlines = self.env["legal.deadline"].search([
             ("company_id", "=", company.id), ("state", "=", "open"), ("our_action", "=", True),
             ("rule_id", "!=", False), ("task_id", "!=", False), ("date_safe", "!=", False),
@@ -69,10 +73,12 @@ class LegalTask(models.Model):
         for deadline in deadlines:
             owner = deadline.user_id or deadline.task_id.lawyer_id
             for manager in managers - owner:
-                summary = self.with_context(lang=manager.lang or "en_US").env._(
+                env = self._ldm_reminder_env(manager)
+                summary = env._(
                     "Deadline about to end, still open: %(name)s — %(number)s",
-                    name=deadline.name, number=deadline.task_id.task_number)
-                items.append((deadline.task_id, manager, deadline.date_safe, summary, "ldm_activity_deadline"))
+                    name=deadline.with_env(env).name, number=deadline.task_id.task_number)
+                items.append((deadline.task_id, manager, deadline.date_safe, summary, "ldm_activity_deadline",
+                              ldm_key(deadline, "escalation")))
         return items
 
     def action_ldm_open_sessions(self):

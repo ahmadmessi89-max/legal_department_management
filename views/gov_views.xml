@@ -535,6 +535,13 @@
                     <field name="expiring_document_count" widget="statinfo" string="Expiring documents"/>
                 </button>
             </xpath>
+            <xpath expr="//page[@name='matters']" position="before">
+                <page name="coverage" string="Services this year" groups="legal_department_management.group_ldm_corporate"
+                      invisible="not coverage_ids">
+                    <field name="coverage_ids" invisible="1"/>
+                    <widget name="ldm_service_overview"/>
+                </page>
+            </xpath>
             <xpath expr="//page[@name='registry']" position="after">
                 <page name="vault" string="Documents" groups="legal_department_management.group_ldm_corporate">
                     <div class="d-flex justify-content-end mb-2">
@@ -593,26 +600,7 @@
                         </list>
                     </field>
                 </page>
-                <page name="coverage" string="Services this year" groups="legal_department_management.group_ldm_corporate"
-                      invisible="not coverage_ids">
-                    <field name="coverage_ids" readonly="1">
-                        <list create="0" delete="0" decoration-muted="coverage_state == 'done'">
-                            <field name="template_id"/>
-                            <field name="department_id" optional="hide"/>
-                            <field name="coverage_state" widget="ldm_pill" width="150px"
-                                   decoration-success="coverage_state == 'done'"
-                                   decoration-info="coverage_state == 'open'"
-                                   decoration-danger="coverage_state == 'due'"/>
-                            <field name="last_done_date" optional="show"/>
-                            <field name="last_task_id" optional="hide"/>
-                            <button name="action_ldm_start" type="object" string="Start" icon="fa-play"
-                                    class="btn-link" invisible="coverage_state != 'due'"
-                                    groups="legal_department_management.group_ldm_clerk"/>
-                            <button name="action_open_last_task" type="object" string="Open" icon="fa-folder-open-o"
-                                    class="btn-link" invisible="coverage_state == 'due' or not last_task_id"/>
-                        </list>
-                    </field>
-                </page>
+
             </xpath>
         </field>
     </record>

@@ -6,6 +6,7 @@ from odoo.fields import Domain
 from .base_litigation import COURT_STAGES
 from .ldm_engine import engine_guard, in_engine
 from .legal_task_template import LAW_BRANCHES, MATTER_KINDS
+from .ldm_reminders import ldm_day, ldm_key, ldm_key_matches, ldm_reminder_match
 
 OPEN_STATES = ("draft", "in_progress", "pending_docs")
 CLOSED_STATES = ("done", "cancelled")
@@ -639,16 +640,20 @@ class LegalTask(models.Model):
             task.message_post(body=_("Approval reset by %s.", self.env.user.name))
         return True
 
-    def _ldm_close_reminders(self, type_xmlid, summary=None):
-        """Mark done the reminder activities of one kind (and optional summary)."""
+    def _ldm_close_reminders(self, type_xmlid, summary=None, key=None, feedback=None):
+        """Mark done the reminder activities of one kind. ``key`` narrows them to
+        one source (``"legal.hearing,12"`` also closes ``"legal.hearing,12:…"``);
+        ``summary`` is kept for callers that still match the text."""
         activity_type = self.env.ref(f"legal_department_management.{type_xmlid}", raise_if_not_found=False)
         if not activity_type:
             return
         for task in self:
             activities = task.activity_ids.filtered(
-                lambda a: a.activity_type_id == activity_type and (summary is None or a.summary == summary))
+                lambda a: a.activity_type_id == activity_type
+                and (key is None or ldm_key_matches(a.ldm_reminder_key, key))
+                and (summary is None or a.summary == summary))
             if activities:
-                activities.sudo().action_feedback(feedback=_("Done"))
+                activities.sudo().action_feedback(feedback=feedback or _("Done"))
 
     # ------------------------------------------------------------------
     # Matter types
@@ -774,7 +779,13 @@ class LegalTask(models.Model):
             today = fields.Date.context_today(self.with_context(tz=tz))
             horizon = company.ldm_add_working_days(today, company.ldm_reminder_days or 3)
             items = self.with_company(company)._ldm_reminder_items(company, today, horizon)
-            for task, user, date, summary, type_xmlid in items:
+            for item in items:
+                # (matter, user, date, summary, activity type[, key]): the key names
+                # the source ("legal.hearing,12"), so a reminder is found again by
+                # what it is about, not by its wording, which follows the reader's
+                # language and the date as it moves.
+                task, user, date, summary, type_xmlid = item[:5]
+                key = item[5] if len(item) > 5 else False
                 if not task.active or task.state in CLOSED_STATES:
                     continue
                 user = user if user and user.active and not user.share else task.lawyer_id
@@ -784,14 +795,22 @@ class LegalTask(models.Model):
                     continue
                 activity_type = self.env.ref(f"legal_department_management.{type_xmlid}", raise_if_not_found=False)
                 existing = task.activity_ids.filtered(
-                    lambda a: a.user_id == user and a.summary == summary and a.activity_type_id == activity_type)
+                    lambda a: a.user_id == user and a.activity_type_id == activity_type
+                    and ldm_reminder_match(a, key, summary, date))
                 if existing:
+                    values = {}
                     if existing[0].date_deadline != date:
-                        existing[0].sudo().date_deadline = date
+                        values["date_deadline"] = date
+                    if existing[0].summary != summary:
+                        values["summary"] = summary
+                    if key and existing[0].ldm_reminder_key != key:
+                        values["ldm_reminder_key"] = key
+                    if values:
+                        existing[0].sudo().write(values)
                     continue
                 task.sudo().activity_schedule(
                     activity_type_id=activity_type.id if activity_type else False,
-                    summary=summary, user_id=user.id, date_deadline=date)
+                    summary=summary, user_id=user.id, date_deadline=date, ldm_reminder_key=key or False)
         return True
 
     @api.model
@@ -800,32 +819,48 @@ class LegalTask(models.Model):
         return group.all_user_ids.filtered(lambda u: u.active and not u.share and company in u.company_ids)
 
     @api.model
+    def _ldm_reminder_env(self, user):
+        """The environment a reminder for ``user`` is written in: their language."""
+        return self.with_context(lang=(user and user.lang) or self.env.lang or "en_US").env
+
+    @api.model
     def _ldm_reminder_items(self, company, today, horizon):
-        """Return (matter, user, date, summary, activity type xmlid) tuples to
-        remind about. Streams add their own sources by extending this method.
-        Summaries are written in the responsible person's language."""
+        """Return (matter, user, date, summary, activity type xmlid, key) tuples
+        to remind about. Streams add their own sources by extending this method
+        (a five-element tuple without a key still works, matched by its text).
+        Summaries are written in the responsible person's language, with the
+        date as they read it ("24 September", not "2026-09-24")."""
         items = []
         for hearing in self.env["legal.hearing"].search([("company_id", "=", company.id), ("state", "=", "planned"),
                                                          ("date", ">=", today), ("date", "<=", horizon)]):
             user = hearing.attending_user_id or hearing.task_id.lawyer_id
-            summary = _("Court session on %(date)s — %(number)s", date=hearing.date,
-                        number=hearing.task_id.task_number)
-            items.append((hearing.task_id, user, hearing.date, summary, "ldm_activity_session"))
+            env = self._ldm_reminder_env(user)
+            summary = env._("Court session on %(date)s — %(number)s", date=ldm_day(env, hearing.date, today),
+                            number=hearing.task_id.task_number)
+            items.append((hearing.task_id, user, hearing.date, summary, "ldm_activity_session",
+                          ldm_key(hearing)))
         for deadline in self.env["legal.deadline"].search([("company_id", "=", company.id), ("state", "=", "open"),
                                                            ("task_id", "!=", False), ("date_safe", "!=", False),
                                                            ("date_safe", "<=", horizon)]):
-            summary = _("Deadline: %(name)s — %(number)s", name=deadline.name, number=deadline.task_id.task_number)
-            items.append((deadline.task_id, deadline.user_id or deadline.task_id.lawyer_id, deadline.date_safe,
-                          summary, "ldm_activity_deadline"))
+            user = deadline.user_id or deadline.task_id.lawyer_id
+            env = self._ldm_reminder_env(user)
+            summary = env._("Deadline: %(name)s — %(number)s", name=deadline.with_env(env).name,
+                            number=deadline.task_id.task_number)
+            items.append((deadline.task_id, user, deadline.date_safe, summary, "ldm_activity_deadline",
+                          ldm_key(deadline)))
         for step in self.env["legal.task.step"].search([("company_id", "=", company.id), ("state", "=", "todo"),
                                                         ("date_due", "!=", False), ("date_due", "<=", horizon)]):
-            summary = _("Step: %(name)s — %(number)s", name=step.name, number=step.task_id.task_number)
-            items.append((step.task_id, step.user_id or step.task_id.lawyer_id, step.date_due, summary,
-                          "ldm_activity_step"))
+            user = step.user_id or step.task_id.lawyer_id
+            env = self._ldm_reminder_env(user)
+            summary = env._("Step: %(name)s — %(number)s", name=step.name, number=step.task_id.task_number)
+            items.append((step.task_id, user, step.date_due, summary, "ldm_activity_step", ldm_key(step)))
         for task in self.search([("company_id", "=", company.id), ("state", "in", OPEN_STATES),
                                  ("due_date", "!=", False), ("due_date", "<=", horizon)]):
-            items.append((task, task.lawyer_id, task.due_date, _("Target date — %s", task.task_number),
-                          "ldm_activity_target"))
+            env = self._ldm_reminder_env(task.lawyer_id)
+            items.append((task, task.lawyer_id, task.due_date,
+                          env._("Target date %(date)s — %(number)s", date=ldm_day(env, task.due_date, today),
+                                number=task.task_number),
+                          "ldm_activity_target", ldm_key(task, "target")))
         return items
 
     # ------------------------------------------------------------------

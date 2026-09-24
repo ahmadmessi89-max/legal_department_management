@@ -5,6 +5,7 @@ from odoo import _, api, fields, models
 from odoo.exceptions import UserError, ValidationError
 from odoo.fields import Domain
 
+from .ldm_reminders import ldm_day, ldm_key
 from .money_conflict import _template_create, conflict_key, in_template_create
 from .money_whatsapp import money_text
 
@@ -286,9 +287,11 @@ class LegalTask(models.Model):
             task = line.task_id or line.engagement_id.task_ids.filtered(lambda t: t.state in OPEN)[:1]
             if not task:
                 continue
-            summary = _("Instalment due: %(name)s — %(number)s", name=line.name, number=task.task_number)
-            items.append((task, line.engagement_id.lawyer_id or task.lawyer_id, line.date, summary,
-                          "ldm_activity_fee_agreement"))
+            user = line.engagement_id.lawyer_id or task.lawyer_id
+            env = self._ldm_reminder_env(user)
+            summary = env._("Instalment due %(date)s: %(name)s — %(number)s",
+                            date=ldm_day(env, line.date, today), name=line.name, number=task.task_number)
+            items.append((task, user, line.date, summary, "ldm_activity_fee_agreement", ldm_key(line)))
         return items
 
     # ------------------------------------------------------------------

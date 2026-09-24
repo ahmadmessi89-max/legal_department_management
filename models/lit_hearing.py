@@ -3,6 +3,7 @@
 checks, and the calendar's shaded non-working days."""
 from odoo import _, api, fields, models
 
+from .ldm_reminders import ldm_key, ldm_key_matches
 from .lit_rules import ldm_date
 
 from .lit_report import _time_label
@@ -118,14 +119,19 @@ class LegalHearing(models.Model):
         return result
 
     def _ldm_close_reminders(self):
-        """Close the reminder the daily run opened for these sessions."""
+        """Close the reminders the daily run opened for these sessions: found by
+        their key (the session), and, for an activity written before keys
+        existed, by the session's date in its text."""
         activity_type = self.env.ref("legal_department_management.ldm_activity_session", raise_if_not_found=False)
         if not activity_type:
             return
         for hearing in self:
+            key = ldm_key(hearing)
             marker = fields.Date.to_string(hearing.date)
             activities = hearing.task_id.activity_ids.filtered(
-                lambda a: a.activity_type_id == activity_type and marker in (a.summary or ""))
+                lambda a: a.activity_type_id == activity_type and (
+                    ldm_key_matches(a.ldm_reminder_key, key)
+                    or (not a.ldm_reminder_key and marker in (a.summary or ""))))
             if activities:
                 activities.sudo().action_feedback(feedback=_("Session recorded."))
 

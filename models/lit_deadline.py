@@ -7,6 +7,7 @@ from markupsafe import Markup
 from odoo import _, api, fields, models
 from odoo.exceptions import AccessError, UserError
 
+from .ldm_reminders import ldm_key, ldm_key_matches
 from .lit_rules import ldm_date, ldm_user_is
 
 OPEN = ("open", "awaiting_service")
@@ -292,8 +293,11 @@ class LegalDeadline(models.Model):
         if not activity_type:
             return
         for deadline in self.filtered("task_id"):
+            key = ldm_key(deadline)
             activities = deadline.task_id.activity_ids.filtered(
-                lambda a: a.activity_type_id == activity_type and deadline.name and deadline.name in (a.summary or ""))
+                lambda a: a.activity_type_id == activity_type and (
+                    ldm_key_matches(a.ldm_reminder_key, key)
+                    or (not a.ldm_reminder_key and deadline.name and deadline.name in (a.summary or ""))))
             if activities:
                 activities.sudo().action_feedback(feedback=_("Closed with the deadline."))
 

@@ -2,6 +2,7 @@
 # Foundation: every model and field of docs/ldm/SPEC.md section 4.
 from . import ldm_text
 from . import ldm_engine
+from . import ldm_reminders
 from . import res_company
 from . import res_config_settings
 from . import res_users
@@ -24,3 +25,5 @@ from . import lit_litigation
 from . import ws_workspace
 from . import money_money
 from . import reg_registers
+# Design pass: the company file's service overview and the managers' analytics board
+from . import ds_services

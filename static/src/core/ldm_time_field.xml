@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="legal_department_management.LdmTimeField">
+        <span t-if="props.readonly" class="o_ldm_num" t-esc="formattedValue"/>
+        <input t-else="" t-att-id="props.id" t-att-type="props.inputType" t-ref="numpadDecimal" class="o_input o_ldm_num"
+               autocomplete="off" t-att-placeholder="props.placeholder"/>
+    </t>
+</templates>

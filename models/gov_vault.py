@@ -10,7 +10,8 @@ the agenda next to court deadlines. Renewing the document closes it.
 from datetime import timedelta
 
 from odoo import _, api, fields, models
-from odoo.tools.misc import format_date
+
+from .ldm_reminders import ldm_day, ldm_key, ldm_reminder_match
 
 VAULT = "legal.company.document"
 
@@ -228,7 +229,7 @@ class LegalCompany(models.Model):
     # ------------------------------------------------------------------
     @api.model
     def _ldm_company_reminder_items(self, company, today):
-        """(client, user, date, summary) for documents in the vault that expire
+        """(client, user, date, summary, key) for documents in the vault that expire
         within the warning window and obligations that are due soon but open
         no matter by themselves. Summaries are in the reminded person's language."""
         items = []
@@ -241,8 +242,8 @@ class LegalCompany(models.Model):
             env = self.with_context(lang=user.lang or self.env.lang).env
             summary = env._("%(document)s expires on %(date)s",
                             document=doc.document_type_id.with_env(env).name,
-                            date=format_date(env, doc.date_expiry))
-            items.append((doc.legal_company_id, user, doc.date_expiry, summary))
+                            date=ldm_day(env, doc.date_expiry, today))
+            items.append((doc.legal_company_id, user, doc.date_expiry, summary, ldm_key(doc)))
         for obligation in self.env["legal.obligation"].sudo().search([
                 ("company_id", "in", (company.id, False)), ("template_id", "=", False), ("next_date", "!=", False)]):
             if obligation.next_date - timedelta(days=obligation.lead_days or 0) > today:
@@ -250,8 +251,9 @@ class LegalCompany(models.Model):
             user = obligation.legal_company_id.lawyer_id
             env = self.with_context(lang=user.lang or self.env.lang).env
             summary = env._("%(obligation)s is due on %(date)s", obligation=obligation.name,
-                            date=format_date(env, obligation.next_date))
-            items.append((obligation.legal_company_id, user, obligation.next_date, summary))
+                            date=ldm_day(env, obligation.next_date, today))
+            items.append((obligation.legal_company_id, user, obligation.next_date, summary,
+                          ldm_key(obligation, fields.Date.to_string(obligation.next_date))))
         return items
 
     @api.model
@@ -263,7 +265,9 @@ class LegalCompany(models.Model):
             calendar = company._ldm_calendar()
             tz = (calendar and calendar.tz) or "Asia/Baghdad"
             today = fields.Date.context_today(self.with_context(tz=tz))
-            for client, user, date, summary in self.with_company(company)._ldm_company_reminder_items(company, today):
+            for item in self.with_company(company)._ldm_company_reminder_items(company, today):
+                client, user, date, summary = item[:4]
+                key = item[4] if len(item) > 4 else False
                 if not client.active:
                     continue
                 if not user or not user.active or user.share:
@@ -271,12 +275,20 @@ class LegalCompany(models.Model):
                 if not user:
                     continue
                 existing = client.activity_ids.filtered(
-                    lambda a: a.user_id == user and a.summary == summary and a.activity_type_id == activity_type)
+                    lambda a: a.user_id == user and a.activity_type_id == activity_type
+                    and ldm_reminder_match(a, key, summary, date))
                 if existing:
+                    values = {}
                     if existing[0].date_deadline != date:
-                        existing[0].sudo().date_deadline = date
+                        values["date_deadline"] = date
+                    if existing[0].summary != summary:
+                        values["summary"] = summary
+                    if key and existing[0].ldm_reminder_key != key:
+                        values["ldm_reminder_key"] = key
+                    if values:
+                        existing[0].sudo().write(values)
                     continue
                 client.sudo().activity_schedule(
                     activity_type_id=activity_type.id if activity_type else False,
-                    summary=summary, user_id=user.id, date_deadline=date)
+                    summary=summary, user_id=user.id, date_deadline=date, ldm_reminder_key=key or False)
         return True

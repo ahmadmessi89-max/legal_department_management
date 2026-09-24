@@ -10,3 +10,5 @@ from . import test_lit
 from . import test_ws
 from . import test_money
 from . import test_reg
+# Design pass
+from . import test_design

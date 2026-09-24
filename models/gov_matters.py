@@ -6,6 +6,7 @@ from odoo import _, api, fields, models
 from odoo.exceptions import UserError
 from odoo.fields import Domain
 
+from .ldm_reminders import ldm_day, ldm_key
 from .legal_task import CLOSED_STATES, OPEN_STATES
 
 OUTSIDE = ("body", "verification")
@@ -103,8 +104,12 @@ class LegalTask(models.Model):
             ("task_id.state", "in", list(OPEN_STATES)),
         ])
         for doc in documents:
-            summary = _("Document expires: %(name)s — %(number)s", name=doc.name, number=doc.task_id.task_number)
-            items.append((doc.task_id, doc.task_id.lawyer_id, doc.expiry_date, summary, "ldm_activity_expiry"))
+            user = doc.task_id.lawyer_id
+            env = self._ldm_reminder_env(user)
+            summary = env._("Document expires on %(date)s: %(name)s — %(number)s",
+                            date=ldm_day(env, doc.expiry_date, today), name=doc.name,
+                            number=doc.task_id.task_number)
+            items.append((doc.task_id, user, doc.expiry_date, summary, "ldm_activity_expiry", ldm_key(doc)))
         return items
 
     @api.model

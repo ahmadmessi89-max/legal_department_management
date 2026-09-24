@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="legal_department_management.ServiceOverview">
+        <div class="o_ldm o_ldm_services" t-if="props.record.resId">
+            <div class="o_ldm_empty" t-if="!bodies.length">
+                <LdmIcon name="'clipboard-list'"/>
+                <div>
+                    <p class="o_ldm_empty_title" t-esc="label.empty"/>
+                    <p t-esc="label.emptyHint"/>
+                </div>
+            </div>
+            <t t-else="">
+                <header class="o_ldm_services_head">
+                    <div class="o_ldm_services_summary">
+                        <span class="o_ldm_services_year o_ldm_num" t-esc="overview.year"/>
+                        <span dir="auto" t-esc="summary"/>
+                    </div>
+                    <progress class="o_ldm_services_bar" t-att-value="totals.done" t-att-max="totals.total || 1"
+                              t-att-aria-label="summary"/>
+                    <button type="button" class="o_ldm_linkbtn" t-on-click="openRegister" t-esc="label.register"/>
+                </header>
+                <section t-foreach="bodies" t-as="body" t-key="body.key" class="o_ldm_panel o_ldm_service_body">
+                    <header class="o_ldm_service_body_head">
+                        <span class="o_ldm_service_body_icon"><LdmIcon name="'landmark'"/></span>
+                        <span class="o_ldm_service_body_text">
+                            <span class="o_ldm_service_body_name" t-esc="body.name"/>
+                            <span class="o_ldm_service_body_ministry" t-if="body.ministry" t-esc="body.ministry"/>
+                        </span>
+                        <span class="o_ldm_service_body_count">
+                            <span dir="auto" t-esc="body.countLabel"/>
+                            <progress class="o_ldm_services_bar o_ldm_services_bar_thin" t-att-value="body.done"
+                                      t-att-max="body.total || 1" t-att-aria-label="body.countLabel"/>
+                        </span>
+                    </header>
+                    <ul class="o_ldm_service_rows">
+                        <li t-foreach="body.services" t-as="service" t-key="service.coverage_id"
+                            t-attf-class="o_ldm_service_row o_ldm_service_{{ service.state }}">
+                            <span class="o_ldm_service_main">
+                                <span class="o_ldm_service_name" t-esc="service.name"/>
+                                <span class="o_ldm_service_meta">
+                                    <span t-if="service.task_number" class="o_ldm_ref" dir="ltr" t-esc="service.task_number"/>
+                                    <span t-if="service.when" dir="auto" t-esc="service.when"/>
+                                    <span t-if="service.responsible" class="o_ldm_service_who">
+                                        <LdmIcon name="'user'"/>
+                                        <t t-esc="service.responsible.name"/>
+                                    </span>
+                                </span>
+                            </span>
+                            <span t-attf-class="o_ldm_pill o_ldm_tone_{{ service.tone }}">
+                                <LdmIcon name="service.icon"/>
+                                <t t-esc="service.label"/>
+                            </span>
+                            <span class="o_ldm_service_action">
+                                <button type="button" t-if="service.can_start" class="o_ldm_action"
+                                        t-on-click="() => this.start(service)">
+                                    <LdmIcon name="'plus'"/>
+                                    <t t-esc="label.start"/>
+                                </button>
+                                <button type="button" t-elif="service.can_open" class="o_ldm_action"
+                                        t-on-click="() => this.open(service)">
+                                    <t t-esc="label.open"/>
+                                    <LdmIcon name="'arrow-right'"/>
+                                </button>
+                            </span>
+                        </li>
+                    </ul>
+                </section>
+            </t>
+        </div>
+    </t>
+
+</templates>

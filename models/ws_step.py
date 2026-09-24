@@ -12,6 +12,7 @@ from datetime import timedelta
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError
 
+from .ldm_reminders import ldm_key, ldm_key_matches
 from .ws_common import CLOSED_STATES
 
 # An Undo is offered for six seconds; the server accepts it for longer so a slow
@@ -101,7 +102,10 @@ class LegalTaskStep(models.Model):
         if not activity_type:
             return
         for step in self:
+            key = ldm_key(step)
             activities = step.task_id.activity_ids.filtered(
-                lambda a, s=step: a.activity_type_id == activity_type and a.summary and s.name in a.summary)
+                lambda a, s=step, k=key: a.activity_type_id == activity_type and (
+                    ldm_key_matches(a.ldm_reminder_key, k)
+                    or (not a.ldm_reminder_key and a.summary and s.name in a.summary)))
             if activities:
                 activities.sudo().action_feedback(feedback=_("Done"))
