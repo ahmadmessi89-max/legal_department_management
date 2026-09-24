@@ -12,6 +12,7 @@ from odoo.tools.misc import format_date
 
 from .common import M, LdmCase
 from .test_gov_common import GovCase
+from . import test_design_analytics  # noqa: F401
 
 
 @tagged("post_install", "-at_install", "ldm")

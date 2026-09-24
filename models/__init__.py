@@ -27,3 +27,4 @@ from . import money_money
 from . import reg_registers
 # Design pass: the company file's service overview and the managers' analytics board
 from . import ds_services
+from . import ds_analytics

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The design pass: the managers' analytics board (static/src/analytics). -->
+<odoo>
+    <record id="action_ldm_analytics" model="ir.actions.client">
+        <field name="name">Analytics</field>
+        <field name="tag">ldm_analytics</field>
+        <field name="target">main</field>
+        <field name="path">legal-analytics</field>
+    </record>
+
+    <menuitem id="menu_ldm_analytics" name="Analytics" parent="menu_ldm_reporting" sequence="0"
+              action="action_ldm_analytics"
+              groups="legal_department_management.group_legal_manager,legal_department_management.group_ldm_auditor"/>
+</odoo>

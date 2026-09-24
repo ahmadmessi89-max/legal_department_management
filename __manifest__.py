@@ -75,6 +75,8 @@ Upgrades SAG Group's 19.0.6.3.0 in place.
         "views/ws_views.xml",
         "views/money_views.xml",
         "views/reg_views.xml",
+        # Design pass
+        "views/ds_views.xml",
     ],
     "demo": [],
     "assets": {

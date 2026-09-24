@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="legal_department_management.LdmChart">
+        <div t-attf-class="o_ldm_chart {{ sizeClass }}">
+            <canvas t-ref="canvas" role="img" t-att-aria-label="props.ariaLabel"/>
+        </div>
+    </t>
+
+    <t t-name="legal_department_management.Analytics">
+        <div class="o_action o_ldm o_ldm_analytics" t-ref="root">
+            <header class="o_ldm_band o_ldm_analytics_band">
+                <div class="o_ldm_analytics_band_text">
+                    <h1 class="o_ldm_band_title" dir="auto" t-esc="label.title"/>
+                    <p class="o_ldm_band_meta">
+                        <span t-if="state.data" t-esc="state.data.company"/>
+                        <span class="o_ldm_band_sep" t-if="state.data">·</span>
+                        <span t-esc="periodLabel"/>
+                    </p>
+                </div>
+                <div class="o_ldm_analytics_periods" role="radiogroup" t-att-aria-label="label.period">
+                    <t t-if="state.data">
+                        <button t-foreach="state.data.periods" t-as="period" t-key="period.key" type="button"
+                                role="radio" t-att-aria-checked="period.key === state.period ? 'true' : 'false'"
+                                t-attf-class="o_ldm_band_ghost {{ period.key === state.period ? 'o_ldm_active' : '' }}"
+                                t-on-click="() => this.setPeriod(period.key)" t-esc="period.label"/>
+                    </t>
+                </div>
+            </header>
+
+            <div class="o_ldm_analytics_body">
+                <div class="o_ldm_analytics_state" t-if="state.loading and !state.data">
+                    <span class="o_ldm_spinner"/>
+                    <span t-esc="label.loading"/>
+                </div>
+                <div class="o_ldm_panel o_ldm_empty o_ldm_analytics_error" t-elif="state.error" role="alert">
+                    <LdmIcon name="'circle-alert'" class="'o_ldm_text_danger'"/>
+                    <div>
+                        <p class="o_ldm_empty_title" t-esc="label.error"/>
+                        <button type="button" class="o_ldm_action" t-on-click="() => this.load()" t-esc="label.retry"/>
+                    </div>
+                </div>
+                <t t-if="state.data and !state.error">
+                    <t t-set="chartColors" t-value="palette"/>
+                    <ul class="o_ldm_analytics_figures" t-att-aria-busy="state.loading ? 'true' : 'false'">
+                        <li t-foreach="state.data.figures" t-as="figure" t-key="figure.key">
+                            <button type="button" class="o_ldm_analytics_figure" t-on-click="() => this.open(figure.action)">
+                                <span t-attf-class="o_ldm_analytics_figure_value o_ldm_num {{ figure.tone ? 'o_ldm_text_' + figure.tone : '' }}"
+                                      t-esc="figure.value"/>
+                                <span class="o_ldm_analytics_figure_label" dir="auto" t-esc="figure.label"/>
+                            </button>
+                        </li>
+                    </ul>
+                    <div class="o_ldm_analytics_grid">
+                        <section t-foreach="panels" t-as="panel" t-key="panel.key"
+                                 t-attf-class="o_ldm_panel o_ldm_analytics_panel {{ panel.wide ? 'o_ldm_analytics_wide' : '' }}"
+                                 t-att-data-chart="panel.key">
+                            <header class="o_ldm_analytics_panel_head">
+                                <span class="o_ldm_analytics_panel_icon"><LdmIcon name="panel.icon"/></span>
+                                <div class="o_ldm_analytics_panel_text">
+                                    <h2 class="o_ldm_section_title" dir="auto" t-esc="panel.title"/>
+                                    <p class="o_ldm_analytics_hint" dir="auto" t-esc="panel.hint"/>
+                                </div>
+                            </header>
+                            <div class="o_ldm_empty" t-if="panel.empty">
+                                <LdmIcon name="'circle-check'"/>
+                                <p dir="auto" t-esc="panel.empty"/>
+                            </div>
+                            <t t-else="">
+                                <p class="o_ldm_analytics_answer" dir="auto" t-esc="panel.answer"/>
+                                <LdmChart spec="panel.spec" colors="chartColors" format="formatter(panel.spec.unit)"
+                                          labels="monthLabels(panel.spec)" ariaLabel="panel.answer || panel.title"
+                                          onPick="(datasetIndex, index) => this.pick(panel, datasetIndex, index)"/>
+                            </t>
+                        </section>
+                    </div>
+                </t>
+            </div>
+        </div>
+    </t>
+
+</templates>
