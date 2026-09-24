@@ -29,12 +29,16 @@ class LegalTask(models.Model):
     _inherit = "legal.task"
 
     @api.model
-    def get_my_day(self, scope="me"):
+    def get_my_day(self, scope=None):
         user = self.env.user
         today = fields.Date.context_today(self)
         role, role_label = role_of(self, user)
         is_manager = role == "manager"
         read_only = not user.has_group(G_CLERK)
+        if scope is None:
+            # First opening: a manager starts on the whole department, since the
+            # matters are their lawyers'; everyone else starts on their own work.
+            scope = "all" if is_manager else "me"
         if read_only:
             scope = "all"
         elif scope not in ("me", "team", "all") or (scope != "me" and not is_manager):

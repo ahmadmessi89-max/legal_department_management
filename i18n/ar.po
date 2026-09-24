@@ -4013,7 +4013,7 @@ msgstr "أفلت الملف هنا"
 #. module: legal_department_management
 #: model:ir.model.fields,field_description:legal_department_management.field_legal_engagement_line__trigger_event model:ir.model.fields,field_description:legal_department_management.field_legal_task_step__date_due model:ir.model.fields.selection,name:legal_department_management.selection__legal_engagement_line__state__due model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_engagement model_terms:ir.ui.view,arch_db:legal_department_management.report_legal_task_document
 msgid "Due"
-msgstr "الاستحقاق"
+msgstr "مستحق"
 
 #. module: legal_department_management
 #: model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_obligation_search
@@ -5098,7 +5098,7 @@ msgstr "ملاحظة التسليم"
 #. module: legal_department_management
 #: model:ir.model.fields,field_description:legal_department_management.field_legal_advance_settle_wizard__amount model:ir.model.fields.selection,name:legal_department_management.selection__legal_advance__state__paid
 msgid "Handed over"
-msgstr "المسلَّم"
+msgstr "مُسلَّم"
 
 #. module: legal_department_management
 #. odoo-python
@@ -5458,7 +5458,7 @@ msgstr "تُصدر الفاتورة باسم"
 #. module: legal_department_management
 #: model:ir.model.fields,field_description:legal_department_management.field_legal_engagement__amount_invoiced model:ir.model.fields,field_description:legal_department_management.field_legal_task_expense__billed model:ir.model.fields.selection,name:legal_department_management.selection__legal_engagement_line__state__invoiced model:ir.model.fields.selection,name:legal_department_management.selection__legal_task__billing_state__invoiced model:ir.model.fields.selection,name:legal_department_management.selection__legal_time_entry__state__invoiced
 msgid "Invoiced"
-msgstr "المفوتر"
+msgstr "مفوتر"
 
 #. module: legal_department_management
 #. odoo-python
@@ -8883,7 +8883,7 @@ msgstr "مدعٍ"
 #. module: legal_department_management
 #: model:ir.model.fields.selection,name:legal_department_management.selection__legal_engagement_line__state__planned model:ir.model.fields.selection,name:legal_department_management.selection__legal_hearing__state__planned
 msgid "Planned"
-msgstr "مخطط"
+msgstr "مقرر"
 
 #. module: legal_department_management
 #: model:ir.model.fields,field_description:legal_department_management.field_legal_handover_wizard__scope_hearings
@@ -9039,9 +9039,9 @@ msgid "Previous session"
 msgstr "الجلسة السابقة"
 
 #. module: legal_department_management
-#: model:ir.model.fields,field_description:legal_department_management.field_legal_guarantee__legal_company_id model:ir.model.fields,field_description:legal_department_management.field_legal_poa__principal_company_id model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_poa_search
+#: model:ir.model.fields,field_description:legal_department_management.field_legal_poa__principal_company_id model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_poa_search
 msgid "Principal"
-msgstr "المكفول"
+msgstr "الموكِّل"
 
 #. module: legal_department_management
 #: model:ir.model.fields,field_description:legal_department_management.field_legal_poa__principal_partner_id
@@ -10149,7 +10149,7 @@ msgstr "اذكر سبب الاعتذار عن الطلب."
 #. module: legal_department_management
 #: model:ir.model.fields,field_description:legal_department_management.field_ldm_reg_scan_mixin__attachment_id model:ir.model.fields,field_description:legal_department_management.field_legal_company_document__file_data model:ir.model.fields,field_description:legal_department_management.field_legal_guarantee__attachment_id model:ir.model.fields,field_description:legal_department_management.field_legal_poa__attachment_id model:ir.model.fields,field_description:legal_department_management.field_legal_task_document__file_data
 msgid "Scan"
-msgstr "الملف الممسوح"
+msgstr "المسح الضوئي"
 
 #. module: legal_department_management
 #. odoo-python
@@ -10458,7 +10458,7 @@ msgstr "تسوية سلفة"
 #. module: legal_department_management
 #: model:ir.model.fields.selection,name:legal_department_management.selection__legal_advance__state__settled model:ir.model.fields.selection,name:legal_department_management.selection__legal_appeal_rule__trigger_outcome__settled model:ir.model.fields.selection,name:legal_department_management.selection__legal_hearing__outcome__settled model:ir.model.fields.selection,name:legal_department_management.selection__legal_hearing_outcome_wizard__more_outcome__settled model:ir.model.fields.selection,name:legal_department_management.selection__legal_hearing_outcome_wizard__outcome__settled model:ir.model.fields.selection,name:legal_department_management.selection__legal_task__outcome__settled model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_advance_search
 msgid "Settled"
-msgstr "مُسوّاة"
+msgstr "تمت التسوية"
 
 #. module: legal_department_management
 #. odoo-python
@@ -12341,7 +12341,7 @@ msgstr "سنوية المركبة"
 
 #. module: legal_department_management
 #. odoo-javascript
-#: code:addons/legal_department_management/static/src/cockpit/checklists.js:0 model:ir.model.fields.selection,name:legal_department_management.selection__legal_appeal_rule__verification__verified model:ir.model.fields.selection,name:legal_department_management.selection__legal_task_document__state__verified
+#: code:addons/legal_department_management/static/src/cockpit/checklists.js:0 model:ir.model.fields.selection,name:legal_department_management.selection__legal_task_document__state__verified
 msgid "Verified"
 msgstr "مؤكد الصدور"
 
@@ -12352,7 +12352,7 @@ msgstr "Verified means the issuing body confirmed the document is genuine (صح�
 
 #. module: legal_department_management
 #: model:ir.model.fields,help:legal_department_management.field_legal_appeal_rule__verification model:ir.model.fields,help:legal_department_management.field_legal_deadline__rule_verification
-msgid "Verified: read in the law's own text. Secondary: taken from commentary or a practice guide. Unverified: check it before relying on it at a court."
+msgid "Verified in the law: read in the law's own text. Secondary: taken from commentary or a practice guide. Unverified: check it before relying on it at a court."
 msgstr "موثّقة: مقروءة من نص القانون نفسه. ثانوية: مأخوذة من شرح أو دليل عملي. غير موثّقة: تحقّق منها قبل الاعتماد عليها أمام المحكمة."
 
 #. module: legal_department_management
@@ -13706,3 +13706,14 @@ msgstr "«%s» مفتوحة من جديد."
 #: code:addons/legal_department_management/models/reg_render.py:0
 msgid "“{%s}” is not a placeholder a letter template may use. Placeholders are plain names such as {client} or {matter_number}; the list is on the template's Placeholders tab."
 msgstr "«{%s}» ليس حقلاً متغيراً يجوز استخدامه في قالب الكتاب. الحقول المتغيرة أسماء بسيطة مثل {client} أو {matter_number}، وقائمتها في تبويب «الحقول المتغيرة» في القالب."
+
+#. module: legal_department_management
+#: model:ir.model.fields,field_description:legal_department_management.field_legal_guarantee__legal_company_id
+msgid "Applicant"
+msgstr "طالب الإصدار"
+
+#. module: legal_department_management
+#. odoo-javascript
+#: model:ir.model.fields.selection,name:legal_department_management.selection__legal_appeal_rule__verification__verified
+msgid "Verified in the law"
+msgstr "موثّقة"
