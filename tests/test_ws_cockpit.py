@@ -16,8 +16,12 @@ class TestWsCockpit(WsCase):
         cls.session = cls.Hearing.create({"task_id": cls.suit.id, "date": cls.day(4), "time": 9.5,
                                           "attending_user_id": cls.lawyer.id})
         cls.step(cls.suit, "Prepare the appeal memo", 6)
-        cls.env["legal.court.stage"].create({"task_id": cls.suit.id, "stage": "first_instance",
+        # Court stage lines are the source of truth (the litigation stream keeps
+        # court_stage on the matter in step with the latest line).
+        cls.env["legal.court.stage"].create({"task_id": cls.suit.id, "sequence": 10, "stage": "first_instance",
                                              "case_number": "1834/b/2026"})
+        cls.env["legal.court.stage"].create({"task_id": cls.suit.id, "sequence": 20, "stage": "appeal",
+                                             "case_number": "412/s/2026"})
         cls.gov = cls.open_matter(name="Tax clearance", kind="government", department_id=cls.registry_body.id)
         cls.visit = cls.step(cls.gov, "Submit at the counter", 1, is_visit=True, department_id=cls.registry_body.id)
         Document = cls.env["legal.task.document"]

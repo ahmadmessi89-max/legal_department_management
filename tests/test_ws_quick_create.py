@@ -80,7 +80,9 @@ class TestWsQuickCreate(WsCase):
         self.assertFalse(self.wizard_env(self.lawyer2).new({}).recent_template_ids)
 
     def test_fee_agreement_existing_or_new(self):
+        # An agreement can only be active with its fee entered (the money stream's rule).
         engagement = self.env["legal.engagement"].create({"name": "Retainer", "legal_company_id": self.client_a.id,
+                                                          "fee_type": "lump_sum", "amount": 1500000,
                                                           "state": "active"})
         wizard = self.wizard_env().create({"legal_company_id": self.client_a.id, "name": "Advice",
                                            "fee_agreement": "existing", "engagement_id": engagement.id})
