@@ -1,6 +1,7 @@
 import { describe, expect, test } from "@odoo/hoot";
 import { click } from "@odoo/hoot-dom";
 import { animationFrame } from "@odoo/hoot-mock";
+import { defineMailModels } from "@mail/../tests/mail_test_helpers";
 import { defineModels, fields, models, mountView } from "@web/../tests/web_test_helpers";
 
 describe.current.tags("desktop");
@@ -53,6 +54,8 @@ class LegalTask extends models.Model {
     ];
 }
 
+// The module depends on mail: users, partners and the mail models are mocked.
+defineMailModels();
 defineModels([LegalTask]);
 
 const ARCH = `

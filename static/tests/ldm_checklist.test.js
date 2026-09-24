@@ -1,6 +1,7 @@
 import { describe, expect, test } from "@odoo/hoot";
 import { click } from "@odoo/hoot-dom";
 import { animationFrame } from "@odoo/hoot-mock";
+import { defineMailModels } from "@mail/../tests/mail_test_helpers";
 import { defineModels, fields, models, mountView, MockServer, onRpc } from "@web/../tests/web_test_helpers";
 
 describe.current.tags("desktop");
@@ -29,6 +30,14 @@ class LegalTask extends models.Model {
     ];
 }
 
+class LegalDepartment extends models.Model {
+    _name = "legal.department";
+
+    name = fields.Char();
+
+    _records = [{ id: 1, name: "General Commission for Taxes" }];
+}
+
 class LegalTaskStep extends models.Model {
     _name = "legal.task.step";
 
@@ -43,6 +52,11 @@ class LegalTaskStep extends models.Model {
     });
     date_due = fields.Date();
     is_visit = fields.Boolean();
+    user_id = fields.Many2one({ relation: "res.users" });
+    done_date = fields.Date();
+    done_by_id = fields.Many2one({ relation: "res.users" });
+    department_id = fields.Many2one({ relation: "legal.department" });
+    note = fields.Char();
 
     _records = [
         { id: 11, name: "Collect the documents", task_id: 1, state: "todo", date_due: "2026-09-20" },
@@ -52,7 +66,9 @@ class LegalTaskStep extends models.Model {
     ];
 }
 
-defineModels([LegalTask, LegalTaskStep]);
+// The module depends on mail: users, partners and the mail models are mocked.
+defineMailModels();
+defineModels([LegalTask, LegalTaskStep, LegalDepartment]);
 
 const ARCH = `
     <form>
