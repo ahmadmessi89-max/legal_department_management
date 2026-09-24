@@ -11,39 +11,39 @@
     -->
     <template id="report_ldm_style">
         <style>
-            .o_ldm_r { font-size: 10.5pt; color: #1d2733; line-height: 1.45; }
-            .o_ldm_r h2 { font-size: 15pt; font-weight: 600; margin: 0 0 2px 0; }
-            .o_ldm_r .o_ldm_r_kicker { font-size: 9pt; color: #5a6672; text-transform: none; letter-spacing: 0.02em; }
-            .o_ldm_r .o_ldm_r_sub { font-size: 9.5pt; color: #5a6672; }
+            .o_ldm_r { font-family: "Ldm Sans", "Inter Tight", Tajawal, "DejaVu Sans", sans-serif; font-size: 10.5pt; color: #090B11; line-height: 1.45; }
+            .o_ldm_r h2 { font-size: 16pt; font-weight: 500; letter-spacing: -0.01em; margin: 0 0 2px 0; }
+            .o_ldm_r .o_ldm_r_kicker { font-size: 9pt; color: #475569; text-transform: none; letter-spacing: 0.02em; }
+            .o_ldm_r .o_ldm_r_sub { font-size: 9.5pt; color: #475569; }
             .o_ldm_r .o_ldm_r_section { font-size: 11pt; font-weight: 600; margin: 14px 0 4px 0; padding-bottom: 3px;
-                                        border-bottom: 1.5px solid #1d2733; }
+                                        border-bottom: 1.5px solid #2563EB; }
             .o_ldm_r table.o_ldm_r_table { width: 100%; border-collapse: collapse; margin: 2px 0 6px 0; }
-            .o_ldm_r table.o_ldm_r_table th { background-color: #eef1f4; font-weight: 600; font-size: 9pt;
-                                              padding: 4px 6px; border-bottom: 1px solid #c3ccd4; text-align: start; }
-            .o_ldm_r table.o_ldm_r_table td { padding: 4px 6px; border-bottom: 1px solid #e2e7eb; font-size: 9.5pt;
+            .o_ldm_r table.o_ldm_r_table th { background-color: #F1F5F9; font-weight: 600; font-size: 9pt;
+                                              padding: 4px 6px; border-bottom: 1px solid #CBD5E1; text-align: start; }
+            .o_ldm_r table.o_ldm_r_table td { padding: 4px 6px; border-bottom: 1px solid #E2E8F0; font-size: 9.5pt;
                                               vertical-align: top; text-align: start; }
-            .o_ldm_r table.o_ldm_r_table tfoot td { font-weight: 600; border-top: 1px solid #1d2733; border-bottom: 0; }
-            .o_ldm_r .o_ldm_r_num { text-align: end; white-space: nowrap; }
+            .o_ldm_r table.o_ldm_r_table tfoot td { font-weight: 600; border-top: 1px solid #090B11; border-bottom: 0; }
+            .o_ldm_r .o_ldm_r_num { font-family: "Ldm Mono", "Roboto Mono", monospace; font-size: 9pt; text-align: end; white-space: nowrap; }
             .o_ldm_r .o_ldm_r_nowrap { white-space: nowrap; }
             .o_ldm_r table.o_ldm_r_facts { width: 100%; border-collapse: collapse; margin: 8px 0; }
             .o_ldm_r table.o_ldm_r_facts td { padding: 3px 6px; font-size: 9.5pt; vertical-align: top; text-align: start;
-                                              border-bottom: 1px solid #eef1f4; }
-            .o_ldm_r table.o_ldm_r_facts td.o_ldm_r_label { color: #5a6672; width: 18%; white-space: nowrap; }
-            .o_ldm_r .o_ldm_r_tick { display: inline-block; width: 10px; height: 10px; border: 1px solid #1d2733; }
-            .o_ldm_r .o_ldm_r_tick_done { background-color: #1d2733; }
-            .o_ldm_r .o_ldm_r_tick_skip { background-color: #c3ccd4; border-color: #c3ccd4; }
-            .o_ldm_r .o_ldm_r_muted { color: #7a858f; }
-            .o_ldm_r .o_ldm_r_late { color: #b42318; font-weight: 600; }
-            .o_ldm_r .o_ldm_r_void { text-decoration: line-through; color: #7a858f; }
-            .o_ldm_r .o_ldm_r_empty { padding: 10px 6px; color: #5a6672; font-style: italic; }
-            .o_ldm_r .o_ldm_r_note { white-space: pre-wrap; font-size: 9.5pt; padding: 6px 8px; border: 1px solid #e2e7eb; }
-            .o_ldm_r table.o_ldm_r_ruled td { height: 26px; border-bottom: 1px solid #9aa5ae; }
+                                              border-bottom: 1px solid #F1F5F9; }
+            .o_ldm_r table.o_ldm_r_facts td.o_ldm_r_label { color: #475569; width: 18%; white-space: nowrap; }
+            .o_ldm_r .o_ldm_r_tick { display: inline-block; width: 10px; height: 10px; border: 1px solid #090B11; }
+            .o_ldm_r .o_ldm_r_tick_done { background-color: #090B11; }
+            .o_ldm_r .o_ldm_r_tick_skip { background-color: #CBD5E1; border-color: #CBD5E1; }
+            .o_ldm_r .o_ldm_r_muted { color: #64748B; }
+            .o_ldm_r .o_ldm_r_late { color: #DC2626; font-weight: 600; }
+            .o_ldm_r .o_ldm_r_void { text-decoration: line-through; color: #64748B; }
+            .o_ldm_r .o_ldm_r_empty { padding: 10px 6px; color: #475569; font-style: italic; }
+            .o_ldm_r .o_ldm_r_note { white-space: pre-wrap; font-size: 9.5pt; padding: 6px 8px; border: 1px solid #E2E8F0; }
+            .o_ldm_r table.o_ldm_r_ruled td { height: 26px; border-bottom: 1px solid #94A3B8; }
             .o_ldm_r table.o_ldm_r_sign { width: 100%; margin-top: 26px; }
             .o_ldm_r table.o_ldm_r_sign td { width: 50%; text-align: center; padding: 4px 10px; font-size: 9.5pt; vertical-align: top; }
             .o_ldm_r .o_ldm_r_sign_name { height: 18px; line-height: 18px; overflow: hidden; font-weight: 600; }
-            .o_ldm_r .o_ldm_r_sign_line { margin-top: 30px; border-top: 1px solid #1d2733; padding-top: 3px; color: #5a6672; }
+            .o_ldm_r .o_ldm_r_sign_line { margin-top: 30px; border-top: 1px solid #090B11; padding-top: 3px; color: #475569; }
             .o_ldm_r .o_ldm_r_qr { width: 26mm; height: 26mm; }
-            .o_ldm_r .o_ldm_r_badge { display: inline-block; padding: 0 5px; border: 1px solid #9aa5ae; border-radius: 3px;
+            .o_ldm_r .o_ldm_r_badge { display: inline-block; padding: 0 5px; border: 1px solid #94A3B8; border-radius: 3px;
                                       font-size: 8.5pt; white-space: nowrap; }
             .o_ldm_r .o_ldm_r_summary td { padding: 4px 10px 4px 0; font-size: 10pt; }
             .o_ldm_r .o_ldm_r_summary b { font-size: 12pt; }

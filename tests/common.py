@@ -15,8 +15,12 @@ class LdmCase(TransactionCase):
         super().setUpClass()
         # English on purpose: the assertions read English text, and the template
         # database's default language is Arabic now that the module ships ar.po.
+        # Baghdad time, as every test user has: "today" in a test must be the day
+        # the product counts in, or the suite fails between midnight in Baghdad
+        # and midnight UTC.
         cls.env = cls.env(context=dict(cls.env.context, tracking_disable=True, mail_create_nolog=True,
-                                       mail_notrack=True, no_reset_password=True, lang="en_US"))
+                                       mail_notrack=True, no_reset_password=True, lang="en_US",
+                                       tz="Asia/Baghdad"))
         cls.company = cls.env.company
         cls.calendar = cls.env.ref(f"{M}.ldm_calendar_iraq")
         cls.company.ldm_calendar_id = cls.calendar

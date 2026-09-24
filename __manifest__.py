@@ -84,6 +84,9 @@ Upgrades SAG Group's 19.0.6.3.0 in place.
         "web.assets_backend": [
             "legal_department_management/static/src/**/*",
         ],
+        "web.report_assets_common": [
+            "legal_department_management/static/report/*.scss",
+        ],
         "web.assets_unit_tests": [
             "legal_department_management/static/tests/**/*",
         ],

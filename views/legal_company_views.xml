@@ -10,6 +10,7 @@
         <field name="arch" type="xml">
             <kanban class="o_ldm_view o_ldm_kanban" sample="1">
                 <field name="name"/>
+                <field name="ldm_monogram"/>
                 <field name="company_type"/>
                 <field name="client_kind"/>
                 <field name="lawyer_id"/>
@@ -18,7 +19,7 @@
                 <templates>
                     <t t-name="card">
                         <div class="d-flex align-items-start gap-3">
-                            <span class="o_ldm_monogram" aria-hidden="true" t-esc="(record.name.value or '?').trim().replace(/^(شركة|مجموعة|فرع|السيد|السيدة)\s+/, '').charAt(0)"/>
+                            <span class="o_ldm_monogram" aria-hidden="true" t-esc="record.ldm_monogram.value"/>
                             <div class="d-grid min-w-0">
                                 <field name="name" class="fw-bold text-truncate"/>
                                 <div class="text-muted small">

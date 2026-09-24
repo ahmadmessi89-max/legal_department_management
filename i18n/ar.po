@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 19.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-24 17:32+0000\n"
-"PO-Revision-Date: 2026-09-24 17:32+0000\n"
+"POT-Creation-Date: 2026-09-24 20:40+0000\n"
+"PO-Revision-Date: 2026-09-24 20:40+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -82,8 +82,9 @@ msgid "%(document)s expires on %(date)s"
 msgstr "تنتهي صلاحية %(document)s في %(date)s"
 
 #. module: legal_department_management
+#. odoo-javascript
 #. odoo-python
-#: code:addons/legal_department_management/models/ws_task.py:0
+#: code:addons/legal_department_management/models/ws_task.py:0 code:addons/legal_department_management/static/src/company_file/service_overview.js:0
 msgid "%(done)s of %(total)s done"
 msgstr "أُنجز %(done)s من %(total)s"
 
@@ -160,6 +161,12 @@ msgid "%(matter)s was already issued as opinion %(number)s."
 msgstr "صدر %(matter)s مسبقاً بوصفه الرأي %(number)s."
 
 #. module: legal_department_management
+#. odoo-javascript
+#: code:addons/legal_department_management/static/src/analytics/analytics.js:0
+msgid "%(met)s met, %(missed)s missed"
+msgstr "%(met)s مستوفاة، %(missed)s فائتة"
+
+#. module: legal_department_management
 #. odoo-python
 #: code:addons/legal_department_management/wizards/lit_challenge_wizard.py:0
 msgid "%(name)s ended on %(date)s: a challenge lodged after that is rejected (Civil Procedure Law Art. 171)."
@@ -224,6 +231,12 @@ msgstr "يستحق %(obligation)s في %(date)s"
 #: code:addons/legal_department_management/models/gov_obligations.py:0
 msgid "%(obligation)s — due %(date)s"
 msgstr "%(obligation)s — مستحق في %(date)s"
+
+#. module: legal_department_management
+#. odoo-javascript
+#: code:addons/legal_department_management/static/src/analytics/analytics.js:0
+msgid "%(people)s people carry %(count)s open matters"
+msgstr "الملفات القائمة: %(count)s، يتولاها %(people)s من الزملاء"
 
 #. module: legal_department_management
 #. odoo-python
@@ -347,6 +360,12 @@ msgid "%s has no planned court session."
 msgstr "لا توجد جلسة مقررة للملف %s."
 
 #. module: legal_department_management
+#. odoo-javascript
+#: code:addons/legal_department_management/static/src/company_file/service_overview.js:0
+msgid "%s in progress"
+msgstr "%s قيد الإجراء"
+
+#. module: legal_department_management
 #. odoo-python
 #: code:addons/legal_department_management/models/legal_task.py:0
 msgid "%s is already approved or waiting for approval."
@@ -449,8 +468,9 @@ msgid "%s lines"
 msgstr "%s سطر"
 
 #. module: legal_department_management
+#. odoo-javascript
 #. odoo-python
-#: code:addons/legal_department_management/wizards/ws_handover.py:0
+#: code:addons/legal_department_management/static/src/analytics/analytics.js:0 code:addons/legal_department_management/wizards/ws_handover.py:0
 msgid "%s matters"
 msgstr "%s ملف"
 
@@ -474,6 +494,12 @@ msgstr "يحتاج الملف %s إلى اعتماد قبل بدء العمل. �
 
 #. module: legal_department_management
 #. odoo-javascript
+#: code:addons/legal_department_management/static/src/company_file/service_overview.js:0
+msgid "%s not done yet"
+msgstr "%s لم تُنجز بعد"
+
+#. module: legal_department_management
+#. odoo-javascript
 #: code:addons/legal_department_management/static/src/dossier/dossier.js:0
 msgid "%s open"
 msgstr "%s قائم"
@@ -492,7 +518,7 @@ msgstr "%s خطوة مفتوحة"
 
 #. module: legal_department_management
 #. odoo-javascript
-#: code:addons/legal_department_management/static/src/my_day/my_day.js:0
+#: code:addons/legal_department_management/static/src/company_file/service_overview.js:0 code:addons/legal_department_management/static/src/my_day/my_day.js:0
 msgid "%s overdue"
 msgstr "%s متأخر"
 
@@ -519,6 +545,12 @@ msgstr "%s اليوم"
 #: code:addons/legal_department_management/models/money_task.py:0
 msgid "%s was declined after the conflict check and cannot start."
 msgstr "اعتُذر عن الملف %s بعد فحص التعارض ولا يمكن بدؤه."
+
+#. module: legal_department_management
+#. odoo-javascript
+#: code:addons/legal_department_management/static/src/analytics/analytics.js:0
+msgid "%s working days"
+msgstr "%s يوم عمل"
 
 #. module: legal_department_management
 #. odoo-python
@@ -1173,9 +1205,9 @@ msgstr "الأنشطة"
 
 #. module: legal_department_management
 #. odoo-javascript
-#: code:addons/legal_department_management/static/src/my_day/my_day.js:0
+#: code:addons/legal_department_management/static/src/my_day/my_day.js:0 model:ir.model,name:legal_department_management.model_mail_activity
 msgid "Activity"
-msgstr "نشاط"
+msgstr "النشاط"
 
 #. module: legal_department_management
 #: model:ir.model.fields,field_description:legal_department_management.field_legal_company__activity_exception_decoration model:ir.model.fields,field_description:legal_department_management.field_legal_correspondence__activity_exception_decoration model:ir.model.fields,field_description:legal_department_management.field_legal_engagement__activity_exception_decoration model:ir.model.fields,field_description:legal_department_management.field_legal_guarantee__activity_exception_decoration model:ir.model.fields,field_description:legal_department_management.field_legal_holiday__activity_exception_decoration model:ir.model.fields,field_description:legal_department_management.field_legal_poa__activity_exception_decoration model:ir.model.fields,field_description:legal_department_management.field_legal_request__activity_exception_decoration model:ir.model.fields,field_description:legal_department_management.field_legal_task__activity_exception_decoration
@@ -1364,8 +1396,9 @@ msgid "Al-Qadisiyyah"
 msgstr "القادسية"
 
 #. module: legal_department_management
+#. odoo-javascript
 #. odoo-python
-#: code:addons/legal_department_management/models/reg_reports.py:0
+#: code:addons/legal_department_management/models/reg_reports.py:0 code:addons/legal_department_management/static/src/company_file/service_overview.js:0
 msgid "All clients"
 msgstr "جميع الموكّلين"
 
@@ -1473,6 +1506,11 @@ msgid "An outside lawyer attending by substitution letter (إنابة)."
 msgstr "An outside lawyer attending by substitution letter (إنابة)."
 
 #. module: legal_department_management
+#: model:ir.actions.client,name:legal_department_management.action_ldm_analytics model:ir.ui.menu,name:legal_department_management.menu_ldm_analytics
+msgid "Analytics"
+msgstr "التحليلات"
+
+#. module: legal_department_management
 #: model:ir.model.fields.selection,name:legal_department_management.selection__legal_department__governorate__anbar model:ir.model.fields.selection,name:legal_department_management.selection__legal_holiday__governorate__anbar model:ir.model.fields.selection,name:legal_department_management.selection__legal_ministry__governorate__anbar
 msgid "Anbar"
 msgstr "الأنبار"
@@ -1505,7 +1543,13 @@ msgstr "الجواب متوقع قبل"
 
 #. module: legal_department_management
 #. odoo-python
-#: code:addons/legal_department_management/models/reg_correspondence.py:0 code:addons/legal_department_management/models/reg_reminders.py:0
+#: code:addons/legal_department_management/models/reg_reminders.py:0
+msgid "Answer letter %(name)s by %(date)s"
+msgstr "أجب على الكتاب %(name)s قبل %(date)s"
+
+#. module: legal_department_management
+#. odoo-python
+#: code:addons/legal_department_management/models/reg_correspondence.py:0
 msgid "Answer letter %s"
 msgstr "أجب على الكتاب %s"
 
@@ -1584,6 +1628,11 @@ msgstr "الطعن أمام لجنة التدقيق الضريبي"
 #: model:ir.model.fields.selection,name:legal_department_management.selection__legal_deadline__kind__appeal
 msgid "Appeal window"
 msgstr "مدة طعن"
+
+#. module: legal_department_management
+#: model:ir.model.fields,field_description:legal_department_management.field_legal_guarantee__legal_company_id
+msgid "Applicant"
+msgstr "طالب الإصدار"
 
 #. module: legal_department_management
 #: model:ir.model.fields.selection,name:legal_department_management.selection__legal_client_fund_line__kind__transfer_to_fees
@@ -1693,6 +1742,12 @@ msgid "Archived"
 msgstr "مؤرشف"
 
 #. module: legal_department_management
+#. odoo-javascript
+#: code:addons/legal_department_management/static/src/analytics/analytics.js:0
+msgid "Are deadlines met?"
+msgstr "هل نلتزم بالمهل؟"
+
+#. module: legal_department_management
 #: model:legal.holiday,name:legal_department_management.ldm_legal_holiday_2026_02 model:legal.holiday,name:legal_department_management.ldm_legal_holiday_2027_02
 msgid "Army Day"
 msgstr "عيد الجيش"
@@ -1771,7 +1826,8 @@ msgid "At the body %(days)s working days (usual %(target)s)"
 msgstr "لدى الجهة %(days)s يوم عمل (المعتاد %(target)s)"
 
 #. module: legal_department_management
-#: model:ir.model.fields,field_description:legal_department_management.field_legal_task__ldm_past_target model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_search_gov
+#. odoo-python
+#: code:addons/legal_department_management/models/ds_analytics.py:0 model:ir.model.fields,field_description:legal_department_management.field_legal_task__ldm_past_target model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_search_gov
 msgid "At the body past target"
 msgstr "لدى الجهة بعد تجاوز الموعد المستهدف"
 
@@ -2075,14 +2131,16 @@ msgid "Branch of law"
 msgstr "فرع القانون"
 
 #. module: legal_department_management
+#. odoo-javascript
 #. odoo-python
-#: code:addons/legal_department_management/models/reg_reports.py:0
+#: code:addons/legal_department_management/models/reg_reports.py:0 code:addons/legal_department_management/static/src/analytics/analytics.js:0
 msgid "Brought against us"
 msgstr "مقامة علينا"
 
 #. module: legal_department_management
+#. odoo-javascript
 #. odoo-python
-#: code:addons/legal_department_management/models/reg_reports.py:0
+#: code:addons/legal_department_management/models/reg_reports.py:0 code:addons/legal_department_management/static/src/analytics/analytics.js:0
 msgid "Brought by us"
 msgstr "مقامة منّا"
 
@@ -2283,8 +2341,8 @@ msgstr "المطالَب به"
 #. module: legal_department_management
 #. odoo-python
 #: code:addons/legal_department_management/models/reg_reminders.py:0
-msgid "Chase the answer to letter %s"
-msgstr "استعجل الجواب على الكتاب %s"
+msgid "Chase the answer to letter %(name)s, due %(date)s"
+msgstr "استعجل الجواب على الكتاب %(name)s، المستحق في %(date)s"
 
 #. module: legal_department_management
 #. odoo-python
@@ -2522,6 +2580,12 @@ msgid "Civil service"
 msgstr "قضاء الموظفين"
 
 #. module: legal_department_management
+#. odoo-javascript
+#: code:addons/legal_department_management/static/src/analytics/analytics.js:0
+msgid "Claim values of open lawsuits by the side we act for, in the company currency."
+msgstr "قيم الدعاوى القائمة بحسب صفتنا فيها، بعملة الشركة."
+
+#. module: legal_department_management
 #: model:ir.model.fields.selection,name:legal_department_management.selection__res_users__ldm_licence_class__a
 msgid "Class A"
 msgstr "صنف (أ)"
@@ -2676,7 +2740,8 @@ msgid "Closed"
 msgstr "مغلق"
 
 #. module: legal_department_management
-#: model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_monthly_status
+#. odoo-python
+#: code:addons/legal_department_management/models/ds_analytics.py:0 model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_monthly_status
 msgid "Closed in the period"
 msgstr "أُغلقت خلال الفترة"
 
@@ -2766,7 +2831,7 @@ msgstr "شؤون الشركات"
 #. module: legal_department_management
 #: model:legal.task.template,name:legal_department_management.ldm_template_company_amendment
 msgid "Company amendment"
-msgstr "تعديل شركة"
+msgstr "تعديل عقد شركة"
 
 #. module: legal_department_management
 #: model:ir.model.fields,field_description:legal_department_management.field_legal_engagement__company_currency_id model:ir.model.fields,field_description:legal_department_management.field_legal_task__company_currency_id model:ir.model.fields,field_description:legal_department_management.field_legal_task_expense__company_currency_id
@@ -2890,6 +2955,12 @@ msgstr "مرجع التأكيد"
 #: model:ir.model.fields.selection,name:legal_department_management.selection__legal_task_expense__state__confirmed
 msgid "Confirmed"
 msgstr "مؤكد"
+
+#. module: legal_department_management
+#. odoo-javascript
+#: code:addons/legal_department_management/static/src/analytics/analytics.js:0
+msgid "Confirmed expenses by month and client, in the company currency."
+msgstr "المصروفات المؤكدة حسب الشهر والموكّل، بعملة الشركة."
 
 #. module: legal_department_management
 #. odoo-javascript
@@ -3146,6 +3217,12 @@ msgid "Counterparty"
 msgstr "الطرف الآخر في العقد"
 
 #. module: legal_department_management
+#. odoo-javascript
+#: code:addons/legal_department_management/static/src/analytics/analytics.js:0
+msgid "Counting…"
+msgstr "جارٍ العدّ…"
+
+#. module: legal_department_management
 #: model:ir.model.fields,field_description:legal_department_management.field_legal_hearing__department_id model:ir.model.fields,field_description:legal_department_management.field_legal_judgment__department_id model:ir.model.fields,field_description:legal_department_management.field_legal_judgment_challenge_wizard__department_id model:ir.model.fields.selection,name:legal_department_management.selection__legal_department__body_kind__court model:ir.model.fields.selection,name:legal_department_management.selection__legal_document_type__category__court model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_hearing_search model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_create_wizard_form
 msgid "Court"
 msgstr "المحكمة"
@@ -3163,7 +3240,7 @@ msgstr "درجة المحكمة"
 #. module: legal_department_management
 #: model:legal.expense.category,name:legal_department_management.ldm_expense_category_court_fee
 msgid "Court fee"
-msgstr "رسوم المحكمة"
+msgstr "رسم الدعوى"
 
 #. module: legal_department_management
 #: model:legal.document.type,name:legal_department_management.ldm_doctype_judgment
@@ -3517,6 +3594,12 @@ msgstr "المهل"
 
 #. module: legal_department_management
 #. odoo-python
+#: code:addons/legal_department_management/models/ds_analytics.py:0
+msgid "Deadlines missed in the period"
+msgstr "المهل الفائتة خلال الفترة"
+
+#. module: legal_department_management
+#. odoo-python
 #: code:addons/legal_department_management/models/lit_judgment.py:0
 msgid "Deadlines of the judgment of %s recounted:"
 msgstr "أُعيد احتساب مهل الحكم الصادر في %s:"
@@ -3567,8 +3650,8 @@ msgid ""
 "A reminder that the next session in {matter} ({matter_number}) is on {next_date} at {court}. {needed}\n"
 "{office}"
 msgstr ""
-"حضرة {client} المحترم،\n"
-"نذكّركم بأن الجلسة القادمة في {matter} ({matter_number}) ستكون يوم {next_date} في {court}. {needed}\n"
+"السيد/السيدة {client} المحترم،\n"
+"نذكّركم بأن الجلسة القادمة في {matter} ({matter_number}) يوم {next_date} أمام {court}. {needed}\n"
 "{office}"
 
 #. module: legal_department_management
@@ -3579,9 +3662,9 @@ msgid ""
 "The next session is on {next_date}. {needed}\n"
 "{responsible}, {office}"
 msgstr ""
-"حضرة {client} المحترم،\n"
-"انتهت جلسة {date} في {matter} ({matter_number}) لدى {court} إلى ما يلي: {outcome}.\n"
-"الجلسة القادمة يوم {next_date}. {needed}\n"
+"السيد/السيدة {client} المحترم،\n"
+"انتهت جلسة {date} في {matter} ({matter_number}) أمام {court} إلى: {outcome}.\n"
+"موعد الجلسة القادمة {next_date}. {needed}\n"
 "{responsible}، {office}"
 
 #. module: legal_department_management
@@ -3592,9 +3675,9 @@ msgid ""
 "Please send them as soon as you can.\n"
 "{responsible}, {office}"
 msgstr ""
-"حضرة {client} المحترم،\n"
-"لمتابعة {matter} ({matter_number}) ما زلنا بحاجة إلى: {documents}.\n"
-"يرجى إرسالها في أقرب وقت ممكن.\n"
+"السيد/السيدة {client} المحترم،\n"
+"لإكمال {matter} ({matter_number}) ما زلنا نحتاج: {documents}.\n"
+"يرجى إرسالها بأقرب وقت.\n"
 "{responsible}، {office}"
 
 #. module: legal_department_management
@@ -3605,8 +3688,8 @@ msgid ""
 "Thank you.\n"
 "{office}"
 msgstr ""
-"حضرة {client} المحترم،\n"
-"بموجب عقد الأتعاب بيننا، يستحق القسط «{fee}» البالغ {amount} في {due_date}.\n"
+"السيد/السيدة {client} المحترم،\n"
+"بموجب عقد الأتعاب، تستحق الدفعة «{fee}» بمبلغ {amount} بتاريخ {due_date}.\n"
 "مع الشكر.\n"
 "{office}"
 
@@ -3618,9 +3701,9 @@ msgid ""
 "We can send you a copy on request.\n"
 "{office}"
 msgstr ""
-"حضرة {client} المحترم،\n"
-"كشف حسابكم حتى {today} جاهز. الرصيد المستحق {balance}.\n"
-"يمكننا إرسال نسخة منه عند الطلب.\n"
+"السيد/السيدة {client} المحترم،\n"
+"كشف حسابكم لغاية {today} جاهز، والرصيد المستحق {balance}.\n"
+"يمكننا إرسال نسخة عند الطلب.\n"
 "{office}"
 
 #. module: legal_department_management
@@ -3811,7 +3894,7 @@ msgid "Discovery"
 msgstr "العلم"
 
 #. module: legal_department_management
-#: model:ir.model.fields,field_description:legal_department_management.field_account_move__display_name model:ir.model.fields,field_description:legal_department_management.field_account_move_line__display_name model:ir.model.fields,field_description:legal_department_management.field_ldm_reg_scan_mixin__display_name model:ir.model.fields,field_description:legal_department_management.field_ldm_report_mixin__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_advance__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_advance_settle_wizard__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_appeal_rule__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_billable__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_client_fund_line__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_client_message_wizard__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_company__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_company_coverage__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_company_document__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_company_report_wizard__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_conflict_check__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_conflict_decision_wizard__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_correspondence__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_correspondence_void_wizard__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_court_degree__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_court_stage__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_deadline__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_department__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_department_contact__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_document_type__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_document_wizard__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_engagement__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_engagement_line__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_expense_category__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_expense_post_wizard__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_fee_waive_wizard__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_fund_move_wizard__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_general_report_wizard__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_guarantee__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_guarantee_wizard__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_handover_wizard__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_hearing__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_hearing_outcome_wizard__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_hearing_roll_wizard__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_holiday__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_invoice_wizard__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_judgment__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_judgment_challenge_wizard__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_letter_template__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_ministry__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_monthly_report_wizard__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_obligation__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_poa__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_poa_revoke_wizard__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_readiness_wizard__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_readiness_wizard_line__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_reference_library__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_reg_matter_wizard__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_register_book_wizard__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_request__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_request_reason_wizard__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_request_result_wizard__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_statement_wizard__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_task__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_task_create_wizard__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_task_decision_wizard__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_task_document__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_task_expense__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_task_party__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_task_step__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_task_template__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_task_template_document__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_task_template_step__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_time_entry__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_visit_wizard__display_name model:ir.model.fields,field_description:legal_department_management.field_report_legal_department_management_report_ldm_hearing_roll__display_name model:ir.model.fields,field_description:legal_department_management.field_report_legal_department_management_report_ldm_letter__display_name model:ir.model.fields,field_description:legal_department_management.field_report_legal_department_management_report_ldm_monthly_status__display_name model:ir.model.fields,field_description:legal_department_management.field_report_legal_department_management_report_ldm_opinion_memo__display_name model:ir.model.fields,field_description:legal_department_management.field_report_legal_department_management_report_ldm_register_book__display_name model:ir.model.fields,field_description:legal_department_management.field_report_legal_department_management_report_ldm_statement__display_name model:ir.model.fields,field_description:legal_department_management.field_report_legal_department_management_report_ldm_substitution__display_name model:ir.model.fields,field_description:legal_department_management.field_report_legal_department_management_report_legal_company_template__display_name model:ir.model.fields,field_description:legal_department_management.field_report_legal_department_management_report_legal_general_overview_template__display_name model:ir.model.fields,field_description:legal_department_management.field_report_legal_department_management_report_legal_task_template__display_name model:ir.model.fields,field_description:legal_department_management.field_res_company__display_name model:ir.model.fields,field_description:legal_department_management.field_res_config_settings__display_name model:ir.model.fields,field_description:legal_department_management.field_res_users__display_name model:ir.model.fields,field_description:legal_department_management.field_res_users_settings__display_name
+#: model:ir.model.fields,field_description:legal_department_management.field_account_move__display_name model:ir.model.fields,field_description:legal_department_management.field_account_move_line__display_name model:ir.model.fields,field_description:legal_department_management.field_ir_cron__display_name model:ir.model.fields,field_description:legal_department_management.field_ldm_reg_scan_mixin__display_name model:ir.model.fields,field_description:legal_department_management.field_ldm_report_mixin__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_advance__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_advance_settle_wizard__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_appeal_rule__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_billable__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_client_fund_line__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_client_message_wizard__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_company__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_company_coverage__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_company_document__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_company_report_wizard__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_conflict_check__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_conflict_decision_wizard__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_correspondence__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_correspondence_void_wizard__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_court_degree__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_court_stage__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_deadline__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_department__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_department_contact__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_document_type__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_document_wizard__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_engagement__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_engagement_line__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_expense_category__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_expense_post_wizard__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_fee_waive_wizard__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_fund_move_wizard__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_general_report_wizard__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_guarantee__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_guarantee_wizard__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_handover_wizard__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_hearing__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_hearing_outcome_wizard__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_hearing_roll_wizard__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_holiday__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_invoice_wizard__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_judgment__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_judgment_challenge_wizard__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_letter_template__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_ministry__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_monthly_report_wizard__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_obligation__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_poa__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_poa_revoke_wizard__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_readiness_wizard__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_readiness_wizard_line__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_reference_library__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_reg_matter_wizard__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_register_book_wizard__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_request__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_request_reason_wizard__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_request_result_wizard__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_statement_wizard__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_task__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_task_create_wizard__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_task_decision_wizard__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_task_document__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_task_expense__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_task_party__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_task_step__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_task_template__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_task_template_document__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_task_template_step__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_time_entry__display_name model:ir.model.fields,field_description:legal_department_management.field_legal_visit_wizard__display_name model:ir.model.fields,field_description:legal_department_management.field_mail_activity__display_name model:ir.model.fields,field_description:legal_department_management.field_report_legal_department_management_report_ldm_hearing_roll__display_name model:ir.model.fields,field_description:legal_department_management.field_report_legal_department_management_report_ldm_letter__display_name model:ir.model.fields,field_description:legal_department_management.field_report_legal_department_management_report_ldm_monthly_status__display_name model:ir.model.fields,field_description:legal_department_management.field_report_legal_department_management_report_ldm_opinion_memo__display_name model:ir.model.fields,field_description:legal_department_management.field_report_legal_department_management_report_ldm_register_book__display_name model:ir.model.fields,field_description:legal_department_management.field_report_legal_department_management_report_ldm_statement__display_name model:ir.model.fields,field_description:legal_department_management.field_report_legal_department_management_report_ldm_substitution__display_name model:ir.model.fields,field_description:legal_department_management.field_report_legal_department_management_report_legal_company_template__display_name model:ir.model.fields,field_description:legal_department_management.field_report_legal_department_management_report_legal_general_overview_template__display_name model:ir.model.fields,field_description:legal_department_management.field_report_legal_department_management_report_legal_task_template__display_name model:ir.model.fields,field_description:legal_department_management.field_res_company__display_name model:ir.model.fields,field_description:legal_department_management.field_res_config_settings__display_name model:ir.model.fields,field_description:legal_department_management.field_res_users__display_name model:ir.model.fields,field_description:legal_department_management.field_res_users_settings__display_name
 msgid "Display Name"
 msgstr "اسم العرض"
 
@@ -3840,8 +3923,8 @@ msgstr "قائمة المستمسكات"
 #. module: legal_department_management
 #. odoo-python
 #: code:addons/legal_department_management/models/gov_matters.py:0
-msgid "Document expires: %(name)s — %(number)s"
-msgstr "انتهاء صلاحية مستمسك: %(name)s — %(number)s"
+msgid "Document expires on %(date)s: %(name)s — %(number)s"
+msgstr "تنتهي صلاحية مستمسك في %(date)s: %(name)s — %(number)s"
 
 #. module: legal_department_management
 #: model:ir.model.fields,field_description:legal_department_management.field_legal_readiness_wizard__template_id
@@ -3923,7 +4006,7 @@ msgstr "المستمسكات السارية في تاريخ معين"
 #. module: legal_department_management
 #: model:legal.letter.template,subject:legal_department_management.ldm_message_missing_documents
 msgid "Documents we still need"
-msgstr "المستمسكات التي ما زلنا بحاجة إليها"
+msgstr "مستمسكات ما زلنا نحتاجها"
 
 #. module: legal_department_management
 #: model:ir.model.fields.selection,name:legal_department_management.selection__legal_document_type__validity__none
@@ -3957,6 +4040,12 @@ msgstr "أُنجز من «مكتبي»"
 #: model:ir.model.fields,field_description:legal_department_management.field_legal_task_step__done_date
 msgid "Done on"
 msgstr "تاريخ الإنجاز"
+
+#. module: legal_department_management
+#. odoo-javascript
+#: code:addons/legal_department_management/static/src/company_file/service_overview.js:0
+msgid "Done on %s"
+msgstr "أُنجزت في %s"
 
 #. module: legal_department_management
 #: model_terms:ir.ui.view,arch_db:legal_department_management.report_legal_task_document
@@ -4014,6 +4103,12 @@ msgstr "أفلت الملف هنا"
 #: model:ir.model.fields,field_description:legal_department_management.field_legal_engagement_line__trigger_event model:ir.model.fields,field_description:legal_department_management.field_legal_task_step__date_due model:ir.model.fields.selection,name:legal_department_management.selection__legal_engagement_line__state__due model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_engagement model_terms:ir.ui.view,arch_db:legal_department_management.report_legal_task_document
 msgid "Due"
 msgstr "مستحق"
+
+#. module: legal_department_management
+#. odoo-javascript
+#: code:addons/legal_department_management/static/src/company_file/service_overview.js:0
+msgid "Due by %s"
+msgstr "مستحقة قبل %s"
 
 #. module: legal_department_management
 #: model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_obligation_search
@@ -4333,7 +4428,7 @@ msgstr "رسم التنفيذ"
 #. module: legal_department_management
 #: model:legal.task.template,name:legal_department_management.ldm_template_execution
 msgid "Execution file"
-msgstr "إضبارة تنفيذية"
+msgstr "ملف تنفيذ"
 
 #. module: legal_department_management
 #: model:ir.model.fields,field_description:legal_department_management.field_legal_court_stage__execution_file_number
@@ -5204,6 +5299,18 @@ msgid "How long a copy of this document can be relied on."
 msgstr "المدة التي يمكن خلالها الاعتماد على نسخة من هذا المستمسك."
 
 #. module: legal_department_management
+#. odoo-javascript
+#: code:addons/legal_department_management/static/src/analytics/analytics.js:0
+msgid "How long does each type take to close?"
+msgstr "كم يستغرق كل نوع حتى يُغلق؟"
+
+#. module: legal_department_management
+#. odoo-javascript
+#: code:addons/legal_department_management/static/src/analytics/analytics.js:0
+msgid "How the work is going"
+msgstr "كيف يسير العمل"
+
+#. module: legal_department_management
 #: model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_poa_search
 msgid "I am an agent"
 msgstr "أنا وكيل فيها"
@@ -5221,7 +5328,7 @@ msgid "I, the undersigned lawyer %(principal)s, agent for %(client)s under power
 msgstr "أنا المحامي الموقّع أدناه %(principal)s، وكيل %(client)s بموجب الوكالة المرقمة %(number)s الصادرة عن %(notary)s في %(issued)s،"
 
 #. module: legal_department_management
-#: model:ir.model.fields,field_description:legal_department_management.field_account_move__id model:ir.model.fields,field_description:legal_department_management.field_account_move_line__id model:ir.model.fields,field_description:legal_department_management.field_ldm_reg_scan_mixin__id model:ir.model.fields,field_description:legal_department_management.field_ldm_report_mixin__id model:ir.model.fields,field_description:legal_department_management.field_legal_advance__id model:ir.model.fields,field_description:legal_department_management.field_legal_advance_settle_wizard__id model:ir.model.fields,field_description:legal_department_management.field_legal_appeal_rule__id model:ir.model.fields,field_description:legal_department_management.field_legal_billable__id model:ir.model.fields,field_description:legal_department_management.field_legal_client_fund_line__id model:ir.model.fields,field_description:legal_department_management.field_legal_client_message_wizard__id model:ir.model.fields,field_description:legal_department_management.field_legal_company__id model:ir.model.fields,field_description:legal_department_management.field_legal_company_coverage__id model:ir.model.fields,field_description:legal_department_management.field_legal_company_document__id model:ir.model.fields,field_description:legal_department_management.field_legal_company_report_wizard__id model:ir.model.fields,field_description:legal_department_management.field_legal_conflict_check__id model:ir.model.fields,field_description:legal_department_management.field_legal_conflict_decision_wizard__id model:ir.model.fields,field_description:legal_department_management.field_legal_correspondence__id model:ir.model.fields,field_description:legal_department_management.field_legal_correspondence_void_wizard__id model:ir.model.fields,field_description:legal_department_management.field_legal_court_degree__id model:ir.model.fields,field_description:legal_department_management.field_legal_court_stage__id model:ir.model.fields,field_description:legal_department_management.field_legal_deadline__id model:ir.model.fields,field_description:legal_department_management.field_legal_department__id model:ir.model.fields,field_description:legal_department_management.field_legal_department_contact__id model:ir.model.fields,field_description:legal_department_management.field_legal_document_type__id model:ir.model.fields,field_description:legal_department_management.field_legal_document_wizard__id model:ir.model.fields,field_description:legal_department_management.field_legal_engagement__id model:ir.model.fields,field_description:legal_department_management.field_legal_engagement_line__id model:ir.model.fields,field_description:legal_department_management.field_legal_expense_category__id model:ir.model.fields,field_description:legal_department_management.field_legal_expense_post_wizard__id model:ir.model.fields,field_description:legal_department_management.field_legal_fee_waive_wizard__id model:ir.model.fields,field_description:legal_department_management.field_legal_fund_move_wizard__id model:ir.model.fields,field_description:legal_department_management.field_legal_general_report_wizard__id model:ir.model.fields,field_description:legal_department_management.field_legal_guarantee__id model:ir.model.fields,field_description:legal_department_management.field_legal_guarantee_wizard__id model:ir.model.fields,field_description:legal_department_management.field_legal_handover_wizard__id model:ir.model.fields,field_description:legal_department_management.field_legal_hearing__id model:ir.model.fields,field_description:legal_department_management.field_legal_hearing_outcome_wizard__id model:ir.model.fields,field_description:legal_department_management.field_legal_hearing_roll_wizard__id model:ir.model.fields,field_description:legal_department_management.field_legal_holiday__id model:ir.model.fields,field_description:legal_department_management.field_legal_invoice_wizard__id model:ir.model.fields,field_description:legal_department_management.field_legal_judgment__id model:ir.model.fields,field_description:legal_department_management.field_legal_judgment_challenge_wizard__id model:ir.model.fields,field_description:legal_department_management.field_legal_letter_template__id model:ir.model.fields,field_description:legal_department_management.field_legal_ministry__id model:ir.model.fields,field_description:legal_department_management.field_legal_monthly_report_wizard__id model:ir.model.fields,field_description:legal_department_management.field_legal_obligation__id model:ir.model.fields,field_description:legal_department_management.field_legal_poa__id model:ir.model.fields,field_description:legal_department_management.field_legal_poa_revoke_wizard__id model:ir.model.fields,field_description:legal_department_management.field_legal_readiness_wizard__id model:ir.model.fields,field_description:legal_department_management.field_legal_readiness_wizard_line__id model:ir.model.fields,field_description:legal_department_management.field_legal_reference_library__id model:ir.model.fields,field_description:legal_department_management.field_legal_reg_matter_wizard__id model:ir.model.fields,field_description:legal_department_management.field_legal_register_book_wizard__id model:ir.model.fields,field_description:legal_department_management.field_legal_request__id model:ir.model.fields,field_description:legal_department_management.field_legal_request_reason_wizard__id model:ir.model.fields,field_description:legal_department_management.field_legal_request_result_wizard__id model:ir.model.fields,field_description:legal_department_management.field_legal_statement_wizard__id model:ir.model.fields,field_description:legal_department_management.field_legal_task__id model:ir.model.fields,field_description:legal_department_management.field_legal_task_create_wizard__id model:ir.model.fields,field_description:legal_department_management.field_legal_task_decision_wizard__id model:ir.model.fields,field_description:legal_department_management.field_legal_task_document__id model:ir.model.fields,field_description:legal_department_management.field_legal_task_expense__id model:ir.model.fields,field_description:legal_department_management.field_legal_task_party__id model:ir.model.fields,field_description:legal_department_management.field_legal_task_step__id model:ir.model.fields,field_description:legal_department_management.field_legal_task_template__id model:ir.model.fields,field_description:legal_department_management.field_legal_task_template_document__id model:ir.model.fields,field_description:legal_department_management.field_legal_task_template_step__id model:ir.model.fields,field_description:legal_department_management.field_legal_time_entry__id model:ir.model.fields,field_description:legal_department_management.field_legal_visit_wizard__id model:ir.model.fields,field_description:legal_department_management.field_report_legal_department_management_report_ldm_hearing_roll__id model:ir.model.fields,field_description:legal_department_management.field_report_legal_department_management_report_ldm_letter__id model:ir.model.fields,field_description:legal_department_management.field_report_legal_department_management_report_ldm_monthly_status__id model:ir.model.fields,field_description:legal_department_management.field_report_legal_department_management_report_ldm_opinion_memo__id model:ir.model.fields,field_description:legal_department_management.field_report_legal_department_management_report_ldm_register_book__id model:ir.model.fields,field_description:legal_department_management.field_report_legal_department_management_report_ldm_statement__id model:ir.model.fields,field_description:legal_department_management.field_report_legal_department_management_report_ldm_substitution__id model:ir.model.fields,field_description:legal_department_management.field_report_legal_department_management_report_legal_company_template__id model:ir.model.fields,field_description:legal_department_management.field_report_legal_department_management_report_legal_general_overview_template__id model:ir.model.fields,field_description:legal_department_management.field_report_legal_department_management_report_legal_task_template__id model:ir.model.fields,field_description:legal_department_management.field_res_company__id model:ir.model.fields,field_description:legal_department_management.field_res_config_settings__id model:ir.model.fields,field_description:legal_department_management.field_res_users__id model:ir.model.fields,field_description:legal_department_management.field_res_users_settings__id
+#: model:ir.model.fields,field_description:legal_department_management.field_account_move__id model:ir.model.fields,field_description:legal_department_management.field_account_move_line__id model:ir.model.fields,field_description:legal_department_management.field_ir_cron__id model:ir.model.fields,field_description:legal_department_management.field_ldm_reg_scan_mixin__id model:ir.model.fields,field_description:legal_department_management.field_ldm_report_mixin__id model:ir.model.fields,field_description:legal_department_management.field_legal_advance__id model:ir.model.fields,field_description:legal_department_management.field_legal_advance_settle_wizard__id model:ir.model.fields,field_description:legal_department_management.field_legal_appeal_rule__id model:ir.model.fields,field_description:legal_department_management.field_legal_billable__id model:ir.model.fields,field_description:legal_department_management.field_legal_client_fund_line__id model:ir.model.fields,field_description:legal_department_management.field_legal_client_message_wizard__id model:ir.model.fields,field_description:legal_department_management.field_legal_company__id model:ir.model.fields,field_description:legal_department_management.field_legal_company_coverage__id model:ir.model.fields,field_description:legal_department_management.field_legal_company_document__id model:ir.model.fields,field_description:legal_department_management.field_legal_company_report_wizard__id model:ir.model.fields,field_description:legal_department_management.field_legal_conflict_check__id model:ir.model.fields,field_description:legal_department_management.field_legal_conflict_decision_wizard__id model:ir.model.fields,field_description:legal_department_management.field_legal_correspondence__id model:ir.model.fields,field_description:legal_department_management.field_legal_correspondence_void_wizard__id model:ir.model.fields,field_description:legal_department_management.field_legal_court_degree__id model:ir.model.fields,field_description:legal_department_management.field_legal_court_stage__id model:ir.model.fields,field_description:legal_department_management.field_legal_deadline__id model:ir.model.fields,field_description:legal_department_management.field_legal_department__id model:ir.model.fields,field_description:legal_department_management.field_legal_department_contact__id model:ir.model.fields,field_description:legal_department_management.field_legal_document_type__id model:ir.model.fields,field_description:legal_department_management.field_legal_document_wizard__id model:ir.model.fields,field_description:legal_department_management.field_legal_engagement__id model:ir.model.fields,field_description:legal_department_management.field_legal_engagement_line__id model:ir.model.fields,field_description:legal_department_management.field_legal_expense_category__id model:ir.model.fields,field_description:legal_department_management.field_legal_expense_post_wizard__id model:ir.model.fields,field_description:legal_department_management.field_legal_fee_waive_wizard__id model:ir.model.fields,field_description:legal_department_management.field_legal_fund_move_wizard__id model:ir.model.fields,field_description:legal_department_management.field_legal_general_report_wizard__id model:ir.model.fields,field_description:legal_department_management.field_legal_guarantee__id model:ir.model.fields,field_description:legal_department_management.field_legal_guarantee_wizard__id model:ir.model.fields,field_description:legal_department_management.field_legal_handover_wizard__id model:ir.model.fields,field_description:legal_department_management.field_legal_hearing__id model:ir.model.fields,field_description:legal_department_management.field_legal_hearing_outcome_wizard__id model:ir.model.fields,field_description:legal_department_management.field_legal_hearing_roll_wizard__id model:ir.model.fields,field_description:legal_department_management.field_legal_holiday__id model:ir.model.fields,field_description:legal_department_management.field_legal_invoice_wizard__id model:ir.model.fields,field_description:legal_department_management.field_legal_judgment__id model:ir.model.fields,field_description:legal_department_management.field_legal_judgment_challenge_wizard__id model:ir.model.fields,field_description:legal_department_management.field_legal_letter_template__id model:ir.model.fields,field_description:legal_department_management.field_legal_ministry__id model:ir.model.fields,field_description:legal_department_management.field_legal_monthly_report_wizard__id model:ir.model.fields,field_description:legal_department_management.field_legal_obligation__id model:ir.model.fields,field_description:legal_department_management.field_legal_poa__id model:ir.model.fields,field_description:legal_department_management.field_legal_poa_revoke_wizard__id model:ir.model.fields,field_description:legal_department_management.field_legal_readiness_wizard__id model:ir.model.fields,field_description:legal_department_management.field_legal_readiness_wizard_line__id model:ir.model.fields,field_description:legal_department_management.field_legal_reference_library__id model:ir.model.fields,field_description:legal_department_management.field_legal_reg_matter_wizard__id model:ir.model.fields,field_description:legal_department_management.field_legal_register_book_wizard__id model:ir.model.fields,field_description:legal_department_management.field_legal_request__id model:ir.model.fields,field_description:legal_department_management.field_legal_request_reason_wizard__id model:ir.model.fields,field_description:legal_department_management.field_legal_request_result_wizard__id model:ir.model.fields,field_description:legal_department_management.field_legal_statement_wizard__id model:ir.model.fields,field_description:legal_department_management.field_legal_task__id model:ir.model.fields,field_description:legal_department_management.field_legal_task_create_wizard__id model:ir.model.fields,field_description:legal_department_management.field_legal_task_decision_wizard__id model:ir.model.fields,field_description:legal_department_management.field_legal_task_document__id model:ir.model.fields,field_description:legal_department_management.field_legal_task_expense__id model:ir.model.fields,field_description:legal_department_management.field_legal_task_party__id model:ir.model.fields,field_description:legal_department_management.field_legal_task_step__id model:ir.model.fields,field_description:legal_department_management.field_legal_task_template__id model:ir.model.fields,field_description:legal_department_management.field_legal_task_template_document__id model:ir.model.fields,field_description:legal_department_management.field_legal_task_template_step__id model:ir.model.fields,field_description:legal_department_management.field_legal_time_entry__id model:ir.model.fields,field_description:legal_department_management.field_legal_visit_wizard__id model:ir.model.fields,field_description:legal_department_management.field_mail_activity__id model:ir.model.fields,field_description:legal_department_management.field_report_legal_department_management_report_ldm_hearing_roll__id model:ir.model.fields,field_description:legal_department_management.field_report_legal_department_management_report_ldm_letter__id model:ir.model.fields,field_description:legal_department_management.field_report_legal_department_management_report_ldm_monthly_status__id model:ir.model.fields,field_description:legal_department_management.field_report_legal_department_management_report_ldm_opinion_memo__id model:ir.model.fields,field_description:legal_department_management.field_report_legal_department_management_report_ldm_register_book__id model:ir.model.fields,field_description:legal_department_management.field_report_legal_department_management_report_ldm_statement__id model:ir.model.fields,field_description:legal_department_management.field_report_legal_department_management_report_ldm_substitution__id model:ir.model.fields,field_description:legal_department_management.field_report_legal_department_management_report_legal_company_template__id model:ir.model.fields,field_description:legal_department_management.field_report_legal_department_management_report_legal_general_overview_template__id model:ir.model.fields,field_description:legal_department_management.field_report_legal_department_management_report_legal_task_template__id model:ir.model.fields,field_description:legal_department_management.field_res_company__id model:ir.model.fields,field_description:legal_department_management.field_res_config_settings__id model:ir.model.fields,field_description:legal_department_management.field_res_users__id model:ir.model.fields,field_description:legal_department_management.field_res_users_settings__id
 msgid "ID"
 msgstr "المُعرف"
 
@@ -5292,7 +5399,8 @@ msgid "In our favour"
 msgstr "لصالحنا"
 
 #. module: legal_department_management
-#: model:ir.model.fields.selection,name:legal_department_management.selection__legal_company_coverage__coverage_state__open model:ir.model.fields.selection,name:legal_department_management.selection__legal_company_coverage__last_state__in_progress model:ir.model.fields.selection,name:legal_department_management.selection__legal_task__state__in_progress model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_company_coverage_search model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_search
+#. odoo-python
+#: code:addons/legal_department_management/models/ds_analytics.py:0 model:ir.model.fields.selection,name:legal_department_management.selection__legal_company_coverage__coverage_state__open model:ir.model.fields.selection,name:legal_department_management.selection__legal_company_coverage__last_state__in_progress model:ir.model.fields.selection,name:legal_department_management.selection__legal_task__state__in_progress model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_company_coverage_search model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_search
 msgid "In progress"
 msgstr "قيد الإجراء"
 
@@ -5370,8 +5478,8 @@ msgstr "قسط مستحق"
 #. module: legal_department_management
 #. odoo-python
 #: code:addons/legal_department_management/models/money_task.py:0
-msgid "Instalment due: %(name)s — %(number)s"
-msgstr "قسط مستحق: %(name)s — %(number)s"
+msgid "Instalment due %(date)s: %(name)s — %(number)s"
+msgstr "قسط مستحق في %(date)s: %(name)s — %(number)s"
 
 #. module: legal_department_management
 #: model:ir.model.fields,field_description:legal_department_management.field_legal_fee_waive_wizard__line_ids model:ir.model.fields.selection,name:legal_department_management.selection__legal_engagement__fee_type__installments model:ir.model.fields.selection,name:legal_department_management.selection__legal_task_template__default_fee_type__installments
@@ -5454,6 +5562,12 @@ msgstr "سطر الفاتورة"
 #: model:ir.model.fields,field_description:legal_department_management.field_legal_billable__partner_id model:ir.model.fields,field_description:legal_department_management.field_legal_engagement__partner_id
 msgid "Invoice to"
 msgstr "تُصدر الفاتورة باسم"
+
+#. module: legal_department_management
+#. odoo-python
+#: code:addons/legal_department_management/models/money_company.py:0
+msgid "Invoice — %s"
+msgstr "فاتورة — %s"
 
 #. module: legal_department_management
 #: model:ir.model.fields,field_description:legal_department_management.field_legal_engagement__amount_invoiced model:ir.model.fields,field_description:legal_department_management.field_legal_task_expense__billed model:ir.model.fields.selection,name:legal_department_management.selection__legal_engagement_line__state__invoiced model:ir.model.fields.selection,name:legal_department_management.selection__legal_task__billing_state__invoiced model:ir.model.fields.selection,name:legal_department_management.selection__legal_time_entry__state__invoiced
@@ -5760,12 +5874,24 @@ msgstr "قانون العمل رقم 37 لسنة 2015"
 #. module: legal_department_management
 #: model:legal.task.template,name:legal_department_management.ldm_template_labour_case
 msgid "Labour case"
-msgstr "دعوى عمل"
+msgstr "دعوى عمالية"
 
 #. module: legal_department_management
 #: model:ir.model.fields,field_description:legal_department_management.field_legal_client_message_wizard__lang model:ir.model.fields,field_description:legal_department_management.field_legal_document_wizard__lang
 msgid "Language"
 msgstr "اللغة"
+
+#. module: legal_department_management
+#. odoo-python
+#: code:addons/legal_department_management/models/ds_analytics.py:0
+msgid "Last 12 months"
+msgstr "آخر 12 شهراً"
+
+#. module: legal_department_management
+#. odoo-python
+#: code:addons/legal_department_management/models/ds_analytics.py:0
+msgid "Last 3 months"
+msgstr "آخر 3 أشهر"
 
 #. module: legal_department_management
 #: model:ir.model.fields,field_description:legal_department_management.field_legal_advance__write_uid model:ir.model.fields,field_description:legal_department_management.field_legal_advance_settle_wizard__write_uid model:ir.model.fields,field_description:legal_department_management.field_legal_appeal_rule__write_uid model:ir.model.fields,field_description:legal_department_management.field_legal_client_fund_line__write_uid model:ir.model.fields,field_description:legal_department_management.field_legal_client_message_wizard__write_uid model:ir.model.fields,field_description:legal_department_management.field_legal_company__write_uid model:ir.model.fields,field_description:legal_department_management.field_legal_company_document__write_uid model:ir.model.fields,field_description:legal_department_management.field_legal_company_report_wizard__write_uid model:ir.model.fields,field_description:legal_department_management.field_legal_conflict_check__write_uid model:ir.model.fields,field_description:legal_department_management.field_legal_conflict_decision_wizard__write_uid model:ir.model.fields,field_description:legal_department_management.field_legal_correspondence__write_uid model:ir.model.fields,field_description:legal_department_management.field_legal_correspondence_void_wizard__write_uid model:ir.model.fields,field_description:legal_department_management.field_legal_court_degree__write_uid model:ir.model.fields,field_description:legal_department_management.field_legal_court_stage__write_uid model:ir.model.fields,field_description:legal_department_management.field_legal_deadline__write_uid model:ir.model.fields,field_description:legal_department_management.field_legal_department__write_uid model:ir.model.fields,field_description:legal_department_management.field_legal_department_contact__write_uid model:ir.model.fields,field_description:legal_department_management.field_legal_document_type__write_uid model:ir.model.fields,field_description:legal_department_management.field_legal_document_wizard__write_uid model:ir.model.fields,field_description:legal_department_management.field_legal_engagement__write_uid model:ir.model.fields,field_description:legal_department_management.field_legal_engagement_line__write_uid model:ir.model.fields,field_description:legal_department_management.field_legal_expense_category__write_uid model:ir.model.fields,field_description:legal_department_management.field_legal_expense_post_wizard__write_uid model:ir.model.fields,field_description:legal_department_management.field_legal_fee_waive_wizard__write_uid model:ir.model.fields,field_description:legal_department_management.field_legal_fund_move_wizard__write_uid model:ir.model.fields,field_description:legal_department_management.field_legal_general_report_wizard__write_uid model:ir.model.fields,field_description:legal_department_management.field_legal_guarantee__write_uid model:ir.model.fields,field_description:legal_department_management.field_legal_guarantee_wizard__write_uid model:ir.model.fields,field_description:legal_department_management.field_legal_handover_wizard__write_uid model:ir.model.fields,field_description:legal_department_management.field_legal_hearing__write_uid model:ir.model.fields,field_description:legal_department_management.field_legal_hearing_outcome_wizard__write_uid model:ir.model.fields,field_description:legal_department_management.field_legal_hearing_roll_wizard__write_uid model:ir.model.fields,field_description:legal_department_management.field_legal_holiday__write_uid model:ir.model.fields,field_description:legal_department_management.field_legal_invoice_wizard__write_uid model:ir.model.fields,field_description:legal_department_management.field_legal_judgment__write_uid model:ir.model.fields,field_description:legal_department_management.field_legal_judgment_challenge_wizard__write_uid model:ir.model.fields,field_description:legal_department_management.field_legal_letter_template__write_uid model:ir.model.fields,field_description:legal_department_management.field_legal_ministry__write_uid model:ir.model.fields,field_description:legal_department_management.field_legal_monthly_report_wizard__write_uid model:ir.model.fields,field_description:legal_department_management.field_legal_obligation__write_uid model:ir.model.fields,field_description:legal_department_management.field_legal_poa__write_uid model:ir.model.fields,field_description:legal_department_management.field_legal_poa_revoke_wizard__write_uid model:ir.model.fields,field_description:legal_department_management.field_legal_readiness_wizard__write_uid model:ir.model.fields,field_description:legal_department_management.field_legal_readiness_wizard_line__write_uid model:ir.model.fields,field_description:legal_department_management.field_legal_reg_matter_wizard__write_uid model:ir.model.fields,field_description:legal_department_management.field_legal_register_book_wizard__write_uid model:ir.model.fields,field_description:legal_department_management.field_legal_request__write_uid model:ir.model.fields,field_description:legal_department_management.field_legal_request_reason_wizard__write_uid model:ir.model.fields,field_description:legal_department_management.field_legal_request_result_wizard__write_uid model:ir.model.fields,field_description:legal_department_management.field_legal_statement_wizard__write_uid model:ir.model.fields,field_description:legal_department_management.field_legal_task__write_uid model:ir.model.fields,field_description:legal_department_management.field_legal_task_create_wizard__write_uid model:ir.model.fields,field_description:legal_department_management.field_legal_task_decision_wizard__write_uid model:ir.model.fields,field_description:legal_department_management.field_legal_task_document__write_uid model:ir.model.fields,field_description:legal_department_management.field_legal_task_expense__write_uid model:ir.model.fields,field_description:legal_department_management.field_legal_task_party__write_uid model:ir.model.fields,field_description:legal_department_management.field_legal_task_step__write_uid model:ir.model.fields,field_description:legal_department_management.field_legal_task_template__write_uid model:ir.model.fields,field_description:legal_department_management.field_legal_task_template_document__write_uid model:ir.model.fields,field_description:legal_department_management.field_legal_task_template_step__write_uid model:ir.model.fields,field_description:legal_department_management.field_legal_time_entry__write_uid model:ir.model.fields,field_description:legal_department_management.field_legal_visit_wizard__write_uid
@@ -6242,8 +6368,8 @@ msgstr "خطاب ضمان"
 #. module: legal_department_management
 #. odoo-python
 #: code:addons/legal_department_management/models/reg_reminders.py:0
-msgid "Letter of guarantee expires — %s"
-msgstr "انتهاء خطاب ضمان — %s"
+msgid "Letter of guarantee expires on %(date)s — %(name)s"
+msgstr "ينتهي خطاب الضمان في %(date)s — %(name)s"
 
 #. module: legal_department_management
 #. odoo-python
@@ -6448,6 +6574,12 @@ msgstr "الخريطة"
 #: model:ir.model.fields,field_description:legal_department_management.field_legal_department__location_url
 msgid "Map link"
 msgstr "رابط الخريطة"
+
+#. module: legal_department_management
+#. odoo-javascript
+#: code:addons/legal_department_management/static/src/company_file/service_overview.js:0
+msgid "Mark a matter type as tracked for every company to follow it here."
+msgstr "أشّر نوع ملف بأنه «مُتتبَّع لكل شركة» لمتابعته هنا."
 
 #. module: legal_department_management
 #: model:ir.actions.server,name:legal_department_management.action_server_ldm_letter_answered
@@ -6671,6 +6803,12 @@ msgid "Me"
 msgstr "أنا"
 
 #. module: legal_department_management
+#. odoo-javascript
+#: code:addons/legal_department_management/static/src/analytics/analytics.js:0
+msgid "Median working days from opening to closing, matters closed in the period."
+msgstr "وسيط أيام العمل من الفتح إلى الإغلاق، للملفات المغلقة خلال الفترة."
+
+#. module: legal_department_management
 #. odoo-python
 #: code:addons/legal_department_management/models/legal_task.py:0 model:ir.model.fields.selection,name:legal_department_management.selection__legal_hearing__kind__meeting
 msgid "Meeting"
@@ -6725,7 +6863,8 @@ msgid "Messages to clients are switched off in Settings."
 msgstr "مراسلة الموكّلين معطّلة في الإعدادات."
 
 #. module: legal_department_management
-#: model:ir.model.fields.selection,name:legal_department_management.selection__legal_deadline__state__done model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_deadline_form model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_deadline_kanban model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_deadline_list model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_form_lit
+#. odoo-python
+#: code:addons/legal_department_management/models/ds_analytics.py:0 model:ir.model.fields.selection,name:legal_department_management.selection__legal_deadline__state__done model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_deadline_form model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_deadline_kanban model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_deadline_list model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_form_lit
 msgid "Met"
 msgstr "مُستوفى"
 
@@ -6816,7 +6955,8 @@ msgid "Misdemeanour"
 msgstr "جنحة"
 
 #. module: legal_department_management
-#: model:ir.model.fields.selection,name:legal_department_management.selection__legal_deadline__state__missed model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_deadline_form model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_deadline_search
+#. odoo-python
+#: code:addons/legal_department_management/models/ds_analytics.py:0 model:ir.model.fields.selection,name:legal_department_management.selection__legal_deadline__state__missed model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_deadline_form model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_deadline_search
 msgid "Missed"
 msgstr "فائت"
 
@@ -6920,6 +7060,12 @@ msgstr "خيارات أكثر: المسؤول، الفريق، الأولوية�
 #: model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_judgment_form
 msgid "Most challenge periods count from the day after the judgment is served. Enter the notification date to count them."
 msgstr "تُحتسب أغلب مدد الطعن من اليوم التالي للتبليغ بالحكم. أدخل تاريخ التبليغ لاحتسابها."
+
+#. module: legal_department_management
+#. odoo-javascript
+#: code:addons/legal_department_management/static/src/analytics/analytics.js:0
+msgid "Most: %(label)s (%(value)s)"
+msgstr "الأكثر: %(label)s (%(value)s)"
 
 #. module: legal_department_management
 #: model:ir.model.fields,field_description:legal_department_management.field_legal_deadline__rolled
@@ -7076,7 +7222,7 @@ msgstr "بما لا يتجاوز (أشهر)"
 
 #. module: legal_department_management
 #. odoo-python
-#: code:addons/legal_department_management/models/money_engagement.py:0 model:ir.model.fields.selection,name:legal_department_management.selection__legal_company_coverage__last_state__draft model:ir.model.fields.selection,name:legal_department_management.selection__legal_task__state__draft
+#: code:addons/legal_department_management/models/ds_analytics.py:0 code:addons/legal_department_management/models/money_engagement.py:0 model:ir.model.fields.selection,name:legal_department_management.selection__legal_company_coverage__last_state__draft model:ir.model.fields.selection,name:legal_department_management.selection__legal_task__state__draft
 msgid "New"
 msgstr "جديد"
 
@@ -7231,7 +7377,7 @@ msgstr "التالي: %(step)s في %(date)s"
 #. module: legal_department_management
 #. odoo-javascript
 #. odoo-python
-#: code:addons/legal_department_management/static/src/dossier/dossier.js:0 code:addons/legal_department_management/wizards/gov_visit.py:0
+#: code:addons/legal_department_management/static/src/company_file/service_overview.js:0 code:addons/legal_department_management/static/src/dossier/dossier.js:0 code:addons/legal_department_management/wizards/gov_visit.py:0
 msgid "Next: %s"
 msgstr "التالي: %s"
 
@@ -7256,7 +7402,8 @@ msgid "No bodies or courts yet"
 msgstr "لا جهات أو محاكم بعد"
 
 #. module: legal_department_management
-#: model_terms:ir.ui.view,arch_db:legal_department_management.report_legal_company_document
+#. odoo-python
+#: code:addons/legal_department_management/models/ds_analytics.py:0 model_terms:ir.ui.view,arch_db:legal_department_management.report_legal_company_document
 msgid "No body or court"
 msgstr "بلا جهة أو محكمة"
 
@@ -7321,6 +7468,12 @@ msgstr "بلا تاريخ"
 
 #. module: legal_department_management
 #. odoo-javascript
+#: code:addons/legal_department_management/static/src/analytics/analytics.js:0
+msgid "No deadline was met or missed in the period."
+msgstr "لم تُستوفَ أو تفُت أي مهلة خلال الفترة."
+
+#. module: legal_department_management
+#. odoo-javascript
 #: code:addons/legal_department_management/static/src/cockpit/checklists.js:0
 msgid "No documents to collect."
 msgstr "لا مستمسكات مطلوبة."
@@ -7329,6 +7482,12 @@ msgstr "لا مستمسكات مطلوبة."
 #: model_terms:ir.actions.act_window,help:legal_department_management.action_ldm_expense_category
 msgid "No expense categories"
 msgstr "لا فئات مصروفات"
+
+#. module: legal_department_management
+#. odoo-javascript
+#: code:addons/legal_department_management/static/src/analytics/analytics.js:0
+msgid "No expense in the period."
+msgstr "لا مصروفات خلال الفترة."
 
 #. module: legal_department_management
 #: model_terms:ir.actions.act_window,help:legal_department_management.action_ldm_expense
@@ -7393,9 +7552,21 @@ msgid "No matter matches these options."
 msgstr "لا ملف يطابق هذه الخيارات."
 
 #. module: legal_department_management
+#. odoo-python
+#: code:addons/legal_department_management/models/ds_analytics.py:0
+msgid "No matter type"
+msgstr "بلا نوع ملف"
+
+#. module: legal_department_management
 #: model_terms:ir.actions.act_window,help:legal_department_management.action_ldm_task_template
 msgid "No matter types yet"
 msgstr "لا أنواع ملفات بعد"
+
+#. module: legal_department_management
+#. odoo-javascript
+#: code:addons/legal_department_management/static/src/analytics/analytics.js:0
+msgid "No matter was closed in the period."
+msgstr "لم يُغلق أي ملف خلال الفترة."
 
 #. module: legal_department_management
 #. odoo-javascript
@@ -7424,6 +7595,12 @@ msgid "No open deadlines"
 msgstr "لا مهل قائمة"
 
 #. module: legal_department_management
+#. odoo-javascript
+#: code:addons/legal_department_management/static/src/analytics/analytics.js:0
+msgid "No open lawsuit has a claim value."
+msgstr "لا توجد دعوى قائمة بقيمة محددة."
+
+#. module: legal_department_management
 #: model_terms:ir.actions.act_window,help:legal_department_management.action_ldm_exposure
 msgid "No open lawsuits"
 msgstr "لا دعاوى قائمة"
@@ -7433,6 +7610,12 @@ msgstr "لا دعاوى قائمة"
 #: code:addons/legal_department_management/static/src/dossier/dossier.js:0
 msgid "No open matter for this client."
 msgstr "لا ملف قائم لهذا الموكّل."
+
+#. module: legal_department_management
+#. odoo-javascript
+#: code:addons/legal_department_management/static/src/analytics/analytics.js:0
+msgid "No open matter."
+msgstr "لا ملفات قائمة."
 
 #. module: legal_department_management
 #: model_terms:ir.actions.act_window,help:legal_department_management.action_ldm_opinion_register
@@ -7468,6 +7651,12 @@ msgstr "لا طلب بالانتظار"
 #: model_terms:ir.actions.act_window,help:legal_department_management.action_ldm_company_coverage
 msgid "No service is tracked for every company"
 msgstr "لا خدمة مُتتبَّعة لكل الشركات"
+
+#. module: legal_department_management
+#. odoo-javascript
+#: code:addons/legal_department_management/static/src/company_file/service_overview.js:0
+msgid "No service is tracked for this client yet."
+msgstr "لا خدمة مُتتبَّعة لهذا الموكّل بعد."
 
 #. module: legal_department_management
 #: model_terms:ir.actions.act_window,help:legal_department_management.action_ldm_agenda
@@ -7512,6 +7701,18 @@ msgstr "لا تاريخ مستهدف بعد"
 #: model_terms:ir.actions.act_window,help:legal_department_management.action_ldm_time_entry
 msgid "No time recorded"
 msgstr "لا وقت مسجّل"
+
+#. module: legal_department_management
+#. odoo-javascript
+#: code:addons/legal_department_management/static/src/analytics/analytics.js:0
+msgid "No transaction is at a body past its target."
+msgstr "لا توجد معاملة لدى جهة تجاوزت موعدها المستهدف."
+
+#. module: legal_department_management
+#. odoo-python
+#: code:addons/legal_department_management/models/ds_analytics.py:0
+msgid "Nobody"
+msgstr "لا أحد"
 
 #. module: legal_department_management
 #. odoo-python
@@ -7600,6 +7801,11 @@ msgid "Not requested"
 msgstr "لم يُطلب"
 
 #. module: legal_department_management
+#: model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_hearing_form
+msgid "Not set yet"
+msgstr "لم يُحدَّد بعد"
+
+#. module: legal_department_management
 #: model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_advance_search
 msgid "Not settled"
 msgstr "غير مُسوّاة"
@@ -7608,6 +7814,12 @@ msgstr "غير مُسوّاة"
 #: model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_engagement_search
 msgid "Not signed"
 msgstr "غير موقّع"
+
+#. module: legal_department_management
+#. odoo-python
+#: code:addons/legal_department_management/models/ds_services.py:0
+msgid "Not started yet"
+msgstr "لم تبدأ بعد"
 
 #. module: legal_department_management
 #. odoo-python
@@ -8278,7 +8490,7 @@ msgstr "هذه الملفات فقط"
 
 #. module: legal_department_management
 #. odoo-javascript
-#: code:addons/legal_department_management/static/src/dossier/dossier.js:0 model:ir.model.fields.selection,name:legal_department_management.selection__legal_deadline__state__open model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_monthly_status model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_billable_list model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_company_coverage_list model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_deadline_search model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_company_form_gov model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_search
+#: code:addons/legal_department_management/static/src/company_file/service_overview.js:0 code:addons/legal_department_management/static/src/dossier/dossier.js:0 model:ir.model.fields.selection,name:legal_department_management.selection__legal_deadline__state__open model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_monthly_status model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_billable_list model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_company_coverage_list model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_deadline_search model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_search
 msgid "Open"
 msgstr "افتح"
 
@@ -8332,6 +8544,12 @@ msgid "Open deadlines"
 msgstr "المهل القائمة"
 
 #. module: legal_department_management
+#. odoo-javascript
+#: code:addons/legal_department_management/static/src/analytics/analytics.js:0
+msgid "Open government transactions at the body past its usual answer time."
+msgstr "المعاملات الحكومية القائمة لدى الجهة بعد تجاوز مدة جوابها المعتادة."
+
+#. module: legal_department_management
 #: model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_client_message_wizard_form
 msgid "Open in WhatsApp"
 msgstr "افتح في واتساب"
@@ -8348,9 +8566,27 @@ msgstr "تظهر هنا الدعاوى القائمة بحسب صفتنا ومر
 
 #. module: legal_department_management
 #. odoo-python
-#: code:addons/legal_department_management/models/ws_my_day.py:0 model:ir.model.fields,field_description:legal_department_management.field_legal_company__pending_tasks_count model:ir.model.fields,field_description:legal_department_management.field_legal_department__open_task_count model:ir.model.fields.selection,name:legal_department_management.selection__legal_company_report_wizard__filter_state__open model:ir.model.fields.selection,name:legal_department_management.selection__legal_general_report_wizard__filter_state__open model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_company_form model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_company_tree model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_department_form model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_department_list model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_ministry_form
+#: code:addons/legal_department_management/models/ds_analytics.py:0 code:addons/legal_department_management/models/ws_my_day.py:0 model:ir.model.fields,field_description:legal_department_management.field_legal_company__pending_tasks_count model:ir.model.fields,field_description:legal_department_management.field_legal_department__open_task_count model:ir.model.fields.selection,name:legal_department_management.selection__legal_company_report_wizard__filter_state__open model:ir.model.fields.selection,name:legal_department_management.selection__legal_general_report_wizard__filter_state__open model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_company_form model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_company_tree model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_department_form model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_department_list model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_ministry_form
 msgid "Open matters"
 msgstr "الملفات القائمة"
+
+#. module: legal_department_management
+#. odoo-javascript
+#: code:addons/legal_department_management/static/src/analytics/analytics.js:0
+msgid "Open matters by body or court."
+msgstr "الملفات القائمة حسب الجهة أو المحكمة."
+
+#. module: legal_department_management
+#. odoo-javascript
+#: code:addons/legal_department_management/static/src/analytics/analytics.js:0
+msgid "Open matters by kind."
+msgstr "الملفات القائمة حسب الطبيعة."
+
+#. module: legal_department_management
+#. odoo-javascript
+#: code:addons/legal_department_management/static/src/analytics/analytics.js:0
+msgid "Open matters by responsible lawyer and status."
+msgstr "الملفات القائمة حسب المحامي المسؤول والحالة."
 
 #. module: legal_department_management
 #: model:ir.model.fields,field_description:legal_department_management.field_legal_poa__open_task_count model:ir.model.fields,field_description:legal_department_management.field_legal_poa_revoke_wizard__open_task_ids
@@ -8400,6 +8636,12 @@ msgstr "افتح المرفق"
 #: model_terms:ir.actions.act_window,help:legal_department_management.action_legal_task
 msgid "Open the first one with <b>New matter</b>: choose its type and client, and the steps and documents are filled in for you."
 msgstr "افتح أول ملف عبر <b>ملف جديد</b>: اختر نوعه وموكّله، وتُملأ لك الخطوات والمستمسكات."
+
+#. module: legal_department_management
+#. odoo-javascript
+#: code:addons/legal_department_management/static/src/analytics/analytics.js:0
+msgid "Open the list"
+msgstr "افتح القائمة"
 
 #. module: legal_department_management
 #: model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_body_directory_form
@@ -8572,7 +8814,8 @@ msgid "Originals we hold"
 msgstr "الأصول المحفوظة لدينا"
 
 #. module: legal_department_management
-#: model:ir.model.fields.selection,name:legal_department_management.selection__legal_appeal_rule__court_degree__other model:ir.model.fields.selection,name:legal_department_management.selection__legal_appeal_rule__law__other model:ir.model.fields.selection,name:legal_department_management.selection__legal_appeal_rule__remedy__other model:ir.model.fields.selection,name:legal_department_management.selection__legal_appeal_rule__trigger_outcome__other model:ir.model.fields.selection,name:legal_department_management.selection__legal_company__company_type__other model:ir.model.fields.selection,name:legal_department_management.selection__legal_court_degree__code__other model:ir.model.fields.selection,name:legal_department_management.selection__legal_deadline__kind__custom model:ir.model.fields.selection,name:legal_department_management.selection__legal_department__body_kind__other model:ir.model.fields.selection,name:legal_department_management.selection__legal_department__court_degree__other model:ir.model.fields.selection,name:legal_department_management.selection__legal_document_type__category__other model:ir.model.fields.selection,name:legal_department_management.selection__legal_guarantee__kind__other model:ir.model.fields.selection,name:legal_department_management.selection__legal_hearing__outcome__other model:ir.model.fields.selection,name:legal_department_management.selection__legal_hearing_outcome_wizard__court_degree__other model:ir.model.fields.selection,name:legal_department_management.selection__legal_hearing_outcome_wizard__law__other model:ir.model.fields.selection,name:legal_department_management.selection__legal_hearing_outcome_wizard__more_outcome__other model:ir.model.fields.selection,name:legal_department_management.selection__legal_hearing_outcome_wizard__outcome__other model:ir.model.fields.selection,name:legal_department_management.selection__legal_hearing_outcome_wizard__result__other model:ir.model.fields.selection,name:legal_department_management.selection__legal_judgment__court_degree__other model:ir.model.fields.selection,name:legal_department_management.selection__legal_judgment__law__other model:ir.model.fields.selection,name:legal_department_management.selection__legal_judgment__result__other model:ir.model.fields.selection,name:legal_department_management.selection__legal_ministry__body_kind__other model:ir.model.fields.selection,name:legal_department_management.selection__legal_poa__poa_type__other model:ir.model.fields.selection,name:legal_department_management.selection__legal_request__request_type__other model:ir.model.fields.selection,name:legal_department_management.selection__legal_task__kind__other model:ir.model.fields.selection,name:legal_department_management.selection__legal_task__law_branch__other model:ir.model.fields.selection,name:legal_department_management.selection__legal_task__our_role__other model:ir.model.fields.selection,name:legal_department_management.selection__legal_task__outcome__other model:ir.model.fields.selection,name:legal_department_management.selection__legal_task_create_wizard__kind__other model:ir.model.fields.selection,name:legal_department_management.selection__legal_task_party__role__other model:ir.model.fields.selection,name:legal_department_management.selection__legal_task_template__kind__other model:ir.model.fields.selection,name:legal_department_management.selection__legal_task_template__law_branch__other model:ir.model.fields.selection,name:legal_department_management.selection__legal_task_template__request_type__other model:legal.court.degree,name:legal_department_management.ldm_degree_other model:legal.expense.category,name:legal_department_management.ldm_expense_category_other
+#. odoo-python
+#: code:addons/legal_department_management/models/ds_analytics.py:0 model:ir.model.fields.selection,name:legal_department_management.selection__legal_appeal_rule__court_degree__other model:ir.model.fields.selection,name:legal_department_management.selection__legal_appeal_rule__law__other model:ir.model.fields.selection,name:legal_department_management.selection__legal_appeal_rule__remedy__other model:ir.model.fields.selection,name:legal_department_management.selection__legal_appeal_rule__trigger_outcome__other model:ir.model.fields.selection,name:legal_department_management.selection__legal_company__company_type__other model:ir.model.fields.selection,name:legal_department_management.selection__legal_court_degree__code__other model:ir.model.fields.selection,name:legal_department_management.selection__legal_deadline__kind__custom model:ir.model.fields.selection,name:legal_department_management.selection__legal_department__body_kind__other model:ir.model.fields.selection,name:legal_department_management.selection__legal_department__court_degree__other model:ir.model.fields.selection,name:legal_department_management.selection__legal_document_type__category__other model:ir.model.fields.selection,name:legal_department_management.selection__legal_guarantee__kind__other model:ir.model.fields.selection,name:legal_department_management.selection__legal_hearing__outcome__other model:ir.model.fields.selection,name:legal_department_management.selection__legal_hearing_outcome_wizard__court_degree__other model:ir.model.fields.selection,name:legal_department_management.selection__legal_hearing_outcome_wizard__law__other model:ir.model.fields.selection,name:legal_department_management.selection__legal_hearing_outcome_wizard__more_outcome__other model:ir.model.fields.selection,name:legal_department_management.selection__legal_hearing_outcome_wizard__outcome__other model:ir.model.fields.selection,name:legal_department_management.selection__legal_hearing_outcome_wizard__result__other model:ir.model.fields.selection,name:legal_department_management.selection__legal_judgment__court_degree__other model:ir.model.fields.selection,name:legal_department_management.selection__legal_judgment__law__other model:ir.model.fields.selection,name:legal_department_management.selection__legal_judgment__result__other model:ir.model.fields.selection,name:legal_department_management.selection__legal_ministry__body_kind__other model:ir.model.fields.selection,name:legal_department_management.selection__legal_poa__poa_type__other model:ir.model.fields.selection,name:legal_department_management.selection__legal_request__request_type__other model:ir.model.fields.selection,name:legal_department_management.selection__legal_task__kind__other model:ir.model.fields.selection,name:legal_department_management.selection__legal_task__law_branch__other model:ir.model.fields.selection,name:legal_department_management.selection__legal_task__our_role__other model:ir.model.fields.selection,name:legal_department_management.selection__legal_task__outcome__other model:ir.model.fields.selection,name:legal_department_management.selection__legal_task_create_wizard__kind__other model:ir.model.fields.selection,name:legal_department_management.selection__legal_task_party__role__other model:ir.model.fields.selection,name:legal_department_management.selection__legal_task_template__kind__other model:ir.model.fields.selection,name:legal_department_management.selection__legal_task_template__law_branch__other model:ir.model.fields.selection,name:legal_department_management.selection__legal_task_template__request_type__other model:legal.court.degree,name:legal_department_management.ldm_degree_other model:legal.expense.category,name:legal_department_management.ldm_expense_category_other
 msgid "Other"
 msgstr "أخرى"
 
@@ -8580,6 +8823,12 @@ msgstr "أخرى"
 #: model:ir.model.fields,field_description:legal_department_management.field_legal_poa__agent_partner_ids
 msgid "Other agents"
 msgstr "وكلاء آخرون"
+
+#. module: legal_department_management
+#. odoo-python
+#: code:addons/legal_department_management/models/ds_analytics.py:0
+msgid "Other clients"
+msgstr "موكّلون آخرون"
 
 #. module: legal_department_management
 #: model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_form
@@ -8603,6 +8852,13 @@ msgid "Other role or not set"
 msgstr "صفة أخرى أو غير محددة"
 
 #. module: legal_department_management
+#. odoo-javascript
+#. odoo-python
+#: code:addons/legal_department_management/models/ds_services.py:0 code:addons/legal_department_management/static/src/company_file/service_overview.js:0
+msgid "Other services"
+msgstr "خدمات أخرى"
+
+#. module: legal_department_management
 #: model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_letter_template_form
 msgid "Our company or office"
 msgstr "شركتنا أو مكتبنا"
@@ -8611,6 +8867,12 @@ msgstr "شركتنا أو مكتبنا"
 #: model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_letter_template_form
 msgid "Our role in the lawsuit"
 msgstr "صفتنا في الدعوى"
+
+#. module: legal_department_management
+#. odoo-javascript
+#: code:addons/legal_department_management/static/src/analytics/analytics.js:0
+msgid "Our statutory and reply deadlines, met or missed, by month."
+msgstr "مهلنا القانونية ومواعيد الجواب، المستوفاة والفائتة، حسب الشهر."
 
 #. module: legal_department_management
 #: model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_deadline_search
@@ -8639,7 +8901,7 @@ msgstr "الصادر فقط"
 
 #. module: legal_department_management
 #. odoo-python
-#: code:addons/legal_department_management/models/ws_my_day.py:0 code:addons/legal_department_management/models/ws_task.py:0 model:ir.model.fields,field_description:legal_department_management.field_legal_billable__is_overdue model:ir.model.fields,field_description:legal_department_management.field_legal_engagement_line__is_overdue model:ir.model.fields,field_description:legal_department_management.field_legal_task__is_overdue model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_search
+#: code:addons/legal_department_management/models/ds_services.py:0 code:addons/legal_department_management/models/ws_my_day.py:0 code:addons/legal_department_management/models/ws_task.py:0 model:ir.model.fields,field_description:legal_department_management.field_legal_billable__is_overdue model:ir.model.fields,field_description:legal_department_management.field_legal_engagement_line__is_overdue model:ir.model.fields,field_description:legal_department_management.field_legal_task__is_overdue model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_search
 msgid "Overdue"
 msgstr "متأخر"
 
@@ -8776,6 +9038,12 @@ msgid "Payment received"
 msgstr "دفعة مستلمة"
 
 #. module: legal_department_management
+#. odoo-python
+#: code:addons/legal_department_management/models/money_company.py:0
+msgid "Payment received — %s"
+msgstr "دفعة مستلمة — %s"
+
+#. module: legal_department_management
 #: model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_engagement
 msgid "Payment schedule"
 msgstr "جدول الدفعات"
@@ -8806,7 +9074,8 @@ msgid "Performance"
 msgstr "حسن تنفيذ"
 
 #. module: legal_department_management
-#: model:ir.model.fields,field_description:legal_department_management.field_legal_appeal_rule__days model:ir.model.fields,field_description:legal_department_management.field_legal_hearing_outcome_wizard__rule_id model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_monthly_status model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_statement_wizard_form
+#. odoo-javascript
+#: code:addons/legal_department_management/static/src/analytics/analytics.js:0 model:ir.model.fields,field_description:legal_department_management.field_legal_appeal_rule__days model:ir.model.fields,field_description:legal_department_management.field_legal_hearing_outcome_wizard__rule_id model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_monthly_status model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_statement_wizard_form
 msgid "Period"
 msgstr "المدة"
 
@@ -8972,13 +9241,13 @@ msgstr "وكالة"
 #. module: legal_department_management
 #: model:legal.task.template,name:legal_department_management.ldm_template_poa
 msgid "Power of attorney at the notary"
-msgstr "تنظيم وكالة لدى كاتب العدل"
+msgstr "وكالة لدى كاتب العدل"
 
 #. module: legal_department_management
 #. odoo-python
 #: code:addons/legal_department_management/models/reg_reminders.py:0
-msgid "Power of attorney expires — %s"
-msgstr "انتهاء وكالة — %s"
+msgid "Power of attorney expires on %(date)s — %(name)s"
+msgstr "تنتهي الوكالة في %(date)s — %(name)s"
 
 #. module: legal_department_management
 #. odoo-python
@@ -9171,7 +9440,7 @@ msgstr "العطل الرسمية"
 #. module: legal_department_management
 #: model:legal.expense.category,name:legal_department_management.ldm_expense_category_publication
 msgid "Publication in a newspaper"
-msgstr "النشر في صحيفة"
+msgstr "النشر في الصحف"
 
 #. module: legal_department_management
 #: model:ir.model.fields,field_description:legal_department_management.field_legal_advance__name model:ir.model.fields,field_description:legal_department_management.field_legal_hearing__purpose model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_hearing_roll
@@ -9645,12 +9914,17 @@ msgstr "ذكّر الموكّل"
 #. module: legal_department_management
 #: model:legal.letter.template,subject:legal_department_management.ldm_message_hearing_reminder
 msgid "Reminder of your session"
-msgstr "تذكير بجلستكم"
+msgstr "تذكير بموعد جلستكم"
 
 #. module: legal_department_management
 #: model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_obligation_search
 msgid "Reminder only"
 msgstr "تذكير فقط"
+
+#. module: legal_department_management
+#: model:ir.model.fields,field_description:legal_department_management.field_mail_activity__ldm_reminder_key
+msgid "Reminder source"
+msgstr "مصدر التذكير"
 
 #. module: legal_department_management
 #: model_terms:ir.ui.view,arch_db:legal_department_management.res_config_settings_view_form
@@ -10178,6 +10452,11 @@ msgid "Scheduled"
 msgstr "المجدول"
 
 #. module: legal_department_management
+#: model:ir.model,name:legal_department_management.model_ir_cron
+msgid "Scheduled Actions"
+msgstr "الإجراءات المجدولة"
+
+#. module: legal_department_management
 #: model:ir.model.fields,field_description:legal_department_management.field_legal_poa__scope
 msgid "Scope"
 msgstr "النطاق"
@@ -10330,6 +10609,11 @@ msgid "Service"
 msgstr "الخدمة"
 
 #. module: legal_department_management
+#: model:ir.model.fields,field_description:legal_department_management.field_legal_company__ldm_service_overview
+msgid "Service overview"
+msgstr "نظرة على الخدمات"
+
+#. module: legal_department_management
 #: model:ir.model.fields,field_description:legal_department_management.field_legal_department__template_ids model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_body_directory_form model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_department_form
 msgid "Services"
 msgstr "الخدمات"
@@ -10346,7 +10630,8 @@ msgid "Services done this year, per client"
 msgstr "الخدمات المنجزة هذا العام لكل موكّل"
 
 #. module: legal_department_management
-#: model:ir.actions.act_window,name:legal_department_management.action_ldm_company_coverage model:ir.model.fields,field_description:legal_department_management.field_legal_company__coverage_ids model:ir.ui.menu,name:legal_department_management.menu_ldm_coverage model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_company_coverage_list model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_company_coverage_search model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_company_form_gov
+#. odoo-javascript
+#: code:addons/legal_department_management/static/src/company_file/service_overview.js:0 model:ir.actions.act_window,name:legal_department_management.action_ldm_company_coverage model:ir.model.fields,field_description:legal_department_management.field_legal_company__coverage_ids model:ir.ui.menu,name:legal_department_management.menu_ldm_coverage model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_company_coverage_list model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_company_coverage_search model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_company_form_gov
 msgid "Services this year"
 msgstr "خدمات هذا العام"
 
@@ -10576,6 +10861,12 @@ msgid "Skipped"
 msgstr "متجاوَزة"
 
 #. module: legal_department_management
+#. odoo-javascript
+#: code:addons/legal_department_management/static/src/analytics/analytics.js:0
+msgid "Slowest: %(type)s, %(days)s working days (%(count)s closed)"
+msgstr "الأبطأ: %(type)s، %(days)s يوم عمل (%(count)s مغلق)"
+
+#. module: legal_department_management
 #: model:ir.model.fields.selection,name:legal_department_management.selection__legal_appeal_rule__law__social_security model:ir.model.fields.selection,name:legal_department_management.selection__legal_document_type__category__social_security
 msgid "Social security"
 msgstr "الضمان الاجتماعي"
@@ -10652,7 +10943,7 @@ msgstr "المرحلة"
 
 #. module: legal_department_management
 #. odoo-javascript
-#: code:addons/legal_department_management/static/src/money/timer_systray.xml:0 model:ir.model.fields,field_description:legal_department_management.field_legal_engagement__date_start model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_company_coverage_list model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_company_form_gov model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_form
+#: code:addons/legal_department_management/static/src/company_file/service_overview.js:0 code:addons/legal_department_management/static/src/money/timer_systray.xml:0 model:ir.model.fields,field_description:legal_department_management.field_legal_engagement__date_start model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_company_coverage_list model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_form
 msgid "Start"
 msgstr "ابدأ"
 
@@ -10926,16 +11217,16 @@ msgid "Target date"
 msgstr "التاريخ المستهدف"
 
 #. module: legal_department_management
+#. odoo-python
+#: code:addons/legal_department_management/models/legal_task.py:0
+msgid "Target date %(date)s — %(number)s"
+msgstr "التاريخ المستهدف %(date)s — %(number)s"
+
+#. module: legal_department_management
 #. odoo-javascript
 #: code:addons/legal_department_management/static/src/cockpit/cockpit_widgets.js:0
 msgid "Target date updated."
 msgstr "حُدّث التاريخ المستهدف."
-
-#. module: legal_department_management
-#. odoo-python
-#: code:addons/legal_department_management/models/legal_task.py:0
-msgid "Target date — %s"
-msgstr "التاريخ المستهدف — %s"
 
 #. module: legal_department_management
 #: model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_general_report_wizard_form
@@ -11038,6 +11329,12 @@ msgstr "تعذّر تحميل الأجندة. أعد المحاولة بعد ق�
 #: model:ir.model.fields,help:legal_department_management.field_legal_task__compensation_amount
 msgid "The amount the employee is ordered to pay back (تضمين)."
 msgstr "The amount the employee is ordered to pay back (تضمين)."
+
+#. module: legal_department_management
+#. odoo-python
+#: code:addons/legal_department_management/models/ds_analytics.py:0
+msgid "The analytics board is for legal managers and auditors."
+msgstr "لوحة التحليلات مخصصة للمديرين القانونيين والمدققين."
 
 #. module: legal_department_management
 #. odoo-python
@@ -11270,6 +11567,12 @@ msgstr "لا يمكن أن يكون الرسم سالباً."
 #: code:addons/legal_department_management/models/money_engagement.py:0
 msgid "The fee of %(name)s is above 20%% of the value of its matters (Advocacy Law Art. 56). Only a legal manager can activate it."
 msgstr "أتعاب %(name)s تتجاوز 20%% من قيمة ملفاته (المادة 56 من قانون المحاماة). تفعيله من صلاحية المدير القانوني فقط."
+
+#. module: legal_department_management
+#. odoo-javascript
+#: code:addons/legal_department_management/static/src/analytics/analytics.js:0
+msgid "The figures could not be loaded."
+msgstr "تعذّر تحميل الأرقام."
 
 #. module: legal_department_management
 #. odoo-javascript
@@ -11648,6 +11951,11 @@ msgid "The receipts paid from this advance. Remove any that do not belong to it.
 msgstr "الوصولات المدفوعة من هذه السلفة. احذف ما لا يعود إليها."
 
 #. module: legal_department_management
+#: model:ir.model.fields,help:legal_department_management.field_mail_activity__ldm_reminder_key
+msgid "The record a legal reminder is about, so it is closed when that record is done."
+msgstr "السجل الذي يخصه التذكير القانوني، ليُغلق عند إنجاز ذلك السجل."
+
+#. module: legal_department_management
 #. odoo-python
 #: code:addons/legal_department_management/models/gov_reference.py:0
 msgid "The reference library was already loaded"
@@ -11828,6 +12136,12 @@ msgstr "ما زال لهذا الملف"
 
 #. module: legal_department_management
 #. odoo-python
+#: code:addons/legal_department_management/models/ds_analytics.py:0
+msgid "This month"
+msgstr "هذا الشهر"
+
+#. module: legal_department_management
+#. odoo-python
 #: code:addons/legal_department_management/models/money_funds.py:0
 msgid "This movement comes from an expense paid from the client's money. Change the expense."
 msgstr "هذه الحركة ناتجة عن مصروف دُفع من أمانات الموكّل. عدّل المصروف."
@@ -11884,7 +12198,8 @@ msgid "This would take the client's money below zero."
 msgstr "هذا سيُنزل أمانات الموكّل تحت الصفر."
 
 #. module: legal_department_management
-#: model:ir.model.fields,field_description:legal_department_management.field_legal_company_coverage__coverage_state
+#. odoo-python
+#: code:addons/legal_department_management/models/ds_analytics.py:0 model:ir.model.fields,field_description:legal_department_management.field_legal_company_coverage__coverage_state
 msgid "This year"
 msgstr "هذا العام"
 
@@ -12029,7 +12344,8 @@ msgid "Tomorrow"
 msgstr "غداً"
 
 #. module: legal_department_management
-#: model_terms:ir.ui.view,arch_db:legal_department_management.report_legal_task_document model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_advance_form model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_advance_list model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_advance_settle_wizard_form model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_billable_list model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_engagement_form model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_expense_list model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_expense_post_wizard_form model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_invoice_wizard_form model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_time_list model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_form model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_form_money model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_tree
+#. odoo-javascript
+#: code:addons/legal_department_management/static/src/analytics/analytics.js:0 model_terms:ir.ui.view,arch_db:legal_department_management.report_legal_task_document model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_advance_form model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_advance_list model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_advance_settle_wizard_form model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_billable_list model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_engagement_form model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_expense_list model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_expense_post_wizard_form model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_invoice_wizard_form model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_time_list model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_form model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_form_money model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_tree
 msgid "Total"
 msgstr "المجموع"
 
@@ -12097,11 +12413,11 @@ msgstr "المعاملات لدى الوزارات والدوائر: الخدم�
 #. module: legal_department_management
 #: model:legal.expense.category,name:legal_department_management.ldm_expense_category_transport
 msgid "Transport"
-msgstr "النقل"
+msgstr "نقل"
 
 #. module: legal_department_management
 #. odoo-javascript
-#: code:addons/legal_department_management/static/src/agenda/agenda.js:0 code:addons/legal_department_management/static/src/my_day/my_day.js:0
+#: code:addons/legal_department_management/static/src/agenda/agenda.js:0 code:addons/legal_department_management/static/src/analytics/analytics.js:0 code:addons/legal_department_management/static/src/my_day/my_day.js:0
 msgid "Try again"
 msgstr "أعد المحاولة"
 
@@ -12346,14 +12662,19 @@ msgid "Verified"
 msgstr "مؤكد الصدور"
 
 #. module: legal_department_management
-#: model:ir.model.fields,help:legal_department_management.field_legal_task_document__state
-msgid "Verified means the issuing body confirmed the document is genuine (صحة صدور)."
-msgstr "Verified means the issuing body confirmed the document is genuine (صحة صدور)."
+#: model:ir.model.fields.selection,name:legal_department_management.selection__legal_appeal_rule__verification__verified
+msgid "Verified in the law"
+msgstr "موثّقة"
 
 #. module: legal_department_management
 #: model:ir.model.fields,help:legal_department_management.field_legal_appeal_rule__verification model:ir.model.fields,help:legal_department_management.field_legal_deadline__rule_verification
 msgid "Verified in the law: read in the law's own text. Secondary: taken from commentary or a practice guide. Unverified: check it before relying on it at a court."
 msgstr "موثّقة: مقروءة من نص القانون نفسه. ثانوية: مأخوذة من شرح أو دليل عملي. غير موثّقة: تحقّق منها قبل الاعتماد عليها أمام المحكمة."
+
+#. module: legal_department_management
+#: model:ir.model.fields,help:legal_department_management.field_legal_task_document__state
+msgid "Verified means the issuing body confirmed the document is genuine (صحة صدور)."
+msgstr "Verified means the issuing body confirmed the document is genuine (صحة صدور)."
 
 #. module: legal_department_management
 #: model_terms:ir.ui.view,arch_db:legal_department_management.res_config_settings_view_form
@@ -12439,7 +12760,8 @@ msgid "Wa Url"
 msgstr "رابط واتساب"
 
 #. module: legal_department_management
-#: model:ir.model.fields.selection,name:legal_department_management.selection__legal_company_coverage__last_state__pending_docs model:ir.model.fields.selection,name:legal_department_management.selection__legal_task__state__pending_docs model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_search
+#. odoo-python
+#: code:addons/legal_department_management/models/ds_analytics.py:0 model:ir.model.fields.selection,name:legal_department_management.selection__legal_company_coverage__last_state__pending_docs model:ir.model.fields.selection,name:legal_department_management.selection__legal_task__state__pending_docs model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_search
 msgid "Waiting"
 msgstr "بانتظار"
 
@@ -12464,6 +12786,12 @@ msgstr "بانتظار قرار المعتمِد"
 #: code:addons/legal_department_management/static/src/cockpit/cockpit_widgets.js:0 model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_task_form
 msgid "Waiting for approval"
 msgstr "بانتظار الاعتماد"
+
+#. module: legal_department_management
+#. odoo-python
+#: code:addons/legal_department_management/models/ds_services.py:0
+msgid "Waiting for documents"
+msgstr "بانتظار المستمسكات"
 
 #. module: legal_department_management
 #. odoo-python
@@ -12656,6 +12984,12 @@ msgid "What"
 msgstr "البند"
 
 #. module: legal_department_management
+#. odoo-javascript
+#: code:addons/legal_department_management/static/src/analytics/analytics.js:0
+msgid "What do we spend, and for whom?"
+msgstr "ماذا ننفق، ولمن؟"
+
+#. module: legal_department_management
 #: model:ir.model.fields,field_description:legal_department_management.field_legal_request__name
 msgid "What do you need?"
 msgstr "ما الذي تحتاجه؟"
@@ -12669,6 +13003,12 @@ msgstr "ما جرى"
 #: model:ir.model.fields,field_description:legal_department_management.field_legal_task_decision_wizard__ldm_remaining_action
 msgid "What happens to them"
 msgstr "ما مصيرها"
+
+#. module: legal_department_management
+#. odoo-javascript
+#: code:addons/legal_department_management/static/src/analytics/analytics.js:0
+msgid "What is at stake in court?"
+msgstr "ما الذي على المحك أمام القضاء؟"
 
 #. module: legal_department_management
 #. odoo-python
@@ -12690,6 +13030,12 @@ msgstr "القائم والقادم"
 #: model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_request_form
 msgid "What is the question or the situation? Who is the other party? What has been done so far?"
 msgstr "ما السؤال أو الوضع؟ من الطرف الآخر؟ وما الذي تم حتى الآن؟"
+
+#. module: legal_department_management
+#. odoo-javascript
+#: code:addons/legal_department_management/static/src/analytics/analytics.js:0
+msgid "What kind of work is open?"
+msgstr "ما طبيعة العمل القائم؟"
 
 #. module: legal_department_management
 #: model:ir.model.fields,field_description:legal_department_management.field_legal_handover_wizard__summary model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_handover_wizard_form
@@ -12860,6 +13206,12 @@ msgid "Where"
 msgstr "أين"
 
 #. module: legal_department_management
+#. odoo-javascript
+#: code:addons/legal_department_management/static/src/analytics/analytics.js:0
+msgid "Where are the open matters?"
+msgstr "أين الملفات القائمة؟"
+
+#. module: legal_department_management
 #: model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_appeal_rule_form
 msgid "Where it applies"
 msgstr "أين تنطبق"
@@ -12873,6 +13225,12 @@ msgstr "أين يُقدَّم، ومن يوقّع، وغرامات التأخي�
 #: model_terms:ir.ui.view,arch_db:legal_department_management.res_config_settings_view_form
 msgid "Whether the application speaks of group companies, clients, or both."
 msgstr "هل يتحدث التطبيق عن شركات المجموعة أم عن الموكّلين أم عن كليهما."
+
+#. module: legal_department_management
+#. odoo-javascript
+#: code:addons/legal_department_management/static/src/analytics/analytics.js:0
+msgid "Which bodies keep our files too long?"
+msgstr "أي الجهات تؤخر معاملاتنا؟"
 
 #. module: legal_department_management
 #. odoo-javascript
@@ -12894,6 +13252,12 @@ msgstr "من"
 #: model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_deadline_form
 msgid "Who and what"
 msgstr "من وماذا"
+
+#. module: legal_department_management
+#. odoo-javascript
+#: code:addons/legal_department_management/static/src/analytics/analytics.js:0
+msgid "Who carries the work?"
+msgstr "من يتولى العمل؟"
 
 #. module: legal_department_management
 #: model:ir.model.fields,help:legal_department_management.field_legal_visit_wizard__waiting_on
@@ -13471,6 +13835,12 @@ msgstr "الجلسات"
 
 #. module: legal_department_management
 #. odoo-python
+#: code:addons/legal_department_management/models/ds_analytics.py:0
+msgid "in_progress"
+msgstr "in_progress"
+
+#. module: legal_department_management
+#. odoo-python
 #: code:addons/legal_department_management/wizards/ws_handover.py:0
 msgid "joins the team"
 msgstr "ينضم إلى الفريق"
@@ -13507,6 +13877,12 @@ msgstr "خطوات أو جلسات أو مهل مفتوحة."
 #: code:addons/legal_department_management/models/reg_reports.py:0
 msgid "other"
 msgstr "أخرى"
+
+#. module: legal_department_management
+#. odoo-python
+#: code:addons/legal_department_management/models/ds_analytics.py:0
+msgid "pending_docs"
+msgstr "pending_docs"
 
 #. module: legal_department_management
 #. odoo-python
@@ -13708,12 +14084,6 @@ msgid "“{%s}” is not a placeholder a letter template may use. Placeholders a
 msgstr "«{%s}» ليس حقلاً متغيراً يجوز استخدامه في قالب الكتاب. الحقول المتغيرة أسماء بسيطة مثل {client} أو {matter_number}، وقائمتها في تبويب «الحقول المتغيرة» في القالب."
 
 #. module: legal_department_management
-#: model:ir.model.fields,field_description:legal_department_management.field_legal_guarantee__legal_company_id
-msgid "Applicant"
-msgstr "طالب الإصدار"
-
-#. module: legal_department_management
-#. odoo-javascript
-#: model:ir.model.fields.selection,name:legal_department_management.selection__legal_appeal_rule__verification__verified
-msgid "Verified in the law"
-msgstr "موثّقة"
+#: model:ir.model.fields,field_description:legal_department_management.field_legal_company__ldm_monogram
+msgid "Monogram"
+msgstr "الحرف الأول"

@@ -278,11 +278,19 @@ $ldm-signal-strong: #1D4ED8;
     }
 
     // Inputs: a hairline under the value, Signal and a ring when focused.
+    // Not on an ink band, where a title reads as a title (cockpit.scss).
     .o_field_widget .o_input {
         border-color: var(--ldm-rule);
 
         &:hover { border-color: var(--ldm-rule-strong); }
         &:focus { border-color: var(--ldm-signal); }
+    }
+
+    .o_ldm_title_band .o_field_widget .o_input {
+        border-color: transparent;
+
+        &:hover { border-color: rgba(148, 163, 184, 0.35); }
+        &:focus { border-color: #93C5FD; }
     }
 
     .o_horizontal_separator,

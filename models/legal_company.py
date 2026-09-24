@@ -73,6 +73,7 @@ class LegalCompany(models.Model):
     # cannot open. The stored columns SAG had stay in the table, unused.
     task_count = fields.Integer(string="Number of matters", compute="_compute_counts")
     pending_tasks_count = fields.Integer(string="Open matters", compute="_compute_counts")
+    ldm_monogram = fields.Char(string="Monogram", compute="_compute_ldm_monogram")
     department_count = fields.Integer(string="Bodies", compute="_compute_counts")
     ministry_count = fields.Integer(string="Ministries", compute="_compute_counts")
     document_count = fields.Integer(string="Number of files", compute="_compute_counts")
@@ -80,6 +81,19 @@ class LegalCompany(models.Model):
     expiring_document_count = fields.Integer(string="Expiring documents", compute="_compute_counts")
     poa_count = fields.Integer(string="Active powers of attorney", compute="_compute_counts")
     total_expenses = fields.Monetary(string="Expenses", compute="_compute_counts", currency_field="currency_id")
+
+    # Words that open most names and say nothing about who it is.
+    MONOGRAM_SKIP = ("شركة", "مجموعة", "فرع", "السيد", "السيدة", "المحامي", "المحامية", "company", "the", "mr", "mrs")
+
+    @api.depends("name")
+    def _compute_ldm_monogram(self):
+        """The initial on the client's card: the first letter of the first word
+        that names the client ("شركة الرافدين" gives "ا", not "ش")."""
+        for record in self:
+            words = [w for w in (record.name or "").split() if w]
+            while len(words) > 1 and words[0].strip(".").lower() in self.MONOGRAM_SKIP:
+                words = words[1:]
+            record.ldm_monogram = words[0][:1].upper() if words else "?"
 
     def _compute_counts(self):
         Task = self.env["legal.task"]
