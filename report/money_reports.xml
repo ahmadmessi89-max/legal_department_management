@@ -1,4 +1,251 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Owned by the money stream (docs/ldm/SPEC.md section 11). -->
+<!-- Owned by the money stream (docs/ldm/SPEC.md section 11): the client
+     statement of account (كشف حساب) and the printable fee agreement. Both use
+     the company's external layout, in the reader's language and direction. -->
 <odoo>
+    <record id="action_report_ldm_statement" model="ir.actions.report">
+        <field name="name">Statement of account</field>
+        <field name="model">legal.company</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">legal_department_management.report_ldm_statement</field>
+        <field name="report_file">legal_department_management.report_ldm_statement</field>
+        <field name="print_report_name">'Statement - %s' % object.name</field>
+    </record>
+
+    <record id="action_report_ldm_engagement" model="ir.actions.report">
+        <field name="name">Fee agreement</field>
+        <field name="model">legal.engagement</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">legal_department_management.report_ldm_engagement</field>
+        <field name="report_file">legal_department_management.report_ldm_engagement</field>
+        <field name="print_report_name">'Fee agreement - %s' % object.name</field>
+        <field name="binding_model_id" ref="model_legal_engagement"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_ldm_statement">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page o_ldm_report">
+                        <h2 class="mb-1">Statement of account</h2>
+                        <div class="mb-3">
+                            <strong t-out="doc.name"/>
+                            <span class="text-muted ms-2">
+                                <span t-out="date_from" t-options="{'widget': 'date'}"/>
+                                <span> – </span>
+                                <span t-out="date_to" t-options="{'widget': 'date'}"/>
+                            </span>
+                        </div>
+                        <t t-set="doc_sections" t-value="sections.get(doc.id, [])"/>
+                        <p t-if="not doc_sections" class="text-muted">Nothing was invoiced, paid or held for this client in the period.</p>
+                        <t t-foreach="doc_sections" t-as="section">
+                            <t t-set="currency" t-value="section['currency']"/>
+                            <h4 class="mt-4 mb-2" t-out="currency.name"/>
+                            <table class="table table-sm o_main_table">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Number</th>
+                                        <th>Description</th>
+                                        <th class="text-end">Charged</th>
+                                        <th class="text-end">Paid</th>
+                                        <th class="text-end">Balance</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="5"><em>Opening balance</em></td>
+                                        <td class="text-end" t-out="section['opening']"
+                                            t-options="{'widget': 'monetary', 'display_currency': currency}"/>
+                                    </tr>
+                                    <tr t-foreach="section['rows']" t-as="row">
+                                        <td t-out="row['date']" t-options="{'widget': 'date'}"/>
+                                        <td t-out="row['number']"/>
+                                        <td t-out="row['label']"/>
+                                        <td class="text-end">
+                                            <span t-if="row['debit']" t-out="row['debit']"
+                                                  t-options="{'widget': 'monetary', 'display_currency': currency}"/>
+                                        </td>
+                                        <td class="text-end">
+                                            <span t-if="row['credit']" t-out="row['credit']"
+                                                  t-options="{'widget': 'monetary', 'display_currency': currency}"/>
+                                        </td>
+                                        <td class="text-end" t-out="row['balance']"
+                                            t-options="{'widget': 'monetary', 'display_currency': currency}"/>
+                                    </tr>
+                                    <tr class="fw-bold">
+                                        <td colspan="3">Balance due at the end of the period</td>
+                                        <td class="text-end" t-out="section['invoiced']"
+                                            t-options="{'widget': 'monetary', 'display_currency': currency}"/>
+                                        <td class="text-end" t-out="section['paid']"
+                                            t-options="{'widget': 'monetary', 'display_currency': currency}"/>
+                                        <td class="text-end" t-out="section['closing']"
+                                            t-options="{'widget': 'monetary', 'display_currency': currency}"/>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <t t-if="section['unbilled']">
+                                <h5 class="mt-3">Not invoiced yet</h5>
+                                <table class="table table-sm">
+                                    <tbody>
+                                        <tr t-foreach="section['unbilled']" t-as="item">
+                                            <td t-out="item.date" t-options="{'widget': 'date'}"/>
+                                            <td t-out="item.task_id.task_number"/>
+                                            <td t-out="item.name"/>
+                                            <td class="text-end" t-out="item.amount"
+                                                t-options="{'widget': 'monetary', 'display_currency': currency}"/>
+                                        </tr>
+                                        <tr class="fw-bold">
+                                            <td colspan="3">Total not invoiced</td>
+                                            <td class="text-end" t-out="section['unbilled_total']"
+                                                t-options="{'widget': 'monetary', 'display_currency': currency}"/>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </t>
+                            <t t-if="section['schedule']">
+                                <h5 class="mt-3">Instalments still to come</h5>
+                                <table class="table table-sm">
+                                    <tbody>
+                                        <tr t-foreach="section['schedule']" t-as="line">
+                                            <td>
+                                                <span t-if="line.date" t-out="line.date" t-options="{'widget': 'date'}"/>
+                                                <span t-else="" t-field="line.trigger_event"/>
+                                            </td>
+                                            <td t-out="line.engagement_id.name"/>
+                                            <td t-out="line.name"/>
+                                            <td class="text-end" t-out="line.amount"
+                                                t-options="{'widget': 'monetary', 'display_currency': currency}"/>
+                                        </tr>
+                                        <tr class="fw-bold">
+                                            <td colspan="3">Total still to come</td>
+                                            <td class="text-end" t-out="section['schedule_total']"
+                                                t-options="{'widget': 'monetary', 'display_currency': currency}"/>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </t>
+                            <p t-if="section['funds']" class="mt-2">
+                                <span>Client money we hold for you:</span>
+                                <strong t-out="section['funds']" t-options="{'widget': 'monetary', 'display_currency': currency}"/>
+                            </p>
+                        </t>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <template id="report_ldm_engagement">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page o_ldm_report">
+                        <h2 class="text-center mb-1">Fee agreement</h2>
+                        <p class="text-center text-muted" t-out="doc.name"/>
+                        <table class="table table-sm table-borderless mt-3">
+                            <tbody>
+                                <tr>
+                                    <th class="w-25">The office</th>
+                                    <td t-out="doc.company_id.name"/>
+                                </tr>
+                                <tr>
+                                    <th>The client</th>
+                                    <td>
+                                        <span t-out="doc.legal_company_id.name"/>
+                                        <span t-if="doc.legal_company_id.registration_number" class="text-muted">
+                                            (<span t-out="doc.legal_company_id.registration_number"/>)
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Responsible lawyer</th>
+                                    <td t-out="doc.lawyer_id.name"/>
+                                </tr>
+                                <tr>
+                                    <th>From</th>
+                                    <td>
+                                        <span t-field="doc.date_start"/>
+                                        <t t-if="doc.date_end"><span> – </span><span t-field="doc.date_end"/></t>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Fee arrangement</th>
+                                    <td><span t-field="doc.fee_type"/></td>
+                                </tr>
+                                <tr t-if="doc.amount">
+                                    <th>Agreed fee</th>
+                                    <td>
+                                        <span t-field="doc.amount"/>
+                                        <span t-if="doc.fee_type == 'retainer'"> a month</span>
+                                    </td>
+                                </tr>
+                                <tr t-if="doc.success_percent">
+                                    <th>Success fee</th>
+                                    <td><span t-out="doc.success_percent"/>% of the amount awarded or collected</td>
+                                </tr>
+                                <tr t-if="doc.hourly_rate">
+                                    <th>Hourly rate</th>
+                                    <td><span t-field="doc.hourly_rate"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <t t-if="doc.task_ids">
+                            <h5>Matters covered</h5>
+                            <ul>
+                                <li t-foreach="doc.task_ids" t-as="task">
+                                    <span t-out="task.display_name"/>
+                                    <span t-if="task.court_case_number" class="text-muted"> — <span t-out="task.court_case_number"/></span>
+                                </li>
+                            </ul>
+                        </t>
+                        <t t-if="doc.line_ids">
+                            <h5>Payment schedule</h5>
+                            <table class="table table-sm o_main_table">
+                                <thead>
+                                    <tr>
+                                        <th>Instalment</th>
+                                        <th>Due</th>
+                                        <th class="text-end">Amount</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr t-foreach="doc.line_ids.filtered(lambda l: l.state != 'waived')" t-as="line">
+                                        <td t-out="line.name"/>
+                                        <td>
+                                            <span t-if="line.trigger_event == 'date' and line.date" t-field="line.date"/>
+                                            <span t-else="" t-field="line.trigger_event"/>
+                                        </td>
+                                        <td class="text-end"><span t-field="line.amount"/></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </t>
+                        <t t-if="doc.note">
+                            <h5>Scope and terms</h5>
+                            <p t-field="doc.note"/>
+                        </t>
+                        <p class="small text-muted mt-3">
+                            Expenses paid in the client's interest are recharged to the client (Advocacy Law 173 of 1965, Art. 55).
+                            Outside criminal matters the fee may not exceed 20% of the value of the work (Art. 56).
+                        </p>
+                        <p t-if="doc.bar_withholding" class="small text-muted">
+                            The client withholds the Bar's 5% share of the retainer and remits it to the Iraqi Bar Association (Bar order 3021 of 2021).
+                        </p>
+                        <div class="row mt-5">
+                            <div class="col-6 text-center">
+                                <p>For the office</p>
+                                <p class="mt-5">........................................</p>
+                            </div>
+                            <div class="col-6 text-center">
+                                <p>The client</p>
+                                <p class="mt-5">........................................</p>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
 </odoo>
