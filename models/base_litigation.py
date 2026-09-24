@@ -67,6 +67,13 @@ class LegalHearing(models.Model):
     needed_before = fields.Char(string="Needed before the next session")
     minutes_attachment_id = fields.Many2one("ir.attachment", string="Minutes", ondelete="set null")
 
+    def action_ldm_record_outcome(self):
+        """Interface (SPEC 5.8): open the session-outcome dialog. The litigation
+        stream replaces this with its wizard; the foundation opens the session."""
+        self.ensure_one()
+        return {"type": "ir.actions.act_window", "res_model": "legal.hearing", "res_id": self.id,
+                "view_mode": "form", "target": "new"}
+
     @api.depends("date", "kind", "task_id.task_number")
     def _compute_display_name(self):
         kinds = dict(self._fields["kind"]._description_selection(self.env))
@@ -276,6 +283,12 @@ class LegalJudgment(models.Model):
     final_date = fields.Date(string="Final on", help="Date the judgment became final (اكتسب الدرجة القطعية).")
     deadline_ids = fields.One2many("legal.deadline", "judgment_id", string="Deadlines")
     hearing_id = fields.Many2one("legal.hearing", string="Given at session", ondelete="set null")
+
+    def ldm_set_notified_date(self, notified_date):
+        """Interface (SPEC 14.1): record the service date. The litigation stream
+        computes the challenge deadlines from it when this field is written."""
+        self.write({"notified_date": notified_date})
+        return True
 
 
 class LegalHoliday(models.Model):

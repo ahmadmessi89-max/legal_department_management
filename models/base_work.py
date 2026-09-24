@@ -70,6 +70,13 @@ class LegalTaskStep(models.Model):
     document_type_id = fields.Many2one("legal.document.type", string="Produces document", ondelete="set null")
     is_overdue = fields.Boolean(compute="_compute_is_overdue")
 
+    def action_ldm_log_visit(self):
+        """Interface (SPEC 14.4): open the counter-visit dialog. The government
+        stream replaces this with its wizard; the foundation opens the step."""
+        self.ensure_one()
+        return {"type": "ir.actions.act_window", "res_model": "legal.task.step", "res_id": self.id,
+                "view_mode": "form", "target": "new"}
+
     @api.depends("date_due", "state")
     def _compute_is_overdue(self):
         today = fields.Date.context_today(self)

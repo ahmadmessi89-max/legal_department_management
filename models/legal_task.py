@@ -814,6 +814,25 @@ class LegalTask(models.Model):
         return items
 
     # ------------------------------------------------------------------
+    # Cross-stream interfaces (SPEC 11): working minimal versions that the
+    # owning stream replaces, so every stream can call them from day one.
+    # ------------------------------------------------------------------
+    def action_ldm_record_outcome(self):
+        """Record the outcome of this matter's next planned session."""
+        self.ensure_one()
+        hearing = self.hearing_ids.filtered(lambda h: h.state == "planned").sorted("date")[:1]
+        if not hearing:
+            raise UserError(_("%s has no planned court session.", self.display_name))
+        return hearing.action_ldm_record_outcome()
+
+    @api.model
+    def ldm_conflict_check(self, names, task_id=False):
+        """Check names against the office's clients and opposing parties.
+        Returns {"hits": [...], "policy": "warn"|"block", "check_id": id or False}.
+        The money stream implements the search; the foundation finds nothing."""
+        return {"hits": [], "policy": self.env.company.ldm_conflict_policy, "check_id": False}
+
+    # ------------------------------------------------------------------
     # Printing (name kept)
     # ------------------------------------------------------------------
     def action_print_task_report(self):
