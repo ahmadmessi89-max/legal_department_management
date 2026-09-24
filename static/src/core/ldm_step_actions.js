@@ -41,6 +41,11 @@ export async function toggleStep({ orm, notification }, stepId, reload) {
 export async function runRecordAction({ orm, action }, model, method, resId, reload) {
     const result = await orm.call(model, method, [[resId]]);
     if (result && typeof result === "object" && result.type) {
+        // A window action returned by a model method (not by a button) may
+        // carry only `view_mode`; the client needs its `views`.
+        if (result.type === "ir.actions.act_window" && !result.views) {
+            result.views = (result.view_mode || "form").split(",").map((mode) => [false, mode.trim()]);
+        }
         await action.doAction(result, { onClose: () => reload() });
     } else {
         await reload();

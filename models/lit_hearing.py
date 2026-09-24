@@ -146,6 +146,7 @@ class LegalHearing(models.Model):
             "name": _("Record the session"),
             "res_model": "legal.hearing.outcome.wizard",
             "view_mode": "form",
+            "views": [[False, "form"]],
             "target": "new",
             "context": {"default_hearing_id": self.id},
         }

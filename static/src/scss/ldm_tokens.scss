@@ -20,7 +20,8 @@
 
 .o_ldm,
 .o_ldm_view,
-.o_ldm_calendar_view {
+.o_ldm_calendar_view,
+.app_settings_block[data-key="legal_department_management"] {
     // Structure
     --ldm-ink: #14213D;
     --ldm-ink-soft: #3B4A68;
@@ -102,7 +103,8 @@
 @if $o-webclient-color-scheme == dark {
     .o_ldm,
     .o_ldm_view,
-    .o_ldm_calendar_view {
+    .o_ldm_calendar_view,
+    .app_settings_block[data-key="legal_department_management"] {
         --ldm-ink: #E6EAF2;
         --ldm-ink-soft: #B8C1D1;
         --ldm-ink-muted: #B8C1D1;
@@ -150,6 +152,7 @@
 .o_ldm,
 .o_ldm_view,
 .o_ldm_calendar_view,
+.app_settings_block[data-key="legal_department_management"],
 .modal-content:has(.modal-body :is(.o_ldm, .o_ldm_view)) .modal-footer {
     .btn-primary {
         --btn-bg: var(--ldm-ink);
@@ -169,7 +172,8 @@
 // Odoo's own inputs inside a workspace form: ink when chosen or focused,
 // so the only colour on a form is the colour that means something.
 .o_ldm,
-.o_ldm_view {
+.o_ldm_view,
+.app_settings_block[data-key="legal_department_management"] {
     .form-check-input:checked {
         background-color: var(--ldm-ink);
         border-color: var(--ldm-ink);

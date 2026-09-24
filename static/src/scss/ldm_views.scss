@@ -506,6 +506,28 @@ $ldm-ink-deep: #0C1528;
     .modal-footer { border-block-start: 1px solid var(--ldm-rule, #D5DBE4); }
 }
 
+// ================================================================ settings
+// The Legal page of Settings: section titles in Kufi on a hairline, the
+// switches in ink, the setting names in ink and their help quiet.
+.app_settings_block[data-key="legal_department_management"] {
+    --settings__title-bg: var(--ldm-desk);
+
+    h2 {
+        font-family: var(--ldm-font-head);
+        font-weight: 700;
+        color: var(--ldm-ink);
+        border-block-end: 1px solid var(--ldm-rule);
+    }
+
+    .o_setting_right_pane,
+    .o_setting_left_pane {
+        .o_form_label { color: var(--ldm-ink); font-weight: 600; }
+        .text-muted { color: var(--ldm-ink-soft); }
+    }
+
+    .btn-link { color: var(--ldm-ink); font-weight: 600; }
+}
+
 // ================================================================ top bar
 // In the Legal app the top bar takes the ink of the bands, so the product
 // reads as one piece from the first pixel (ldm_app.js sets the class).
