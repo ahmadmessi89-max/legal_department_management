@@ -101,13 +101,13 @@
     padding: var(--ldm-space-5) var(--ldm-space-6) var(--ldm-space-6);
 }
 
-// Equal cells separated by hairlines: the gap shows the rule colour
-// behind white cells, so the lines stay right however the cells wrap.
+// Equal cells separated by hairlines. Each cell draws its start and top
+// rule one pixel outside itself; the panel clips the ones on its own edge, so
+// the lines stay right however the cells wrap and a short last row is white.
 .o_ldm_md_counts {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(10.5rem, 1fr));
-    gap: 1px;
-    background-color: var(--ldm-rule);
+    background-color: var(--ldm-paper);
     border: 1px solid var(--ldm-rule);
     border-radius: var(--ldm-radius-panel);
     overflow: hidden;
@@ -117,8 +117,12 @@
     display: flex;
     align-items: baseline;
     gap: var(--ldm-space-2);
+    margin-block-start: -1px;
+    margin-inline-start: -1px;
     padding: var(--ldm-space-3) var(--ldm-space-4);
     border: 0;
+    border-block-start: 1px solid var(--ldm-rule);
+    border-inline-start: 1px solid var(--ldm-rule);
     background-color: var(--ldm-paper);
     color: var(--ldm-ink);
     text-align: start;
