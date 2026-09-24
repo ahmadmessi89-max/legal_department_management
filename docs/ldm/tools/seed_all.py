@@ -174,6 +174,13 @@ for switch in LDM_SWITCHES:
     employee_group._apply_group(env.ref(f"{M}.{switch}").sudo())
 env.company.write({"name": "مجموعة سومر القابضة — القسم القانوني",
                    "ldm_calendar_id": env.ref(f"{M}.ldm_calendar_iraq").id})
+# A plain wordmark for the fictional group, so the letterhead does not print
+# Odoo's "Your logo" placeholder (docs/ldm/tools/demo_logo.png, demo data only).
+logo_path = os.path.join(TOOLS, "demo_logo.png")
+if os.path.exists(logo_path):
+    import base64  # noqa: E402
+
+    env.company.logo = base64.b64encode(open(logo_path, "rb").read())
 for login, (name, role, extra) in TEAM.items():
     Users.search([("login", "=", login)]).write({"name": name})
 # The administrator appears in chatters and "created by" columns: an English

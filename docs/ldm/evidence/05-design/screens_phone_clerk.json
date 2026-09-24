@@ -1,0 +1,10 @@
+[
+ {"name": "01_my_day", "path": "/odoo/my-day", "wait": ".o_ldm_band"},
+ {"name": "02_gov_matter", "path": "/odoo/matters/14", "wait": ".o_ldm_next"},
+ {"name": "03_visit_dialog", "path": "/odoo/matters/14", "wait": ".o_ldm_next", "clicks": [".o_ldm_next .o_ldm_action_primary"], "settle": 1.5},
+ {"name": "04_directory", "path": "/odoo/action-legal_department_management.action_ldm_body_directory", "wait": ".o_view_controller"},
+ {"name": "05_directory_body", "path": "/odoo/action-legal_department_management.action_ldm_body_directory/2", "wait": ".o_form_view"},
+ {"name": "06_expenses", "path": "/odoo/action-legal_department_management.action_ldm_expense", "wait": ".o_view_controller"},
+ {"name": "07_advance", "path": "/odoo/action-legal_department_management.action_ldm_advance/1", "wait": ".o_form_view"},
+ {"name": "08_matters", "path": "/odoo/matters", "wait": ".o_view_controller"}
+]

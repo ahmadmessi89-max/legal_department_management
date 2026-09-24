@@ -6,8 +6,11 @@ Usage:
         --screens screens.json [--width 1440 --height 900] [--lang ar_001]
 
 screens.json is a list of {"name": "...", "path": "/odoo/action-...", "wait": "css selector",
-"clicks": ["css", ...] (optional), "full": true}.  Each screen yields <name>.png and one row in
-metrics.json with console errors, page errors and whether an Odoo error dialog was open.
+"clicks": ["css", ...] (optional), "full": true, "scroll": "css" (optional, scrolled into view
+before the shot), "height": 1800 (optional, a taller window for this screen: Odoo scrolls inside
+the action, so a full-page shot of a long form needs a tall window)}.  Each screen yields
+<name>.png and one row in metrics.json with console errors, page errors, whether an Odoo error
+dialog was open and whether the page scrolls sideways (hscroll).
 Waits on selectors, never on networkidle: the bus keeps a long-poll open forever.
 """
 import argparse, json, os, sys, time
@@ -43,15 +46,21 @@ with sync_playwright() as p:
         console.clear(); perr.clear()
         row = {'name': s['name'], 'path': s.get('path')}
         try:
+            page.set_viewport_size({'width': a.width, 'height': s.get('height', a.height)})
             if s.get('path'):
                 page.goto(a.base + s['path'])
             page.wait_for_selector(s.get('wait', '.o_action_manager > *'), timeout=30000)
             for c in s.get('clicks', []):
                 page.click(c, timeout=15000)
                 time.sleep(0.8)
+            if s.get('scroll'):
+                page.locator(s['scroll']).first.scroll_into_view_if_needed(timeout=15000)
             time.sleep(s.get('settle', 1.2))
             row['error_dialog'] = page.locator('.o_error_dialog, .o_dialog .modal-title:has-text("Error")').count() > 0
             row['height'] = page.evaluate('document.scrollingElement.scrollHeight')
+            row['hscroll'] = page.evaluate(
+                "[document.scrollingElement, document.querySelector('.o_action_manager'), "
+                "document.querySelector('.o_content')].some(e => e && e.scrollWidth > e.clientWidth + 1)")
             fn = os.path.join(a.out, f"{a.prefix}{s['name']}.png")
             page.screenshot(path=fn, full_page=s.get('full', True))
             row['shot'] = fn
@@ -60,7 +69,8 @@ with sync_playwright() as p:
         row['console_errors'] = list(console)
         row['page_errors'] = list(perr)
         rows.append(row)
-        print(('FAIL ' if row.get('failed') or row.get('error_dialog') or perr else 'ok   ') + s['name'], flush=True)
+        print(('FAIL ' if row.get('failed') or row.get('error_dialog') or perr else 'ok   ') + s['name']
+              + ('  (scrolls sideways)' if row.get('hscroll') else ''), flush=True)
     b.close()
 json.dump(rows, open(os.path.join(a.out, f'{a.prefix}metrics.json'), 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
 bad = [r for r in rows if r.get('failed') or r.get('error_dialog') or r['page_errors']]

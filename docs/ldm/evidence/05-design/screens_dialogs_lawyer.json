@@ -1,0 +1,7 @@
+[
+ {"name": "70_outcome_dialog", "path": "/odoo/matters/6", "wait": ".o_ldm_next", "clicks": [".o_ldm_next .o_ldm_action_primary"], "settle": 1.5},
+ {"name": "71_close_dialog_billing", "path": "/odoo/matters/28", "wait": ".o_form_view", "clicks": ["button[name=action_set_done]"], "settle": 1.5},
+ {"name": "72_revoke_poa_dialog", "path": "/odoo/powers-of-attorney/1", "wait": ".o_form_view", "clicks": ["button[name=action_ldm_revoke]"], "settle": 1.5},
+ {"name": "73_client_file_lawyer", "path": "/odoo/legal-clients/1", "wait": ".o_ldm_services", "scroll": ".o_ldm_services", "settle": 1.5},
+ {"name": "74_hearing_list", "path": "/odoo/action-legal_department_management.action_ldm_agenda", "wait": ".o_view_controller"}
+]

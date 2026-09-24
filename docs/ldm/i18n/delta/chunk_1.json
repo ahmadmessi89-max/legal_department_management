@@ -1,0 +1,502 @@
+[
+ {
+  "id": 655,
+  "msgid": "Deadlines missed in the period",
+  "where": [
+   "code:models/ds_analytics.py"
+  ]
+ },
+ {
+  "id": 1083,
+  "msgid": "Last 12 months",
+  "where": [
+   "code:models/ds_analytics.py"
+  ]
+ },
+ {
+  "id": 1084,
+  "msgid": "Last 3 months",
+  "where": [
+   "code:models/ds_analytics.py"
+  ]
+ },
+ {
+  "id": 1401,
+  "msgid": "No matter type",
+  "where": [
+   "code:models/ds_analytics.py"
+  ]
+ },
+ {
+  "id": 1430,
+  "msgid": "Nobody",
+  "where": [
+   "code:models/ds_analytics.py"
+  ]
+ },
+ {
+  "id": 1632,
+  "msgid": "Other clients",
+  "where": [
+   "code:models/ds_analytics.py"
+  ]
+ },
+ {
+  "id": 2106,
+  "msgid": "The analytics board is for legal managers and auditors.",
+  "where": [
+   "code:models/ds_analytics.py"
+  ]
+ },
+ {
+  "id": 2251,
+  "msgid": "This month",
+  "where": [
+   "code:models/ds_analytics.py"
+  ]
+ },
+ {
+  "id": 2567,
+  "msgid": "in_progress",
+  "where": [
+   "code:models/ds_analytics.py"
+  ]
+ },
+ {
+  "id": 2575,
+  "msgid": "pending_docs",
+  "where": [
+   "code:models/ds_analytics.py"
+  ]
+ },
+ {
+  "id": 1450,
+  "msgid": "Not started yet",
+  "where": [
+   "code:models/ds_services.py"
+  ]
+ },
+ {
+  "id": 1637,
+  "msgid": "Other services",
+  "where": [
+   "code:models/ds_services.py",
+   "code:static/src/company_file/service_overview.js"
+  ]
+ },
+ {
+  "id": 2373,
+  "msgid": "Waiting for documents",
+  "where": [
+   "code:models/ds_services.py"
+  ]
+ },
+ {
+  "id": 707,
+  "msgid": "Document expires on %(date)s: %(name)s — %(number)s",
+  "where": [
+   "code:models/gov_matters.py"
+  ]
+ },
+ {
+  "id": 2085,
+  "msgid": "Target date %(date)s — %(number)s",
+  "where": [
+   "code:models/legal_task.py"
+  ]
+ },
+ {
+  "id": 1022,
+  "msgid": "Invoice — %s",
+  "where": [
+   "code:models/money_company.py"
+  ]
+ },
+ {
+  "id": 1673,
+  "msgid": "Payment received — %s",
+  "where": [
+   "code:models/money_company.py"
+  ]
+ },
+ {
+  "id": 1005,
+  "msgid": "Instalment due %(date)s: %(name)s — %(number)s",
+  "where": [
+   "code:models/money_task.py"
+  ]
+ },
+ {
+  "id": 268,
+  "msgid": "Answer letter %(name)s by %(date)s",
+  "where": [
+   "code:models/reg_reminders.py"
+  ]
+ },
+ {
+  "id": 419,
+  "msgid": "Chase the answer to letter %(name)s, due %(date)s",
+  "where": [
+   "code:models/reg_reminders.py"
+  ]
+ },
+ {
+  "id": 1178,
+  "msgid": "Letter of guarantee expires on %(date)s — %(name)s",
+  "where": [
+   "code:models/reg_reminders.py"
+  ]
+ },
+ {
+  "id": 1713,
+  "msgid": "Power of attorney expires on %(date)s — %(name)s",
+  "where": [
+   "code:models/reg_reminders.py"
+  ]
+ },
+ {
+  "id": 24,
+  "msgid": "%(met)s met, %(missed)s missed",
+  "where": [
+   "code:static/src/analytics/analytics.js"
+  ]
+ },
+ {
+  "id": 36,
+  "msgid": "%(people)s people carry %(count)s open matters",
+  "where": [
+   "code:static/src/analytics/analytics.js"
+  ]
+ },
+ {
+  "id": 88,
+  "msgid": "%s working days",
+  "where": [
+   "code:static/src/analytics/analytics.js"
+  ]
+ },
+ {
+  "id": 305,
+  "msgid": "Are deadlines met?",
+  "where": [
+   "code:static/src/analytics/analytics.js"
+  ]
+ },
+ {
+  "id": 463,
+  "msgid": "Claim values of open lawsuits by the side we act for, in the company currency.",
+  "where": [
+   "code:static/src/analytics/analytics.js"
+  ]
+ },
+ {
+  "id": 535,
+  "msgid": "Confirmed expenses by month and client, in the company currency.",
+  "where": [
+   "code:static/src/analytics/analytics.js"
+  ]
+ },
+ {
+  "id": 585,
+  "msgid": "Counting…",
+  "where": [
+   "code:static/src/analytics/analytics.js"
+  ]
+ },
+ {
+  "id": 971,
+  "msgid": "How long does each type take to close?",
+  "where": [
+   "code:static/src/analytics/analytics.js"
+  ]
+ },
+ {
+  "id": 972,
+  "msgid": "How the work is going",
+  "where": [
+   "code:static/src/analytics/analytics.js"
+  ]
+ },
+ {
+  "id": 1260,
+  "msgid": "Median working days from opening to closing, matters closed in the period.",
+  "where": [
+   "code:static/src/analytics/analytics.js"
+  ]
+ },
+ {
+  "id": 1309,
+  "msgid": "Most: %(label)s (%(value)s)",
+  "where": [
+   "code:static/src/analytics/analytics.js"
+  ]
+ },
+ {
+  "id": 1385,
+  "msgid": "No deadline was met or missed in the period.",
+  "where": [
+   "code:static/src/analytics/analytics.js"
+  ]
+ },
+ {
+  "id": 1388,
+  "msgid": "No expense in the period.",
+  "where": [
+   "code:static/src/analytics/analytics.js"
+  ]
+ },
+ {
+  "id": 1403,
+  "msgid": "No matter was closed in the period.",
+  "where": [
+   "code:static/src/analytics/analytics.js"
+  ]
+ },
+ {
+  "id": 1409,
+  "msgid": "No open lawsuit has a claim value.",
+  "where": [
+   "code:static/src/analytics/analytics.js"
+  ]
+ },
+ {
+  "id": 1412,
+  "msgid": "No open matter.",
+  "where": [
+   "code:static/src/analytics/analytics.js"
+  ]
+ },
+ {
+  "id": 1429,
+  "msgid": "No transaction is at a body past its target.",
+  "where": [
+   "code:static/src/analytics/analytics.js"
+  ]
+ },
+ {
+  "id": 1580,
+  "msgid": "Open government transactions at the body past its usual answer time.",
+  "where": [
+   "code:static/src/analytics/analytics.js"
+  ]
+ },
+ {
+  "id": 1585,
+  "msgid": "Open matters by body or court.",
+  "where": [
+   "code:static/src/analytics/analytics.js"
+  ]
+ },
+ {
+  "id": 1586,
+  "msgid": "Open matters by kind.",
+  "where": [
+   "code:static/src/analytics/analytics.js"
+  ]
+ },
+ {
+  "id": 1587,
+  "msgid": "Open matters by responsible lawyer and status.",
+  "where": [
+   "code:static/src/analytics/analytics.js"
+  ]
+ },
+ {
+  "id": 1597,
+  "msgid": "Open the list",
+  "where": [
+   "code:static/src/analytics/analytics.js"
+  ]
+ },
+ {
+  "id": 1640,
+  "msgid": "Our statutory and reply deadlines, met or missed, by month.",
+  "where": [
+   "code:static/src/analytics/analytics.js"
+  ]
+ },
+ {
+  "id": 2019,
+  "msgid": "Slowest: %(type)s, %(days)s working days (%(count)s closed)",
+  "where": [
+   "code:static/src/analytics/analytics.js"
+  ]
+ },
+ {
+  "id": 2151,
+  "msgid": "The figures could not be loaded.",
+  "where": [
+   "code:static/src/analytics/analytics.js"
+  ]
+ },
+ {
+  "id": 2407,
+  "msgid": "What do we spend, and for whom?",
+  "where": [
+   "code:static/src/analytics/analytics.js"
+  ]
+ },
+ {
+  "id": 2411,
+  "msgid": "What is at stake in court?",
+  "where": [
+   "code:static/src/analytics/analytics.js"
+  ]
+ },
+ {
+  "id": 2416,
+  "msgid": "What kind of work is open?",
+  "where": [
+   "code:static/src/analytics/analytics.js"
+  ]
+ },
+ {
+  "id": 2450,
+  "msgid": "Where are the open matters?",
+  "where": [
+   "code:static/src/analytics/analytics.js"
+  ]
+ },
+ {
+  "id": 2454,
+  "msgid": "Which bodies keep our files too long?",
+  "where": [
+   "code:static/src/analytics/analytics.js"
+  ]
+ },
+ {
+  "id": 2459,
+  "msgid": "Who carries the work?",
+  "where": [
+   "code:static/src/analytics/analytics.js"
+  ]
+ },
+ {
+  "id": 246,
+  "msgid": "Alt+Shift+H",
+  "where": [
+   "code:static/src/cockpit/cockpit_widgets.xml"
+  ]
+ },
+ {
+  "id": 57,
+  "msgid": "%s in progress",
+  "where": [
+   "code:static/src/company_file/service_overview.js"
+  ]
+ },
+ {
+  "id": 79,
+  "msgid": "%s not done yet",
+  "where": [
+   "code:static/src/company_file/service_overview.js"
+  ]
+ },
+ {
+  "id": 729,
+  "msgid": "Done on %s",
+  "where": [
+   "code:static/src/company_file/service_overview.js"
+  ]
+ },
+ {
+  "id": 741,
+  "msgid": "Due by %s",
+  "where": [
+   "code:static/src/company_file/service_overview.js"
+  ]
+ },
+ {
+  "id": 1218,
+  "msgid": "Mark a matter type as tracked for every company to follow it here.",
+  "where": [
+   "code:static/src/company_file/service_overview.js"
+  ]
+ },
+ {
+  "id": 1420,
+  "msgid": "No service is tracked for this client yet.",
+  "where": [
+   "code:static/src/company_file/service_overview.js"
+  ]
+ },
+ {
+  "id": 247,
+  "msgid": "Alt+Shift+N",
+  "where": [
+   "code:static/src/my_day/my_day.xml"
+  ]
+ },
+ {
+  "id": 629,
+  "msgid": "Ctrl K",
+  "where": [
+   "code:static/src/my_day/my_day.xml"
+  ]
+ },
+ {
+  "id": 261,
+  "msgid": "Analytics",
+  "where": [
+   "model:ir.actions.client,name:legal_department_management.action_ldm_analytics",
+   "model:ir.ui.menu,name:legal_department_management.menu_ldm_analytics"
+  ]
+ },
+ {
+  "id": 1971,
+  "msgid": "Service overview",
+  "where": [
+   "model:ir.model.fields,field_description:legal_department_management.field_legal_company__ldm_service_overview"
+  ]
+ },
+ {
+  "id": 1842,
+  "msgid": "Reminder source",
+  "where": [
+   "model:ir.model.fields,field_description:legal_department_management.field_mail_activity__ldm_reminder_key"
+  ]
+ },
+ {
+  "id": 2218,
+  "msgid": "The record a legal reminder is about, so it is closed when that record is done.",
+  "where": [
+   "model:ir.model.fields,help:legal_department_management.field_mail_activity__ldm_reminder_key"
+  ]
+ },
+ {
+  "id": 143,
+  "msgid": "<span> – </span>",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_engagement",
+   "model_terms:ir.ui.view,arch_db:legal_department_management.report_ldm_statement"
+  ]
+ },
+ {
+  "id": 113,
+  "msgid": "07XX XXX XXXX",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_client_message_wizard_form"
+  ]
+ },
+ {
+  "id": 1447,
+  "msgid": "Not set yet",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_ldm_hearing_form"
+  ]
+ },
+ {
+  "id": 142,
+  "msgid": "<span invisible=\"ldm_fund_balance_text\">0</span>",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_company_form_money"
+  ]
+ },
+ {
+  "id": 151,
+  "msgid": "<span>–</span>",
+  "where": [
+   "model_terms:ir.ui.view,arch_db:legal_department_management.view_legal_general_report_wizard_form"
+  ]
+ }
+]

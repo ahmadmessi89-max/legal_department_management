@@ -107,6 +107,20 @@ Baseline screens: `docs/ldm/evidence/00-baseline/` (eight screens, zero errors).
   `po_split.py split` on the new entries, `i18n_tsv.py sheet/check`, merge);
   run `verify_round.py` with `docs/ldm/tools/verify_plan.json` (7 roles × 23
   screens × Arabic/English × 1440/390); fix; hand over.
+- **Design direction changed (owner, 24 Sep evening):** the mockup-based
+  identity was judged "flat, no character"; the product now follows
+  **anu.ltd** with shadcn-grade components, using the design skills and MCP
+  tools. Binding brief: `docs/ldm/briefs/design-anu.md` (supersedes
+  `design-direction.md`). The design agent was stopped; its structure was
+  merged (`ecc4b88`: view scaffolding, analytics board, service overview,
+  reminders by key, time widget) and the ANU identity is being built in the
+  session: tokens, fonts (Inter Tight, Tajawal, Roboto Mono, self-hosted),
+  native views, the ink band with anu.ltd's network texture, the floating
+  bar (`o_ldm_floatbar`), stat tiles, charts in a Signal ramp. Work in
+  progress captures: `docs/ldm/evidence/07-anu-wip/` (not committed).
+  **Next:** delta translation of the strings the merge added (analytics
+  board), reports and letters in the identity, remaining screens by role,
+  the final round.
 - **Tests on main:** 0 failed, 0 errors of 342 (fresh install on a copy of
   `ldm_tpl`), no warnings. Commits `0da1cf6`, `916a158`, `05cbfab`.
 - **First verification round on main** (`docs/ldm/evidence/06-verify-main/`,

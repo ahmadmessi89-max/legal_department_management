@@ -1,0 +1,71 @@
+655	models/ds_analytics.py	Deadlines missed in the period
+1083	models/ds_analytics.py	Last 12 months
+1084	models/ds_analytics.py	Last 3 months
+1401	models/ds_analytics.py	No matter type
+1430	models/ds_analytics.py	Nobody
+1632	models/ds_analytics.py	Other clients
+2106	models/ds_analytics.py	The analytics board is for legal managers and auditors.
+2251	models/ds_analytics.py	This month
+2567	models/ds_analytics.py	in_progress
+2575	models/ds_analytics.py	pending_docs
+1450	models/ds_services.py	Not started yet
+1637	models/ds_services.py	Other services
+2373	models/ds_services.py	Waiting for documents
+707	models/gov_matters.py	Document expires on %(date)s: %(name)s — %(number)s
+2085	models/legal_task.py	Target date %(date)s — %(number)s
+1022	models/money_company.py	Invoice — %s
+1673	models/money_company.py	Payment received — %s
+1005	models/money_task.py	Instalment due %(date)s: %(name)s — %(number)s
+268	models/reg_reminders.py	Answer letter %(name)s by %(date)s
+419	models/reg_reminders.py	Chase the answer to letter %(name)s, due %(date)s
+1178	models/reg_reminders.py	Letter of guarantee expires on %(date)s — %(name)s
+1713	models/reg_reminders.py	Power of attorney expires on %(date)s — %(name)s
+24	static/src/analytics/analytics.js	%(met)s met, %(missed)s missed
+36	static/src/analytics/analytics.js	%(people)s people carry %(count)s open matters
+88	static/src/analytics/analytics.js	%s working days
+305	static/src/analytics/analytics.js	Are deadlines met?
+463	static/src/analytics/analytics.js	Claim values of open lawsuits by the side we act for, in the company currency.
+535	static/src/analytics/analytics.js	Confirmed expenses by month and client, in the company currency.
+585	static/src/analytics/analytics.js	Counting…
+971	static/src/analytics/analytics.js	How long does each type take to close?
+972	static/src/analytics/analytics.js	How the work is going
+1260	static/src/analytics/analytics.js	Median working days from opening to closing, matters closed in the period.
+1309	static/src/analytics/analytics.js	Most: %(label)s (%(value)s)
+1385	static/src/analytics/analytics.js	No deadline was met or missed in the period.
+1388	static/src/analytics/analytics.js	No expense in the period.
+1403	static/src/analytics/analytics.js	No matter was closed in the period.
+1409	static/src/analytics/analytics.js	No open lawsuit has a claim value.
+1412	static/src/analytics/analytics.js	No open matter.
+1429	static/src/analytics/analytics.js	No transaction is at a body past its target.
+1580	static/src/analytics/analytics.js	Open government transactions at the body past its usual answer time.
+1585	static/src/analytics/analytics.js	Open matters by body or court.
+1586	static/src/analytics/analytics.js	Open matters by kind.
+1587	static/src/analytics/analytics.js	Open matters by responsible lawyer and status.
+1597	static/src/analytics/analytics.js	Open the list
+1640	static/src/analytics/analytics.js	Our statutory and reply deadlines, met or missed, by month.
+2019	static/src/analytics/analytics.js	Slowest: %(type)s, %(days)s working days (%(count)s closed)
+2151	static/src/analytics/analytics.js	The figures could not be loaded.
+2407	static/src/analytics/analytics.js	What do we spend, and for whom?
+2411	static/src/analytics/analytics.js	What is at stake in court?
+2416	static/src/analytics/analytics.js	What kind of work is open?
+2450	static/src/analytics/analytics.js	Where are the open matters?
+2454	static/src/analytics/analytics.js	Which bodies keep our files too long?
+2459	static/src/analytics/analytics.js	Who carries the work?
+246	static/src/cockpit/cockpit_widgets.xml	Alt+Shift+H
+57	static/src/company_file/service_overview.js	%s in progress
+79	static/src/company_file/service_overview.js	%s not done yet
+729	static/src/company_file/service_overview.js	Done on %s
+741	static/src/company_file/service_overview.js	Due by %s
+1218	static/src/company_file/service_overview.js	Mark a matter type as tracked for every company to follow it here.
+1420	static/src/company_file/service_overview.js	No service is tracked for this client yet.
+247	static/src/my_day/my_day.xml	Alt+Shift+N
+629	static/src/my_day/my_day.xml	Ctrl K
+261	legal_department_management.action_ldm_analytics	Analytics
+1971	legal_department_management.field_legal_company__ldm_service_overview	Service overview
+1842	legal_department_management.field_mail_activity__ldm_reminder_key	Reminder source
+2218	legal_department_management.field_mail_activity__ldm_reminder_key	The record a legal reminder is about, so it is closed when that record is done.
+143	legal_department_management.report_ldm_engagement	<span> – </span>
+113	legal_department_management.view_ldm_client_message_wizard_form	07XX XXX XXXX
+1447	legal_department_management.view_ldm_hearing_form	Not set yet
+142	legal_department_management.view_legal_company_form_money	<span invisible="ldm_fund_balance_text">0</span>
+151	legal_department_management.view_legal_general_report_wizard_form	<span>–</span>

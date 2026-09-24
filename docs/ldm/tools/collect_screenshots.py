@@ -24,7 +24,8 @@ STAGES = {
     "05-design": "4 - Design pass (one identity on every screen)",
     "06-verify-main": "5 - Verification round 1 (every role, Arabic and English, desktop and phone)",
     "06-verify-recheck": "5 - Verification round 1, recheck after the fixes",
-    "07-verify-final": "6 - Final verification round",
+    "07-anu-wip": "6 - ANU identity, work in progress",
+    "08-verify-final": "7 - Final verification round",
 }
 
 

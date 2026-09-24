@@ -1,0 +1,44 @@
+PASS legal.task count unchanged (8)
+PASS legal.company count unchanged (3)
+PASS legal.ministry count unchanged (4)
+PASS legal.department count unchanged (6)
+PASS sag_manager keeps every legal.task they saw
+PASS sag_manager keeps every legal.company they saw
+PASS admin keeps every legal.task they saw
+PASS admin keeps every legal.company they saw
+PASS sag_lawyer2 keeps every legal.task they saw
+PASS sag_lawyer2 keeps every legal.company they saw
+PASS sag_lawyer1 keeps every legal.task they saw
+PASS sag_lawyer1 keeps every legal.company they saw
+PASS base.group_system no longer implies legal manager
+PASS admin is still a legal manager (explicitly)
+PASS Karkh first-instance court classified
+PASS labour court classified
+PASS registry stays a government body
+PASS CASE/2026/09/006 at a body is a government transaction
+PASS CASE/2026/09/007 at a court is a lawsuit
+PASS CASE/2026/09/005 at a body is a government transaction
+PASS CASE/2026/09/010 at a court is a lawsuit
+PASS CASE/2026/09/008 at a court is a lawsuit
+PASS CASE/2026/09/010-8 at a body is a government transaction
+PASS CASE/2026/09/011 at a body is a government transaction
+PASS CASE/2026/09/009 at a body is a government transaction
+PASS Karkh lawsuit has exactly one session
+PASS its session date survives as the next session
+PASS notary session became a done visit step
+PASS legacy expenses became one expense line
+PASS every client has a contact
+PASS client phone carried to the contact
+PASS client email carried to the contact
+PASS client tax number on the contact
+PASS every responsible is on the team
+PASS ministry repaired from the department
+PASS matter numbers are unique
+PASS duplicated cron reminders reduced to one
+PASS approval in flight preserved
+PASS hybrid preset applied
+PASS billing switch on (hybrid)
+PASS legal calendar set
+PASS cron still calls the kept method
+PASS cron runs after the upgrade
+0 failure(s)

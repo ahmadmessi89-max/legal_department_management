@@ -1,0 +1,3 @@
+[
+ {"name": "90_settings", "path": "/odoo/action-legal_department_management.action_ldm_settings", "wait": ".app_settings_block[data-key='legal_department_management']", "height": 2200, "settle": 1.5}
+]

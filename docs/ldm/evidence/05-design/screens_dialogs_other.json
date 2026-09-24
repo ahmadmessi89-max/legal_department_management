@@ -1,0 +1,3 @@
+[
+ {"name": "80_visit_dialog", "path": "/odoo/matters/14", "wait": ".o_ldm_next", "clicks": [".o_ldm_next .o_ldm_action_primary"], "settle": 1.5}
+]

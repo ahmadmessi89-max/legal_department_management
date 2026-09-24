@@ -1,0 +1,13 @@
+[
+ {"name": "11_lawsuit", "path": "/odoo/matters/6", "wait": ".o_ldm_next"},
+ {"name": "12_outcome_dialog", "path": "/odoo/matters/6", "wait": ".o_ldm_next", "clicks": [".o_ldm_next .o_ldm_action_primary"], "settle": 1.5},
+ {"name": "13_client_file", "path": "/odoo/legal-clients/1", "wait": ".o_ldm_services", "scroll": ".o_ldm_services", "settle": 1.5},
+ {"name": "14_deadlines", "path": "/odoo/action-legal_department_management.action_ldm_deadline", "wait": ".o_view_controller"},
+ {"name": "15_sessions", "path": "/odoo/action-legal_department_management.action_ldm_agenda", "wait": ".o_view_controller"},
+ {"name": "16_poa_list", "path": "/odoo/powers-of-attorney", "wait": ".o_view_controller"},
+ {"name": "17_poa_form", "path": "/odoo/powers-of-attorney/1", "wait": ".o_form_view"},
+ {"name": "18_day_sheet", "path": "/odoo/action-legal_department_management.action_ldm_time_entry", "wait": ".o_view_controller"},
+ {"name": "19_letter", "path": "/odoo/correspondence/1", "wait": ".o_form_view"},
+ {"name": "20_fee_agreement", "path": "/odoo/action-legal_department_management.action_ldm_engagement/1", "wait": ".o_form_view"},
+ {"name": "21_session_form", "path": "/odoo/court-sessions/2", "wait": ".o_form_view"}
+]
