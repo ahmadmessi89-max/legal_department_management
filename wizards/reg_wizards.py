@@ -1,2 +1,7 @@
 # -*- coding: utf-8 -*-
-# Owned by the reg stream (docs/ldm/SPEC.md section 11).
+# Stream R: the dialogs of the registers and the report options.
+from . import reg_letter_wizards
+from . import reg_poa_wizards
+from . import reg_request_wizards
+from . import reg_guarantee_wizard
+from . import reg_report_wizards

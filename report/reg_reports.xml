@@ -1,4 +1,459 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Owned by the reg stream (docs/ldm/SPEC.md section 11). -->
 <odoo>
+    <!--
+        Printed outputs of the registers: the official letter, the register
+        book, the monthly status report and the legal opinion memo, plus the
+        stylesheet every legal report shares. The PDF engine (wkhtmltopdf) has
+        an old layout engine without logical CSS properties, so the sheet
+        avoids left and right altogether: tables, text-align start and end,
+        symmetric padding. Direction comes from the reader's language (the
+        letter: from the letter's language).
+    -->
+    <template id="report_ldm_style">
+        <style>
+            .o_ldm_r { font-size: 10.5pt; color: #1d2733; line-height: 1.45; }
+            .o_ldm_r h2 { font-size: 15pt; font-weight: 600; margin: 0 0 2px 0; }
+            .o_ldm_r .o_ldm_r_kicker { font-size: 9pt; color: #5a6672; text-transform: none; letter-spacing: 0.02em; }
+            .o_ldm_r .o_ldm_r_sub { font-size: 9.5pt; color: #5a6672; }
+            .o_ldm_r .o_ldm_r_section { font-size: 11pt; font-weight: 600; margin: 14px 0 4px 0; padding-bottom: 3px;
+                                        border-bottom: 1.5px solid #1d2733; }
+            .o_ldm_r table.o_ldm_r_table { width: 100%; border-collapse: collapse; margin: 2px 0 6px 0; }
+            .o_ldm_r table.o_ldm_r_table th { background-color: #eef1f4; font-weight: 600; font-size: 9pt;
+                                              padding: 4px 6px; border-bottom: 1px solid #c3ccd4; text-align: start; }
+            .o_ldm_r table.o_ldm_r_table td { padding: 4px 6px; border-bottom: 1px solid #e2e7eb; font-size: 9.5pt;
+                                              vertical-align: top; text-align: start; }
+            .o_ldm_r table.o_ldm_r_table tfoot td { font-weight: 600; border-top: 1px solid #1d2733; border-bottom: 0; }
+            .o_ldm_r .o_ldm_r_num { text-align: end; white-space: nowrap; }
+            .o_ldm_r .o_ldm_r_nowrap { white-space: nowrap; }
+            .o_ldm_r table.o_ldm_r_facts { width: 100%; border-collapse: collapse; margin: 8px 0; }
+            .o_ldm_r table.o_ldm_r_facts td { padding: 3px 6px; font-size: 9.5pt; vertical-align: top; text-align: start;
+                                              border-bottom: 1px solid #eef1f4; }
+            .o_ldm_r table.o_ldm_r_facts td.o_ldm_r_label { color: #5a6672; width: 18%; white-space: nowrap; }
+            .o_ldm_r .o_ldm_r_tick { display: inline-block; width: 10px; height: 10px; border: 1px solid #1d2733; }
+            .o_ldm_r .o_ldm_r_tick_done { background-color: #1d2733; }
+            .o_ldm_r .o_ldm_r_tick_skip { background-color: #c3ccd4; border-color: #c3ccd4; }
+            .o_ldm_r .o_ldm_r_muted { color: #7a858f; }
+            .o_ldm_r .o_ldm_r_late { color: #b42318; font-weight: 600; }
+            .o_ldm_r .o_ldm_r_void { text-decoration: line-through; color: #7a858f; }
+            .o_ldm_r .o_ldm_r_empty { padding: 10px 6px; color: #5a6672; font-style: italic; }
+            .o_ldm_r .o_ldm_r_note { white-space: pre-wrap; font-size: 9.5pt; padding: 6px 8px; border: 1px solid #e2e7eb; }
+            .o_ldm_r table.o_ldm_r_ruled td { height: 26px; border-bottom: 1px solid #9aa5ae; }
+            .o_ldm_r table.o_ldm_r_sign { width: 100%; margin-top: 26px; }
+            .o_ldm_r table.o_ldm_r_sign td { width: 50%; text-align: center; padding: 4px 10px; font-size: 9.5pt; vertical-align: top; }
+            .o_ldm_r .o_ldm_r_sign_name { height: 18px; line-height: 18px; overflow: hidden; font-weight: 600; }
+            .o_ldm_r .o_ldm_r_sign_line { margin-top: 30px; border-top: 1px solid #1d2733; padding-top: 3px; color: #5a6672; }
+            .o_ldm_r .o_ldm_r_qr { width: 26mm; height: 26mm; }
+            .o_ldm_r .o_ldm_r_badge { display: inline-block; padding: 0 5px; border: 1px solid #9aa5ae; border-radius: 3px;
+                                      font-size: 8.5pt; white-space: nowrap; }
+            .o_ldm_r .o_ldm_r_summary td { padding: 4px 10px 4px 0; font-size: 10pt; }
+            .o_ldm_r .o_ldm_r_summary b { font-size: 12pt; }
+            .o_ldm_r_letter { font-size: 12pt; line-height: 1.7; }
+            .o_ldm_r_letter table.o_ldm_r_refs { width: 100%; }
+            .o_ldm_r_letter table.o_ldm_r_refs td { padding: 1px 0; font-size: 11pt; text-align: end; }
+            .o_ldm_r_letter .o_ldm_r_to { margin-top: 18px; font-weight: 600; }
+            .o_ldm_r_letter .o_ldm_r_subject { margin: 14px 0 10px 0; text-align: center; font-weight: 600; text-decoration: underline; }
+            .o_ldm_r_letter .o_ldm_r_body p { margin: 0 0 8px 0; text-align: justify; }
+            .o_ldm_r_letter .o_ldm_r_closing { margin-top: 14px; }
+            .o_ldm_r_letter table.o_ldm_r_signature { width: 100%; margin-top: 26px; }
+            .o_ldm_r_letter table.o_ldm_r_signature td { width: 50%; text-align: center; font-weight: 600; }
+            .o_ldm_r_letter .o_ldm_r_cc { margin-top: 26px; font-size: 10pt; }
+        </style>
+    </template>
+
+    <!-- ================================================================
+         Official letter (كتاب رسمي, صادر)
+         ================================================================ -->
+    <record id="paperformat_ldm_a4" model="report.paperformat">
+        <field name="name">Legal A4 (letterhead)</field>
+        <field name="default" eval="False"/>
+        <field name="format">A4</field>
+        <field name="page_height">0</field>
+        <field name="page_width">0</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">52</field>
+        <field name="margin_bottom">32</field>
+        <field name="margin_left">0</field>
+        <field name="margin_right">0</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">52</field>
+        <field name="dpi">90</field>
+        <field name="css_margins" eval="True"/>
+    </record>
+
+    <record id="action_report_ldm_letter" model="ir.actions.report">
+        <field name="name">Official letter</field>
+        <field name="model">legal.correspondence</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">legal_department_management.report_ldm_letter</field>
+        <field name="report_file">legal_department_management.report_ldm_letter</field>
+        <field name="print_report_name">'Letter - %s' % (object.number or object.name or '')</field>
+        <field name="binding_model_id" ref="model_legal_correspondence"/>
+        <field name="binding_type">report</field>
+        <field name="paperformat_id" ref="paperformat_ldm_a4"/>
+    </record>
+
+    <template id="report_ldm_letter_document">
+        <t t-call="web.external_layout">
+            <div class="page o_ldm_r o_ldm_r_letter" t-att-dir="o._ldm_lang_direction()">
+                <t t-call="legal_department_management.report_ldm_style"/>
+                <table class="o_ldm_r_refs">
+                    <tr><td>Number: <b t-out="o.number or '__________'"/></td></tr>
+                    <tr><td>Date: <b t-out="o._ldm_fdate(o.date)"/></td></tr>
+                </table>
+                <div t-if="o.reply_to_id" class="o_ldm_r_sub">
+                    Your letter number <b t-out="o.reply_to_id.sender_ref or o.reply_to_id.number"/>
+                    of <b t-out="o._ldm_fdate(o.reply_to_id.sender_date or o.reply_to_id.date)"/>
+                </div>
+                <div class="o_ldm_r_to">
+                    <div>To: <span t-out="o.department_id.name or o.partner_id.name or ''"/></div>
+                    <div t-if="o.department_id.addressee_title" t-out="o.department_id.addressee_title"/>
+                </div>
+                <div class="o_ldm_r_subject">Subject: <span t-out="o.name"/></div>
+                <p>Greetings,</p>
+                <div class="o_ldm_r_body" t-field="o.body_html"/>
+                <p class="o_ldm_r_closing">With our regards.</p>
+                <table class="o_ldm_r_signature">
+                    <tr>
+                        <td/>
+                        <td>
+                            <div t-out="o.signatory_id.name or ''"/>
+                            <div t-if="o.signatory_title" t-out="o.signatory_title"/>
+                            <div class="o_ldm_r_sub" t-out="o.company_id.name"/>
+                        </td>
+                    </tr>
+                </table>
+                <div class="o_ldm_r_cc" t-if="o.cc_lines">
+                    <div><b>Copies to:</b></div>
+                    <t t-foreach="o.cc_lines.split('\n')" t-as="line">
+                        <div t-if="line.strip()">- <span t-out="line.strip()"/></div>
+                    </t>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="report_ldm_letter">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="legal_department_management.report_ldm_letter_document" t-lang="o.lang or user.lang"/>
+            </t>
+        </t>
+    </template>
+
+    <!-- ================================================================
+         Register book (سجل الصادر والوارد)
+         ================================================================ -->
+    <record id="action_report_ldm_register_book" model="ir.actions.report">
+        <field name="name">Register book</field>
+        <field name="model">legal.correspondence</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">legal_department_management.report_ldm_register_book</field>
+        <field name="report_file">legal_department_management.report_ldm_register_book</field>
+        <field name="print_report_name">'Register book'</field>
+        <field name="paperformat_id" ref="paperformat_ldm_a4"/>
+    </record>
+
+    <template id="report_ldm_register_book">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <div class="page o_ldm_r" t-att-dir="ldm_dir">
+                    <t t-call="legal_department_management.report_ldm_style"/>
+                    <div class="o_ldm_r_kicker">Correspondence register</div>
+                    <h2>Register book</h2>
+                    <div class="o_ldm_r_sub">
+                        From <span t-out="fdate(date_from)"/> to <span t-out="fdate(date_to)"/>
+                    </div>
+                    <t t-foreach="books" t-as="book">
+                        <div class="o_ldm_r_section">
+                            <span t-out="book['title']"/> · <span t-out="len(book['letters'])"/>
+                        </div>
+                        <table class="o_ldm_r_table">
+                            <thead>
+                                <tr>
+                                    <th>Number</th>
+                                    <th>Date</th>
+                                    <th>Subject</th>
+                                    <th t-if="book['direction'] == 'incoming'">From</th>
+                                    <th t-else="">To</th>
+                                    <th t-if="book['direction'] == 'incoming'">Their number and date</th>
+                                    <th>Matter</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-if="not book['letters']">
+                                    <td colspan="6" class="o_ldm_r_empty">No letters in this period.</td>
+                                </tr>
+                                <tr t-foreach="book['letters']" t-as="letter">
+                                    <t t-set="struck" t-value="'o_ldm_r_void' if letter.state == 'void' else ''"/>
+                                    <td t-attf-class="o_ldm_r_nowrap {{struck}}" t-out="letter.number"/>
+                                    <td t-attf-class="o_ldm_r_nowrap {{struck}}" t-out="fdate(letter.date)"/>
+                                    <td>
+                                        <span t-att-class="struck or None" t-out="letter.name"/>
+                                        <div t-if="letter.state == 'void'" class="o_ldm_r_sub">
+                                            Void: <span t-out="letter.void_reason"/>
+                                        </div>
+                                    </td>
+                                    <td t-out="letter.party_display or ''"/>
+                                    <td t-if="book['direction'] == 'incoming'" class="o_ldm_r_nowrap">
+                                        <span t-out="letter.sender_ref or ''"/>
+                                        <span t-if="letter.sender_date"> · <span t-out="fdate(letter.sender_date)"/></span>
+                                    </td>
+                                    <td class="o_ldm_r_nowrap" t-out="letter.task_id.task_number or ''"/>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </t>
+                </div>
+            </t>
+        </t>
+    </template>
+
+    <!-- ================================================================
+         Monthly status report (موقف الدعاوى والمعاملات)
+         ================================================================ -->
+    <record id="action_report_ldm_monthly_status" model="ir.actions.report">
+        <field name="name">Monthly status of lawsuits and transactions</field>
+        <field name="model">legal.task</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">legal_department_management.report_ldm_monthly_status</field>
+        <field name="report_file">legal_department_management.report_ldm_monthly_status</field>
+        <field name="print_report_name">'Monthly status report'</field>
+        <field name="paperformat_id" ref="paperformat_ldm_a4"/>
+    </record>
+
+    <template id="report_ldm_money_list">
+        <t t-if="not amounts">–</t>
+        <t t-foreach="amounts" t-as="pair">
+            <div class="o_ldm_r_nowrap" t-out="money(pair[1], pair[0])"/>
+        </t>
+    </template>
+
+    <template id="report_ldm_monthly_status">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <div class="page o_ldm_r" t-att-dir="ldm_dir">
+                    <t t-call="legal_department_management.report_ldm_style"/>
+                    <div class="o_ldm_r_kicker">Monthly status report</div>
+                    <h2>Status of lawsuits and transactions</h2>
+                    <div class="o_ldm_r_sub">From <span t-out="fdate(date_from)"/> to <span t-out="fdate(date_to)"/></div>
+
+                    <div class="o_ldm_r_section">Lawsuits for and against us</div>
+                    <table class="o_ldm_r_table">
+                        <thead>
+                            <tr>
+                                <th/>
+                                <th class="o_ldm_r_num">Open</th>
+                                <th class="o_ldm_r_num">Value of the open claims</th>
+                                <th class="o_ldm_r_num">Opened in the period</th>
+                                <th class="o_ldm_r_num">Closed in the period</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-foreach="side_rows" t-as="row">
+                                <td t-out="row['title']"/>
+                                <td class="o_ldm_r_num" t-out="row['open']"/>
+                                <td class="o_ldm_r_num">
+                                    <t t-set="amounts" t-value="row['value']"/>
+                                    <t t-call="legal_department_management.report_ldm_money_list"/>
+                                </td>
+                                <td class="o_ldm_r_num" t-out="row['opened']"/>
+                                <td class="o_ldm_r_num" t-out="row['closed']"/>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="o_ldm_r_section">Matters by kind</div>
+                    <table class="o_ldm_r_table">
+                        <thead>
+                            <tr>
+                                <th>Kind</th>
+                                <th class="o_ldm_r_num">Opened in the period</th>
+                                <th class="o_ldm_r_num">Closed in the period</th>
+                                <th class="o_ldm_r_num">Open now</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-if="not kind_rows"><td colspan="4" class="o_ldm_r_empty">No matters.</td></tr>
+                            <tr t-foreach="kind_rows" t-as="row">
+                                <td t-out="row['title']"/>
+                                <td class="o_ldm_r_num" t-out="row['opened']"/>
+                                <td class="o_ldm_r_num" t-out="row['closed']"/>
+                                <td class="o_ldm_r_num" t-out="row['open']"/>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="o_ldm_r_section">Court sessions and judgments</div>
+                    <table class="o_ldm_r_summary">
+                        <tr>
+                            <td>Sessions held: <b t-out="held"/></td>
+                            <td>Sessions still planned in the period: <b t-out="planned"/></td>
+                        </tr>
+                    </table>
+                    <table class="o_ldm_r_table">
+                        <thead>
+                            <tr>
+                                <th>Judgments by result</th>
+                                <th class="o_ldm_r_num">Number</th>
+                                <th class="o_ldm_r_num">Amount awarded</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-if="not judgment_rows"><td colspan="3" class="o_ldm_r_empty">No judgment in the period.</td></tr>
+                            <tr t-foreach="judgment_rows" t-as="row">
+                                <td t-out="row['title']"/>
+                                <td class="o_ldm_r_num" t-out="row['count']"/>
+                                <td class="o_ldm_r_num">
+                                    <t t-set="amounts" t-value="row['awarded']"/>
+                                    <t t-call="legal_department_management.report_ldm_money_list"/>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="o_ldm_r_section">Challenges pending · <span t-out="len(challenges)"/></div>
+                    <table class="o_ldm_r_table" t-if="challenges">
+                        <thead><tr><th>Matter</th><th>Period</th><th>Act by</th></tr></thead>
+                        <tbody>
+                            <tr t-foreach="challenges[:15]" t-as="deadline">
+                                <td t-out="deadline.task_id.display_name or ''"/>
+                                <td t-out="deadline.name"/>
+                                <td class="o_ldm_r_nowrap">
+                                    <span t-if="deadline.date_safe" t-out="fdate(deadline.date_safe)"/>
+                                    <span t-else="" class="o_ldm_r_muted">Awaiting notification</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="o_ldm_r_section">Periods missed · <span t-out="len(missed)"/></div>
+                    <table class="o_ldm_r_table" t-if="missed">
+                        <thead><tr><th>Matter</th><th>Period</th><th>Legal last day</th></tr></thead>
+                        <tbody>
+                            <tr t-foreach="missed" t-as="deadline">
+                                <td t-out="deadline.task_id.display_name or ''"/>
+                                <td t-out="deadline.name"/>
+                                <td class="o_ldm_r_nowrap o_ldm_r_late" t-out="fdate(deadline.date_deadline)"/>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div t-else="" class="o_ldm_r_empty">No period was missed.</div>
+
+                    <div class="o_ldm_r_section">Government transactions by body</div>
+                    <table class="o_ldm_r_table">
+                        <thead>
+                            <tr>
+                                <th>Body</th>
+                                <th class="o_ldm_r_num">Opened</th>
+                                <th class="o_ldm_r_num">Done</th>
+                                <th class="o_ldm_r_num">Open</th>
+                                <th class="o_ldm_r_num">Past target</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-if="not body_rows"><td colspan="5" class="o_ldm_r_empty">No government transactions.</td></tr>
+                            <tr t-foreach="body_rows" t-as="row">
+                                <td t-out="row['title']"/>
+                                <td class="o_ldm_r_num" t-out="row['opened']"/>
+                                <td class="o_ldm_r_num" t-out="row['closed']"/>
+                                <td class="o_ldm_r_num" t-out="row['open']"/>
+                                <td t-att-class="'o_ldm_r_num o_ldm_r_late' if row['overdue'] else 'o_ldm_r_num'" t-out="row['overdue']"/>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="o_ldm_r_section">Expiring before <span t-out="fdate(horizon)"/></div>
+                    <table class="o_ldm_r_table">
+                        <thead><tr><th>What</th><th>Client</th><th>Expires on</th></tr></thead>
+                        <tbody>
+                            <tr t-if="not documents and not poas"><td colspan="3" class="o_ldm_r_empty">Nothing expires in the next 60 days.</td></tr>
+                            <tr t-foreach="poas" t-as="poa">
+                                <td t-out="poa.name"/>
+                                <td t-out="poa.principal_company_id.name or ''"/>
+                                <td class="o_ldm_r_nowrap" t-out="fdate(poa.date_expiry)"/>
+                            </tr>
+                            <tr t-foreach="documents" t-as="document">
+                                <td><span t-out="document.document_type_id.name"/> <span t-if="document.number" t-out="document.number"/></td>
+                                <td t-out="document.legal_company_id.name"/>
+                                <td class="o_ldm_r_nowrap" t-out="fdate(document.date_expiry)"/>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </t>
+    </template>
+
+    <!-- ================================================================
+         Legal opinion memo (مذكرة رأي قانوني)
+         ================================================================ -->
+    <record id="action_report_ldm_opinion_memo" model="ir.actions.report">
+        <field name="name">Legal opinion memo</field>
+        <field name="model">legal.task</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">legal_department_management.report_ldm_opinion_memo</field>
+        <field name="report_file">legal_department_management.report_ldm_opinion_memo</field>
+        <field name="print_report_name">'Legal opinion %s' % (object.opinion_number or object.task_number or '')</field>
+        <field name="paperformat_id" ref="paperformat_ldm_a4"/>
+    </record>
+
+    <template id="report_ldm_opinion_memo_document">
+        <t t-call="web.external_layout">
+            <div class="page o_ldm_r" t-att-dir="ldm_dir">
+                <t t-call="legal_department_management.report_ldm_style"/>
+                <div class="o_ldm_r_kicker">Legal opinion memo</div>
+                <h2 t-out="doc.name"/>
+                <table class="o_ldm_r_facts">
+                    <tr>
+                        <td class="o_ldm_r_label">Opinion number</td>
+                        <td><b t-if="doc.opinion_number" t-out="doc.opinion_number"/><span t-else="" class="o_ldm_r_muted">Not issued yet</span></td>
+                        <td class="o_ldm_r_label">Issued on</td>
+                        <td t-out="fdate(doc.opinion_date)"/>
+                    </tr>
+                    <tr>
+                        <td class="o_ldm_r_label">Asked by</td>
+                        <td t-out="doc.requesting_unit or doc.requester_id.name or ''"/>
+                        <td class="o_ldm_r_label">Client</td>
+                        <td t-out="doc.legal_company_id.name"/>
+                    </tr>
+                    <tr t-if="doc.supersedes_id">
+                        <td class="o_ldm_r_label">Replaces</td>
+                        <td colspan="3">
+                            Opinion <span t-out="doc.supersedes_id.opinion_number or doc.supersedes_id.task_number"/>
+                            of <span t-out="fdate(doc.supersedes_id.opinion_date)"/>
+                        </td>
+                    </tr>
+                </table>
+                <t t-if="can_notes">
+                    <div class="o_ldm_r_section">The question</div>
+                    <div class="o_ldm_r_note" t-out="doc.question or ''"/>
+                    <div class="o_ldm_r_section">The opinion</div>
+                    <div t-field="doc.opinion_html"/>
+                </t>
+                <table class="o_ldm_r_sign">
+                    <tr>
+                        <td>
+                            <div>Prepared by</div>
+                            <div class="o_ldm_r_sign_name" t-out="doc.lawyer_id.name"/>
+                            <div class="o_ldm_r_sign_line">Signature</div>
+                        </td>
+                        <td>
+                            <div>Approved by</div>
+                            <div class="o_ldm_r_sign_name" t-out="(doc.opinion_issued_by_id or user).name"/>
+                            <div class="o_ldm_r_sign_line">Signature and stamp</div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </t>
+    </template>
+
+    <template id="report_ldm_opinion_memo">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-set="o" t-value="doc"/>
+                <t t-call="legal_department_management.report_ldm_opinion_memo_document"/>
+            </t>
+        </t>
+    </template>
 </odoo>
