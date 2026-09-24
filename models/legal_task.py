@@ -774,10 +774,7 @@ class LegalTask(models.Model):
         late. Running it twice changes nothing. Dates are local to the legal
         calendar's timezone."""
         for company in self.env["res.company"].search([]):
-            calendar = company._ldm_calendar()
-            tz = (calendar and calendar.tz) or "Asia/Baghdad"
-            today = fields.Date.context_today(self.with_context(tz=tz))
-            horizon = company.ldm_add_working_days(today, company.ldm_reminder_days or 3)
+            today, horizon = self._ldm_reminder_window(company)
             items = self.with_company(company)._ldm_reminder_items(company, today, horizon)
             for item in items:
                 # (matter, user, date, summary, activity type[, key]): the key names
@@ -812,6 +809,15 @@ class LegalTask(models.Model):
                     activity_type_id=activity_type.id if activity_type else False,
                     summary=summary, user_id=user.id, date_deadline=date, ldm_reminder_key=key or False)
         return True
+
+    @api.model
+    def _ldm_reminder_window(self, company):
+        """Today in the legal calendar's timezone, and the last day a reminder
+        looks ahead to (the company's reminder days, in working days)."""
+        calendar = company._ldm_calendar()
+        tz = (calendar and calendar.tz) or "Asia/Baghdad"
+        today = fields.Date.context_today(self.with_context(tz=tz))
+        return today, company.ldm_add_working_days(today, company.ldm_reminder_days or 3)
 
     @api.model
     def _ldm_managers(self, company):

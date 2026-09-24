@@ -354,7 +354,13 @@ class LegalEngagementLine(models.Model):
         if not self.env.su and {"amount", "engagement_id"} & set(vals) \
                 and any(l.state in ("invoiced", "paid") for l in self):
             raise UserError(_("An invoiced instalment cannot change. Cancel its invoice first."))
-        return super().write(vals)
+        # An instalment that leaves "due" (invoiced, paid, waived) closes its
+        # reminder at once, not at the next daily run.
+        was_due = "state" in vals and bool(self.filtered(lambda l: l.state == "due"))
+        result = super().write(vals)
+        if was_due:
+            self.env["legal.task"]._ldm_sweep_instalment_reminders()
+        return result
 
     def unlink(self):
         if not self.env.su and any(l.state in ("invoiced", "paid") for l in self):

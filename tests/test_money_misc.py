@@ -227,6 +227,28 @@ class TestMoneyMisc(MoneyCase):
         self.env["legal.task"]._ldm_run_reminders()
         self.assertEqual(len(matter.activity_ids.filtered(lambda a: a.activity_type_id == activity_type)), 1)
 
+    def test_instalments_due_share_one_reminder_that_closes(self):
+        engagement = self.engagement(fee_type="installments")
+        matter = self.make_matter(name="Retainer matter", engagement_id=engagement.id)
+        engagement.line_ids = [Command.create({"name": f"Month {n}", "trigger_event": "manual", "amount": 10,
+                                               "task_id": matter.id}) for n in (1, 2, 3)]
+        engagement.action_ldm_activate()
+        engagement.line_ids.action_ldm_mark_due()
+        self.env["legal.task"]._ldm_run_reminders()
+        activity_type = self.env.ref("legal_department_management.ldm_activity_fee_agreement")
+        reminders = matter.activity_ids.filtered(lambda a: a.activity_type_id == activity_type)
+        self.assertEqual(len(reminders), 1, "three due instalments are one row, not three")
+        self.assertIn("3", reminders.summary)
+        engagement.line_ids[:2]._ldm_waive("Settled in kind")
+        reminders = matter.activity_ids.filtered(lambda a: a.activity_type_id == activity_type)
+        self.env["legal.task"]._ldm_run_reminders()
+        reminders = matter.activity_ids.filtered(lambda a: a.activity_type_id == activity_type)
+        self.assertEqual(len(reminders), 1, "one instalment left: its own reminder, the grouped one closed")
+        self.assertIn("Month 3", reminders.summary)
+        engagement.line_ids[2:]._ldm_waive("Settled in kind")
+        self.assertFalse(matter.activity_ids.filtered(lambda a: a.activity_type_id == activity_type),
+                         "nothing due, no reminder left open")
+
     def test_client_money_summary_on_the_dossier(self):
         self.env["legal.client.fund.line"].create({"legal_company_id": self.client_a.id, "kind": "deposit",
                                                    "amount": 250_000, "currency_id": self.cur.id})

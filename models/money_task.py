@@ -280,19 +280,67 @@ class LegalTask(models.Model):
         items = super()._ldm_reminder_items(company, today, horizon)
         if not self._ldm_feature("group_ldm_billing"):
             return items
+        return items + self._ldm_instalment_items(company, today, horizon)
+
+    @api.model
+    def _ldm_instalment_items(self, company, today, horizon):
+        """One reminder per agreement and matter: a single due instalment by its
+        name, several as one line ("3 instalments due since 1 June"), so a
+        retainer left unbilled for months is one row on My Day, not one a month."""
         lines = self.env["legal.engagement.line"].sudo().search([
             ("company_id", "=", company.id), ("state", "=", "due"), ("date", "<=", horizon),
-            ("engagement_id.state", "=", "active")])
+            ("engagement_id.state", "=", "active")], order="date, id")
+        groups = {}
         for line in lines:
             task = line.task_id or line.engagement_id.task_ids.filtered(lambda t: t.state in OPEN)[:1]
-            if not task:
-                continue
-            user = line.engagement_id.lawyer_id or task.lawyer_id
+            if task:
+                groups.setdefault((line.engagement_id, task), []).append(line)
+        items = []
+        for (engagement, task), group in groups.items():
+            user = engagement.lawyer_id or task.lawyer_id
             env = self._ldm_reminder_env(user)
-            summary = env._("Instalment due %(date)s: %(name)s — %(number)s",
-                            date=ldm_day(env, line.date, today), name=line.name, number=task.task_number)
-            items.append((task, user, line.date, summary, "ldm_activity_fee_agreement", ldm_key(line)))
+            first = group[0]
+            if len(group) == 1:
+                summary = env._("Instalment due %(date)s: %(name)s — %(number)s",
+                                date=ldm_day(env, first.date, today), name=first.name, number=task.task_number)
+                key = ldm_key(first)
+            else:
+                summary = env._("%(count)s instalments due since %(date)s: %(name)s — %(number)s",
+                                count=len(group), date=ldm_day(env, first.date, today), name=engagement.name,
+                                number=task.task_number)
+                key = ldm_key(engagement, f"due-{task.id}")
+            items.append((task, user, first.date, summary, "ldm_activity_fee_agreement", key))
         return items
+
+    @api.model
+    def _ldm_run_reminders(self):
+        result = super()._ldm_run_reminders()
+        self._ldm_sweep_instalment_reminders()
+        return result
+
+    @api.model
+    def _ldm_sweep_instalment_reminders(self):
+        """Close the instalment reminders that no longer name anything due: the
+        instalments were invoiced, paid or waived, or several now share one
+        reminder. Runs after the daily reminders and whenever an instalment's
+        state changes."""
+        activity_type = self.env.ref("legal_department_management.ldm_activity_fee_agreement",
+                                     raise_if_not_found=False)
+        if not activity_type:
+            return
+        Activity = self.env["mail.activity"].sudo()
+        for company in self.env["res.company"].sudo().search([]):
+            today, horizon = self._ldm_reminder_window(company)
+            wanted = set()
+            if self._ldm_feature("group_ldm_billing"):
+                wanted = {item[5] for item in self.with_company(company)._ldm_instalment_items(company, today, horizon)}
+            open_reminders = Activity.search([
+                ("activity_type_id", "=", activity_type.id), ("res_model", "=", "legal.task"),
+                ("ldm_reminder_key", "=like", "legal.engagement%")])
+            tasks = self.sudo().browse(open_reminders.mapped("res_id")).filtered(lambda t: t.company_id == company)
+            stale = open_reminders.filtered(lambda a: a.res_id in tasks.ids and a.ldm_reminder_key not in wanted)
+            if stale:
+                stale.action_feedback(feedback=_("No longer due: invoiced, paid or waived."))
 
     # ------------------------------------------------------------------
     # Buttons
