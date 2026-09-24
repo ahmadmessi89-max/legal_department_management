@@ -1,4 +1,199 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Owned by the reg stream (docs/ldm/SPEC.md section 11). -->
 <odoo>
+    <data noupdate="1">
+        <!-- Register numbers: one book per direction, restarting every year
+             (2026/1, 2026/2 ... then 2027/1). "No gap": a register book must
+             not skip numbers when a transaction rolls back. -->
+        <record id="seq_ldm_correspondence_outgoing" model="ir.sequence">
+            <field name="name">Outgoing letters</field>
+            <field name="code">legal.correspondence.outgoing</field>
+            <field name="prefix">%(range_year)s/</field>
+            <field name="padding">1</field>
+            <field name="use_date_range" eval="True"/>
+            <field name="implementation">no_gap</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="seq_ldm_correspondence_incoming" model="ir.sequence">
+            <field name="name">Incoming letters</field>
+            <field name="code">legal.correspondence.incoming</field>
+            <field name="prefix">%(range_year)s/</field>
+            <field name="padding">1</field>
+            <field name="use_date_range" eval="True"/>
+            <field name="implementation">no_gap</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="seq_ldm_opinion" model="ir.sequence">
+            <field name="name">Legal opinions</field>
+            <field name="code">legal.opinion</field>
+            <field name="prefix">%(range_year)s/</field>
+            <field name="padding">1</field>
+            <field name="use_date_range" eval="True"/>
+            <field name="implementation">no_gap</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <!-- One reminder type per reason, so a reminder can be found and closed. -->
+        <record id="ldm_activity_poa_expiry" model="mail.activity.type">
+            <field name="name">Power of attorney expiry</field>
+            <field name="res_model">legal.poa</field>
+            <field name="icon">fa-id-card-o</field>
+            <field name="delay_count">0</field>
+            <field name="sequence">46</field>
+        </record>
+        <record id="ldm_activity_letter_reply" model="mail.activity.type">
+            <field name="name">Letter to answer</field>
+            <field name="res_model">legal.correspondence</field>
+            <field name="icon">fa-envelope-o</field>
+            <field name="delay_count">0</field>
+            <field name="sequence">47</field>
+        </record>
+        <record id="ldm_activity_guarantee_expiry" model="mail.activity.type">
+            <field name="name">Letter of guarantee expiry</field>
+            <field name="res_model">legal.guarantee</field>
+            <field name="icon">fa-university</field>
+            <field name="delay_count">0</field>
+            <field name="sequence">48</field>
+        </record>
+
+        <record id="ir_cron_ldm_register_expiry" model="ir.cron">
+            <field name="name">Legal: expiry of powers of attorney and letters of guarantee</field>
+            <field name="model_id" ref="model_legal_poa"/>
+            <field name="state">code</field>
+            <field name="code">model._cron_ldm_poa_expiry()
+env["legal.guarantee"]._cron_ldm_guarantee_expiry()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="active">True</field>
+        </record>
+
+        <!-- Which matter type a request of each kind starts from. -->
+        <record id="ldm_template_contract_review" model="legal.task.template">
+            <field name="request_type">contract</field>
+        </record>
+        <record id="ldm_template_opinion" model="legal.task.template">
+            <field name="request_type">opinion</field>
+        </record>
+        <record id="ldm_template_poa" model="legal.task.template">
+            <field name="request_type">poa</field>
+        </record>
+        <record id="ldm_template_government" model="legal.task.template">
+            <field name="request_type">government</field>
+        </record>
+        <record id="ldm_template_civil_lawsuit" model="legal.task.template">
+            <field name="request_type">dispute</field>
+        </record>
+        <record id="ldm_template_consultation" model="legal.task.template">
+            <field name="request_type">other</field>
+        </record>
+
+        <!-- Letter templates. Plain text with {placeholders}; the official
+             letter adds the number, date, addressee, greeting, closing and
+             signature around the text. "..." marks what the lawyer fills in. -->
+        <record id="ldm_letter_to_body" model="legal.letter.template">
+            <field name="name">Letter to a government body</field>
+            <field name="sequence">10</field>
+            <field name="direction">outgoing</field>
+            <field name="usage_note">Follow up a transaction at a ministry or directorate.</field>
+            <field name="subject">{matter}</field>
+            <field name="body">We refer to our client {client} and to transaction {matter_number} before your directorate.
+
+We kindly ask you to complete the necessary procedure and to inform us of the result, or of any document still required.
+
+Thank you for your cooperation.</field>
+        </record>
+        <record id="ldm_letter_notarial_notice" model="legal.letter.template">
+            <field name="name">Notarial notice</field>
+            <field name="sequence">20</field>
+            <field name="direction">notice</field>
+            <field name="usage_note">A formal notice served through the notary, including the revocation of an agent.</field>
+            <field name="subject">Notarial notice</field>
+            <field name="body">The notifying party: {client}, represented by its agent, lawyer {responsible}.
+
+The notified party: {opponent}.
+
+Subject of the notice: ...
+
+The notifying party hereby calls on you to ... within ... days of being served with this notice. Otherwise it will take every legal measure available to it, and you will bear the fees, costs and lawyer's fees.
+
+This notice was issued for your information and action.</field>
+        </record>
+        <record id="ldm_letter_general_request" model="legal.letter.template">
+            <field name="name">General request</field>
+            <field name="sequence">30</field>
+            <field name="direction">outgoing</field>
+            <field name="usage_note">Any request to a body, a company or a court office.</field>
+            <field name="subject">Request</field>
+            <field name="body">On behalf of our client {client}, we kindly ask you to ...
+
+The supporting documents are attached.</field>
+        </record>
+        <record id="ldm_letter_client_update" model="legal.letter.template">
+            <field name="name">Update to the client</field>
+            <field name="sequence">40</field>
+            <field name="direction">client</field>
+            <field name="usage_note">Tell the client where their matter stands and what comes next.</field>
+            <field name="subject">Update on {matter}</field>
+            <field name="body">Dear {client},
+
+We write to update you on matter {matter_number} ({matter}).
+
+Where it stands: ...
+
+What happens next: ...
+
+For any question, please contact {responsible}.</field>
+        </record>
+        <record id="ldm_letter_guarantee_extension" model="legal.letter.template">
+            <field name="name">Extension of a letter of guarantee</field>
+            <field name="sequence">50</field>
+            <field name="direction">outgoing</field>
+            <field name="usage_note">To the bank, before the letter of guarantee expires.</field>
+            <field name="subject">Extension of letter of guarantee {guarantee_number}</field>
+            <field name="body">We ask you to extend letter of guarantee number {guarantee_number}, for {guarantee_amount}, issued in favour of {beneficiary} and expiring on {guarantee_expiry}, for a further ... months.
+
+Please send us confirmation of the extension.</field>
+        </record>
+        <record id="ldm_letter_guarantee_release" model="legal.letter.template">
+            <field name="name">Release of a letter of guarantee</field>
+            <field name="sequence">60</field>
+            <field name="direction">outgoing</field>
+            <field name="usage_note">To the beneficiary, once the secured obligations are fulfilled.</field>
+            <field name="subject">Release of letter of guarantee {guarantee_number}</field>
+            <field name="body">The obligations secured by letter of guarantee number {guarantee_number}, issued by {bank} for {guarantee_amount}, have been fulfilled.
+
+We ask you to return the original letter of guarantee to us, or to write to the bank to release it.</field>
+        </record>
+    </data>
+
+    <data>
+        <!-- The Arabic text of the seed templates, applied when Arabic is
+             installed and the template has no Arabic yet (so an install, an
+             upgrade and a later Arabic activation all get it, and a text the
+             legal manager rewrote is never overwritten). Official letters in
+             Iraq are written in Arabic. -->
+        <function model="legal.letter.template" name="_ldm_seed_translations">
+            <value eval="'legal_department_management.ldm_letter_to_body'"/>
+            <value eval="{'name': {'ar_001': 'كتاب إلى جهة رسمية'}, 'usage_note': {'ar_001': 'متابعة معاملة لدى وزارة أو دائرة.'}, 'subject': {'ar_001': '{matter}'}, 'body': {'ar_001': 'نشير إلى موكلتنا {client} والمعاملة المرقمة {matter_number} لدى دائرتكم.\n\nيرجى التفضل بإكمال الإجراءات اللازمة وإعلامنا بالنتيجة، أو بما يلزم من مستمسكات.\n\nشاكرين تعاونكم.'}}"/>
+        </function>
+        <function model="legal.letter.template" name="_ldm_seed_translations">
+            <value eval="'legal_department_management.ldm_letter_notarial_notice'"/>
+            <value eval="{'name': {'ar_001': 'إنذار عدلي'}, 'usage_note': {'ar_001': 'إنذار رسمي يُبلَّغ بواسطة كاتب العدل، ومنه عزل الوكيل.'}, 'subject': {'ar_001': 'إنذار عدلي'}, 'body': {'ar_001': 'المُنذِر: {client}، ويمثله وكيله المحامي {responsible}.\n\nالمُنذَر: {opponent}.\n\nموضوع الإنذار: ...\n\nيُنذركم المُنذِر بوجوب ... خلال مدة ... أيام من تاريخ تبلغكم بهذا الإنذار، وبخلافه سيضطر إلى اتخاذ الإجراءات القانونية كافة، مع تحميلكم الرسوم والمصاريف وأتعاب المحاماة.\n\nولأجل العلم والتنفيذ حُرِّر هذا الإنذار.'}}"/>
+        </function>
+        <function model="legal.letter.template" name="_ldm_seed_translations">
+            <value eval="'legal_department_management.ldm_letter_general_request'"/>
+            <value eval="{'name': {'ar_001': 'طلب عام'}, 'usage_note': {'ar_001': 'أي طلب إلى جهة رسمية أو شركة أو قلم محكمة.'}, 'subject': {'ar_001': 'طلب'}, 'body': {'ar_001': 'بالنيابة عن موكلتنا {client}، نرجو التفضل بـ ...\n\nمرفق طياً المستمسكات المؤيدة للطلب.'}}"/>
+        </function>
+        <function model="legal.letter.template" name="_ldm_seed_translations">
+            <value eval="'legal_department_management.ldm_letter_client_update'"/>
+            <value eval="{'name': {'ar_001': 'إحاطة الموكّل'}, 'usage_note': {'ar_001': 'إعلام الموكّل بموقف ملفه والخطوة القادمة.'}, 'subject': {'ar_001': 'مستجدات {matter}'}, 'body': {'ar_001': 'السادة {client} المحترمون،\n\nنود إعلامكم بآخر المستجدات في الملف المرقم {matter_number} ({matter}).\n\nالموقف الحالي: ...\n\nالخطوة القادمة: ...\n\nلأي استفسار يرجى التواصل مع {responsible}.'}}"/>
+        </function>
+        <function model="legal.letter.template" name="_ldm_seed_translations">
+            <value eval="'legal_department_management.ldm_letter_guarantee_extension'"/>
+            <value eval="{'name': {'ar_001': 'تمديد خطاب ضمان'}, 'usage_note': {'ar_001': 'إلى المصرف قبل انتهاء نفاذ خطاب الضمان.'}, 'subject': {'ar_001': 'تمديد خطاب الضمان المرقم {guarantee_number}'}, 'body': {'ar_001': 'نرجو تمديد خطاب الضمان المرقم {guarantee_number} بمبلغ {guarantee_amount} الصادر لصالح {beneficiary} والذي ينتهي نفاذه بتاريخ {guarantee_expiry}، لمدة ... أشهر أخرى.\n\nيرجى تزويدنا بما يؤيد التمديد.'}}"/>
+        </function>
+        <function model="legal.letter.template" name="_ldm_seed_translations">
+            <value eval="'legal_department_management.ldm_letter_guarantee_release'"/>
+            <value eval="{'name': {'ar_001': 'إطلاق خطاب ضمان'}, 'usage_note': {'ar_001': 'إلى الجهة المستفيدة بعد الإيفاء بالالتزامات المضمونة.'}, 'subject': {'ar_001': 'إطلاق خطاب الضمان المرقم {guarantee_number}'}, 'body': {'ar_001': 'نظراً لإيفائنا بالالتزامات المضمونة بخطاب الضمان المرقم {guarantee_number} الصادر عن {bank} بمبلغ {guarantee_amount}، نرجو إعادة أصل خطاب الضمان إلينا، أو مفاتحة المصرف لإطلاقه.'}}"/>
+        </function>
+    </data>
 </odoo>
