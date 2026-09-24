@@ -1,9 +1,1 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_legal_court_degree_user,legal.court.degree,model_legal_court_degree,base.group_user,1,0,0,0
-access_legal_court_degree_manager,legal.court.degree,model_legal_court_degree,group_legal_manager,1,1,1,1
-access_legal_hearing_outcome_wizard_clerk,legal.hearing.outcome.wizard,model_legal_hearing_outcome_wizard,group_ldm_clerk,1,1,1,0
-access_legal_hearing_outcome_wizard_manager,legal.hearing.outcome.wizard,model_legal_hearing_outcome_wizard,group_legal_manager,1,1,1,1
-access_legal_judgment_challenge_wizard_lawyer,legal.judgment.challenge.wizard,model_legal_judgment_challenge_wizard,group_legal_user,1,1,1,0
-access_legal_judgment_challenge_wizard_manager,legal.judgment.challenge.wizard,model_legal_judgment_challenge_wizard,group_legal_manager,1,1,1,1
-access_legal_hearing_roll_wizard_clerk,legal.hearing.roll.wizard,model_legal_hearing_roll_wizard,group_ldm_clerk,1,1,1,0
-access_legal_hearing_roll_wizard_manager,legal.hearing.roll.wizard,model_legal_hearing_roll_wizard,group_legal_manager,1,1,1,1

@@ -1,4 +1,188 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Owned by the money stream (docs/ldm/SPEC.md section 11). -->
 <odoo>
+    <!-- Who may see what in "To invoice": it lists the money of matters, so it
+         follows the matters' confidentiality for billing. -->
+    <record id="legal_billable_rule_billing" model="ir.rule">
+        <field name="name">To invoice: of non-confidential matters (billing)</field>
+        <field name="model_id" ref="model_legal_billable"/>
+        <field name="domain_force">['|', ('task_id', '=', False), ('task_id.confidential', '=', False)]</field>
+        <field name="groups" eval="[(4, ref('group_ldm_billing_user'))]"/>
+    </record>
+    <record id="legal_billable_rule_manager" model="ir.rule">
+        <field name="name">To invoice: all (manager)</field>
+        <field name="model_id" ref="model_legal_billable"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_legal_manager'))]"/>
+    </record>
+    <record id="legal_billable_rule_auditor" model="ir.rule">
+        <field name="name">To invoice: all (auditor)</field>
+        <field name="model_id" ref="model_legal_billable"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_ldm_auditor'))]"/>
+    </record>
+    <record id="legal_billable_rule_company" model="ir.rule">
+        <field name="name">legal.billable: multi-company</field>
+        <field name="model_id" ref="model_legal_billable"/>
+        <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+    </record>
+
+    <data noupdate="1">
+        <!-- Expense categories: what an Iraqi matter costs (research 04 §4.9).
+             Recharged to the client by default, except transport, which offices
+             usually carry themselves; change it per category. -->
+        <record id="ldm_expense_category_court_fee" model="legal.expense.category">
+            <field name="name">Court fee</field>
+            <field name="code">COURT</field>
+            <field name="sequence">1</field>
+            <field name="recoverable_default" eval="True"/>
+        </record>
+        <record id="ldm_expense_category_pension_stamp" model="legal.expense.category">
+            <field name="name">Pension fund stamp</field>
+            <field name="code">STAMP</field>
+            <field name="sequence">2</field>
+            <field name="recoverable_default" eval="True"/>
+        </record>
+        <record id="ldm_expense_category_expert_deposit" model="legal.expense.category">
+            <field name="name">Expert deposit</field>
+            <field name="code">EXPERT</field>
+            <field name="sequence">3</field>
+            <field name="recoverable_default" eval="True"/>
+        </record>
+        <record id="ldm_expense_category_publication" model="legal.expense.category">
+            <field name="name">Publication in a newspaper</field>
+            <field name="code">PUBLISH</field>
+            <field name="sequence">4</field>
+            <field name="recoverable_default" eval="True"/>
+        </record>
+        <record id="ldm_expense_category_notary_fee" model="legal.expense.category">
+            <field name="name">Notary fee</field>
+            <field name="code">NOTARY</field>
+            <field name="sequence">5</field>
+            <field name="recoverable_default" eval="True"/>
+        </record>
+        <record id="ldm_expense_category_execution_fee" model="legal.expense.category">
+            <field name="name">Execution fee</field>
+            <field name="code">EXEC</field>
+            <field name="sequence">6</field>
+            <field name="recoverable_default" eval="True"/>
+        </record>
+        <record id="ldm_expense_category_government_fee" model="legal.expense.category">
+            <field name="name">Government fee</field>
+            <field name="code">GOV</field>
+            <field name="sequence">7</field>
+            <field name="recoverable_default" eval="True"/>
+        </record>
+        <record id="ldm_expense_category_transport" model="legal.expense.category">
+            <field name="name">Transport</field>
+            <field name="code">TRANSPORT</field>
+            <field name="sequence">8</field>
+            <field name="recoverable_default" eval="False"/>
+        </record>
+        <record id="ldm_expense_category_other" model="legal.expense.category">
+            <field name="name">Other</field>
+            <field name="code">OTHER</field>
+            <field name="sequence">9</field>
+            <field name="recoverable_default" eval="True"/>
+        </record>
+
+        <!-- One activity type per reason, like the foundation's reminders. -->
+        <record id="ldm_activity_conflict" model="mail.activity.type">
+            <field name="name">Conflict of interest</field>
+            <field name="res_model">legal.task</field>
+            <field name="icon">fa-balance-scale</field>
+            <field name="delay_count">0</field>
+            <field name="sequence">46</field>
+        </record>
+        <record id="ldm_activity_fee_unsigned" model="mail.activity.type">
+            <field name="name">Fee agreement to sign</field>
+            <field name="res_model">legal.task</field>
+            <field name="icon">fa-pencil-square-o</field>
+            <field name="delay_count">0</field>
+            <field name="sequence">48</field>
+        </record>
+        <record id="ldm_activity_fee_agreement" model="mail.activity.type">
+            <field name="name">Fees due</field>
+            <field name="res_model">legal.task</field>
+            <field name="icon">fa-money</field>
+            <field name="delay_count">0</field>
+            <field name="sequence">47</field>
+        </record>
+
+        <record id="seq_legal_engagement" model="ir.sequence">
+            <field name="name">Fee agreement</field>
+            <field name="code">legal.engagement</field>
+            <field name="prefix">FA/%(year)s/</field>
+            <field name="padding">4</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="ir_cron_ldm_fee_schedule" model="ir.cron">
+            <field name="name">Legal: fee instalments and retainers</field>
+            <field name="model_id" ref="model_legal_engagement"/>
+            <field name="state">code</field>
+            <field name="code">model._cron_ldm_fee_schedule()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="active">True</field>
+        </record>
+
+        <!-- Messages to clients. Placeholders: {client} {matter} {matter_number}
+             {court} {date} {next_date} {outcome} {needed} {documents} {fee}
+             {amount} {due_date} {balance} {responsible} {office} {today}. -->
+        <record id="ldm_message_hearing_result" model="legal.letter.template">
+            <field name="name">Session result</field>
+            <field name="direction">client</field>
+            <field name="ldm_code">hearing_result</field>
+            <field name="sequence">50</field>
+            <field name="subject">Result of today's session</field>
+            <field name="body">Dear {client},
+The session of {date} in {matter} ({matter_number}) at {court} ended as follows: {outcome}.
+The next session is on {next_date}. {needed}
+{responsible}, {office}</field>
+        </record>
+        <record id="ldm_message_hearing_reminder" model="legal.letter.template">
+            <field name="name">Session reminder</field>
+            <field name="direction">client</field>
+            <field name="ldm_code">hearing_reminder</field>
+            <field name="sequence">51</field>
+            <field name="subject">Reminder of your session</field>
+            <field name="body">Dear {client},
+A reminder that the next session in {matter} ({matter_number}) is on {next_date} at {court}. {needed}
+{office}</field>
+        </record>
+        <record id="ldm_message_missing_documents" model="legal.letter.template">
+            <field name="name">Missing documents</field>
+            <field name="direction">client</field>
+            <field name="ldm_code">missing_documents</field>
+            <field name="sequence">52</field>
+            <field name="subject">Documents we still need</field>
+            <field name="body">Dear {client},
+To continue {matter} ({matter_number}) we still need: {documents}.
+Please send them as soon as you can.
+{responsible}, {office}</field>
+        </record>
+        <record id="ldm_message_instalment_due" model="legal.letter.template">
+            <field name="name">Instalment due</field>
+            <field name="direction">client</field>
+            <field name="ldm_code">instalment_due</field>
+            <field name="sequence">53</field>
+            <field name="subject">Instalment due</field>
+            <field name="body">Dear {client},
+Under our fee agreement, the instalment "{fee}" of {amount} is due on {due_date}.
+Thank you.
+{office}</field>
+        </record>
+        <record id="ldm_message_statement_ready" model="legal.letter.template">
+            <field name="name">Statement ready</field>
+            <field name="direction">client</field>
+            <field name="ldm_code">statement_ready</field>
+            <field name="sequence">54</field>
+            <field name="subject">Your statement of account</field>
+            <field name="body">Dear {client},
+Your statement of account up to {today} is ready. The balance due is {balance}.
+We can send you a copy on request.
+{office}</field>
+        </record>
+    </data>
 </odoo>
