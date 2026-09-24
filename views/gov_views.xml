@@ -414,7 +414,7 @@
                                     <field name="expiry_date" widget="remaining_days"/>
                                 </div>
                             </div>
-                            <field name="state" widget="ldm_pill"
+                            <field name="state" widget="ldm_pill" options="{'stamp': ['verified']}"
                                    decoration-danger="state in ('missing', 'expired')"
                                    decoration-warning="state == 'awaiting_verification'"
                                    decoration-success="state in ('received', 'verified')"/>
@@ -428,7 +428,7 @@
                     <field name="name"/>
                     <field name="document_type_id" optional="hide" options="{'no_create': True}"/>
                     <field name="mandatory" optional="show" width="100px"/>
-                    <field name="state" widget="ldm_pill" width="150px"
+                    <field name="state" widget="ldm_pill" width="150px" options="{'stamp': ['verified']}"
                            decoration-danger="state in ('missing', 'expired')"
                            decoration-warning="state == 'awaiting_verification'"
                            decoration-success="state in ('received', 'verified')"/>
@@ -827,8 +827,8 @@
                 <field name="department_id" optional="show"/>
                 <field name="coverage_state" widget="ldm_pill" width="150px"
                        decoration-success="coverage_state == 'done'"
-                       decoration-info="coverage_state == 'open'"
-                       decoration-danger="coverage_state == 'due'"/>
+                       decoration-primary="coverage_state == 'open'"
+                       decoration-muted="coverage_state == 'due'"/>
                 <field name="last_done_date" optional="show"/>
                 <field name="last_task_id" optional="hide"/>
                 <button name="action_ldm_start" type="object" string="Start" icon="fa-play" class="btn-link"

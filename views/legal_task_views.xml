@@ -65,18 +65,17 @@
                 <field name="next_date" widget="remaining_days" optional="show"/>
                 <field name="lawyer_id" widget="many2one_avatar_user" optional="show"/>
                 <field name="state" widget="ldm_pill"
-                       decoration-info="state == 'draft'"
+                       decoration-muted="state in ('draft', 'cancelled')"
                        decoration-primary="state == 'in_progress'"
                        decoration-warning="state == 'pending_docs'"
-                       decoration-success="state == 'done'"
-                       decoration-muted="state == 'cancelled'"/>
+                       decoration-success="state == 'done'"/>
                 <field name="ministry_id" optional="hide"/>
                 <field name="kind" optional="hide"/>
                 <field name="template_id" optional="hide"/>
                 <field name="due_date" optional="hide"/>
                 <field name="session_date" optional="hide"/>
-                <field name="approval_state" widget="ldm_pill" optional="hide"
-                       decoration-warning="approval_state == 'to_approve'"
+                <field name="approval_state" widget="ldm_pill" optional="hide" options="{'stamp': ['approved']}"
+                       decoration-info="approval_state == 'to_approve'"
                        decoration-success="approval_state == 'approved'"
                        decoration-danger="approval_state == 'rejected'"/>
                 <field name="court_case_number" optional="hide"/>
@@ -214,7 +213,7 @@
                                     <field name="sequence" widget="handle"/>
                                     <field name="name"/>
                                     <field name="mandatory" optional="show"/>
-                                    <field name="state" widget="ldm_pill"
+                                    <field name="state" widget="ldm_pill" options="{'stamp': ['verified']}"
                                            decoration-danger="state in ('missing', 'expired')"
                                            decoration-success="state in ('received', 'verified')"/>
                                     <field name="expiry_date" optional="show"/>

@@ -52,6 +52,11 @@ $ldm-ink-deep: #0C1528;
         border-color: var(--ldm-rule);
 
         .o_searchview_facet_label {
+            // Odoo's utilities print their colour through a custom property
+            // (o-print-color), so the group-by facet's `text-bg-action` takes
+            // ink by redefining that property, without !important.
+            --background-color: #{$ldm-ink};
+            --color: #fff;
             background-color: var(--ldm-ink);
             color: #fff;
         }
@@ -148,7 +153,31 @@ $ldm-ink-deep: #0C1528;
                 font-weight: 600;
                 color: var(--ldm-ink);
             }
+
+            // Our own empty state instead of Odoo's purple illustration: a
+            // quiet ink tray in a soft circle, then the sentence that names
+            // the next action (every action's help text does).
+            .o_view_nocontent_smiling_face::before,
+            .o_view_nocontent_neutral_face::before,
+            .o_view_nocontent_empty_folder::before {
+                inline-size: 4.5rem;
+                block-size: 4.5rem;
+                margin-block: 0 var(--ldm-space-4);
+                border-radius: 50%;
+                background: var(--ldm-brand-soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2314213D' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='22 12 16 12 14 15 10 15 8 12 2 12'/%3E%3Cpath d='M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z'/%3E%3C/svg%3E") no-repeat center / 2.25rem;
+            }
         }
+    }
+
+    // The remove button of an editable list is a quiet grey that turns red
+    // on hover, instead of a permanent orange bin.
+    .o_list_record_remove {
+        color: var(--ldm-ink-faint);
+
+        .fa,
+        .oi { color: inherit; }
+
+        &:hover { color: var(--ldm-danger); }
     }
 }
 
@@ -428,10 +457,12 @@ $ldm-ink-deep: #0C1528;
         color: var(--ldm-ink);
         text-transform: none;
 
-        // Odoo paints filter icons with the `text-warning` utility, which is
-        // !important; amber means "due soon" here, so it is overridden the
-        // only way a utility can be.
-        .o_search_panel_section_icon { color: var(--ldm-ink-faint) !important; }
+        // Odoo paints filter icons with `text-warning`; amber means "due
+        // soon" here, so the utility's colour property is redefined.
+        .o_search_panel_section_icon {
+            --color: var(--ldm-ink-faint);
+            color: var(--ldm-ink-faint);
+        }
     }
 
     .o_search_panel_category_value header.active {

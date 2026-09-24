@@ -133,7 +133,7 @@
                 <field name="user_id" widget="many2one_avatar_user" optional="show"/>
                 <field name="state" widget="ldm_pill"
                        decoration-info="state == 'awaiting_service'"
-                       decoration-warning="state == 'open'"
+                       decoration-primary="state == 'open'"
                        decoration-success="state == 'done'"
                        decoration-danger="state == 'missed'"/>
                 <field name="legal_company_id" optional="hide"/>
@@ -245,7 +245,7 @@
                             <field name="date_safe" invisible="state == 'open'"/>
                         </div>
                         <footer class="pt-1 align-items-center">
-                            <field name="state" widget="ldm_pill" decoration-warning="state == 'open'"
+                            <field name="state" widget="ldm_pill" decoration-primary="state == 'open'"
                                    decoration-danger="state == 'missed'" decoration-success="state == 'done'"
                                    decoration-info="state == 'awaiting_service'"/>
                             <button name="action_ldm_mark_met" type="object" string="Met" class="btn btn-sm btn-secondary"
@@ -411,7 +411,7 @@
                 <field name="task_id"/>
                 <field name="department_id"/>
                 <field name="attending_user_id" widget="many2one_avatar_user"/>
-                <field name="state" widget="ldm_pill" decoration-info="state == 'planned'" decoration-success="state == 'held'"/>
+                <field name="state" widget="ldm_pill" decoration-primary="state == 'planned'" decoration-success="state == 'held'"/>
                 <field name="outcome" optional="show"/>
                 <field name="court_case_number" optional="hide"/>
                 <field name="legal_company_id" optional="hide"/>
@@ -446,7 +446,7 @@
                         <field name="task_id" class="text-truncate"/>
                         <field name="department_id" class="text-muted small text-truncate"/>
                         <footer class="pt-1 align-items-center">
-                            <field name="state" widget="ldm_pill" decoration-info="state == 'planned'" decoration-success="state == 'held'"/>
+                            <field name="state" widget="ldm_pill" decoration-primary="state == 'planned'" decoration-success="state == 'held'"/>
                             <button name="action_ldm_record_outcome" type="object" string="Record" class="btn btn-sm btn-primary"
                                     invisible="state != 'planned'" groups="legal_department_management.group_ldm_clerk"/>
                             <field name="attending_user_id" widget="many2one_avatar_user" class="ms-auto"/>
@@ -942,7 +942,7 @@
                                 <field name="date_safe"/>
                             </div>
                             <footer class="align-items-center">
-                                <field name="state" widget="ldm_pill" decoration-warning="state == 'open'"
+                                <field name="state" widget="ldm_pill" decoration-primary="state == 'open'"
                                        decoration-danger="state == 'missed'" decoration-success="state == 'done'"
                                        decoration-info="state == 'awaiting_service'"/>
                                 <button name="action_ldm_mark_met" type="object" string="Met" class="btn btn-sm btn-secondary ms-auto"

@@ -237,10 +237,9 @@
                 <field name="date"/>
                 <field name="name"/>
                 <field name="party_display"/>
-                <field name="state" widget="ldm_pill"
-                       decoration-info="state == 'draft'"
-                       decoration-success="state == 'registered'"
-                       decoration-muted="state == 'void'"/>
+                <field name="state" widget="ldm_pill" options="{'stamp': ['registered']}"
+                       decoration-muted="state in ('draft', 'void')"
+                       decoration-success="state == 'registered'"/>
                 <field name="reply_state" widget="ldm_pill" optional="show" invisible="reply_state == 'none'"
                        decoration-warning="reply_state == 'waiting'"
                        decoration-danger="reply_state == 'overdue'"

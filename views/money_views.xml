@@ -233,7 +233,7 @@
                 <field name="name"/>
                 <field name="amount" sum="Total"/>
                 <field name="balance" sum="Total" decoration-warning="state == 'paid' and balance &gt; 0"/>
-                <field name="state" widget="ldm_pill" decoration-info="state == 'draft'"
+                <field name="state" widget="ldm_pill" decoration-muted="state == 'draft'"
                        decoration-warning="state == 'paid'" decoration-success="state == 'settled'"/>
                 <field name="currency_id" column_invisible="1"/>
                 <field name="task_id" optional="hide"/>
@@ -465,7 +465,7 @@
                 <field name="fee_type"/>
                 <field name="amount" invisible="not amount"/>
                 <field name="signed" widget="boolean_toggle" readonly="1" optional="show"/>
-                <field name="state" widget="ldm_pill" decoration-info="state == 'draft'" decoration-success="state == 'active'"/>
+                <field name="state" widget="ldm_pill" decoration-muted="state == 'draft'" decoration-success="state == 'active'"/>
                 <field name="currency_id" column_invisible="1"/>
                 <field name="lawyer_id" widget="many2one_avatar_user" optional="hide"/>
                 <field name="date_start" optional="hide"/>
@@ -592,7 +592,7 @@
                                     <field name="currency_id" column_invisible="1"/>
                                     <field name="is_overdue" column_invisible="1"/>
                                     <field name="state" widget="ldm_pill" readonly="1"
-                                           decoration-info="state == 'planned'" decoration-warning="state == 'due'"
+                                           decoration-muted="state == 'planned'" decoration-warning="state == 'due'"
                                            decoration-success="state in ('invoiced', 'paid')"/>
                                     <button name="action_ldm_mark_due" type="object" string="Due now" class="btn-link"
                                             invisible="state != 'planned'"
@@ -687,7 +687,7 @@
                             groups="account.group_account_invoice"/>
                 </header>
                 <field name="date"/>
-                <field name="kind" widget="ldm_pill" decoration-info="kind == 'fee'" decoration-primary="kind == 'time'"/>
+                <field name="kind" widget="ldm_pill"/>
                 <field name="name"/>
                 <field name="task_id" optional="show"/>
                 <field name="amount" sum="Total"/>
@@ -756,7 +756,7 @@
                 <field name="description" readonly="state == 'invoiced'"/>
                 <field name="duration" widget="float_time" sum="Total" readonly="state != 'draft'"/>
                 <field name="billable" optional="show" readonly="state != 'draft'"/>
-                <field name="state" widget="ldm_pill" readonly="1" decoration-info="state == 'draft'"
+                <field name="state" widget="ldm_pill" readonly="1" decoration-muted="state == 'draft'"
                        decoration-success="state == 'approved'"/>
                 <field name="user_id" optional="hide" widget="many2one_avatar_user"/>
                 <field name="rate" optional="hide" readonly="state != 'draft'"
@@ -861,8 +861,8 @@
                 <field name="query"/>
                 <field name="task_id"/>
                 <field name="hit_count" string="Conflicts"/>
-                <field name="decision" widget="ldm_pill" decoration-warning="decision == 'pending'"
-                       decoration-success="decision == 'clear'" decoration-info="decision == 'override'"
+                <field name="decision" widget="ldm_pill" decoration-info="decision == 'pending'"
+                       decoration-success="decision == 'clear'" decoration-warning="decision == 'override'"
                        decoration-danger="decision == 'declined'"/>
                 <field name="user_id" widget="many2one_avatar_user" optional="show"/>
                 <field name="decided_by_id" optional="hide"/>
