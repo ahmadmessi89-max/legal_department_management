@@ -122,11 +122,11 @@ class LegalCompany(models.Model):
     @api.model
     def _ldm_statement_label(self, move, line):
         if move.move_type == "out_invoice":
-            return _("Invoice") + (f" — {move.ref}" if move.ref else "")
+            return _("Invoice — %s", move.ref) if move.ref else _("Invoice")
         if move.move_type == "out_refund":
             return _("Credit note")
         if move.origin_payment_id or line.payment_id:
-            return _("Payment received") + (f" — {move.ref}" if move.ref else "")
+            return _("Payment received — %s", move.ref) if move.ref else _("Payment received")
         return line.name or move.ref or _("Entry")
 
     # ------------------------------------------------------------------
