@@ -1,0 +1,47 @@
+[
+ {
+  "name": "20_labour_case_sessions_tab",
+  "path": "/odoo/matters/67",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-lit\\l2_20_labour_case_sessions_tab.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "21_hearing_form_substitution",
+  "path": "/odoo/action-396/71",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-lit\\l2_21_hearing_form_substitution.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "22_deadline_form_authority_answer",
+  "path": "/odoo/legal.deadline/160",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-lit\\l2_22_deadline_form_authority_answer.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "23_judgment_awaiting_notification",
+  "path": "/odoo/legal.judgment/44",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-lit\\l2_23_judgment_awaiting_notification.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "24_deadline_form_awaiting",
+  "path": "/odoo/legal.deadline/156",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-lit\\l2_24_deadline_form_awaiting.png",
+  "console_errors": [],
+  "page_errors": []
+ }
+]

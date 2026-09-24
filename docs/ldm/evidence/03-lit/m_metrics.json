@@ -1,0 +1,74 @@
+[
+ {
+  "name": "01_outcome_dialog_opened",
+  "path": "/odoo/matters/63",
+  "error_dialog": false,
+  "height": 844,
+  "shot": "docs/ldm/evidence/03-lit\\m_01_outcome_dialog_opened.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "02_outcome_dialog_date_chosen",
+  "path": "/odoo/matters/63",
+  "error_dialog": false,
+  "height": 844,
+  "shot": "docs/ldm/evidence/03-lit\\m_02_outcome_dialog_date_chosen.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "03_outcome_dialog_judgment",
+  "path": "/odoo/matters/63",
+  "error_dialog": false,
+  "height": 844,
+  "shot": "docs/ldm/evidence/03-lit\\m_03_outcome_dialog_judgment.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "04_cockpit_case_tab",
+  "path": "/odoo/matters/66",
+  "error_dialog": false,
+  "height": 844,
+  "shot": "docs/ldm/evidence/03-lit\\m_04_cockpit_case_tab.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "05_hearing_form_trainee",
+  "path": "/odoo/court-sessions/70",
+  "error_dialog": false,
+  "height": 844,
+  "shot": "docs/ldm/evidence/03-lit\\m_05_hearing_form_trainee.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "06_agenda_next_14_days",
+  "path": "/odoo/action-353",
+  "error_dialog": false,
+  "height": 844,
+  "shot": "docs/ldm/evidence/03-lit\\m_06_agenda_next_14_days.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "07_deadlines",
+  "path": "/odoo/action-354",
+  "error_dialog": false,
+  "height": 844,
+  "shot": "docs/ldm/evidence/03-lit\\m_07_deadlines.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "08_deadline_form_appeal",
+  "path": "/odoo/legal.deadline/155",
+  "error_dialog": false,
+  "height": 844,
+  "shot": "docs/ldm/evidence/03-lit\\m_08_deadline_form_appeal.png",
+  "console_errors": [],
+  "page_errors": []
+ }
+]

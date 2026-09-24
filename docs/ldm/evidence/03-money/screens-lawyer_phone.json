@@ -1,0 +1,28 @@
+[
+ {
+  "name": "matter_money",
+  "path": "/odoo/matters/1",
+  "wait": ".o_form_view",
+  "js": ["document.querySelector(\".o_notebook_headers a[name='money']\").click()",
+         "document.querySelector(\".o_notebook\").scrollIntoView({block: 'start'})"]
+ },
+ {
+  "name": "stat_menu",
+  "path": "/odoo/matters/1",
+  "wait": ".o_form_view",
+  "js": ["document.querySelector(\".o_control_panel .fa-bolt\").closest('button').click()"]
+ },
+ {
+  "name": "client_message",
+  "path": "/odoo/matters/1",
+  "wait": ".o_form_view",
+  "js": ["document.querySelector(\".o_control_panel .fa-bolt\").closest('button').click()",
+         "document.querySelector(\"button[name='action_ldm_message']\").click()"]
+ },
+ {
+  "name": "timer_menu",
+  "path": "/odoo/matters/1",
+  "wait": ".o_form_view",
+  "js": ["document.querySelector(\".o_ldm_timer_toggle\").click()"]
+ }
+]

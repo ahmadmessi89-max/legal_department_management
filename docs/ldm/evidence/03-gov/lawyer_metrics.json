@@ -1,0 +1,56 @@
+[
+ {
+  "name": "30_dossier_documents",
+  "path": "/odoo/legal-clients/1",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-gov\\lawyer_30_dossier_documents.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "31_dossier_obligations",
+  "path": "/odoo/legal-clients/1",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-gov\\lawyer_31_dossier_obligations.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "32_dossier_coverage",
+  "path": "/odoo/legal-clients/1",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-gov\\lawyer_32_dossier_coverage.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "33_readiness_dialog",
+  "path": "/odoo/legal-clients/1",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-gov\\lawyer_33_readiness_dialog.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "34_matter_past_target",
+  "path": "/odoo/matters/5",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-gov\\lawyer_34_matter_past_target.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "35_matter_awaiting_confirmation",
+  "path": "/odoo/matters/2",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-gov\\lawyer_35_matter_awaiting_confirmation.png",
+  "console_errors": [],
+  "page_errors": []
+ }
+]

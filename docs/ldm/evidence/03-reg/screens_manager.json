@@ -1,0 +1,22 @@
+[
+ {"name": "01_opinion_issued", "path": "/odoo/matters/50", "wait": ".o_form_view .o_field_widget",
+  "clicks": [".o_notebook a[name=opinion]"], "settle": 1.0},
+ {"name": "02_opinion_register", "path": "/odoo/legal-opinions", "wait": ".o_data_row"},
+ {"name": "03_opinion_memo", "path": "/report/html/legal_department_management.report_ldm_opinion_memo/50", "wait": "div.page"},
+ {"name": "04_guarantees_list", "path": "/odoo/action-legal_department_management.action_ldm_guarantee", "wait": ".o_data_row"},
+ {"name": "05_guarantee_form", "path": "/odoo/action-legal_department_management.action_ldm_guarantee/9", "wait": ".o_form_view .o_field_widget"},
+ {"name": "06_guarantee_extension_dialog", "path": "/odoo/action-legal_department_management.action_ldm_guarantee/9", "wait": "button[name=action_ldm_request_extension]",
+  "clicks": ["button[name=action_ldm_request_extension]"], "settle": 1.5},
+ {"name": "07_client_file", "path": "/report/html/legal_department_management.report_legal_company_template/23", "wait": "div.page"},
+ {"name": "08_oversight", "path": "/report/html/legal_department_management.report_legal_general_overview_template?options=%7B%22filtered%22%3Atrue%2C%22state%22%3A%22open%22%2C%22group_by_client%22%3Atrue%7D", "wait": "div.page"},
+ {"name": "09_monthly_status", "path": "/report/html/legal_department_management.report_ldm_monthly_status?options=%7B%22date_from%22%3A%222026-09-01%22%2C%22date_to%22%3A%222026-09-30%22%7D", "wait": "div.page"},
+ {"name": "10_exposure_pivot", "path": "/odoo/action-legal_department_management.action_ldm_exposure", "wait": ".o_pivot"},
+ {"name": "11_monthly_dialog", "path": "/odoo/action-legal_department_management.action_ldm_monthly_report_wizard", "wait": ".modal .o_form_view"},
+ {"name": "12_oversight_dialog", "path": "/odoo/action-legal_department_management.action_legal_general_report_wizard", "wait": ".modal .o_form_view"},
+ {"name": "13_client_file_dialog", "path": "/odoo/action-legal_department_management.action_ldm_client_file_wizard", "wait": ".modal .o_form_view"},
+ {"name": "14_letter_templates", "path": "/odoo/action-legal_department_management.action_ldm_letter_template", "wait": ".o_data_row"},
+ {"name": "15_letter_template_form", "path": "/odoo/action-legal_department_management.action_ldm_letter_template", "wait": ".o_data_row",
+  "clicks": [".o_data_row .o_data_cell[name=name]"], "settle": 1.0},
+ {"name": "16_template_placeholders", "path": "/odoo/action-legal_department_management.action_ldm_letter_template", "wait": ".o_data_row",
+  "clicks": [".o_data_row .o_data_cell[name=name]", ".o_notebook a[name=placeholders]"], "settle": 1.0}
+]

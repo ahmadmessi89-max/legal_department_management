@@ -1,8 +1,6 @@
 """Generate security/ir.model.access.csv (foundation) and empty per-stream ACL files."""
 import os
-_here = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "..")
-os.chdir(_here if os.path.exists(os.path.join(_here, "__manifest__.py"))
-         else os.path.join(_here, "custom_addons", "legal_department_management"))
+os.chdir(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "..", "custom_addons", "legal_department_management"))
 rows = []
 G = {
     'clerk': 'group_ldm_clerk', 'lawyer': 'group_legal_user', 'manager': 'group_legal_manager',

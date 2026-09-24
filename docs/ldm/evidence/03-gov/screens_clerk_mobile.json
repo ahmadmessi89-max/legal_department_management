@@ -1,0 +1,11 @@
+[
+ {"name": "20_directory_kanban", "path": "/odoo/action-legal_department_management.action_ldm_body_directory", "wait": ".o_kanban_view"},
+ {"name": "21_directory_body", "path": "/odoo/action-legal_department_management.action_ldm_body_directory/3", "wait": ".o_form_view"},
+ {"name": "22_matter_government", "path": "/odoo/matters/1", "wait": ".o_form_view"},
+ {"name": "23_matter_documents", "path": "/odoo/matters/1", "wait": ".o_form_view",
+  "clicks": [".o_notebook_headers a[name=documents]"]},
+ {"name": "23b_document_card_opened", "path": "/odoo/matters/2", "wait": ".o_form_view",
+  "clicks": [".o_notebook_headers a[name=documents]", ".o_field_widget[name=document_ids] .o_kanban_record:nth-child(4)"], "full": false},
+ {"name": "24_visit_dialog", "path": "/odoo/matters/1", "wait": ".o_form_view",
+  "clicks": [".o_field_widget[name=step_ids] button[name=action_ldm_log_visit]"], "full": false}
+]

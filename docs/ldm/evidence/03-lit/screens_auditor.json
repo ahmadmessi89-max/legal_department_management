@@ -1,0 +1,6 @@
+[
+ {"name": "40_auditor_case_tab", "path": "/odoo/matters/66", "wait": ".o_form_view", "clicks": [".o_notebook_headers a[name='case']", ".o_horizontal_separator:has-text('Parties')"]},
+ {"name": "41_auditor_sessions_tab", "path": "/odoo/matters/63", "wait": ".o_form_view", "clicks": [".o_notebook_headers a[name='sessions']"]},
+ {"name": "42_auditor_deadline_form", "path": "/odoo/legal.deadline/155", "wait": ".o_form_view"},
+ {"name": "43_auditor_hearing_form", "path": "/odoo/action-396/70", "wait": ".o_form_view"}
+]

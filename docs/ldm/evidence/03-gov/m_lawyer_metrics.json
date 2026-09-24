@@ -1,0 +1,20 @@
+[
+ {
+  "name": "30_dossier_documents",
+  "path": "/odoo/legal-clients/1",
+  "error_dialog": false,
+  "height": 844,
+  "shot": "docs/ldm/evidence/03-gov\\m_lawyer_30_dossier_documents.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "33_readiness_dialog",
+  "path": "/odoo/legal-clients/1",
+  "error_dialog": false,
+  "height": 844,
+  "shot": "docs/ldm/evidence/03-gov\\m_lawyer_33_readiness_dialog.png",
+  "console_errors": [],
+  "page_errors": []
+ }
+]

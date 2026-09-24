@@ -1,0 +1,7 @@
+[
+ {"name": "20_labour_case_sessions_tab", "path": "/odoo/matters/67", "wait": ".o_form_view", "clicks": [".o_notebook_headers a[name='sessions']"]},
+ {"name": "21_hearing_form_substitution", "path": "/odoo/action-396/71", "wait": ".o_form_view"},
+ {"name": "22_deadline_form_authority_answer", "path": "/odoo/legal.deadline/160", "wait": ".o_form_view"},
+ {"name": "23_judgment_awaiting_notification", "path": "/odoo/legal.judgment/44", "wait": ".o_form_view"},
+ {"name": "24_deadline_form_awaiting", "path": "/odoo/legal.deadline/156", "wait": ".o_form_view"}
+]

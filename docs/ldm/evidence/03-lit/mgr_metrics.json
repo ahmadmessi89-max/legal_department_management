@@ -1,0 +1,65 @@
+[
+ {
+  "name": "30_holidays_list",
+  "path": "/odoo/action-372",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-lit\\mgr_30_holidays_list.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "31_holiday_form",
+  "path": "/odoo/action-372",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-lit\\mgr_31_holiday_form.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "32_hearing_roll_dialog",
+  "path": "/odoo/action-397",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-lit\\mgr_32_hearing_roll_dialog.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "33_hearing_roll_report",
+  "path": "/report/html/legal_department_management.report_ldm_hearing_roll/67,73,74,70,75,71,76,77,78,79,80,81",
+  "error_dialog": false,
+  "height": 1995,
+  "shot": "docs/ldm/evidence/03-lit\\mgr_33_hearing_roll_report.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "34_substitution_letter",
+  "path": "/report/html/legal_department_management.report_ldm_substitution/71",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-lit\\mgr_34_substitution_letter.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "35_deadlines_missed",
+  "path": "/odoo/action-354",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-lit\\mgr_35_deadlines_missed.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "36_hearing_calendar_all_lawyers",
+  "path": "/odoo/action-396",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-lit\\mgr_36_hearing_calendar_all_lawyers.png",
+  "console_errors": [],
+  "page_errors": []
+ }
+]

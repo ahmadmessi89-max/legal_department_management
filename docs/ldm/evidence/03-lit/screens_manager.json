@@ -1,0 +1,9 @@
+[
+ {"name": "30_holidays_list", "path": "/odoo/action-372", "wait": ".o_list_view"},
+ {"name": "31_holiday_form", "path": "/odoo/action-372", "wait": ".o_list_view", "clicks": [".o_list_view .o_list_button_add"], "settle": 1.5},
+ {"name": "32_hearing_roll_dialog", "path": "/odoo/action-397", "wait": ".o_form_view", "settle": 1.5},
+ {"name": "33_hearing_roll_report", "path": "/report/html/legal_department_management.report_ldm_hearing_roll/67,73,74,70,75,71,76,77,78,79,80,81", "wait": ".page"},
+ {"name": "34_substitution_letter", "path": "/report/html/legal_department_management.report_ldm_substitution/71", "wait": ".page"},
+ {"name": "35_deadlines_missed", "path": "/odoo/action-354", "wait": ".o_list_view", "clicks": [".o_searchview_facet .o_facet_remove", ".o_searchview_dropdown_toggler", ".o_menu_item:has-text('Missed')", ".o_searchview_dropdown_toggler"], "settle": 1.5},
+ {"name": "36_hearing_calendar_all_lawyers", "path": "/odoo/action-396", "wait": ".o_calendar_view", "settle": 2.5}
+]

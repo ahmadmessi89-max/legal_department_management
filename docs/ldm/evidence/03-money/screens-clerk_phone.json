@@ -1,0 +1,17 @@
+[
+ {
+  "name": "advance",
+  "path": "/odoo/action-legal_department_management.action_ldm_advance/1",
+  "wait": ".o_form_view"
+ },
+ {
+  "name": "expense_new",
+  "path": "/odoo/action-legal_department_management.action_ldm_expense/new",
+  "wait": ".o_form_view"
+ },
+ {
+  "name": "expenses",
+  "path": "/odoo/action-legal_department_management.action_ldm_expense",
+  "wait": ".o_action_manager > *"
+ }
+]

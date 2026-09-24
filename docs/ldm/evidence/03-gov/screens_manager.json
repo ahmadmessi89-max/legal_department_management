@@ -1,0 +1,57 @@
+[
+ {
+  "name": "01_bodies_list",
+  "path": "/odoo/action-legal_department_management.action_legal_department",
+  "wait": ".o_list_view"
+ },
+ {
+  "name": "02_body_form_government",
+  "path": "/odoo/action-legal_department_management.action_legal_department/3",
+  "wait": ".o_form_view"
+ },
+ {
+  "name": "03_body_form_court",
+  "path": "/odoo/action-legal_department_management.action_legal_department/26",
+  "wait": ".o_form_view"
+ },
+ {
+  "name": "04_ministries_list",
+  "path": "/odoo/action-legal_department_management.action_legal_ministry",
+  "wait": ".o_list_view"
+ },
+ {
+  "name": "05_matter_types",
+  "path": "/odoo/action-legal_department_management.action_ldm_task_template",
+  "wait": ".o_list_view"
+ },
+ {
+  "name": "05b_matter_type_service",
+  "path": "/odoo/action-legal_department_management.action_ldm_task_template/24",
+  "wait": ".o_form_view"
+ },
+ {
+  "name": "06_document_types",
+  "path": "/odoo/action-legal_department_management.action_ldm_document_type",
+  "wait": ".o_list_view"
+ },
+ {
+  "name": "07_obligations_list",
+  "path": "/odoo/action-legal_department_management.action_ldm_obligation",
+  "wait": ".o_list_view"
+ },
+ {
+  "name": "07b_obligation_form",
+  "path": "/odoo/action-legal_department_management.action_ldm_obligation/1",
+  "wait": ".o_form_view"
+ },
+ {
+  "name": "08_company_documents",
+  "path": "/odoo/action-legal_department_management.action_ldm_company_document",
+  "wait": ".o_list_view"
+ },
+ {
+  "name": "09_coverage",
+  "path": "/odoo/action-legal_department_management.action_ldm_company_coverage",
+  "wait": ".o_list_view"
+ }
+]

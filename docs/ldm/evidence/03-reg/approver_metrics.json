@@ -1,0 +1,38 @@
+[
+ {
+  "name": "01_opinion_issued",
+  "path": "/odoo/matters/50",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-reg\\approver_01_opinion_issued.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "02_opinion_to_issue",
+  "path": "/odoo/matters/51",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-reg\\approver_02_opinion_to_issue.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "03_opinion_memo",
+  "path": "/report/html/legal_department_management.report_ldm_opinion_memo/50",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-reg\\approver_03_opinion_memo.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "04_opinion_register",
+  "path": "/odoo/legal-opinions",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-reg\\approver_04_opinion_register.png",
+  "console_errors": [],
+  "page_errors": []
+ }
+]

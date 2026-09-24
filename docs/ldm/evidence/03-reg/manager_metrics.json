@@ -1,0 +1,146 @@
+[
+ {
+  "name": "01_opinion_issued",
+  "path": "/odoo/matters/50",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-reg\\manager_01_opinion_issued.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "02_opinion_register",
+  "path": "/odoo/legal-opinions",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-reg\\manager_02_opinion_register.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "03_opinion_memo",
+  "path": "/report/html/legal_department_management.report_ldm_opinion_memo/50",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-reg\\manager_03_opinion_memo.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "04_guarantees_list",
+  "path": "/odoo/action-legal_department_management.action_ldm_guarantee",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-reg\\manager_04_guarantees_list.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "05_guarantee_form",
+  "path": "/odoo/action-legal_department_management.action_ldm_guarantee/9",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-reg\\manager_05_guarantee_form.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "06_guarantee_extension_dialog",
+  "path": "/odoo/action-legal_department_management.action_ldm_guarantee/9",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-reg\\manager_06_guarantee_extension_dialog.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "07_client_file",
+  "path": "/report/html/legal_department_management.report_legal_company_template/23",
+  "error_dialog": false,
+  "height": 1400,
+  "shot": "docs/ldm/evidence/03-reg\\manager_07_client_file.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "08_oversight",
+  "path": "/report/html/legal_department_management.report_legal_general_overview_template?options=%7B%22filtered%22%3Atrue%2C%22state%22%3A%22open%22%2C%22group_by_client%22%3Atrue%7D",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-reg\\manager_08_oversight.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "09_monthly_status",
+  "path": "/report/html/legal_department_management.report_ldm_monthly_status?options=%7B%22date_from%22%3A%222026-09-01%22%2C%22date_to%22%3A%222026-09-30%22%7D",
+  "error_dialog": false,
+  "height": 1151,
+  "shot": "docs/ldm/evidence/03-reg\\manager_09_monthly_status.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "10_exposure_pivot",
+  "path": "/odoo/action-legal_department_management.action_ldm_exposure",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-reg\\manager_10_exposure_pivot.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "11_monthly_dialog",
+  "path": "/odoo/action-legal_department_management.action_ldm_monthly_report_wizard",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-reg\\manager_11_monthly_dialog.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "12_oversight_dialog",
+  "path": "/odoo/action-legal_department_management.action_legal_general_report_wizard",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-reg\\manager_12_oversight_dialog.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "13_client_file_dialog",
+  "path": "/odoo/action-legal_department_management.action_ldm_client_file_wizard",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-reg\\manager_13_client_file_dialog.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "14_letter_templates",
+  "path": "/odoo/action-legal_department_management.action_ldm_letter_template",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-reg\\manager_14_letter_templates.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "15_letter_template_form",
+  "path": "/odoo/action-legal_department_management.action_ldm_letter_template",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-reg\\manager_15_letter_template_form.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "16_template_placeholders",
+  "path": "/odoo/action-legal_department_management.action_ldm_letter_template",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-reg\\manager_16_template_placeholders.png",
+  "console_errors": [],
+  "page_errors": []
+ }
+]

@@ -1,0 +1,11 @@
+[
+ {
+  "name": "40_settings_reference_library",
+  "path": "/odoo/action-legal_department_management.action_ldm_settings",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-gov\\admin_40_settings_reference_library.png",
+  "console_errors": [],
+  "page_errors": []
+ }
+]

@@ -4,9 +4,7 @@ estimates (the endowment offices fix them each year) and say so in their names."
 import os
 from datetime import date, datetime, time, timedelta
 
-_here = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "..")
-os.chdir(_here if os.path.exists(os.path.join(_here, "__manifest__.py"))
-         else os.path.join(_here, "custom_addons", "legal_department_management"))
+os.chdir(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "..", "custom_addons", "legal_department_management"))
 BAGHDAD = timedelta(hours=3)
 
 

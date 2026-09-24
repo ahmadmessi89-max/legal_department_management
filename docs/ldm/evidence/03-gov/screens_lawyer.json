@@ -1,0 +1,49 @@
+[
+ {
+  "name": "30_dossier_documents",
+  "path": "/odoo/legal-clients/1",
+  "wait": ".o_form_view",
+  "clicks": [
+   ".o_notebook_headers a[name=vault]"
+  ]
+ },
+ {
+  "name": "31_dossier_obligations",
+  "path": "/odoo/legal-clients/1",
+  "wait": ".o_form_view",
+  "clicks": [
+   ".o_notebook_headers a[name=obligations]"
+  ]
+ },
+ {
+  "name": "32_dossier_coverage",
+  "path": "/odoo/legal-clients/1",
+  "wait": ".o_form_view",
+  "clicks": [
+   ".o_notebook_headers a[name=coverage]"
+  ]
+ },
+ {
+  "name": "33_readiness_dialog",
+  "path": "/odoo/legal-clients/1",
+  "wait": ".o_form_view",
+  "clicks": [
+   ".o_notebook_headers a[name=vault]",
+   "button[name=action_ldm_readiness]"
+  ],
+  "full": false
+ },
+ {
+  "name": "34_matter_past_target",
+  "path": "/odoo/matters/5",
+  "wait": ".o_form_view"
+ },
+ {
+  "name": "35_matter_awaiting_confirmation",
+  "path": "/odoo/matters/2",
+  "wait": ".o_form_view",
+  "clicks": [
+   ".o_notebook_headers a[name=documents]"
+  ]
+ }
+]

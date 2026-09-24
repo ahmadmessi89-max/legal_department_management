@@ -1,0 +1,101 @@
+[
+ {
+  "name": "01_bodies_list",
+  "path": "/odoo/action-legal_department_management.action_legal_department",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-gov\\mgr_01_bodies_list.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "02_body_form_government",
+  "path": "/odoo/action-legal_department_management.action_legal_department/3",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-gov\\mgr_02_body_form_government.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "03_body_form_court",
+  "path": "/odoo/action-legal_department_management.action_legal_department/26",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-gov\\mgr_03_body_form_court.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "04_ministries_list",
+  "path": "/odoo/action-legal_department_management.action_legal_ministry",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-gov\\mgr_04_ministries_list.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "05_matter_types",
+  "path": "/odoo/action-legal_department_management.action_ldm_task_template",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-gov\\mgr_05_matter_types.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "05b_matter_type_service",
+  "path": "/odoo/action-legal_department_management.action_ldm_task_template/24",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-gov\\mgr_05b_matter_type_service.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "06_document_types",
+  "path": "/odoo/action-legal_department_management.action_ldm_document_type",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-gov\\mgr_06_document_types.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "07_obligations_list",
+  "path": "/odoo/action-legal_department_management.action_ldm_obligation",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-gov\\mgr_07_obligations_list.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "07b_obligation_form",
+  "path": "/odoo/action-legal_department_management.action_ldm_obligation/1",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-gov\\mgr_07b_obligation_form.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "08_company_documents",
+  "path": "/odoo/action-legal_department_management.action_ldm_company_document",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-gov\\mgr_08_company_documents.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "09_coverage",
+  "path": "/odoo/action-legal_department_management.action_ldm_company_coverage",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-gov\\mgr_09_coverage.png",
+  "console_errors": [],
+  "page_errors": []
+ }
+]

@@ -1,0 +1,20 @@
+[
+ {"name": "01_cockpit_case_tab_appeal", "path": "/odoo/matters/66", "wait": ".o_form_view", "clicks": [".o_notebook_headers a[name='case']"]},
+ {"name": "02_cockpit_case_tab_appeal_scrolled", "path": "/odoo/matters/66", "wait": ".o_form_view", "clicks": [".o_notebook_headers a[name='case']", ".o_horizontal_separator:has-text('Judgments')"]},
+ {"name": "03_cockpit_case_tab_eviction_scrolled", "path": "/odoo/matters/64", "wait": ".o_form_view", "clicks": [".o_notebook_headers a[name='case']", ".o_horizontal_separator:has-text('Judgments')"]},
+ {"name": "04_cockpit_sessions_tab", "path": "/odoo/matters/63", "wait": ".o_form_view", "clicks": [".o_notebook_headers a[name='sessions']"]},
+ {"name": "05_outcome_dialog_adjourned", "path": "/odoo/matters/63", "wait": ".o_form_view", "clicks": [".o_form_statusbar button[name='action_ldm_record_outcome']"], "settle": 2},
+ {"name": "06_outcome_dialog_adjourned_date_chosen", "path": "/odoo/matters/63", "wait": ".o_form_view", "clicks": [".o_form_statusbar button[name='action_ldm_record_outcome']", ".o_datetime_picker .o_date_item_cell:has-text('28')", ".modal input#needed_before_0"], "settle": 2},
+ {"name": "07_outcome_dialog_judgment", "path": "/odoo/matters/63", "wait": ".o_form_view", "clicks": [".o_form_statusbar button[name='action_ldm_record_outcome']", ".modal span.o_selection_badge:has-text('Judgment given')"], "settle": 2},
+ {"name": "08_outcome_dialog_left_for_review", "path": "/odoo/matters/63", "wait": ".o_form_view", "clicks": [".o_form_statusbar button[name='action_ldm_record_outcome']", ".modal span.o_selection_badge:has-text('Left for review')"], "settle": 2},
+ {"name": "09_hearing_calendar_month", "path": "/odoo/action-396", "wait": ".o_calendar_view", "settle": 2.5},
+ {"name": "10_hearing_calendar_week", "path": "/odoo/action-396", "wait": ".o_calendar_view", "clicks": [".o_view_scale_selector .scale_button_selection", ".o_scale_button_week"], "settle": 2.5},
+ {"name": "11_hearing_form_trainee", "path": "/odoo/action-396/70", "wait": ".o_form_view"},
+ {"name": "12_agenda_next_14_days", "path": "/odoo/action-353", "wait": ".o_list_view"},
+ {"name": "13_statutory_periods", "path": "/odoo/action-366", "wait": ".o_list_view"},
+ {"name": "14_statutory_period_form", "path": "/odoo/action-366/2", "wait": ".o_form_view"},
+ {"name": "15_deadlines_list", "path": "/odoo/action-354", "wait": ".o_list_view"},
+ {"name": "16_deadline_form_appeal", "path": "/odoo/legal.deadline/155", "wait": ".o_form_view"},
+ {"name": "17_judgment_form", "path": "/odoo/legal.judgment/43", "wait": ".o_form_view"},
+ {"name": "18_challenge_dialog", "path": "/odoo/legal.judgment/43", "wait": ".o_form_view", "clicks": [".o_form_statusbar button[name='action_ldm_lodge_challenge']"], "settle": 2}
+]

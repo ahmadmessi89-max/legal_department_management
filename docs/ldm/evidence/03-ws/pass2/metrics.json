@@ -1,0 +1,56 @@
+[
+ {
+  "name": "lawyer_01_my_day",
+  "path": "/odoo/my-day",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-ws/pass2\\lawyer_01_my_day.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "lawyer_02_cockpit_lawsuit",
+  "path": "/odoo/matters/216",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-ws/pass2\\lawyer_02_cockpit_lawsuit.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "lawyer_03_cockpit_government",
+  "path": "/odoo/matters/213",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-ws/pass2\\lawyer_03_cockpit_government.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "lawyer_04_quick_create",
+  "path": "/odoo/my-day",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-ws/pass2\\lawyer_04_quick_create.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "lawyer_05_dossier",
+  "path": "/odoo/legal-clients/46",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-ws/pass2\\lawyer_05_dossier.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "lawyer_06_agenda",
+  "path": "/odoo/legal-agenda",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-ws/pass2\\lawyer_06_agenda.png",
+  "console_errors": [],
+  "page_errors": []
+ }
+]

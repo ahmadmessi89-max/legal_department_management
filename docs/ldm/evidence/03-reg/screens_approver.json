@@ -1,0 +1,8 @@
+[
+ {"name": "01_opinion_issued", "path": "/odoo/matters/50", "wait": ".o_form_view .o_field_widget",
+  "clicks": [".o_notebook a[name=opinion]"], "settle": 1.0},
+ {"name": "02_opinion_to_issue", "path": "/odoo/matters/51", "wait": ".o_form_view .o_field_widget",
+  "clicks": [".o_notebook a[name=opinion]"], "settle": 1.0},
+ {"name": "03_opinion_memo", "path": "/report/html/legal_department_management.report_ldm_opinion_memo/50", "wait": "div.page"},
+ {"name": "04_opinion_register", "path": "/odoo/legal-opinions", "wait": ".o_data_row"}
+]

@@ -1,0 +1,7 @@
+[
+ {"name": "19_request_accepted_legal_view", "path": "/odoo/action-legal_department_management.action_ldm_request/14", "wait": "button[name=action_ldm_send_result]"},
+ {"name": "20_send_result_dialog", "path": "/odoo/action-legal_department_management.action_ldm_request/14", "wait": "button[name=action_ldm_send_result]",
+  "clicks": ["button[name=action_ldm_send_result]"], "settle": 1.5},
+ {"name": "21_matters_poa_filter", "path": "/odoo/matters", "wait": ".o_data_row",
+  "clicks": [".o_searchview_dropdown_toggler", ".o_menu_item:has-text('Power of attorney not valid')"], "settle": 1.5}
+]

@@ -1,0 +1,8 @@
+[
+ {"name": "01_poa_form_readonly", "path": "/odoo/powers-of-attorney/18", "wait": ".o_form_view .o_field_widget"},
+ {"name": "02_letter_readonly", "path": "/odoo/correspondence/22", "wait": ".o_form_view .o_field_widget"},
+ {"name": "03_request_readonly", "path": "/odoo/action-legal_department_management.action_ldm_request/16", "wait": ".o_form_view .o_field_widget"},
+ {"name": "04_opinion_register", "path": "/odoo/legal-opinions", "wait": ".o_data_row"},
+ {"name": "05_guarantee_readonly", "path": "/odoo/action-legal_department_management.action_ldm_guarantee/9", "wait": ".o_form_view .o_field_widget"},
+ {"name": "06_correspondence_list", "path": "/odoo/correspondence", "wait": ".o_data_row"}
+]

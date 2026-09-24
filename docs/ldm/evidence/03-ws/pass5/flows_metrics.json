@@ -1,0 +1,492 @@
+[
+ {
+  "name": "lawyer_my_day",
+  "user": "zainab",
+  "error_dialog": false,
+  "overflow_x": false,
+  "header_buttons": 0,
+  "header_labels": [],
+  "largest_text": {
+   "size": 28,
+   "text": "الخميس ٢٤ سبتمبر ٢٠٢٦"
+  },
+  "shot": "docs/ldm/evidence/03-ws/pass5\\lawyer_my_day.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "lawyer_cockpit_lawsuit",
+  "user": "zainab",
+  "error_dialog": false,
+  "overflow_x": false,
+  "header_buttons": 2,
+  "header_labels": [
+   "Close matter",
+   "More actions"
+  ],
+  "largest_text": {
+   "size": 18,
+   "text": "Court session at محكمة بداءة الكرخ"
+  },
+  "shot": "docs/ldm/evidence/03-ws/pass5\\lawyer_cockpit_lawsuit.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "lawyer_cockpit_lawsuit_more_menu",
+  "user": "zainab",
+  "error_dialog": false,
+  "overflow_x": false,
+  "header_buttons": 2,
+  "header_labels": [
+   "Close matter",
+   "More actions"
+  ],
+  "largest_text": {
+   "size": 18,
+   "text": "Court session at محكمة بداءة الكرخ"
+  },
+  "shot": "docs/ldm/evidence/03-ws/pass5\\lawyer_cockpit_lawsuit_more_menu.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "lawyer_cockpit_government",
+  "user": "zainab",
+  "error_dialog": false,
+  "overflow_x": false,
+  "header_buttons": 2,
+  "header_labels": [
+   "Close matter",
+   "More actions"
+  ],
+  "largest_text": {
+   "size": 18,
+   "text": "تقديم الملف في الشباك"
+  },
+  "shot": "docs/ldm/evidence/03-ws/pass5\\lawyer_cockpit_government.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "lawyer_cockpit_documents_tab",
+  "user": "zainab",
+  "error_dialog": false,
+  "overflow_x": false,
+  "header_buttons": 2,
+  "header_labels": [
+   "Close matter",
+   "More actions"
+  ],
+  "largest_text": {
+   "size": 18,
+   "text": "تقديم الملف في الشباك"
+  },
+  "shot": "docs/ldm/evidence/03-ws/pass5\\lawyer_cockpit_documents_tab.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "lawyer_quick_create_empty",
+  "user": "zainab",
+  "error_dialog": false,
+  "overflow_x": false,
+  "header_buttons": 0,
+  "header_labels": [],
+  "largest_text": {
+   "size": 28,
+   "text": "الخميس ٢٤ سبتمبر ٢٠٢٦"
+  },
+  "shot": "docs/ldm/evidence/03-ws/pass5\\lawyer_quick_create_empty.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "lawyer_quick_create_government",
+  "user": "zainab",
+  "error_dialog": false,
+  "overflow_x": false,
+  "header_buttons": 0,
+  "header_labels": [],
+  "largest_text": {
+   "size": 28,
+   "text": "الخميس ٢٤ سبتمبر ٢٠٢٦"
+  },
+  "shot": "docs/ldm/evidence/03-ws/pass5\\lawyer_quick_create_government.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "lawyer_quick_create_lawsuit",
+  "user": "zainab",
+  "error_dialog": false,
+  "overflow_x": false,
+  "header_buttons": 0,
+  "header_labels": [],
+  "largest_text": {
+   "size": 28,
+   "text": "الخميس ٢٤ سبتمبر ٢٠٢٦"
+  },
+  "shot": "docs/ldm/evidence/03-ws/pass5\\lawyer_quick_create_lawsuit.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "lawyer_quick_create_fee_agreement",
+  "user": "zainab",
+  "error_dialog": false,
+  "overflow_x": false,
+  "header_buttons": 0,
+  "header_labels": [],
+  "largest_text": {
+   "size": 28,
+   "text": "الخميس ٢٤ سبتمبر ٢٠٢٦"
+  },
+  "shot": "docs/ldm/evidence/03-ws/pass5\\lawyer_quick_create_fee_agreement.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "lawyer_palette_search",
+  "user": "zainab",
+  "error_dialog": false,
+  "overflow_x": false,
+  "header_buttons": 0,
+  "header_labels": [],
+  "largest_text": {
+   "size": 28,
+   "text": "الخميس ٢٤ سبتمبر ٢٠٢٦"
+  },
+  "shot": "docs/ldm/evidence/03-ws/pass5\\lawyer_palette_search.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "lawyer_palette_numbers",
+  "user": "zainab",
+  "error_dialog": false,
+  "overflow_x": false,
+  "header_buttons": 0,
+  "header_labels": [],
+  "largest_text": {
+   "size": 28,
+   "text": "الخميس ٢٤ سبتمبر ٢٠٢٦"
+  },
+  "shot": "docs/ldm/evidence/03-ws/pass5\\lawyer_palette_numbers.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "lawyer_dossier",
+  "user": "zainab",
+  "error_dialog": false,
+  "overflow_x": false,
+  "header_buttons": 2,
+  "header_labels": [
+   "New matter for this client",
+   "Print file"
+  ],
+  "largest_text": {
+   "size": 18,
+   "text": "What is happening now"
+  },
+  "shot": "docs/ldm/evidence/03-ws/pass5\\lawyer_dossier.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "lawyer_agenda",
+  "user": "zainab",
+  "error_dialog": false,
+  "overflow_x": false,
+  "header_buttons": 0,
+  "header_labels": [],
+  "largest_text": {
+   "size": 28,
+   "text": "Agenda"
+  },
+  "shot": "docs/ldm/evidence/03-ws/pass5\\lawyer_agenda.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "lawyer_matters_list",
+  "user": "zainab",
+  "error_dialog": false,
+  "overflow_x": false,
+  "header_buttons": 0,
+  "header_labels": [],
+  "largest_text": {
+   "size": 16.8,
+   "text": "Matters"
+  },
+  "shot": "docs/ldm/evidence/03-ws/pass5\\lawyer_matters_list.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "clerk_my_day",
+  "user": "ali",
+  "error_dialog": false,
+  "overflow_x": false,
+  "header_buttons": 0,
+  "header_labels": [],
+  "largest_text": {
+   "size": 28,
+   "text": "الخميس ٢٤ سبتمبر ٢٠٢٦"
+  },
+  "shot": "docs/ldm/evidence/03-ws/pass5\\clerk_my_day.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "clerk_cockpit_government",
+  "user": "ali",
+  "error_dialog": false,
+  "overflow_x": false,
+  "header_buttons": 2,
+  "header_labels": [
+   "Close matter",
+   "More actions"
+  ],
+  "largest_text": {
+   "size": 18,
+   "text": "تقديم الملف في الشباك"
+  },
+  "shot": "docs/ldm/evidence/03-ws/pass5\\clerk_cockpit_government.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "clerk_cockpit_steps",
+  "user": "ali",
+  "error_dialog": false,
+  "overflow_x": false,
+  "header_buttons": 2,
+  "header_labels": [
+   "Close matter",
+   "More actions"
+  ],
+  "largest_text": {
+   "size": 18,
+   "text": "تقديم الملف في الشباك"
+  },
+  "shot": "docs/ldm/evidence/03-ws/pass5\\clerk_cockpit_steps.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "clerk_agenda",
+  "user": "ali",
+  "error_dialog": false,
+  "overflow_x": false,
+  "header_buttons": 0,
+  "header_labels": [],
+  "largest_text": {
+   "size": 28,
+   "text": "Agenda"
+  },
+  "shot": "docs/ldm/evidence/03-ws/pass5\\clerk_agenda.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "approver_my_day",
+  "user": "hussein",
+  "error_dialog": false,
+  "overflow_x": false,
+  "header_buttons": 0,
+  "header_labels": [],
+  "largest_text": {
+   "size": 28,
+   "text": "الخميس ٢٤ سبتمبر ٢٠٢٦"
+  },
+  "shot": "docs/ldm/evidence/03-ws/pass5\\approver_my_day.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "approver_inbox",
+  "user": "hussein",
+  "error_dialog": false,
+  "overflow_x": false,
+  "header_buttons": 0,
+  "header_labels": [],
+  "largest_text": {
+   "size": 16.8,
+   "text": "Awaiting approval"
+  },
+  "shot": "docs/ldm/evidence/03-ws/pass5\\approver_inbox.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "approver_inbox_preview",
+  "user": "hussein",
+  "error_dialog": false,
+  "overflow_x": false,
+  "header_buttons": 0,
+  "header_labels": [],
+  "largest_text": {
+   "size": 16.8,
+   "text": "Awaiting approval"
+  },
+  "shot": "docs/ldm/evidence/03-ws/pass5\\approver_inbox_preview.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "approver_cockpit_banner",
+  "user": "hussein",
+  "error_dialog": false,
+  "overflow_x": false,
+  "header_buttons": 1,
+  "header_labels": [
+   "More actions"
+  ],
+  "largest_text": {
+   "size": 18,
+   "text": "Waiting for approval"
+  },
+  "shot": "docs/ldm/evidence/03-ws/pass5\\approver_cockpit_banner.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "manager_my_day",
+  "user": "sara",
+  "error_dialog": false,
+  "overflow_x": false,
+  "header_buttons": 0,
+  "header_labels": [],
+  "largest_text": {
+   "size": 28,
+   "text": "الخميس ٢٤ سبتمبر ٢٠٢٦"
+  },
+  "shot": "docs/ldm/evidence/03-ws/pass5\\manager_my_day.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "manager_my_day_everyone",
+  "user": "sara",
+  "error_dialog": false,
+  "overflow_x": false,
+  "header_buttons": 0,
+  "header_labels": [],
+  "largest_text": {
+   "size": 28,
+   "text": "الخميس ٢٤ سبتمبر ٢٠٢٦"
+  },
+  "shot": "docs/ldm/evidence/03-ws/pass5\\manager_my_day_everyone.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "manager_handover",
+  "user": "sara",
+  "error_dialog": false,
+  "overflow_x": false,
+  "header_buttons": 0,
+  "header_labels": [],
+  "largest_text": null,
+  "shot": "docs/ldm/evidence/03-ws/pass5\\manager_handover.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "manager_cockpit_lawsuit",
+  "user": "sara",
+  "error_dialog": false,
+  "overflow_x": false,
+  "header_buttons": 2,
+  "header_labels": [
+   "Close matter",
+   "More actions"
+  ],
+  "largest_text": {
+   "size": 18,
+   "text": "Court session at محكمة بداءة الكرخ"
+  },
+  "shot": "docs/ldm/evidence/03-ws/pass5\\manager_cockpit_lawsuit.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "auditor_my_day",
+  "user": "mustafa",
+  "error_dialog": false,
+  "overflow_x": false,
+  "header_buttons": 0,
+  "header_labels": [],
+  "largest_text": {
+   "size": 28,
+   "text": "الخميس ٢٤ سبتمبر ٢٠٢٦"
+  },
+  "shot": "docs/ldm/evidence/03-ws/pass5\\auditor_my_day.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "auditor_cockpit_lawsuit",
+  "user": "mustafa",
+  "error_dialog": false,
+  "overflow_x": false,
+  "header_buttons": 0,
+  "header_labels": [],
+  "largest_text": {
+   "size": 28,
+   "text": "دعوى مطالبة بقيمة عقد توريد"
+  },
+  "shot": "docs/ldm/evidence/03-ws/pass5\\auditor_cockpit_lawsuit.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "auditor_cockpit_government",
+  "user": "mustafa",
+  "error_dialog": false,
+  "overflow_x": false,
+  "header_buttons": 0,
+  "header_labels": [],
+  "largest_text": {
+   "size": 28,
+   "text": "براءة ذمة ضريبية سنوية لعام 2026"
+  },
+  "shot": "docs/ldm/evidence/03-ws/pass5\\auditor_cockpit_government.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "auditor_dossier",
+  "user": "mustafa",
+  "error_dialog": false,
+  "overflow_x": false,
+  "header_buttons": 1,
+  "header_labels": [
+   "Print file"
+  ],
+  "largest_text": {
+   "size": 28,
+   "text": "مجموعة دجلة التجارية"
+  },
+  "shot": "docs/ldm/evidence/03-ws/pass5\\auditor_dossier.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "auditor_agenda",
+  "user": "mustafa",
+  "error_dialog": false,
+  "overflow_x": false,
+  "header_buttons": 0,
+  "header_labels": [],
+  "largest_text": {
+   "size": 28,
+   "text": "Agenda"
+  },
+  "shot": "docs/ldm/evidence/03-ws/pass5\\auditor_agenda.png",
+  "console_errors": [],
+  "page_errors": []
+ }
+]

@@ -1,0 +1,26 @@
+[
+ {
+  "name": "p_engagement_cap",
+  "path": "/odoo/action-legal_department_management.action_ldm_engagement/2",
+  "wait": ".o_form_view"
+ },
+ {
+  "name": "p_conflict_banner",
+  "path": "/odoo/matters/7",
+  "wait": ".o_form_view"
+ },
+ {
+  "name": "p_conflict_decide",
+  "path": "/odoo/matters/7",
+  "wait": ".o_form_view",
+  "clicks": [
+   ".alert button[name='action_ldm_open_conflict']"
+  ],
+  "full": false
+ },
+ {
+  "name": "p_conflict_checks",
+  "path": "/odoo/action-legal_department_management.action_ldm_conflict_check",
+  "wait": ".o_list_view"
+ }
+]

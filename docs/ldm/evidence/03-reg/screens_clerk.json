@@ -1,0 +1,8 @@
+[
+ {"name": "01_letter_draft_register", "path": "/odoo/correspondence/27", "wait": ".o_form_view .o_field_widget"},
+ {"name": "02_register_book_dialog", "path": "/odoo/correspondence", "wait": ".o_data_row",
+  "clicks": ["button[name=action_ldm_register_book]"], "settle": 1.5},
+ {"name": "03_new_incoming_letter", "path": "/odoo/correspondence/new", "wait": ".o_form_view .o_field_widget"},
+ {"name": "04_void_dialog", "path": "/odoo/correspondence/22", "wait": ".o_form_view .o_field_widget",
+  "clicks": [".o_cp_action_menus button", ".o-dropdown-item:has-text('Void')"], "settle": 1.5}
+]

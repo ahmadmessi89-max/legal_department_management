@@ -1,0 +1,56 @@
+[
+ {
+  "name": "01_poa_form_readonly",
+  "path": "/odoo/powers-of-attorney/18",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-reg\\auditor_01_poa_form_readonly.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "02_letter_readonly",
+  "path": "/odoo/correspondence/22",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-reg\\auditor_02_letter_readonly.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "03_request_readonly",
+  "path": "/odoo/action-legal_department_management.action_ldm_request/16",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-reg\\auditor_03_request_readonly.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "04_opinion_register",
+  "path": "/odoo/legal-opinions",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-reg\\auditor_04_opinion_register.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "05_guarantee_readonly",
+  "path": "/odoo/action-legal_department_management.action_ldm_guarantee/9",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-reg\\auditor_05_guarantee_readonly.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "06_correspondence_list",
+  "path": "/odoo/correspondence",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-reg\\auditor_06_correspondence_list.png",
+  "console_errors": [],
+  "page_errors": []
+ }
+]

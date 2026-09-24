@@ -1,0 +1,38 @@
+[
+ {
+  "name": "01_poa_list",
+  "path": "/odoo/powers-of-attorney",
+  "error_dialog": false,
+  "height": 844,
+  "shot": "docs/ldm/evidence/03-reg\\m_lawyer_01_poa_list.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "02_poa_form",
+  "path": "/odoo/powers-of-attorney/18",
+  "error_dialog": false,
+  "height": 844,
+  "shot": "docs/ldm/evidence/03-reg\\m_lawyer_02_poa_form.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "03_letter_incoming",
+  "path": "/odoo/correspondence/22",
+  "error_dialog": false,
+  "height": 844,
+  "shot": "docs/ldm/evidence/03-reg\\m_lawyer_03_letter_incoming.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "04_triage_queue",
+  "path": "/odoo/action-legal_department_management.action_ldm_request",
+  "error_dialog": false,
+  "height": 844,
+  "shot": "docs/ldm/evidence/03-reg\\m_lawyer_04_triage_queue.png",
+  "console_errors": [],
+  "page_errors": []
+ }
+]

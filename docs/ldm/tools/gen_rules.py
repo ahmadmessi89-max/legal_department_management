@@ -1,7 +1,5 @@
 import os
-_here = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "..")
-os.chdir(_here if os.path.exists(os.path.join(_here, "__manifest__.py"))
-         else os.path.join(_here, "custom_addons", "legal_department_management"))
+os.chdir(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "..", "custom_addons", "legal_department_management"))
 ASSIGNED = ("['|', '|', '|', '|', ('{p}lawyer_id', '=', user.id), ('{p}lawyer_ids', 'in', [user.id]), "
             "'&', ('{p}confidential', '=', False), ('{p}legal_company_id.lawyer_ids', 'in', [user.id]), "
             "'&', ('{p}confidential', '=', False), ('{p}step_ids.user_id', '=', user.id), "
@@ -51,6 +49,20 @@ rule('legal_company_rule_manager', 'Clients: all (manager)', 'legal_company', AL
 rule('legal_company_rule_see_all', 'Clients: all (office-wide visibility)', 'legal_company', ALL, 'group_ldm_see_all')
 rule('legal_company_rule_auditor', 'Clients: all (auditor, read)', 'legal_company', ALL, 'group_ldm_auditor', True, False, False, False)
 rule('legal_company_rule_billing', 'Clients: all (billing, read)', 'legal_company', ALL, 'group_ldm_billing_user', True, False, False, False)
+rule('legal_company_rule_approver', 'Clients: of matters in the approval flow (approver, read)', 'legal_company',
+     "[('task_ids.approval_state', '!=', 'draft')]", 'group_ldm_approver', True, False, False, False)
+ENGAGEMENT = ("['|', '|', '|', ('lawyer_id', '=', user.id), ('legal_company_id.lawyer_id', '=', user.id), "
+              "('legal_company_id.lawyer_ids', 'in', [user.id]), ('task_ids.lawyer_ids', 'in', [user.id])]")
+rule('legal_engagement_rule_team', 'Fee agreements: of the clients I look after or the matters I work on', 'legal_engagement', ENGAGEMENT, 'group_ldm_clerk')
+rule('legal_engagement_rule_manager', 'Fee agreements: all (manager)', 'legal_engagement', ALL, 'group_legal_manager')
+rule('legal_engagement_rule_billing', 'Fee agreements: all (billing)', 'legal_engagement', ALL, 'group_ldm_billing_user')
+rule('legal_engagement_rule_auditor', 'Fee agreements: all (auditor, read)', 'legal_engagement', ALL, 'group_ldm_auditor', True, False, False, False)
+rule('legal_engagement_line_rule_team', 'Fee schedule: of the clients I look after or the matters I work on', 'legal_engagement_line',
+     "['|', '|', '|', ('engagement_id.lawyer_id', '=', user.id), ('engagement_id.legal_company_id.lawyer_id', '=', user.id), "
+     "('engagement_id.legal_company_id.lawyer_ids', 'in', [user.id]), ('engagement_id.task_ids.lawyer_ids', 'in', [user.id])]", 'group_ldm_clerk')
+rule('legal_engagement_line_rule_manager', 'Fee schedule: all (manager)', 'legal_engagement_line', ALL, 'group_legal_manager')
+rule('legal_engagement_line_rule_billing', 'Fee schedule: all (billing)', 'legal_engagement_line', ALL, 'group_ldm_billing_user')
+rule('legal_engagement_line_rule_auditor', 'Fee schedule: all (auditor, read)', 'legal_engagement_line', ALL, 'group_ldm_auditor', True, False, False, False)
 
 CHILD = ASSIGNED.format(p='task_id.')
 CHILDREN = (

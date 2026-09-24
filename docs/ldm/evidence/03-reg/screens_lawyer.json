@@ -1,0 +1,23 @@
+[
+ {"name": "01_poa_list", "path": "/odoo/powers-of-attorney", "wait": ".o_data_row"},
+ {"name": "02_poa_kanban", "path": "/odoo/powers-of-attorney?view_type=kanban", "wait": ".o_kanban_record"},
+ {"name": "03_poa_form_expiring", "path": "/odoo/powers-of-attorney/18", "wait": ".o_form_view .o_field_widget"},
+ {"name": "04_poa_revoke_dialog", "path": "/odoo/powers-of-attorney/18", "wait": ".o_form_view .o_field_widget",
+  "clicks": ["button[name=action_ldm_revoke]"], "settle": 1.5},
+ {"name": "05_client_poa_button", "path": "/odoo/legal-clients/23", "wait": ".o_form_view .o_field_widget"},
+ {"name": "06_who_can_act", "path": "/odoo/legal-clients/23", "wait": "button[name=action_ldm_view_poas]",
+  "clicks": ["button[name=action_ldm_view_poas]"], "settle": 1.5},
+ {"name": "07_correspondence_list", "path": "/odoo/correspondence", "wait": ".o_data_row"},
+ {"name": "08_letter_incoming", "path": "/odoo/correspondence/22", "wait": ".o_form_view .o_field_widget"},
+ {"name": "09_letter_outgoing", "path": "/odoo/correspondence/24", "wait": ".o_form_view .o_field_widget"},
+ {"name": "10_official_letter", "path": "/report/html/legal_department_management.report_ldm_letter/24", "wait": "div.page"},
+ {"name": "11_register_book", "path": "/report/html/legal_department_management.report_ldm_register_book?options=%7B%22date_from%22%3A%222026-01-01%22%2C%22date_to%22%3A%222026-12-31%22%2C%22direction%22%3A%22both%22%7D", "wait": "div.page"},
+ {"name": "12_matter_documents_new_document", "path": "/odoo/matters/46", "wait": ".o_form_view .o_field_widget",
+  "clicks": [".o_notebook a[name=documents]"], "settle": 1.0},
+ {"name": "13_matter_poa_revoked_banner", "path": "/odoo/matters/48", "wait": ".o_form_view .o_field_widget"},
+ {"name": "14_followup_sheet", "path": "/report/html/legal_department_management.report_legal_task_template/46", "wait": "div.page"},
+ {"name": "15_triage_queue", "path": "/odoo/action-legal_department_management.action_ldm_request", "wait": ".o_data_row"},
+ {"name": "16_request_in_review", "path": "/odoo/action-legal_department_management.action_ldm_request/16", "wait": ".o_form_view .o_field_widget"},
+ {"name": "17_request_accept_dialog", "path": "/odoo/action-legal_department_management.action_ldm_request/16", "wait": "button[name=action_ldm_accept]",
+  "clicks": ["button[name=action_ldm_accept]"], "settle": 1.5}
+]

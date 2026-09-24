@@ -1,0 +1,110 @@
+[
+ {
+  "name": "m_lawyer_my_day",
+  "user": "zainab",
+  "error_dialog": false,
+  "overflow_x": false,
+  "header_buttons": 0,
+  "header_labels": [],
+  "largest_text": {
+   "size": 18,
+   "text": "الخميس ٢٤ سبتمبر ٢٠٢٦"
+  },
+  "shot": "docs/ldm/evidence/03-ws/pass5\\m_lawyer_my_day.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "m_lawyer_cockpit_lawsuit",
+  "user": "zainab",
+  "error_dialog": false,
+  "overflow_x": false,
+  "header_buttons": 2,
+  "header_labels": [
+   "Close matter",
+   "More actions"
+  ],
+  "largest_text": {
+   "size": 18,
+   "text": "Court session at محكمة بداءة الكرخ"
+  },
+  "shot": "docs/ldm/evidence/03-ws/pass5\\m_lawyer_cockpit_lawsuit.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "m_lawyer_quick_create_lawsuit",
+  "user": "zainab",
+  "error_dialog": false,
+  "overflow_x": false,
+  "header_buttons": 0,
+  "header_labels": [],
+  "largest_text": {
+   "size": 18,
+   "text": "الخميس ٢٤ سبتمبر ٢٠٢٦"
+  },
+  "shot": "docs/ldm/evidence/03-ws/pass5\\m_lawyer_quick_create_lawsuit.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "m_lawyer_dossier",
+  "user": "zainab",
+  "error_dialog": false,
+  "overflow_x": false,
+  "header_buttons": 2,
+  "header_labels": [
+   "New matter for this client",
+   "المزيد"
+  ],
+  "largest_text": {
+   "size": 18,
+   "text": "What is happening now"
+  },
+  "shot": "docs/ldm/evidence/03-ws/pass5\\m_lawyer_dossier.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "m_lawyer_agenda",
+  "user": "zainab",
+  "error_dialog": false,
+  "overflow_x": false,
+  "header_buttons": 0,
+  "header_labels": [],
+  "largest_text": {
+   "size": 18,
+   "text": "Agenda"
+  },
+  "shot": "docs/ldm/evidence/03-ws/pass5\\m_lawyer_agenda.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "m_manager_my_day",
+  "user": "sara",
+  "error_dialog": false,
+  "overflow_x": false,
+  "header_buttons": 0,
+  "header_labels": [],
+  "largest_text": {
+   "size": 18,
+   "text": "الخميس ٢٤ سبتمبر ٢٠٢٦"
+  },
+  "shot": "docs/ldm/evidence/03-ws/pass5\\m_manager_my_day.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "m_manager_handover",
+  "user": "sara",
+  "error_dialog": false,
+  "overflow_x": false,
+  "header_buttons": 0,
+  "header_labels": [],
+  "largest_text": null,
+  "shot": "docs/ldm/evidence/03-ws/pass5\\m_manager_handover.png",
+  "console_errors": [],
+  "page_errors": []
+ }
+]

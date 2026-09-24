@@ -1,0 +1,164 @@
+[
+ {
+  "name": "01_cockpit_case_tab_appeal",
+  "path": "/odoo/matters/66",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-lit\\01_cockpit_case_tab_appeal.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "02_cockpit_case_tab_appeal_scrolled",
+  "path": "/odoo/matters/66",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-lit\\02_cockpit_case_tab_appeal_scrolled.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "03_cockpit_case_tab_eviction_scrolled",
+  "path": "/odoo/matters/64",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-lit\\03_cockpit_case_tab_eviction_scrolled.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "04_cockpit_sessions_tab",
+  "path": "/odoo/matters/63",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-lit\\04_cockpit_sessions_tab.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "05_outcome_dialog_adjourned",
+  "path": "/odoo/matters/63",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-lit\\05_outcome_dialog_adjourned.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "06_outcome_dialog_adjourned_date_chosen",
+  "path": "/odoo/matters/63",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-lit\\06_outcome_dialog_adjourned_date_chosen.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "07_outcome_dialog_judgment",
+  "path": "/odoo/matters/63",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-lit\\07_outcome_dialog_judgment.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "08_outcome_dialog_left_for_review",
+  "path": "/odoo/matters/63",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-lit\\08_outcome_dialog_left_for_review.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "09_hearing_calendar_month",
+  "path": "/odoo/action-396",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-lit\\09_hearing_calendar_month.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "10_hearing_calendar_week",
+  "path": "/odoo/action-396",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-lit\\10_hearing_calendar_week.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "11_hearing_form_trainee",
+  "path": "/odoo/action-396/70",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-lit\\11_hearing_form_trainee.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "12_agenda_next_14_days",
+  "path": "/odoo/action-353",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-lit\\12_agenda_next_14_days.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "13_statutory_periods",
+  "path": "/odoo/action-366",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-lit\\13_statutory_periods.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "14_statutory_period_form",
+  "path": "/odoo/action-366/2",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-lit\\14_statutory_period_form.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "15_deadlines_list",
+  "path": "/odoo/action-354",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-lit\\15_deadlines_list.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "16_deadline_form_appeal",
+  "path": "/odoo/legal.deadline/155",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-lit\\16_deadline_form_appeal.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "17_judgment_form",
+  "path": "/odoo/legal.judgment/43",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-lit\\17_judgment_form.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "18_challenge_dialog",
+  "path": "/odoo/legal.judgment/43",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-lit\\18_challenge_dialog.png",
+  "console_errors": [],
+  "page_errors": []
+ }
+]

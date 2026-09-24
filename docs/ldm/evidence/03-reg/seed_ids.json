@@ -1,0 +1,20 @@
+{
+ "gov": 46,
+ "suit": 47,
+ "against": 48,
+ "poa_suit": 18,
+ "poa_general": 19,
+ "poa_runner": 20,
+ "poa_revoked": 22,
+ "rafidain": 23,
+ "tigris": 24,
+ "incoming": 22,
+ "outgoing": 24,
+ "draft_letter": 27,
+ "opinion": 50,
+ "request_returned": 13,
+ "request_new": 12,
+ "request_review": 16,
+ "request_accepted": 14,
+ "guarantee": 9
+}

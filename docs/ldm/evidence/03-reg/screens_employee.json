@@ -1,0 +1,6 @@
+[
+ {"name": "01_my_requests", "path": "/odoo/legal-requests", "wait": ".o_data_row"},
+ {"name": "02_request_returned", "path": "/odoo/legal-requests/13", "wait": ".o_form_view .o_field_widget"},
+ {"name": "03_request_accepted", "path": "/odoo/legal-requests/14", "wait": ".o_form_view .o_field_widget"},
+ {"name": "04_new_request", "path": "/odoo/legal-requests/new", "wait": ".o_form_view .o_field_widget"}
+]

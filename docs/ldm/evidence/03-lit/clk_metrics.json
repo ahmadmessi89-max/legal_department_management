@@ -1,0 +1,20 @@
+[
+ {
+  "name": "50_clerk_sessions_tab",
+  "path": "/odoo/matters/63",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-lit\\clk_50_clerk_sessions_tab.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "51_clerk_outcome_dialog",
+  "path": "/odoo/matters/63",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-lit\\clk_51_clerk_outcome_dialog.png",
+  "console_errors": [],
+  "page_errors": []
+ }
+]

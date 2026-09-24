@@ -1,0 +1,6 @@
+[
+ {"name": "01_poa_list", "path": "/odoo/powers-of-attorney", "wait": ".o_kanban_record"},
+ {"name": "02_poa_form", "path": "/odoo/powers-of-attorney/18", "wait": ".o_form_view .o_field_widget"},
+ {"name": "03_letter_incoming", "path": "/odoo/correspondence/22", "wait": ".o_form_view .o_field_widget"},
+ {"name": "04_triage_queue", "path": "/odoo/action-legal_department_management.action_ldm_request", "wait": ".o_kanban_record"}
+]

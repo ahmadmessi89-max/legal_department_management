@@ -1,0 +1,83 @@
+[
+ {
+  "name": "b_to_invoice",
+  "path": "/odoo/action-legal_department_management.action_ldm_to_invoice",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-money\\b_to_invoice.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "b_invoice_wizard",
+  "path": "/odoo/action-legal_department_management.action_ldm_engagement/1",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-money\\b_invoice_wizard.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "b_invoice_sent",
+  "path": "/odoo/action-account.action_move_out_invoice_type/1",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-money\\b_invoice_sent.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "b_statement",
+  "path": "/report/html/legal_department_management.report_ldm_statement/1",
+  "error_dialog": false,
+  "height": 989,
+  "shot": "docs/ldm/evidence/03-money\\b_statement.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "b_client_dossier",
+  "path": "/odoo/legal-clients/1",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-money\\b_client_dossier.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "b_client_money",
+  "path": "/odoo/action-legal_department_management.action_ldm_client_fund",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-money\\b_client_money.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "b_advance_settle",
+  "path": "/odoo/action-legal_department_management.action_ldm_advance/1",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-money\\b_advance_settle.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "b_fee_agreements",
+  "path": "/odoo/action-legal_department_management.action_ldm_engagement",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-money\\b_fee_agreements.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "b_fee_agreement_pdf",
+  "path": "/report/html/legal_department_management.report_ldm_engagement/1",
+  "error_dialog": false,
+  "height": 1192,
+  "shot": "docs/ldm/evidence/03-money\\b_fee_agreement_pdf.png",
+  "console_errors": [],
+  "page_errors": []
+ }
+]

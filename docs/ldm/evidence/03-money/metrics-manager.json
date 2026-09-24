@@ -1,0 +1,38 @@
+[
+ {
+  "name": "p_engagement_cap",
+  "path": "/odoo/action-legal_department_management.action_ldm_engagement/2",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-money\\p_engagement_cap.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "p_conflict_banner",
+  "path": "/odoo/matters/7",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-money\\p_conflict_banner.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "p_conflict_decide",
+  "path": "/odoo/matters/7",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-money\\p_conflict_decide.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "p_conflict_checks",
+  "path": "/odoo/action-legal_department_management.action_ldm_conflict_check",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-money\\p_conflict_checks.png",
+  "console_errors": [],
+  "page_errors": []
+ }
+]

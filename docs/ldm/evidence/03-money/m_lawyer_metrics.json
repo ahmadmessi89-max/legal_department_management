@@ -1,0 +1,34 @@
+[
+ {
+  "name": "matter_money",
+  "path": "/odoo/matters/1",
+  "error_dialog": false,
+  "shot": "docs/ldm/evidence/03-money\\m_lawyer_matter_money.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "stat_menu",
+  "path": "/odoo/matters/1",
+  "error_dialog": false,
+  "shot": "docs/ldm/evidence/03-money\\m_lawyer_stat_menu.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "client_message",
+  "path": "/odoo/matters/1",
+  "error_dialog": false,
+  "shot": "docs/ldm/evidence/03-money\\m_lawyer_client_message.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "timer_menu",
+  "path": "/odoo/matters/1",
+  "error_dialog": false,
+  "shot": "docs/ldm/evidence/03-money\\m_lawyer_timer_menu.png",
+  "console_errors": [],
+  "page_errors": []
+ }
+]

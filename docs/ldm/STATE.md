@@ -30,6 +30,22 @@ professional software:
   this repository. Porting code from them is allowed (same owner).
 - Arabic (`ar_001`, RTL) is the primary UI; English must also be complete.
 
+## Delivery repository (the owner's instruction, 2026-09-24)
+
+The work is delivered to SAG's repository
+**github.com/ahmadmessi89-max/legal_department_management**, branch
+**`professional-19.0.7`** (module at the repository root, documents under
+`docs/ldm/`). SAG's `main` stays untouched until the owner decides to merge.
+Local clone: `C:\Users\Lenovo\Documents\ldm_repo\legal_department_management`.
+Publish every milestone with `bash docs/ldm/tools/sync_to_sag.sh --push` (from
+this workspace): it replays new module commits with their messages and authors
+and copies `docs/ldm`. Development, databases and tests stay in this workspace.
+
+## Screenshots
+
+All screenshots, by stage: `C:\Users\Lenovo\Documents\LDM Screenshots\`.
+Refresh with `python docs/ldm/tools/collect_screenshots.py`.
+
 ## Environment
 
 | | |
@@ -65,6 +81,21 @@ Baseline screens: `docs/ldm/evidence/00-baseline/` (eight screens, zero errors).
   G government (ldm_g, 8102) · L litigation and clocks (ldm_l, 8103) ·
   W workspace OWL (ldm_w, 8104) · M money (ldm_m, 8105) ·
   R registers and reports (ldm_r, 8106).
+
+### Stream status (updated 18:40)
+
+| Stream | State |
+|---|---|
+| G government | **done** in the workflow: 104 tests green, no warnings, 33 screens; hand-back `docs/ldm/handback/gov.md` in worktree `-1`; in review |
+| L litigation | building (worktree `-2`) |
+| W workspace | building in the workflow (worktree `-3`), now the only writer, rebuilding its screens to the design direction. A duplicate copy (started by a message sent to the running workflow agent) and a successor were both stopped; the successor left one snapshot commit `6d44074`. Lesson recorded: never message a running workflow agent |
+| M money | building (worktree `-4`) |
+| R registers | building (worktree `-5`) |
+
+Design direction (binding for every OWL screen): `docs/ldm/briefs/design-direction.md`
+— an original identity around the mockup's intent (the owner: "don't copy it,
+it is the idea"). A design pass after the merge applies it to every screen and
+adds the analytics board and the dossier's service overview.
 
 ## Next, in order
 

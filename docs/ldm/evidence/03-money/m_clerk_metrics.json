@@ -1,0 +1,29 @@
+[
+ {
+  "name": "advance",
+  "path": "/odoo/action-legal_department_management.action_ldm_advance/1",
+  "error_dialog": false,
+  "height": 844,
+  "shot": "docs/ldm/evidence/03-money\\m_clerk_advance.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "expense_new",
+  "path": "/odoo/action-legal_department_management.action_ldm_expense/new",
+  "error_dialog": false,
+  "height": 844,
+  "shot": "docs/ldm/evidence/03-money\\m_clerk_expense_new.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "expenses",
+  "path": "/odoo/action-legal_department_management.action_ldm_expense",
+  "error_dialog": false,
+  "height": 844,
+  "shot": "docs/ldm/evidence/03-money\\m_clerk_expenses.png",
+  "console_errors": [],
+  "page_errors": []
+ }
+]

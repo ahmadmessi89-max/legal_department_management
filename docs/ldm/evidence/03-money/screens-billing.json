@@ -1,0 +1,55 @@
+[
+ {
+  "name": "b_to_invoice",
+  "path": "/odoo/action-legal_department_management.action_ldm_to_invoice",
+  "wait": ".o_list_view"
+ },
+ {
+  "name": "b_invoice_wizard",
+  "path": "/odoo/action-legal_department_management.action_ldm_engagement/1",
+  "wait": ".o_form_view",
+  "clicks": [
+   "button[name='action_ldm_invoice']"
+  ],
+  "full": false
+ },
+ {
+  "name": "b_invoice_sent",
+  "path": "/odoo/action-account.action_move_out_invoice_type/1",
+  "wait": ".o_form_view"
+ },
+ {
+  "name": "b_statement",
+  "path": "/report/html/legal_department_management.report_ldm_statement/1",
+  "wait": ".page"
+ },
+ {
+  "name": "b_client_dossier",
+  "path": "/odoo/legal-clients/1",
+  "wait": ".o_form_view"
+ },
+ {
+  "name": "b_client_money",
+  "path": "/odoo/action-legal_department_management.action_ldm_client_fund",
+  "wait": ".o_list_view"
+ },
+ {
+  "name": "b_advance_settle",
+  "path": "/odoo/action-legal_department_management.action_ldm_advance/1",
+  "wait": ".o_form_view",
+  "clicks": [
+   "button[name='action_ldm_settle']"
+  ],
+  "full": false
+ },
+ {
+  "name": "b_fee_agreements",
+  "path": "/odoo/action-legal_department_management.action_ldm_engagement",
+  "wait": ".o_list_view"
+ },
+ {
+  "name": "b_fee_agreement_pdf",
+  "path": "/report/html/legal_department_management.report_ldm_engagement/1",
+  "wait": ".page"
+ }
+]

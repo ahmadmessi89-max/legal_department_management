@@ -1,0 +1,10 @@
+[
+ {"name": "01_outcome_dialog_opened", "path": "/odoo/matters/63", "wait": ".o_form_view", "clicks": [".o_form_statusbar button[name='action_ldm_record_outcome']"], "settle": 2},
+ {"name": "02_outcome_dialog_date_chosen", "path": "/odoo/matters/63", "wait": ".o_form_view", "clicks": [".o_form_statusbar button[name='action_ldm_record_outcome']", ".o_datetime_picker .o_date_item_cell:has-text('28')"], "settle": 2},
+ {"name": "03_outcome_dialog_judgment", "path": "/odoo/matters/63", "wait": ".o_form_view", "clicks": [".o_form_statusbar button[name='action_ldm_record_outcome']", ".modal .modal-title", ".modal span.o_selection_badge:has-text('Judgment given')"], "settle": 2},
+ {"name": "04_cockpit_case_tab", "path": "/odoo/matters/66", "wait": ".o_form_view", "clicks": [".o_notebook_headers a[name='case']", ".o_horizontal_separator:has-text('Court stages')"]},
+ {"name": "05_hearing_form_trainee", "path": "/odoo/court-sessions/70", "wait": ".o_form_view"},
+ {"name": "06_agenda_next_14_days", "path": "/odoo/action-353", "wait": ".o_action_manager > *", "settle": 2},
+ {"name": "07_deadlines", "path": "/odoo/action-354", "wait": ".o_action_manager > *", "settle": 2},
+ {"name": "08_deadline_form_appeal", "path": "/odoo/legal.deadline/155", "wait": ".o_form_view"}
+]

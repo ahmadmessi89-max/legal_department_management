@@ -1,0 +1,4 @@
+[
+ {"name": "50_clerk_sessions_tab", "path": "/odoo/matters/63", "wait": ".o_form_view", "clicks": [".o_notebook_headers a[name='sessions']"]},
+ {"name": "51_clerk_outcome_dialog", "path": "/odoo/matters/63", "wait": ".o_form_view", "clicks": [".o_form_statusbar button[name='action_ldm_record_outcome']"], "settle": 2}
+]

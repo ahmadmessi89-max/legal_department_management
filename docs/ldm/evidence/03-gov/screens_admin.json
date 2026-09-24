@@ -1,0 +1,12 @@
+[
+ {
+  "name": "40_settings_reference_library",
+  "path": "/odoo/action-legal_department_management.action_ldm_settings",
+  "wait": ".o_form_view",
+  "clicks": [
+   "button[name=action_ldm_load_reference_data]"
+  ],
+  "settle": 2.5,
+  "full": false
+ }
+]

@@ -1,0 +1,38 @@
+[
+ {
+  "name": "01_letter_draft_register",
+  "path": "/odoo/correspondence/27",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-reg\\clerk_01_letter_draft_register.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "02_register_book_dialog",
+  "path": "/odoo/correspondence",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-reg\\clerk_02_register_book_dialog.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "03_new_incoming_letter",
+  "path": "/odoo/correspondence/new",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-reg\\clerk_03_new_incoming_letter.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "04_void_dialog",
+  "path": "/odoo/correspondence/22",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-reg\\clerk_04_void_dialog.png",
+  "console_errors": [],
+  "page_errors": []
+ }
+]

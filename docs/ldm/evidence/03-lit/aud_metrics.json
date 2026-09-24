@@ -1,0 +1,38 @@
+[
+ {
+  "name": "40_auditor_case_tab",
+  "path": "/odoo/matters/66",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-lit\\aud_40_auditor_case_tab.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "41_auditor_sessions_tab",
+  "path": "/odoo/matters/63",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-lit\\aud_41_auditor_sessions_tab.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "42_auditor_deadline_form",
+  "path": "/odoo/legal.deadline/155",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-lit\\aud_42_auditor_deadline_form.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "43_auditor_hearing_form",
+  "path": "/odoo/action-396/70",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-lit\\aud_43_auditor_hearing_form.png",
+  "console_errors": [],
+  "page_errors": []
+ }
+]

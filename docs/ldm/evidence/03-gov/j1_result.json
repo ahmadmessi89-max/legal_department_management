@@ -1,0 +1,14 @@
+{
+ "taps": 6,
+ "tap_list": [
+  "open the matter",
+  "Log visit",
+  "fee",
+  "receipt number",
+  "photo of the receipt",
+  "Save visit"
+ ],
+ "within_budget": true,
+ "receipt_in_history": true,
+ "page_errors": []
+}

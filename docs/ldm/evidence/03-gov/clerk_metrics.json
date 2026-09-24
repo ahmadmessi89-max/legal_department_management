@@ -1,0 +1,56 @@
+[
+ {
+  "name": "20_directory_kanban",
+  "path": "/odoo/action-legal_department_management.action_ldm_body_directory",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-gov\\clerk_20_directory_kanban.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "20b_directory_list",
+  "path": "/odoo/action-legal_department_management.action_ldm_body_directory?view_type=list",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-gov\\clerk_20b_directory_list.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "21_directory_body",
+  "path": "/odoo/action-legal_department_management.action_ldm_body_directory/3",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-gov\\clerk_21_directory_body.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "22_matter_government",
+  "path": "/odoo/matters/1",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-gov\\clerk_22_matter_government.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "23_matter_documents",
+  "path": "/odoo/matters/1",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-gov\\clerk_23_matter_documents.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "24_visit_dialog",
+  "path": "/odoo/matters/1",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-gov\\clerk_24_visit_dialog.png",
+  "console_errors": [],
+  "page_errors": []
+ }
+]

@@ -1,0 +1,20 @@
+[
+ {
+  "name": "50_auditor_matter",
+  "path": "/odoo/matters/1",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-gov\\auditor_50_auditor_matter.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "51_auditor_dossier",
+  "path": "/odoo/legal-clients/1",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-gov\\auditor_51_auditor_dossier.png",
+  "console_errors": [],
+  "page_errors": []
+ }
+]

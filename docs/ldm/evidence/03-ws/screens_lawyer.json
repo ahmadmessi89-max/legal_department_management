@@ -1,0 +1,8 @@
+[
+  {"name": "lawyer_01_my_day", "path": "/odoo/my-day", "wait": ".o_ldm_my_day", "full": false},
+  {"name": "lawyer_02_cockpit_lawsuit", "path": "/odoo/matters/216", "wait": ".o_ldm_matter_form .o_ldm_next_wrap", "full": false},
+  {"name": "lawyer_03_cockpit_government", "path": "/odoo/matters/213", "wait": ".o_ldm_matter_form .o_ldm_next_wrap", "full": false},
+  {"name": "lawyer_04_quick_create", "path": "/odoo/my-day", "wait": ".o_ldm_my_day", "clicks": [".o_ldm_md_new"], "settle": 2.0, "full": false},
+  {"name": "lawyer_05_dossier", "path": "/odoo/legal-clients/46", "wait": ".o_ldm_bodies", "full": false},
+  {"name": "lawyer_06_agenda", "path": "/odoo/legal-agenda", "wait": ".o_ldm_agenda", "full": false}
+]

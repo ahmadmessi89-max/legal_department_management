@@ -1,0 +1,29 @@
+[
+ {
+  "name": "19_request_accepted_legal_view",
+  "path": "/odoo/action-legal_department_management.action_ldm_request/14",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-reg\\lawyer_more_19_request_accepted_legal_view.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "20_send_result_dialog",
+  "path": "/odoo/action-legal_department_management.action_ldm_request/14",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-reg\\lawyer_more_20_send_result_dialog.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "21_matters_poa_filter",
+  "path": "/odoo/matters",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-reg\\lawyer_more_21_matters_poa_filter.png",
+  "console_errors": [],
+  "page_errors": []
+ }
+]

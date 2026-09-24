@@ -1,0 +1,76 @@
+[
+ {
+  "name": "l_engagement_cap",
+  "path": "/odoo/action-legal_department_management.action_ldm_engagement/2",
+  "wait": ".o_form_view"
+ },
+ {
+  "name": "l_engagement_schedule",
+  "path": "/odoo/action-legal_department_management.action_ldm_engagement/1",
+  "wait": ".o_form_view"
+ },
+ {
+  "name": "l_matter_money",
+  "path": "/odoo/matters/1",
+  "wait": ".o_form_view",
+  "clicks": [
+   ".o_notebook_headers a[name='money']"
+  ]
+ },
+ {
+  "name": "l_matter_unsigned",
+  "path": "/odoo/matters/3",
+  "wait": ".o_form_view",
+  "clicks": [
+   ".o_notebook_headers a[name='money']"
+  ]
+ },
+ {
+  "name": "l_conflict_banner",
+  "path": "/odoo/matters/7",
+  "wait": ".o_form_view"
+ },
+ {
+  "name": "l_day_sheet",
+  "path": "/odoo/action-legal_department_management.action_ldm_time_entry",
+  "wait": ".o_list_view"
+ },
+ {
+  "name": "l_timer_menu",
+  "path": "/odoo/matters/1",
+  "wait": ".o_form_view",
+  "clicks": [
+   ".o_ldm_timer_toggle"
+  ],
+  "full": false
+ },
+ {
+  "name": "l_timer_stop",
+  "path": "/odoo/matters/1",
+  "wait": ".o_form_view",
+  "clicks": [
+   ".o_ldm_timer_toggle",
+   ".o_ldm_timer_panel .btn-primary"
+  ],
+  "full": false
+ },
+ {
+  "name": "l_close_dialog",
+  "path": "/odoo/matters/2",
+  "wait": ".o_form_view",
+  "clicks": [
+   "button[name='action_set_done']",
+   ".modal input[data-value='settled']"
+  ],
+  "full": false
+ },
+ {
+  "name": "l_client_message",
+  "path": "/odoo/matters/1",
+  "wait": ".o_form_view",
+  "clicks": [
+   "button[name='action_ldm_message']"
+  ],
+  "full": false
+ }
+]

@@ -1,0 +1,92 @@
+[
+ {
+  "name": "l_engagement_cap",
+  "path": "/odoo/action-legal_department_management.action_ldm_engagement/2",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-money\\l_engagement_cap.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "l_engagement_schedule",
+  "path": "/odoo/action-legal_department_management.action_ldm_engagement/1",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-money\\l_engagement_schedule.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "l_matter_money",
+  "path": "/odoo/matters/1",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-money\\l_matter_money.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "l_matter_unsigned",
+  "path": "/odoo/matters/3",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-money\\l_matter_unsigned.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "l_conflict_banner",
+  "path": "/odoo/matters/7",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-money\\l_conflict_banner.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "l_day_sheet",
+  "path": "/odoo/action-legal_department_management.action_ldm_time_entry",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-money\\l_day_sheet.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "l_timer_menu",
+  "path": "/odoo/matters/1",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-money\\l_timer_menu.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "l_timer_stop",
+  "path": "/odoo/matters/1",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-money\\l_timer_stop.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "l_close_dialog",
+  "path": "/odoo/matters/2",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-money\\l_close_dialog.png",
+  "console_errors": [],
+  "page_errors": []
+ },
+ {
+  "name": "l_client_message",
+  "path": "/odoo/matters/1",
+  "error_dialog": false,
+  "height": 900,
+  "shot": "docs/ldm/evidence/03-money\\l_client_message.png",
+  "console_errors": [],
+  "page_errors": []
+ }
+]
