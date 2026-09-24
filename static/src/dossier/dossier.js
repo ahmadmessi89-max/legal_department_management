@@ -4,7 +4,8 @@ import { useService } from "@web/core/utils/hooks";
 import { _t } from "@web/core/l10n/translation";
 import { standardWidgetProps } from "@web/views/widgets/standard_widget_props";
 
-import { relativeDay, shortDate } from "../core/ldm_format";
+import { kindClass, relativeDay, shortDate } from "../core/ldm_format";
+import { LdmIcon } from "../core/ldm_icon";
 
 const DOSSIER_FIELD = [{ name: "ldm_dossier", type: "json" }];
 
@@ -18,6 +19,7 @@ function dossierOf(record) {
  */
 export class LdmClientNow extends Component {
     static template = "legal_department_management.ClientNow";
+    static components = { LdmIcon };
     static props = { ...standardWidgetProps };
 
     static labels = {
@@ -25,6 +27,7 @@ export class LdmClientNow extends Component {
         emptyHint: _t("Open one with “New matter for this client”."),
         all: _t("All open matters"),
         nothing: _t("Nothing dated"),
+        urgent: _t("Urgent"),
     };
 
     setup() {
@@ -45,6 +48,7 @@ export class LdmClientNow extends Component {
             const rel = row.next_date ? relativeDay(row.next_date) : null;
             return {
                 ...row,
+                spine: kindClass(row.matter_kind),
                 when: rel ? `${shortDate(row.next_date)} · ${rel.label}` : this.label.nothing,
                 tone: rel ? rel.tone : "",
             };
@@ -68,16 +72,19 @@ export class LdmClientNow extends Component {
 }
 
 /**
- * One window per government body or court the client has matters with,
- * counted as the reader (SPEC 5.5, replaces SAG's HTML cards). A window
- * opens the register filtered to this client and that body.
+ * The client's file, read body by body (SPEC 5.5, design direction): one
+ * section per government body or court with its open and done matters, a
+ * thin completion bar and "Open" at the row's end, counted as the reader.
+ * Replaces SAG's HTML cards.
  */
 export class LdmBodyWindows extends Component {
     static template = "legal_department_management.BodyWindows";
+    static components = { LdmIcon };
     static props = { ...standardWidgetProps };
 
     static labels = {
         empty: _t("No matter with a body or court yet."),
+        open: _t("Open"),
     };
 
     setup() {
@@ -96,11 +103,13 @@ export class LdmBodyWindows extends Component {
     get bodies() {
         return (this.dossier.bodies || []).map((body) => {
             const rel = body.next_date ? relativeDay(body.next_date) : null;
+            const total = body.open + body.done;
             return {
                 ...body,
                 nextLabel: rel ? _t("Next: %s", `${shortDate(body.next_date)} · ${rel.label}`) : "",
                 openLabel: body.open ? _t("%s open", body.open) : "",
                 doneLabel: body.done ? _t("%s done", body.done) : "",
+                total,
                 tone: rel ? rel.tone : "",
             };
         });

@@ -13,7 +13,7 @@
             </header>
 
             <div class="o_ldm_empty" t-if="!rows.length">
-                <i class="fa fa-list-ul" role="img" aria-hidden="true"/>
+                <LdmIcon name="'list-checks'"/>
                 <div>
                     <p class="o_ldm_empty_title" t-esc="label.empty"/>
                     <p t-esc="label.emptyHint"/>
@@ -31,14 +31,14 @@
                             t-att-title="rowTitle(row)"
                             t-on-click="() => this.toggle(row)">
                         <span class="o_ldm_check_box" aria-hidden="true">
-                            <i class="fa fa-check" t-if="row.done"/>
-                            <i class="fa fa-minus" t-elif="row.skipped"/>
+                            <LdmIcon t-if="row.done" name="'check'"/>
+                            <LdmIcon t-elif="row.skipped" name="'minus'"/>
                         </span>
                         <span class="o_ldm_check_main">
                             <span class="o_ldm_check_name" t-esc="row.name"/>
                             <span class="o_ldm_check_meta">
-                                <span class="o_ldm_chip o_ldm_tone_info" t-if="row.visit">
-                                    <i class="fa fa-building-o" role="img" aria-hidden="true"/>
+                                <span class="o_ldm_pill o_ldm_tone_info" t-if="row.visit">
+                                    <LdmIcon name="'building-2'"/>
                                     <t t-esc="label.visitChip"/><t t-if="row.body"> · <t t-esc="row.body"/></t>
                                 </span>
                                 <span t-if="row.done">
@@ -49,7 +49,7 @@
                                     <span t-if="row.due" t-attf-class="{{ row.tone ? 'o_ldm_text_' + row.tone : '' }}">
                                         <t t-esc="row.due"/> · <t t-esc="row.dueLabel"/>
                                     </span>
-                                    <span t-if="row.user"><i class="fa fa-user-o" role="img" aria-hidden="true"/> <t t-esc="row.user"/></span>
+                                    <span t-if="row.user"><LdmIcon name="'user'"/> <t t-esc="row.user"/></span>
                                 </t>
                                 <span class="o_ldm_check_note" t-if="row.note" t-esc="row.note"/>
                             </span>
@@ -58,12 +58,12 @@
                     <div class="o_ldm_check_tools">
                         <button type="button" class="o_ldm_action" t-if="row.visit &amp;&amp; !row.done &amp;&amp; !row.skipped &amp;&amp; canEdit"
                                 t-on-click="(ev) => this.logVisit(row, ev)">
-                            <i class="fa fa-pencil-square-o" role="img" aria-hidden="true"/>
+                            <LdmIcon name="'pencil'"/>
                             <span t-esc="label.visit"/>
                         </button>
                         <button type="button" class="o_ldm_iconbtn" t-if="canEdit" t-att-title="label.edit"
                                 t-att-aria-label="label.edit" t-on-click="(ev) => this.edit(row, ev)">
-                            <i class="fa fa-pencil" role="img" aria-hidden="true"/>
+                            <LdmIcon name="'pencil'"/>
                         </button>
                     </div>
                 </li>
@@ -71,8 +71,8 @@
 
             <footer class="o_ldm_checklist_foot" t-if="canEdit">
                 <button type="button" class="o_ldm_linkbtn" t-on-click="add">
-                    <i class="fa fa-plus" role="img" aria-hidden="true"/>
-                    <span class="ms-1" t-esc="label.add"/>
+                    <LdmIcon name="'plus'"/>
+                    <span t-esc="label.add"/>
                 </button>
             </footer>
         </section>
@@ -91,7 +91,7 @@
             </header>
 
             <div class="o_ldm_empty" t-if="!rows.length">
-                <i class="fa fa-folder-open-o" role="img" aria-hidden="true"/>
+                <LdmIcon name="'folder-open'"/>
                 <div>
                     <p class="o_ldm_empty_title" t-esc="label.empty"/>
                     <p t-esc="label.emptyHint"/>
@@ -106,7 +106,7 @@
                     t-on-dragleave="() => this.onRowDragLeave(row)"
                     t-on-drop="(ev) => this.onRowDrop(row, ev)">
                     <span t-attf-class="o_ldm_doc_icon o_ldm_text_{{ row.tone || 'muted' }}" aria-hidden="true">
-                        <i t-attf-class="fa {{ row.state === 'verified' ? 'fa-check-circle' : (row.state === 'received' ? 'fa-check' : (row.state === 'expired' ? 'fa-calendar-times-o' : (row.state === 'not_needed' ? 'fa-minus-circle' : 'fa-circle-o'))) }}"/>
+                        <LdmIcon name="row.icon"/>
                     </span>
                     <span class="o_ldm_doc_main">
                         <span class="o_ldm_doc_name">
@@ -114,7 +114,11 @@
                             <span class="o_ldm_doc_required" t-if="row.mandatory" t-att-title="label.mandatory">*</span>
                         </span>
                         <span class="o_ldm_check_meta">
-                            <span t-attf-class="o_ldm_chip {{ row.tone ? 'o_ldm_tone_' + row.tone : '' }}" t-esc="row.stateLabel"/>
+                            <span t-if="row.state === 'verified'" class="o_ldm_stamp">
+                                <LdmIcon name="'stamp'"/>
+                                <t t-esc="label.genuine"/>
+                            </span>
+                            <span t-else="" t-attf-class="o_ldm_pill {{ row.tone ? 'o_ldm_tone_' + row.tone : '' }}" t-esc="row.stateLabel"/>
                             <span t-if="row.expiry" t-esc="row.expiry"/>
                             <span class="o_ldm_check_note" t-if="row.note" t-esc="row.note"/>
                             <span class="o_ldm_doc_drophint" t-if="state.over === row.id" t-esc="label.drop"/>
@@ -123,7 +127,7 @@
                     <span class="o_ldm_check_tools">
                         <button type="button" class="o_ldm_action" t-if="row.attachment" t-on-click="(ev) => this.view(row, ev)"
                                 t-att-title="label.view">
-                            <i class="fa fa-file-o" role="img" aria-hidden="true"/>
+                            <LdmIcon name="'file-text'"/>
                             <span class="o_ldm_doc_file" t-esc="row.attachment.display_name"/>
                         </button>
                         <t t-if="canEdit">
@@ -133,11 +137,11 @@
                                    t-on-change="(ev) => this.onInputChange(row, ev)"/>
                             <button type="button" class="o_ldm_iconbtn" data-input="o_ldm_input_file"
                                     t-att-title="label.upload" t-att-aria-label="label.upload" t-on-click="pick">
-                                <i class="fa fa-upload" role="img" aria-hidden="true"/>
+                                <LdmIcon name="'upload'"/>
                             </button>
                             <button type="button" class="o_ldm_iconbtn" data-input="o_ldm_input_camera"
                                     t-att-title="label.camera" t-att-aria-label="label.camera" t-on-click="pick">
-                                <i class="fa fa-camera" role="img" aria-hidden="true"/>
+                                <LdmIcon name="'camera'"/>
                             </button>
                         </t>
                     </span>

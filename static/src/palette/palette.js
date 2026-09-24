@@ -4,6 +4,8 @@ import { user } from "@web/core/user";
 import { _t } from "@web/core/l10n/translation";
 import { DefaultCommandItem } from "@web/core/commands/command_palette";
 
+import { LdmIcon } from "../core/ldm_icon";
+
 /**
  * The legal layer of Odoo's command palette (Ctrl+K, SPEC 5.9).
  *
@@ -35,6 +37,7 @@ function hasLegalAccess() {
 
 export class LdmCommandItem extends Component {
     static template = "legal_department_management.CommandItem";
+    static components = { LdmIcon };
     static props = {
         ...DefaultCommandItem.props,
         icon: { type: String, optional: true },
@@ -91,7 +94,7 @@ function matterCommands(env, matters, category, searchValue) {
             name,
             href: `/odoo/matters/${matter.id}`,
             props: {
-                icon: "fa-folder-open-o",
+                icon: "folder-open",
                 number: matter.number,
                 title: matter.title,
                 line: [matter.line, matter.state_label].filter(Boolean).join(" · "),
@@ -149,7 +152,7 @@ commandProviderRegistry.add("ldm_search", {
                 category: "ldm_clients",
                 name: `${client.name} ${value}`,
                 props: {
-                    icon: "fa-briefcase",
+                    icon: "briefcase",
                     title: client.name,
                     line: client.open ? _t("%s open matters", client.open) : "",
                 },
@@ -162,7 +165,7 @@ commandProviderRegistry.add("ldm_search", {
                 category: "ldm_bodies",
                 name: `${body.name} ${body.ministry} ${value}`,
                 props: {
-                    icon: "fa-building-o",
+                    icon: "building-2",
                     title: body.name,
                     line: body.ministry,
                 },

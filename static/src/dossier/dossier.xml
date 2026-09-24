@@ -3,12 +3,12 @@
 
     <t t-name="legal_department_management.ClientNow">
         <section class="o_ldm o_ldm_panel o_ldm_now" t-if="props.record.resId">
-            <header class="o_ldm_dossier_head">
+            <header class="o_ldm_panel_head o_ldm_dossier_head">
                 <h3 class="o_ldm_section_title" t-esc="dossier.labels ? dossier.labels.now : ''"/>
                 <button type="button" class="o_ldm_linkbtn" t-if="rows.length" t-on-click="openAll" t-esc="label.all"/>
             </header>
             <div class="o_ldm_empty" t-if="!rows.length">
-                <i class="fa fa-check-circle" role="img" aria-hidden="true"/>
+                <LdmIcon name="'circle-check'"/>
                 <div>
                     <p class="o_ldm_empty_title" t-esc="label.empty"/>
                     <p t-esc="label.emptyHint"/>
@@ -16,19 +16,18 @@
             </div>
             <ul class="o_ldm_now_rows" t-else="">
                 <li t-foreach="rows" t-as="row" t-key="row.id">
-                    <button type="button" t-attf-class="o_ldm_now_row {{ row.urgent ? 'o_ldm_now_urgent' : '' }}"
-                            t-on-click="() => this.open(row)">
+                    <button type="button" t-attf-class="o_ldm_now_row {{ row.spine }}" t-on-click="() => this.open(row)">
                         <span class="o_ldm_now_main">
                             <span class="o_ldm_now_title">
-                                <i class="fa fa-flag o_ldm_text_danger" t-if="row.urgent" role="img" title="Urgent"/>
+                                <LdmIcon t-if="row.urgent" name="'flag'" title="label.urgent" class="'o_ldm_text_danger'"/>
                                 <t t-esc="row.title"/>
                             </span>
-                            <span class="o_ldm_now_meta">
-                                <span class="o_ldm_num" dir="ltr" t-esc="row.number"/>
-                                <t t-if="row.next_action"> · <t t-esc="row.next_action"/></t>
+                            <span class="o_ldm_row_line">
+                                <span class="o_ldm_ref" dir="ltr" t-esc="row.number"/>
+                                <span t-if="row.next_action" t-esc="row.next_action"/>
                             </span>
                         </span>
-                        <span t-attf-class="o_ldm_now_when {{ row.tone ? 'o_ldm_text_' + row.tone : '' }}" t-esc="row.when"/>
+                        <span t-attf-class="o_ldm_pill {{ row.tone ? 'o_ldm_tone_' + row.tone : '' }}" t-esc="row.when"/>
                     </button>
                 </li>
             </ul>
@@ -37,26 +36,36 @@
 
     <t t-name="legal_department_management.BodyWindows">
         <section class="o_ldm o_ldm_panel o_ldm_bodies" t-if="props.record.resId">
-            <header class="o_ldm_dossier_head">
+            <header class="o_ldm_panel_head o_ldm_dossier_head">
                 <h3 class="o_ldm_section_title" t-esc="dossier.labels ? dossier.labels.bodies : ''"/>
             </header>
             <p class="o_ldm_bodies_empty" t-if="!bodies.length" t-esc="label.empty"/>
-            <div class="o_ldm_bodies_grid" t-else="">
-                <button type="button" t-foreach="bodies" t-as="body" t-key="body.id"
-                        class="o_ldm_body_card" t-att-data-body-id="body.id" t-on-click="() => this.open(body)">
-                    <span class="o_ldm_body_name">
-                        <i t-attf-class="fa {{ body.kind === 'court' ? 'fa-gavel' : 'fa-building-o' }}" role="img" aria-hidden="true"/>
-                        <t t-esc="body.name"/>
-                    </span>
-                    <span class="o_ldm_body_ministry" t-if="body.ministry" t-esc="body.ministry"/>
-                    <span class="o_ldm_body_counts">
-                        <span class="o_ldm_chip o_ldm_tone_info" t-if="body.openLabel" t-esc="body.openLabel"/>
-                        <span class="o_ldm_chip" t-if="body.doneLabel" t-esc="body.doneLabel"/>
-                    </span>
-                    <span t-attf-class="o_ldm_body_next {{ body.tone ? 'o_ldm_text_' + body.tone : '' }}"
-                          t-if="body.nextLabel" t-esc="body.nextLabel"/>
-                </button>
-            </div>
+            <ul class="o_ldm_body_rows" t-else="">
+                <li t-foreach="bodies" t-as="body" t-key="body.id">
+                    <button type="button" class="o_ldm_body_row" t-att-data-body-id="body.id" t-on-click="() => this.open(body)">
+                        <span class="o_ldm_body_main">
+                            <span class="o_ldm_body_name">
+                                <LdmIcon name="body.kind === 'court' ? 'gavel' : 'building-2'"/>
+                                <t t-esc="body.name"/>
+                            </span>
+                            <span class="o_ldm_row_line">
+                                <span t-if="body.ministry" t-esc="body.ministry"/>
+                                <span t-if="body.nextLabel" t-attf-class="{{ body.tone ? 'o_ldm_text_' + body.tone : '' }}" t-esc="body.nextLabel"/>
+                            </span>
+                            <progress class="o_ldm_body_bar" t-att-value="body.done" t-att-max="body.total || 1"
+                                      t-att-aria-label="body.doneLabel || body.openLabel"/>
+                        </span>
+                        <span class="o_ldm_body_counts">
+                            <span class="o_ldm_pill o_ldm_tone_info" t-if="body.openLabel" t-esc="body.openLabel"/>
+                            <span class="o_ldm_pill o_ldm_tone_success" t-if="body.doneLabel" t-esc="body.doneLabel"/>
+                            <span class="o_ldm_body_open">
+                                <t t-esc="label.open"/>
+                                <LdmIcon name="'chevron-right'"/>
+                            </span>
+                        </span>
+                    </button>
+                </li>
+            </ul>
         </section>
     </t>
 

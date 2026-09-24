@@ -5,7 +5,8 @@ import { Layout } from "@web/search/layout";
 import { standardActionServiceProps } from "@web/webclient/actions/action_service";
 import { _t } from "@web/core/l10n/translation";
 
-import { dayHeading, formatHour, shortDate, todayDay } from "../core/ldm_format";
+import { dayHeading, formatHour, kindClass, shortDate, todayDay } from "../core/ldm_format";
+import { LdmIcon } from "../core/ldm_icon";
 
 /**
  * Agenda (SPEC 5.7, 14.4): court sessions, counter visits and deadlines for
@@ -15,7 +16,7 @@ import { dayHeading, formatHour, shortDate, todayDay } from "../core/ldm_format"
  */
 export class LdmAgenda extends Component {
     static template = "legal_department_management.Agenda";
-    static components = { Layout };
+    static components = { Layout, LdmIcon };
     static props = { ...standardActionServiceProps };
 
     static labels = {
@@ -34,9 +35,9 @@ export class LdmAgenda extends Component {
     };
 
     static kinds = {
-        hearing: { icon: "fa-gavel", label: _t("Court session") },
-        visit: { icon: "fa-building-o", label: _t("Visit") },
-        deadline: { icon: "fa-hourglass-half", label: _t("Deadline") },
+        hearing: { icon: "gavel", label: _t("Court session") },
+        visit: { icon: "building-2", label: _t("Visit") },
+        deadline: { icon: "hourglass", label: _t("Deadline") },
     };
 
     setup() {
@@ -73,7 +74,11 @@ export class LdmAgenda extends Component {
     }
 
     kind(item) {
-        return LdmAgenda.kinds[item.kind] || { icon: "fa-circle-o", label: "" };
+        return LdmAgenda.kinds[item.kind] || { icon: "circle", label: "" };
+    }
+
+    kindSpine(item) {
+        return kindClass(item.matter_kind);
     }
 
     hour(value) {

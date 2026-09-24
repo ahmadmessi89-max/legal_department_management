@@ -6,6 +6,9 @@ import { Many2OneField, buildM2OFieldDescription } from "@web/views/fields/many2
 import { listView } from "@web/views/list/list_view";
 import { ListController } from "@web/views/list/list_controller";
 
+import { shortDate } from "../core/ldm_format";
+import { LdmIcon } from "../core/ldm_icon";
+
 /**
  * The matter type picker of the New matter dialog (SPEC 5.2): the types the
  * user opened most recently, one click each, above the ordinary search.
@@ -58,7 +61,8 @@ registry.category("fields").add("ldm_template_picker", {
  */
 export class LdmMoreToggle extends Component {
     static template = "legal_department_management.MoreToggle";
-    static props = { ...standardWidgetProps, fieldName: { type: String, optional: true } };
+    static components = { LdmIcon };
+    static props ={ ...standardWidgetProps, fieldName: { type: String, optional: true } };
 
     get field() {
         return this.props.fieldName || "show_more";
@@ -80,6 +84,52 @@ export class LdmMoreToggle extends Component {
 registry.category("view_widgets").add("ldm_more_toggle", {
     component: LdmMoreToggle,
     extractProps: ({ options }) => ({ fieldName: options.field || "show_more" }),
+});
+
+/**
+ * The suggested target date (design direction): the matter type's duration
+ * plus the body's usual answer time, in working days, with "Use this date".
+ * Arithmetic the reader can check, never presented as a guess.
+ */
+export class LdmSuggestedDate extends Component {
+    static template = "legal_department_management.SuggestedDate";
+    static components = { LdmIcon };
+    static props = { ...standardWidgetProps };
+
+    get data() {
+        return this.props.record.data;
+    }
+
+    get visible() {
+        const suggested = this.data.suggested_date;
+        const current = this.data.key_date;
+        return Boolean(suggested) && !(current && current.toISODate() === suggested.toISODate());
+    }
+
+    get dateLabel() {
+        return this.data.suggested_date ? shortDate(this.data.suggested_date.toISODate()) : "";
+    }
+
+    get title() {
+        return _t("Suggested target date");
+    }
+
+    get useLabel() {
+        return _t("Use this date");
+    }
+
+    use() {
+        this.props.record.update({ key_date: this.data.suggested_date });
+    }
+}
+
+registry.category("view_widgets").add("ldm_suggested_date", {
+    component: LdmSuggestedDate,
+    fieldDependencies: [
+        { name: "suggested_date", type: "date" },
+        { name: "suggested_note", type: "char" },
+        { name: "key_date", type: "date" },
+    ],
 });
 
 /**

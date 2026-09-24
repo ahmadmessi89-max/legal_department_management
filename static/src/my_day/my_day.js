@@ -6,7 +6,9 @@ import { DateTimeInput } from "@web/core/datetime/datetime_input";
 import { standardActionServiceProps } from "@web/webclient/actions/action_service";
 import { _t } from "@web/core/l10n/translation";
 
-import { dayHeading, formatAmount, formatHour, longDate, relativeDay, todayDay } from "../core/ldm_format";
+import {
+    ROW_ICONS, dayHeading, formatAmount, formatHour, hijriDate, kindClass, longDate, relativeDay, todayDay,
+} from "../core/ldm_format";
 import { runRecordAction, toggleStep } from "../core/ldm_step_actions";
 import { LdmIcon } from "../core/ldm_icon";
 
@@ -14,10 +16,11 @@ import { LdmIcon } from "../core/ldm_icon";
  * مكتبي / My Day - the first screen of the application (SPEC 5.1, 14.4).
  *
  * It answers one question: what needs me now, and what is the next thing to
- * do on each. The work is grouped into focus bands (overdue, today, this
- * week, later, no date); every row says why it is there and offers at most one
- * action; the next seven days sit beside it. A band with nothing in it is not
- * drawn, and a day with nothing to do says so in two lines.
+ * do on each. It opens with the ink band (the date in Gregorian and Hijri, and
+ * what needs the reader today); below it the work in focus bands (overdue,
+ * today, this week, later, no date), each row with the reason it is there,
+ * the time left and at most one action; the next seven days beside it. A band
+ * with nothing in it is not drawn, and a day with nothing to do says so.
  *
  * The screen is a renderer. `legal.task.get_my_day` decides, as the reader,
  * what is shown and which actions exist, so an auditor who opens it gets the
@@ -35,7 +38,6 @@ export class LdmMyDay extends Component {
         retry: _t("Try again"),
         refreshFailed: _t("Could not refresh; the screen shows what it had."),
         newMatter: _t("New matter"),
-        statsTitle: _t("At a glance"),
         search: _t("Search by number, client or body…"),
         readOnly: _t("Read only"),
         unfold: _t("Show"),
@@ -49,26 +51,13 @@ export class LdmMyDay extends Component {
         dateSaved: _t("Notification date saved: the challenge periods are counted from it."),
         noDateYet: _t("Choose the date first."),
         notifiedOn: _t("Notified on"),
-        undated: _t("No date"),
         have: _t("We have it"),
         missing: _t("Missing"),
-        open: _t("Open"),
-        noBody: _t("Hours not recorded"),
-    };
-
-    /** Lucide icon and tone of the tinted square that opens each row. */
-    static kinds = {
-        step: { icon: "square-check-big", tone: "brand" },
-        visit: { icon: "building-2", tone: "info" },
-        hearing: { icon: "gavel", tone: "violet" },
-        deadline: { icon: "hourglass", tone: "danger" },
-        target: { icon: "flag", tone: "warning" },
-        approval: { icon: "badge-check", tone: "violet" },
-        activity: { icon: "clock", tone: "neutral" },
-        notification: { icon: "mail", tone: "warning" },
-        idle: { icon: "circle", tone: "neutral" },
-        waiting: { icon: "hourglass", tone: "neutral" },
-        conflict: { icon: "shield-alert", tone: "danger" },
+        urgent: _t("Urgent"),
+        confidential: _t("Confidential"),
+        responsible: _t("Responsible"),
+        logVisit: _t("Log visit"),
+        advance: _t("Cash advances"),
     };
 
     static kindLabels = {
@@ -122,7 +111,7 @@ export class LdmMyDay extends Component {
             this.state.data = data;
             this.state.scope = data.scope;
             this.state.error = null;
-        } catch (error) {
+        } catch {
             if (this.state.data) {
                 this.notification.add(this.label.refreshFailed, { type: "warning" });
             } else {
@@ -146,6 +135,26 @@ export class LdmMyDay extends Component {
         return this.data ? longDate(this.data.header.today) : "";
     }
 
+    get hijriLine() {
+        return this.data ? hijriDate(this.data.header.today) : "";
+    }
+
+    /** What needs the reader today, in one line of counts. */
+    get summary() {
+        const count = (key) => (this.data.bands.find((band) => band.key === key) || { count: 0 }).count;
+        const parts = [];
+        if (count("overdue")) {
+            parts.push(_t("%s overdue", count("overdue")));
+        }
+        if (count("today")) {
+            parts.push(_t("%s today", count("today")));
+        }
+        if (count("week")) {
+            parts.push(_t("%s this week", count("week")));
+        }
+        return parts.length ? parts.join(" · ") : _t("Nothing is waiting for you today");
+    }
+
     get visibleBands() {
         return (this.data?.bands || []).filter((band) => band.count);
     }
@@ -159,25 +168,31 @@ export class LdmMyDay extends Component {
         this.state.unfolded[band.key] = this.isFolded(band);
     }
 
+    rowClass(row) {
+        return ["o_ldm_row", `o_ldm_row_${row.kind}`, kindClass(row.matter_kind), row.urgent ? "o_ldm_row_urgent" : ""]
+            .filter(Boolean)
+            .join(" ");
+    }
+
+    kindSpine(item) {
+        return kindClass(item.matter_kind);
+    }
+
+    /** The time left, drawn as the pill at the row's end. */
     rowDate(row) {
         if (!row.date) {
             return { label: "", tone: "" };
         }
         if (row.kind === "approval") {
-            return { label: row.since ? relativeDay(row.since, this.today).label : "", tone: "" };
+            return { label: row.since ? relativeDay(row.since, this.today).label : "", tone: "info" };
         }
         const rel = relativeDay(row.date, this.today);
         const hour = formatHour(row.time);
-        // The tone lives on the flag pills; the date itself stays quiet.
-        return { label: hour ? `${rel.label} · ${hour}` : rel.label, tone: "" };
+        return { label: hour ? `${rel.label} · ${hour}` : rel.label, tone: rel.tone };
     }
 
     kindIcon(kind) {
-        return (LdmMyDay.kinds[kind] || LdmMyDay.kinds.idle).icon;
-    }
-
-    kindTone(kind) {
-        return (LdmMyDay.kinds[kind] || LdmMyDay.kinds.idle).tone;
+        return ROW_ICONS[kind] || "circle";
     }
 
     kindLabel(kind) {
@@ -300,7 +315,7 @@ export class LdmMyDay extends Component {
     openAdvances() {
         this.action.doAction({
             type: "ir.actions.act_window",
-            name: _t("Cash advances"),
+            name: this.label.advance,
             res_model: "legal.advance",
             views: [[false, "list"], [false, "form"]],
             domain: [["state", "=", "paid"]],

@@ -1,63 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <templates xml:space="preserve">
 
-    <!-- One row of the queue: a tinted icon square for what it is, the subject
-         over the reason over the reference, the flags that say what is wrong,
-         then the date and the one action. -->
+    <!-- A row of My Day: the kind spine on its start edge, the title, where it
+         belongs, why it is here and what else is wrong, then the time left and
+         its one action. -->
     <t t-name="legal_department_management.MyDayRow">
-        <div t-attf-class="o_ldm_row o_ldm_row_{{ row.kind }} {{ row.urgent ? 'o_ldm_row_urgent' : '' }}"
-             tabindex="0" role="link" t-att-data-kind="row.kind"
-             t-on-click="() => this.openRow(row)"
-             t-on-keydown="(ev) => this.onRowKeydown(row, ev)">
-            <span t-attf-class="o_ldm_icon_box o_ldm_icon_box_sm o_ldm_tone_{{ kindTone(row.kind) }}">
-                <LdmIcon name="kindIcon(row.kind)" title="kindLabel(row.kind)"/>
-            </span>
+        <div t-att-class="rowClass(row)" tabindex="0" role="link" t-att-data-kind="row.kind"
+             t-on-click="() => this.openRow(row)" t-on-keydown="(ev) => this.onRowKeydown(row, ev)">
             <div class="o_ldm_row_main">
-                <div class="o_ldm_row_subject">
-                    <LdmIcon t-if="row.confidential" name="'lock'" title="'Confidential'" class="'o_ldm_text_muted'"/>
-                    <span t-esc="row.subject"/>
+                <div class="o_ldm_row_title">
+                    <LdmIcon t-if="row.confidential" name="'lock'" title="label.confidential" class="'o_ldm_text_muted'"/>
+                    <span dir="auto" class="o_ldm_row_title_text" t-esc="row.subject"/>
+                </div>
+                <div class="o_ldm_row_line">
+                    <span class="o_ldm_ref" dir="ltr" t-if="row.number" t-esc="row.number"/>
+                    <span dir="auto" class="o_ldm_row_where" t-if="row.line" t-esc="row.line"/>
+                    <span class="o_ldm_row_who" t-if="state.scope !== 'me' &amp;&amp; row.who">
+                        <LdmIcon name="'user'" title="label.responsible"/>
+                        <t t-esc="row.who"/>
+                    </span>
                 </div>
                 <div class="o_ldm_row_reason">
-                    <t t-if="showKind(row)">
-                        <span class="o_ldm_row_kind" t-esc="kindLabel(row.kind)"/>
-                        <span aria-hidden="true"> · </span>
-                    </t>
-                    <span t-esc="row.reason"/>
+                    <LdmIcon name="kindIcon(row.kind)" title="kindLabel(row.kind)" class="'o_ldm_row_kind_icon'"/>
+                    <span t-if="showKind(row)" class="o_ldm_row_kind" t-esc="kindLabel(row.kind)"/>
+                    <span dir="auto" t-esc="row.reason"/>
                 </div>
-                <div class="o_ldm_md_line">
-                    <span class="o_ldm_num" dir="ltr" t-if="row.number" t-esc="row.number"/>
-                    <span aria-hidden="true" t-if="row.number &amp;&amp; row.line"> · </span>
-                    <span t-esc="row.line"/>
-                    <t t-if="state.scope !== 'me' &amp;&amp; row.who">
-                        <span aria-hidden="true"> · </span>
-                        <LdmIcon name="'user'"/>
-                        <span t-esc="row.who"/>
-                    </t>
-                </div>
-                <div class="o_ldm_flags" t-if="row.flags &amp;&amp; row.flags.length">
+                <div class="o_ldm_flags o_ldm_row_flags" t-if="row.flags &amp;&amp; row.flags.length">
                     <span t-foreach="row.flags" t-as="flag" t-key="flag.key"
                           t-attf-class="o_ldm_pill o_ldm_tone_{{ flag.tone }}" t-att-data-flag="flag.key">
-                        <LdmIcon name="flag.icon" size="'sm'"/>
+                        <LdmIcon name="flag.icon"/>
                         <t t-esc="flag.label"/>
                     </span>
                 </div>
             </div>
             <div class="o_ldm_row_side">
                 <t t-set="when" t-value="rowDate(row)"/>
-                <span t-if="when.label" class="o_ldm_row_date" t-esc="when.label"/>
+                <span t-if="when.label" dir="auto" t-attf-class="o_ldm_pill o_ldm_row_when {{ when.tone ? 'o_ldm_tone_' + when.tone : '' }}"
+                      t-esc="when.label"/>
                 <t t-if="row.action">
                     <div class="o_ldm_row_date_input" t-if="row.action.type === 'notified'" t-on-click.stop="() => {}">
                         <DateTimeInput type="'date'" maxDate="'today'" placeholder="label.notifiedOn.toString()"
                                        onChange="(value) => this.onDateChange(row, value)"/>
                     </div>
-                    <button type="button"
-                            t-attf-class="o_ldm_action {{ row.action.type === 'tick' ? 'o_ldm_action_done' : '' }}"
+                    <button type="button" class="o_ldm_action"
                             t-att-disabled="state.pending[row.key] ? 'disabled' : undefined"
                             t-on-click="(ev) => this.runAction(row, ev)">
                         <LdmIcon t-if="row.action.type === 'tick'" name="'check'"/>
-                        <LdmIcon t-elif="row.action.type === 'visit'" name="'building-2'"/>
-                        <LdmIcon t-elif="row.action.type === 'outcome'" name="'gavel'"/>
-                        <LdmIcon t-elif="row.action.type === 'approve'" name="'badge-check'"/>
                         <span t-esc="row.action.label"/>
                     </button>
                 </t>
@@ -77,38 +65,36 @@
                 <div>
                     <p class="o_ldm_state_title" t-esc="label.errorTitle"/>
                     <p class="o_ldm_state_hint" t-esc="label.errorHint"/>
-                    <button type="button" class="btn btn-primary btn-sm" t-on-click="() => this.load()" t-esc="label.retry"/>
+                    <button type="button" class="o_ldm_action o_ldm_action_primary" t-on-click="() => this.load()" t-esc="label.retry"/>
                 </div>
             </div>
 
             <div class="o_ldm_my_day" t-if="data" t-att-data-role="data.header.role" t-att-data-scope="data.scope">
-                <!-- ======================================================== header -->
-                <header class="o_ldm_md_head">
+                <!-- ====================================================== the band -->
+                <header class="o_ldm_band o_ldm_md_band">
                     <div class="o_ldm_md_id">
-                        <h1 class="o_ldm_md_title" t-esc="data.header.title"/>
-                        <p class="o_ldm_md_meta">
-                            <LdmIcon name="'calendar'"/>
-                            <span t-esc="dateLine"/>
-                            <span aria-hidden="true">·</span>
+                        <h1 class="o_ldm_band_title" t-esc="dateLine"/>
+                        <p class="o_ldm_band_meta">
+                            <span class="o_ldm_md_hijri" t-if="hijriLine" t-esc="hijriLine"/>
+                            <span class="o_ldm_band_sep o_ldm_md_hijri" t-if="hijriLine" aria-hidden="true">·</span>
+                            <span dir="auto" class="o_ldm_md_summary" t-esc="summary"/>
+                            <span class="o_ldm_band_sep" aria-hidden="true">·</span>
                             <span t-esc="data.header.role_label"/>
-                            <span class="o_ldm_pill" t-if="data.read_only">
-                                <LdmIcon name="'lock'" size="'sm'"/>
-                                <t t-esc="label.readOnly"/>
-                            </span>
+                            <span class="o_ldm_pill o_ldm_pill_on_ink" t-if="data.read_only" t-esc="label.readOnly"/>
                         </p>
                     </div>
                     <div class="o_ldm_md_tools">
-                        <button type="button" class="o_ldm_md_search" t-on-click="openSearch"
+                        <button type="button" class="o_ldm_band_ghost o_ldm_md_search" t-on-click="openSearch"
                                 t-att-aria-label="label.search">
                             <LdmIcon name="'search'"/>
-                            <span class="o_ldm_md_search_text" t-esc="label.search"/>
+                            <span dir="auto" class="o_ldm_md_search_text" t-esc="label.search"/>
                             <kbd class="o_ldm_md_kbd">Ctrl K</kbd>
                         </button>
                         <button type="button" t-if="data.approvals &amp;&amp; data.approvals.count"
-                                class="o_ldm_pill o_ldm_tone_violet o_ldm_md_chip" t-on-click="openApprovals">
-                            <LdmIcon name="'badge-check'"/>
+                                class="o_ldm_band_ghost o_ldm_md_approvals" t-on-click="openApprovals">
+                            <LdmIcon name="'stamp'"/>
                             <span t-esc="data.approvals.label"/>
-                            <span class="o_ldm_num" dir="ltr" t-esc="data.approvals.count"/>
+                            <span class="o_ldm_pill o_ldm_tone_warning o_ldm_num" dir="ltr" t-esc="data.approvals.count"/>
                         </button>
                         <div class="o_ldm_md_scopes" t-if="data.scopes.length" role="tablist">
                             <button type="button" role="tab" t-foreach="data.scopes" t-as="scope" t-key="scope.key"
@@ -116,8 +102,7 @@
                                     t-att-aria-selected="scope.key === state.scope ? 'true' : 'false'"
                                     t-on-click="() => this.setScope(scope.key)" t-esc="scope.label"/>
                         </div>
-                        <!-- The one amber button: New matter. -->
-                        <button type="button" t-if="data.can_create" class="o_ldm_action o_ldm_action_cta o_ldm_md_new"
+                        <button type="button" t-if="data.can_create" class="o_ldm_band_action o_ldm_md_new"
                                 t-on-click="newMatter" title="Alt+Shift+N">
                             <LdmIcon name="'plus'"/>
                             <span t-esc="label.newMatter"/>
@@ -125,169 +110,164 @@
                     </div>
                 </header>
 
-                <!-- Stat chips: a tinted icon square, the count and what it
-                     counts. Each opens the records it counted. -->
-                <nav class="o_ldm_md_stats" t-if="data.counts.length" t-att-aria-label="label.statsTitle">
-                    <button type="button" t-foreach="data.counts" t-as="count" t-key="count.key"
-                            t-attf-class="o_ldm_card o_ldm_stat {{ count.count ? '' : 'o_ldm_stat_zero' }}"
-                            t-att-data-stat="count.key" t-on-click="() => this.openCount(count)">
-                        <span t-attf-class="o_ldm_icon_box o_ldm_tone_{{ count.tone }}">
-                            <LdmIcon name="count.icon"/>
-                        </span>
-                        <span class="o_ldm_stat_text">
-                            <span class="o_ldm_stat_label" t-esc="count.label"/>
-                            <span class="o_ldm_stat_count o_ldm_num" dir="ltr" t-esc="count.count"/>
-                        </span>
-                    </button>
-                </nav>
+                <div class="o_ldm_md_desk">
+                    <!-- The oversight line (managers, auditors): every count opens
+                         the records it counted. A status line, not a wall of figures. -->
+                    <nav class="o_ldm_md_counts" t-if="data.counts.length">
+                        <button type="button" t-foreach="data.counts" t-as="count" t-key="count.key"
+                                t-attf-class="o_ldm_md_count o_ldm_md_count_{{ count.tone }} {{ count.count ? '' : 'o_ldm_md_count_zero' }}"
+                                t-on-click="() => this.openCount(count)">
+                            <LdmIcon t-if="count.icon" name="count.icon" class="'o_ldm_md_count_icon'"/>
+                            <span class="o_ldm_md_count_n o_ldm_num" dir="ltr" t-esc="count.count"/>
+                            <span class="o_ldm_md_count_label" t-esc="count.label"/>
+                        </button>
+                    </nav>
 
-                <div class="o_ldm_md_main">
-                    <!-- ================================================ the queue -->
-                    <section class="o_ldm_md_queue" t-ref="queue" t-on-keydown="onQueueKeydown">
-                        <!-- The runner's route: today's counters, and what to carry. -->
-                        <div class="o_ldm_card o_ldm_md_route" t-if="data.by_body.length">
-                            <div class="o_ldm_card_head">
-                                <span class="o_ldm_icon_box o_ldm_icon_box_sm o_ldm_tone_info"><LdmIcon name="'route'"/></span>
-                                <div class="o_ldm_card_title">
+                    <div class="o_ldm_md_main">
+                        <!-- ================================================ the queue -->
+                        <section class="o_ldm_md_queue" t-ref="queue" t-on-keydown="onQueueKeydown">
+                            <!-- The runner's route: today's counters, and what to carry. -->
+                            <div class="o_ldm_panel o_ldm_md_route" t-if="data.by_body.length">
+                                <div class="o_ldm_panel_head">
                                     <h2 class="o_ldm_section_title" t-esc="label.routeTitle"/>
-                                    <span class="o_ldm_card_hint" t-esc="label.routeHint"/>
+                                    <span dir="auto" class="o_ldm_md_hint" t-esc="label.routeHint"/>
                                 </div>
-                            </div>
-                            <div class="o_ldm_md_body" t-foreach="data.by_body" t-as="group" t-key="group.key">
-                                <div class="o_ldm_md_body_head">
-                                    <LdmIcon name="'building-2'"/>
-                                    <span class="o_ldm_md_body_name" t-esc="group.body"/>
-                                    <span class="o_ldm_md_hint" t-if="group.hours"><LdmIcon name="'clock'" size="'sm'"/> <t t-esc="group.hours"/></span>
-                                    <span class="o_ldm_md_hint" t-if="group.address"><LdmIcon name="'map-pin'" size="'sm'"/> <t t-esc="group.address"/></span>
-                                </div>
-                                <div class="o_ldm_md_visit" t-foreach="group.visits" t-as="visit" t-key="visit.step_id">
-                                    <button type="button" class="o_ldm_md_visit_main" t-on-click="() => this.openMatter(visit.task_id)">
-                                        <span class="o_ldm_md_visit_subject" t-esc="visit.subject"/>
-                                        <span class="o_ldm_md_line">
-                                            <span class="o_ldm_num" dir="ltr" t-esc="visit.number"/>
-                                            <span aria-hidden="true"> · </span>
-                                            <span t-esc="visit.step"/>
+                                <div class="o_ldm_md_body" t-foreach="data.by_body" t-as="group" t-key="group.key">
+                                    <div class="o_ldm_md_body_head">
+                                        <LdmIcon name="'building-2'"/>
+                                        <span class="o_ldm_md_body_name" t-esc="group.body"/>
+                                        <span class="o_ldm_md_hint" t-if="group.hours">
+                                            <LdmIcon name="'clock'"/> <t t-esc="group.hours"/>
                                         </span>
-                                    </button>
-                                    <div class="o_ldm_flags o_ldm_md_docs" t-if="visit.documents.length">
-                                        <span t-foreach="visit.documents" t-as="doc" t-key="doc_index"
-                                              t-attf-class="o_ldm_pill {{ doc.have ? 'o_ldm_tone_success' : (doc.state === 'expired' ? 'o_ldm_tone_danger' : 'o_ldm_tone_warning') }}"
-                                              t-att-title="doc.state_label">
-                                            <LdmIcon name="doc.have ? 'check' : 'file-x'" size="'sm'"
-                                                     title="doc.have ? label.have : label.missing"/>
-                                            <t t-esc="doc.name"/>
+                                        <span class="o_ldm_md_hint" t-if="group.address">
+                                            <LdmIcon name="'map-pin'"/> <t t-esc="group.address"/>
                                         </span>
                                     </div>
-                                    <button type="button" class="o_ldm_action" t-if="!data.read_only"
-                                            t-on-click="(ev) => this.logVisit(visit, ev)">
-                                        <LdmIcon name="'pencil'"/>
-                                        <span>Log visit</span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="o_ldm_card o_ldm_empty o_ldm_md_clear" t-if="data.all_clear">
-                            <span class="o_ldm_icon_box o_ldm_tone_success"><LdmIcon name="'circle-check'"/></span>
-                            <div>
-                                <p class="o_ldm_empty_title" t-esc="data.all_clear.title"/>
-                                <p t-esc="data.all_clear.hint"/>
-                            </div>
-                        </div>
-
-                        <div class="o_ldm_card o_ldm_md_bands" t-if="visibleBands.length">
-                            <section class="o_ldm_md_band" t-foreach="visibleBands" t-as="band" t-key="band.key"
-                                     t-att-data-band="band.key">
-                                <button type="button" t-attf-class="o_ldm_md_band_head o_ldm_md_band_{{ band.key }}"
-                                        t-att-aria-expanded="isFolded(band) ? 'false' : 'true'"
-                                        t-on-click="() => this.toggleBand(band)">
-                                    <span class="o_ldm_md_band_dot" aria-hidden="true"/>
-                                    <span class="o_ldm_md_band_title" t-esc="band.title"/>
-                                    <span class="o_ldm_md_pill o_ldm_num" dir="ltr" t-esc="band.count"/>
-                                    <LdmIcon name="isFolded(band) ? 'chevron-down' : 'chevron-up'" class="'o_ldm_md_band_caret'"
-                                             title="isFolded(band) ? label.unfold : label.fold"/>
-                                </button>
-                                <ul class="o_ldm_md_rows" t-if="!isFolded(band)">
-                                    <li t-foreach="band.rows" t-as="row" t-key="row.key">
-                                        <t t-call="legal_department_management.MyDayRow"/>
-                                    </li>
-                                </ul>
-                                <p class="o_ldm_md_more" t-if="!isFolded(band) &amp;&amp; band.truncated" t-esc="moreLabel(band)"/>
-                            </section>
-                        </div>
-
-                        <!-- Manager bands: items that need a manager rather than their owner. -->
-                        <div class="o_ldm_card o_ldm_md_manager" t-if="data.manager.length">
-                            <div class="o_ldm_card_head">
-                                <span class="o_ldm_icon_box o_ldm_icon_box_sm o_ldm_tone_violet"><LdmIcon name="'users'"/></span>
-                                <div class="o_ldm_card_title">
-                                    <h2 class="o_ldm_section_title" t-esc="label.managerTitle"/>
-                                </div>
-                            </div>
-                            <section class="o_ldm_md_band" t-foreach="data.manager" t-as="band" t-key="band.key"
-                                     t-att-data-band="band.key">
-                                <div class="o_ldm_md_band_head o_ldm_md_band_static">
-                                    <span class="o_ldm_md_band_title" t-esc="band.title"/>
-                                    <span class="o_ldm_md_pill o_ldm_num" dir="ltr" t-esc="band.rows.length"/>
-                                </div>
-                                <ul class="o_ldm_md_rows">
-                                    <li t-foreach="band.rows" t-as="row" t-key="row.key">
-                                        <t t-call="legal_department_management.MyDayRow"/>
-                                    </li>
-                                </ul>
-                            </section>
-                        </div>
-                    </section>
-
-                    <!-- ====================================== the next seven days -->
-                    <aside class="o_ldm_md_side">
-                        <button type="button" class="o_ldm_card o_ldm_md_advance" t-foreach="data.advance"
-                                t-as="entry" t-key="entry_index" t-on-click="openAdvances">
-                            <span class="o_ldm_icon_box o_ldm_tone_warning"><LdmIcon name="'wallet'"/></span>
-                            <span class="o_ldm_stat_text">
-                                <span class="o_ldm_stat_label" t-esc="entry.label"/>
-                                <span class="o_ldm_md_advance_amount o_ldm_num" dir="ltr" t-esc="amount(entry)"/>
-                            </span>
-                        </button>
-                        <section class="o_ldm_card o_ldm_md_agenda">
-                            <div class="o_ldm_card_head">
-                                <span class="o_ldm_icon_box o_ldm_icon_box_sm"><LdmIcon name="'calendar-days'"/></span>
-                                <div class="o_ldm_card_title">
-                                    <h2 class="o_ldm_section_title" t-esc="data.agenda.title"/>
-                                </div>
-                            </div>
-                            <p class="o_ldm_md_agenda_empty" t-if="!data.agenda.days.length" t-esc="data.agenda.empty"/>
-                            <div class="o_ldm_md_day" t-foreach="data.agenda.days" t-as="day" t-key="day.date">
-                                <t t-set="heading" t-value="agendaDay(day)"/>
-                                <h3 class="o_ldm_md_day_head">
-                                    <span t-esc="heading.title"/>
-                                    <span class="o_ldm_md_hint" t-if="heading.subtitle" t-esc="heading.subtitle"/>
-                                </h3>
-                                <ul class="o_ldm_md_day_items">
-                                    <li t-foreach="day.items" t-as="item" t-key="item.key">
-                                        <button type="button" class="o_ldm_md_day_item" t-on-click="() => this.openRow(item)">
-                                            <span t-attf-class="o_ldm_md_day_icon o_ldm_text_{{ item.kind === 'deadline' ? 'danger' : (item.kind === 'hearing' ? 'info' : 'muted') }}">
-                                                <LdmIcon name="kindIcon(item.kind)" title="kindLabel(item.kind)"/>
-                                            </span>
-                                            <span class="o_ldm_md_day_text">
-                                                <span class="o_ldm_md_day_label">
-                                                    <span class="o_ldm_num" dir="ltr" t-if="hour(item.time)" t-esc="hour(item.time)"/>
-                                                    <t t-esc="item.label"/>
-                                                </span>
-                                                <span class="o_ldm_md_hint" t-esc="item.subject"/>
+                                    <div class="o_ldm_md_visit" t-foreach="group.visits" t-as="visit" t-key="visit.step_id">
+                                        <button type="button" class="o_ldm_md_visit_main" t-on-click="() => this.openMatter(visit.task_id)">
+                                            <span dir="auto" class="o_ldm_md_visit_subject" t-esc="visit.subject"/>
+                                            <span class="o_ldm_row_line">
+                                                <span class="o_ldm_ref" dir="ltr" t-esc="visit.number"/>
+                                                <span t-esc="visit.step"/>
                                             </span>
                                         </button>
-                                    </li>
-                                </ul>
+                                        <button type="button" class="o_ldm_action o_ldm_action_primary" t-if="!data.read_only"
+                                                t-on-click="(ev) => this.logVisit(visit, ev)">
+                                            <LdmIcon name="'pencil'"/>
+                                            <span t-esc="label.logVisit"/>
+                                        </button>
+                                        <div class="o_ldm_md_docs" t-if="visit.documents.length">
+                                            <span t-foreach="visit.documents" t-as="doc" t-key="doc_index"
+                                                  t-attf-class="o_ldm_pill {{ doc.have ? 'o_ldm_tone_success' : (doc.state === 'expired' ? 'o_ldm_tone_danger' : 'o_ldm_tone_warning') }}"
+                                                  t-att-title="doc.state_label">
+                                                <LdmIcon name="doc.have ? 'check' : 'circle-alert'" title="doc.have ? label.have : label.missing"/>
+                                                <t t-esc="doc.name"/>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="o_ldm_md_panel_foot">
-                                <button type="button" class="o_ldm_linkbtn" t-on-click="openAgenda">
-                                    <span t-esc="label.agendaOpen"/>
-                                    <LdmIcon name="'arrow-right'"/>
-                                </button>
+
+                            <div class="o_ldm_panel o_ldm_empty o_ldm_md_clear" t-if="data.all_clear">
+                                <LdmIcon name="'circle-check'"/>
+                                <div>
+                                    <p class="o_ldm_empty_title" t-esc="data.all_clear.title"/>
+                                    <p t-esc="data.all_clear.hint"/>
+                                    <p class="mt-3" t-if="data.can_create">
+                                        <button type="button" class="o_ldm_action o_ldm_action_primary" t-on-click="newMatter">
+                                            <LdmIcon name="'plus'"/>
+                                            <span t-esc="label.newMatter"/>
+                                        </button>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="o_ldm_panel o_ldm_md_bands" t-if="visibleBands.length">
+                                <section class="o_ldm_md_band_section" t-foreach="visibleBands" t-as="band" t-key="band.key"
+                                         t-att-data-band="band.key">
+                                    <button type="button" t-attf-class="o_ldm_md_band_head o_ldm_md_band_{{ band.key }}"
+                                            t-att-aria-expanded="isFolded(band) ? 'false' : 'true'"
+                                            t-on-click="() => this.toggleBand(band)">
+                                        <span class="o_ldm_md_band_dot" aria-hidden="true"/>
+                                        <span class="o_ldm_md_band_title" t-esc="band.title"/>
+                                        <span class="o_ldm_pill o_ldm_num" dir="ltr" t-esc="band.count"/>
+                                        <LdmIcon name="isFolded(band) ? 'chevron-down' : 'chevron-up'"
+                                                 title="isFolded(band) ? label.unfold : label.fold" class="'o_ldm_md_band_caret'"/>
+                                    </button>
+                                    <ul class="o_ldm_md_rows" t-if="!isFolded(band)">
+                                        <li t-foreach="band.rows" t-as="row" t-key="row.key">
+                                            <t t-call="legal_department_management.MyDayRow"/>
+                                        </li>
+                                    </ul>
+                                    <p class="o_ldm_md_more" t-if="!isFolded(band) &amp;&amp; band.truncated" t-esc="moreLabel(band)"/>
+                                </section>
+                            </div>
+
+                            <!-- Items that need a manager rather than their owner. -->
+                            <div class="o_ldm_panel o_ldm_md_manager" t-if="data.manager.length">
+                                <div class="o_ldm_panel_head">
+                                    <h2 class="o_ldm_section_title" t-esc="label.managerTitle"/>
+                                </div>
+                                <section class="o_ldm_md_band_section" t-foreach="data.manager" t-as="band" t-key="band.key"
+                                         t-att-data-band="band.key">
+                                    <div class="o_ldm_md_band_head o_ldm_md_band_static">
+                                        <span class="o_ldm_md_band_title" t-esc="band.title"/>
+                                        <span class="o_ldm_pill o_ldm_num" dir="ltr" t-esc="band.rows.length"/>
+                                    </div>
+                                    <ul class="o_ldm_md_rows">
+                                        <li t-foreach="band.rows" t-as="row" t-key="row.key">
+                                            <t t-call="legal_department_management.MyDayRow"/>
+                                        </li>
+                                    </ul>
+                                </section>
                             </div>
                         </section>
-                    </aside>
+
+                        <!-- ====================================== the next seven days -->
+                        <aside class="o_ldm_md_side">
+                            <button type="button" class="o_ldm_panel o_ldm_md_advance" t-foreach="data.advance"
+                                    t-as="entry" t-key="entry_index" t-on-click="openAdvances">
+                                <span class="o_ldm_md_hint">
+                                    <LdmIcon name="'wallet'"/> <t t-esc="entry.label"/>
+                                </span>
+                                <span class="o_ldm_md_advance_amount o_ldm_num" dir="ltr" t-esc="amount(entry)"/>
+                            </button>
+                            <section class="o_ldm_panel o_ldm_md_agenda">
+                                <div class="o_ldm_panel_head">
+                                    <h2 class="o_ldm_section_title" t-esc="data.agenda.title"/>
+                                </div>
+                                <p class="o_ldm_md_agenda_empty" t-if="!data.agenda.days.length" t-esc="data.agenda.empty"/>
+                                <div class="o_ldm_md_day" t-foreach="data.agenda.days" t-as="day" t-key="day.date">
+                                    <t t-set="heading" t-value="agendaDay(day)"/>
+                                    <h3 class="o_ldm_md_day_head">
+                                        <span t-esc="heading.title"/>
+                                        <span class="o_ldm_md_hint" t-if="heading.subtitle" t-esc="heading.subtitle"/>
+                                    </h3>
+                                    <ul class="o_ldm_md_day_items">
+                                        <li t-foreach="day.items" t-as="item" t-key="item.key">
+                                            <button type="button" t-attf-class="o_ldm_md_day_item {{ kindSpine(item) }}"
+                                                    t-on-click="() => this.openRow(item)">
+                                                <LdmIcon name="kindIcon(item.kind)" title="kindLabel(item.kind)" class="'o_ldm_md_day_icon'"/>
+                                                <span class="o_ldm_md_day_text">
+                                                    <span class="o_ldm_md_day_label">
+                                                        <span class="o_ldm_num" dir="ltr" t-if="hour(item.time)" t-esc="hour(item.time)"/>
+                                                        <t t-esc="item.label"/>
+                                                    </span>
+                                                    <span dir="auto" class="o_ldm_md_hint" t-esc="item.subject"/>
+                                                </span>
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="o_ldm_md_panel_foot">
+                                    <button type="button" class="o_ldm_linkbtn" t-on-click="openAgenda">
+                                        <LdmIcon name="'calendar-days'"/>
+                                        <span t-esc="label.agendaOpen"/>
+                                    </button>
+                                </div>
+                            </section>
+                        </aside>
+                    </div>
                 </div>
             </div>
         </Layout>

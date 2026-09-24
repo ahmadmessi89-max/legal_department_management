@@ -18,9 +18,23 @@
         <div class="o_ldm o_ldm_more_toggle_row o_ldm_qc_more">
             <button type="button" class="o_ldm_more_toggle_btn" t-on-click="toggle"
                     t-att-aria-expanded="isOpen ? 'true' : 'false'">
-                <i t-attf-class="fa {{ isOpen ? 'fa-chevron-up' : 'fa-chevron-down' }}" role="img" aria-hidden="true"/>
+                <LdmIcon name="isOpen ? 'chevron-up' : 'chevron-down'"/>
                 <span t-esc="label"/>
             </button>
+        </div>
+    </t>
+
+    <t t-name="legal_department_management.SuggestedDate">
+        <div class="o_ldm o_ldm_suggestion o_ldm_qc_suggestion" t-if="visible">
+            <span class="o_ldm_suggestion_icon" aria-hidden="true"><LdmIcon name="'calendar-check'"/></span>
+            <div class="o_ldm_suggestion_text">
+                <p class="o_ldm_suggestion_title">
+                    <span t-esc="title"/>
+                    <strong class="o_ldm_suggestion_date" t-esc="dateLabel"/>
+                </p>
+                <p class="o_ldm_suggestion_note" t-if="data.suggested_note"><span dir="auto" t-esc="data.suggested_note"/></p>
+            </div>
+            <button type="button" class="o_ldm_action" t-if="!props.readonly" t-on-click="use" t-esc="useLabel"/>
         </div>
     </t>
 

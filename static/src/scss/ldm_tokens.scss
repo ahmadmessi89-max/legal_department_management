@@ -133,7 +133,14 @@
 .o_ldm_kind_other { --ldm-kind: var(--ldm-kind-other); }
 
 // Odoo's own buttons inside a workspace screen: the primary action is ink.
-.o_ldm {
+// A workspace dialog's footer is rendered outside the form, so it is
+// reached through the dialog that holds a workspace form.
+.modal-content:has(.modal-body .o_ldm) .modal-footer {
+    --ldm-ink: #14213D;
+}
+
+.o_ldm,
+.modal-content:has(.modal-body .o_ldm) .modal-footer {
     .btn-primary {
         --btn-bg: var(--ldm-ink);
         --btn-border-color: var(--ldm-ink);
@@ -147,6 +154,20 @@
         --btn-disabled-bg: var(--ldm-ink);
         --btn-disabled-border-color: var(--ldm-ink);
     }
+}
+
+// Odoo's own inputs inside a workspace form: ink when chosen or focused,
+// so the only colour on a form is the colour that means something.
+.o_ldm {
+    .form-check-input:checked {
+        background-color: var(--ldm-ink);
+        border-color: var(--ldm-ink);
+    }
+
+    .form-check-input:focus { box-shadow: var(--ldm-focus); }
+
+    .o_input:focus,
+    .o_field_widget:focus-within .o_input { border-color: var(--ldm-ink); }
 }
 
 // ------------------------------------------------------------ headings

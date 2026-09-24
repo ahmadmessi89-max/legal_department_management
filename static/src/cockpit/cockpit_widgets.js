@@ -4,8 +4,11 @@ import { useService } from "@web/core/utils/hooks";
 import { _t } from "@web/core/l10n/translation";
 import { standardWidgetProps } from "@web/views/widgets/standard_widget_props";
 
-import { formatAmount, formatHour, relativeDay, shortDate } from "../core/ldm_format";
+import {
+    formatAmount, formatHour, markStampLanding, relativeDay, shortDate, takeStampLanding,
+} from "../core/ldm_format";
 import { runRecordAction, toggleStep } from "../core/ldm_step_actions";
+import { LdmIcon } from "../core/ldm_icon";
 
 const COCKPIT_FIELD = [{ name: "ldm_cockpit", type: "json" }];
 
@@ -33,6 +36,79 @@ async function saveFirst(record) {
     return true;
 }
 
+function selectionLabel(record, field) {
+    const value = record.data[field];
+    const pair = ((record.fields[field] && record.fields[field].selection) || []).find(([key]) => key === value);
+    return pair ? pair[1] : "";
+}
+
+// ============================================================ title band
+/**
+ * The line under the matter's title inside the ink band (design direction):
+ * who it is for and where, its status and court stage as pills, what is wrong
+ * with it now (from real data), and the violet stamp once it is approved.
+ */
+export class LdmTitleMeta extends Component {
+    static template = "legal_department_management.TitleMeta";
+    static components = { LdmIcon };
+    static props = { ...standardWidgetProps };
+
+    static stateIcons = {
+        draft: "circle-dot",
+        in_progress: "refresh-cw",
+        pending_docs: "hourglass",
+        done: "circle-check",
+        cancelled: "circle-x",
+    };
+
+    setup() {
+        this.landing = takeStampLanding(this.props.record.resId);
+    }
+
+    get data() {
+        return this.props.record.data;
+    }
+
+    get where() {
+        const parts = [this.data.legal_company_id, this.data.department_id].filter(Boolean);
+        return parts.map((value) => value.display_name).join(" · ");
+    }
+
+    get responsible() {
+        return this.data.lawyer_id ? this.data.lawyer_id.display_name : "";
+    }
+
+    get statePill() {
+        return {
+            label: selectionLabel(this.props.record, "state"),
+            icon: LdmTitleMeta.stateIcons[this.data.state] || "circle",
+        };
+    }
+
+    get stagePill() {
+        if (!["litigation", "execution"].includes(this.data.kind) || !this.data.court_stage) {
+            return "";
+        }
+        return selectionLabel(this.props.record, "court_stage");
+    }
+
+    get flags() {
+        return cockpitOf(this.props.record).flags || [];
+    }
+
+    get approved() {
+        return this.data.approval_state === "approved";
+    }
+
+    get approvedLabel() {
+        return _t("Approved");
+    }
+
+    get responsibleLabel() {
+        return _t("Responsible");
+    }
+}
+
 // ================================================================= vitals
 /**
  * The matter's vital facts on one line (SPEC 5.3): the next date and its
@@ -41,7 +117,17 @@ async function saveFirst(record) {
  */
 export class LdmMatterVitals extends Component {
     static template = "legal_department_management.MatterVitals";
+    static components = { LdmIcon };
     static props = { ...standardWidgetProps };
+
+    static icons = {
+        next: "calendar-clock",
+        sessions: "gavel",
+        documents: "file-check",
+        steps: "list-checks",
+        expenses: "wallet",
+        age: "clock",
+    };
 
     setup() {
         this.root = useRef("root");
@@ -52,11 +138,17 @@ export class LdmMatterVitals extends Component {
     }
 
     decorate(vital) {
-        const out = { ...vital, display: vital.value || "", tone: vital.tone || "" };
+        const out = {
+            ...vital,
+            display: vital.value || "",
+            tone: vital.tone || "",
+            icon: LdmMatterVitals.icons[vital.key] || "circle",
+        };
         if (vital.key === "next") {
             if (vital.date) {
                 const rel = relativeDay(vital.date);
-                out.display = rel.days !== null && Math.abs(rel.days) <= 6 ? `${shortDate(vital.date)} · ${rel.label}` : shortDate(vital.date);
+                out.display = rel.days !== null && Math.abs(rel.days) <= 6
+                    ? `${shortDate(vital.date)} · ${rel.label}` : shortDate(vital.date);
                 out.tone = rel.tone;
             } else {
                 out.display = _t("Nothing dated");
@@ -79,11 +171,13 @@ export class LdmMatterVitals extends Component {
 /**
  * What happens next on this matter, and its one action (SPEC 14.4): tick the
  * step, log the visit, record the session's outcome. While the matter waits
- * for approval the approval banner takes the card's place; approvers decide
- * from it.
+ * for approval the approval notice takes the card's place; approvers decide
+ * from it. Below it, when the matter type and the body imply another target
+ * date, the suggestion with "Use this date".
  */
 export class LdmNextStep extends Component {
     static template = "legal_department_management.NextStep";
+    static components = { LdmIcon };
     static props = { ...standardWidgetProps };
 
     static labels = {
@@ -100,6 +194,22 @@ export class LdmNextStep extends Component {
         rejected: _t("Approval refused"),
         closed: _t("This matter is closed."),
         approved: _t("Approved. Work can start."),
+        suggested: _t("Suggested target date"),
+        useIt: _t("Use this date"),
+        current: _t("Now: %s"),
+        noCurrent: _t("No target date yet"),
+        suggestionUsed: _t("Target date updated."),
+    };
+
+    static icons = {
+        hearing: "gavel",
+        step: "list-checks",
+        visit: "building-2",
+        deadline: "hourglass",
+        target: "flag",
+        start: "circle-dot",
+        none: "circle",
+        closed: "circle-check",
     };
 
     setup() {
@@ -125,6 +235,10 @@ export class LdmNextStep extends Component {
         return this.cockpit.next || false;
     }
 
+    get suggestion() {
+        return this.cockpit.suggestion || false;
+    }
+
     get canAct() {
         return !this.props.readonly && !this.cockpit.read_only && Boolean(this.props.record.resId);
     }
@@ -135,26 +249,11 @@ export class LdmNextStep extends Component {
             return null;
         }
         const rel = relativeDay(next.date);
-        const hour = formatHour(next.time);
-        return {
-            date: shortDate(next.date),
-            label: rel.label,
-            tone: rel.tone,
-            hour,
-        };
+        return { date: shortDate(next.date), label: rel.label, tone: rel.tone, hour: formatHour(next.time) };
     }
 
     get icon() {
-        return {
-            hearing: "fa-gavel",
-            step: "fa-check-square-o",
-            visit: "fa-building-o",
-            deadline: "fa-hourglass-half",
-            target: "fa-flag-o",
-            start: "fa-play-circle-o",
-            none: "fa-circle-o",
-            closed: "fa-check-circle",
-        }[this.next.kind] || "fa-circle-o";
+        return LdmNextStep.icons[this.next.kind] || "circle";
     }
 
     get approvalMeta() {
@@ -185,6 +284,16 @@ export class LdmNextStep extends Component {
             parts.push(_t("Legal last day: %s", shortDate(next.legal_date)));
         }
         return parts.join(" · ");
+    }
+
+    get suggestionDate() {
+        const suggestion = this.suggestion;
+        return suggestion ? shortDate(suggestion.date) : "";
+    }
+
+    get suggestionCurrent() {
+        const suggestion = this.suggestion;
+        return suggestion.current ? _t("Now: %s", shortDate(suggestion.current)) : this.label.noCurrent;
     }
 
     async reload() {
@@ -241,6 +350,7 @@ export class LdmNextStep extends Component {
     approve() {
         return this.run(async () => {
             await this.orm.call("legal.task", "action_approve", [[this.props.record.resId]]);
+            markStampLanding(this.props.record.resId);
             this.notification.add(this.label.approved, { type: "success" });
             await this.reload();
         });
@@ -258,6 +368,14 @@ export class LdmNextStep extends Component {
             await this.reload();
         });
     }
+
+    useSuggestion() {
+        return this.run(async () => {
+            await this.orm.call("legal.task", "action_ldm_use_suggested_target", [[this.props.record.resId]]);
+            this.notification.add(this.label.suggestionUsed, { type: "success" });
+            await this.reload();
+        });
+    }
 }
 
 // ============================================================== phase rail
@@ -268,6 +386,7 @@ export class LdmNextStep extends Component {
  */
 export class LdmPhaseRail extends Component {
     static template = "legal_department_management.PhaseRail";
+    static components = { LdmIcon };
     static props = { ...standardWidgetProps };
 
     static labels = {
@@ -305,6 +424,7 @@ export class LdmPhaseRail extends Component {
  */
 export class LdmAdvancedToggle extends Component {
     static template = "legal_department_management.AdvancedToggle";
+    static components = { LdmIcon };
     static props = { ...standardWidgetProps };
 
     setup() {
@@ -329,6 +449,7 @@ export class LdmAdvancedToggle extends Component {
 }
 
 const widgets = registry.category("view_widgets");
+widgets.add("ldm_title_meta", { component: LdmTitleMeta, fieldDependencies: COCKPIT_FIELD });
 widgets.add("ldm_matter_vitals", { component: LdmMatterVitals, fieldDependencies: COCKPIT_FIELD });
 widgets.add("ldm_next_step", { component: LdmNextStep, fieldDependencies: COCKPIT_FIELD });
 widgets.add("ldm_phase_rail", { component: LdmPhaseRail, fieldDependencies: COCKPIT_FIELD });

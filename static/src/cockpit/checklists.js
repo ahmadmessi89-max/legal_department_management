@@ -10,6 +10,7 @@ import { FileModel } from "@web/core/file_viewer/file_model";
 import { useFileViewer } from "@web/core/file_viewer/file_viewer_hook";
 
 import { relativeDay, shortDate } from "../core/ldm_format";
+import { LdmIcon } from "../core/ldm_icon";
 import { runRecordAction, toggleStep } from "../core/ldm_step_actions";
 
 function isoOf(value) {
@@ -40,6 +41,7 @@ function isClosed(record) {
  */
 export class LdmStepChecklist extends Component {
     static template = "legal_department_management.StepChecklist";
+    static components = { LdmIcon };
     static props = { ...standardFieldProps };
 
     static labels = {
@@ -177,6 +179,7 @@ export class LdmStepChecklist extends Component {
  */
 export class LdmDocumentChecklist extends Component {
     static template = "legal_department_management.DocumentChecklist";
+    static components = { LdmIcon };
     static props = { ...standardFieldProps };
 
     static labels = {
@@ -194,12 +197,21 @@ export class LdmDocumentChecklist extends Component {
         attachedTo: _t("Attached to “%s”."),
         attachedGeneral: _t("Added to the matter's files."),
         offerTitle: _t("Which document is this?"),
+        genuine: _t("Confirmed genuine"),
         keepGeneral: _t("Keep it with the matter's files"),
+    };
+
+    static icons = {
+        missing: "circle",
+        received: "check",
+        verified: "badge-check",
+        expired: "calendar-x",
+        not_needed: "minus",
     };
 
     static tones = {
         missing: "warning",
-        received: "info",
+        received: "success",
         verified: "success",
         expired: "danger",
         not_needed: "",
@@ -252,6 +264,7 @@ export class LdmDocumentChecklist extends Component {
                 state: data.state,
                 stateLabel: this.stateLabel(rec),
                 tone: LdmDocumentChecklist.tones[data.state] || "",
+                icon: LdmDocumentChecklist.icons[data.state] || "circle",
                 mandatory: Boolean(data.mandatory),
                 expiry: expiry ? _t("Expires %s", shortDate(expiry)) : "",
                 attachment: data.attachment_id || false,

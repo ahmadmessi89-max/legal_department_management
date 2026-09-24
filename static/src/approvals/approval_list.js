@@ -6,6 +6,9 @@ import { listView } from "@web/views/list/list_view";
 import { ListController } from "@web/views/list/list_controller";
 
 import { formatAmount, relativeDay, shortDate } from "../core/ldm_format";
+import { LdmIcon } from "../core/ldm_icon";
+
+const STAMP_PAUSE = 650;
 
 /**
  * A read-only summary of the selected matter beside the approvals inbox
@@ -13,8 +16,10 @@ import { formatAmount, relativeDay, shortDate } from "../core/ldm_format";
  */
 export class LdmApprovalPreview extends Component {
     static template = "legal_department_management.ApprovalPreview";
+    static components = { LdmIcon };
     static props = {
         taskId: { type: Number },
+        stamped: { type: Boolean, optional: true },
         onApprove: Function,
         onReject: Function,
         onOpen: Function,
@@ -39,6 +44,7 @@ export class LdmApprovalPreview extends Component {
         close: _t("Close the preview"),
         urgent: _t("Urgent"),
         confidential: _t("Confidential"),
+        approvedStamp: _t("Approved"),
     };
 
     setup() {
@@ -101,12 +107,13 @@ export class LdmApprovalListController extends ListController {
     setup() {
         super.setup();
         this.orm = useService("orm");
-        this.previewState = useState({ id: null });
+        this.previewState = useState({ id: null, stamped: false });
     }
 
     /** A click on a row shows its summary beside the list instead of leaving it. */
     async openRecord(record) {
         this.previewState.id = record.resId;
+        this.previewState.stamped = false;
     }
 
     closePreview() {
@@ -118,9 +125,13 @@ export class LdmApprovalListController extends ListController {
         this.props.selectRecord(taskId, { activeIds });
     }
 
+    /** Approve, let the stamp land on the preview, then refresh the inbox. */
     async approve(taskId) {
         await this.orm.call("legal.task", "action_approve", [[taskId]]);
+        this.previewState.stamped = true;
+        await new Promise((resolve) => setTimeout(resolve, STAMP_PAUSE));
         this.previewState.id = null;
+        this.previewState.stamped = false;
         await this.model.load();
     }
 

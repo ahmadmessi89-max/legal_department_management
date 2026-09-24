@@ -71,7 +71,7 @@ test("draws one checkbox row per step, with the visit chip and a meter", async (
     await mountView({ type: "form", resModel: "legal.task", resId: 1, arch: ARCH });
     expect(".o_ldm_check_row").toHaveCount(2);
     expect(".o_ldm_check_target[role='checkbox']").toHaveCount(2);
-    expect(".o_ldm_check_row:eq(1) .o_ldm_chip").toHaveCount(1);
+    expect(".o_ldm_check_row:eq(1) .o_ldm_pill").toHaveCount(1);
     expect(".o_ldm_checklist_meter").toHaveText("0 / 2");
     // A counter visit offers "Log visit" beside the tick.
     expect(".o_ldm_check_row:eq(1) .o_ldm_check_tools .o_ldm_action").toHaveCount(1);

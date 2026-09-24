@@ -1,6 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <templates xml:space="preserve">
 
+    <!-- ========================================================= title band -->
+    <t t-name="legal_department_management.TitleMeta">
+        <div class="o_ldm o_ldm_title_meta">
+            <p class="o_ldm_title_where" t-if="where || responsible">
+                <span t-if="where" t-esc="where"/>
+                <span class="o_ldm_band_sep" t-if="where &amp;&amp; responsible" aria-hidden="true">·</span>
+                <span t-if="responsible">
+                    <LdmIcon name="'user'" title="responsibleLabel"/>
+                    <t t-esc="responsible"/>
+                </span>
+            </p>
+            <div class="o_ldm_flags o_ldm_title_pills">
+                <span class="o_ldm_pill o_ldm_pill_on_ink" t-if="statePill.label">
+                    <LdmIcon name="statePill.icon"/>
+                    <t t-esc="statePill.label"/>
+                </span>
+                <span class="o_ldm_pill o_ldm_pill_on_ink" t-if="stagePill">
+                    <LdmIcon name="'scale'"/>
+                    <t t-esc="stagePill"/>
+                </span>
+                <span t-foreach="flags" t-as="flag" t-key="flag.key"
+                      t-attf-class="o_ldm_pill o_ldm_tone_{{ flag.tone }}" t-att-data-flag="flag.key">
+                    <LdmIcon name="flag.icon"/>
+                    <t t-esc="flag.label"/>
+                </span>
+                <span t-if="approved" t-attf-class="o_ldm_stamp o_ldm_stamp_on_ink {{ landing ? 'o_ldm_stamp_land' : '' }}">
+                    <LdmIcon name="'stamp'"/>
+                    <t t-esc="approvedLabel"/>
+                </span>
+            </div>
+        </div>
+    </t>
+
     <!-- ============================================================ vitals -->
     <t t-name="legal_department_management.MatterVitals">
         <div class="o_ldm o_ldm_vitals" t-ref="root" t-if="vitals.length">
@@ -9,8 +42,11 @@
                         t-att-data-vital="vital.key" t-att-title="vital.hint || vital.label"
                         t-att-tabindex="vital.tab ? undefined : '-1'"
                         t-on-click="() => this.open(vital)">
-                    <span class="o_ldm_vital_label" t-esc="vital.label"/>
-                    <span t-attf-class="o_ldm_vital_value {{ vital.tone ? 'o_ldm_text_' + vital.tone : '' }}" t-esc="vital.display"/>
+                    <span class="o_ldm_vital_label">
+                        <LdmIcon name="vital.icon"/>
+                        <t t-esc="vital.label"/>
+                    </span>
+                    <span t-attf-class="o_ldm_vital_value {{ vital.tone ? 'o_ldm_text_' + vital.tone : '' }}"><span dir="auto" t-esc="vital.display"/></span>
                     <span class="o_ldm_vital_hint" t-if="vital.hint" t-esc="vital.hint"/>
                 </button>
             </t>
@@ -20,11 +56,12 @@
     <!-- ========================================================= next step -->
     <t t-name="legal_department_management.NextStep">
         <div class="o_ldm o_ldm_next_wrap">
-            <!-- While the matter waits for an approver, the banner is the card. -->
+            <!-- While the matter waits for an approver, the notice is the card. -->
             <div t-if="approval" role="status"
                  t-attf-class="o_ldm_approval o_ldm_approval_{{ approval.state }}">
-                <i t-attf-class="fa {{ approval.state === 'rejected' ? 'fa-times-circle' : 'fa-hourglass-half' }} o_ldm_approval_icon"
-                   role="img" t-att-title="approval.state_label"/>
+                <span class="o_ldm_next_icon" aria-hidden="true">
+                    <LdmIcon name="approval.state === 'rejected' ? 'circle-x' : 'stamp'" size="'lg'"/>
+                </span>
                 <div class="o_ldm_approval_text">
                     <p class="o_ldm_approval_title" t-esc="approval.state === 'rejected' ? label.rejected : label.waiting"/>
                     <p class="o_ldm_approval_meta" t-if="approvalMeta" t-esc="approvalMeta"/>
@@ -33,9 +70,9 @@
                 </div>
                 <div class="o_ldm_card_actions" t-if="canAct">
                     <t t-if="approval.state === 'to_approve' &amp;&amp; approval.can_decide">
-                        <button type="button" class="o_ldm_action o_ldm_action_primary o_ldm_approve" t-att-disabled="state.busy ? 'disabled' : undefined"
-                                t-on-click="approve">
-                            <i class="fa fa-check" role="img" aria-hidden="true"/>
+                        <button type="button" class="o_ldm_action o_ldm_action_primary o_ldm_approve"
+                                t-att-disabled="state.busy ? 'disabled' : undefined" t-on-click="approve">
+                            <LdmIcon name="'check'"/>
                             <span t-esc="label.approve"/>
                         </button>
                         <button type="button" class="o_ldm_action o_ldm_reject" t-att-disabled="state.busy ? 'disabled' : undefined"
@@ -47,42 +84,58 @@
             </div>
 
             <div t-if="next" t-attf-class="o_ldm_next o_ldm_next_{{ next.kind }}" t-att-data-kind="next.kind">
-                <span class="o_ldm_next_icon" aria-hidden="true"><i t-attf-class="fa {{ icon }}"/></span>
+                <span class="o_ldm_next_icon" aria-hidden="true"><LdmIcon name="icon" size="'lg'"/></span>
                 <div class="o_ldm_next_text">
                     <p class="o_ldm_next_kicker" t-esc="next.kind === 'closed' ? label.closed : label.next"/>
                     <p class="o_ldm_next_label" t-if="next.label" t-esc="next.label"/>
                     <p class="o_ldm_next_meta">
-                        <t t-if="when">
-                            <span t-attf-class="o_ldm_next_when {{ when.tone ? 'o_ldm_text_' + when.tone : '' }}">
-                                <t t-esc="when.date"/><t t-if="when.hour"> · <span class="o_ldm_num" dir="ltr" t-esc="when.hour"/></t>
-                                <span aria-hidden="true"> · </span><t t-esc="when.label"/>
-                            </span>
-                        </t>
-                        <span t-if="when &amp;&amp; nextMeta" aria-hidden="true"> · </span>
+                        <span t-if="when" t-attf-class="o_ldm_pill {{ when.tone ? 'o_ldm_tone_' + when.tone : '' }}">
+                            <LdmIcon name="'calendar'"/>
+                            <t t-esc="when.date"/><t t-if="when.hour"> · <span class="o_ldm_num" dir="ltr" t-esc="when.hour"/></t>
+                            <t> · </t><t t-esc="when.label"/>
+                        </span>
                         <span t-if="nextMeta" t-esc="nextMeta"/>
                     </p>
                 </div>
                 <div class="o_ldm_card_actions" t-if="canAct &amp;&amp; next.can_act">
                     <button type="button" class="o_ldm_action o_ldm_action_primary" t-if="next.kind === 'hearing'"
                             t-att-disabled="state.busy ? 'disabled' : undefined" t-on-click="recordOutcome" title="Alt+Shift+H">
-                        <i class="fa fa-gavel" role="img" aria-hidden="true"/>
+                        <LdmIcon name="'gavel'"/>
                         <span t-esc="label.outcome"/>
                     </button>
                     <button type="button" class="o_ldm_action o_ldm_action_primary" t-if="next.kind === 'visit'"
                             t-att-disabled="state.busy ? 'disabled' : undefined" t-on-click="logVisit">
-                        <i class="fa fa-pencil-square-o" role="img" aria-hidden="true"/>
+                        <LdmIcon name="'pencil'"/>
                         <span t-esc="label.visit"/>
                     </button>
                     <button type="button" t-if="next.kind === 'step' || next.kind === 'visit'"
                             t-attf-class="o_ldm_action {{ next.kind === 'step' ? 'o_ldm_action_primary' : '' }}"
                             t-att-disabled="state.busy ? 'disabled' : undefined" t-on-click="markDone">
-                        <i class="fa fa-check" role="img" aria-hidden="true"/>
+                        <LdmIcon name="'check'"/>
                         <span t-esc="label.done"/>
                     </button>
                 </div>
                 <div class="o_ldm_card_actions" t-if="next.kind === 'deadline'">
                     <button type="button" class="o_ldm_action" t-on-click="openDeadline" t-esc="label.openDeadline"/>
                 </div>
+            </div>
+
+            <!-- The target date the matter type and the body imply: arithmetic,
+                 with its reasons, never a guess. -->
+            <div class="o_ldm_suggestion" t-if="suggestion">
+                <span class="o_ldm_suggestion_icon" aria-hidden="true"><LdmIcon name="'calendar-check'"/></span>
+                <div class="o_ldm_suggestion_text">
+                    <p class="o_ldm_suggestion_title">
+                        <span t-esc="label.suggested"/>
+                        <strong class="o_ldm_suggestion_date" t-esc="suggestionDate"/>
+                        <span class="o_ldm_suggestion_now" t-esc="suggestionCurrent"/>
+                    </p>
+                    <ul class="o_ldm_suggestion_reasons">
+                        <li t-foreach="suggestion.reasons" t-as="reason" t-key="reason_index"><span dir="auto" t-esc="reason"/></li>
+                    </ul>
+                </div>
+                <button type="button" class="o_ldm_action" t-if="canAct" t-att-disabled="state.busy ? 'disabled' : undefined"
+                        t-on-click="useSuggestion" t-esc="label.useIt"/>
             </div>
         </div>
     </t>
@@ -96,7 +149,7 @@
                     <button type="button" class="o_ldm_rail_btn" t-on-click="open"
                             t-att-aria-current="phase.status === 'current' ? 'step' : undefined">
                         <span class="o_ldm_rail_marker" aria-hidden="true">
-                            <i class="fa fa-check" t-if="phase.status === 'done'"/>
+                            <LdmIcon t-if="phase.status === 'done'" name="'check'"/>
                             <t t-else="" t-esc="phase_index + 1"/>
                         </span>
                         <span class="o_ldm_rail_text">
@@ -117,7 +170,7 @@
         <div class="o_ldm o_ldm_more_toggle_row">
             <button type="button" class="o_ldm_more_toggle_btn" t-on-click="toggle"
                     t-att-aria-expanded="isOpen ? 'true' : 'false'">
-                <i t-attf-class="fa {{ isOpen ? 'fa-chevron-up' : 'fa-chevron-down' }}" role="img" aria-hidden="true"/>
+                <LdmIcon name="isOpen ? 'chevron-up' : 'chevron-down'"/>
                 <span t-esc="label"/>
             </button>
         </div>

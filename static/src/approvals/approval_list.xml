@@ -23,7 +23,7 @@
                     />
                 </div>
                 <aside class="o_ldm_approvals_preview" t-if="previewState.id">
-                    <LdmApprovalPreview taskId="previewState.id"
+                    <LdmApprovalPreview taskId="previewState.id" stamped="previewState.stamped"
                                         onApprove="(id) => this.approve(id)"
                                         onReject="(id) => this.reject(id)"
                                         onOpen="(id) => this.openFull(id)"
@@ -42,18 +42,23 @@
             <t t-else="">
                 <header class="o_ldm_preview_head">
                     <div class="o_ldm_preview_id">
-                        <span class="o_ldm_preview_number o_ldm_num" dir="ltr" t-esc="state.data.number"/>
+                        <span class="o_ldm_preview_number o_ldm_ref" dir="ltr" t-esc="state.data.number"/>
                         <h2 class="o_ldm_preview_title" t-esc="state.data.title"/>
                         <p class="o_ldm_preview_flags" t-if="state.data.urgent || state.data.confidential">
-                            <span class="o_ldm_chip o_ldm_tone_danger" t-if="state.data.urgent" t-esc="label.urgent"/>
-                            <span class="o_ldm_chip" t-if="state.data.confidential">
-                                <i class="fa fa-lock" role="img" aria-hidden="true"/> <t t-esc="label.confidential"/>
+                            <span class="o_ldm_pill o_ldm_tone_danger" t-if="state.data.urgent">
+                                <LdmIcon name="'flag'"/> <t t-esc="label.urgent"/>
+                            </span>
+                            <span class="o_ldm_pill" t-if="state.data.confidential">
+                                <LdmIcon name="'lock'"/> <t t-esc="label.confidential"/>
+                            </span>
+                            <span class="o_ldm_stamp o_ldm_stamp_land" t-if="props.stamped">
+                                <LdmIcon name="'stamp'"/> <t t-esc="label.approvedStamp"/>
                             </span>
                         </p>
                     </div>
                     <button type="button" class="o_ldm_iconbtn" t-att-title="label.close" t-att-aria-label="label.close"
                             t-on-click="() => props.onClose()">
-                        <i class="fa fa-times" role="img" aria-hidden="true"/>
+                        <LdmIcon name="'x'"/>
                     </button>
                 </header>
                 <dl class="o_ldm_preview_facts">
@@ -67,15 +72,15 @@
                     <p class="o_ldm_md_hint" t-if="!state.data.steps.length" t-esc="label.noSteps"/>
                     <ol t-else="">
                         <li t-foreach="state.data.steps" t-as="step" t-key="step_index">
-                            <span t-esc="step.name"/>
+                            <span dir="auto" t-esc="step.name"/>
                             <span class="o_ldm_md_hint" t-if="step.date"> · <t t-esc="stepDate(step)"/></span>
                         </li>
                     </ol>
                 </div>
                 <footer class="o_ldm_preview_foot">
-                    <t t-if="state.data.can_decide">
+                    <t t-if="state.data.can_decide &amp;&amp; !props.stamped">
                         <button type="button" class="o_ldm_action o_ldm_action_primary" t-on-click="() => props.onApprove(state.data.id)">
-                            <i class="fa fa-check" role="img" aria-hidden="true"/>
+                            <LdmIcon name="'check'"/>
                             <span t-esc="label.approve"/>
                         </button>
                         <button type="button" class="o_ldm_action" t-on-click="() => props.onReject(state.data.id)" t-esc="label.reject"/>

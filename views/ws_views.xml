@@ -37,6 +37,13 @@
             <xpath expr="//sheet/div[hasclass('alert-danger')]" position="attributes">
                 <attribute name="invisible">1</attribute>
             </xpath>
+            <!-- The one bold element: the title band (design-direction.md). -->
+            <xpath expr="//div[hasclass('oe_title')]" position="attributes">
+                <attribute name="class" add="o_ldm_title_band" separator=" "/>
+            </xpath>
+            <xpath expr="//div[hasclass('oe_title')]/h1" position="after">
+                <widget name="ldm_title_meta"/>
+            </xpath>
             <xpath expr="//div[hasclass('oe_title')]" position="after">
                 <widget name="ldm_phase_rail" invisible="kind != 'litigation'"/>
                 <widget name="ldm_next_step"/>
@@ -152,14 +159,15 @@
                 <field name="currency_id" column_invisible="1"/>
                 <field name="ldm_can_decide" column_invisible="1"/>
                 <field name="display_name" string="Matter"/>
-                <field name="template_id" string="Type"/>
+                <field name="template_id" string="Type" optional="hide"/>
                 <field name="legal_company_id"/>
                 <field name="approval_requested_by_id" string="Requested by" widget="many2one_avatar_user"/>
-                <field name="ldm_waiting_since" widget="remaining_days"/>
-                <field name="matter_value" string="Value"/>
-                <button name="action_approve" type="object" string="Approve" icon="fa-check"
+                <field name="ldm_waiting_since" widget="remaining_days" width="110px"/>
+                <field name="matter_value" string="Value" invisible="not matter_value" width="150px"
+                       options="{'hide_trailing_zeros': True}"/>
+                <button name="action_approve" type="object" title="Approve" icon="fa-check"
                         class="btn-link text-success o_ldm_row_approve" invisible="not ldm_can_decide"/>
-                <button name="action_reject" type="object" string="Reject" icon="fa-times"
+                <button name="action_reject" type="object" title="Reject" icon="fa-times"
                         class="btn-link text-danger o_ldm_row_reject" invisible="not ldm_can_decide"/>
             </list>
         </field>
@@ -178,6 +186,9 @@
         <field name="model">legal.company</field>
         <field name="inherit_id" ref="view_legal_company_form"/>
         <field name="arch" type="xml">
+            <xpath expr="/form" position="attributes">
+                <attribute name="class" add="o_ldm o_ldm_dossier" separator=" "/>
+            </xpath>
             <xpath expr="//header/button[@name='action_create_new_task']" position="attributes">
                 <attribute name="string">New matter for this client</attribute>
             </xpath>
@@ -236,7 +247,7 @@
         <field name="name">legal.handover.wizard.form</field>
         <field name="model">legal.handover.wizard</field>
         <field name="arch" type="xml">
-            <form string="Hand over work">
+            <form string="Hand over work" class="o_ldm o_ldm_handover">
                 <group>
                     <group>
                         <field name="from_user_id" widget="many2one_avatar_user" options="{'no_create': True}"/>
@@ -252,11 +263,11 @@
                         <field name="scope_requests" groups="legal_department_management.group_ldm_requests"/>
                     </group>
                 </group>
-                <div class="alert alert-info" role="status" invisible="not from_user_id">
+                <div class="o_ldm_handover_summary" role="status" invisible="not from_user_id">
                     <field name="summary" nolabel="1"/>
                 </div>
-                <div invisible="not poa_ids">
-                    <p class="fw-bold mb-1">These powers of attorney name them: a new one is needed.</p>
+                <div class="o_ldm_handover_poa" invisible="not poa_ids">
+                    <p class="o_ldm_handover_poa_title"><span dir="auto">These powers of attorney name them: a new one is needed.</span></p>
                     <field name="poa_ids" nolabel="1" readonly="1">
                         <list>
                             <field name="name"/>
