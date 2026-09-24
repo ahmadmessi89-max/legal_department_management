@@ -1,12 +1,1 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_legal_visit_wizard_clerk,legal.visit.wizard clerk,model_legal_visit_wizard,group_ldm_clerk,1,1,1,0
-access_legal_visit_wizard_manager,legal.visit.wizard manager,model_legal_visit_wizard,group_legal_manager,1,1,1,1
-access_legal_company_coverage_clerk,legal.company.coverage clerk,model_legal_company_coverage,group_ldm_clerk,1,0,0,0
-access_legal_company_coverage_auditor,legal.company.coverage auditor,model_legal_company_coverage,group_ldm_auditor,1,0,0,0
-access_legal_company_coverage_billing,legal.company.coverage billing,model_legal_company_coverage,group_ldm_billing_user,1,0,0,0
-access_legal_readiness_wizard_clerk,legal.readiness.wizard clerk,model_legal_readiness_wizard,group_ldm_clerk,1,1,1,0
-access_legal_readiness_wizard_auditor,legal.readiness.wizard auditor,model_legal_readiness_wizard,group_ldm_auditor,1,1,1,0
-access_legal_readiness_wizard_manager,legal.readiness.wizard manager,model_legal_readiness_wizard,group_legal_manager,1,1,1,1
-access_legal_readiness_wizard_line_clerk,legal.readiness.wizard.line clerk,model_legal_readiness_wizard_line,group_ldm_clerk,1,1,1,0
-access_legal_readiness_wizard_line_auditor,legal.readiness.wizard.line auditor,model_legal_readiness_wizard_line,group_ldm_auditor,1,1,1,0
-access_legal_readiness_wizard_line_manager,legal.readiness.wizard.line manager,model_legal_readiness_wizard_line,group_legal_manager,1,1,1,1
