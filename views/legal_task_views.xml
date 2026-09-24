@@ -54,9 +54,10 @@
         <field name="model">legal.task</field>
         <field name="arch" type="xml">
             <list string="Matters" sample="1" multi_edit="1">
-                <field name="is_urgent" widget="boolean_favorite" nolabel="1" optional="show"/>
-                <field name="task_number" string="Number" optional="show"/>
-                <field name="name" string="Matter"/>
+                <field name="is_urgent" widget="boolean_favorite" nolabel="1" optional="hide"/>
+                <field name="task_number" string="Number" optional="hide"/>
+                <field name="display_name" string="Matter"/>
+                <field name="name" column_invisible="1"/>
                 <field name="legal_company_id"/>
                 <field name="department_id" optional="show"/>
                 <field name="next_date" widget="remaining_days" optional="show"/>
@@ -81,7 +82,7 @@
                 <field name="company_currency_id" column_invisible="1"/>
                 <field name="lawyer_ids" widget="many2many_avatar_user" optional="hide"/>
                 <field name="date_opened" optional="hide"/>
-                <field name="activity_ids" widget="list_activity" optional="show"/>
+                <field name="activity_ids" widget="list_activity" optional="hide"/>
             </list>
         </field>
     </record>

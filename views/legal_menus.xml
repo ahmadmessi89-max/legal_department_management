@@ -39,7 +39,8 @@
         <menuitem id="menu_ldm_obligations" name="Recurring obligations" parent="menu_ldm_registers" sequence="6"
                   action="action_ldm_obligation" groups="legal_department_management.group_ldm_corporate"/>
         <menuitem id="menu_ldm_advances" name="Cash advances" parent="menu_ldm_registers" sequence="7"
-                  action="action_ldm_advance" groups="legal_department_management.group_ldm_government"/>
+                  action="action_ldm_advance"
+                  groups="legal_department_management.group_ldm_clerk,legal_department_management.group_ldm_billing_user,legal_department_management.group_ldm_auditor"/>
         <menuitem id="menu_ldm_bodies_directory" name="Bodies and courts" parent="menu_ldm_registers" sequence="9"
                   action="action_ldm_body_directory"/>
 

@@ -31,13 +31,15 @@ class LegalTaskDecisionWizard(models.TransientModel):
         self.ensure_one()
         tasks = self.task_ids
         if self.mode == "reject":
+            if not (self.note or "").strip():
+                raise UserError(_("Say why the matter is rejected."))
             tasks._ldm_reject(self.note)
         elif self.mode == "cancel":
             if not (self.note or "").strip():
                 raise UserError(_("Say why the matter is cancelled."))
             tasks._ldm_cancel(self.note)
         else:
-            tasks._ldm_close(self.outcome, self.note)
+            tasks._ldm_close(self.outcome or "completed", self.note)
         if self.mode in ("close", "cancel") and self.close_open_items:
             tasks.step_ids.filtered(lambda s: s.state == "todo").write({"state": "skipped"})
             tasks.deadline_ids.filtered(lambda d: d.state == "open").write({"state": "cancelled"})

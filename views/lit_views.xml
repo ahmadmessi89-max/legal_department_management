@@ -489,7 +489,7 @@
                     <group>
                         <group name="when">
                             <field name="date"/>
-                            <field name="time" widget="float_time"/>
+                            <field name="time" widget="float_time" invisible="not time"/>
                             <field name="department_id" domain="[('body_kind', '=', 'court')]" options="{'no_create': True}"/>
                             <field name="court_room"/>
                             <field name="purpose"/>
@@ -527,7 +527,7 @@
             <calendar string="Court sessions" date_start="date" color="attending_user_id" mode="month"
                       scales="month,week" quick_create="0" show_unusual_days="1">
                 <field name="task_id"/>
-                <field name="time" widget="float_time"/>
+                <field name="time" widget="float_time" invisible="not time"/>
                 <field name="department_id"/>
                 <field name="court_case_number"/>
                 <field name="state"/>
@@ -834,7 +834,7 @@
                 <attribute name="default_order">date, time, id</attribute>
             </xpath>
             <xpath expr="//field[@name='hearing_ids']/list/field[@name='date']" position="after">
-                <field name="time" widget="float_time" optional="show"/>
+                <field name="time" widget="float_time" optional="show" invisible="not time"/>
             </xpath>
             <xpath expr="//field[@name='hearing_ids']/list/field[@name='department_id']" position="attributes">
                 <attribute name="domain">[('body_kind', '=', 'court')]</attribute>

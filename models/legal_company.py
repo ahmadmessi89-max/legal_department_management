@@ -147,6 +147,7 @@ class LegalCompany(models.Model):
             contacts.append({"phone": vals.pop("phone", False), "email": vals.pop("email", False)})
         records = super().create(vals_list)
         records._ldm_ensure_partner({rec.id: contact for rec, contact in zip(records, contacts)})
+        records._ldm_adopt_attachments()
         return records
 
     def write(self, vals):
@@ -158,6 +159,8 @@ class LegalCompany(models.Model):
         if {"phone", "email"} & set(vals):
             self.filtered(lambda r: not r.partner_id)._ldm_ensure_partner()
         result = super().write(vals)
+        if "attachment_ids" in vals:
+            self._ldm_adopt_attachments()
         synced = {"name", "tax_number", "registration_number", "client_kind"}
         if synced & set(vals):
             for record in self.filtered("partner_id"):
@@ -169,6 +172,15 @@ class LegalCompany(models.Model):
 
     def _ldm_is_manager(self):
         return self.env.user.has_group("legal_department_management.group_legal_manager")
+
+    def _ldm_adopt_attachments(self):
+        """Attach the current user's uploads made before the first save (see legal.task)."""
+        uid = self.env.uid
+        for record in self:
+            orphans = record.sudo().attachment_ids.filtered(
+                lambda a: not a.res_id and a.res_model in (False, record._name) and a.create_uid.id == uid)
+            if orphans:
+                orphans.write({"res_model": record._name, "res_id": record.id})
 
     def unlink(self):
         self.check_access("unlink")

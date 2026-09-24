@@ -213,7 +213,7 @@ class LegalTask(models.Model):
                                       groups="account.group_account_invoice,account.group_account_readonly")
     account_payment_id = fields.Many2one("account.payment", string="Payment (legacy)", readonly=True, copy=False,
                                          groups="account.group_account_invoice,account.group_account_readonly")
-    expense_account_id = fields.Many2one("account.account", string="Expense account (legacy)",
+    expense_account_id = fields.Many2one("account.account", string="Expense account (legacy)", copy=False,
                                          groups="account.group_account_invoice,account.group_account_readonly")
     engagement_id = fields.Many2one("legal.engagement", string="Fee agreement", ondelete="set null", index=True)
     billing_state = fields.Selection([("none", "Nothing to invoice"), ("to_invoice", "To invoice"),
@@ -402,6 +402,7 @@ class LegalTask(models.Model):
             else:
                 wanted_states.append(None)
         tasks = super().create(vals_list)
+        tasks._ldm_adopt_attachments()
         for task, wanted in zip(tasks, wanted_states):
             if task.lawyer_id and task.lawyer_id not in task.lawyer_ids:
                 task.lawyer_ids = [(4, task.lawyer_id.id)]
@@ -439,10 +440,23 @@ class LegalTask(models.Model):
             else:
                 vals.setdefault("date_closed", False)
         result = super().write(vals)
+        if "attachment_ids" in vals:
+            self._ldm_adopt_attachments()
         if "lawyer_id" in vals:
             for task in self.filtered(lambda t: t.lawyer_id and t.lawyer_id not in t.lawyer_ids):
                 task.lawyer_ids = [(4, task.lawyer_id.id)]
         return result
+
+    def _ldm_adopt_attachments(self):
+        """Files uploaded on a record before its first save are stored without a
+        record id, and Odoo lets only the uploader open those. Attach the current
+        user's own uploads to the record so its team can read them."""
+        uid = self.env.uid
+        for record in self:
+            orphans = record.sudo().attachment_ids.filtered(
+                lambda a: not a.res_id and a.res_model in (False, record._name) and a.create_uid.id == uid)
+            if orphans:
+                orphans.write({"res_model": record._name, "res_id": record.id})
 
     def unlink(self):
         self.check_access("unlink")
@@ -651,7 +665,7 @@ class LegalTask(models.Model):
         opponent_name = (vals.pop("opponent_name", "") or "").strip()
         opponent_partner_id = vals.pop("opponent_partner_id", False)
         template = self.env["legal.task.template"].browse(vals["template_id"]) if vals.get("template_id") else False
-        client = self.env["legal.company"].browse(vals["legal_company_id"]) if vals.get("legal_company_id") else False
+        client = self.env["legal.company"].sudo().browse(vals["legal_company_id"]) if vals.get("legal_company_id") else False
         if template:
             if template.department_id and not vals.get("department_id"):
                 vals["department_id"] = template.department_id.id
@@ -703,7 +717,8 @@ class LegalTask(models.Model):
                     "name": line.document_type_id.name, "mandatory": line.mandatory,
                     "state": "received" if held else "missing",
                     "company_document_id": held.id or False,
-                    "attachment_id": held.attachment_id.id or False,
+                    "attachment_id": (held.attachment_id.sudo().copy(
+                        {"res_model": "legal.task", "res_id": task.id}).id if held.attachment_id else False),
                     "expiry_date": held.date_expiry or False,
                     "received_date": today if held else False,
                     "note": line.note or False,
