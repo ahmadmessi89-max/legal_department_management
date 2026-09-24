@@ -38,10 +38,6 @@
         <field name="model">legal.task.expense</field>
         <field name="arch" type="xml">
             <list string="Expenses" sample="1">
-                <header>
-                    <button name="action_ldm_post" type="object" string="Post to accounting"
-                            groups="legal_department_management.group_ldm_accounting_links"/>
-                </header>
                 <field name="date"/>
                 <field name="task_id"/>
                 <field name="category_id" optional="show"/>
@@ -1059,7 +1055,7 @@
                     <field name="override_reason" invisible="not is_manager" placeholder="Why it may go below zero"/>
                 </div>
                 <footer>
-                    <button name="action_confirm" type="object" string="Record" class="btn-primary"/>
+                    <button name="action_confirm" type="object" string="Save" class="btn-primary"/>
                     <button string="Discard" special="cancel" class="btn-secondary"/>
                 </footer>
             </form>
