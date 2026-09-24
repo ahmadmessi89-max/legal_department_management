@@ -1,4 +1,298 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Owned by the ws stream (docs/ldm/SPEC.md section 11). -->
+<!-- Owned by the ws stream (docs/ldm/SPEC.md section 11): the workspace on top of
+     the foundation's views, by inheritance only. -->
 <odoo>
+    <!-- ============================================================ cockpit -->
+    <record id="view_legal_task_form_ws" model="ir.ui.view">
+        <field name="name">legal.task.form.workspace</field>
+        <field name="model">legal.task</field>
+        <field name="inherit_id" ref="view_legal_task_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="/form" position="attributes">
+                <attribute name="js_class">ldm_matter_form</attribute>
+            </xpath>
+            <!-- Approve and Reject move onto the approval banner (ldm_next_step),
+                 which replaces the next-step card while a matter waits. -->
+            <xpath expr="//header/button[@name='action_approve']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//header/button[@name='action_reject']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <!-- The less frequent moves live in the ⋯ menu beside the visible
+                 action (buttons with class o_ldm_more, drawn by ldm_matter_form). -->
+            <xpath expr="//header/field[@name='state']" position="before">
+                <button name="action_set_pending_docs" string="Mark as waiting" type="object" class="o_ldm_more"
+                        invisible="state != 'in_progress'" groups="legal_department_management.group_ldm_clerk"/>
+                <button name="action_set_in_progress" string="Resume work" type="object" class="o_ldm_more"
+                        invisible="state != 'pending_docs'" groups="legal_department_management.group_ldm_clerk"/>
+                <button name="action_print_task_report" string="Print follow-up sheet" type="object"
+                        class="o_ldm_more" groups="legal_department_management.group_ldm_clerk"/>
+                <button name="action_set_cancelled" string="Cancel matter" type="object" class="o_ldm_more"
+                        invisible="state in ('done', 'cancelled')" groups="legal_department_management.group_legal_user"/>
+            </xpath>
+            <xpath expr="//sheet/div[hasclass('alert-warning')]" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//sheet/div[hasclass('alert-danger')]" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <!-- The one bold element: the title band (design-direction.md). -->
+            <xpath expr="//div[hasclass('oe_title')]" position="attributes">
+                <attribute name="class" add="o_ldm_title_band" separator=" "/>
+            </xpath>
+            <xpath expr="//div[hasclass('oe_title')]/h1" position="after">
+                <widget name="ldm_title_meta"/>
+            </xpath>
+            <xpath expr="//div[hasclass('oe_title')]" position="after">
+                <widget name="ldm_phase_rail" invisible="kind != 'litigation'"/>
+                <widget name="ldm_next_step"/>
+                <widget name="ldm_matter_vitals"/>
+            </xpath>
+            <!-- The client is called by the organisation's own word (SPEC 14.3). -->
+            <xpath expr="//group[@name='essentials_who']/field[@name='legal_company_id']" position="before">
+                <label for="legal_company_id" string="Company"
+                       groups="legal_department_management.group_ldm_terms_department"/>
+                <label for="legal_company_id" string="Client"
+                       groups="legal_department_management.group_ldm_terms_office"/>
+                <label for="legal_company_id" string="Client or company"
+                       groups="!legal_department_management.group_ldm_terms_department,!legal_department_management.group_ldm_terms_office"/>
+            </xpath>
+            <xpath expr="//group[@name='essentials_who']/field[@name='legal_company_id']" position="attributes">
+                <attribute name="nolabel">1</attribute>
+            </xpath>
+            <!-- Steps and documents as checklists. The lists stay in the arch:
+                 they decide which fields are read, and other streams extend them. -->
+            <xpath expr="//field[@name='step_ids']" position="attributes">
+                <attribute name="widget">ldm_step_checklist</attribute>
+            </xpath>
+            <xpath expr="//field[@name='step_ids']/list" position="inside">
+                <field name="is_visit" column_invisible="1"/>
+                <field name="done_date" column_invisible="1"/>
+                <field name="done_by_id" column_invisible="1"/>
+                <field name="department_id" column_invisible="1"/>
+                <field name="receipt_number" column_invisible="1"/>
+            </xpath>
+            <xpath expr="//field[@name='document_ids']" position="attributes">
+                <attribute name="widget">ldm_document_checklist</attribute>
+            </xpath>
+            <xpath expr="//field[@name='document_ids']/list" position="inside">
+                <field name="received_date" column_invisible="1"/>
+                <field name="note" column_invisible="1"/>
+            </xpath>
+            <xpath expr="//group[@name='more']" position="before">
+                <widget name="ldm_advanced_toggle"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- A step opened from the checklist (edit or add). -->
+    <record id="view_ldm_task_step_form" model="ir.ui.view">
+        <field name="name">legal.task.step.form</field>
+        <field name="model">legal.task.step</field>
+        <field name="arch" type="xml">
+            <form string="Step">
+                <field name="task_id" invisible="1"/>
+                <field name="currency_id" invisible="1"/>
+                <field name="state" invisible="1"/>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h2><field name="name" placeholder="e.g. Collect the tax clearance letter"/></h2>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="date_due"/>
+                            <field name="user_id" widget="many2one_avatar_user"/>
+                            <field name="done_date" invisible="state != 'done'" readonly="1"/>
+                            <field name="done_by_id" invisible="state != 'done'" readonly="1"/>
+                        </group>
+                        <group>
+                            <field name="is_visit" widget="boolean_toggle"/>
+                            <field name="department_id" invisible="not is_visit" options="{'no_create': True}"/>
+                            <field name="receipt_number" invisible="not is_visit"/>
+                            <field name="fee_amount" invisible="not is_visit"/>
+                        </group>
+                    </group>
+                    <field name="note" placeholder="A note for whoever does it"/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- ========================================================== registers -->
+    <!-- New on the matters register opens the one-step dialog, not a blank form. -->
+    <record id="view_legal_task_tree_ws" model="ir.ui.view">
+        <field name="name">legal.task.list.workspace</field>
+        <field name="model">legal.task</field>
+        <field name="inherit_id" ref="view_legal_task_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="/list" position="attributes">
+                <attribute name="js_class">ldm_matter_list</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_legal_task_kanban_ws" model="ir.ui.view">
+        <field name="name">legal.task.kanban.workspace</field>
+        <field name="model">legal.task</field>
+        <field name="inherit_id" ref="view_legal_task_kanban"/>
+        <field name="arch" type="xml">
+            <xpath expr="/kanban" position="attributes">
+                <attribute name="on_create">legal_department_management.action_legal_task_create_wizard</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- ========================================================= approvals -->
+    <record id="view_ldm_task_approval_list" model="ir.ui.view">
+        <field name="name">legal.task.list.approvals</field>
+        <field name="model">legal.task</field>
+        <field name="priority">40</field>
+        <field name="arch" type="xml">
+            <list string="Awaiting approval" js_class="ldm_approval_list" create="0" delete="0"
+                  default_order="ldm_approval_requested_date asc, id asc">
+                <header>
+                    <button name="action_approve" type="object" string="Approve" class="btn-primary"
+                            groups="legal_department_management.group_ldm_approver"/>
+                </header>
+                <field name="currency_id" column_invisible="1"/>
+                <field name="ldm_can_decide" column_invisible="1"/>
+                <field name="display_name" string="Matter"/>
+                <field name="template_id" string="Type" optional="hide"/>
+                <field name="legal_company_id"/>
+                <field name="approval_requested_by_id" string="Requested by" widget="many2one_avatar_user"/>
+                <field name="ldm_waiting_since" widget="remaining_days" width="110px"/>
+                <field name="matter_value" string="Value" invisible="not matter_value" width="150px"
+                       options="{'hide_trailing_zeros': True}"/>
+                <button name="action_approve" type="object" title="Approve" icon="fa-check"
+                        class="btn-link text-success o_ldm_row_approve" invisible="not ldm_can_decide"/>
+                <button name="action_reject" type="object" title="Reject" icon="fa-times"
+                        class="btn-link text-danger o_ldm_row_reject" invisible="not ldm_can_decide"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_legal_task_to_approve" model="ir.actions.act_window">
+        <field name="view_mode">list,form</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'sequence': 1, 'view_mode': 'list', 'view_id': ref('view_ldm_task_approval_list')}),
+            (0, 0, {'sequence': 2, 'view_mode': 'form', 'view_id': ref('view_legal_task_form')})]"/>
+    </record>
+
+    <!-- ============================================================ dossier -->
+    <record id="view_legal_company_form_ws" model="ir.ui.view">
+        <field name="name">legal.company.form.workspace</field>
+        <field name="model">legal.company</field>
+        <field name="inherit_id" ref="view_legal_company_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="/form" position="attributes">
+                <attribute name="class" add="o_ldm o_ldm_dossier" separator=" "/>
+            </xpath>
+            <xpath expr="//header/button[@name='action_create_new_task']" position="attributes">
+                <attribute name="string">New matter for this client</attribute>
+            </xpath>
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="ldm_action_sessions" type="object" class="oe_stat_button" icon="fa-gavel"
+                        invisible="not open_hearing_count">
+                    <field name="open_hearing_count" widget="statinfo" string="Sessions in 30 days"/>
+                </button>
+            </xpath>
+            <xpath expr="//div[hasclass('oe_title')]/label[@for='name']" position="replace">
+                <label for="name" string="Company" groups="legal_department_management.group_ldm_terms_department"/>
+                <label for="name" string="Client" groups="legal_department_management.group_ldm_terms_office"/>
+                <label for="name" string="Client or company"
+                       groups="!legal_department_management.group_ldm_terms_department,!legal_department_management.group_ldm_terms_office"/>
+            </xpath>
+            <xpath expr="//group[@name='essentials']" position="after">
+                <div class="o_ldm_dossier_panels">
+                    <widget name="ldm_client_now"/>
+                    <widget name="ldm_body_windows"/>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- ============================================================= agenda -->
+    <record id="action_ldm_agenda_board" model="ir.actions.client">
+        <field name="name">Agenda</field>
+        <field name="tag">ldm_agenda</field>
+        <field name="target">main</field>
+        <field name="path">legal-agenda</field>
+    </record>
+
+    <menuitem id="menu_ldm_agenda" name="Agenda" parent="menu_legal_root" sequence="3"
+              action="action_ldm_agenda_board"
+              groups="legal_department_management.group_ldm_clerk,legal_department_management.group_ldm_auditor"/>
+
+    <!-- The month view behind the agenda's "Month" button, used only when no
+         other calendar view of sessions is installed (priority 90). -->
+    <record id="view_ldm_hearing_calendar_fallback" model="ir.ui.view">
+        <field name="name">legal.hearing.calendar.workspace</field>
+        <field name="model">legal.hearing</field>
+        <field name="priority">90</field>
+        <field name="arch" type="xml">
+            <calendar string="Court sessions" date_start="date" color="attending_user_id" mode="month"
+                      quick_create="0" event_open_popup="1">
+                <field name="task_id"/>
+                <field name="department_id"/>
+                <field name="attending_user_id" avatar_field="avatar_128"/>
+                <field name="state"/>
+            </calendar>
+        </field>
+    </record>
+
+    <!-- ========================================================== hand-over -->
+    <record id="view_legal_handover_wizard_form" model="ir.ui.view">
+        <field name="name">legal.handover.wizard.form</field>
+        <field name="model">legal.handover.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Hand over work" class="o_ldm o_ldm_handover">
+                <group>
+                    <group>
+                        <field name="from_user_id" widget="many2one_avatar_user" options="{'no_create': True}"/>
+                        <field name="to_user_id" widget="many2one_avatar_user" options="{'no_create': True}"/>
+                        <field name="date_end"/>
+                    </group>
+                    <group string="What moves">
+                        <field name="scope_matters"/>
+                        <field name="scope_steps"/>
+                        <field name="scope_hearings"/>
+                        <field name="scope_deadlines"/>
+                        <field name="scope_activities"/>
+                        <field name="scope_requests" groups="legal_department_management.group_ldm_requests"/>
+                    </group>
+                </group>
+                <div class="o_ldm_handover_summary" role="status" invisible="not from_user_id">
+                    <field name="summary" nolabel="1"/>
+                </div>
+                <div class="o_ldm_handover_poa" invisible="not poa_ids">
+                    <p class="o_ldm_handover_poa_title"><span dir="auto">These powers of attorney name them: a new one is needed.</span></p>
+                    <field name="poa_ids" nolabel="1" readonly="1">
+                        <list>
+                            <field name="name"/>
+                            <field name="principal_company_id"/>
+                            <field name="date_expiry"/>
+                        </list>
+                    </field>
+                </div>
+                <field name="note" placeholder="What the colleague should know: where the files are, who to call..."/>
+                <footer>
+                    <button name="action_confirm" string="Hand over" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_legal_handover_wizard" model="ir.actions.act_window">
+        <field name="name">Hand over work</field>
+        <field name="res_model">legal.handover.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem id="menu_ldm_handover" name="Hand over work" parent="menu_ldm_config" sequence="20"
+              action="action_legal_handover_wizard"
+              groups="legal_department_management.group_legal_manager"/>
 </odoo>

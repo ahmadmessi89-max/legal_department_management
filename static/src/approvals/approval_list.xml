@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <!-- The approvals inbox: Odoo's list, with the selected matter's summary
+         beside it (below it on a phone). -->
+    <t t-name="legal_department_management.ApprovalListView" t-inherit="web.ListView" t-inherit-mode="primary">
+        <xpath expr="//t[@t-component='props.Renderer']" position="replace">
+            <div t-attf-class="o_ldm o_ldm_approvals {{ previewState.id ? 'o_ldm_approvals_with_preview' : '' }}">
+                <div class="o_ldm_approvals_list">
+                    <t t-component="props.Renderer" t-if="model.isReady"
+                        list="model.root"
+                        activeActions="activeActions"
+                        archInfo="archInfo"
+                        allowSelectors="props.allowSelectors"
+                        editable="editable"
+                        onOpenFormView="onOpenFormView"
+                        hasOpenFormViewButton="hasOpenFormViewButton"
+                        openRecord.bind="openRecord"
+                        noContentHelp="props.info.noContentHelp"
+                        onAdd.bind="createRecord"
+                        optionalActiveFields="optionalActiveFields"
+                        readonly="props.readonly"
+                    />
+                </div>
+                <aside class="o_ldm_approvals_preview" t-if="previewState.id">
+                    <LdmApprovalPreview taskId="previewState.id" stamped="previewState.stamped"
+                                        onApprove="(id) => this.approve(id)"
+                                        onReject="(id) => this.reject(id)"
+                                        onOpen="(id) => this.openFull(id)"
+                                        onClose="() => this.closePreview()"/>
+                </aside>
+            </div>
+        </xpath>
+    </t>
+
+    <t t-name="legal_department_management.ApprovalPreview">
+        <section class="o_ldm_panel o_ldm_preview" aria-live="polite">
+            <div class="o_ldm_state o_ldm_preview_loading" t-if="!state.data" role="status">
+                <span class="o_ldm_spinner" aria-hidden="true"/>
+                <span t-esc="label.loading"/>
+            </div>
+            <t t-else="">
+                <header class="o_ldm_preview_head">
+                    <div class="o_ldm_preview_id">
+                        <span class="o_ldm_preview_number o_ldm_ref" dir="ltr" t-esc="state.data.number"/>
+                        <h2 class="o_ldm_preview_title" t-esc="state.data.title"/>
+                        <p class="o_ldm_preview_flags" t-if="state.data.urgent || state.data.confidential">
+                            <span class="o_ldm_pill o_ldm_tone_danger" t-if="state.data.urgent">
+                                <LdmIcon name="'flag'"/> <t t-esc="label.urgent"/>
+                            </span>
+                            <span class="o_ldm_pill" t-if="state.data.confidential">
+                                <LdmIcon name="'lock'"/> <t t-esc="label.confidential"/>
+                            </span>
+                            <span class="o_ldm_stamp o_ldm_stamp_land" t-if="props.stamped">
+                                <LdmIcon name="'stamp'"/> <t t-esc="label.approvedStamp"/>
+                            </span>
+                        </p>
+                    </div>
+                    <button type="button" class="o_ldm_iconbtn" t-att-title="label.close" t-att-aria-label="label.close"
+                            t-on-click="() => props.onClose()">
+                        <LdmIcon name="'x'"/>
+                    </button>
+                </header>
+                <dl class="o_ldm_preview_facts">
+                    <t t-foreach="facts" t-as="fact" t-key="fact.key">
+                        <dt t-esc="fact.label"/>
+                        <dd t-esc="fact.value"/>
+                    </t>
+                </dl>
+                <div class="o_ldm_preview_steps">
+                    <h3 class="o_ldm_preview_subtitle" t-esc="label.steps"/>
+                    <p class="o_ldm_md_hint" t-if="!state.data.steps.length" t-esc="label.noSteps"/>
+                    <ol t-else="">
+                        <li t-foreach="state.data.steps" t-as="step" t-key="step_index">
+                            <span dir="auto" t-esc="step.name"/>
+                            <span class="o_ldm_md_hint" t-if="step.date"> · <t t-esc="stepDate(step)"/></span>
+                        </li>
+                    </ol>
+                </div>
+                <footer class="o_ldm_preview_foot">
+                    <t t-if="state.data.can_decide &amp;&amp; !props.stamped">
+                        <button type="button" class="o_ldm_action o_ldm_action_primary" t-on-click="() => props.onApprove(state.data.id)">
+                            <LdmIcon name="'check'"/>
+                            <span t-esc="label.approve"/>
+                        </button>
+                        <button type="button" class="o_ldm_action" t-on-click="() => props.onReject(state.data.id)" t-esc="label.reject"/>
+                    </t>
+                    <button type="button" class="o_ldm_linkbtn" t-on-click="() => props.onOpen(state.data.id)" t-esc="label.open"/>
+                </footer>
+            </t>
+        </section>
+    </t>
+
+</templates>

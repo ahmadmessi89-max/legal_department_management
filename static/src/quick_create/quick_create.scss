@@ -1,0 +1,79 @@
+// New matter dialog.
+.o_ldm_template_picker {
+    display: grid;
+    gap: var(--ldm-space-2);
+    inline-size: 100%;
+}
+
+.o_ldm_recents {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--ldm-space-1);
+}
+
+.o_ldm_recents_label {
+    font-size: var(--ldm-font-micro);
+    color: var(--ldm-ink-faint);
+    margin-inline-end: var(--ldm-space-1);
+}
+
+.o_ldm_recent {
+    min-block-size: 1.875rem;
+    padding-inline: var(--ldm-space-3);
+    border: 1px solid var(--ldm-rule);
+    border-radius: var(--ldm-radius-pill);
+    background-color: var(--ldm-paper);
+    color: var(--ldm-ink-soft);
+    font-size: var(--ldm-font-meta);
+
+    &:hover { border-color: var(--ldm-ink); color: var(--ldm-ink); cursor: pointer; }
+    &:focus-visible { outline: none; box-shadow: var(--ldm-focus); }
+
+    &.o_ldm_recent_on {
+        border-color: var(--ldm-ink);
+        background-color: var(--ldm-ink);
+        color: #fff;
+        font-weight: 600;
+    }
+}
+
+.o_ldm_quick_create {
+    .o_ldm_qc_more { margin-block: var(--ldm-space-2) 0; }
+    .o_ldm_conflict_banner .o_field_text { white-space: pre-line; }
+
+    .o_ldm_qc_suggestion {
+        margin-block: var(--ldm-space-1) var(--ldm-space-2);
+        padding: var(--ldm-space-2) var(--ldm-space-3);
+    }
+}
+
+.o_ldm_suggestion_note {
+    margin: 0;
+    font-size: var(--ldm-font-meta);
+    color: var(--ldm-ink-soft);
+}
+
+// Hand-over dialog: what will move is waiting on someone else, so blue;
+// the powers of attorney that must be reissued are the one warning.
+.o_ldm_handover {
+    .o_ldm_handover_summary {
+        margin-block: var(--ldm-space-3);
+        padding: var(--ldm-space-3) var(--ldm-space-4);
+        border-inline-start: 4px solid var(--ldm-info);
+        border-radius: var(--ldm-radius-control);
+        background-color: var(--ldm-info-soft);
+        color: var(--ldm-ink);
+
+        // One line per count: each takes the direction of its own words.
+        .o_field_widget { white-space: pre-line; unicode-bidi: plaintext; }
+    }
+
+    .o_ldm_handover_poa { margin-block-end: var(--ldm-space-3); }
+
+    .o_ldm_handover_poa_title {
+        margin-block: 0 var(--ldm-space-1);
+        color: var(--ldm-warning);
+        font-weight: 600;
+    }
+}

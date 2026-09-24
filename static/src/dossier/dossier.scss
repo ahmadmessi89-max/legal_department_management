@@ -1,0 +1,126 @@
+// Client dossier panels: what is happening now, and the file read body by
+// body. Lists separated by hairlines, not stacks of cards.
+.o_ldm_dossier_panels {
+    display: grid;
+    gap: var(--ldm-space-3);
+    margin-block: var(--ldm-space-2) var(--ldm-space-4);
+    grid-template-columns: minmax(0, 1fr);
+
+    @include media-breakpoint-up(lg) {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    }
+
+    > .o_widget { min-inline-size: 0; }
+}
+
+.o_ldm_dossier_head { justify-content: space-between; }
+
+.o_ldm_now,
+.o_ldm_bodies { overflow: hidden; }
+
+.o_ldm_now_rows,
+.o_ldm_body_rows {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    > li + li { border-block-start: 1px solid var(--ldm-rule); }
+}
+
+.o_ldm_now_row {
+    display: flex;
+    align-items: center;
+    gap: var(--ldm-space-3);
+    inline-size: 100%;
+    padding: var(--ldm-space-3) var(--ldm-space-4);
+    padding-inline-start: calc(var(--ldm-space-4) - 4px);
+    border: 0;
+    border-inline-start: 4px solid var(--ldm-kind);
+    background: none;
+    color: var(--ldm-ink);
+    text-align: start;
+
+    &:hover { background-color: var(--ldm-hover); cursor: pointer; }
+    &:focus-visible { outline: none; box-shadow: inset var(--ldm-focus); }
+}
+
+.o_ldm_now_main { display: grid; gap: 0.15rem; flex: 1 1 auto; min-inline-size: 0; }
+
+.o_ldm_now_title {
+    display: flex;
+    align-items: center;
+    gap: var(--ldm-space-1);
+    font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.o_ldm_bodies_empty {
+    margin: 0;
+    padding: var(--ldm-space-4);
+    color: var(--ldm-ink-soft);
+    font-size: var(--ldm-font-meta);
+}
+
+.o_ldm_body_row {
+    display: flex;
+    align-items: center;
+    gap: var(--ldm-space-3);
+    inline-size: 100%;
+    padding: var(--ldm-space-3) var(--ldm-space-4);
+    border: 0;
+    background: none;
+    color: var(--ldm-ink);
+    text-align: start;
+
+    &:hover { background-color: var(--ldm-hover); cursor: pointer; }
+    &:hover .o_ldm_body_open { text-decoration: underline; }
+    &:focus-visible { outline: none; box-shadow: inset var(--ldm-focus); }
+
+    @include media-breakpoint-down(md) { flex-wrap: wrap; }
+}
+
+.o_ldm_body_main { display: grid; gap: 0.25rem; flex: 1 1 auto; min-inline-size: 0; }
+
+.o_ldm_body_name {
+    display: flex;
+    align-items: center;
+    gap: var(--ldm-space-2);
+    font-family: var(--ldm-font-head);
+    font-weight: 600;
+
+    .o_ldm_icon { color: var(--ldm-ink-soft); }
+}
+
+// A thin completion bar: done matters over all matters at this body.
+.o_ldm_body_bar {
+    inline-size: 100%;
+    max-inline-size: 14rem;
+    block-size: 0.25rem;
+    border: 0;
+    border-radius: var(--ldm-radius-pill);
+    background-color: var(--ldm-hover);
+    appearance: none;
+    overflow: hidden;
+
+    &::-webkit-progress-bar { background-color: var(--ldm-hover); border-radius: var(--ldm-radius-pill); }
+    &::-webkit-progress-value { background-color: var(--ldm-success); border-radius: var(--ldm-radius-pill); }
+    &::-moz-progress-bar { background-color: var(--ldm-success); border-radius: var(--ldm-radius-pill); }
+}
+
+.o_ldm_body_counts {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--ldm-space-2);
+}
+
+.o_ldm_body_open {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.15rem;
+    font-size: var(--ldm-font-meta);
+    font-weight: 600;
+    color: var(--ldm-ink);
+}

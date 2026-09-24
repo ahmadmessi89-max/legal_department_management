@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="legal_department_management.TemplatePicker">
+        <div class="o_ldm o_ldm_template_picker">
+            <div class="o_ldm_recents" t-if="recents.length &amp;&amp; !props.readonly" role="group" t-att-aria-label="recentLabel">
+                <span class="o_ldm_recents_label" t-esc="recentLabel"/>
+                <button type="button" t-foreach="recents" t-as="recent" t-key="recent.id"
+                        t-attf-class="o_ldm_recent {{ recent.active ? 'o_ldm_recent_on' : '' }}"
+                        t-att-aria-pressed="recent.active ? 'true' : 'false'"
+                        t-on-click="() => this.choose(recent)" t-esc="recent.name"/>
+            </div>
+            <Many2One t-props="m2oProps"/>
+        </div>
+    </t>
+
+    <t t-name="legal_department_management.MoreToggle">
+        <div class="o_ldm o_ldm_more_toggle_row o_ldm_qc_more">
+            <button type="button" class="o_ldm_more_toggle_btn" t-on-click="toggle"
+                    t-att-aria-expanded="isOpen ? 'true' : 'false'">
+                <LdmIcon name="isOpen ? 'chevron-up' : 'chevron-down'"/>
+                <span t-esc="label"/>
+            </button>
+        </div>
+    </t>
+
+    <t t-name="legal_department_management.SuggestedDate">
+        <div class="o_ldm o_ldm_suggestion o_ldm_qc_suggestion" t-if="visible">
+            <span class="o_ldm_suggestion_icon" aria-hidden="true"><LdmIcon name="'calendar-check'"/></span>
+            <div class="o_ldm_suggestion_text">
+                <p class="o_ldm_suggestion_title">
+                    <span t-esc="title"/>
+                    <strong class="o_ldm_suggestion_date" t-esc="dateLabel"/>
+                </p>
+                <p class="o_ldm_suggestion_note" t-if="data.suggested_note"><span dir="auto" t-esc="data.suggested_note"/></p>
+            </div>
+            <button type="button" class="o_ldm_action" t-if="!props.readonly" t-on-click="use" t-esc="useLabel"/>
+        </div>
+    </t>
+
+</templates>
