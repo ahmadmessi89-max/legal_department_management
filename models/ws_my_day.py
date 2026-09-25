@@ -50,20 +50,24 @@ class LegalTask(models.Model):
             "is_lawyer": user.has_group(G_LAWYER) and not read_only,
             "is_manager": is_manager,
         }
+        # Billing's day is money, which the actions and tiles carry; the team's
+        # steps, sessions and visits are not its work.
+        work = role != "billing"
         rows = []
-        rows += self._ldm_md_step_rows(ctx)
-        rows += self._ldm_md_hearing_rows(ctx)
-        rows += self._ldm_md_deadline_rows(ctx)
-        rows += self._ldm_md_target_rows(ctx, rows)
-        rows += self._ldm_md_approval_rows(ctx)
-        if not is_manager:
-            rows += self._ldm_md_notification_rows(ctx)
+        if work:
+            rows += self._ldm_md_step_rows(ctx)
+            rows += self._ldm_md_hearing_rows(ctx)
+            rows += self._ldm_md_deadline_rows(ctx)
+            rows += self._ldm_md_target_rows(ctx, rows)
+            rows += self._ldm_md_approval_rows(ctx)
+            if not is_manager:
+                rows += self._ldm_md_notification_rows(ctx)
         rows += self._ldm_md_activity_rows(ctx)
         bands = self._ldm_md_bands(rows, today)
         approvals = self._ldm_md_approval_chip(ctx)
         manager = self._ldm_md_manager_bands(ctx) if is_manager else []
         empty = not any(band["count"] for band in bands)
-        return {
+        payload = {
             "header": {
                 "title": _("My Day"),
                 "today": iso(today),
@@ -82,19 +86,19 @@ class LegalTask(models.Model):
             "can_create": not read_only,
             "bands": bands,
             "total": sum(band["count"] for band in bands),
-            "agenda": self._ldm_md_agenda(ctx),
+            "work": work,
+            "agenda": self._ldm_md_agenda(ctx) if work else False,
             "by_body": self._ldm_md_by_body(ctx) if not read_only else [],
             "advance": self._ldm_md_advance(ctx) if not read_only else [],
             "approvals": approvals,
             "manager": manager,
-            # The oversight line is for those who oversee (SPEC 5.1): managers and
-            # auditors. A lawyer's screen stays on the work itself.
-            "counts": self._ldm_md_counts(ctx) if (is_manager or read_only) else [],
             "all_clear": {
                 "title": _("Nothing needs you today."),
                 "hint": _("Open a new matter with New, or look through the matters register."),
-            } if empty and not any(b["rows"] for b in manager) else False,
+            } if work and empty and not any(b["rows"] for b in manager) else False,
         }
+        # The dashboard around the work list: actions, tiles, where the work is.
+        return self._ldm_md_home(ctx, payload)
 
     # ------------------------------------------------------------------
     # Sources
@@ -454,53 +458,6 @@ class LegalTask(models.Model):
         bands.append({"key": "notifications", "title": _("Judgments waiting for their notification date"),
                       "rows": self._ldm_md_notification_rows(manager_ctx, everyone=True)})
         return [band for band in bands if band["rows"]]
-
-    def _ldm_md_counts(self, ctx):
-        """The oversight line: a handful of counts, each opening the records
-        it counted, for the scope the manager chose (everything for auditors)."""
-        today = ctx["today"]
-        week_end = today + timedelta(days=6)
-        uid = self.env.uid
-        mine = ctx["scope"] == "me" and not ctx["read_only"]
-        team = ctx["scope"] == "team"
-        who = []
-        if mine:
-            who = ["|", ("lawyer_id", "=", uid), ("lawyer_ids", "in", [uid])]
-        elif team:
-            who = [("lawyer_ids", "in", [uid])]
-        open_domain = [("state", "in", OPEN_STATES)] + who
-        overdue = soon = 0
-        for day, count in self._read_group(open_domain + [("next_date", "!=", False)], ["next_date:day"], ["__count"]):
-            day = fields.Date.to_date(day)
-            if day < today:
-                overdue += count
-            elif day <= week_end:
-                soon += count
-        total = self._read_group(open_domain, [], ["__count"])[0][0]
-        counts = [
-            {"key": "open", "label": _("Open matters"), "count": total, "tone": "neutral", "icon": "folder-open",
-             "model": "legal.task", "domain": open_domain},
-            {"key": "overdue", "label": _("Overdue"), "count": overdue, "tone": "danger", "icon": "triangle-alert",
-             "model": "legal.task", "domain": open_domain + [("next_date", "<", iso(today))]},
-            {"key": "week", "label": _("Due this week"), "count": soon, "tone": "warning", "icon": "calendar-clock",
-             "model": "legal.task",
-             "domain": open_domain + [("next_date", ">=", iso(today)), ("next_date", "<=", iso(week_end))]},
-        ]
-        sessions_domain = [("state", "=", "planned"), ("date", ">=", iso(today)), ("date", "<=", iso(week_end))]
-        if mine:
-            sessions_domain += ["|", ("attending_user_id", "=", uid),
-                                "&", ("attending_user_id", "=", False), ("task_id.lawyer_id", "=", uid)]
-        elif team:
-            sessions_domain += [("task_id.lawyer_ids", "in", [uid])]
-        sessions = self.env["legal.hearing"]._read_group(sessions_domain, [], ["__count"])[0][0]
-        counts.append({"key": "sessions", "label": _("Court sessions this week"), "count": sessions, "tone": "info",
-                       "icon": "gavel", "model": "legal.hearing", "domain": sessions_domain})
-        if (ctx["is_manager"] or ctx["read_only"]) and self._ldm_feature("group_ldm_approvals"):
-            waiting = self._read_group([("approval_state", "=", "to_approve")], [], ["__count"])[0][0]
-            counts.append({"key": "approval", "label": _("Awaiting approval"), "count": waiting, "tone": "neutral",
-                           "icon": "badge-check", "model": "legal.task",
-                           "domain": [("approval_state", "=", "to_approve")]})
-        return counts
 
     # ------------------------------------------------------------------
     # Inline actions that are not a step tick

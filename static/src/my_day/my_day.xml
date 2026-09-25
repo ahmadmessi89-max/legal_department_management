@@ -71,7 +71,8 @@
 
             <div class="o_ldm_my_day" t-if="data" t-att-data-role="data.header.role" t-att-data-scope="data.scope">
                 <!-- ====================================================== the band -->
-                <header class="o_ldm_band o_ldm_band_floats o_ldm_md_band">
+                <!-- Who and when, the search, and (for a manager) whose work. -->
+                <header class="o_ldm_band o_ldm_md_band">
                     <div class="o_ldm_md_id">
                         <h1 class="o_ldm_band_title" t-esc="dateLine"/>
                         <p class="o_ldm_band_meta">
@@ -80,59 +81,96 @@
                             <span dir="auto" class="o_ldm_md_summary" t-esc="summary"/>
                             <span class="o_ldm_band_sep" aria-hidden="true">·</span>
                             <span t-esc="data.header.role_label"/>
-                            <span class="o_ldm_pill o_ldm_pill_on_ink" t-if="data.read_only" t-esc="label.readOnly"/>
+                            <span class="o_ldm_pill o_ldm_pill_on_ink" t-if="data.read_only and data.work" t-esc="label.readOnly"/>
                         </p>
                     </div>
-                </header>
-
-                <!-- The screen's controls float on the band's lower edge, as anu.ltd's
-                     navigation bar does: scope, search, approvals, and the one primary action. -->
-                <div class="o_ldm_floatbar o_ldm_md_toolbar">
-                    <div class="o_ldm_floatbar_bar o_ldm_md_tools" role="toolbar">
-                        <div class="o_ldm_floatbar_segs o_ldm_md_scopes" t-if="data.scopes.length" role="tablist">
-                            <button type="button" role="tab" t-foreach="data.scopes" t-as="scope" t-key="scope.key"
-                                    t-att-class="{'o_ldm_floatbar_seg': true, 'o_ldm_md_scope': true, 'o_ldm_floatbar_seg_on': scope.key === state.scope, 'o_ldm_md_scope_on': scope.key === state.scope}"
-                                    t-att-aria-selected="scope.key === state.scope ? 'true' : 'false'"
-                                    t-on-click="() => this.setScope(scope.key)" t-esc="scope.label"/>
-                        </div>
-                        <button type="button" class="o_ldm_floatbar_item o_ldm_md_search" t-on-click="openSearch"
+                    <div class="o_ldm_md_band_tools">
+                        <button type="button" class="o_ldm_band_ghost o_ldm_md_search" t-on-click="openSearch"
                                 t-att-aria-label="label.search">
                             <LdmIcon name="'search'"/>
                             <span dir="auto" class="o_ldm_md_search_text" t-esc="label.search"/>
                             <kbd class="o_ldm_md_kbd">Ctrl K</kbd>
                         </button>
-                        <button type="button" t-if="data.approvals &amp;&amp; data.approvals.count"
-                                class="o_ldm_floatbar_item o_ldm_md_approvals" t-on-click="openApprovals">
-                            <LdmIcon name="'stamp'"/>
-                            <span t-esc="data.approvals.label"/>
-                            <span class="o_ldm_pill o_ldm_tone_warning o_ldm_num" dir="ltr" t-esc="data.approvals.count"/>
-                        </button>
-                        <button type="button" t-if="data.can_create" class="o_ldm_band_action o_ldm_md_new"
-                                t-on-click="newMatter" title="Alt+Shift+N">
-                            <LdmIcon name="'plus'"/>
-                            <span t-esc="label.newMatter"/>
-                        </button>
+                        <div class="o_ldm_segmented o_ldm_segmented_on_ink o_ldm_md_scopes" t-if="data.scopes.length"
+                             role="tablist" t-att-aria-label="label.scopes">
+                            <button type="button" role="tab" t-foreach="data.scopes" t-as="scope" t-key="scope.key"
+                                    t-att-class="{'o_ldm_md_scope': true, 'o_ldm_md_scope_on': scope.key === state.scope}"
+                                    t-att-aria-selected="scope.key === state.scope ? 'true' : 'false'"
+                                    t-on-click="() => this.setScope(scope.key)" t-esc="scope.label"/>
+                        </div>
                     </div>
-                </div>
+                </header>
 
                 <div class="o_ldm_md_desk">
-                    <!-- The oversight line (managers, auditors): every count opens
-                         the records it counted. A status line, not a wall of figures. -->
-                    <nav class="o_ldm_md_counts" t-if="data.counts.length">
-                        <button type="button" t-foreach="data.counts" t-as="count" t-key="count.key"
-                                t-attf-class="o_ldm_md_count o_ldm_md_count_{{ count.tone }} {{ count.count ? '' : 'o_ldm_md_count_zero' }}"
-                                t-on-click="() => this.openCount(count)">
-                            <span class="o_ldm_md_count_icon" t-if="count.icon"><LdmIcon name="count.icon"/></span>
-                            <span class="o_ldm_md_count_n o_ldm_num" dir="ltr" t-esc="count.count"/>
-                            <span class="o_ldm_md_count_label" t-esc="count.label"/>
+                    <!-- What this role starts from: verbs first, then the places it
+                         goes to most. The first is the screen's one primary action. -->
+                    <nav class="o_ldm_md_actions" t-if="data.actions.length" t-att-aria-label="label.actions">
+                        <button type="button" t-foreach="data.actions" t-as="act" t-key="act.key"
+                                t-attf-class="o_ldm_md_act {{ act.primary ? 'o_ldm_md_act_primary' : '' }}"
+                                t-att-data-action="act.key" t-att-title="act.key === 'new_matter' ? 'Alt+Shift+N' : undefined"
+                                t-on-click="() => this.openTarget(act.target)">
+                            <span class="o_ldm_md_act_icon"><LdmIcon name="act.icon"/></span>
+                            <span class="o_ldm_md_act_text">
+                                <span class="o_ldm_md_act_label" t-esc="act.label"/>
+                                <span class="o_ldm_md_act_hint" t-if="act.hint" t-esc="act.hint"/>
+                            </span>
+                            <span class="o_ldm_md_act_count o_ldm_num" dir="ltr" t-if="act.count" t-esc="act.count"/>
+                            <LdmIcon name="'arrow-up-right'" class="'o_ldm_md_act_go'"/>
                         </button>
                     </nav>
+
+                    <!-- The counts this role watches. Each opens exactly what it
+                         counted: a band of the list below, or the records. -->
+                    <section class="o_ldm_md_tiles" t-if="data.tiles.length" t-att-aria-label="label.tiles">
+                        <button type="button" t-foreach="data.tiles" t-as="tile" t-key="tile.key"
+                                t-attf-class="o_ldm_md_tile o_ldm_md_tile_{{ tile.tone }} {{ tileEmpty(tile) ? 'o_ldm_md_tile_zero' : '' }} {{ tile.amount !== undefined ? 'o_ldm_md_tile_money' : '' }}"
+                                t-att-data-tile="tile.key" t-att-disabled="tileDisabled(tile) ? 'disabled' : undefined"
+                                t-on-click="() => this.openTarget(tile.target)">
+                            <span class="o_ldm_md_tile_head">
+                                <LdmIcon name="tile.icon"/>
+                                <span class="o_ldm_md_tile_label" t-esc="tile.label"/>
+                            </span>
+                            <span class="o_ldm_md_tile_n o_ldm_num" dir="ltr" t-esc="tileValue(tile)"/>
+                            <span class="o_ldm_md_tile_hint" t-if="tile.hint" t-esc="tile.hint"/>
+                        </button>
+                    </section>
+
+                    <!-- Where the open work is (those who oversee): each bar opens its matters. -->
+                    <section class="o_ldm_md_glance" t-if="data.glance.length" t-att-aria-label="label.glance">
+                        <div class="o_ldm_panel o_ldm_md_glance_panel" t-foreach="data.glance" t-as="panel"
+                             t-key="panel.key" t-att-data-glance="panel.key">
+                            <div class="o_ldm_panel_head">
+                                <h2 class="o_ldm_section_title" t-esc="panel.title"/>
+                                <span class="o_ldm_md_legend" t-if="panel.legend">
+                                    <span class="o_ldm_md_legend_key" aria-hidden="true"/>
+                                    <t t-esc="panel.legend"/>
+                                </span>
+                            </div>
+                            <ul class="o_ldm_md_bars">
+                                <li t-foreach="panel.rows" t-as="bar" t-key="bar.key">
+                                    <button type="button" class="o_ldm_md_bar" t-on-click="() => this.openGlance(panel, bar)"
+                                            t-att-title="bar.label">
+                                        <span dir="auto" class="o_ldm_md_bar_label" t-esc="bar.label"/>
+                                        <span class="o_ldm_md_bar_track" aria-hidden="true">
+                                            <span class="o_ldm_md_bar_fill" t-attf-style="inline-size: {{ bar.share }}%"/>
+                                            <span class="o_ldm_md_bar_late" t-if="bar.late"
+                                                  t-attf-style="inline-size: {{ lateShare(bar) }}%"/>
+                                        </span>
+                                        <span class="o_ldm_md_bar_n o_ldm_num" dir="ltr">
+                                            <t t-esc="bar.count"/>
+                                            <span class="o_ldm_md_bar_late_n" t-if="bar.late"> · <t t-esc="bar.late"/></span>
+                                        </span>
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                    </section>
 
                     <div class="o_ldm_md_main">
                         <!-- ================================================ the queue -->
                         <section class="o_ldm_md_queue" t-ref="queue" t-on-keydown="onQueueKeydown">
                             <!-- The runner's route: today's counters, and what to carry. -->
-                            <div class="o_ldm_panel o_ldm_md_route" t-if="data.by_body.length">
+                            <div class="o_ldm_panel o_ldm_md_route" t-if="data.by_body.length" t-ref="route">
                                 <div class="o_ldm_panel_head">
                                     <h2 class="o_ldm_section_title" t-esc="label.routeTitle"/>
                                     <span dir="auto" class="o_ldm_md_hint" t-esc="label.routeHint"/>
@@ -237,7 +275,7 @@
                                 </span>
                                 <span class="o_ldm_md_advance_amount o_ldm_num" dir="ltr" t-esc="amount(entry)"/>
                             </button>
-                            <section class="o_ldm_panel o_ldm_md_agenda">
+                            <section class="o_ldm_panel o_ldm_md_agenda" t-if="data.agenda">
                                 <div class="o_ldm_panel_head">
                                     <h2 class="o_ldm_section_title" t-esc="data.agenda.title"/>
                                 </div>

@@ -7,9 +7,11 @@
 //  Four status meanings drawn as soft badges (red overdue or rejected, amber
 //  due soon or missing, green done or received, blue waiting on someone
 //  else). "Ldm Sans" is Inter Tight for Latin and Tajawal for Arabic; "Ldm
-//  Mono" (Roboto Mono) sets numbers that line up. Radii follow hierarchy:
-//  floating bars and dialogs 16, cards 12, controls 8, chips round. Depth
-//  has three levels: canvas, paper, floating.
+//  Mono" (Roboto Mono) sets numbers that line up. Every edge is sharp: no
+//  radius on bands, panels, tiles, controls, badges or chips (the owner:
+//  ANU's style is white, black and blue with sharp edges). Depth comes from
+//  hairlines and the ink band, not from soft shadows; only what floats over
+//  the page (dialogs, menus) casts one.
 //
 //  Published as CSS custom properties on `.o_ldm` (the workspace's own
 //  components), on `.o_ldm_view` (the module's native views, which carry it
@@ -29,7 +31,7 @@
     --ldm-ink-2: #141824;
     --ldm-ink-soft: #475569;
     --ldm-ink-muted: #475569;
-    --ldm-ink-faint: #64748B;
+    --ldm-ink-faint: #5B6B80; // 5:1 on the sunken grey too
     --ldm-paper: #FFFFFF;
     --ldm-panel: #FFFFFF;
     --ldm-desk: #F8FAFC;
@@ -51,15 +53,16 @@
     --ldm-signal-strong: #1D4ED8;
     --ldm-signal-soft: #EFF6FF;
     --ldm-signal-tint: #DBEAFE;
-    --ldm-signal-gradient: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
-    --ldm-signal-glow: 0 12px 22px -22px rgba(37, 99, 235, 0.75), 0 1px 2px rgba(29, 78, 216, 0.35);
+    // Solid, not a gradient: a flat blue block reads sharper.
+    --ldm-signal-gradient: linear-gradient(#2563EB, #2563EB);
+    --ldm-signal-glow: none;
 
     // What used to be the violet stamp is now the seal: ink and Signal.
     --ldm-stamp: #1D4ED8;
     --ldm-stamp-soft: #EFF6FF;
 
     // The four meanings: strong text on a soft tint (shadcn soft badges).
-    --ldm-danger: #DC2626;
+    --ldm-danger: #C81E1E;
     --ldm-danger-soft: #FEF2F2;
     --ldm-warning: #B45309;
     --ldm-warning-soft: #FFFBEB;
@@ -97,19 +100,20 @@
     --ldm-space-6: 2rem;
     --ldm-space-7: 2.75rem;
 
-    // Shape: radii follow hierarchy.
+    // Shape: sharp everywhere.
     --ldm-radius-band: 0;
-    --ldm-radius-float: 16px;
-    --ldm-radius-panel: 12px;
-    --ldm-radius-control: 8px;
-    --ldm-radius-badge: 6px;
-    --ldm-radius-pill: 999px;
+    --ldm-radius-float: 0;
+    --ldm-radius-panel: 0;
+    --ldm-radius-control: 0;
+    --ldm-radius-badge: 0;
+    --ldm-radius-pill: 0;
 
-    // Depth: paper sits, floating things float (anu.ltd's segmented bar).
-    --ldm-shadow-paper: 0 1px 2px rgba(9, 11, 17, 0.05);
-    --ldm-shadow-raise: 0 1px 3px rgba(9, 11, 17, 0.08), 0 1px 2px -1px rgba(9, 11, 17, 0.08);
-    --ldm-shadow-float: 0 18px 40px -26px rgba(0, 0, 0, 0.45), 0 2px 6px -2px rgba(9, 11, 17, 0.08);
-    --ldm-focus: 0 0 0 3px rgba(37, 99, 235, 0.3);
+    // Depth: paper sits flat on the canvas, marked by a hairline; only what
+    // floats over the page (dialogs, menus) casts a shadow.
+    --ldm-shadow-paper: none;
+    --ldm-shadow-raise: none;
+    --ldm-shadow-float: 0 16px 32px -16px rgba(9, 11, 17, 0.32);
+    --ldm-focus: 0 0 0 2px #FFFFFF, 0 0 0 4px #2563EB;
 
     // Type: 12 · 13 · 15 · 18 · 24 · 32 · 44. Arabic never below 13px.
     --ldm-font-text: "Ldm Sans", system-ui, -apple-system, "Segoe UI", Tahoma, sans-serif;
@@ -208,11 +212,10 @@
         --btn-active-color: #fff;
         --btn-disabled-bg: var(--ldm-signal);
         --btn-disabled-border-color: transparent;
-        background-image: var(--ldm-signal-gradient);
-        box-shadow: var(--ldm-signal-glow);
+        background-image: none;
+        box-shadow: none;
 
-        &:hover { background-image: none; }
-        &:focus-visible { box-shadow: var(--ldm-signal-glow), var(--ldm-focus); }
+        &:focus-visible { box-shadow: var(--ldm-focus); }
     }
 
     .btn-secondary,
@@ -226,7 +229,7 @@
         --btn-color: var(--ldm-ink);
         --btn-hover-color: var(--ldm-ink);
         --btn-active-color: var(--ldm-ink);
-        box-shadow: var(--ldm-shadow-paper);
+        box-shadow: none;
     }
 
     .btn-link {
@@ -275,10 +278,10 @@
 }
 
 // -------------------------------------------------------------- the band
-// The one bold element: the ink band that opens My Day, the agenda and the
-// matter cockpit, with anu.ltd's line-network reduced to a texture in the
-// far corner. The date or the title is set large and light. Everything
-// below it is quiet paper on the bone canvas.
+// The one bold element: the black band that opens My Day, the agenda and
+// the matter cockpit, cut square and closed by a blue edge. The date or the
+// title is set large and light. Everything below it is white paper on the
+// canvas, edged with hairlines.
 .o_ldm_band {
     position: relative;
     isolation: isolate;
@@ -289,14 +292,9 @@
     justify-content: space-between;
     gap: var(--ldm-space-3) var(--ldm-space-5);
     padding: var(--ldm-space-6) var(--ldm-space-6) var(--ldm-space-6);
-    border-radius: var(--ldm-radius-band);
+    border-radius: 0;
+    border-block-end: 3px solid #2563EB;
     background-color: #090B11;
-    background-image:
-        radial-gradient(120% 140% at 100% 0%, rgba(37, 99, 235, 0.22) 0%, rgba(37, 99, 235, 0) 55%),
-        url("/legal_department_management/static/src/img/ldm_network.svg");
-    background-repeat: no-repeat;
-    background-position: 100% 0, 100% 40%;
-    background-size: 100% 100%, auto 170%;
     color: #fff;
     overflow: hidden;
 
@@ -326,7 +324,6 @@
 
     @include media-breakpoint-down(md) {
         padding: var(--ldm-space-4) var(--ldm-space-4) var(--ldm-space-5);
-        background-size: 100% 100%, auto 120%;
 
         .o_ldm_band_title { font-size: 1.5rem; }
     }
@@ -341,17 +338,15 @@
     min-block-size: 2.5rem;
     padding-inline: var(--ldm-space-4) calc(var(--ldm-space-4) + 2px);
     border: 0;
-    border-radius: var(--ldm-radius-control);
-    background: var(--ldm-signal-gradient, linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%));
+    border-radius: 0;
+    background: #2563EB;
     color: #fff;
     font-weight: 500;
     white-space: nowrap;
-    box-shadow: var(--ldm-signal-glow, 0 12px 22px -22px rgba(37, 99, 235, 0.75));
-    transition: filter 120ms ease, transform 120ms ease;
+    transition: background-color 120ms ease;
 
-    &:hover { filter: brightness(1.08); cursor: pointer; }
-    &:active { transform: translateY(1px); }
-    &:focus-visible { outline: none; box-shadow: var(--ldm-signal-glow), 0 0 0 3px rgba(147, 197, 253, 0.55); }
+    &:hover { background: #1D4ED8; cursor: pointer; }
+    &:focus-visible { outline: none; box-shadow: 0 0 0 2px #090B11, 0 0 0 4px #93C5FD; }
 }
 
 // A quieter control on the band (search, scope): glass on ink.
@@ -361,30 +356,27 @@
     gap: var(--ldm-space-2);
     min-block-size: 2.5rem;
     padding-inline: var(--ldm-space-3);
-    border: 1px solid rgba(148, 163, 184, 0.28);
-    border-radius: var(--ldm-radius-control);
-    background-color: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    border-radius: 0;
+    background-color: rgba(255, 255, 255, 0.04);
     color: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(6px);
     transition: background-color 120ms ease, border-color 120ms ease;
 
     &:hover { background-color: rgba(255, 255, 255, 0.1); border-color: rgba(148, 163, 184, 0.45); cursor: pointer; }
-    &:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(147, 197, 253, 0.55); }
+    &:focus-visible { outline: none; box-shadow: 0 0 0 2px #93C5FD; }
 }
 
 // ------------------------------------------------------------ segmented
-// anu.ltd's navigation bar as a control: white at 92%, radius 16, a hairline,
-// the long soft floating shadow, items divided by hairlines, the active one
-// underlined in Signal. Used for scopes and for tabs.
+// A choice of one: square cells in a hairline frame; the chosen one is
+// filled in ink. On the band (o_ldm_segmented_on_ink) the frame is a white
+// hairline and the chosen one is white. Used for scopes and periods.
 .o_ldm_segmented {
     display: inline-flex;
     align-items: stretch;
     overflow: hidden;
-    border: 1px solid rgba(9, 11, 17, 0.08);
-    border-radius: var(--ldm-radius-float);
-    background-color: rgba(255, 255, 255, 0.92);
-    box-shadow: var(--ldm-shadow-float);
-    backdrop-filter: blur(8px);
+    border: 1px solid var(--ldm-rule-strong);
+    border-radius: 0;
+    background-color: var(--ldm-paper);
 
     > button,
     > a,
@@ -395,61 +387,58 @@
         gap: var(--ldm-space-2);
         padding: 0.625rem 1rem;
         border: 0;
-        border-inline-start: 1px solid rgba(148, 163, 184, 0.24);
+        border-inline-start: 1px solid var(--ldm-rule-strong);
         background: transparent;
-        color: rgba(9, 11, 17, 0.68);
+        color: var(--ldm-ink-soft);
         font-size: 0.9rem;
         white-space: nowrap;
         transition: color 120ms ease, background-color 120ms ease;
 
         &:first-child { border-inline-start: 0; }
-        &:hover { color: #090B11; background-color: rgba(241, 245, 249, 0.7); cursor: pointer; }
-        &:focus-visible { outline: none; box-shadow: inset var(--ldm-focus); }
+        &:hover { color: #090B11; background-color: var(--ldm-hover); cursor: pointer; }
+        &:focus-visible { outline: 2px solid #2563EB; outline-offset: -2px; }
 
         &.active,
         &[aria-pressed="true"],
         &[aria-selected="true"] {
-            color: #090B11;
+            background-color: #090B11;
+            color: #fff;
             font-weight: 500;
+        }
+    }
 
-            &::after {
-                content: "";
-                position: absolute;
-                inset-inline: 0.75rem;
-                inset-block-end: 0.35rem;
-                block-size: 2px;
-                border-radius: 2px;
-                background-color: var(--ldm-signal);
-            }
+    &.o_ldm_segmented_on_ink {
+        border-color: rgba(255, 255, 255, 0.28);
+        background-color: transparent;
+
+        > button,
+        > a,
+        .o_ldm_segment {
+            border-inline-start-color: rgba(255, 255, 255, 0.28);
+            color: rgba(255, 255, 255, 0.72);
+
+            &:hover { color: #fff; background-color: rgba(255, 255, 255, 0.08); }
+            &:focus-visible { outline-color: #93C5FD; }
+
+            &.active,
+            &[aria-pressed="true"],
+            &[aria-selected="true"] { background-color: #fff; color: #090B11; }
         }
     }
 }
 
-// ------------------------------------------------------------- floatbar
-// anu.ltd's navigation bar as a screen's controls, floating on the ink
-// band's lower edge: white at 94%, radius 16, a hairline, the long soft
-// floating shadow, groups divided by hairlines, the open segment underlined
-// in Signal, and the one primary action flush at the end in Signal's
-// gradient, as anu.ltd places its call to action. A band that carries one
-// takes `o_ldm_band_floats` to leave room at its foot. On a phone the bar
-// stacks: segments across the top, then the other items.
-.o_ldm_band.o_ldm_band_floats {
-    padding-block-end: 3.75rem;
-
-    @include media-breakpoint-down(md) { padding-block-end: 2.75rem; }
-}
+// ------------------------------------------------------------- toolbar
+// A screen's controls, in a white strip directly under the band: square
+// cells divided by hairlines, the open segment filled in ink, and the one
+// primary action as a blue block at the end. (The classes keep the name of
+// the floating bar they replaced.) On a phone the strip stacks.
+.o_ldm_band.o_ldm_band_floats { padding-block-end: var(--ldm-space-6); }
 
 .o_ldm_floatbar {
     position: relative;
     z-index: 2;
     flex-shrink: 0;
-    margin-block-start: -1.75rem;
-    padding-inline: var(--ldm-space-6);
-
-    @include media-breakpoint-down(md) {
-        margin-block-start: -1.5rem;
-        padding-inline: var(--ldm-space-3);
-    }
+    padding-inline: 0;
 }
 
 .o_ldm_floatbar_bar {
@@ -457,13 +446,12 @@
     align-items: stretch;
     min-block-size: 3.25rem;
     overflow: hidden;
-    border: 1px solid rgba(9, 11, 17, 0.08);
-    border-radius: var(--ldm-radius-float);
-    background-color: rgba(255, 255, 255, 0.94);
-    box-shadow: var(--ldm-shadow-float);
-    backdrop-filter: blur(10px);
+    border: 0;
+    border-block-end: 1px solid var(--ldm-rule);
+    border-radius: 0;
+    background-color: var(--ldm-paper);
 
-    > * + * { border-inline-start: 1px solid rgba(148, 163, 184, 0.24); }
+    > * + * { border-inline-start: 1px solid var(--ldm-rule); }
 
     // The primary action inside the bar: the gradient fills the bar's end.
     > .o_ldm_band_action {
@@ -478,7 +466,7 @@
         flex-wrap: wrap;
 
         > * { flex: 1 1 100%; border-inline-start: 0; }
-        > * + * { border-block-start: 1px solid rgba(148, 163, 184, 0.24); }
+        > * + * { border-block-start: 1px solid var(--ldm-rule); }
         > .o_ldm_band_action { min-block-size: 3rem; }
     }
 }
@@ -496,8 +484,8 @@
     white-space: nowrap;
     transition: background-color 120ms ease, color 120ms ease;
 
-    &:hover { background-color: rgba(241, 245, 249, 0.8); color: var(--ldm-ink); cursor: pointer; }
-    &:focus-visible { outline: none; box-shadow: inset var(--ldm-focus); }
+    &:hover { background-color: var(--ldm-hover); color: var(--ldm-ink); cursor: pointer; }
+    &:focus-visible { outline: 2px solid #2563EB; outline-offset: -2px; }
 
     > .o_ldm_icon { color: var(--ldm-ink-faint); }
 
@@ -529,24 +517,15 @@
     white-space: nowrap;
     transition: color 120ms ease, background-color 120ms ease;
 
-    & + & { border-inline-start: 1px solid rgba(148, 163, 184, 0.24); }
+    & + & { border-inline-start: 1px solid var(--ldm-rule); }
 
-    &:hover { color: var(--ldm-ink); background-color: rgba(241, 245, 249, 0.8); cursor: pointer; }
-    &:focus-visible { outline: none; box-shadow: inset var(--ldm-focus); }
+    &:hover { color: var(--ldm-ink); background-color: var(--ldm-hover); cursor: pointer; }
+    &:focus-visible { outline: 2px solid #2563EB; outline-offset: -2px; }
 
     &.o_ldm_floatbar_seg_on {
-        color: var(--ldm-ink);
+        background-color: #090B11;
+        color: #fff;
         font-weight: 500;
-
-        &::after {
-            content: "";
-            position: absolute;
-            inset-inline: var(--ldm-space-3);
-            inset-block-end: 0.55rem;
-            block-size: 2px;
-            border-radius: 2px;
-            background-color: var(--ldm-signal);
-        }
     }
 
     @include media-breakpoint-down(md) { min-block-size: 3rem; padding-inline: var(--ldm-space-2); }
@@ -567,8 +546,8 @@
     align-items: center;
     gap: 0.35rem;
     padding: 0.125rem 0.625rem 0.125rem 0.5rem;
-    border: 1px solid rgba(9, 11, 17, 0.14);
-    border-radius: var(--ldm-radius-pill);
+    border: 1px solid rgba(9, 11, 17, 0.2);
+    border-radius: 0;
     background-color: var(--ldm-paper);
     color: var(--ldm-ink);
     font-family: var(--ldm-font-text);
@@ -582,7 +561,7 @@
         content: "";
         inline-size: 0.95rem;
         block-size: 0.95rem;
-        border-radius: 50%;
+        border-radius: 0;
         background: var(--ldm-signal) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'><path d='M20 6 9 17l-5-5'/></svg>") center / 0.6rem no-repeat;
         flex: 0 0 auto;
     }
@@ -624,11 +603,14 @@
 [dir="rtl"] .o_ldm_icon_arrow-left,
 [dir="rtl"] .o_ldm_icon_chevron-right,
 [dir="rtl"] .o_ldm_icon_chevron-left,
-[dir="rtl"] .o_ldm_icon_undo-2 { transform: scaleX(-1); }
+[dir="rtl"] .o_ldm_icon_undo-2,
+[dir="rtl"] .o_ldm_icon_arrow-up-right,
+[dir="rtl"] .o_ldm_icon_arrow-up-left,
+[dir="rtl"] .o_ldm_icon_send { transform: scaleX(-1); }
 
 // ------------------------------------------------------ pills and chips
-// Status pills are shadcn soft badges: a word (and an icon), strong text on
-// a soft tint, radius 6. The word carries the meaning; the tint repeats it.
+// Status pills are square tags: a word (and an icon), strong text on a
+// soft tint. The word carries the meaning; the tint repeats it.
 .o_ldm_pill {
     display: inline-flex;
     align-items: center;
@@ -645,7 +627,7 @@
 
     [dir="rtl"] & { font-size: var(--ldm-font-micro); line-height: 1.45; }
 
-    &.o_ldm_tone_danger { background-color: var(--ldm-danger-soft); color: var(--ldm-danger); border-color: rgba(220, 38, 38, 0.12); }
+    &.o_ldm_tone_danger { background-color: var(--ldm-danger-soft); color: var(--ldm-danger); border-color: rgba(200, 30, 30, 0.14); }
     &.o_ldm_tone_warning { background-color: var(--ldm-warning-soft); color: var(--ldm-warning); border-color: rgba(180, 83, 9, 0.14); }
     &.o_ldm_tone_success { background-color: var(--ldm-success-soft); color: var(--ldm-success); border-color: rgba(21, 128, 61, 0.14); }
     &.o_ldm_tone_info { background-color: var(--ldm-signal-soft); color: var(--ldm-signal-strong); border-color: rgba(37, 99, 235, 0.14); }
@@ -655,8 +637,8 @@
     &.o_ldm_pill_on_ink { background-color: rgba(255, 255, 255, 0.08); border-color: rgba(148, 163, 184, 0.28); color: #fff; }
 }
 
-// Chips are anu.ltd's pills: white, round, a hairline, a one-pixel lift.
-// Used for kinds, filters and counts that are not a status.
+// Chips are white square tags with a hairline. Used for kinds, filters and
+// counts that are not a status.
 .o_ldm_chip {
     display: inline-flex;
     align-items: center;
@@ -670,7 +652,6 @@
     font-weight: 400;
     line-height: 1.5;
     white-space: nowrap;
-    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
 
     &.o_ldm_tone_danger { color: var(--ldm-danger); }
     &.o_ldm_tone_warning { color: var(--ldm-warning); }
@@ -728,8 +709,8 @@
 }
 
 // -------------------------------------------------------------- panels
-// Panels are white paper on the bone canvas: a hairline, radius 12, the
-// paper shadow. Lists inside them stay lists, separated by hairlines.
+// Panels are white paper on the canvas, square, edged by a hairline. Lists
+// inside them stay lists, separated by hairlines.
 .o_ldm_panel,
 .o_ldm_card {
     background-color: var(--ldm-paper);
@@ -765,7 +746,8 @@
     &:focus-visible { outline: none; box-shadow: var(--ldm-focus); border-radius: var(--ldm-radius-badge); }
 }
 
-// The one small action on a row or card: a shadcn outline button (small).
+// The one small action on a row or card: a square outline button; the
+// primary one is a blue block.
 .o_ldm_action {
     display: inline-flex;
     align-items: center;
@@ -788,17 +770,18 @@
     &:focus-visible { outline: none; box-shadow: var(--ldm-focus); }
     &:disabled { opacity: 0.5; }
 
-    &.o_ldm_action_primary {
-        border-color: transparent;
-        background: var(--ldm-signal-gradient);
-        color: #fff;
-        box-shadow: var(--ldm-signal-glow);
+    &:hover:not(:disabled) { border-color: var(--ldm-ink); }
 
-        &:hover:not(:disabled) { background: var(--ldm-signal-strong); border-color: transparent; }
+    &.o_ldm_action_primary {
+        border-color: var(--ldm-signal);
+        background: var(--ldm-signal);
+        color: #fff;
+
+        &:hover:not(:disabled) { background: var(--ldm-signal-strong); border-color: var(--ldm-signal-strong); }
     }
 }
 
-// An empty place is an invitation: an icon in a soft round, a title, a line.
+// An empty place is an invitation: an icon, a title, a line.
 .o_ldm_empty {
     display: flex;
     align-items: flex-start;

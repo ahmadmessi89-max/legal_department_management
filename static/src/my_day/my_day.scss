@@ -1,9 +1,12 @@
 // =====================================================================
-//  My Day (design-anu.md). The ink band opens the screen; below it,
-//  white paper on the grey desk: the queue takes the width, the next seven
-//  days sit beside it on a wide screen and under it on a narrow one. Rows
-//  are a list separated by hairlines, each with its kind spine; the largest
-//  type below the band is a row title, never a figure.
+//  My Day: the first screen as a dashboard with actions. White, black and
+//  blue, every edge sharp. The black band opens the screen; below it, on the
+//  canvas: the actions (a strip of square cells, the first one blue), the
+//  tiles (figures large in mono, each opening what it counted), for those
+//  who oversee where the open work is, then the work list with the next
+//  seven days beside it. Strips are drawn as cells on a hairline grid: a
+//  one-pixel gap over the rule colour, so the dividers stay exact however
+//  the cells wrap.
 // =====================================================================
 
 // The class sits on Odoo's `.o_content`, which must be the scroller: the
@@ -40,23 +43,35 @@
 }
 
 // ------------------------------------------------------------------- band
-// The band holds only who and when, the date at display size; the controls
-// float on its lower edge (o_ldm_floatbar, ldm_tokens.scss).
 .o_ldm_band.o_ldm_md_band {
-    padding-block-start: var(--ldm-space-6);
+    align-items: flex-end;
+    padding-block: var(--ldm-space-6) var(--ldm-space-5);
 
     .o_ldm_band_title { font-size: var(--ldm-font-display); }
 
     @include media-breakpoint-down(md) {
+        padding-block: var(--ldm-space-4);
+
         .o_ldm_band_title { font-size: 1.625rem; }
     }
 }
 
-// What is particular to My Day's bar: the search that opens the palette,
-// with its key hint, and the approvals waiting.
+.o_ldm_md_band_tools {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: var(--ldm-space-3);
+
+    @include media-breakpoint-down(md) { inline-size: 100%; }
+}
+
+.o_ldm_md_scopes > button { min-block-size: 2.75rem; }
+
+// The search opens the palette; its box is a square hairline on the band.
 .o_ldm_md_search {
-    flex: 1 1 16rem;
-    min-inline-size: 0;
+    inline-size: 22rem;
+    max-inline-size: 100%;
+    min-block-size: 2.75rem;
     text-align: start;
     cursor: text;
 
@@ -64,123 +79,316 @@
         flex: 1 1 auto;
         overflow: hidden;
         text-overflow: ellipsis;
-        color: var(--ldm-ink-faint);
+        white-space: nowrap;
+        color: rgba(255, 255, 255, 0.62);
     }
+
+    @include media-breakpoint-down(md) { inline-size: auto; flex: 1 1 100%; }
 }
 
 .o_ldm_md_kbd {
     padding: 0.05rem 0.4rem;
-    border: 1px solid var(--ldm-rule);
-    border-radius: 6px;
-    background-color: var(--ldm-desk);
-    color: var(--ldm-ink-faint);
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    border-radius: 0;
+    background-color: transparent;
+    color: rgba(255, 255, 255, 0.62);
     font-family: var(--ldm-font-mono);
     font-size: 0.7rem;
-    box-shadow: 0 1px 0 var(--ldm-rule);
+    box-shadow: none;
 
     @include media-breakpoint-down(md) { display: none; }
-}
-
-.o_ldm_md_approvals { color: var(--ldm-ink); font-weight: 500; }
-
-// On a phone, approvals and New share the bar's last row.
-.o_ldm_floatbar_bar > .o_ldm_md_approvals,
-.o_ldm_floatbar_bar > .o_ldm_md_new {
-    @include media-breakpoint-down(md) { flex-basis: 50%; }
 }
 
 // --------------------------------------------------------------- the desk
 .o_ldm_md_desk {
     display: grid;
-    gap: var(--ldm-space-4);
+    gap: var(--ldm-space-5);
     padding: var(--ldm-space-5) var(--ldm-space-6) var(--ldm-space-6);
 
-    @include media-breakpoint-down(md) { padding: var(--ldm-space-4) var(--ldm-space-3) var(--ldm-space-5); }
+    @include media-breakpoint-down(md) { padding: var(--ldm-space-3); gap: var(--ldm-space-3); }
 }
 
-// The oversight strip: one paper panel of stat tiles divided by hairlines.
-// Each tile: the icon in a soft square of its meaning, the figure large in
-// mono, the word under it. Each cell draws its start and top rule one pixel
-// outside itself; the panel clips the ones on its own edge, so the lines
-// stay right however the cells wrap and a short last row is white.
-.o_ldm_md_counts {
+// Cells on a hairline grid: the container shows the rule colour through a
+// one-pixel gap between white cells.
+@mixin ldm-cell-strip($min) {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(11.5rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax($min, 1fr));
+    gap: 1px;
+    border: 1px solid var(--ldm-rule);
+    background-color: var(--ldm-rule);
+}
+
+// ---------------------------------------------------------------- actions
+// Verbs to press. Each cell: the icon in a black square, the verb, what it
+// does, and how many wait there. The first, primary, is a blue block. The
+// corner arrow turns blue when the cell is pointed at.
+.o_ldm_md_actions {
+    @include ldm-cell-strip(12.5rem);
 
     @include media-breakpoint-down(md) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-
-    background-color: var(--ldm-paper);
-    border: 1px solid var(--ldm-rule);
-    border-radius: var(--ldm-radius-panel);
-    box-shadow: var(--ldm-shadow-paper);
-    overflow: hidden;
 }
 
-.o_ldm_md_count {
+.o_ldm_md_act {
+    position: relative;
     display: grid;
-    grid-template-columns: auto 1fr;
-    grid-template-rows: auto auto;
-    column-gap: var(--ldm-space-3);
+    grid-template-columns: auto minmax(0, 1fr) auto;
     align-items: center;
-    margin-block-start: -1px;
-    margin-inline-start: -1px;
+    column-gap: var(--ldm-space-3);
+    min-block-size: 5rem;
+    padding: var(--ldm-space-4);
+    border: 0;
+    border-radius: 0;
+    background-color: var(--ldm-paper);
+    color: var(--ldm-ink);
+    text-align: start;
+    transition: background-color 120ms ease, box-shadow 120ms ease;
+
+    &:hover { box-shadow: inset 0 -3px 0 var(--ldm-signal); cursor: pointer; }
+    &:hover .o_ldm_md_act_go { color: var(--ldm-signal); }
+    &:focus-visible { outline: 2px solid var(--ldm-signal); outline-offset: -2px; }
+
+    .o_ldm_md_act_icon {
+        display: inline-grid;
+        place-items: center;
+        inline-size: 2.5rem;
+        block-size: 2.5rem;
+        background-color: #090B11;
+        color: #fff;
+        font-size: 1.15rem;
+    }
+
+    .o_ldm_md_act_text { display: grid; gap: 0.1rem; min-inline-size: 0; }
+
+    .o_ldm_md_act_label {
+        font-weight: 600;
+        line-height: 1.35;
+
+        [dir="rtl"] & { font-weight: 700; }
+    }
+
+    // Two lines at most: a hint is a short sentence, not a label.
+    .o_ldm_md_act_hint {
+        display: -webkit-box;
+        overflow: hidden;
+        font-size: var(--ldm-font-micro);
+        line-height: 1.4;
+        color: var(--ldm-ink-faint);
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+    }
+
+    .o_ldm_md_act_count {
+        align-self: start;
+        min-inline-size: 1.75rem;
+        padding: 0.05rem 0.4rem;
+        border: 1px solid var(--ldm-signal);
+        color: var(--ldm-signal-strong);
+        font-size: 0.8rem;
+        font-weight: 500;
+        text-align: center;
+    }
+
+    .o_ldm_md_act_go {
+        position: absolute;
+        inset-block-start: var(--ldm-space-2);
+        inset-inline-end: var(--ldm-space-2);
+        font-size: 0.85rem;
+        color: var(--ldm-rule-strong);
+        transition: color 120ms ease;
+    }
+
+    // With a count in the corner, the arrow gives way.
+    .o_ldm_md_act_count + .o_ldm_md_act_go { display: none; }
+
+    &.o_ldm_md_act_primary {
+        background-color: var(--ldm-signal);
+        color: #fff;
+
+        &:hover { background-color: var(--ldm-signal-strong); box-shadow: none; }
+        &:focus-visible { outline-color: #090B11; }
+
+        .o_ldm_md_act_icon { background-color: #fff; color: var(--ldm-signal); }
+        .o_ldm_md_act_hint { color: #fff; opacity: 1; }
+        .o_ldm_md_act_go,
+        &:hover .o_ldm_md_act_go { color: rgba(255, 255, 255, 0.8); }
+        .o_ldm_md_act_count { border-color: #fff; color: #fff; }
+    }
+
+    // On a phone: the icon, the verb and the count on one line.
+    @include media-breakpoint-down(md) {
+        min-block-size: 4rem;
+        padding: var(--ldm-space-3);
+        column-gap: var(--ldm-space-2);
+
+        .o_ldm_md_act_icon { inline-size: 2rem; block-size: 2rem; font-size: 1rem; }
+        .o_ldm_md_act_hint,
+        .o_ldm_md_act_go { display: none; }
+        .o_ldm_md_act_count { align-self: center; min-inline-size: 1.4rem; padding: 0 0.3rem; }
+    }
+}
+
+// ------------------------------------------------------------------ tiles
+// The counts this role watches: the word over the figure, large in mono,
+// over what it means. A three-pixel bar across the top says the meaning
+// (red past its date, amber due, blue in someone's hands, black the rest);
+// the figure takes the colour when there is something to see.
+.o_ldm_md_tiles {
+    @include ldm-cell-strip(11rem);
+
+    @include media-breakpoint-down(md) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+.o_ldm_md_tile {
+    display: grid;
+    align-content: start;
+    gap: var(--ldm-space-1);
     padding: var(--ldm-space-4) var(--ldm-space-5);
     border: 0;
-    border-block-start: 1px solid var(--ldm-rule);
-
-    @include media-breakpoint-down(md) { padding: var(--ldm-space-3); column-gap: var(--ldm-space-2); }
-
-    border-inline-start: 1px solid var(--ldm-rule);
+    border-radius: 0;
+    box-shadow: inset 0 3px 0 var(--ldm-tile-tone, #090B11);
     background-color: var(--ldm-paper);
     color: var(--ldm-ink);
     text-align: start;
     transition: background-color 120ms ease;
 
-    &:hover { background-color: #F8FAFC; cursor: pointer; }
-    &:focus-visible { outline: none; box-shadow: inset var(--ldm-focus); }
+    &:hover:not(:disabled) { background-color: var(--ldm-hover); cursor: pointer; }
+    &:focus-visible { outline: 2px solid var(--ldm-signal); outline-offset: -2px; }
+    &:disabled { cursor: default; }
 
-    .o_ldm_md_count_icon {
-        grid-row: 1 / span 2;
-        display: inline-grid;
-        place-items: center;
-        inline-size: 2.5rem;
-        block-size: 2.5rem;
-        border-radius: 10px;
-        background-color: var(--ldm-sunken);
+    .o_ldm_md_tile_head {
+        display: flex;
+        align-items: flex-start;
+        gap: var(--ldm-space-2);
+        min-inline-size: 0;
+        font-size: var(--ldm-font-meta);
+        font-weight: 500;
         color: var(--ldm-ink-soft);
-        font-size: 1.1rem;
+
+        > .o_ldm_icon { color: var(--ldm-tile-tone, #090B11); }
     }
 
-    .o_ldm_md_count_n {
-        font-family: var(--ldm-font-mono);
-        font-size: 1.75rem;
+    // Two lines at most: "Documents expiring" must not lose its end on a phone.
+    .o_ldm_md_tile_label {
+        display: -webkit-box;
+        overflow: hidden;
+        line-height: 1.35;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+    }
+
+    .o_ldm_md_tile_n {
+        font-size: 2.125rem;
         font-weight: 500;
         line-height: 1.1;
-        letter-spacing: -0.03em;
+        letter-spacing: -0.04em;
+        color: var(--ldm-tile-figure, #090B11);
         justify-self: start;
     }
 
-    .o_ldm_md_count_label { font-size: var(--ldm-font-meta); color: var(--ldm-ink-faint); }
+    .o_ldm_md_tile_hint { font-size: var(--ldm-font-micro); color: var(--ldm-ink-faint); }
 
-    &.o_ldm_md_count_danger {
-        .o_ldm_md_count_n { color: var(--ldm-danger); }
-        .o_ldm_md_count_icon { background-color: var(--ldm-danger-soft); color: var(--ldm-danger); }
+    // An amount is longer than a count: a smaller figure, on one line.
+    &.o_ldm_md_tile_money .o_ldm_md_tile_n { font-size: 1.5rem; white-space: nowrap; }
+
+    &.o_ldm_md_tile_danger { --ldm-tile-tone: var(--ldm-danger); --ldm-tile-figure: var(--ldm-danger); }
+    &.o_ldm_md_tile_warning { --ldm-tile-tone: #D97706; --ldm-tile-figure: var(--ldm-warning); }
+    &.o_ldm_md_tile_info { --ldm-tile-tone: var(--ldm-signal); --ldm-tile-figure: var(--ldm-signal-strong); }
+    &.o_ldm_md_tile_neutral { --ldm-tile-tone: #090B11; }
+
+    &.o_ldm_md_tile_zero {
+        --ldm-tile-tone: var(--ldm-rule-strong);
+        --ldm-tile-figure: var(--ldm-rule-strong);
     }
 
-    &.o_ldm_md_count_warning {
-        .o_ldm_md_count_n { color: var(--ldm-warning); }
-        .o_ldm_md_count_icon { background-color: var(--ldm-warning-soft); color: var(--ldm-warning); }
+    @include media-breakpoint-down(md) {
+        padding: var(--ldm-space-3);
+
+        .o_ldm_md_tile_n { font-size: 1.625rem; }
+        &.o_ldm_md_tile_money .o_ldm_md_tile_n { font-size: 1.05rem; }
+        .o_ldm_md_tile_hint { display: none; }
+    }
+}
+
+// ------------------------------------------------------ where the work is
+// Three panels of bars. A bar's length is its share of the panel's largest;
+// on a lawyer's bar the part past its date is drawn in red from the start.
+.o_ldm_md_glance {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+    gap: var(--ldm-space-4);
+}
+
+.o_ldm_md_legend {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--ldm-space-1);
+    margin-inline-start: auto;
+    font-size: var(--ldm-font-micro);
+    color: var(--ldm-ink-faint);
+}
+
+.o_ldm_md_legend_key {
+    inline-size: 0.625rem;
+    block-size: 0.625rem;
+    background-color: var(--ldm-danger);
+}
+
+.o_ldm_md_bars {
+    margin: 0;
+    padding: var(--ldm-space-2) 0;
+    list-style: none;
+}
+
+.o_ldm_md_bar {
+    display: grid;
+    grid-template-columns: minmax(0, 9rem) minmax(0, 1fr) auto;
+    align-items: center;
+    gap: var(--ldm-space-3);
+    inline-size: 100%;
+    padding: var(--ldm-space-2) var(--ldm-space-4);
+    border: 0;
+    background: none;
+    color: var(--ldm-ink);
+    text-align: start;
+
+    &:hover { background-color: var(--ldm-hover); cursor: pointer; }
+    &:hover .o_ldm_md_bar_fill { background-color: var(--ldm-signal-strong); }
+    &:focus-visible { outline: 2px solid var(--ldm-signal); outline-offset: -2px; }
+
+    .o_ldm_md_bar_label {
+        overflow: hidden;
+        font-size: var(--ldm-font-meta);
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
 
-    &.o_ldm_md_count_info {
-        .o_ldm_md_count_n { color: var(--ldm-signal-strong); }
-        .o_ldm_md_count_icon { background-color: var(--ldm-signal-soft); color: var(--ldm-signal); }
+    .o_ldm_md_bar_track {
+        position: relative;
+        block-size: 0.625rem;
+        background-color: var(--ldm-chart-grid);
     }
 
-    &.o_ldm_md_count_zero {
-        .o_ldm_md_count_n { color: var(--ldm-rule-strong); }
-        .o_ldm_md_count_icon { background-color: var(--ldm-sunken); color: var(--ldm-ink-faint); }
+    .o_ldm_md_bar_fill,
+    .o_ldm_md_bar_late {
+        position: absolute;
+        inset-block: 0;
+        inset-inline-start: 0;
+        max-inline-size: 100%;
     }
+
+    .o_ldm_md_bar_fill { background-color: var(--ldm-signal); transition: background-color 120ms ease; }
+    .o_ldm_md_bar_late { background-color: var(--ldm-danger); }
+
+    .o_ldm_md_bar_n {
+        min-inline-size: 2rem;
+        font-size: var(--ldm-font-meta);
+        font-weight: 500;
+        text-align: end;
+    }
+
+    .o_ldm_md_bar_late_n { color: var(--ldm-danger); }
+
+    @include media-breakpoint-down(md) { grid-template-columns: minmax(0, 7rem) minmax(0, 1fr) auto; }
 }
 
 .o_ldm_md_main {
@@ -245,7 +453,6 @@
 .o_ldm_md_band_dot {
     inline-size: 0.5rem;
     block-size: 0.5rem;
-    border-radius: 50%;
     background-color: var(--ldm-ink-faint);
 }
 
@@ -496,18 +703,20 @@
 }
 
 // ---------------------------------------------------------------- phones
-// The band shrinks to one line, rows stack, actions go full width.
+// The band keeps the date and the search; rows stack, actions go full width.
 @include media-breakpoint-down(md) {
     .o_ldm_md_band {
         .o_ldm_band_meta .o_ldm_md_hijri,
         .o_ldm_band_meta .o_ldm_band_sep { display: none; }
-
-        .o_ldm_md_tools { inline-size: 100%; }
-        .o_ldm_md_search { flex: 1 1 auto; min-inline-size: 0; }
-        .o_ldm_md_kbd,
-        .o_ldm_md_search_text { display: none; }
     }
 
-    .o_ldm_md_desk { padding: var(--ldm-space-3); gap: var(--ldm-space-3); }
-    .o_ldm_md_count { padding: var(--ldm-space-2) var(--ldm-space-3); }
+    .o_ldm_md_scopes { flex: 1 1 100%; }
+    .o_ldm_md_scopes > button { flex: 1 1 0; justify-content: center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .o_ldm_md_act,
+    .o_ldm_md_act_go,
+    .o_ldm_md_tile,
+    .o_ldm_md_bar_fill { transition: none; }
 }

@@ -13,14 +13,17 @@ import { runRecordAction, toggleStep } from "../core/ldm_step_actions";
 import { LdmIcon } from "../core/ldm_icon";
 
 /**
- * مكتبي / My Day - the first screen of the application (SPEC 5.1, 14.4).
+ * مكتبي / My Day - the first screen of the application (SPEC 5.1, 14.4), a
+ * dashboard with actions: things to press that take the reader places, and
+ * counts that show where things stand, as SAG's mockup opened.
  *
- * It answers one question: what needs me now, and what is the next thing to
- * do on each. It opens with the ink band (the date in Gregorian and Hijri, and
- * what needs the reader today); below it the work in focus bands (overdue,
+ * The black band carries the date (Gregorian and Hijri), what needs the
+ * reader today, the search and, for a manager, whose work. Below it: the
+ * actions this role starts from (the first one primary); the tiles it watches,
+ * each opening exactly what it counted; for those who oversee, where the open
+ * work is by kind, lawyer and body; then the work in focus bands (overdue,
  * today, this week, later, no date), each row with the reason it is there,
- * the time left and at most one action; the next seven days beside it. A band
- * with nothing in it is not drawn, and a day with nothing to do says so.
+ * the time left and at most one action, and the next seven days beside it.
  *
  * The screen is a renderer. `legal.task.get_my_day` decides, as the reader,
  * what is shown and which actions exist, so an auditor who opens it gets the
@@ -58,6 +61,11 @@ export class LdmMyDay extends Component {
         responsible: _t("Responsible"),
         logVisit: _t("Log visit"),
         advance: _t("Cash advances"),
+        actions: _t("Start from here"),
+        tiles: _t("Where things stand"),
+        glance: _t("Where the open work is"),
+        scopes: _t("Whose work"),
+        nothingThere: _t("Nothing is waiting there."),
     };
 
     static kindLabels = {
@@ -89,6 +97,7 @@ export class LdmMyDay extends Component {
             pending: {},
         });
         this.queueRef = useRef("queue");
+        this.routeRef = useRef("route");
         if (this.env.config && this.env.config.setDisplayName) {
             this.env.config.setDisplayName(this.props.action.name || _t("My Day"));
         }
@@ -216,6 +225,28 @@ export class LdmMyDay extends Component {
         return formatAmount(entry.amount, entry.currency_id);
     }
 
+    /** A tile's figure: an amount in its currency, or a count. */
+    tileValue(tile) {
+        if (tile.amount !== undefined && tile.amount !== null) {
+            return formatAmount(tile.amount, tile.currency_id);
+        }
+        return tile.count === null || tile.count === undefined ? "" : String(tile.count);
+    }
+
+    tileEmpty(tile) {
+        return !tile.amount && !tile.count;
+    }
+
+    /** A tile that points at a part of this screen has nothing to show when empty. */
+    tileDisabled(tile) {
+        return ["band", "anchor"].includes(tile.target.type) && this.tileEmpty(tile);
+    }
+
+    /** The part of a lawyer's bar that is past its date, as a share of the track. */
+    lateShare(bar) {
+        return bar.count ? Math.round((bar.share * bar.late) / bar.count * 10) / 10 : 0;
+    }
+
     moreLabel(band) {
         return _t("Showing the first %s. The register has the rest.", band.rows.length);
     }
@@ -294,6 +325,77 @@ export class LdmMyDay extends Component {
         await this.reload();
     }
 
+    /**
+     * Where an action or a tile leads. The server decided the target as the
+     * reader, so every target here is one this user may open.
+     */
+    openTarget(target) {
+        if (!target) {
+            return;
+        }
+        switch (target.type) {
+            case "wizard":
+                return this.action.doAction(`legal_department_management.${target.xmlid}`, {
+                    onClose: () => this.reload(),
+                });
+            case "action":
+                return this.action.doAction(`legal_department_management.${target.xmlid}`);
+            case "list":
+                return this.action.doAction({
+                    type: "ir.actions.act_window",
+                    name: target.name,
+                    res_model: target.model,
+                    views: target.view === "kanban"
+                        ? [[false, "kanban"], [false, "list"], [false, "form"]]
+                        : [[false, "list"], [false, "form"]],
+                    domain: target.domain,
+                });
+            case "form":
+                return this.action.doAction({
+                    type: "ir.actions.act_window",
+                    name: target.name,
+                    res_model: target.model,
+                    views: [[false, "form"]],
+                    target: "current",
+                    context: target.context || {},
+                });
+            case "band":
+                return this.showBand(target.band);
+            case "anchor":
+                return this.scrollTo(target.ref === "route" ? this.routeRef.el : null);
+        }
+    }
+
+    /** Unfold a band of the work list and bring it into view. */
+    showBand(key) {
+        this.state.unfolded[key] = true;
+        const section = this.queueRef.el?.querySelector(`[data-band="${key}"]`);
+        if (!section) {
+            this.notification.add(this.label.nothingThere, { type: "info" });
+            return;
+        }
+        this.scrollTo(section);
+        section.querySelector(".o_ldm_md_band_head")?.focus({ preventScroll: true });
+    }
+
+    scrollTo(el) {
+        if (!el) {
+            return;
+        }
+        const calm = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        el.scrollIntoView({ block: "start", behavior: calm ? "auto" : "smooth" });
+    }
+
+    openGlance(panel, bar) {
+        this.action.doAction({
+            type: "ir.actions.act_window",
+            name: `${panel.title}: ${bar.label}`,
+            res_model: "legal.task",
+            views: [[false, "list"], [false, "kanban"], [false, "form"]],
+            domain: bar.domain,
+        });
+    }
+
     newMatter() {
         this.action.doAction("legal_department_management.action_legal_task_create_wizard", {
             onClose: () => this.reload(),
@@ -302,10 +404,6 @@ export class LdmMyDay extends Component {
 
     openSearch() {
         this.command.openMainPalette({ searchValue: "" });
-    }
-
-    openApprovals() {
-        this.action.doAction("legal_department_management.action_legal_task_to_approve");
     }
 
     openAgenda() {
@@ -320,16 +418,6 @@ export class LdmMyDay extends Component {
             views: [[false, "list"], [false, "form"]],
             domain: [["state", "=", "paid"]],
             context: { create: false },
-        });
-    }
-
-    openCount(count) {
-        this.action.doAction({
-            type: "ir.actions.act_window",
-            name: count.label,
-            res_model: count.model,
-            views: [[false, "list"], [false, "form"]],
-            domain: count.domain,
         });
     }
 

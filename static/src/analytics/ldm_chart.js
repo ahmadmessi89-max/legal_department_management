@@ -62,7 +62,7 @@ export class LdmChart extends Component {
                     backgroundColor: spec.items.map((item) =>
                         spec.tone === "kind" ? colors[`kind_${item.kind}`] || bar : colors[spec.tone] || bar
                     ),
-                    borderRadius: 6,
+                    borderRadius: 0,
                     borderSkipped: false,
                     maxBarThickness: 20,
                 },
@@ -74,7 +74,7 @@ export class LdmChart extends Component {
                 data: serie.values,
                 // "ink" (work in hand) takes the ramp's darkest blue: one hue on the charts.
                 backgroundColor: serie.tone === "ink" ? colors.ink0 || bar : colors[serie.tone] || bar,
-                borderRadius: 5,
+                borderRadius: 0,
                 borderSkipped: spec.kind === "stacked" ? "start" : false,
                 maxBarThickness: 24,
             }));
@@ -133,7 +133,7 @@ export class LdmChart extends Component {
                             boxWidth: 12,
                             boxHeight: 12,
                             useBorderRadius: true,
-                            borderRadius: 3,
+                            borderRadius: 0,
                         },
                     },
                     tooltip: {
@@ -144,7 +144,7 @@ export class LdmChart extends Component {
                         titleFont: { family: font, weight: "600", size: 13 },
                         bodyFont: { family: mono, size: 12 },
                         padding: 10,
-                        cornerRadius: 8,
+                        cornerRadius: 0,
                         caretSize: 5,
                         displayColors: !singleSeries,
                         boxPadding: 4,

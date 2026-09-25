@@ -91,7 +91,7 @@ class TestWsMyDay(WsCase):
         self.assertTrue(rows)
         self.assertFalse(any(row["action"] for row in rows))
         self.assertFalse(payload["by_body"])
-        self.assertTrue(payload["counts"])
+        self.assertTrue(payload["tiles"])
 
     def test_manager_scopes_bands_and_counts(self):
         tomorrow_session = self.Hearing.create({"task_id": self.other.id, "date": self.day(1)})
@@ -103,13 +103,16 @@ class TestWsMyDay(WsCase):
         self.assertIn(f"step-{self.late_step.id}", keys)
         bands = {band["key"]: band for band in payload["manager"]}
         self.assertIn(f"unstaffed-{tomorrow_session.id}", {row["key"] for row in bands["unstaffed"]["rows"]})
-        counts = {count["key"]: count for count in payload["counts"]}
-        self.assertGreaterEqual(counts["overdue"]["count"], 1)
-        self.assertEqual(counts["overdue"]["model"], "legal.task")
-        # Every count opens exactly the records it counted.
+        tiles = {tile["key"]: tile for tile in payload["tiles"]}
+        # The overdue tile is the overdue band of this screen, the open matters
+        # tile is the records it counted.
+        self.assertGreaterEqual(tiles["overdue"]["count"], 1)
+        self.assertEqual(tiles["overdue"]["target"], {"type": "band", "band": "overdue"})
+        self.assertEqual(tiles["overdue"]["count"], self.band(payload, "overdue")["count"])
+        target = tiles["open"]["target"]
+        self.assertEqual(target["model"], "legal.task")
         Task = self.env["legal.task"].with_user(self.manager)
-        for key in ("open", "overdue", "week"):
-            self.assertEqual(Task.search_count(counts[key]["domain"]), counts[key]["count"], key)
+        self.assertEqual(Task.search_count(target["domain"]), tiles["open"]["count"])
 
     def test_bands_are_bounded(self):
         task = self.open_matter(name="Many steps")

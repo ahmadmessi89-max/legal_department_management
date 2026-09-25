@@ -11,8 +11,11 @@
               web_icon="legal_department_management,static/description/icon.png"
               groups="legal_department_management.group_ldm_clerk,legal_department_management.group_ldm_auditor,legal_department_management.group_ldm_billing_user"/>
 
+    <!-- Every role starts from My Day, the dashboard with actions: the auditor
+         reads the work list, billing starts from its money tiles. -->
     <menuitem id="menu_legal_dashboard_main" name="My Day" parent="menu_legal_root" sequence="1"
-              action="action_legal_dashboard" groups="legal_department_management.group_ldm_clerk"/>
+              action="action_legal_dashboard"
+              groups="legal_department_management.group_ldm_clerk,legal_department_management.group_ldm_auditor,legal_department_management.group_ldm_billing_user"/>
 
     <menuitem id="menu_legal_all_tasks_management" name="Matters" parent="menu_legal_root" sequence="2"
               action="action_legal_task"/>
@@ -58,14 +61,16 @@
         <menuitem id="menu_ldm_time" name="Time" parent="menu_ldm_money" sequence="4"
                   action="action_ldm_time_entry" groups="legal_department_management.group_ldm_time"/>
 
+    <!-- An upgrade only adds a menu's groups; "-group" takes the auditor off
+         these two (the auditor reads approvals under Reports). -->
     <menuitem id="menu_legal_approvals_root" name="Approvals" parent="menu_legal_root" sequence="7"
               groups="legal_department_management.group_ldm_approvals"/>
         <menuitem id="menu_legal_tasks_to_approve" name="Awaiting approval" parent="menu_legal_approvals_root" sequence="1"
                   action="action_legal_task_to_approve"
-                  groups="legal_department_management.group_ldm_approver,legal_department_management.group_ldm_auditor"/>
+                  groups="legal_department_management.group_ldm_approver,-legal_department_management.group_ldm_auditor"/>
         <menuitem id="menu_ldm_tasks_decided" name="Decided" parent="menu_legal_approvals_root" sequence="2"
                   action="action_ldm_task_decided"
-                  groups="legal_department_management.group_ldm_approver,legal_department_management.group_ldm_auditor"/>
+                  groups="legal_department_management.group_ldm_approver,-legal_department_management.group_ldm_auditor"/>
 
     <menuitem id="menu_ldm_reporting" name="Reporting" parent="menu_legal_root" sequence="8"
               groups="legal_department_management.group_legal_manager,legal_department_management.group_ldm_auditor"/>
@@ -79,6 +84,16 @@
                   action="action_legal_general_report_wizard"/>
         <menuitem id="menu_ldm_conflict_checks" name="Conflict checks" parent="menu_ldm_reporting" sequence="5"
                   action="action_ldm_conflict_check" groups="legal_department_management.group_ldm_conflicts"/>
+        <!-- The auditor reads approvals as a report, not as a menu of their own:
+             every role but the managers keeps to seven top menus, and My Day is
+             one of the auditor's. Shown only when approvals are switched on. -->
+        <menuitem id="menu_ldm_audit_approvals" name="Approvals" parent="menu_ldm_reporting" sequence="6"
+                  groups="legal_department_management.group_ldm_approvals"/>
+            <menuitem id="menu_ldm_audit_to_approve" name="Awaiting approval" parent="menu_ldm_audit_approvals"
+                      sequence="1" action="action_legal_task_to_approve"
+                      groups="legal_department_management.group_ldm_auditor"/>
+            <menuitem id="menu_ldm_audit_decided" name="Decided" parent="menu_ldm_audit_approvals" sequence="2"
+                      action="action_ldm_task_decided" groups="legal_department_management.group_ldm_auditor"/>
 
     <menuitem id="menu_ldm_config" name="Configuration" parent="menu_legal_root" sequence="9"
               groups="legal_department_management.group_legal_manager"/>

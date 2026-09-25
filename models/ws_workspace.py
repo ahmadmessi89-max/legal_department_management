@@ -7,5 +7,6 @@ from . import ws_common  # noqa: F401
 from . import ws_step  # noqa: F401
 from . import ws_task  # noqa: F401
 from . import ws_my_day  # noqa: F401
+from . import ws_home  # noqa: F401
 from . import ws_palette  # noqa: F401
 from . import ws_company  # noqa: F401
