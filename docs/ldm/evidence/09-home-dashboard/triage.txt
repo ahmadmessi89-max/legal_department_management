@@ -1,0 +1,54 @@
+24 captures, 12 with problems
+    12  arabic
+
+Arabic on English screens:
+    6  دائرة تسجيل الشركات                                          auditor/1440/01_my_day, auditor/390/01_my_day, clerk/1440/01_my_day
+    6  مديرية تنفيذ الكرخ                                           auditor/1440/01_my_day, auditor/390/01_my_day, clerk/1440/01_my_day
+    6  تنفيذ حكم نفقة                                               auditor/1440/01_my_day, auditor/390/01_my_day, clerk/1440/01_my_day
+    6  مطالبة بمستحقات عقد مقاولة مشروع مجمع الكرخ السكني           auditor/1440/01_my_day, auditor/390/01_my_day, lawyer/1440/01_my_day
+    6  شركة الرافدين للمقاولات العامة · محكمة بداءة الكرخ           auditor/1440/01_my_day, auditor/390/01_my_day, lawyer/1440/01_my_day
+    6  براءة ذمة ضريبية سنوية لعام 2026                             auditor/1440/01_my_day, auditor/390/01_my_day, clerk/1440/01_my_day
+    4  المحامية زينب الجبوري                                        auditor/1440/01_my_day, auditor/390/01_my_day, manager/1440/01_my_day
+    4  المحامي علي الساعدي                                          auditor/1440/01_my_day, auditor/390/01_my_day, manager/1440/01_my_day
+    4  محكمة بداءة الكرخ                                            auditor/1440/01_my_day, auditor/390/01_my_day, manager/1440/01_my_day
+    4  محكمة بداءة الرصافة                                          auditor/1440/01_my_day, auditor/390/01_my_day, manager/1440/01_my_day
+    4  محكمة العمل في بغداد                                         auditor/1440/01_my_day, auditor/390/01_my_day, manager/1440/01_my_day
+    4  الهيئة العامة للضرائب                                        auditor/1440/01_my_day, auditor/390/01_my_day, manager/1440/01_my_day
+    4  السيد أحمد عبد الكريم · مديرية تنفيذ الكرخ                   auditor/1440/01_my_day, auditor/390/01_my_day, manager/1440/01_my_day
+    4  حيدر عبد الأمير                                              auditor/1440/01_my_day, auditor/390/01_my_day, manager/1440/01_my_day
+    4  Visit مديرية تنفيذ الكرخ: فتح الملف في مديرية التنفيذ        auditor/1440/01_my_day, auditor/390/01_my_day, manager/1440/01_my_day
+    4  دعوى فسخ عقد توزيع حصري                                      auditor/1440/01_my_day, auditor/390/01_my_day, manager/1440/01_my_day
+    4  شركة بابل للصناعات الغذائية · محكمة بداءة الرصافة            auditor/1440/01_my_day, auditor/390/01_my_day, manager/1440/01_my_day
+    4  شركة الرافدين للمقاولات العامة · الهيئة العامة للضرائب — فرع الكرادة auditor/1440/01_my_day, auditor/390/01_my_day, manager/1440/01_my_day
+    2  استشارة في عقد توريد معدات                                   lawyer/1440/01_my_day, lawyer/390/01_my_day
+    2  فرع شركة الخليج للاستشارات الهندسية                          lawyer/1440/01_my_day, lawyer/390/01_my_day
+    2  أقساط مستحقة (4) منذ 1 يونيو: FA/2026/0003 — CASE/2026/09/030 lawyer/1440/01_my_day, lawyer/390/01_my_day
+    2  شركة الرافدين للمقاولات العامة                               lawyer/1440/01_my_day, lawyer/390/01_my_day
+    2  تنتهي صلاحية رقم هوية غرفة التجارة في 14 سبتمبر              lawyer/1440/01_my_day, lawyer/390/01_my_day
+    2  دعوى مطالبة بقيمة عقد توريد                                  lawyer/1440/01_my_day, lawyer/390/01_my_day
+    2  مجموعة دجلة التجارية · محكمة بداءة الكرخ                     lawyer/1440/01_my_day, lawyer/390/01_my_day
+    2  Court session at محكمة بداءة الكرخ                           lawyer/1440/01_my_day, lawyer/390/01_my_day
+    2  الاتصال بالموكل لتأكيد حضور الشاهد                           lawyer/1440/01_my_day, lawyer/390/01_my_day
+    2  دعوى استرداد مستحقات مقاولة مدرسة الكرخ                      lawyer/1440/01_my_day, lawyer/390/01_my_day
+    2  مطالبة بمستحقات عقد مقاولة مجمع سكني                         lawyer/1440/01_my_day, lawyer/390/01_my_day
+    2  مراجعة عقد إيجار مخزن في الزعفرانية                          lawyer/1440/01_my_day, lawyer/390/01_my_day
+    2  مراجعة العقد وإرسال الملاحظات                                lawyer/1440/01_my_day, lawyer/390/01_my_day
+    2  475,000  ع.د                                                 clerk/1440/01_my_day, clerk/390/01_my_day
+    2  من 8:00 إلى 14:00                                            clerk/1440/01_my_day, clerk/390/01_my_day
+    2  فتح الملف في مديرية التنفيذ                                  clerk/1440/01_my_day, clerk/390/01_my_day
+    2  الهيئة العامة للضرائب — فرع الكرادة                          clerk/1440/01_my_day, clerk/390/01_my_day
+    2  من 8:30 إلى 14:00                                            clerk/1440/01_my_day, clerk/390/01_my_day
+    2  بغداد، الكرادة داخل                                          clerk/1440/01_my_day, clerk/390/01_my_day
+    2  تقديم الملف في الشباك                                        clerk/1440/01_my_day, clerk/390/01_my_day
+    2  البطاقة الوطنية للمدير المفوض                                clerk/1440/01_my_day, clerk/390/01_my_day
+    2  شهادة تأسيس الشركة                                           clerk/1440/01_my_day, clerk/390/01_my_day
+    2  كتاب تخويل مصدّق                                             clerk/1440/01_my_day, clerk/390/01_my_day
+    2  براءة الذمة الضريبية للسنة السابقة                           clerk/1440/01_my_day, clerk/390/01_my_day
+    2  بغداد، المنصور، قرب ساحة الرواد                              clerk/1440/01_my_day, clerk/390/01_my_day
+    2  تجديد إجازة ممارسة النشاط                                    clerk/1440/01_my_day, clerk/390/01_my_day
+    2  تعديل عقد تأسيس مجموعة دجلة — زيادة رأس المال                approver/1440/01_my_day, approver/390/01_my_day
+    2  مجموعة دجلة التجارية · دائرة تسجيل الشركات                   approver/1440/01_my_day, approver/390/01_my_day
+    2  Sent for approval by المحامية زينب الجبوري                   approver/1440/01_my_day, approver/390/01_my_day
+    2  تعديل نشاط شركة الرافدين وإضافة فرع البصرة                   approver/1440/01_my_day, approver/390/01_my_day
+    2  شركة الرافدين للمقاولات العامة · دائرة تسجيل الشركات         approver/1440/01_my_day, approver/390/01_my_day
+    2  10,000,000  ع.د                                              billing/1440/01_my_day, billing/390/01_my_day

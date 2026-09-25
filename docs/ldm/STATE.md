@@ -89,12 +89,43 @@ Baseline screens: `docs/ldm/evidence/00-baseline/` (eight screens, zero errors).
 No agent. Briefs of the finished streams are in `docs/ldm/briefs/`, their
 hand-backs in `docs/ldm/handback/`.
 
-### Status (updated 25 Sep 2026, 01:35)
+### Status (updated 25 Sep 2026, 12:00)
 
 The work is complete for 19.0.7: every stream, the design pass's structure
 and the ANU identity are on main, the final round is clean, and the hand-over
 is written and published as a page. What remains is SAG's answers and the
 next version.
+
+- **The first screen as a dashboard with actions; sharp edges** (the owner, 25
+  Sep: SAG's mockup opened on "a dashboard with actions ... things to press to
+  take you places, see things", and ANU's style means "white, black and blue
+  and the sharp edges", not anu.ltd's home page). My Day, redesigned in place
+  (`models/ws_home.py`, `static/src/my_day/`): the black band with a blue edge
+  (date, Hijri date, what is due, the search, a manager's scope); up to six
+  **actions** per role, the first one primary (a lawyer: new matter, record a
+  session with its count, write a letter, agenda, powers of attorney, clients;
+  a clerk: today's visits, register a letter, bodies, advances; billing: to
+  invoice, fee agreements, client money, time; an auditor: analytics, matters,
+  registers, reports, nothing that creates); up to six **tiles**, each opening
+  exactly what it counted (a band of the list, or the records); for managers
+  and auditors, **where the open work is** by kind, lawyer (with the late part
+  in red) and body, each bar opening its matters; then the work list and the
+  next seven days. Every role now starts there (auditor and billing too; billing
+  gets its money, not the team's court work); the auditor's approvals moved under
+  Reports to keep seven top menus. Every edge in the module is square (tokens,
+  buttons, pills, panels, tabs, avatars, chart bars); the primary is a solid
+  blue block; anu.ltd's line network is gone from the bands. Contrast checked
+  with axe-core: 0 violations. Evidence: `docs/ldm/evidence/09-home-dashboard/`
+  (6 roles × Arabic/English × 1440/390: Arabic 12 of 12 clean; the English flags
+  are Arabic data). Tests 380, 0 failed; SAG-shaped upgrade 43/43
+  (`04-integration/upgrade_assert_home.txt`).
+- **Two traps found on the way, fixed as a class**: a plain `_()` inside a
+  helper function finds no language and returns English (ws_home uses
+  `self.env._()`; a test checks every label in Arabic); an existing catalogue
+  entry used for the first time from code lacks its `odoo-python` mark
+  (`docs/ldm/tools/po_merge.py` now refreshes every entry's references and
+  marks from a fresh export). And: an upgrade only adds a menu's groups, so a
+  group is removed with `-group`.
 
 - **Build streams** G, L, W, M and R merged (`fb1cb1d`…`3c58758`) and integrated
   (`30bd574`). The design agent was stopped after its structure was merged
@@ -109,7 +140,7 @@ next version.
   (`o_ldm_floatbar`), stat tiles, charts in one blue ramp, client monograms, and
   printed reports and letters in the same type. Work-in-progress captures:
   `docs/ldm/evidence/07-anu-wip/` (screenshots folder only, not committed).
-- **Arabic**: `i18n/ar.po`, 2,616 entries, 0 empty, 0 placeholder mismatches,
+- **Arabic**: `i18n/ar.po`, 2,658 entries, 0 empty, 0 placeholder mismatches,
   every code string marked `odoo-python`/`odoo-javascript`
   (`py -3.11 docs/ldm/tools/po_check.py`; a test checks the marks, because Odoo
   silently ignores an unmarked code entry and shows the English; two hand-added
@@ -118,7 +149,7 @@ next version.
   reminder per matter («أقساط مستحقة (4) منذ 1 يونيو»), and a reminder closes as
   soon as its instalments are invoiced, paid or waived. On `ldm_pro` six rows
   became two.
-- **Tests**: 370, 0 failed, 0 errors, no warnings (on `ldm_t`, 25 Sep). The suite runs in the
+- **Tests**: 380, 0 failed, 0 errors, no warnings (on `ldm_t`, 25 Sep). The suite runs in the
   Asia/Baghdad timezone and in English explicitly, so it holds between midnight
   in Baghdad and midnight UTC.
 - **First verification round** (`06-verify-main/`, results only) and its recheck
@@ -167,6 +198,7 @@ next version.
 
 - Tests: `MSYS_NO_PATHCONV=1 PYTHONIOENCODING=utf-8 .venv_odoo19/Scripts/python.exe odoo-19.0/odoo-bin -c odoo19_ldm.conf -d ldm_t -u legal_department_management --test-enable --test-tags /legal_department_management --stop-after-init --http-port=8198 --log-level=test` (give a spare port: with `--no-http` the run still answered on 8110 next to the demo server)
 - Catalogue: `py -3.11 docs/ldm/tools/po_check.py` (`--fix` adds a missing code mark)
+- New strings: `odoo-bin i18n export -c odoo19_ldm.conf -d <db> -l ar_001 -o docs/ldm/i18n/<delta>/export.po legal_department_management`, write `{English: Arabic}` for the new ones in `docs/ldm/i18n/<delta>/ar.json`, then `py -3.11 docs/ldm/tools/po_merge.py <export.po> <ar.json> --drop-unused` and `po_check.py`
 - Verification round: `py -3.11 docs/ldm/tools/verify_round.py --db ldm_pro --plan docs/ldm/tools/verify_plan.json --out docs/ldm/evidence/<round> [--only lawyer] [--viewports 1440x900]`, then `verify_triage.py <round>/results.json`
 - Upgrade test: `docs/ldm/tools/upgrade/` (seed with the old code via
   `odoo19_ldm_old.conf`, snapshot, `-u`, assert). `ldm_sag` is the seeded

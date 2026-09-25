@@ -52,10 +52,15 @@ their preferences, and every screen works in both.
 ## What changed from the showcase
 
 **The daily work**
-- **مكتبي (My Day)**, a custom screen: overdue, today and this week, each row
-  with its reason and one action (record the session outcome, log the visit,
-  approve, save the notification date). Runners see today's counter visits by
-  body with what to carry; managers see oversight counts.
+- **مكتبي (My Day)**, the first screen of every role, a dashboard with
+  actions: the things this role starts from (open a matter, record a session,
+  write a letter, the agenda...), the counts it watches, each opening exactly
+  what it counted, and for managers and auditors where the open work is by
+  kind, lawyer and body. Below: overdue, today and this week, each row with
+  its reason and one action (record the session outcome, log the visit,
+  approve, save the notification date), and the next seven days. Runners see
+  today's counter visits by body with what to carry; billing starts from what
+  is due to invoice.
 - **New matter in one dialog**: type, client, body or court, and the key date.
   The type fills in the steps, the documents to collect and the target date.
   A conflict of interest, if any, is shown before the matter is created.
@@ -118,19 +123,18 @@ showcase are closed: approvals could be written directly, lawyers were granted
 access through a hidden field, and administrators were made legal managers
 implicitly.
 
-**Language and look**: complete Iraqi legal Arabic (2,616 catalogue entries,
-none empty) and English. The look follows ANU Software Solutions' own
-identity (anu.ltd) with the finish of a professional component library
-(shadcn/ui): ink bands that carry anu.ltd's line network, one electric-blue
-accent for the action and the active thing, Tajawal for Arabic, Inter Tight
-for Latin and Roboto Mono for numbers (all self-hosted), a control bar that
-floats on the band as anu.ltd's navigation does, stat tiles, charts in one
-blue ramp, and printed reports and letters in the same type. Every screen is
-usable on a phone.
+**Language and look**: complete Iraqi legal Arabic (2,658 catalogue entries,
+none empty) and English. The look is ANU Software Solutions' own: white,
+black and blue, with sharp edges. Black bands closed by a blue edge, one
+electric-blue accent for the action and the active thing, square panels,
+tiles, buttons and tags edged with hairlines, Tajawal for Arabic, Inter Tight
+for Latin and Roboto Mono for numbers (all self-hosted), charts in one blue
+ramp, and printed reports and letters in the same type. Every screen is
+usable on a phone and passes an automated contrast check.
 
 ## How it was checked
 
-- **Tests**: 370 automated tests, 0 failed, 0 errors, no warnings on install.
+- **Tests**: 380 automated tests, 0 failed, 0 errors, no warnings on install.
 - **Upgrade**: 43 checks on a database built with the showcase's own code and
   shaped like SAG's, all passing (`docs/ldm/evidence/04-integration/`).
 - **Every screen, as every role**: the final round opened 25 screens as seven
@@ -141,7 +145,10 @@ usable on a phone.
   flags are all names and case data typed in Arabic, shown as typed on
   English screens (`docs/ldm/evidence/08-verify-final/`; recheck after the
   last fixes in `08-verify-final-recheck/`, 36 screens, none flagged).
-- **Arabic**: 2,616 catalogue entries, none empty, placeholders intact, every
+- **The first screen**, redesigned last: every role in Arabic and English at
+  both widths (`docs/ldm/evidence/09-home-dashboard/`), no interface text in
+  the wrong language, and no accessibility violation (axe-core).
+- **Arabic**: 2,658 catalogue entries, none empty, placeholders intact, every
   code string readable by Odoo (`docs/ldm/tools/po_check.py`).
 
 ## Upgrading SAG's production database

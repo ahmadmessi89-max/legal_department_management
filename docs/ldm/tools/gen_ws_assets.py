@@ -43,6 +43,9 @@ ICONS = [
     "mail", "map-pin", "minus", "pencil", "plus", "printer", "receipt", "refresh-cw", "route", "scale",
     "scroll-text", "search", "shield-alert", "shield-check", "square", "square-check-big", "stamp",
     "triangle-alert", "undo-2", "upload", "user", "user-x", "users", "wallet", "x",
+    # the first screen's actions and tiles
+    "arrow-up-left", "arrow-up-right", "chart-column", "contact-round", "folder-plus", "hand-coins", "mail-plus",
+    "send",
 ]
 
 # (Google family, module family, folder, weights, subsets, licence path in google/fonts)
@@ -166,5 +169,9 @@ def build_icons():
 
 
 if __name__ == "__main__":
+    # Icons by default. The FONTS list above is the first design's (Kufi, Plex);
+    # the ANU identity's fonts (Inter Tight, Tajawal, Roboto Mono) were placed
+    # by hand, so --fonts would replace them with the old families.
     build_icons()
-    build_fonts()
+    if "--fonts" in sys.argv:
+        build_fonts()

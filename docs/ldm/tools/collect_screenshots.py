@@ -28,6 +28,7 @@ STAGES = {
     "08-verify-final": "7 - Final verification round (every role, Arabic and English, desktop and phone)",
     "08-verify-final-reminders": "7 - Final round, grouped instalment reminders",
     "08-verify-final-recheck": "7 - Final round, recheck after the last fixes (initials, one execution directorate)",
+    "09-home-dashboard": "8 - First screen as a dashboard with actions, sharp edges (every role)",
 }
 
 
